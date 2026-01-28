@@ -223,9 +223,11 @@
       <div class="section" style="margin-top:12px;">
         <h2>Investor Inquiry Form</h2>
 
-        <form method="POST" action="/thanks.html" data-netlify="true" name="investor-form">
-          <input type="hidden" name="form-name" value="investor-form">
-
+        <form name="investors" method="POST" data-netlify="true" action="/thanks.html">
+  <input type="hidden" name="form-name" value="investors">
+  <!-- your fields here -->
+  <button class="btn" type="submit">Submit Application</button>
+</form>
           <label>Full Name (required)
             <input name="full_name" type="text" required />
           </label>
