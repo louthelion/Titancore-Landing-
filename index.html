@@ -2,64 +2,100 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TitanCore Holdings — Holding Hub</title>
-  <meta name="description" content="TitanCore Holdings is the parent holding company. We route requests to the correct operating company inside the TitanCore network." />
-
-  <!-- IMPORTANT: This is what makes the CSS actually load -->
+  <meta name="description" content="TitanCore Holdings routes inbound requests to the correct operating company and institutional intake pathway." />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- hard black backdrop to kill any “white outside” -->
+  <div class="bg-lock" aria-hidden="true"></div>
+
   <main class="wrap">
     <section class="panel">
       <header class="head">
-        <div class="logo">TC</div>
-
+        <div class="mark" aria-label="TitanCore logo">TC</div>
         <div class="titleblock">
-          <h1>TitanCore Holdings</h1>
+          <h1>TITANCORE HOLDINGS</h1>
           <p>Holding Hub • Request Routing • Operating Companies Under TitanCore</p>
         </div>
       </header>
 
+      <!-- TOP HORIZONTAL NAV (as you requested) -->
+      <nav class="topnav" aria-label="Institutional Access">
+        <a class="tab" href="investors.html" data-press>INVESTORS</a>
+        <a class="tab" href="banks.html" data-press>BANKS</a>
+        <a class="tab" href="institutions.html" data-press>FINANCIAL INSTITUTIONS</a>
+      </nav>
+
+      <div class="grid">
+        <section class="card">
+          <h2>ABOUT TITANCORE</h2>
+          <p>
+            TitanCore Holdings is the parent holding company. We receive inbound requests and route them
+            to the correct operating company inside the TitanCore network. TitanCore does not provide
+            services directly — each request is routed to the right operating team so you receive the
+            correct response quickly.
+          </p>
+
+          <div class="notice">
+            <strong>Notice:</strong> TitanCore Holdings is not a law firm and does not provide legal advice.
+            Some services may require licensed professionals depending on jurisdiction.
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>HOW IT WORKS</h2>
+          <ol class="steps">
+            <li>Choose an institutional pathway (Investors, Banks, or Financial Institutions).</li>
+            <li>Submit the intake with complete details (more detail = faster review).</li>
+            <li>Our team routes and responds by email with next steps.</li>
+          </ol>
+
+          <div class="contact">
+            <div><span class="label">Central Line:</span> <a href="tel:18008279016">(800) 827-9016</a></div>
+            <div><span class="label">Email:</span> <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
+          </div>
+        </section>
+      </div>
+
+      <!-- BOTTOM VERTICAL COMPANY LIST (as you requested) -->
       <section class="card">
-        <h2>About TitanCore</h2>
-        <p>
-          TitanCore Holdings is the parent holding company. We receive inbound requests and route them
-          to the correct operating company inside the TitanCore network. TitanCore does not provide
-          services directly — each request is routed to the right operating team so you receive the
-          correct response quickly.
-        </p>
-      </section>
-
-      <section class="card">
-        <h2>Institutional Access</h2>
-        <p>
-          For investors, banks, and financial institutions — submit the appropriate inquiry to begin a
-          verified relationship process.
+        <h2>OPERATING COMPANIES</h2>
+        <p class="muted">
+          Click a company to leave TitanCore and go directly into that company’s page.
         </p>
 
-        <div class="btnstack">
-          <a class="btn gold" href="investors.html" data-active="true">Investors</a>
-          <a class="btn gold" href="banks.html" data-active="true">Banks</a>
-          <a class="btn gold" href="institutions.html" data-active="true">Financial Institutions</a>
-        </div>
-      </section>
+        <div class="companylist" role="list">
+          <a class="company" role="listitem" href="https://vaultaracapital.com" target="_blank" rel="noopener" data-press>
+            Vaultara Capital
+            <span class="sub">Funding • Credit • Formation</span>
+          </a>
 
-      <footer class="foot">
-        <div class="footrow">
-          <span class="label">Central Line:</span>
-          <a href="tel:18008279016">(800) 827-9016</a>
+          <a class="company" role="listitem" href="#" data-press>
+            VitalPath Care Group
+            <span class="sub">Healthcare • Care Operations</span>
+          </a>
+
+          <a class="company" role="listitem" href="#" data-press>
+            RevMotion Auto &amp; Marine Group
+            <span class="sub">Auto • Marine • Services</span>
+          </a>
+
+          <a class="company" role="listitem" href="https://familyfirstequitygroup.com" target="_blank" rel="noopener" data-press>
+            Family First Equity Group
+            <span class="sub">Real Estate Investment • Acquisitions • Operations</span>
+          </a>
         </div>
-        <div class="footrow">
-          <span class="label">Email:</span>
-          <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a>
-        </div>
-        <div class="copy">© TitanCore Holdings. All rights reserved.</div>
-      </footer>
+
+        <footer class="foot">
+          <span>© TitanCore Holdings. All rights reserved.</span>
+        </footer>
+      </section>
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
