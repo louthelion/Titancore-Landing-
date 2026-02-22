@@ -1,22 +1,26 @@
 :root{
   --black:#0a0a0a;
-  --black:#0a0a0a;
+  --panel:#0f0f0f;
   --gold:#d4af37;
   --gold2:#b88e22;
   --green:#00b050;
   --green2:#0bd06a;
-  --text:#111;
+
+  /* FIX: your text was #111 (almost black). On dark background it looks wrong. */
+  --text: rgba(255,255,255,.88);
+  --muted: rgba(255,255,255,.70);
 }
 
-*{box-sizing:border-box}
+html, body{
+  height: 100%;
+  margin: 0;
+  background: var(--black);   /* FIX: forces the OUTSIDE area to stay black */
+}
 
 body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--black);
+  min-height: 100vh;
   color: var(--text);
 }
-
 .wrap{
   max-width: 520px;
   margin: 0 auto;
