@@ -21,10 +21,8 @@ body{
   min-height: 100vh;
   color: var(--text);
 }
-.wrap{
-  max-width: 520px;
-  margin: 0 auto;
-  padding: 22px 14px 40px;
+..wrap{
+  background: transparent !important;
 }
 
 .panel{
