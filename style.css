@@ -21,7 +21,7 @@ body{
   min-height: 100vh;
   color: var(--text);
 }
-..wrap{
+.wrap{
   background: transparent !important;
 }
 
