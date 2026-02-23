@@ -4,10 +4,27 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>TitanCore Holdings — Holding Hub</title>
-  <meta name="description" content="TitanCore Holdings — parent holding company. Institutional access intake for investors, banks, and financial institutions. Operating companies under TitanCore." />
+  <meta name="description" content="TitanCore Holdings — parent holding company. Institutional access intake for investors, banks, and financial institutions." />
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- IMPORTANT: this hidden form helps Netlify detect the form -->
+  <style>
+    /* Hide Netlify detector form */
+    .netlify-hidden { display:none !important; }
+  </style>
 </head>
 <body>
+
+  <!-- NETLIFY DETECTOR (DO NOT REMOVE) -->
+  <!-- This is what makes Netlify “see” the form in the deploy -->
+  <form class="netlify-hidden" name="titancore-institutional" data-netlify="true">
+    <input type="hidden" name="form-name" value="titancore-institutional" />
+    <input type="text" name="full_name" />
+    <input type="email" name="email" />
+    <input type="text" name="phone" />
+    <input type="text" name="category" />
+  </form>
+
   <div class="wrap">
     <div class="panel">
 
@@ -20,16 +37,14 @@
         </div>
       </div>
 
-      <!-- BIG DESCRIPTION FIRST (YOU REQUESTED THIS) -->
+      <!-- BIG DESCRIPTION -->
       <div class="card">
         <div class="sectionTitle">What TitanCore Is</div>
         <p>
-          TitanCore Holdings is the parent holding company. Capital relationships are established at the TitanCore level —
-          investors, banks, and financial institutions connect with TitanCore, and TitanCore allocates capital across operating
-          companies under the TitanCore network based on strategy, opportunity, and internal approval.
+          TitanCore Holdings is the parent holding company. Investors, banks, and financial institutions connect at the TitanCore level —
+          and TitanCore allocates capital across operating companies under the TitanCore network based on strategy, opportunity, and internal approval.
           <br><br>
-          TitanCore does not provide operating services directly to the public from this page. This portal is built to collect
-          detailed institutional information so our team can verify the relationship, review fit, and respond with next steps.
+          This portal collects detailed relationship information so our team can verify fit, review the request, and respond by email with next steps.
         </p>
 
         <div class="notice">
@@ -40,7 +55,7 @@
 
       <div class="hr"></div>
 
-      <!-- THREE BUTTONS HORIZONTAL -->
+      <!-- 3 BUTTONS HORIZONTAL -->
       <div class="card">
         <div class="sectionTitle">Institutional Access</div>
         <p style="margin-bottom:12px;color:rgba(255,255,255,.86);">
@@ -48,26 +63,41 @@
         </p>
 
         <div class="row horizontal3">
-          <a id="btnInvestors" class="btn" href="#forms" onclick="openForm('investors'); return false;">Investors</a>
-          <a id="btnBanks" class="btn" href="#forms" onclick="openForm('banks'); return false;">Banks</a>
-          <a id="btnInstitutions" class="btn" href="#forms" onclick="openForm('institutions'); return false;">Financial Institutions</a>
+          <a id="btnInvestors" class="btn" href="#formArea" onclick="pickCategory('INVESTOR'); return false;">Investors</a>
+          <a id="btnBanks" class="btn" href="#formArea" onclick="pickCategory('BANK'); return false;">Banks</a>
+          <a id="btnInstitutions" class="btn" href="#formArea" onclick="pickCategory('FINANCIAL_INSTITUTION'); return false;">Financial Institutions</a>
         </div>
       </div>
 
-      <!-- FORMS AREA -->
-      <div id="forms" class="formWrap">
-        <div class="hr"></div>
+      <!-- FORM AREA (ONE FORM) -->
+      <div id="formArea" class="hr"></div>
 
-        <!-- INVESTOR FORM -->
-        <div id="formInvestors" class="card formWrap">
-          <div class="sectionTitle">Investor Relationship Intake</div>
-          <div class="notice">
-            <b>Notice:</b> TitanCore is not a broker-dealer and does not provide investment advice. This intake is for relationship evaluation and routing only.
+      <div class="card">
+        <div class="sectionTitle">Relationship Intake (One Form)</div>
+
+        <!-- THANK YOU INSIDE THE FORM AREA -->
+        <div id="thankYouBox" class="notice" style="display:none;">
+          <b>Thank You:</b> Your submission has been received. Our team will review and respond by email with next steps.
+          <div style="margin-top:10px;">
+            <b>Central Line:</b> (800) 827-9016<br/>
+            <b>Email:</b> contact@titancoreholdings.com
+          </div>
+          <div class="row" style="margin-top:14px;">
+            <a class="btn" href="#" onclick="resetForm(); return false;">Submit Another Request</a>
+          </div>
+        </div>
+
+        <!-- MAIN FORM -->
+        <div id="formBox">
+          <div class="notice" id="categoryNotice">
+            <b>Choose a category above</b> (Investors / Banks / Financial Institutions) to unlock the correct questions.
           </div>
 
-          <form name="titancore-investors" method="POST" data-netlify="true" action="/thank-you.html">
-            <input type="hidden" name="form-name" value="titancore-investors"/>
+          <form id="tcForm" name="titancore-institutional" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="titancore-institutional"/>
+            <input type="hidden" id="categoryField" name="category" value=""/>
 
+            <!-- Core identity -->
             <label>Full Name (Required)</label>
             <input name="full_name" required placeholder="Your full name"/>
 
@@ -77,56 +107,22 @@
             <label>Phone (Required)</label>
             <input name="phone" required placeholder="(000) 000-0000"/>
 
-            <label>Organization / Fund / Family Office (Required)</label>
-            <input name="org" required placeholder="Organization name"/>
+            <label>Organization / Institution Name (Required)</label>
+            <input name="organization" required placeholder="Company / Bank / Fund / Institution"/>
 
             <label>Title / Role (Required)</label>
-            <input name="role" required placeholder="Managing Partner / Director / etc." />
+            <input name="role" required placeholder="Managing Partner / Director / Relationship Manager"/>
 
             <label>Location (City/State/Country)</label>
             <input name="location" placeholder="City, State, Country"/>
 
-            <div class="sectionTitle" style="margin-top:18px;">Investor Profile (Quality Lead)</div>
+            <div class="sectionTitle" style="margin-top:18px;">Focus & Fit (Quality Lead)</div>
 
-            <label>Investor Type (Required)</label>
-            <select name="investor_type" required>
-              <option value="">Select one</option>
-              <option>Family Office</option>
-              <option>Private Equity</option>
-              <option>Institutional Investor</option>
-              <option>Private Lender</option>
-              <option>Accredited Individual</option>
-              <option>Other</option>
-            </select>
-
-            <label>Assets Under Management (AUM) Range</label>
-            <select name="aum_range">
-              <option value="">Select one</option>
-              <option>&lt; $10M</option>
-              <option>$10M – $50M</option>
-              <option>$50M – $250M</option>
-              <option>$250M – $1B</option>
-              <option>$1B+</option>
-            </select>
-
-            <label>Typical Check Size Range</label>
-            <input name="check_size" placeholder="$ range (example: $250k–$2M)"/>
-
-            <label>Preferred Structure</label>
-            <select name="structure">
-              <option value="">Select one</option>
-              <option>Debt</option>
-              <option>Equity</option>
-              <option>Mezzanine</option>
-              <option>JV / Co-Invest</option>
-              <option>Flexible</option>
-            </select>
-
-            <label>Primary Asset Focus (Required)</label>
+            <label>Main Asset Focus (Required)</label>
             <select name="asset_focus" required>
               <option value="">Select one</option>
               <option>Commercial / Listed Commercial</option>
-              <option>Multi-Family</option>
+              <option>Multi-Family (Small Apartments)</option>
               <option>Business Centers / Plaza</option>
               <option>Land / Development</option>
               <option>Residential (Selective)</option>
@@ -139,10 +135,7 @@
             <label>Minimum / Maximum Deal Size (Purchase Price)</label>
             <input name="deal_size" placeholder="$ min – $ max"/>
 
-            <label>Return Requirements / Yield / IRR Targets</label>
-            <textarea name="return_targets" placeholder="Explain your targets"></textarea>
-
-            <label>Timeline to Deploy Capital</label>
+            <label>Timeline</label>
             <select name="timeline">
               <option value="">Select one</option>
               <option>Immediate (0–30 days)</option>
@@ -151,178 +144,128 @@
               <option>Long Term (6+ months)</option>
             </select>
 
-            <label>Verification: Are you accredited/qualified? (Required)</label>
-            <select name="accredited" required>
-              <option value="">Select one</option>
-              <option>Yes</option>
-              <option>No</option>
-              <option>Not sure</option>
-            </select>
+            <!-- INVESTOR SECTION -->
+            <div id="investorFields" style="display:none;">
+              <div class="sectionTitle" style="margin-top:18px;">Investor Details</div>
 
-            <label>What are you looking to do with TitanCore?</label>
-            <textarea name="intent" placeholder="Relationship goal, capital type, partnership, etc."></textarea>
+              <label>Investor Type</label>
+              <select name="investor_type">
+                <option value="">Select one</option>
+                <option>Family Office</option>
+                <option>Private Equity</option>
+                <option>Institutional Investor</option>
+                <option>Private Lender</option>
+                <option>Accredited Individual</option>
+                <option>Other</option>
+              </select>
 
-            <button class="btn submitBtn" type="submit">Submit Investor Intake</button>
-          </form>
-        </div>
+              <label>AUM Range</label>
+              <select name="aum_range">
+                <option value="">Select one</option>
+                <option>&lt; $10M</option>
+                <option>$10M – $50M</option>
+                <option>$50M – $250M</option>
+                <option>$250M – $1B</option>
+                <option>$1B+</option>
+              </select>
 
-        <!-- BANK FORM -->
-        <div id="formBanks" class="card formWrap">
-          <div class="sectionTitle">Bank Relationship Intake</div>
-          <div class="notice">
-            <b>Notice:</b> Banks connect at the TitanCore level. TitanCore allocates capital across operating companies internally.
-          </div>
+              <label>Typical Check Size Range</label>
+              <input name="check_size" placeholder="$ range (example: $250k–$2M)"/>
 
-          <form name="titancore-banks" method="POST" data-netlify="true" action="/thank-you.html">
-            <input type="hidden" name="form-name" value="titancore-banks"/>
+              <label>Preferred Structure</label>
+              <select name="structure">
+                <option value="">Select one</option>
+                <option>Debt</option>
+                <option>Equity</option>
+                <option>Mezzanine</option>
+                <option>JV / Co-Invest</option>
+                <option>Flexible</option>
+              </select>
 
-            <label>Full Name (Required)</label>
-            <input name="full_name" required placeholder="Your full name"/>
+              <label>Return Targets / Yield / IRR</label>
+              <textarea name="return_targets" placeholder="Explain your targets"></textarea>
 
-            <label>Email (Required)</label>
-            <input name="email" type="email" required placeholder="name@bank.com"/>
+              <label>Accredited / Qualified?</label>
+              <select name="accredited">
+                <option value="">Select one</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Not sure</option>
+              </select>
+            </div>
 
-            <label>Phone (Required)</label>
-            <input name="phone" required placeholder="(000) 000-0000"/>
+            <!-- BANK SECTION -->
+            <div id="bankFields" style="display:none;">
+              <div class="sectionTitle" style="margin-top:18px;">Bank Details</div>
 
-            <label>Bank Name (Required)</label>
-            <input name="bank_name" required placeholder="Bank / Credit Union / Institution"/>
+              <label>Relationship Type</label>
+              <select name="bank_relationship_type">
+                <option value="">Select one</option>
+                <option>Commercial / CRE Lending</option>
+                <option>Construction / Development</option>
+                <option>Credit Facility / Line of Credit</option>
+                <option>Bridge / Transitional</option>
+                <option>Treasury / Depository</option>
+                <option>Other</option>
+              </select>
 
-            <label>Department / Role (Required)</label>
-            <input name="department_role" required placeholder="Treasury / CRE / Relationship Manager"/>
+              <label>Typical Loan Size Range</label>
+              <input name="loan_size" placeholder="$ range"/>
 
-            <div class="sectionTitle" style="margin-top:18px;">Bank Lending Profile (Quality Lead)</div>
+              <label>Key Underwriting Requirements</label>
+              <textarea name="underwriting" placeholder="DSCR, LTV, guarantees, liquidity, seasoning, etc."></textarea>
 
-            <label>Relationship Type (Required)</label>
-            <select name="relationship_type" required>
-              <option value="">Select one</option>
-              <option>Commercial / CRE Lending</option>
-              <option>Construction / Development</option>
-              <option>Credit Facility / Line of Credit</option>
-              <option>Bridge / Transitional</option>
-              <option>Treasury / Depository</option>
-              <option>Other</option>
-            </select>
+              <label>Send lending guidelines / appetite</label>
+              <textarea name="bank_appetite" placeholder="What do you want to fund now?"></textarea>
+            </div>
 
-            <label>Geographic Coverage</label>
-            <textarea name="geo" placeholder="States / regions / cities covered"></textarea>
+            <!-- FINANCIAL INSTITUTION SECTION -->
+            <div id="fiFields" style="display:none;">
+              <div class="sectionTitle" style="margin-top:18px;">Financial Institution Details</div>
 
-            <label>Typical Loan Size Range</label>
-            <input name="loan_size" placeholder="$ range"/>
+              <label>Institution Type</label>
+              <select name="institution_type">
+                <option value="">Select one</option>
+                <option>Insurance Company</option>
+                <option>Pension Fund</option>
+                <option>Endowment</option>
+                <option>Asset Manager</option>
+                <option>Credit / Lending Platform</option>
+                <option>Other</option>
+              </select>
 
-            <label>Preferred Collateral / Asset Types (Required)</label>
-            <select name="asset_types" required>
-              <option value="">Select one</option>
-              <option>Commercial / Listed Commercial</option>
-              <option>Multi-Family</option>
-              <option>Business Centers / Plaza</option>
-              <option>Land / Development</option>
-              <option>Residential (Selective)</option>
-              <option>Flexible</option>
-            </select>
+              <label>Capital Type / Structure Preference</label>
+              <select name="capital_type">
+                <option value="">Select one</option>
+                <option>Debt</option>
+                <option>Equity</option>
+                <option>Hybrid</option>
+                <option>Flexible</option>
+              </select>
 
-            <label>Key Underwriting Requirements</label>
-            <textarea name="underwriting" placeholder="DSCR, LTV, guarantees, liquidity, seasoning, etc."></textarea>
+              <label>Typical Ticket Size</label>
+              <input name="ticket_size" placeholder="$ range"/>
 
-            <label>Current Appetite / What you want to fund now</label>
-            <textarea name="appetite" placeholder="Explain what you want to see"></textarea>
+              <label>Requirements / Documents / Onboarding Process</label>
+              <textarea name="requirements" placeholder="KYC, NDA, guidelines, onboarding steps"></textarea>
+            </div>
 
-            <label>Best Next Step</label>
-            <select name="next_step">
-              <option value="">Select one</option>
-              <option>Schedule a call</option>
-              <option>Send lending guidelines</option>
-              <option>Request TitanCore overview package</option>
-            </select>
+            <div class="sectionTitle" style="margin-top:18px;">Message</div>
+            <label>What do you want to do with TitanCore?</label>
+            <textarea name="message" placeholder="Explain your relationship goal, request, and next step."></textarea>
 
-            <button class="btn submitBtn" type="submit">Submit Bank Intake</button>
-          </form>
-        </div>
+            <button class="btn submitBtn" id="submitBtn" type="submit">Submit</button>
 
-        <!-- FINANCIAL INSTITUTION FORM -->
-        <div id="formInstitutions" class="card formWrap">
-          <div class="sectionTitle">Financial Institution Intake</div>
-          <div class="notice">
-            <b>Notice:</b> This is a verification and relationship intake. TitanCore routes and responds by email.
-          </div>
-
-          <form name="titancore-institutions" method="POST" data-netlify="true" action="/thank-you.html">
-            <input type="hidden" name="form-name" value="titancore-institutions"/>
-
-            <label>Full Name (Required)</label>
-            <input name="full_name" required placeholder="Your full name"/>
-
-            <label>Email (Required)</label>
-            <input name="email" type="email" required placeholder="name@institution.com"/>
-
-            <label>Phone (Required)</label>
-            <input name="phone" required placeholder="(000) 000-0000"/>
-
-            <label>Institution Name (Required)</label>
-            <input name="institution_name" required placeholder="Institution name"/>
-
-            <label>Role / Department</label>
-            <input name="role" placeholder="Role / department"/>
-
-            <div class="sectionTitle" style="margin-top:18px;">Institution Profile (Quality Lead)</div>
-
-            <label>Institution Type (Required)</label>
-            <select name="institution_type" required>
-              <option value="">Select one</option>
-              <option>Insurance Company</option>
-              <option>Pension Fund</option>
-              <option>Endowment</option>
-              <option>Asset Manager</option>
-              <option>Credit / Lending Platform</option>
-              <option>Other</option>
-            </select>
-
-            <label>Primary Interest (Required)</label>
-            <select name="primary_interest" required>
-              <option value="">Select one</option>
-              <option>Commercial / Listed Commercial</option>
-              <option>Multi-Family</option>
-              <option>Business Centers / Plaza</option>
-              <option>Land / Development</option>
-              <option>Residential (Selective)</option>
-              <option>Other</option>
-            </select>
-
-            <label>Capital Type / Structure Preference</label>
-            <select name="capital_type">
-              <option value="">Select one</option>
-              <option>Debt</option>
-              <option>Equity</option>
-              <option>Hybrid</option>
-              <option>Flexible</option>
-            </select>
-
-            <label>Typical Ticket Size</label>
-            <input name="ticket_size" placeholder="$ range"/>
-
-            <label>Requirements / Documents / Onboarding Process</label>
-            <textarea name="requirements" placeholder="KYC, NDA, guidelines, onboarding steps"></textarea>
-
-            <label>What are you looking to do with TitanCore?</label>
-            <textarea name="intent" placeholder="Relationship goal, capital deployment, partnership"></textarea>
-
-            <label>Timeline</label>
-            <select name="timeline">
-              <option value="">Select one</option>
-              <option>Immediate</option>
-              <option>1–3 months</option>
-              <option>3–6 months</option>
-              <option>6+ months</option>
-            </select>
-
-            <button class="btn submitBtn" type="submit">Submit Institution Intake</button>
+            <div class="help" id="formHelp">
+              Tip: Choose a category above first so the correct questions show up.
+            </div>
           </form>
         </div>
       </div>
 
       <div class="hr"></div>
 
-      <!-- BOTTOM VERTICAL COMPANY LIST (YOU REQUESTED THIS) -->
+      <!-- OPERATING COMPANIES VERTICAL -->
       <div class="card">
         <div class="sectionTitle">Operating Companies (Click To Enter)</div>
         <p style="margin-bottom:12px;color:rgba(255,255,255,.84);">
@@ -330,7 +273,7 @@
         </p>
 
         <div class="row" style="flex-direction:column;">
-          <!-- IMPORTANT: Replace these URLs with your REAL company URLs -->
+          <!-- Replace these links with your real links -->
           <a class="btn" href="https://vaultaracapital.netlify.app" target="_blank" rel="noopener">
             Vaultara Capital
             <small>Funding • Credit • Business Structuring</small>
@@ -341,12 +284,12 @@
             <small>Real Estate Investing • Acquisitions • Dispositions</small>
           </a>
 
-          <a class="btn" href="#" onclick="alert('VitalPath URL not added yet. Replace the link in index.html'); return false;">
+          <a class="btn" href="#" onclick="alert('VitalPath URL not added yet. Replace link in index.html'); return false;">
             VitalPath Care Group
             <small>Healthcare Staffing • Contract Transportation</small>
           </a>
 
-          <a class="btn" href="#" onclick="alert('RevMotion URL not added yet. Replace the link in index.html'); return false;">
+          <a class="btn" href="#" onclick="alert('RevMotion URL not added yet. Replace link in index.html'); return false;">
             RevMotion Auto &amp; Marine Group
             <small>Buy/Sell/Sourcing</small>
           </a>
@@ -364,32 +307,90 @@
   </div>
 
   <script>
-    // Open correct form and make buttons active (red bg + green text)
-    function openForm(which){
-      const formsArea = document.getElementById('forms');
-      formsArea.classList.add('active');
+    function setActive(btnId){
+      const ids = ['btnInvestors','btnBanks','btnInstitutions'];
+      ids.forEach(id => document.getElementById(id).classList.remove('active'));
+      document.getElementById(btnId).classList.add('active');
+    }
 
-      // buttons
-      const bI = document.getElementById('btnInvestors');
-      const bB = document.getElementById('btnBanks');
-      const bF = document.getElementById('btnInstitutions');
-      [bI,bB,bF].forEach(b => b.classList.remove('active'));
+    function pickCategory(cat){
+      const categoryField = document.getElementById('categoryField');
+      const notice = document.getElementById('categoryNotice');
 
-      // form blocks
-      const fI = document.getElementById('formInvestors');
-      const fB = document.getElementById('formBanks');
-      const fF = document.getElementById('formInstitutions');
-      [fI,fB,fF].forEach(f => f.classList.remove('active'));
+      categoryField.value = cat;
 
-      if(which === 'investors'){ bI.classList.add('active'); fI.classList.add('active'); }
-      if(which === 'banks'){ bB.classList.add('active'); fB.classList.add('active'); }
-      if(which === 'institutions'){ bF.classList.add('active'); fF.classList.add('active'); }
+      // show/hide sections
+      document.getElementById('investorFields').style.display = (cat === 'INVESTOR') ? 'block' : 'none';
+      document.getElementById('bankFields').style.display = (cat === 'BANK') ? 'block' : 'none';
+      document.getElementById('fiFields').style.display = (cat === 'FINANCIAL_INSTITUTION') ? 'block' : 'none';
 
-      // scroll to forms
+      if(cat === 'INVESTOR'){ setActive('btnInvestors'); notice.innerHTML = "<b>Selected:</b> INVESTOR — complete the investor questions below."; }
+      if(cat === 'BANK'){ setActive('btnBanks'); notice.innerHTML = "<b>Selected:</b> BANK — complete the bank questions below."; }
+      if(cat === 'FINANCIAL_INSTITUTION'){ setActive('btnInstitutions'); notice.innerHTML = "<b>Selected:</b> FINANCIAL INSTITUTION — complete the institution questions below."; }
+
       setTimeout(() => {
-        document.getElementById('forms').scrollIntoView({behavior:'smooth', block:'start'});
-      }, 50);
+        document.getElementById('formArea').scrollIntoView({behavior:'smooth', block:'start'});
+      }, 60);
+    }
+
+    // Netlify AJAX submit + show THANK YOU inside the page
+    const form = document.getElementById('tcForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Must choose a category first
+      const cat = document.getElementById('categoryField').value;
+      if(!cat){
+        alert("Choose one category first: Investors / Banks / Financial Institutions.");
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.textContent = "Submitting...";
+      submitBtn.classList.add('active');
+
+      const formData = new FormData(form);
+
+      // Convert to URL encoded
+      const params = new URLSearchParams();
+      for (const pair of formData.entries()) params.append(pair[0], pair[1]);
+
+      try{
+        // POST to same site (Netlify captures it)
+        const res = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: params.toString()
+        });
+
+        if(!res.ok) throw new Error("Network response not ok");
+
+        // Show thank you INSIDE
+        document.getElementById('formBox').style.display = "none";
+        document.getElementById('thankYouBox').style.display = "block";
+
+        // reset button
+        submitBtn.textContent = "Submit";
+        submitBtn.classList.remove('active');
+      }catch(err){
+        alert("Submission failed. Check your Netlify deploy + try again.");
+        submitBtn.textContent = "Submit";
+        submitBtn.classList.remove('active');
+      }
+    });
+
+    function resetForm(){
+      document.getElementById('thankYouBox').style.display = "none";
+      document.getElementById('formBox').style.display = "block";
+      form.reset();
+      document.getElementById('categoryField').value = "";
+      document.getElementById('investorFields').style.display = "none";
+      document.getElementById('bankFields').style.display = "none";
+      document.getElementById('fiFields').style.display = "none";
+      ['btnInvestors','btnBanks','btnInstitutions'].forEach(id => document.getElementById(id).classList.remove('active'));
+      document.getElementById('categoryNotice').innerHTML = "<b>Choose a category above</b> (Investors / Banks / Financial Institutions) to unlock the correct questions.";
     }
   </script>
+
 </body>
 </html>
