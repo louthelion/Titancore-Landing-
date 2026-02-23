@@ -1,396 +1,90 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>TitanCore Holdings — Holding Hub</title>
-  <meta name="description" content="TitanCore Holdings — parent holding company. Institutional access intake for investors, banks, and financial institutions." />
-  <link rel="stylesheet" href="style.css"/>
-
-  <!-- IMPORTANT: this hidden form helps Netlify detect the form -->
-  <style>
-    /* Hide Netlify detector form */
-    .netlify-hidden { display:none !important; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TitanCore Holdings</title>
+  <meta name="description" content="TitanCore Holdings — parent holding company and institutional access hub." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- NETLIFY DETECTOR (DO NOT REMOVE) -->
-  <!-- This is what makes Netlify “see” the form in the deploy -->
-  <form class="netlify-hidden" name="titancore-institutional" data-netlify="true">
-    <input type="hidden" name="form-name" value="titancore-institutional" />
-    <input type="text" name="full_name" />
-    <input type="email" name="email" />
-    <input type="text" name="phone" />
-    <input type="text" name="category" />
-  </form>
-
   <div class="wrap">
     <div class="panel">
 
-      <!-- HEADER -->
-      <div class="head">
-        <div class="logo">TC</div>
+      <header class="head">
+        <div class="badge">TC</div>
         <div class="titleblock">
           <h1>TitanCore Holdings</h1>
-          <p>Holding Hub • Capital Routing • Operating Companies Under TitanCore</p>
+          <p class="subtitle">Holding Hub • Capital Routing • Operating Companies Under TitanCore</p>
         </div>
-      </div>
+      </header>
 
-      <!-- BIG DESCRIPTION -->
-      <div class="card">
-        <div class="sectionTitle">What TitanCore Is</div>
-        <p>
-          TitanCore Holdings is the parent holding company. Investors, banks, and financial institutions connect at the TitanCore level —
-          and TitanCore allocates capital across operating companies under the TitanCore network based on strategy, opportunity, and internal approval.
+      <section class="card">
+        <h2 class="sectionTitle">About TitanCore</h2>
+        <p class="bodyText">
+          TitanCore Holdings is the parent holding company. Investors, banks, and financial institutions engage at the TitanCore level.
+          TitanCore then allocates capital and resources across TitanCore operating companies based on strategy, opportunity, and internal approval.
           <br><br>
-          This portal collects detailed relationship information so our team can verify fit, review the request, and respond by email with next steps.
+          Use the Institutional Access options below to submit a relationship application. Our team will review and respond by email with next steps.
         </p>
 
         <div class="notice">
-          <b>Notice:</b> This portal is for relationship evaluation, verification, and internal routing only.
-          TitanCore is a holding company. Submissions are reviewed and responded to by email.
+          <b>Notice:</b> TitanCore is a holding company and does not provide consumer services through this portal.
+          Submissions are for relationship evaluation and internal routing only.
         </div>
-      </div>
+      </section>
 
-      <div class="hr"></div>
+      <section class="card">
+        <h2 class="sectionTitle">Institutional Access</h2>
 
-      <!-- 3 BUTTONS HORIZONTAL -->
-      <div class="card">
-        <div class="sectionTitle">Institutional Access</div>
-        <p style="margin-bottom:12px;color:rgba(255,255,255,.86);">
-          Select who you are. When you click, the form opens immediately on this page.
+        <!-- HORIZONTAL BUTTONS -->
+        <div class="hRow">
+          <a class="btn btnGold" href="investors.html">Investors</a>
+          <a class="btn btnGold" href="banks.html">Banks</a>
+          <a class="btn btnGold" href="institutions.html">Financial Institutions</a>
+        </div>
+
+        <p class="smallNote">
+          Selecting an option opens the dedicated application page.
         </p>
+      </section>
 
-        <div class="row horizontal3">
-          <a id="btnInvestors" class="btn" href="#formArea" onclick="pickCategory('INVESTOR'); return false;">Investors</a>
-          <a id="btnBanks" class="btn" href="#formArea" onclick="pickCategory('BANK'); return false;">Banks</a>
-          <a id="btnInstitutions" class="btn" href="#formArea" onclick="pickCategory('FINANCIAL_INSTITUTION'); return false;">Financial Institutions</a>
-        </div>
-      </div>
+      <!-- OPERATING COMPANIES (VERTICAL) -->
+      <section class="card">
+        <h2 class="sectionTitle">Operating Companies</h2>
+        <p class="bodyText">Click any company below to go directly to its landing page.</p>
 
-      <!-- FORM AREA (ONE FORM) -->
-      <div id="formArea" class="hr"></div>
-
-      <div class="card">
-        <div class="sectionTitle">Relationship Intake (One Form)</div>
-
-        <!-- THANK YOU INSIDE THE FORM AREA -->
-        <div id="thankYouBox" class="notice" style="display:none;">
-          <b>Thank You:</b> Your submission has been received. Our team will review and respond by email with next steps.
-          <div style="margin-top:10px;">
-            <b>Central Line:</b> (800) 827-9016<br/>
-            <b>Email:</b> contact@titancoreholdings.com
-          </div>
-          <div class="row" style="margin-top:14px;">
-            <a class="btn" href="#" onclick="resetForm(); return false;">Submit Another Request</a>
-          </div>
-        </div>
-
-        <!-- MAIN FORM -->
-        <div id="formBox">
-          <div class="notice" id="categoryNotice">
-            <b>Choose a category above</b> (Investors / Banks / Financial Institutions) to unlock the correct questions.
-          </div>
-
-          <form id="tcForm" name="titancore-institutional" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="titancore-institutional"/>
-            <input type="hidden" id="categoryField" name="category" value=""/>
-
-            <!-- Core identity -->
-            <label>Full Name (Required)</label>
-            <input name="full_name" required placeholder="Your full name"/>
-
-            <label>Email (Required)</label>
-            <input name="email" type="email" required placeholder="name@domain.com"/>
-
-            <label>Phone (Required)</label>
-            <input name="phone" required placeholder="(000) 000-0000"/>
-
-            <label>Organization / Institution Name (Required)</label>
-            <input name="organization" required placeholder="Company / Bank / Fund / Institution"/>
-
-            <label>Title / Role (Required)</label>
-            <input name="role" required placeholder="Managing Partner / Director / Relationship Manager"/>
-
-            <label>Location (City/State/Country)</label>
-            <input name="location" placeholder="City, State, Country"/>
-
-            <div class="sectionTitle" style="margin-top:18px;">Focus & Fit (Quality Lead)</div>
-
-            <label>Main Asset Focus (Required)</label>
-            <select name="asset_focus" required>
-              <option value="">Select one</option>
-              <option>Commercial / Listed Commercial</option>
-              <option>Multi-Family (Small Apartments)</option>
-              <option>Business Centers / Plaza</option>
-              <option>Land / Development</option>
-              <option>Residential (Selective)</option>
-              <option>Other</option>
-            </select>
-
-            <label>Target Markets (States/Cities)</label>
-            <textarea name="markets" placeholder="Where do you want deals?"></textarea>
-
-            <label>Minimum / Maximum Deal Size (Purchase Price)</label>
-            <input name="deal_size" placeholder="$ min – $ max"/>
-
-            <label>Timeline</label>
-            <select name="timeline">
-              <option value="">Select one</option>
-              <option>Immediate (0–30 days)</option>
-              <option>Near Term (1–3 months)</option>
-              <option>Mid Term (3–6 months)</option>
-              <option>Long Term (6+ months)</option>
-            </select>
-
-            <!-- INVESTOR SECTION -->
-            <div id="investorFields" style="display:none;">
-              <div class="sectionTitle" style="margin-top:18px;">Investor Details</div>
-
-              <label>Investor Type</label>
-              <select name="investor_type">
-                <option value="">Select one</option>
-                <option>Family Office</option>
-                <option>Private Equity</option>
-                <option>Institutional Investor</option>
-                <option>Private Lender</option>
-                <option>Accredited Individual</option>
-                <option>Other</option>
-              </select>
-
-              <label>AUM Range</label>
-              <select name="aum_range">
-                <option value="">Select one</option>
-                <option>&lt; $10M</option>
-                <option>$10M – $50M</option>
-                <option>$50M – $250M</option>
-                <option>$250M – $1B</option>
-                <option>$1B+</option>
-              </select>
-
-              <label>Typical Check Size Range</label>
-              <input name="check_size" placeholder="$ range (example: $250k–$2M)"/>
-
-              <label>Preferred Structure</label>
-              <select name="structure">
-                <option value="">Select one</option>
-                <option>Debt</option>
-                <option>Equity</option>
-                <option>Mezzanine</option>
-                <option>JV / Co-Invest</option>
-                <option>Flexible</option>
-              </select>
-
-              <label>Return Targets / Yield / IRR</label>
-              <textarea name="return_targets" placeholder="Explain your targets"></textarea>
-
-              <label>Accredited / Qualified?</label>
-              <select name="accredited">
-                <option value="">Select one</option>
-                <option>Yes</option>
-                <option>No</option>
-                <option>Not sure</option>
-              </select>
-            </div>
-
-            <!-- BANK SECTION -->
-            <div id="bankFields" style="display:none;">
-              <div class="sectionTitle" style="margin-top:18px;">Bank Details</div>
-
-              <label>Relationship Type</label>
-              <select name="bank_relationship_type">
-                <option value="">Select one</option>
-                <option>Commercial / CRE Lending</option>
-                <option>Construction / Development</option>
-                <option>Credit Facility / Line of Credit</option>
-                <option>Bridge / Transitional</option>
-                <option>Treasury / Depository</option>
-                <option>Other</option>
-              </select>
-
-              <label>Typical Loan Size Range</label>
-              <input name="loan_size" placeholder="$ range"/>
-
-              <label>Key Underwriting Requirements</label>
-              <textarea name="underwriting" placeholder="DSCR, LTV, guarantees, liquidity, seasoning, etc."></textarea>
-
-              <label>Send lending guidelines / appetite</label>
-              <textarea name="bank_appetite" placeholder="What do you want to fund now?"></textarea>
-            </div>
-
-            <!-- FINANCIAL INSTITUTION SECTION -->
-            <div id="fiFields" style="display:none;">
-              <div class="sectionTitle" style="margin-top:18px;">Financial Institution Details</div>
-
-              <label>Institution Type</label>
-              <select name="institution_type">
-                <option value="">Select one</option>
-                <option>Insurance Company</option>
-                <option>Pension Fund</option>
-                <option>Endowment</option>
-                <option>Asset Manager</option>
-                <option>Credit / Lending Platform</option>
-                <option>Other</option>
-              </select>
-
-              <label>Capital Type / Structure Preference</label>
-              <select name="capital_type">
-                <option value="">Select one</option>
-                <option>Debt</option>
-                <option>Equity</option>
-                <option>Hybrid</option>
-                <option>Flexible</option>
-              </select>
-
-              <label>Typical Ticket Size</label>
-              <input name="ticket_size" placeholder="$ range"/>
-
-              <label>Requirements / Documents / Onboarding Process</label>
-              <textarea name="requirements" placeholder="KYC, NDA, guidelines, onboarding steps"></textarea>
-            </div>
-
-            <div class="sectionTitle" style="margin-top:18px;">Message</div>
-            <label>What do you want to do with TitanCore?</label>
-            <textarea name="message" placeholder="Explain your relationship goal, request, and next step."></textarea>
-
-            <button class="btn submitBtn" id="submitBtn" type="submit">Submit</button>
-
-            <div class="help" id="formHelp">
-              Tip: Choose a category above first so the correct questions show up.
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <div class="hr"></div>
-
-      <!-- OPERATING COMPANIES VERTICAL -->
-      <div class="card">
-        <div class="sectionTitle">Operating Companies (Click To Enter)</div>
-        <p style="margin-bottom:12px;color:rgba(255,255,255,.84);">
-          Click any operating company below to go directly to its landing page.
-        </p>
-
-        <div class="row" style="flex-direction:column;">
-          <!-- Replace these links with your real links -->
-          <a class="btn" href="https://vaultaracapital.netlify.app" target="_blank" rel="noopener">
+        <div class="vRow">
+          <!-- Replace URLs if yours are different -->
+          <a class="btn btnDark" href="https://vaultaracapital.netlify.app" target="_blank" rel="noopener">
             Vaultara Capital
-            <small>Funding • Credit • Business Structuring</small>
+            <span class="btnSub">Funding • Credit • Business Structuring</span>
           </a>
 
-          <a class="btn" href="https://first-equity-group.netlify.app" target="_blank" rel="noopener">
+          <a class="btn btnDark" href="https://first-equity-group.netlify.app" target="_blank" rel="noopener">
             Family First Equity Group
-            <small>Real Estate Investing • Acquisitions • Dispositions</small>
+            <span class="btnSub">Real Estate Investing • Acquisitions • Dispositions</span>
           </a>
 
-          <a class="btn" href="#" onclick="alert('VitalPath URL not added yet. Replace link in index.html'); return false;">
+          <a class="btn btnDark" href="#" onclick="alert('Add VitalPath link in index.html');return false;">
             VitalPath Care Group
-            <small>Healthcare Staffing • Contract Transportation</small>
+            <span class="btnSub">Healthcare Staffing • Contract Transportation</span>
           </a>
 
-          <a class="btn" href="#" onclick="alert('RevMotion URL not added yet. Replace link in index.html'); return false;">
+          <a class="btn btnDark" href="#" onclick="alert('Add RevMotion link in index.html');return false;">
             RevMotion Auto &amp; Marine Group
-            <small>Buy/Sell/Sourcing</small>
+            <span class="btnSub">Auto & Marine • Buy/Sell/Sourcing</span>
           </a>
         </div>
-      </div>
+      </section>
 
-      <!-- FOOTER -->
-      <div class="footer">
-        <div class="line">TitanCore Main (800): <a href="tel:+18008279016">(800) 827-9016</a></div>
-        <div class="line">Email: <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
+      <footer class="footer">
+        <div><b>Central Line:</b> <a href="tel:+18008279016">(800) 827-9016</a></div>
+        <div><b>Email:</b> <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
         <div class="copy">© TitanCore Holdings. All rights reserved.</div>
-      </div>
+      </footer>
 
     </div>
   </div>
-
-  <script>
-    function setActive(btnId){
-      const ids = ['btnInvestors','btnBanks','btnInstitutions'];
-      ids.forEach(id => document.getElementById(id).classList.remove('active'));
-      document.getElementById(btnId).classList.add('active');
-    }
-
-    function pickCategory(cat){
-      const categoryField = document.getElementById('categoryField');
-      const notice = document.getElementById('categoryNotice');
-
-      categoryField.value = cat;
-
-      // show/hide sections
-      document.getElementById('investorFields').style.display = (cat === 'INVESTOR') ? 'block' : 'none';
-      document.getElementById('bankFields').style.display = (cat === 'BANK') ? 'block' : 'none';
-      document.getElementById('fiFields').style.display = (cat === 'FINANCIAL_INSTITUTION') ? 'block' : 'none';
-
-      if(cat === 'INVESTOR'){ setActive('btnInvestors'); notice.innerHTML = "<b>Selected:</b> INVESTOR — complete the investor questions below."; }
-      if(cat === 'BANK'){ setActive('btnBanks'); notice.innerHTML = "<b>Selected:</b> BANK — complete the bank questions below."; }
-      if(cat === 'FINANCIAL_INSTITUTION'){ setActive('btnInstitutions'); notice.innerHTML = "<b>Selected:</b> FINANCIAL INSTITUTION — complete the institution questions below."; }
-
-      setTimeout(() => {
-        document.getElementById('formArea').scrollIntoView({behavior:'smooth', block:'start'});
-      }, 60);
-    }
-
-    // Netlify AJAX submit + show THANK YOU inside the page
-    const form = document.getElementById('tcForm');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Must choose a category first
-      const cat = document.getElementById('categoryField').value;
-      if(!cat){
-        alert("Choose one category first: Investors / Banks / Financial Institutions.");
-        return;
-      }
-
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.textContent = "Submitting...";
-      submitBtn.classList.add('active');
-
-      const formData = new FormData(form);
-
-      // Convert to URL encoded
-      const params = new URLSearchParams();
-      for (const pair of formData.entries()) params.append(pair[0], pair[1]);
-
-      try{
-        // POST to same site (Netlify captures it)
-        const res = await fetch("/", {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: params.toString()
-        });
-
-        if(!res.ok) throw new Error("Network response not ok");
-
-        // Show thank you INSIDE
-        document.getElementById('formBox').style.display = "none";
-        document.getElementById('thankYouBox').style.display = "block";
-
-        // reset button
-        submitBtn.textContent = "Submit";
-        submitBtn.classList.remove('active');
-      }catch(err){
-        alert("Submission failed. Check your Netlify deploy + try again.");
-        submitBtn.textContent = "Submit";
-        submitBtn.classList.remove('active');
-      }
-    });
-
-    function resetForm(){
-      document.getElementById('thankYouBox').style.display = "none";
-      document.getElementById('formBox').style.display = "block";
-      form.reset();
-      document.getElementById('categoryField').value = "";
-      document.getElementById('investorFields').style.display = "none";
-      document.getElementById('bankFields').style.display = "none";
-      document.getElementById('fiFields').style.display = "none";
-      ['btnInvestors','btnBanks','btnInstitutions'].forEach(id => document.getElementById(id).classList.remove('active'));
-      document.getElementById('categoryNotice').innerHTML = "<b>Choose a category above</b> (Investors / Banks / Financial Institutions) to unlock the correct questions.";
-    }
-  </script>
-
 </body>
 </html>
