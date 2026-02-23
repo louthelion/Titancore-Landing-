@@ -1,92 +1,82 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>TitanCore Holdings — Holding Hub</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TitanCore Holdings</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="wrap">
-    <div class="panel">
+    <section class="panel">
       <div class="head">
-        <div class="badge">TC</div>
+        <div class="logo">TC</div>
         <div class="titleblock">
           <h1>TitanCore Holdings</h1>
-          <p class="subtitle">Holding Hub • Request Routing • Operating Companies Under TitanCore</p>
+          <p>Holding Hub • Request Routing • Operating Companies Under TitanCore</p>
         </div>
       </div>
 
+      <div class="hr"></div>
+
       <div class="section">
-        <h2>About TitanCore</h2>
-        <p>
-          TitanCore Holdings is the parent holding company. We receive inbound relationship requests
-          and route them to the correct operating company inside the TitanCore network.
-          TitanCore does not provide consumer services directly — submissions are used for evaluation,
-          verification, and internal routing so the right team responds.
-        </p>
+        <h2 class="h2">About TitanCore</h2>
+        <div class="text">
+          TitanCore Holdings is the parent holding company. This portal is for relationship intake and routing.
+          TitanCore does not provide consumer services through this portal.
+        </div>
 
         <div class="notice">
-          <b>Notice:</b> TitanCore is a holding company. This portal is for relationship evaluation
-          and routing only. No legal, tax, or consumer services are provided through this page.
+          <strong>Notice:</strong> Submissions are for relationship evaluation and internal routing only.
+          TitanCore allocates resources and capital across its operating companies at TitanCore discretion.
         </div>
       </div>
 
       <div class="section">
-        <h2>Institutional Access</h2>
-        <p>Choose one option below to open the dedicated application page.</p>
+        <h2 class="h2">Institutional Access</h2>
+        <div class="text">Select an option to open the dedicated application page.</div>
 
-        <!-- FIX: Horizontal feel with spacing (wraps nicely on phone) -->
-        <div class="btnRow">
-          <a class="btn" href="investors.html">
-            Investors
-            <span class="btnSmallText">Equity / strategic capital</span>
-          </a>
-          <a class="btn" href="banks.html">
-            Banks
-            <span class="btnSmallText">Lending / treasury relationships</span>
-          </a>
-          <a class="btn" href="financial-institutions.html">
-            Financial Institutions
-            <span class="btnSmallText">Institutional partnership intake</span>
-          </a>
+        <!-- Horizontal (not smashed) -->
+        <div class="btnrow">
+          <a class="btn btnsmall" href="investors.html">Investors</a>
+          <a class="btn btnsmall" href="banks.html">Banks</a>
+          <a class="btn btnsmall" href="institutions.html">Financial Institutions</a>
         </div>
       </div>
 
       <div class="section">
-        <h2>Operating Companies</h2>
-        <p>Click any company below to go directly to its landing page.</p>
+        <h2 class="h2">Operating Companies</h2>
+        <div class="text">Click any company below to go directly to its landing page.</div>
 
-        <!-- FIX: not stacked tight; clear spacing -->
-        <div class="companyList">
-          <a class="companyBtn" href="https://vaultaracapital.netlify.app" target="_blank" rel="noreferrer">
+        <div class="companylist">
+          <a class="companybtn" href="https://vaultaracapital.com">
             Vaultara Capital
-            <span class="sub">Funding • Credit • Business Structuring</span>
+            <span>Funding • Credit • Business Structuring</span>
           </a>
 
-          <a class="companyBtn" href="https://first-equity-group.netlify.app" target="_blank" rel="noreferrer">
+          <a class="companybtn" href="https://familyfirstequitygroup.com">
             Family First Equity Group
-            <span class="sub">Real Estate Investing • Acquisitions • Dispositions</span>
+            <span>Real Estate Investing • Acquisitions • Dispositions</span>
           </a>
 
-          <a class="companyBtn" href="#" onclick="alert('VitalPath Care Group is under construction.'); return false;">
+          <a class="companybtn" href="#">
             VitalPath Care Group
-            <span class="sub">Healthcare Staffing • Contract Transportation (Under Construction)</span>
+            <span>Healthcare Staffing • Contract Transportation (Under Construction)</span>
           </a>
 
-          <a class="companyBtn" href="#" onclick="alert('RevMotion Auto & Marine Group is under construction.'); return false;">
-            RevMotion Auto & Marine Group
-            <span class="sub">Buy/Sell/Sourcing (Under Construction)</span>
+          <a class="companybtn" href="#">
+            RevMotion Auto &amp; Marine Group
+            <span>Buy/Sell/Sourcing (Under Construction)</span>
           </a>
         </div>
       </div>
 
       <div class="footer">
-        <p class="line">TitanCore Main (800): <a href="tel:18008279016">(800) 827-9016</a></p>
-        <p class="line">Email: <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></p>
-        <p class="small">© TitanCore Holdings. All rights reserved.</p>
+        <div class="line"><strong>Central Line:</strong> <a href="tel:18008279016">(800) 827-9016</a></div>
+        <div class="line"><strong>Email:</strong> <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
+        <div class="copyright">© TitanCore Holdings. All rights reserved.</div>
       </div>
-    </div>
+    </section>
   </div>
 </body>
 </html>
