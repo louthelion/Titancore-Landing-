@@ -2,197 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TitanCore Holdings — Investor Relationship Application</title>
-  <meta name="description" content="TitanCore Holdings Investor Relationship Application" />
-  <link rel="stylesheet" href="./style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Investor Application — TitanCore</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="form.js"></script>
 </head>
-
 <body>
-  <main class="wrap">
+  <div class="wrap">
     <section class="panel">
-      <header class="head">
+      <div class="head">
         <div class="logo">TC</div>
         <div class="titleblock">
-          <h1>INVESTOR APPLICATION</h1>
+          <h1>Investor Application</h1>
           <p>TitanCore Holdings • Institutional Relationship Intake</p>
-        </div>
-      </header>
-
-      <!-- THANK YOU (INSIDE THE SAME PAGE) -->
-      <div id="thanks" class="thanks" hidden>
-        <h2 class="h2">Thank you.</h2>
-        <p>We received your application. Our team will contact you as soon as possible via email.</p>
-
-        <div class="notice">
-          <strong>Notice:</strong> TitanCore is a holding company. Submissions are for relationship evaluation and internal routing only.
-        </div>
-
-        <div class="contact">
-          <div><strong>Central Line:</strong> <a href="tel:18008279016">(800) 827-9016</a></div>
-          <div><strong>Email:</strong> <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
         </div>
       </div>
 
-      <!-- FORM -->
-      <form id="form" name="titan-investor" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <!-- Required for Netlify -->
-        <input type="hidden" name="form-name" value="titan-investor" />
-        <p class="hidden">
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
+      <div class="notice">
+        <strong>Notice:</strong> Investors invest in <strong>TitanCore Holdings</strong> (holding company).
+        TitanCore determines allocation across the TitanCore network.
+        This is an evaluation intake only. Returns are not guaranteed.
+      </div>
 
-        <h2 class="h2">Application Form</h2>
+      <form name="titancore-investors" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="titancore-investors" />
 
-        <label>Full Name (Required)
-          <input name="full_name" autocomplete="name" required />
-        </label>
-
-        <label>Email (Required)
-          <input type="email" name="email" autocomplete="email" required />
-        </label>
-
-        <label>Phone (Required)
-          <input type="tel" name="phone" autocomplete="tel" required />
-        </label>
-
-        <label>Organization / Fund / Family Office (Required)
-          <input name="organization" required />
-        </label>
-
-        <label>Title / Role (Required)
-          <input name="title_role" required />
-        </label>
-
-        <label>Headquarters Address (Required)
-          <input name="hq_address" required />
-        </label>
-
-        <div class="grid2">
-          <label>Website
-            <input name="website" placeholder="https://..." />
+        <div class="formfields">
+          <label>Full Name (Required)
+            <input name="full_name" required placeholder="Your full name" />
           </label>
 
-          <label>Primary Geography
-            <input name="geography" placeholder="US / Global / etc." />
+          <label>Email (Required)
+            <input name="email" type="email" required placeholder="name@domain.com" />
           </label>
+
+          <label>Phone (Required)
+            <input name="phone" required placeholder="(000) 000-0000" />
+          </label>
+
+          <label>Organization / Fund / Family Office (Required)
+            <input name="organization" required placeholder="Company / Fund / Family Office" />
+          </label>
+
+          <label>Title / Role (Required)
+            <input name="role" required placeholder="Managing Partner / Director / etc." />
+          </label>
+
+          <label>Country / State (Required)
+            <input name="location" required placeholder="City, State, Country" />
+          </label>
+
+          <label>Investor Type (Required)
+            <select name="investor_type" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Individual</option>
+              <option>Family Office</option>
+              <option>Fund / Sponsor</option>
+              <option>Institution</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>Estimated Commitment Range to TitanCore (Required)
+            <select name="commitment_range" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Under $50k</option>
+              <option>$50k – $250k</option>
+              <option>$250k – $1M</option>
+              <option>$1M – $5M</option>
+              <option>$5M – $25M</option>
+              <option>$25M+</option>
+            </select>
+          </label>
+
+          <label>Timeline (Required)
+            <select name="timeline" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Immediately</option>
+              <option>Within 30 days</option>
+              <option>30–90 days</option>
+              <option>90+ days</option>
+            </select>
+          </label>
+
+          <label>Preferred Distribution Frequency (Required)
+            <select name="distribution_preference" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Semi-Annual</option>
+              <option>Annual</option>
+              <option>Reinvest / Compound (if available)</option>
+            </select>
+          </label>
+
+          <label>Accredited / Qualified Status (Required)
+            <select name="status" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Accredited Investor (US)</option>
+              <option>Qualified Purchaser (US)</option>
+              <option>Non-US / International Investor</option>
+              <option>Prefer to discuss</option>
+            </select>
+          </label>
+
+          <label>Source of Funds (Required)
+            <select name="source_of_funds" required>
+              <option value="" selected disabled>Select one</option>
+              <option>Earned income / savings</option>
+              <option>Business income</option>
+              <option>Investment proceeds</option>
+              <option>Inheritance / gift</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>Compliance / Beneficial Ownership Notes (Required)
+            <textarea name="compliance_notes" required placeholder="Any beneficial owners, sanctions exposure, restrictions, or compliance notes?"></textarea>
+          </label>
+
+          <label>Message / Notes (Required)
+            <textarea name="notes" required placeholder="Tell us your goals, timeline, and best way to contact you."></textarea>
+          </label>
+
+          <div class="formactions">
+            <button class="btn btnfull" type="submit">Submit Application</button>
+          </div>
         </div>
 
-        <label>Investor Type (Required)
-          <select name="investor_type" required>
-            <option value="" selected disabled>Select one</option>
-            <option>Individual / Angel</option>
-            <option>Family Office</option>
-            <option>Private Equity</option>
-            <option>Venture Capital</option>
-            <option>Hedge Fund</option>
-            <option>Institutional Asset Manager</option>
-            <option>Other</option>
-          </select>
-        </label>
+        <!-- THANK YOU INSIDE THE FORM -->
+        <div class="thanks">
+          <h2>Thank You</h2>
+          <p>
+            We received your Investor Application. Our team will review and contact you via email with next steps.
+          </p>
 
-        <label>Accredited / Qualified Status (Required)
-          <select name="qualification_status" required>
-            <option value="" selected disabled>Select one</option>
-            <option>Accredited Investor</option>
-            <option>Qualified Purchaser</option>
-            <option>Institutional</option>
-            <option>Unsure / Prefer not to say</option>
-          </select>
-        </label>
-
-        <label>Estimated Capital Available (Required)
-          <select name="capital_available" required>
-            <option value="" selected disabled>Select one</option>
-            <option>Under $50k</option>
-            <option>$50k – $250k</option>
-            <option>$250k – $1M</option>
-            <option>$1M – $5M</option>
-            <option>$5M – $25M</option>
-            <option>$25M+</option>
-          </select>
-        </label>
-
-        <label>Investment Focus (Select all that apply)
-          <div class="checks">
-            <label><input type="checkbox" name="focus" value="Real Estate — Commercial" /> Real Estate — Commercial</label>
-            <label><input type="checkbox" name="focus" value="Multi-Family / Apartments" /> Multi-Family / Apartments</label>
-            <label><input type="checkbox" name="focus" value="Land / Development" /> Land / Development</label>
-            <label><input type="checkbox" name="focus" value="Operating Businesses" /> Operating Businesses</label>
-            <label><input type="checkbox" name="focus" value="Other" /> Other</label>
+          <div class="notice" style="margin-top:12px;">
+            <strong>Notice:</strong> TitanCore is a holding company. This submission is for relationship evaluation and internal routing only.
           </div>
-        </label>
 
-        <label>Preferred Deal Size / Check Size
-          <input name="check_size" placeholder="Example: $100k–$500k" />
-        </label>
-
-        <label>Target Return Expectations (Optional)
-          <input name="return_expectations" placeholder="Example: 10–18% / IRR / etc." />
-        </label>
-
-        <label>Time Horizon (Required)
-          <select name="time_horizon" required>
-            <option value="" selected disabled>Select one</option>
-            <option>0–6 months</option>
-            <option>6–12 months</option>
-            <option>1–3 years</option>
-            <option>3–5 years</option>
-            <option>5+ years</option>
-          </select>
-        </label>
-
-        <label>Liquidity Needs (Required)
-          <select name="liquidity_needs" required>
-            <option value="" selected disabled>Select one</option>
-            <option>Low (long-term)</option>
-            <option>Moderate</option>
-            <option>High</option>
-          </select>
-        </label>
-
-        <label>How did you hear about TitanCore?
-          <input name="referral_source" />
-        </label>
-
-        <label>Message / Notes (Required)
-          <textarea name="notes" rows="5" required placeholder="Tell us what you’re looking for and the best way to work with you."></textarea>
-        </label>
-
-        <button class="btn" type="submit">Submit Application</button>
-
-        <div class="notice">
-          <strong>Notice:</strong> TitanCore is a holding company. Submissions are for relationship evaluation and internal routing only.
+          <div class="footer" style="margin-top:12px;">
+            <div class="line"><strong>Central Line:</strong> <a href="tel:18008279016">(800) 827-9016</a></div>
+            <div class="line"><strong>Email:</strong> <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
+          </div>
         </div>
       </form>
     </section>
-  </main>
-
-  <script>
-    // Netlify submit + show Thank You inside SAME PAGE
-    const form = document.getElementById("form");
-    const thanks = document.getElementById("thanks");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const data = new FormData(form);
-
-      try {
-        const res = await fetch("/", {
-          method: "POST",
-          body: data
-        });
-
-        // Netlify usually returns 200/303. Either way, show thanks.
-        form.hidden = true;
-        thanks.hidden = false;
-        window.scrollTo({ top: 0, behavior: "smooth" });
-
-      } catch (err) {
-        alert("Submission failed. Please try again or email contact@titancoreholdings.com");
-      }
-    });
-  </script>
+  </div>
 </body>
 </html>
