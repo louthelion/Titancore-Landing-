@@ -215,6 +215,30 @@ body::before{
   border: 2px solid rgba(0,0,0,.18);
   box-shadow: 0 14px 40px rgba(0,0,0,.55);
 }
+.company-btn{
+  display:block;
+  text-decoration:none;
+  padding:20px;
+  border-radius:18px;
+  background:#c9a437;
+  color:black;
+  font-weight:900;
+  margin-bottom:14px;
+  text-align:center;
+}
+
+.company-btn:visited{
+  color:black;
+  background:#c9a437;
+}
+
+.company-btn:hover{
+  filter:brightness(1.05);
+}
+
+.company-btn:active{
+  transform:scale(0.98);
+}
 
 .companybtn span{
   display:block;
