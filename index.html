@@ -76,6 +76,76 @@
         <div class="line"><strong>Email:</strong> <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
         <div class="copyright">© TitanCore Holdings. All rights reserved.</div>
       </div>
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const titanForm = document.querySelector("form");
+
+  if (!titanForm) {
+    alert("TitanCore form not found on this page.");
+    return;
+  }
+
+  titanForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const full_name =
+      titanForm.querySelector('[name="full_name"]')?.value ||
+      titanForm.querySelector('[name="name"]')?.value ||
+      "";
+
+    const email =
+      titanForm.querySelector('[name="email"]')?.value || "";
+
+    const phone =
+      titanForm.querySelector('[name="phone"]')?.value || "";
+
+    const service =
+      titanForm.querySelector('[name="service"]')?.value ||
+      titanForm.querySelector('[name="service_type"]')?.value ||
+      "General Inquiry";
+
+    const notes =
+      titanForm.querySelector('[name="notes"]')?.value ||
+      titanForm.querySelector('[name="message"]')?.value ||
+      titanForm.querySelector('textarea')?.value ||
+      "";
+
+    const payload = {
+      full_name: full_name,
+      email: email,
+      phone: phone,
+      service: service,
+      company: "TitanCore Holdings",
+      status: "new",
+      notes: notes,
+      ai_score: 0
+    };
+
+    try {
+      const res = await fetch("https://jgpvrblzyznyprtffirw.supabase.co/rest/v1/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": "sb_publishable_4MZbcaMuJ-_GfaZh1jb4yA_tyyj7EfP",
+          "Authorization": "Bearer sb_publishable_4MZbcaMuJ-_GfaZh1jb4yA_tyyj7EfP",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        alert("Form did not save. Error: " + errorText);
+        return;
+      }
+
+      window.location.href = "/thank-you.html";
+    } catch (err) {
+      alert("Submission failed. " + err.message);
+    }
+  });
+});
+</script>
     </section>
   </div>
 </body>
