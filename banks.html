@@ -107,40 +107,5 @@
       </form>
     </section>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-<script>
-const supabaseUrl = "https://jgpvrblzyznyprtffirw.supabase.co";
-const supabaseKey = "sb_publishable_4MZbcaMuJ-_GfaZh1jb4yA_tyyj7EfP";
-
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("form");
-
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const full_name = form.querySelector('[name="full_name"]')?.value || "";
-    const email = form.querySelector('[name="email"]')?.value || "";
-    const phone = form.querySelector('[name="phone"]')?.value || "";
-    const service = form.querySelector('[name="service"]')?.value || "";
-    const notes = form.querySelector('[name="notes"]')?.value || "";
-
-    const { error } = await supabase.from("leads").insert([
-      { full_name, email, phone, service, notes }
-    ]);
-
-    if (error) {
-      alert("Error submitting form");
-      console.log(error);
-    } else {
-      window.location.href = "/thanks-you.html";
-    }
-  });
-});
-</script>
 </html>
 </body>
