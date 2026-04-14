@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Financial Institution — TitanCore</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Financial Institution - TitanCore Holdings</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="form.js"></script>
 </head>
@@ -14,9 +14,11 @@
         <div class="logo">TC</div>
         <div class="titleblock">
           <h1>Financial Institution</h1>
-          <p>TitanCore Holdings • Institutional Access Intake</p>
+          <p>TitanCore Holdings • Institutional Access</p>
         </div>
       </div>
+
+      <div class="hr"></div>
 
       <form name="titancore-financial-institutions" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="titancore-financial-institutions" />
@@ -27,19 +29,19 @@
           </label>
 
           <label>Email (Required)
-            <input name="email" type="email" required placeholder="name@institution.com" />
+            <input name="email" type="email" required placeholder="you@example.com" />
           </label>
 
           <label>Phone (Required)
-            <input name="phone" required placeholder="(000) 000-0000" />
+            <input name="phone" required placeholder="Phone number" />
           </label>
 
           <label>Institution Name (Required)
-            <input name="institution_name" required placeholder="Financial Institution / Firm" />
+            <input name="institution_name" required placeholder="Institution name" />
           </label>
 
           <label>Title / Role (Required)
-            <input name="role" required placeholder="Director / Analyst / Underwriter / etc." />
+            <input name="role" required placeholder="Managing Director, Credit, Partnerships..." />
           </label>
 
           <label>Institution Type (Required)
@@ -56,9 +58,9 @@
           </label>
 
           <label>Relationship Objective (Required)
-            <select name="objective" required>
+            <select name="service" required>
               <option value="" selected disabled>Select one</option>
-              <option>Capital partnership with TitanCore (holdco)</option>
+              <option>Capital partnership with TitanCore</option>
               <option>Credit / structured finance</option>
               <option>Strategic partnership / services</option>
               <option>Other</option>
@@ -69,44 +71,44 @@
             <select name="capacity_range" required>
               <option value="" selected disabled>Select one</option>
               <option>Under $250k</option>
-              <option>$250k – $1M</option>
-              <option>$1M – $5M</option>
-              <option>$5M – $25M</option>
+              <option>$250k - $1M</option>
+              <option>$1M - $5M</option>
+              <option>$5M - $25M</option>
               <option>$25M+</option>
             </select>
           </label>
 
           <label>Geography / Coverage (Required)
-            <input name="coverage" required placeholder="US / International / specific regions" />
+            <input name="coverage" required placeholder="US, global, regional..." />
           </label>
 
           <label>Requirements / Process (Required)
-            <textarea name="requirements" required placeholder="Required documents, onboarding process, compliance/AML requirements, timelines, etc."></textarea>
+            <textarea name="requirements" required placeholder="Tell us about your process or requirements"></textarea>
           </label>
 
           <label>Message / Notes (Required)
-            <textarea name="notes" required placeholder="Tell us what you offer and the next step to establish a relationship with TitanCore."></textarea>
+            <textarea name="notes" required placeholder="Additional notes"></textarea>
           </label>
 
+          <input type="hidden" name="company" value="TitanCore Holdings" />
+          <input type="hidden" name="form_type" value="institutions" />
+
           <div class="formactions">
-            <button class="btn btnfull" type="submit">Submit Application</button>
+            <button class="btn btnfull" type="submit">Submit</button>
           </div>
         </div>
 
         <div class="thanks">
           <h2>Thank You</h2>
-          <p>
-            We received your Financial Institution submission. Our team will review and contact you via email with next steps.
-          </p>
-
-          <div class="notice" style="margin-top:12px;">
-            <strong>Notice:</strong> TitanCore is a holding company. Submissions are for relationship evaluation and internal routing only.
+          <p>We received your Financial Institution submission.</p>
+          <div class="notice" style="margin-top:14px;">
+            <strong>Notice:</strong> TitanCore reviews submissions and routes them internally for follow-up.
           </div>
+        </div>
 
-          <div class="footer" style="margin-top:12px;">
-            <div class="line"><strong>Central Line:</strong> <a href="tel:18008279016">(800) 827-9016</a></div>
-            <div class="line"><strong>Email:</strong> <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
-          </div>
+        <div class="footer" style="margin-top:24px;">
+          <div class="line"><strong>Central Line:</strong> (800) 827-9016</div>
+          <div class="line"><strong>Email:</strong> contact@titancoreholdings.com</div>
         </div>
       </form>
     </section>
