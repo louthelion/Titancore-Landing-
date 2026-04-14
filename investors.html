@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Investor Application — TitanCore</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Investor Access - TitanCore Holdings</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="form.js"></script>
 </head>
@@ -13,10 +13,13 @@
       <div class="head">
         <div class="logo">TC</div>
         <div class="titleblock">
-          <h1>Investor Application</h1>
-          <p>TitanCore Holdings • Institutional Relationship Intake</p>
+          <h1>Investor Access</h1>
+          <p>TitanCore Holdings • Investor Relations</p>
         </div>
       </div>
+
+      <div class="hr"></div>
+
       <form name="titancore-investors" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="titancore-investors" />
 
@@ -26,116 +29,79 @@
           </label>
 
           <label>Email (Required)
-            <input name="email" type="email" required placeholder="name@domain.com" />
+            <input name="email" type="email" required placeholder="you@example.com" />
           </label>
 
           <label>Phone (Required)
-            <input name="phone" required placeholder="(000) 000-0000" />
+            <input name="phone" required placeholder="Phone number" />
           </label>
 
-          <label>Organization / Fund / Family Office (Required)
-            <input name="organization" required placeholder="Company / Fund / Family Office" />
+          <label>Investor / Firm Name (Required)
+            <input name="investor_name" required placeholder="Investor or firm name" />
           </label>
 
           <label>Title / Role (Required)
-            <input name="role" required placeholder="Managing Partner / Director / etc." />
-          </label>
-
-          <label>Country / State (Required)
-            <input name="location" required placeholder="City, State, Country" />
+            <input name="role" required placeholder="Investor, Partner, Principal..." />
           </label>
 
           <label>Investor Type (Required)
             <select name="investor_type" required>
               <option value="" selected disabled>Select one</option>
-              <option>Individual</option>
+              <option>Individual Investor</option>
               <option>Family Office</option>
-              <option>Fund / Sponsor</option>
-              <option>Institution</option>
+              <option>Private Group</option>
+              <option>Institutional Investor</option>
               <option>Other</option>
             </select>
           </label>
 
-          <label>Estimated Commitment Range to TitanCore (Required)
-            <select name="commitment_range" required>
+          <label>Relationship Objective (Required)
+            <select name="service" required>
+              <option value="" selected disabled>Select one</option>
+              <option>General investment inquiry</option>
+              <option>Strategic relationship</option>
+              <option>Capital participation</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>Investment Range (Required)
+            <select name="capacity_range" required>
               <option value="" selected disabled>Select one</option>
               <option>Under $50k</option>
-              <option>$50k – $250k</option>
-              <option>$250k – $1M</option>
-              <option>$1M – $5M</option>
-              <option>$5M – $25M</option>
-              <option>$25M+</option>
+              <option>$50k - $250k</option>
+              <option>$250k - $1M</option>
+              <option>$1M+</option>
             </select>
           </label>
 
-          <label>Timeline (Required)
-            <select name="timeline" required>
-              <option value="" selected disabled>Select one</option>
-              <option>Immediately</option>
-              <option>Within 30 days</option>
-              <option>30–90 days</option>
-              <option>90+ days</option>
-            </select>
-          </label>
-
-          <label>Preferred Distribution Frequency (Required)
-            <select name="distribution_preference" required>
-              <option value="" selected disabled>Select one</option>
-              <option>Semi-Annual</option>
-              <option>Annual</option>
-              <option>Reinvest / Compound (if available)</option>
-            </select>
-          </label>
-
-          <label>Accredited / Qualified Status (Required)
-            <select name="status" required>
-              <option value="" selected disabled>Select one</option>
-              <option>Accredited Investor (US)</option>
-              <option>Qualified Purchaser (US)</option>
-              <option>Non-US / International Investor</option>
-              <option>Prefer to discuss</option>
-            </select>
-          </label>
-
-          <label>Source of Funds (Required)
-            <select name="source_of_funds" required>
-              <option value="" selected disabled>Select one</option>
-              <option>Earned income / savings</option>
-              <option>Business income</option>
-              <option>Investment proceeds</option>
-              <option>Inheritance / gift</option>
-              <option>Other</option>
-            </select>
-          </label>
-
-          <label>Compliance / Beneficial Ownership Notes (Required)
-            <textarea name="compliance_notes" required placeholder="Any beneficial owners, sanctions exposure, restrictions, or compliance notes?"></textarea>
+          <label>Requirements / Process (Required)
+            <textarea name="requirements" required placeholder="Tell us your requirements or process"></textarea>
           </label>
 
           <label>Message / Notes (Required)
-            <textarea name="notes" required placeholder="Tell us your goals, timeline, and best way to contact you."></textarea>
+            <textarea name="notes" required placeholder="Additional notes"></textarea>
           </label>
 
+          <input type="hidden" name="company" value="TitanCore Holdings" />
+          <input type="hidden" name="form_type" value="investors" />
+
           <div class="formactions">
-            <button class="btn btnfull" type="submit">Submit Application</button>
+            <button class="btn btnfull" type="submit">Submit</button>
           </div>
         </div>
 
-        <!-- THANK YOU INSIDE THE FORM -->
         <div class="thanks">
           <h2>Thank You</h2>
-          <p>
-            We received your Investor Application. Our team will review and contact you via email with next steps.
-          </p>
-
-          <div class="notice" style="margin-top:12px;">
-            <strong>Notice:</strong> TitanCore is a holding company. This submission is for relationship evaluation and internal routing only.
+          <p>We received your Investor submission.</p>
+          <div class="notice" style="margin-top:14px;">
+            <strong>Notice:</strong> TitanCore reviews submissions and routes them internally for follow-up.
           </div>
+        </div>
 
-          <div class="footer" style="margin-top:12px;">
-            <div class="line"><strong>Central Line:</strong> <a href="tel:18008279016">(800) 827-9016</a></div>
-            <div class="line"><strong>Email:</strong> <a href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a></div>
-          </div>
+        <div class="footer" style="margin-top:24px;">
+          <div class="line"><strong>Central Line:</strong> (800) 827-9016</div>
+          <div class="line"><strong>Email:</strong> contact@titancoreholdings.com</div>
         </div>
       </form>
     </section>
