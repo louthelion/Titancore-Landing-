@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Financial Institution - TitanCore Holdings</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="form.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -20,8 +19,13 @@
 
       <div class="hr"></div>
 
-      <form name="titancore-financial-institutions" method="POST" data-netlify="true">
+      <form id="titancore-institutions-form" name="titancore-financial-institutions" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="titancore-financial-institutions" />
+        <input type="hidden" name="company" value="TitanCore Holdings" />
+        <input type="hidden" name="form_type" value="institutions" />
+        <p style="display:none;">
+          <label>Don’t fill this out: <input name="bot-field" /></label>
+        </p>
 
         <div class="formfields">
           <label>Full Name (Required)
@@ -95,11 +99,11 @@
           </div>
         </div>
 
-        <div class="thanks">
+        <div class="thanks" style="display:none;">
           <h2>Thank You</h2>
           <p>We received your Financial Institution submission.</p>
           <div class="notice" style="margin-top:14px;">
-            <strong>Notice:</strong> TitanCore reviews submissions and routes submissions internally for follow-up.
+            <strong>Notice:</strong> TitanCore reviews submissions and routes them internally for follow-up.
           </div>
         </div>
 
@@ -110,5 +114,19 @@
       </form>
     </section>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("titancore-institutions-form");
+      const thanksBox = document.querySelector(".thanks");
+      if (!form || !thanksBox) return;
+
+      form.addEventListener("submit", function () {
+        setTimeout(function () {
+          thanksBox.style.display = "block";
+        }, 500);
+      });
+    });
+  </script>
 </body>
 </html>
