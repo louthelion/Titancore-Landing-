@@ -4,33 +4,43 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings institutional gateway, operating companies, and strategic access." />
+  <meta name="description" content="TitanCore Holdings institutional access and operating company gateway." />
   <style>
     :root{
       --bg:#050505;
-      --panel:#0c0c0c;
+      --panel:#0d0d0d;
       --panel2:#111111;
       --gold:#d4af37;
-      --green:#1f9d55;
-      --green2:#2ecc71;
+      --gold-soft:#f0cf62;
+      --green:#1fa34a;
+      --green-bright:#2ecc71;
       --text:#d4af37;
-      --muted:#b89c3a;
-      --line:rgba(212,175,55,.28);
+      --muted:#b99d43;
+      --line:rgba(212,175,55,.25);
       --shadow:0 18px 50px rgba(0,0,0,.45);
-      --radius:18px;
+      --radius:20px;
       --max:1240px;
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Arial,Helvetica,sans-serif;
+    }
 
     body{
       background:
-        radial-gradient(circle at top right, rgba(31,157,85,.08), transparent 22%),
-        radial-gradient(circle at top left, rgba(212,175,55,.06), transparent 24%),
+        radial-gradient(circle at top right, rgba(31,163,74,.10), transparent 24%),
+        radial-gradient(circle at top left, rgba(212,175,55,.06), transparent 28%),
         var(--bg);
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
     }
 
     .wrap{
@@ -38,96 +48,14 @@
       margin:0 auto;
     }
 
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:100;
-      backdrop-filter:blur(12px);
-      background:rgba(5,5,5,.92);
-      border-bottom:1px solid var(--line);
-    }
-
-    .topbar-inner{
-      width:min(var(--max), calc(100% - 28px));
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      padding:14px 0;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .logo{
-      width:52px;
-      height:52px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      font-weight:800;
-      font-size:20px;
-      color:#000;
-      background:linear-gradient(135deg, var(--gold), #f1d77a);
-      box-shadow:var(--shadow);
-    }
-
-    .brand-copy h1{
-      margin:0;
-      font-size:20px;
-      line-height:1.1;
-      color:var(--green2);
-      letter-spacing:.2px;
-    }
-
-    .brand-copy p{
-      margin:4px 0 0;
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .nav{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      gap:10px;
-    }
-
-    .nav a{
-      padding:10px 14px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:rgba(255,255,255,.02);
-      font-size:14px;
-      transition:.2s ease;
-    }
-
-    .nav a:hover{
-      background:var(--gold);
-      color:#000;
-      border-color:var(--gold);
-    }
-
     .hero{
-      padding:36px 0 20px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.25fr .95fr;
-      gap:22px;
+      padding:28px 0 20px;
     }
 
     .hero-card,
-    .side-card,
-    .section-card,
-    .path-card,
+    .access-card,
     .company-card,
-    .system-card{
+    .footer-card{
       background:linear-gradient(180deg, var(--panel2), var(--panel));
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -138,98 +66,51 @@
       padding:28px;
     }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background:rgba(31,157,85,.12);
-      border:1px solid rgba(46,204,113,.25);
-      color:var(--green2);
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:.3px;
-    }
-
-    .hero-card h2{
-      margin:18px 0 12px;
-      color:var(--green2);
-      font-size:42px;
-      line-height:1.06;
-    }
-
-    .hero-card p{
-      margin:0;
-      max-width:760px;
-      color:var(--text);
-      font-size:17px;
-      line-height:1.65;
-    }
-
-    .hero-actions{
+    .hero-top{
       display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:24px;
+      align-items:center;
+      gap:14px;
+      margin-bottom:18px;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:12px 18px;
-      border-radius:12px;
-      border:1px solid var(--gold);
-      background:var(--gold);
+    .logo{
+      width:58px;
+      height:58px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, var(--gold), var(--gold-soft));
       color:#000;
       font-weight:800;
-      transition:.2s ease;
+      font-size:22px;
+      box-shadow:var(--shadow);
+      flex:0 0 auto;
     }
 
-    .btn:hover{
-      background:var(--green2);
-      border-color:var(--green2);
-      color:#000;
-      transform:translateY(-1px);
+    .hero-title h1{
+      margin:0;
+      color:var(--green-bright);
+      font-size:34px;
+      line-height:1.05;
+      letter-spacing:.2px;
     }
 
-    .btn-outline{
-      background:transparent;
-      color:var(--gold);
+    .hero-title p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      letter-spacing:.2px;
     }
 
-    .btn-outline:hover{
-      color:#000;
+    .hero-body{
+      max-width:1000px;
     }
 
-    .side-card{
-      padding:22px;
-      display:grid;
-      gap:14px;
-      align-content:start;
-    }
-
-    .metric{
-      padding:14px 16px;
-      border-radius:14px;
-      background:rgba(255,255,255,.02);
-      border:1px solid rgba(212,175,55,.15);
-    }
-
-    .metric strong{
-      display:block;
-      color:var(--green2);
-      font-size:15px;
-      margin-bottom:6px;
-    }
-
-    .metric span{
-      display:block;
+    .hero-body p{
+      margin:0 0 14px;
       color:var(--text);
-      font-size:14px;
-      line-height:1.5;
+      font-size:17px;
+      line-height:1.7;
     }
 
     .section{
@@ -237,432 +118,278 @@
     }
 
     .section-title{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:16px;
-      margin-bottom:16px;
+      margin:0 0 16px;
     }
 
-    .section-title h3{
-      margin:0;
-      color:var(--green2);
+    .section-title h2{
+      margin:0 0 8px;
+      color:var(--green-bright);
       font-size:28px;
     }
 
     .section-title p{
-      margin:6px 0 0;
-      color:var(--muted);
-      font-size:14px;
-      line-height:1.5;
+      margin:0;
+      color:var(--text);
+      font-size:15px;
+      line-height:1.6;
     }
 
-    .paths{
+    .access-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
     }
 
-    .path-card{
+    .access-card{
       padding:22px;
+      transition:.22s ease;
     }
 
-    .path-card h4{
+    .access-card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(46,204,113,.35);
+    }
+
+    .access-card h3{
       margin:0 0 10px;
-      color:var(--green2);
-      font-size:21px;
+      color:var(--green-bright);
+      font-size:22px;
     }
 
-    .path-card p{
+    .access-card p{
       margin:0 0 18px;
       color:var(--text);
-      line-height:1.55;
       font-size:15px;
-    }
-
-    .path-meta{
-      display:grid;
-      gap:8px;
-      margin-bottom:18px;
-      font-size:14px;
-      color:var(--muted);
-    }
-
-    .path-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .system-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-    }
-
-    .system-card{
-      padding:22px;
-    }
-
-    .system-card h4{
-      margin:0 0 10px;
-      color:var(--green2);
-      font-size:21px;
-    }
-
-    .system-card p{
-      margin:0;
       line-height:1.6;
-      color:var(--text);
-      font-size:15px;
+      min-height:118px;
     }
 
-    .company-grid{
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      width:100%;
+      padding:12px 18px;
+      border-radius:14px;
+      border:1px solid var(--gold);
+      background:var(--gold);
+      color:#000;
+      font-weight:800;
+      font-size:15px;
+      transition:.2s ease;
+      cursor:pointer;
+    }
+
+    .btn:hover,
+    .btn:focus{
+      background:var(--green-bright);
+      border-color:var(--green-bright);
+      color:#000;
+      outline:none;
+    }
+
+    .companies-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(4,1fr);
       gap:18px;
     }
 
     .company-card{
       padding:22px;
+      transition:.2s ease;
     }
 
-    .company-card h4{
-      margin:0 0 8px;
-      color:var(--green2);
-      font-size:20px;
+    .company-card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(46,204,113,.35);
+    }
+
+    .company-card h3{
+      margin:0 0 10px;
+      color:var(--green-bright);
+      font-size:21px;
     }
 
     .company-card p{
-      margin:0 0 14px;
+      margin:0 0 16px;
       color:var(--text);
-      line-height:1.55;
       font-size:15px;
-    }
-
-    .company-card small{
-      color:var(--muted);
-      display:block;
-      margin-bottom:16px;
-    }
-
-    .central-note{
-      margin-top:18px;
-      padding:18px 20px;
-      border-radius:16px;
-      background:rgba(31,157,85,.08);
-      border:1px solid rgba(46,204,113,.2);
-      color:var(--text);
       line-height:1.6;
+      min-height:124px;
     }
 
     .footer{
-      margin-top:30px;
       padding:24px 0 34px;
-      border-top:1px solid var(--line);
+    }
+
+    .footer-card{
+      padding:22px;
+    }
+
+    .footer-card p{
+      margin:0;
       color:var(--muted);
       font-size:14px;
+      line-height:1.7;
     }
 
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:18px;
-      align-items:start;
+    @media (max-width: 1100px){
+      .companies-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
     }
 
-    .footer h5{
-      margin:0 0 8px;
-      color:var(--green2);
-      font-size:16px;
-    }
-
-    .footer p{
-      margin:0;
-      line-height:1.6;
-    }
-
-    .footer-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      justify-content:flex-end;
-    }
-
-    .footer-links a{
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
-    }
-
-    @media (max-width: 980px){
-      .hero-grid,
-      .paths,
-      .system-grid,
-      .company-grid,
-      .footer-grid{
+    @media (max-width: 900px){
+      .access-grid{
         grid-template-columns:1fr;
       }
-
-      .topbar-inner{
-        align-items:flex-start;
-        flex-direction:column;
-      }
-
-      .nav{
-        justify-content:flex-start;
-      }
-
-      .hero-card h2{
-        font-size:34px;
-      }
-
-      .footer-links{
-        justify-content:flex-start;
-      }
     }
 
-    @media (max-width: 640px){
+    @media (max-width: 680px){
       .hero-card,
-      .side-card,
-      .path-card,
-      .system-card,
-      .company-card{
+      .access-card,
+      .company-card,
+      .footer-card{
         padding:18px;
       }
 
-      .hero-card h2{
-        font-size:30px;
+      .hero-title h1{
+        font-size:28px;
       }
 
-      .section-title h3{
+      .section-title h2{
         font-size:24px;
       }
 
-      .nav a,
-      .btn{
-        width:100%;
+      .companies-grid{
+        grid-template-columns:1fr;
       }
 
-      .hero-actions,
-      .path-actions{
-        flex-direction:column;
+      .hero-body p{
+        font-size:16px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="logo">TC</div>
-        <div class="brand-copy">
-          <h1>TitanCore Holdings</h1>
-          <p>Institutional Gateway • Operating Companies • Central Oversight Ready</p>
-        </div>
-      </div>
-
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="#institutional-access">Institutional Access</a>
-        <a href="#operating-companies">Operating Companies</a>
-        <a href="dashboard.html">TitanCore Dashboard</a>
-        <a href="central-dashboard.html">Central Dashboard</a>
-      </nav>
-    </div>
-  </header>
-
   <main class="wrap">
     <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-card">
-          <span class="eyebrow">TitanCore Institutional Entry</span>
-          <h2>Strategic access into the TitanCore network starts here.</h2>
-          <p>
-            TitanCore Holdings serves as the command and coordination layer for a growing network of operating companies.
-            This public gateway is designed for banking relationships, institutional relationships, and investor access.
-            Submissions made through TitanCore are intended to feed the TitanCore system first, then route into the
-            appropriate company workflow and later upward into Central Dashboard oversight.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="#institutional-access">Enter Institutional Access</a>
-            <a class="btn btn-outline" href="dashboard.html">Open TitanCore Dashboard</a>
-            <a class="btn btn-outline" href="central-dashboard.html">Open Central Dashboard</a>
+      <div class="hero-card">
+        <div class="hero-top">
+          <div class="logo">TC</div>
+          <div class="hero-title">
+            <h1>TitanCore Holdings</h1>
+            <p>Institutional Access Gateway</p>
           </div>
         </div>
 
-        <aside class="side-card">
-          <div class="metric">
-            <strong>TitanCore Role</strong>
-            <span>Holding company command layer coordinating intake, oversight, routing, and leadership review.</span>
-          </div>
-          <div class="metric">
-            <strong>Current Intake Paths</strong>
-            <span>Banks, Financial Institutions, and Investors all enter through TitanCore Holdings.</span>
-          </div>
-          <div class="metric">
-            <strong>System Direction</strong>
-            <span>Public forms → TitanCore Dashboard → Central Dashboard → AI workflow and internal routing.</span>
-          </div>
-          <div class="metric">
-            <strong>Public Contact</strong>
-            <span>contact@titancoreholdings.com<br>(800) 827-9016</span>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="institutional-access">
-      <div class="section-title">
-        <div>
-          <h3>Institutional Access</h3>
-          <p>Select the appropriate TitanCore intake path below. Each path is part of one TitanCore intake system.</p>
+        <div class="hero-body">
+          <p>
+            TitanCore Holdings serves as the institutional access and coordination gateway for the TitanCore network.
+            This public page is designed for strategic outside access through TitanCore Holdings first, before any internal routing,
+            dashboard processing, or Central Dashboard oversight takes place behind the scenes.
+          </p>
+          <p>
+            TitanCore receives institutional and strategic submissions through three primary access paths: Investors, Banks,
+            and Financial Institutions. These submissions are intended to enter the TitanCore system first, then move into the
+            TitanCore workflow structure, and later flow upward into the broader command structure as needed.
+          </p>
         </div>
-      </div>
-
-      <div class="paths">
-        <article class="path-card">
-          <h4>Bank Relationships</h4>
-          <p>
-            For commercial banks, treasury relationships, strategic banking access, and institutional banking engagement
-            with TitanCore Holdings.
-          </p>
-          <div class="path-meta">
-            <span>Use for: deposit, lending, treasury, strategic banking</span>
-            <span>Destination: TitanCore Intake → TitanCore Dashboard</span>
-          </div>
-          <div class="path-actions">
-            <a class="btn" href="banks.html">Open Banks Form</a>
-          </div>
-        </article>
-
-        <article class="path-card">
-          <h4>Financial Institutions</h4>
-          <p>
-            For institutional partners, structured finance contacts, capital partners, and other professional institutions
-            exploring a relationship with TitanCore.
-          </p>
-          <div class="path-meta">
-            <span>Use for: PE, funds, credit partners, strategic institutions</span>
-            <span>Destination: TitanCore Intake → TitanCore Dashboard</span>
-          </div>
-          <div class="path-actions">
-            <a class="btn" href="institutions.html">Open Institutions Form</a>
-          </div>
-        </article>
-
-        <article class="path-card">
-          <h4>Investor Access</h4>
-          <p>
-            For investors, family offices, capital participants, and strategic investor relationships seeking entry into
-            TitanCore Holdings opportunities and communications.
-          </p>
-          <div class="path-meta">
-            <span>Use for: investor inquiry, capital interest, strategic investor relations</span>
-            <span>Destination: TitanCore Intake → TitanCore Dashboard</span>
-          </div>
-          <div class="path-actions">
-            <a class="btn" href="investors.html">Open Investors Form</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="central-note">
-        <strong>System Note:</strong> these three forms are not separate random pages. They are three intake doors into one
-        TitanCore intake system. After the intake pipeline is connected, TitanCore Dashboard will process the submissions,
-        and Central Dashboard will later receive oversight visibility across company activity.
       </div>
     </section>
 
     <section class="section">
       <div class="section-title">
-        <div>
-          <h3>Dashboard Structure</h3>
-          <p>This public site is being rebuilt with TitanCore Dashboard and Central Dashboard in mind from the beginning.</p>
-        </div>
+        <h2>Institutional Access</h2>
+        <p>
+          Select the appropriate TitanCore access path below. Each path belongs to the TitanCore intake structure and is part of one connected system.
+        </p>
       </div>
 
-      <div class="system-grid">
-        <article class="system-card">
-          <h4>TitanCore Dashboard</h4>
+      <div class="access-grid">
+        <article class="access-card">
+          <h3>Investors</h3>
           <p>
-            TitanCore Dashboard is the company-level control room. Public TitanCore submissions should land into TitanCore
-            intake records first, where internal review, routing, status tracking, and later AI action will begin.
+            For investor inquiries, capital interest, family office participation, strategic investor conversations,
+            and other investment-related access into TitanCore Holdings.
           </p>
+          <a class="btn" href="investors.html">Open Investor Access</a>
         </article>
 
-        <article class="system-card">
-          <h4>Central Dashboard</h4>
+        <article class="access-card">
+          <h3>Banks</h3>
           <p>
-            Central Dashboard remains the top-level oversight layer. It is not forgotten. TitanCore Dashboard will later feed
-            selected activity, summaries, and reporting upward into Central for leadership visibility and cross-company control.
+            For banking relationships, treasury access, lending relationships, commercial banking conversations,
+            and strategic bank engagement with TitanCore Holdings.
           </p>
+          <a class="btn" href="banks.html">Open Bank Access</a>
+        </article>
+
+        <article class="access-card">
+          <h3>Financial Institutions</h3>
+          <p>
+            For financial institutions, structured finance relationships, institutional capital groups,
+            and other professional institutional access through TitanCore Holdings.
+          </p>
+          <a class="btn" href="institutions.html">Open Financial Institution Access</a>
         </article>
       </div>
     </section>
 
-    <section class="section" id="operating-companies">
+    <section class="section">
       <div class="section-title">
-        <div>
-          <h3>Operating Companies</h3>
-          <p>TitanCore coordinates and oversees operating companies across the network.</p>
-        </div>
+        <h2>Operating Companies</h2>
+        <p>
+          TitanCore Holdings supports and coordinates operating companies across the network. Select a company below to go directly to its landing page.
+        </p>
       </div>
 
-      <div class="company-grid">
+      <div class="companies-grid">
         <article class="company-card">
-          <h4>Vaultara Capital</h4>
-          <small>Funding • Credit • Business Formation</small>
+          <h3>Vaultara Capital</h3>
           <p>
-            Financial services and capital-focused operations designed to support funding pathways, credit solutions,
-            and formation support.
+            Funding, credit, and business formation pathways designed for financial intake, capital access,
+            and strategic support services.
           </p>
-          <a class="btn btn-outline" href="#">Vaultara Dashboard Later</a>
+          <a class="btn" href="https://vaultaracapital.com">Open Vaultara Capital</a>
         </article>
 
         <article class="company-card">
-          <h4>Family First Equity Group</h4>
-          <small>Real Estate • Property Acquisition • Management</small>
+          <h3>Family First Equity Group</h3>
           <p>
-            Real estate acquisitions, disposition opportunities, and property-related intake that will later connect
-            into its own company dashboard.
+            Real estate acquisition, seller intake, buyer pathways, and management-oriented property opportunities
+            under the Family First platform.
           </p>
-          <a class="btn btn-outline" href="#">Family First Dashboard Later</a>
+          <a class="btn" href="https://familyfirstequitygroup.com">Open Family First Equity Group</a>
         </article>
 
         <article class="company-card">
-          <h4>Future Company Expansion</h4>
-          <small>VitalPath • RevMotion • Additional Growth</small>
+          <h3>VitalPath Care Group</h3>
           <p>
-            Additional company dashboards and intake systems will be added later after TitanCore, Vaultara, and Family First
-            are fully connected and operating properly.
+            Healthcare-focused operations and future care-related intake systems planned under the TitanCore ecosystem.
           </p>
-          <a class="btn btn-outline" href="#">Central Oversight Ready</a>
+          <a class="btn" href="#">VitalPath Landing Page Later</a>
+        </article>
+
+        <article class="company-card">
+          <h3>RevMotion Auto & Marine Group</h3>
+          <p>
+            Automotive and marine business operations planned for future rollout and connection under the TitanCore structure.
+          </p>
+          <a class="btn" href="#">RevMotion Landing Page Later</a>
         </article>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="footer-grid">
-        <div>
-          <h5>TitanCore Holdings</h5>
-          <p>
-            Public institutional gateway for TitanCore Holdings. This rebuild is structured so public intake, TitanCore Dashboard,
-            and Central Dashboard can later operate as one connected system.
-          </p>
-        </div>
-
-        <div class="footer-links">
-          <a href="banks.html">Banks</a>
-          <a href="institutions.html">Institutions</a>
-          <a href="investors.html">Investors</a>
-          <a href="dashboard.html">TitanCore Dashboard</a>
-          <a href="central-dashboard.html">Central Dashboard</a>
-        </div>
+    <section class="footer">
+      <div class="footer-card">
+        <p>
+          TitanCore Holdings public access page. Institutional access enters through TitanCore first. Internal routing,
+          dashboard workflows, and Central Dashboard oversight remain behind the system and are not displayed on this public page.
+        </p>
       </div>
-    </footer>
+    </section>
   </main>
 </body>
 </html>
