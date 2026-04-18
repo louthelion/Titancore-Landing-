@@ -1,20 +1,18 @@
-<!DOCTYPE html>
+<!DOCTYPE<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TitanCore Holdings LLC</title>
-  <meta name="description" content="TitanCore Holdings LLC is a strong parent company leading a private network of businesses through structure, operations, strategy, and controlled growth." />
+  <title>TitanCore Holdings | Institutional Access Gateway</title>
+  <meta name="description" content="TitanCore Holdings institutional access gateway for investors, banks, financial institutions, and operating company access." />
   <style>
     :root{
       --bg:#f4f4f1;
       --card:#f7f7f7;
       --line:#d2c3a0;
       --gold:#9b7420;
-      --gold-soft:#b28626;
       --gold-btn:#d7b43a;
       --green:#06912f;
-      --green-soft:#19a843;
       --text:#8d6a1c;
       --shadow:0 8px 24px rgba(0,0,0,.06);
       --radius:22px;
@@ -35,56 +33,44 @@
       background:var(--bg);
       color:var(--text);
       font-family:Arial, Helvetica, sans-serif;
-      line-height:1.6;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
+      line-height:1.55;
     }
 
     .page{
-      width:min(1180px, calc(100% - 26px));
+      width:min(1100px, calc(100% - 26px));
       margin:18px auto 30px;
     }
 
-    .shell{
-      background:#f6f6f3;
+    .section{
+      margin-bottom:26px;
+    }
+
+    .card{
+      background:var(--card);
       border:2px solid var(--line);
-      border-radius:28px;
-      overflow:hidden;
+      border-radius:var(--radius);
       box-shadow:var(--shadow);
     }
 
-    .topbar{
-      padding:18px 22px;
-      border-bottom:1px solid rgba(210,195,160,.7);
-      background:rgba(255,255,255,.45);
-      backdrop-filter:blur(6px);
+    .hero-card{
+      padding:28px 24px;
     }
 
-    .topbar-row{
+    .brand-wrap{
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
+      align-items:flex-start;
+      gap:18px;
+      margin-bottom:18px;
       flex-wrap:wrap;
     }
 
     .logo-box{
-      width:72px;
-      height:72px;
-      border-radius:20px;
+      width:112px;
+      height:112px;
+      border-radius:28px;
       background:linear-gradient(180deg, #d8ae39 0%, #c99721 100%);
       color:#000;
-      font-size:28px;
+      font-size:38px;
       font-weight:900;
       display:flex;
       align-items:center;
@@ -95,806 +81,269 @@
     .brand-copy{
       display:flex;
       flex-direction:column;
-      gap:4px;
-    }
-
-    .eyebrow{
-      color:var(--gold-soft);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:2px;
+      gap:6px;
+      min-width:220px;
     }
 
     .brand-title{
       color:var(--green);
-      font-size:28px;
+      font-size:38px;
       line-height:1.05;
       font-weight:900;
     }
 
-    .nav{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .nav a,
-    .hero-btn,
-    .hero-btn-outline,
-    .company-btn,
-    .submit-btn,
-    .contact-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border:none;
-      cursor:pointer;
-      transition:.2s ease;
-      font-weight:800;
-    }
-
-    .nav a,
-    .hero-btn,
-    .company-btn,
-    .submit-btn,
-    .contact-btn{
-      background:linear-gradient(180deg, #dbb83c 0%, #d0ab2f 100%);
-      color:#000;
-      box-shadow:0 10px 18px rgba(0,0,0,.08);
-    }
-
-    .nav a{
-      padding:11px 15px;
-      border-radius:999px;
-      font-size:13px;
-    }
-
-    .hero-btn,
-    .hero-btn-outline,
-    .company-btn,
-    .submit-btn,
-    .contact-btn{
-      padding:14px 18px;
-      border-radius:16px;
-      font-size:14px;
-    }
-
-    .hero-btn-outline{
-      background:transparent;
+    .brand-subtitle{
       color:var(--gold);
-      border:2px solid var(--line);
-      box-shadow:none;
-    }
-
-    .nav a:hover,
-    .hero-btn:hover,
-    .company-btn:hover,
-    .submit-btn:hover,
-    .contact-btn:hover{
-      transform:translateY(-1px);
-      filter:brightness(1.03);
-    }
-
-    .hero-btn-outline:hover{
-      transform:translateY(-1px);
-      color:var(--green);
-      border-color:rgba(6,145,47,.35);
-    }
-
-    .hero{
-      padding:30px 24px 26px;
-      border-bottom:1px solid rgba(210,195,160,.7);
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .hero-main,
-    .hero-side-card,
-    .section-card,
-    .company-card,
-    .service-card,
-    .contact-card,
-    .contact-side{
-      background:var(--card);
-      border:2px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-    }
-
-    .hero-main{
-      padding:28px 24px;
-    }
-
-    .hero-kicker{
-      color:var(--gold-soft);
-      font-size:12px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:12px;
-    }
-
-    .hero-title{
-      color:var(--green);
-      font-size:58px;
-      line-height:1.02;
-      font-weight:900;
-      margin-bottom:16px;
-    }
-
-    .hero-message{
-      color:var(--text);
       font-size:20px;
-      line-height:1.7;
-      margin-bottom:22px;
-      max-width:820px;
+      line-height:1.25;
     }
 
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-    }
-
-    .hero-side{
-      display:grid;
-      gap:12px;
-    }
-
-    .hero-side-card{
-      padding:18px;
-      min-height:120px;
-    }
-
-    .hero-side-title{
-      color:var(--green);
-      font-size:18px;
-      font-weight:900;
-      margin-bottom:8px;
-    }
-
-    .hero-side-text{
+    .hero-text{
+      font-size:17px;
       color:var(--text);
-      font-size:15px;
-      line-height:1.6;
+      line-height:1.7;
     }
 
-    .section{
-      padding:26px 24px;
-      border-bottom:1px solid rgba(210,195,160,.7);
-    }
-
-    .section:last-child{
-      border-bottom:none;
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom:18px;
-    }
-
-    .section-kicker{
-      color:var(--gold-soft);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      margin-bottom:6px;
+    .hero-text p + p{
+      margin-top:26px;
     }
 
     .section-title{
       color:var(--green);
-      font-size:34px;
+      font-size:32px;
       line-height:1.08;
       font-weight:900;
+      margin-bottom:14px;
     }
 
-    .section-sub{
-      color:var(--text);
-      font-size:16px;
+    .section-intro{
+      font-size:18px;
       line-height:1.7;
-      max-width:760px;
+      margin-bottom:18px;
     }
 
-    .about-grid{
+    .stack{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:14px;
+      gap:18px;
     }
 
-    .section-card,
-    .service-card,
+    .access-card,
     .company-card,
-    .contact-card,
-    .contact-side{
-      padding:20px 18px;
+    .footer-card{
+      padding:24px 22px;
     }
 
     .card-title{
       color:var(--green);
-      font-size:18px;
+      font-size:28px;
+      line-height:1.12;
       font-weight:900;
-      margin-bottom:8px;
+      margin-bottom:18px;
     }
 
     .card-text{
+      font-size:17px;
+      line-height:1.75;
       color:var(--text);
-      font-size:15px;
-      line-height:1.7;
+      margin-bottom:26px;
     }
 
-    .companies-grid{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:14px;
-    }
-
-    .company-card{
+    .action-btn{
       display:flex;
-      flex-direction:column;
-      gap:14px;
-      min-height:260px;
-    }
-
-    .badge-row{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-
-    .badge{
-      display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(6,145,47,.10);
-      color:var(--green);
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:.8px;
-      font-weight:800;
-      border:1px solid rgba(6,145,47,.18);
-    }
-
-    .company-actions{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:auto;
-    }
-
-    .company-btn{
       width:100%;
-      min-height:64px;
-      text-align:center;
-    }
-
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(5, minmax(0,1fr));
-      gap:14px;
-    }
-
-    .service-card{
-      min-height:210px;
-    }
-
-    .contact-wrap{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:18px;
-    }
-
-    .form-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:12px;
-      margin-bottom:12px;
-    }
-
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:7px;
-    }
-
-    .field.full{
-      grid-column:1 / -1;
-    }
-
-    .field label{
-      color:var(--gold-soft);
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    .field input,
-    .field textarea{
-      width:100%;
-      background:#fff;
-      color:var(--text);
-      border:2px solid var(--line);
-      border-radius:14px;
-      padding:12px;
-      font-size:14px;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .field textarea{
-      min-height:150px;
-      resize:vertical;
-    }
-
-    .field input:focus,
-    .field textarea:focus{
-      outline:none;
-      border-color:rgba(6,145,47,.35);
-      box-shadow:0 0 0 1px rgba(6,145,47,.12);
-    }
-
-    .contact-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:4px;
-    }
-
-    .contact-btn.ghost{
-      background:transparent;
-      color:var(--gold);
-      border:2px solid var(--line);
-      box-shadow:none;
-    }
-
-    .contact-btn.ghost:hover{
-      color:var(--green);
-      border-color:rgba(6,145,47,.35);
-      transform:translateY(-1px);
-    }
-
-    .contact-side{
-      display:grid;
-      gap:14px;
-      align-content:start;
-    }
-
-    .contact-side-title{
-      color:var(--green);
-      font-size:18px;
+      min-height:92px;
+      padding:18px 20px;
+      border:none;
+      border-radius:28px;
+      background:linear-gradient(180deg, #dbb83c 0%, #d0ab2f 100%);
+      color:#000;
+      font-size:26px;
       font-weight:900;
-      margin-bottom:6px;
+      text-align:center;
+      text-decoration:none;
+      box-shadow:0 10px 18px rgba(0,0,0,.08);
+      transition:.2s ease;
     }
 
-    .contact-side-text{
-      color:var(--text);
-      font-size:15px;
-      line-height:1.7;
+    .action-btn:hover{
+      transform:translateY(-1px);
+      filter:brightness(1.03);
     }
 
-    .contact-link{
-      color:var(--gold);
+    .footer-card{
       font-size:16px;
-      font-weight:800;
-      word-break:break-word;
+      line-height:1.75;
     }
 
-    .success-note{
-      display:none;
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:2px solid rgba(6,145,47,.24);
-      background:rgba(6,145,47,.08);
-      color:var(--green);
-      font-size:14px;
-      font-weight:700;
-      line-height:1.5;
+    .footer-card p + p{
+      margin-top:8px;
     }
 
-    .success-note.show{
-      display:block;
-    }
-
-    .footer{
-      padding:20px 24px 28px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .footer-text{
-      color:var(--gold);
-      font-size:14px;
-      line-height:1.6;
-    }
-
-    @media (max-width:1450px){
-      .hero-grid,
-      .contact-wrap{
-        grid-template-columns:1fr;
+    @media (max-width: 700px){
+      .page{
+        width:min(100%, calc(100% - 18px));
+        margin:12px auto 24px;
       }
 
-      .about-grid{
-        grid-template-columns:1fr;
+      .hero-card,
+      .access-card,
+      .company-card,
+      .footer-card{
+        padding:18px 16px;
       }
 
-      .companies-grid{
-        grid-template-columns:repeat(2, minmax(0,1fr));
+      .brand-wrap{
+        gap:14px;
+        margin-bottom:14px;
       }
 
-      .services-grid{
-        grid-template-columns:repeat(2, minmax(0,1fr));
+      .logo-box{
+        width:96px;
+        height:96px;
+        border-radius:24px;
+        font-size:34px;
       }
-    }
 
-    @media (max-width:900px){
-      .hero-title{
-        font-size:40px;
+      .brand-title{
+        font-size:34px;
+      }
+
+      .brand-subtitle{
+        font-size:18px;
+      }
+
+      .hero-text,
+      .section-intro,
+      .card-text{
+        font-size:17px;
       }
 
       .section-title{
         font-size:30px;
       }
 
-      .brand-title{
+      .card-title{
+        font-size:27px;
+      }
+
+      .action-btn{
+        min-height:82px;
         font-size:24px;
-      }
-
-      .form-grid,
-      .companies-grid,
-      .services-grid{
-        grid-template-columns:1fr;
-      }
-
-      .page{
-        width:min(100%, calc(100% - 16px));
-        margin:10px auto 22px;
-      }
-
-      .topbar,
-      .hero,
-      .section,
-      .footer{
-        padding-left:16px;
-        padding-right:16px;
+        border-radius:24px;
       }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <div class="shell">
 
-      <header class="topbar">
-        <div class="topbar-row">
-          <div class="brand">
-            <div class="logo-box">TC</div>
-            <div>
-              <div class="eyebrow">TitanCore Holdings LLC</div>
-              <div class="brand-title">Public Homepage</div>
-            </div>
-          </div>
+    <section class="section">
+      <div class="card hero-card">
+        <div class="brand-wrap">
+          <div class="logo-box">TC</div>
 
-          <nav class="nav">
-            <a href="#about">About</a>
-            <a href="#companies">Our Companies</a>
-            <a href="#whatwedo">What We Do</a>
-            <a href="#contact">Contact</a>
-            <a href="institutional-access.html">Institutional Access</a>
-          </nav>
-        </div>
-      </header>
-
-      <section class="hero">
-        <div class="hero-grid">
-          <div class="hero-main">
-            <div class="hero-kicker">TitanCore Holdings LLC</div>
-            <h1 class="hero-title">TitanCore Holdings LLC</h1>
-            <div class="hero-message">
-              A strong parent company leading a private network of businesses through structure, operations, strategy, and controlled growth.
-            </div>
-
-            <div class="hero-actions">
-              <a class="hero-btn" href="#contact">Contact Us</a>
-              <a class="hero-btn" href="#companies">Our Companies</a>
-              <a class="hero-btn" href="#about">Learn More</a>
-              <a class="hero-btn-outline" href="institutional-access.html">Institutional Access Gateway</a>
-            </div>
-          </div>
-
-          <div class="hero-side">
-            <div class="hero-side-card">
-              <div class="hero-side-title">Parent Company Structure</div>
-              <div class="hero-side-text">
-                TitanCore exists to provide organized leadership, internal structure, and long-term operational discipline across its business network.
-              </div>
-            </div>
-
-            <div class="hero-side-card">
-              <div class="hero-side-title">Operational Control</div>
-              <div class="hero-side-text">
-                TitanCore supports workflow structure, internal oversight, reporting systems, and coordinated company movement.
-              </div>
-            </div>
-
-            <div class="hero-side-card">
-              <div class="hero-side-title">Controlled Growth</div>
-              <div class="hero-side-text">
-                TitanCore helps its companies move with strategy, support, and organized internal infrastructure instead of random expansion.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="about">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">About TitanCore</div>
-            <div class="section-title">Who TitanCore Is</div>
-          </div>
-          <div class="section-sub">
-            TitanCore Holdings LLC serves as a parent company built to organize, support, and guide a connected private network of businesses.
+          <div class="brand-copy">
+            <h1 class="brand-title">TitanCore<br>Holdings</h1>
+            <div class="brand-subtitle">Institutional Access Gateway</div>
           </div>
         </div>
 
-        <div class="about-grid">
-          <div class="section-card">
-            <div class="card-title">Who TitanCore Is</div>
-            <div class="card-text">
-              TitanCore is a strong parent company focused on structure, leadership, internal systems, and disciplined company support across its business network.
-            </div>
-          </div>
+        <div class="hero-text">
+          <p>
+            TitanCore Holdings serves as the institutional access and coordination gateway for the TitanCore network. This public page is designed for strategic outside access through TitanCore Holdings first, before any internal routing, dashboard processing, or Central Dashboard oversight takes place behind the scenes.
+          </p>
 
-          <div class="section-card">
-            <div class="card-title">What TitanCore Controls</div>
-            <div class="card-text">
-              TitanCore oversees internal structure, operating direction, company coordination, reporting pathways, approvals, and strategic support across the network.
-            </div>
-          </div>
-
-          <div class="section-card">
-            <div class="card-title">How TitanCore Supports Its Companies</div>
-            <div class="card-text">
-              TitanCore supports its companies through leadership structure, operational systems, financial oversight, internal infrastructure, and organized business support.
-            </div>
-          </div>
+          <p>
+            TitanCore receives institutional and strategic submissions through three primary access paths: Investors, Banks, and Financial Institutions. These submissions are intended to enter the TitanCore system first, then move into the TitanCore workflow structure, and later flow upward into the broader command structure as needed.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section" id="companies">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Our Companies</div>
-            <div class="section-title">Connected Business Network</div>
+    <section class="section" id="institutional-access">
+      <h2 class="section-title">Institutional Access</h2>
+      <div class="section-intro">
+        Select the appropriate TitanCore access path below. Each path belongs to the TitanCore intake structure and is part of one connected system.
+      </div>
+
+      <div class="stack">
+        <div class="card access-card">
+          <h3 class="card-title">Investors</h3>
+          <div class="card-text">
+            For investor inquiries, capital interest, family office participation, strategic investor conversations, and other investment-related access into TitanCore Holdings.
           </div>
-          <div class="section-sub">
-            TitanCore supports multiple businesses under one structured parent company system.
-          </div>
+          <a class="action-btn" href="investor-access.html">Open Investor Access</a>
         </div>
 
-        <div class="companies-grid">
-          <div class="company-card">
-            <div class="card-title">Vaultara Capital</div>
-            <div class="card-text">
-              Funding, credit, and business formation pathways designed for financial intake, capital access, and strategic support services.
-            </div>
-            <div class="badge-row">
-              <span class="badge">Finance</span>
-              <span class="badge">Capital</span>
-            </div>
-            <div class="company-actions">
-              <a class="company-btn" href="vaultara-landing.html">Open Vaultara Capital</a>
-            </div>
+        <div class="card access-card">
+          <h3 class="card-title">Banks</h3>
+          <div class="card-text">
+            For banking relationships, treasury access, lending relationships, commercial banking conversations, and strategic bank engagement with TitanCore Holdings.
           </div>
-
-          <div class="company-card">
-            <div class="card-title">Family First Equity Group</div>
-            <div class="card-text">
-              Real estate acquisition, seller intake, buyer pathways, and management-oriented property opportunities under the Family First platform.
-            </div>
-            <div class="badge-row">
-              <span class="badge">Property</span>
-              <span class="badge">Equity</span>
-            </div>
-            <div class="company-actions">
-              <a class="company-btn" href="familyfirst-landing.html">Open Family First Equity Group</a>
-            </div>
-          </div>
-
-          <div class="company-card">
-            <div class="card-title">VitalPath Care Group</div>
-            <div class="card-text">
-              Healthcare-focused operations and future care-related intake systems planned under the TitanCore ecosystem.
-            </div>
-            <div class="badge-row">
-              <span class="badge">Care</span>
-              <span class="badge">Operations</span>
-            </div>
-            <div class="company-actions">
-              <a class="company-btn" href="#">VitalPath Landing Page Later</a>
-            </div>
-          </div>
-
-          <div class="company-card">
-            <div class="card-title">RevMotion Auto &amp; Marine</div>
-            <div class="card-text">
-              Automotive and marine business operations planned for future rollout and connection under the TitanCore structure.
-            </div>
-            <div class="badge-row">
-              <span class="badge">Auto</span>
-              <span class="badge">Marine</span>
-            </div>
-            <div class="company-actions">
-              <a class="company-btn" href="#">RevMotion Landing Page Later</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="whatwedo">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">What We Do</div>
-            <div class="section-title">Parent Company Support Structure</div>
-          </div>
-          <div class="section-sub">
-            TitanCore supports its businesses through organized leadership, internal systems, and long-term company structure.
-          </div>
+          <a class="action-btn" href="bank-access.html">Open Bank Access</a>
         </div>
 
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="card-title">Strategic Leadership</div>
-            <div class="card-text">
-              TitanCore provides leadership structure, organized direction, and coordinated parent-company oversight.
-            </div>
+        <div class="card access-card">
+          <h3 class="card-title">Financial Institutions</h3>
+          <div class="card-text">
+            For financial institutions, structured finance relationships, institutional capital groups, and other professional institutional access through TitanCore Holdings.
           </div>
-
-          <div class="service-card">
-            <div class="card-title">Operational Systems</div>
-            <div class="card-text">
-              TitanCore strengthens operations through internal systems, process structure, and workflow support.
-            </div>
-          </div>
-
-          <div class="service-card">
-            <div class="card-title">Financial Oversight</div>
-            <div class="card-text">
-              TitanCore supports financial visibility, internal summaries, and organized money-side oversight.
-            </div>
-          </div>
-
-          <div class="service-card">
-            <div class="card-title">Internal Infrastructure</div>
-            <div class="card-text">
-              TitanCore helps build infrastructure, system organization, and internal support architecture across the network.
-            </div>
-          </div>
-
-          <div class="service-card">
-            <div class="card-title">Business Support</div>
-            <div class="card-text">
-              TitanCore helps its companies move through structure, support systems, internal coordination, and disciplined growth.
-            </div>
-          </div>
+          <a class="action-btn" href="financial-institutions-access.html">Open Financial Institution Access</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section" id="contact">
-        <div class="section-head">
-          <div>
-            <div class="section-kicker">Contact</div>
-            <div class="section-title">Contact TitanCore</div>
+    <section class="section" id="operating-companies">
+      <h2 class="section-title">Operating Companies</h2>
+      <div class="section-intro">
+        TitanCore Holdings supports and coordinates operating companies across the network. Select a company below to go directly to its landing page.
+      </div>
+
+      <div class="stack">
+        <div class="card company-card">
+          <h3 class="card-title">Vaultara Capital</h3>
+          <div class="card-text">
+            Funding, credit, and business formation pathways designed for financial intake, capital access, and strategic support services.
           </div>
-          <div class="section-sub">
-            Use the form below to contact TitanCore Holdings LLC.
-          </div>
+          <a class="action-btn" href="vaultara-landing.html">Open Vaultara Capital</a>
         </div>
 
-        <div class="contact-wrap">
-          <div class="contact-card">
-            <form name="titancore-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
-              <input type="hidden" name="form-name" value="titancore-contact" />
-              <input type="hidden" name="bot-field" />
-
-              <div class="form-grid">
-                <div class="field">
-                  <label for="name">Name</label>
-                  <input id="name" name="name" type="text" required />
-                </div>
-
-                <div class="field">
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" required />
-                </div>
-
-                <div class="field">
-                  <label for="phone">Phone</label>
-                  <input id="phone" name="phone" type="tel" />
-                </div>
-
-                <div class="field">
-                  <label for="company">Company</label>
-                  <input id="company" name="company" type="text" />
-                </div>
-
-                <div class="field full">
-                  <label for="message">Message</label>
-                  <textarea id="message" name="message" required></textarea>
-                </div>
-              </div>
-
-              <div class="contact-actions">
-                <button class="submit-btn" type="submit">Submit</button>
-                <a class="contact-btn ghost" href="mailto:contact@titancoreholdings.com">Contact TitanCore</a>
-              </div>
-
-              <div class="success-note" id="successNote">
-                Thank you. Your message has been prepared. On Netlify, this form will submit once the site is deployed with form detection enabled.
-              </div>
-            </form>
+        <div class="card company-card">
+          <h3 class="card-title">Family First Equity Group</h3>
+          <div class="card-text">
+            Real estate acquisition, seller intake, buyer pathways, and management-oriented property opportunities under the Family First platform.
           </div>
+          <a class="action-btn" href="familyfirst-landing.html">Open Family First Equity Group</a>
+        </div>
 
-          <div class="contact-side">
-            <div>
-              <div class="contact-side-title">Public Contact Info</div>
-              <div class="contact-side-text">
-                TitanCore Holdings LLC can be reached through the public contact email and main company number below.
-              </div>
-            </div>
-
-            <div>
-              <div class="contact-side-title">Email</div>
-              <a class="contact-link" href="mailto:contact@titancoreholdings.com">contact@titancoreholdings.com</a>
-            </div>
-
-            <div>
-              <div class="contact-side-title">Phone</div>
-              <a class="contact-link" href="tel:+18008279016">(800) 827-9016</a>
-            </div>
-
-            <div>
-              <div class="contact-side-title">Institutional Access</div>
-              <div class="contact-side-text">
-                For investor, bank, and financial institution access, use the institutional gateway below.
-              </div>
-              <div style="margin-top:12px;">
-                <a class="contact-btn" href="institutional-access.html">Open Institutional Access</a>
-              </div>
-            </div>
+        <div class="card company-card">
+          <h3 class="card-title">VitalPath Care Group</h3>
+          <div class="card-text">
+            Healthcare-focused operations and future care-related intake systems planned under the TitanCore ecosystem.
           </div>
+          <a class="action-btn" href="#">VitalPath Landing Page Later</a>
         </div>
-      </section>
 
-      <footer class="footer">
-        <div class="footer-text">
-          TitanCore Holdings LLC • Structured leadership • Operational discipline • Controlled growth
+        <div class="card company-card">
+          <h3 class="card-title">RevMotion Auto &amp; Marine Group</h3>
+          <div class="card-text">
+            Automotive and marine business operations planned for future rollout and connection under the TitanCore structure.
+          </div>
+          <a class="action-btn" href="#">RevMotion Landing Page Later</a>
         </div>
-        <div class="footer-text">
-          contact@titancoreholdings.com • (800) 827-9016
-        </div>
-      </footer>
+      </div>
+    </section>
 
-    </div>
+    <section class="section">
+      <div class="card footer-card">
+        <p>TitanCore Holdings public access page.</p>
+        <p>Institutional access enters through TitanCore first.</p>
+        <p>Internal routing, dashboard workflows, and Central Dashboard oversight remain behind the system and are not displayed on this public page.</p>
+      </div>
+    </section>
+
   </main>
-
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", function(){
-      document.getElementById("successNote").classList.add("show");
-    });
-  </script>
 </body>
 </html>
