@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Stock Market Watch | TitanCore Holdings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container navwrap">
+      <a class="logo" href="index.html">
+        <span class="logo-mark">TC</span>
+        <span>
+          TitanCore Holdings
+          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+            Stock Market Watch
+          </small>
+        </span>
+      </a>
+
+      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="investor.html">Investor</a>
+        <a href="institution.html">Institution</a>
+        <a href="institution-financial.html">Institution Financial</a>
+        <a href="banks.html">Banks</a>
+        <a href="companies.html">Company</a>
+        <a href="join-us.html">Join Us</a>
+        <a href="business-book.html">Business Intelligence Book</a>
+        <a class="active" href="stock-watch.html">Stock Market Watch</a>
+        <a href="global-business-news.html">Global Business News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Stock Market Watch</div>
+
+          <h1>Public Stock, Market, Sector, and Business Movement Research</h1>
+
+          <p class="lead">
+            TitanCore Stock Market Watch gives visitors a public research area for U.S. markets,
+            global markets, country markets, sector movement, company watchlists, Florida business,
+            Orlando business, and market education.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#market-board">View Market Board</a>
+            <a class="btn ghost" href="#stock-search">Search Symbol</a>
+            <a class="btn ghost" href="global-business-news.html">Global Business News</a>
+          </div>
+
+          <p class="notice">
+            TitanCore Holdings is private and is not shown as a public stock. Stock information is for public research only.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Market Watch Areas</h3>
+
+          <div class="status-row">
+            <span>U.S. Stock Market</span>
+            <span class="badge green">Watch</span>
+          </div>
+
+          <div class="status-row">
+            <span>Global Stock Market</span>
+            <span class="badge green">Watch</span>
+          </div>
+
+          <div class="status-row">
+            <span>Country Stock Markets</span>
+            <span class="badge green">Watch</span>
+          </div>
+
+          <div class="status-row">
+            <span>Sector Watchlists</span>
+            <span class="badge green">Watch</span>
+          </div>
+
+          <div class="status-row">
+            <span>Florida / Orlando Watch</span>
+            <span class="badge green">Local</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="market-board" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Morning Market Board</div>
+            <h2>What Visitors Should Check Every Morning</h2>
+            <p>
+              This page should help visitors understand what is moving in the stock market,
+              global markets, sectors, and business categories before making decisions.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-4">
+          <div class="card">
+            <h3>S&P 500</h3>
+            <p>
+              Broad U.S. market watch for large public companies and general market direction.
+            </p>
+            <span class="badge green">U.S. Market</span>
+          </div>
+
+          <div class="card">
+            <h3>NASDAQ</h3>
+            <p>
+              Technology, growth companies, AI, software, cloud, cybersecurity, and innovation watch.
+            </p>
+            <span class="badge green">Technology</span>
+          </div>
+
+          <div class="card">
+            <h3>Dow Jones</h3>
+            <p>
+              Major blue-chip companies, industrial movement, financial strength, and broad business sentiment.
+            </p>
+            <span class="badge green">Blue Chip</span>
+          </div>
+
+          <div class="card">
+            <h3>Global Markets</h3>
+            <p>
+              Europe, Asia, Latin America, Caribbean, Africa, Middle East, currency, oil, and international stocks.
+            </p>
+            <span class="badge green">Global</span>
+          </div>
+        </div>
+
+        <p class="notice">
+          Demo market board only. Live stock prices and charts require an approved market data API.
+        </p>
+      </div>
+    </section>
+
+    <section id="stock-search" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Stock Symbol Search</div>
+            <h2>Search a Public Stock Symbol</h2>
+            <p>
+              Type a public ticker symbol. This demo block can later connect to live stock APIs
+              to show price, chart, company data, sector, news, and financial information.
+            </p>
+          </div>
+        </div>
+
+        <div class="search-box" style="grid-template-columns:1fr auto;">
+          <input id="stockSearch" type="text" placeholder="Example: AAPL, DRI, DIS, TNL, JPM" />
+          <button class="btn" onclick="runStockSearch()">Search Stock</button>
+        </div>
+
+        <div id="stockResult">
+          <div class="grid cols-3">
+            <div class="card">
+              <h3>Stock Overview</h3>
+              <p>
+                Company name, ticker, market, sector, price movement, and watchlist status.
+              </p>
+              <span class="badge green">Demo</span>
+            </div>
+
+            <div class="card">
+              <h3>Company News</h3>
+              <p>
+                Business-only company news, earnings, expansion, leadership, and market movement.
+              </p>
+              <span class="badge green">Business News</span>
+            </div>
+
+            <div class="card">
+              <h3>Sector Movement</h3>
+              <p>
+                How the company connects to its industry sector and broader market direction.
+              </p>
+              <span class="badge green">Sector</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="notice">
+          Stock search is informational only. It is not a buy, sell, hold, or trading recommendation.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Country Stock Markets</div>
+            <h2>Stock Market by Country</h2>
+            <p>
+              Visitors can understand country-level stock market movement without going deep into every city or county.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <a class="card" href="global-business-news.html">
+            <h3>United States Market</h3>
+            <p>
+              S&P 500, NASDAQ, Dow Jones, major U.S. companies, banks, technology,
+              real estate, healthcare, energy, and consumer sectors.
+            </p>
+            <span class="card-link">Open Global Business News →</span>
+          </a>
+
+          <a class="card" href="global-business-news.html">
+            <h3>European Markets</h3>
+            <p>
+              United Kingdom, France, Germany, Italy, Spain, banking,
+              energy, manufacturing, luxury, technology, and trade movement.
+            </p>
+            <span class="card-link">Open Global Business News →</span>
+          </a>
+
+          <a class="card" href="global-business-news.html">
+            <h3>Asian Markets</h3>
+            <p>
+              Japan, China, India, South Korea, technology, manufacturing,
+              supply chain, exports, banking, and growth sectors.
+            </p>
+            <span class="card-link">Open Global Business News →</span>
+          </a>
+
+          <a class="card" href="global-business-news.html">
+            <h3>Caribbean Markets</h3>
+            <p>
+              Haiti, Dominican Republic, Jamaica, tourism, banking,
+              imports, exports, remittances, and local business movement.
+            </p>
+            <span class="card-link">Open Global Business News →</span>
+          </a>
+
+          <a class="card" href="global-business-news.html">
+            <h3>Latin America Markets</h3>
+            <p>
+              Brazil, Mexico, Colombia, Chile, commodities, banking,
+              agriculture, real estate, trade, and market activity.
+            </p>
+            <span class="card-link">Open Global Business News →</span>
+          </a>
+
+          <a class="card" href="global-business-news.html">
+            <h3>Africa & Middle East Markets</h3>
+            <p>
+              Energy, infrastructure, banking, logistics, technology,
+              real estate, construction, and emerging market business activity.
+            </p>
+            <span class="card-link">Open Global Business News →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Sector Watchlists</div>
+            <h2>Business Sector Stock Watch</h2>
+            <p>
+              TitanCore connects public stock market categories with the industries inside the TitanCore ecosystem.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Finance & Funding</h3>
+            <p>
+              Banks, lenders, fintech, credit companies, payment companies,
+              capital markets, and funding-related public companies.
+            </p>
+            <span class="card-link">Connected to Vaultara Capital</span>
+          </div>
+
+          <div class="card">
+            <h3>Real Estate</h3>
+            <p>
+              REITs, home builders, property management companies,
+              commercial real estate, housing market, and mortgage-related companies.
+            </p>
+            <span class="card-link">Connected to Family First Equity Group</span>
+          </div>
+
+          <div class="card">
+            <h3>Healthcare & Care</h3>
+            <p>
+              Healthcare providers, insurance, care service companies,
+              wellness companies, medical support, and healthcare technology.
+            </p>
+            <span class="card-link">Connected to VitalPath Care Group</span>
+          </div>
+
+          <div class="card">
+            <h3>Auto & Marine</h3>
+            <p>
+              Auto manufacturers, auto parts, repair companies, transportation,
+              logistics, marine companies, and service sectors.
+            </p>
+            <span class="card-link">Connected to RevMotion Auto & Marine LLC</span>
+          </div>
+
+          <div class="card">
+            <h3>Technology</h3>
+            <p>
+              AI, software, cybersecurity, cloud systems, data centers,
+              chips, automation, and business technology companies.
+            </p>
+            <span class="card-link">Business Intelligence Category</span>
+          </div>
+
+          <div class="card">
+            <h3>Energy & Infrastructure</h3>
+            <p>
+              Oil, gas, utilities, solar, infrastructure, construction,
+              transportation systems, and industrial development.
+            </p>
+            <span class="card-link">Market Watch Category</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Florida / Orlando Watch</div>
+            <h2>Local Business Stock Watch</h2>
+            <p>
+              This local watchlist connects public companies and sectors with Florida and Orlando business activity.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Darden Restaurants</h3>
+            <p>
+              Restaurant, hospitality, consumer spending, Orlando corporate presence, and food service market watch.
+            </p>
+            <span class="card-link">Ticker Example: DRI</span>
+          </div>
+
+          <div class="card">
+            <h3>Disney</h3>
+            <p>
+              Tourism, entertainment, hospitality, theme parks, travel demand, and Central Florida economy impact.
+            </p>
+            <span class="card-link">Ticker Example: DIS</span>
+          </div>
+
+          <div class="card">
+            <h3>Travel + Leisure Co.</h3>
+            <p>
+              Vacation ownership, hospitality, tourism, Orlando business activity, and travel market movement.
+            </p>
+            <span class="card-link">Ticker Example: TNL</span>
+          </div>
+        </div>
+
+        <p class="notice">
+          These are example watchlist companies only. This page does not recommend buying or selling any stock.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">How Stock Watch Connects to TitanCore</div>
+            <h2>Markets Help People Understand Business Movement</h2>
+            <p>
+              Stock Market Watch is not here to tell people what to buy. It is here to help visitors understand
+              business movement, sector strength, economic pressure, and company activity.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-4">
+          <div class="card">
+            <h3>1. Check Market Direction</h3>
+            <p>
+              Visitors can see if markets are strong, weak, mixed, or sector-driven.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>2. Review Sectors</h3>
+            <p>
+              Finance, real estate, healthcare, auto, marine, technology, and energy.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>3. Connect to Business News</h3>
+            <p>
+              Visitors can connect stock movement to business headlines and country-level business news.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>4. Learn More</h3>
+            <p>
+              Visitors can open the Business Intelligence Book or company pages to continue learning.
+            </p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="business-book.html">Open Business Intelligence Book</a>
+          <a class="btn ghost" href="global-business-news.html">Global Business News</a>
+          <a class="btn ghost" href="companies.html">Company Directory</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <h2>Stock Market Watch Notice</h2>
+
+        <p>
+          TitanCore Stock Market Watch is for public market research and business education only.
+          TitanCore Holdings is a private company and should not be shown as a public stock unless it becomes publicly traded in the future.
+        </p>
+
+        <p class="notice">
+          Stock, market, company, sector, and economic information is not financial advice,
+          investment advice, trading advice, legal advice, tax advice, or a recommendation to buy or sell securities.
+          Live data requires approved APIs, licensed data providers, or properly attributed public sources.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>TitanCore Holdings</strong>
+        <p class="notice">
+          Stock Market Watch — public stock, market, sector, local, and global business research.
+        </p>
+      </div>
+
+      <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
