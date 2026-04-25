@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact TitanCore Holdings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container navwrap">
+      <a class="logo" href="index.html">
+        <span class="logo-mark">TC</span>
+        <span>
+          TitanCore Holdings
+          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+            Public Contact Center
+          </small>
+        </span>
+      </a>
+
+      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="investor.html">Investor</a>
+        <a href="institution.html">Institution</a>
+        <a href="institution-financial.html">Institution Financial</a>
+        <a href="banks.html">Banks</a>
+        <a href="companies.html">Company</a>
+        <a href="join-us.html">Join Us</a>
+        <a href="business-book.html">Business Intelligence Book</a>
+        <a href="stock-watch.html">Stock Market Watch</a>
+        <a href="global-business-news.html">Global Business News</a>
+        <a class="active" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Contact TitanCore</div>
+
+          <h1>Public Contact Center for TitanCore Holdings</h1>
+
+          <p class="lead">
+            Contact TitanCore Holdings for public company questions, investor information,
+            institution review, banking relationship information, company inquiries,
+            business intelligence questions, or connected company requests.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#contact-form">Send Message</a>
+            <a class="btn ghost" href="companies.html">View Companies</a>
+            <a class="btn ghost" href="join-us.html">Join Us</a>
+          </div>
+
+          <p class="notice">
+            Public contact only. Do not submit passwords, Social Security numbers, bank account information,
+            private financial documents, or confidential documents through this public form.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Public Contact Information</h3>
+
+          <div class="status-row">
+            <span>Main Email</span>
+            <span class="badge green">Public</span>
+          </div>
+
+          <p>
+            <strong>contact@titancoreholdings.com</strong>
+          </p>
+
+          <div class="status-row">
+            <span>Main Phone</span>
+            <span class="badge green">Public</span>
+          </div>
+
+          <p>
+            <strong>(800) 827-9016</strong>
+          </p>
+
+          <div class="status-row">
+            <span>Contact Type</span>
+            <span class="badge green">Public Intake</span>
+          </div>
+
+          <p class="notice">
+            Internal company emails are not shown on the public contact page.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-form" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Public Contact Form</div>
+            <h2>Send a Message to TitanCore</h2>
+            <p>
+              This form is for public inquiries. Later, this can connect to Netlify Forms,
+              email routing, and TitanCore public intake workflow.
+            </p>
+          </div>
+        </div>
+
+        <form id="contactForm" class="form" name="titancore-contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="titancore-contact" />
+
+          <label>
+            Full Name
+            <input type="text" name="fullName" placeholder="Enter your full name" required />
+          </label>
+
+          <label>
+            Email Address
+            <input type="email" name="email" placeholder="Enter your email address" required />
+          </label>
+
+          <label>
+            Phone Number
+            <input type="tel" name="phone" placeholder="Enter your phone number" />
+          </label>
+
+          <label>
+            Reason for Contact
+            <select name="reason" required>
+              <option value="">Choose one</option>
+              <option value="TitanCore Holdings General Question">TitanCore Holdings General Question</option>
+              <option value="Investor Information">Investor Information</option>
+              <option value="Institution Information">Institution Information</option>
+              <option value="Institution Financial Information">Institution Financial Information</option>
+              <option value="Banking Relationship Information">Banking Relationship Information</option>
+              <option value="Join Us / Partnership Interest">Join Us / Partnership Interest</option>
+              <option value="Vendor / Service Provider Interest">Vendor / Service Provider Interest</option>
+              <option value="Professional Talent Interest">Professional Talent Interest</option>
+              <option value="Business Intelligence Book Question">Business Intelligence Book Question</option>
+              <option value="Stock Market Watch Question">Stock Market Watch Question</option>
+              <option value="Global Business News Question">Global Business News Question</option>
+              <option value="Vaultara Capital">Vaultara Capital</option>
+              <option value="Family First Equity Group">Family First Equity Group</option>
+              <option value="VitalPath Care Group">VitalPath Care Group</option>
+              <option value="RevMotion Auto & Marine LLC">RevMotion Auto & Marine LLC</option>
+            </select>
+          </label>
+
+          <label>
+            Company Interest
+            <select name="companyInterest">
+              <option value="">Choose one if applicable</option>
+              <option value="TitanCore Holdings">TitanCore Holdings</option>
+              <option value="Vaultara Capital">Vaultara Capital</option>
+              <option value="Family First Equity Group">Family First Equity Group</option>
+              <option value="VitalPath Care Group">VitalPath Care Group</option>
+              <option value="RevMotion Auto & Marine LLC">RevMotion Auto & Marine LLC</option>
+              <option value="Multiple Companies">Multiple Companies</option>
+            </select>
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" placeholder="Write your message here" required></textarea>
+          </label>
+
+          <button class="btn" type="submit">Submit Message</button>
+        </form>
+
+        <div id="contactResult"></div>
+
+        <p class="notice">
+          By submitting this form, you are sending a public website inquiry. This does not create a contract,
+          partnership, banking relationship, investor relationship, funding approval, or service agreement.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Contact by Category</div>
+            <h2>Choose the Right Public Contact Path</h2>
+            <p>
+              TitanCore public contact should route people to the right information area before any private conversation.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <a class="card" href="investor.html">
+            <h3>Investor Information</h3>
+            <p>
+              For people reviewing TitanCore’s company network, public business direction,
+              and investor-facing information.
+            </p>
+            <span class="card-link">Open Investor Page →</span>
+          </a>
+
+          <a class="card" href="institution.html">
+            <h3>Institution Information</h3>
+            <p>
+              For organizations reviewing TitanCore’s public structure, company network,
+              and public business intelligence platform.
+            </p>
+            <span class="card-link">Open Institution Page →</span>
+          </a>
+
+          <a class="card" href="institution-financial.html">
+            <h3>Institution Financial</h3>
+            <p>
+              For financial institutions, lenders, funding groups, and serious financial organizations
+              reviewing TitanCore.
+            </p>
+            <span class="card-link">Open Institution Financial →</span>
+          </a>
+
+          <a class="card" href="banks.html">
+            <h3>Banks</h3>
+            <p>
+              For banking relationship questions, business banking review,
+              funding relationship information, and bank documentation path.
+            </p>
+            <span class="card-link">Open Banks Page →</span>
+          </a>
+
+          <a class="card" href="join-us.html">
+            <h3>Join Us</h3>
+            <p>
+              For partners, vendors, service providers, professional talent,
+              institutions, banks, and general connection interest.
+            </p>
+            <span class="card-link">Open Join Us →</span>
+          </a>
+
+          <a class="card" href="companies.html">
+            <h3>Company Directory</h3>
+            <p>
+              For visitors who want to understand the TitanCore company network
+              and choose the right company page.
+            </p>
+            <span class="card-link">Open Company Directory →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Contact by Company</div>
+            <h2>Connected Company Inquiry Paths</h2>
+            <p>
+              Visitors can choose the correct TitanCore company based on what they need.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-4">
+          <a class="card" href="vaultara.html">
+            <h3>Vaultara Capital</h3>
+            <p>
+              Funding, personal credit, business credit, credit education,
+              and business formation support.
+            </p>
+            <span class="card-link">View Vaultara →</span>
+          </a>
+
+          <a class="card" href="family-first.html">
+            <h3>Family First Equity Group</h3>
+            <p>
+              Real estate investment, acquisitions, property management,
+              and property market information.
+            </p>
+            <span class="card-link">View Family First →</span>
+          </a>
+
+          <a class="card" href="vitalpath.html">
+            <h3>VitalPath Care Group</h3>
+            <p>
+              Care services, healthcare support, wellness education,
+              and family support information.
+            </p>
+            <span class="card-link">View VitalPath →</span>
+          </a>
+
+          <a class="card" href="revmotion.html">
+            <h3>RevMotion Auto & Marine LLC</h3>
+            <p>
+              Auto services, marine services, transportation support,
+              repair education, and vehicle market information.
+            </p>
+            <span class="card-link">View RevMotion →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Public Information Support</div>
+            <h2>Questions About TitanCore Information Areas</h2>
+            <p>
+              Visitors may also contact TitanCore about the public information platform,
+              business intelligence, stock market watch, or global business news.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <a class="card" href="business-book.html">
+            <h3>Business Intelligence Book</h3>
+            <p>
+              Public education and research for business, credit, funding,
+              real estate, care, auto/marine, stocks, and country intelligence.
+            </p>
+            <span class="card-link">Open Business Book →</span>
+          </a>
+
+          <a class="card" href="stock-watch.html">
+            <h3>Stock Market Watch</h3>
+            <p>
+              Public stock, market, sector, country, Florida, Orlando,
+              and business movement research.
+            </p>
+            <span class="card-link">Open Stock Watch →</span>
+          </a>
+
+          <a class="card" href="global-business-news.html">
+            <h3>Global Business News</h3>
+            <p>
+              Business-only country-level news, stock market, companies,
+              finance, banking, real estate, trade, and economy.
+            </p>
+            <span class="card-link">Open Global Business News →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Contact Routing</div>
+            <h2>How TitanCore Public Contact Should Work Later</h2>
+            <p>
+              The public website can later route messages automatically based on the selected reason for contact.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-4">
+          <div class="card">
+            <h3>1. Visitor Submits</h3>
+            <p>
+              Visitor sends a public message using the contact form.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>2. Request Is Classified</h3>
+            <p>
+              Reason for contact is reviewed: investor, bank, institution, company, or public information.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>3. Routed to Correct Area</h3>
+            <p>
+              The message is routed to the correct public inbox or company review path.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>4. TitanCore Responds</h3>
+            <p>
+              TitanCore or the correct company responds through an authorized contact path.
+            </p>
+          </div>
+        </div>
+
+        <p class="notice">
+          Later, this can connect to Netlify Forms, email routing, CRM, and TitanCore intake workflow.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <h2>Public Contact Notice</h2>
+
+        <p>
+          This contact page is for public inquiries only. Do not submit passwords, Social Security numbers,
+          bank account information, private financial documents, medical documents, legal documents,
+          tax documents, or confidential business files through this public form.
+        </p>
+
+        <p class="notice">
+          Submission of this form does not create employment, partnership, investment relationship,
+          banking relationship, funding approval, credit approval, service agreement, contract,
+          legal obligation, or guarantee of response. TitanCore public website content is informational only.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>TitanCore Holdings</strong>
+        <p class="notice">
+          Public contact center for TitanCore Holdings and connected company inquiries.
+        </p>
+      </div>
+
+      <a class="btn ghost" href="index.html">Back Home</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
