@@ -1,109 +1,469 @@
-<!doctype html>
+<!d<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bank Relationship - TitanCore Holdings</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Banks Information | TitanCore Holdings</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="wrap">
-    <section class="panel">
-      <div class="head">
-        <div class="logo">TC</div>
-        <div class="titleblock">
-          <h1>Bank Relationship</h1>
-          <p>TitanCore Holdings • Banking & Institutional Access</p>
+  <header class="topbar">
+    <div class="container navwrap">
+      <a class="logo" href="index.html">
+        <span class="logo-mark">TC</span>
+        <span>
+          TitanCore Holdings
+          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+            Banking Relationship Information
+          </small>
+        </span>
+      </a>
+
+      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="investor.html">Investor</a>
+        <a href="institution.html">Institution</a>
+        <a href="institution-financial.html">Institution Financial</a>
+        <a class="active" href="banks.html">Banks</a>
+        <a href="companies.html">Company</a>
+        <a href="join-us.html">Join Us</a>
+        <a href="business-book.html">Business Intelligence Book</a>
+        <a href="stock-watch.html">Stock Market Watch</a>
+        <a href="global-business-news.html">Global Business News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Banks Information</div>
+
+          <h1>Banking Relationship Information for TitanCore Holdings</h1>
+
+          <p class="lead">
+            This page gives banks a public overview of TitanCore Holdings, the company network,
+            business categories, banking relationship interests, documentation direction,
+            and the public path for bank-related communication.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#banking-overview">Review Banking Overview</a>
+            <a class="btn ghost" href="companies.html">View Company Network</a>
+            <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+          </div>
+
+          <p class="notice">
+            Public information only. This page is not a loan application, credit request, banking agreement, or contract.
+          </p>
+        </div>
+
+        <div class="panel">
+          <h3>Bank Review Areas</h3>
+
+          <div class="status-row">
+            <span>Company Overview</span>
+            <span class="badge green">Public</span>
+          </div>
+
+          <div class="status-row">
+            <span>Business Categories</span>
+            <span class="badge green">Public</span>
+          </div>
+
+          <div class="status-row">
+            <span>Banking Relationship</span>
+            <span class="badge green">Interest</span>
+          </div>
+
+          <div class="status-row">
+            <span>Funding Relationship</span>
+            <span class="badge green">Interest</span>
+          </div>
+
+          <div class="status-row">
+            <span>Documentation Path</span>
+            <span class="badge green">Contact</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="hr"></div>
+    <section id="banking-overview" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Banking Overview</div>
+            <h2>What Banks Should Know About TitanCore</h2>
+            <p>
+              TitanCore Holdings is a private umbrella company built around a connected business network,
+              public business intelligence, and long-term company organization.
+            </p>
+          </div>
+        </div>
 
-      <form id="titancore-banks-form" name="titancore-banks" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="titancore-banks" />
-        <input type="hidden" name="company" value="TitanCore Holdings" />
-        <input type="hidden" name="form_type" value="banks" />
-        <p style="display:none;">
-          <label>Don’t fill this out: <input name="bot-field" /></label>
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Private Umbrella Company</h3>
+            <p>
+              TitanCore Holdings is the public-facing umbrella company for the larger business ecosystem.
+              The public website explains the structure, companies, and business categories.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Banking Relationship Interest</h3>
+            <p>
+              TitanCore may seek banking relationships for operating accounts, treasury organization,
+              payment systems, business banking, and future company growth.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Documentation Review Path</h3>
+            <p>
+              Banks can review public information first, then contact TitanCore through the public contact path
+              for the proper review process and documentation request.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Company Network</div>
+            <h2>Companies Connected to TitanCore</h2>
+            <p>
+              Banks can review the connected companies and understand the public business category for each one.
+            </p>
+          </div>
+          <a class="btn" href="companies.html">Open Company Directory</a>
+        </div>
+
+        <div class="grid cols-4">
+          <a class="card" href="vaultara.html">
+            <h3>Vaultara Capital</h3>
+            <p>
+              Funding, personal credit, business credit, credit education, and business formation information.
+            </p>
+            <span class="card-link">Review Vaultara →</span>
+          </a>
+
+          <a class="card" href="family-first.html">
+            <h3>Family First Equity Group</h3>
+            <p>
+              Real estate investment, acquisitions, property management, property market research, and opportunity information.
+            </p>
+            <span class="card-link">Review Family First →</span>
+          </a>
+
+          <a class="card" href="vitalpath.html">
+            <h3>VitalPath Care Group</h3>
+            <p>
+              Care services, healthcare support, wellness operations, and community service information.
+            </p>
+            <span class="card-link">Review VitalPath →</span>
+          </a>
+
+          <a class="card" href="revmotion.html">
+            <h3>RevMotion Auto & Marine LLC</h3>
+            <p>
+              Auto, marine, transportation, repair, service operations, and vehicle market information.
+            </p>
+            <span class="card-link">Review RevMotion →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Banking Relationship Categories</div>
+            <h2>Possible Banking Areas</h2>
+            <p>
+              This section explains possible banking relationship categories. It does not create a banking relationship by itself.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Business Checking</h3>
+            <p>
+              Operating accounts, company accounts, subsidiary accounts, internal business flow,
+              and day-to-day business banking organization.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Business Savings</h3>
+            <p>
+              Reserve accounts, tax savings, emergency funds, company growth reserves,
+              and structured money management.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Treasury Services</h3>
+            <p>
+              Cash management, payment processing, transfers, account controls,
+              reporting, and financial organization.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Merchant Services</h3>
+            <p>
+              Payment acceptance, card processing, online payments, customer payments,
+              and business transaction support.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Business Credit</h3>
+            <p>
+              Business credit cards, lines of credit, trade credit support,
+              and company credit relationship review.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Business Funding</h3>
+            <p>
+              Working capital, equipment funding, expansion funding, real estate finance,
+              and bank funding relationship review.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Bank Review Information</div>
+            <h2>What a Bank May Want to Review</h2>
+            <p>
+              TitanCore’s public website should help banks understand the company before requesting formal documents.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-4">
+          <div class="card">
+            <h3>Company Identity</h3>
+            <p>
+              TitanCore Holdings as the umbrella company, with connected businesses under the broader structure.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Business Purpose</h3>
+            <p>
+              Company network, business intelligence platform, company services, and long-term organization.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Operating Categories</h3>
+            <p>
+              Funding, credit, real estate, care services, auto, marine, market intelligence, and business education.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Financial Needs</h3>
+            <p>
+              Banking, payment systems, credit, funding, account structure, treasury, and documentation needs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Documentation Direction</div>
+            <h2>Bank Documentation Path</h2>
+            <p>
+              The public website should not expose private documents. It should explain what may be requested later
+              through the proper bank review process.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>Company Documents</h3>
+            <p>
+              Formation documents, EIN confirmation, operating agreements, ownership information,
+              and company identity documents may be reviewed through authorized channels.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Financial Documents</h3>
+            <p>
+              Bank statements, financial reports, tax documents, revenue information,
+              and funding documents may be requested during a formal review.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Business Plan Materials</h3>
+            <p>
+              Company overview, growth plan, service categories, business model,
+              market categories, and use-of-funds information may be part of review.
+            </p>
+          </div>
+        </div>
+
+        <p class="notice">
+          Private documents should never be uploaded through an unsecured public page.
+          Banks should request formal documents through authorized TitanCore channels.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Business Intelligence Support</div>
+            <h2>How TitanCore Builds Trust With Public Information</h2>
+            <p>
+              TitanCore’s public website is designed to provide useful business information before visitors contact the company.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-3">
+          <a class="card" href="global-business-news.html">
+            <h3>Global Business News</h3>
+            <p>
+              Country-level business information, business news, economy, stock markets,
+              banking, finance, real estate, and trade.
+            </p>
+            <span class="card-link">Open Global Business News →</span>
+          </a>
+
+          <a class="card" href="stock-watch.html">
+            <h3>Stock Market Watch</h3>
+            <p>
+              Public market research, stock watchlists, global markets,
+              U.S. market movement, Florida/Orlando watch, and sector information.
+            </p>
+            <span class="card-link">Open Stock Market Watch →</span>
+          </a>
+
+          <a class="card" href="business-book.html">
+            <h3>Business Intelligence Book</h3>
+            <p>
+              Public business education, country research, credit, funding,
+              real estate, company learning, and market preparation.
+            </p>
+            <span class="card-link">Open Business Book →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Bank Contact Path</div>
+            <h2>How a Bank Can Start</h2>
+            <p>
+              TitanCore should keep the first step simple, organized, and professional.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-4">
+          <div class="card">
+            <h3>1. Review Public Info</h3>
+            <p>
+              Start with this page, the company directory, investor page, and institution financial page.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>2. Identify Purpose</h3>
+            <p>
+              Banking relationship, funding relationship, merchant services, treasury, or documentation review.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>3. Contact TitanCore</h3>
+            <p>
+              Use the contact page and select the reason for contact related to banking or financial institution review.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>4. Formal Review</h3>
+            <p>
+              Formal review requires authorized communication, private document exchange, underwriting, and compliance.
+            </p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="contact.html">Contact TitanCore</a>
+          <a class="btn ghost" href="institution-financial.html">Institution Financial</a>
+          <a class="btn ghost" href="investor.html">Investor Information</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <h2>Banking Notice</h2>
+
+        <p>
+          This page is for public banking information only. It is not a loan request,
+          bank application, loan approval, credit approval, securities offering, contract,
+          partnership agreement, financial advice, legal advice, tax advice, or investment advice.
         </p>
 
-        <div class="formfields">
-          <label>Full Name (Required)
-            <input name="full_name" required placeholder="Your full name" />
-          </label>
-
-          <label>Email (Required)
-            <input name="email" type="email" required placeholder="you@example.com" />
-          </label>
-
-          <label>Phone (Required)
-            <input name="phone" required placeholder="Phone number" />
-          </label>
-
-          <label>Bank Name (Required)
-            <input name="bank_name" required placeholder="Bank name" />
-          </label>
-
-          <label>Department / Role (Required)
-            <input name="role" required placeholder="Relationship Manager, Lending, Treasury..." />
-          </label>
-
-          <label>Relationship Type (Required)
-            <select name="service" required>
-              <option value="" selected disabled>Select one</option>
-              <option>Deposit relationship</option>
-              <option>Lending relationship</option>
-              <option>Treasury / cash management</option>
-              <option>Strategic banking relationship</option>
-              <option>Other</option>
-            </select>
-          </label>
-
-          <label>Geography / Coverage (Required)
-            <input name="coverage" required placeholder="US, Florida, Southeast..." />
-          </label>
-
-          <label>Requirements / Process (Required)
-            <textarea name="requirements" required placeholder="Tell us your onboarding or relationship requirements"></textarea>
-          </label>
-
-          <label>Message / Notes (Required)
-            <textarea name="notes" required placeholder="Additional notes"></textarea>
-          </label>
-
-          <div class="formactions">
-            <button class="btn btnfull" type="submit">Submit</button>
-          </div>
-        </div>
-
-        <div class="thanks" style="display:none;">
-          <h2>Thank You</h2>
-          <p>We received your Bank Relationship submission.</p>
-          <div class="notice" style="margin-top:14px;">
-            <strong>Notice:</strong> TitanCore reviews submissions and routes them internally for follow-up.
-          </div>
-        </div>
-
-        <div class="footer" style="margin-top:24px;">
-          <div class="line"><strong>Central Line:</strong> (800) 827-9016</div>
-          <div class="line"><strong>Email:</strong> contact@titancoreholdings.com</div>
-        </div>
-      </form>
+        <p class="notice">
+          Any banking relationship, funding relationship, credit relationship, merchant services relationship,
+          or treasury relationship would require direct communication, formal documentation,
+          authorization, underwriting, review, compliance, and written agreement between the parties.
+        </p>
+      </div>
     </section>
-  </div>
+  </main>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("titancore-banks-form");
-      const thanksBox = document.querySelector(".thanks");
-      if (!form || !thanksBox) return;
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>TitanCore Holdings</strong>
+        <p class="notice">
+          Public banking information page for TitanCore Holdings. Informational only.
+        </p>
+      </div>
 
-      form.addEventListener("submit", function () {
-        setTimeout(function () {
-          thanksBox.style.display = "block";
-        }, 500);
-      });
-    });
-  </script>
+      <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
