@@ -111,3 +111,19 @@
   font-size: 18px;
   color: var(--gold);
 }
+/* Visual company cards */
+.visual-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.visual-card .visual {
+  border-radius: 22px 22px 0 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+.visual-card-body {
+  padding: 22px;
+}
