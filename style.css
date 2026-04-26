@@ -125,5 +125,116 @@
 }
 
 .visual-card-body {
-  padding: 22px;
+  padding: /* TitanCore visual image blocks — no image files needed */
+.visual {
+  min-height: 180px;
+  border-radius: 18px;
+  border: 1px solid rgba(216, 180, 90, 0.45);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 166, 81, 0.35), transparent 30%),
+    radial-gradient(circle at 80% 10%, rgba(216, 180, 90, 0.22), transparent 28%),
+    linear-gradient(135deg, #050805, #0b190b 55%, #020302);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(216, 180, 90, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 180, 90, 0.10) 1px, transparent 1px);
+  background-size: 38px 38px;
+  opacity: 0.45;
+}
+
+.visual::after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 4px;
+  left: 15%;
+  bottom: 32%;
+  background: linear-gradient(90deg, transparent, #00a651, #ffd400, transparent);
+  box-shadow: 0 0 22px rgba(0, 166, 81, 0.75);
+}
+
+.visual-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.visual-title {
+  color: var(--green);
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.visual-subtitle {
+  color: var(--gold-2);
+  font-size: 15px;
+  margin-top: 8px;
+  font-weight: 800;
+}
+
+.visual-hero {
+  min-height: 430px;
+}
+
+.visual-hero .visual-title {
+  font-size: clamp(44px, 6vw, 82px);
+}
+
+.visual-small {
+  min-height: 135px;
+  border-radius: 14px;
+}
+
+.visual-small .visual-title {
+  font-size: 19px;
+}
+
+.visual-small .visual-subtitle {
+  font-size: 12px;
+}
+
+.visual-market::after {
+  bottom: 42%;
+  transform: rotate(-7deg);
+}
+
+.visual-bank::after {
+  bottom: 48%;
+}
+
+.visual-tech::after {
+  bottom: 38%;
+  transform: rotate(8deg);
+}
+
+.visual-energy::after {
+  bottom: 45%;
+  transform: rotate(-12deg);
+}
+
+.visual-logo {
+  min-height: 190px;
+}
+
+.visual-logo .visual-title {
+  font-size: 90px;
+  color: var(--yellow);
+}
+
+.visual-logo .visual-subtitle {
+  font-size: 18px;
+  color: var(--gold);
 }
