@@ -4,26 +4,814 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>TitanCore Holdings | Public Business Intelligence Network</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>TitanCore Holdings | Business Intelligence Network</title>
+
+  <style>
+    :root {
+      --black: #000000;
+      --black-2: #050805;
+      --black-3: #0b120b;
+      --green: #00a651;
+      --green-2: #32c46f;
+      --gold: #d8b45a;
+      --gold-2: #f0d78a;
+      --yellow: #ffd400;
+      --white: #ffffff;
+      --border: rgba(216, 180, 90, 0.35);
+      --border-strong: rgba(216, 180, 90, 0.6);
+      --shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(0, 166, 81, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(216, 180, 90, 0.14), transparent 25%),
+        linear-gradient(180deg, #000000, #050805 45%, #000000);
+      color: var(--gold-2);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1320px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.96);
+      border-bottom: 1px solid var(--border-strong);
+      backdrop-filter: blur(12px);
+    }
+
+    .navwrap {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      padding: 12px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--green);
+      font-weight: 900;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .logo-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      border: 2px solid var(--gold);
+      display: grid;
+      place-items: center;
+      color: var(--yellow);
+      background: linear-gradient(180deg, #101810, #020402);
+      font-size: 31px;
+      font-weight: 900;
+      box-shadow: 0 0 22px rgba(0, 166, 81, 0.22);
+    }
+
+    .logo small {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: -4px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--gold-2);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 10px 9px;
+      border-radius: 10px;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--green);
+      background: rgba(0, 166, 81, 0.12);
+    }
+
+    .mobile-menu {
+      display: none;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: var(--yellow);
+      color: #000 !important;
+      border: 1px solid var(--yellow);
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.2s ease;
+      text-align: center;
+    }
+
+    .btn:hover,
+    .btn.clicked {
+      background: var(--green);
+      color: var(--white) !important;
+      border-color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--gold-2) !important;
+      border-color: var(--border-strong);
+    }
+
+    .btn.ghost:hover,
+    .btn.ghost.clicked {
+      background: var(--green);
+      color: var(--white) !important;
+      border-color: var(--green);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    /* TYPOGRAPHY */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .kicker {
+      color: var(--green);
+    }
+
+    h1 {
+      font-size: clamp(42px, 5.5vw, 76px);
+      line-height: 1.04;
+      margin: 10px 0 18px;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1.15;
+      margin: 0 0 14px;
+      font-weight: 900;
+    }
+
+    h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      margin: 0 0 10px;
+      font-weight: 900;
+    }
+
+    p {
+      color: var(--gold-2);
+      margin-top: 0;
+    }
+
+    .lead {
+      font-size: 20px;
+      max-width: 860px;
+      color: var(--gold-2);
+    }
+
+    .notice {
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    .kicker {
+      color: var(--green);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    /* LAYOUT */
+    .section {
+      padding: 32px 0;
+    }
+
+    .panel,
+    .card {
+      background:
+        linear-gradient(180deg, rgba(12, 18, 12, 0.96), rgba(3, 6, 3, 0.98));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 22px;
+    }
+
+    .card {
+      padding: 20px;
+      min-height: 170px;
+      transition: 0.2s ease;
+    }
+
+    a.card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+      box-shadow: 0 22px 60px rgba(0, 166, 81, 0.16);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* HERO */
+    .hero-publication {
+      min-height: 470px;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      border: 1px solid var(--border-strong);
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.55)),
+        linear-gradient(135deg, #050805, #102010 55%, #050805);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-publication-text {
+      padding: 42px;
+      z-index: 2;
+    }
+
+    .hero-publication-image {
+      padding: 20px;
+    }
+
+    .hero-media {
+      height: 100%;
+      min-height: 430px;
+      border-radius: 22px;
+      border: 1px solid var(--border-strong);
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 166, 81, 0.36), transparent 28%),
+        radial-gradient(circle at 80% 12%, rgba(216, 180, 90, 0.28), transparent 28%),
+        linear-gradient(135deg, #071107, #0d1c0d 55%, #040704);
+    }
+
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(216, 180, 90, 0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(216, 180, 90, 0.09) 1px, transparent 1px);
+      background-size: 42px 42px;
+      opacity: 0.42;
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      bottom: 24%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #00a651, #ffd400, transparent);
+      box-shadow: 0 0 26px rgba(0, 166, 81, 0.9);
+      transform: rotate(-10deg);
+    }
+
+    .hero-media-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .hero-media-title {
+      color: var(--green);
+      font-size: clamp(46px, 6vw, 90px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+
+    .hero-media-subtitle {
+      color: var(--gold-2);
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: 900;
+    }
+
+    /* PUBLICATION GRID */
+    .publication-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.45fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .wide-panel {
+      grid-column: span 2;
+    }
+
+    .publication-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .publication-head h2 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .publication-head a {
+      color: var(--yellow);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    /* VISUAL BLOCKS */
+    .visual,
+    .news-thumb,
+    .company-thumb,
+    .video-thumb,
+    .resource-visual,
+    .logo-visual-box {
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 166, 81, 0.35), transparent 30%),
+        radial-gradient(circle at 80% 12%, rgba(216, 180, 90, 0.24), transparent 30%),
+        linear-gradient(135deg, #050805, #102010 55%, #050805);
+    }
+
+    .visual::before,
+    .news-thumb::before,
+    .company-thumb::before,
+    .video-thumb::before,
+    .resource-visual::before,
+    .logo-visual-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(216, 180, 90, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(216, 180, 90, 0.08) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: 0.36;
+    }
+
+    .thumb-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 16px;
+    }
+
+    .thumb-title {
+      color: var(--green);
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+
+    .thumb-subtitle {
+      color: var(--gold-2);
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 7px;
+    }
+
+    /* MORNING BRIEF */
+    .brief-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .brief-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(216, 180, 90, 0.18);
+    }
+
+    .brief-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-thumb {
+      width: 120px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+    }
+
+    .brief-item h3 {
+      color: var(--green);
+      font-size: 16px;
+      margin: 0 0 6px;
+    }
+
+    .brief-meta {
+      color: var(--gold);
+      font-size: 13px;
+    }
+
+    /* COMPANY MINI CARDS */
+    .company-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .company-mini-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.28);
+      transition: 0.2s ease;
+    }
+
+    .company-mini-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--green);
+    }
+
+    .company-thumb {
+      min-height: 152px;
+      display: grid;
+      place-items: center;
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+    }
+
+    .company-mini-card h3,
+    .company-mini-card p,
+    .company-mini-card span {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .company-mini-card h3 {
+      color: var(--green);
+      margin-top: 14px;
+    }
+
+    .company-mini-card p {
+      color: var(--gold-2);
+      font-size: 14px;
+    }
+
+    .company-mini-card span {
+      display: block;
+      color: var(--yellow);
+      font-weight: 900;
+      padding-bottom: 16px;
+    }
+
+    /* STOCK */
+    .stock-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stock-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(0, 166, 81, 0.06);
+    }
+
+    .stock-card h3 {
+      color: var(--green);
+      font-size: 15px;
+      margin: 0 0 10px;
+    }
+
+    .stock-value {
+      color: var(--gold-2);
+      font-size: 26px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .stock-change {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    /* GLOBAL NEWS */
+    .global-news-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .global-news-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .global-news-card .company-thumb {
+      min-height: 135px;
+    }
+
+    .global-news-card div:last-child {
+      padding: 14px;
+    }
+
+    .global-news-card small {
+      color: var(--green);
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .global-news-card h3 {
+      color: var(--green);
+      font-size: 16px;
+      margin-top: 8px;
+    }
+
+    /* CEO */
+    .ceo-logo-box {
+      margin-bottom: 16px;
+    }
+
+    .logo-visual-box {
+      min-height: 200px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .logo-big {
+      position: relative;
+      z-index: 2;
+      color: var(--yellow);
+      font-size: 92px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .logo-text {
+      position: relative;
+      z-index: 2;
+      color: var(--green);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    /* FEATURED RESOURCE */
+    .featured-resource {
+      display: block;
+    }
+
+    .resource-visual {
+      min-height: 215px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+    }
+
+    .featured-resource h3 {
+      color: var(--green);
+    }
+
+    .featured-resource span {
+      color: var(--yellow);
+      font-weight: 900;
+    }
+
+    /* VIDEO */
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .video-panel {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .video-thumb {
+      min-height: 300px;
+      display: grid;
+      place-items: center;
+      border: none;
+      border-radius: 22px;
+    }
+
+    .play-circle {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      background: rgba(255, 212, 0, 0.14);
+      border: 2px solid var(--yellow);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+    }
+
+    .play-triangle {
+      width: 0;
+      height: 0;
+      border-left: 22px solid var(--yellow);
+      border-top: 14px solid transparent;
+      border-bottom: 14px solid transparent;
+      margin-left: 6px;
+    }
+
+    .video-info h3 {
+      color: var(--green);
+    }
+
+    /* TRUST SECTION */
+    .card-link {
+      color: var(--yellow);
+      font-weight: 900;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #000;
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      margin-top: 28px;
+    }
+
+    .footer-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1150px) {
+      .hero-publication,
+      .publication-grid,
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wide-panel {
+        grid-column: span 1;
+      }
+
+      .company-mini-grid,
+      .global-news-grid,
+      .stock-grid,
+      .cols-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .mobile-menu {
+        display: inline-flex;
+      }
+
+      .nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background: #050805;
+        border-top: 1px solid var(--border);
+        padding-top: 10px;
+      }
+
+      .nav.show {
+        display: flex;
+      }
+
+      .nav a {
+        font-size: 15px;
+        border: 1px solid rgba(216, 180, 90, 0.15);
+      }
+
+      .hero-publication-text {
+        padding: 26px;
+      }
+
+      .hero-publication-image {
+        padding: 12px;
+      }
+
+      .company-mini-grid,
+      .global-news-grid,
+      .stock-grid,
+      .cols-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .brief-item {
+        grid-template-columns: 1fr;
+      }
+
+      .news-thumb {
+        width: 100%;
+        height: 170px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <header class="topbar">
     <div class="container navwrap">
       <a class="logo" href="index.html">
-        <span class="logo-mark">TC</span>
+        <span class="logo-mark">T</span>
         <span>
           TitanCore Holdings
-          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
-            Business Intelligence Network
-          </small>
+          <small>Business Intelligence Network</small>
         </span>
       </a>
 
       <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
 
-      <nav class="nav">
+      <nav class="nav" id="mainNav">
         <a class="active" href="index.html">Home</a>
         <a href="investor.html">Investor</a>
         <a href="institution.html">Institution</a>
@@ -40,373 +828,417 @@
   </header>
 
   <main>
-    <section class="section" style="padding-top:34px;">
+    <!-- HERO -->
+    <section class="section">
       <div class="container">
-        <div class="panel" style="margin-bottom:22px;">
-          <div class="section-head" style="margin-bottom:0;">
-            <div>
-              <div class="kicker">TitanCore Public Business Platform</div>
-              <h1 style="font-size:clamp(36px,5vw,62px);margin-bottom:12px;">
-                Business Intelligence for Markets, Companies, Countries, Stocks, and Growth
-              </h1>
-              <p class="lead">
-                TitanCore Holdings is building a public business information platform where visitors can
-                review business news, market movement, country-level business intelligence, stock watchlists,
-                company information, and investor-facing public content.
-              </p>
+        <div class="hero-publication">
+          <div class="hero-publication-text">
+            <div class="kicker">TitanCore Morning Business Brief</div>
+
+            <h1>Business Intelligence for Markets, Companies, Countries, Stocks, and Growth.</h1>
+
+            <p class="lead">
+              TitanCore Holdings is building a public business information platform where visitors can review
+              business news, market movement, country-level business intelligence, stock watchlists,
+              company information, and investor-facing public content.
+            </p>
+
+            <div class="actions">
+              <a class="btn" href="business-book.html">Explore Business Intelligence</a>
+              <a class="btn ghost" href="stock-watch.html">Open Stock Market Watch</a>
             </div>
 
-            <div class="panel" style="min-width:260px;box-shadow:none;">
-              <h3>Today</h3>
-              <p id="todayDate" class="lead" style="font-size:18px;margin:0;">Loading date...</p>
-              <p class="notice">
-                Morning business information is public and informational only.
-              </p>
+            <p class="notice">
+              Today: <span id="todayDate">Loading...</span>. Public business information only.
+              Not financial, legal, tax, or investment advice.
+            </p>
+          </div>
+
+          <div class="hero-publication-image">
+            <div class="hero-media">
+              <div class="hero-media-content">
+                <div>
+                  <div class="hero-media-title">TitanCore</div>
+                  <div class="hero-media-subtitle">Markets • Companies • Countries • Stocks</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="grid cols-3">
-          <!-- LEFT COLUMN -->
-          <aside class="panel">
-            <h2 style="font-size:30px;">TitanCore Companies</h2>
+    <!-- MAIN PUBLICATION GRID -->
+    <section class="section" style="padding-top:0;">
+      <div class="container publication-grid">
 
-            <a class="card" href="about.html" style="min-height:auto;margin-bottom:12px;">
-              <h3>TitanCore Holdings</h3>
-              <p>
-                Umbrella company, business intelligence center, public company network,
-                market research, and long-term strategy platform.
-              </p>
-              <span class="card-link">Learn about TitanCore →</span>
-            </a>
+        <!-- MORNING BRIEF -->
+        <section class="panel">
+          <div class="publication-head">
+            <h2>Today’s Morning Brief</h2>
+            <a href="global-business-news.html">View All News →</a>
+          </div>
 
-            <a class="card" href="vaultara.html" style="min-height:auto;margin-bottom:12px;">
+          <div class="brief-list">
+            <article class="brief-item">
+              <div class="news-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Markets</div>
+                </div>
+              </div>
+              <div>
+                <h3>Global business markets remain focused on stocks, banking, technology, energy, and trade.</h3>
+                <div class="brief-meta">Today · Global Business</div>
+              </div>
+            </article>
+
+            <article class="brief-item">
+              <div class="news-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Finance</div>
+                </div>
+              </div>
+              <div>
+                <h3>Financial institutions and banking activity remain important for business confidence.</h3>
+                <div class="brief-meta">Today · Banking / Finance</div>
+              </div>
+            </article>
+
+            <article class="brief-item">
+              <div class="news-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Tech</div>
+                </div>
+              </div>
+              <div>
+                <h3>Technology, AI, software, and data infrastructure continue to influence market attention.</h3>
+                <div class="brief-meta">Today · Technology</div>
+              </div>
+            </article>
+
+            <article class="brief-item">
+              <div class="news-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Energy</div>
+                </div>
+              </div>
+              <div>
+                <h3>Energy, transportation, infrastructure, and supply chain activity remain key global business themes.</h3>
+                <div class="brief-meta">Today · Energy / Infrastructure</div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- OUR COMPANIES -->
+        <section class="panel">
+          <div class="publication-head">
+            <h2>Our Companies</h2>
+            <a href="companies.html">View Companies →</a>
+          </div>
+
+          <div class="company-mini-grid">
+            <a class="company-mini-card" href="vaultara.html">
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Vaultara</div>
+                  <div class="thumb-subtitle">Funding • Credit • Formation</div>
+                </div>
+              </div>
               <h3>Vaultara Capital</h3>
-              <p>
-                Business funding, personal funding, credit education, business credit,
-                personal credit, and business formation support.
-              </p>
-              <span class="card-link">Open Vaultara →</span>
+              <p>Funding, business credit, personal credit, and formation support.</p>
+              <span>Learn More →</span>
             </a>
 
-            <a class="card" href="family-first.html" style="min-height:auto;margin-bottom:12px;">
+            <a class="company-mini-card" href="family-first.html">
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Family First</div>
+                  <div class="thumb-subtitle">Real Estate • Property • Equity</div>
+                </div>
+              </div>
               <h3>Family First Equity Group</h3>
-              <p>
-                Real estate investment, acquisitions, property management, real estate market information,
-                and property opportunity research.
-              </p>
-              <span class="card-link">Open Family First →</span>
+              <p>Real estate investment, acquisitions, and property education.</p>
+              <span>Learn More →</span>
             </a>
 
-            <a class="card" href="vitalpath.html" style="min-height:auto;margin-bottom:12px;">
+            <a class="company-mini-card" href="vitalpath.html">
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">VitalPath</div>
+                  <div class="thumb-subtitle">Care • Wellness • Support</div>
+                </div>
+              </div>
               <h3>VitalPath Care Group</h3>
-              <p>
-                Care services, healthcare support, wellness operations, and people-centered service growth.
-              </p>
-              <span class="card-link">Open VitalPath →</span>
+              <p>Care services, wellness education, and family support information.</p>
+              <span>Learn More →</span>
             </a>
 
-            <a class="card" href="revmotion.html" style="min-height:auto;margin-bottom:12px;">
+            <a class="company-mini-card" href="revmotion.html">
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">RevMotion</div>
+                  <div class="thumb-subtitle">Auto • Marine • Transport</div>
+                </div>
+              </div>
               <h3>RevMotion Auto & Marine LLC</h3>
-              <p>
-                Auto, marine, transportation, repair, service operations, and vehicle market research.
-              </p>
-              <span class="card-link">Open RevMotion →</span>
+              <p>Auto, marine, repair education, and transportation support.</p>
+              <span>Learn More →</span>
             </a>
+          </div>
+        </section>
 
-            <a class="card" href="companies.html" style="min-height:auto;">
-              <h3>Company Directory</h3>
-              <p>
-                View the full TitanCore company network and public company information.
-              </p>
-              <span class="card-link">View all companies →</span>
-            </a>
-          </aside>
+        <!-- STOCK WATCH -->
+        <section class="panel">
+          <div class="publication-head">
+            <h2>Stock Market Watch</h2>
+            <a href="stock-watch.html">View Full Market →</a>
+          </div>
 
-          <!-- CENTER COLUMN -->
-          <section>
-            <div class="panel" style="margin-bottom:18px;">
-              <div class="kicker">Morning Business Brief</div>
-              <h2>Today’s Business Intelligence</h2>
+          <div class="stock-grid">
+            <div class="stock-card">
+              <h3>S&P 500</h3>
+              <div class="stock-value">Watch</div>
+              <div class="stock-change">Broad U.S. market direction</div>
+            </div>
 
-              <p>
-                A daily public brief for people who want to understand how business, markets,
-                companies, stocks, and the economy are moving before they make decisions.
-              </p>
+            <div class="stock-card">
+              <h3>NASDAQ</h3>
+              <div class="stock-value">Watch</div>
+              <div class="stock-change">Technology and growth market watch</div>
+            </div>
 
-              <div class="grid cols-2">
-                <div class="card" style="min-height:auto;">
-                  <h3>U.S. Market Watch</h3>
-                  <p>
-                    Track major U.S. market movement, business conditions, stock indexes,
-                    sector strength, inflation pressure, banking movement, and company headlines.
-                  </p>
-                  <span class="badge green">Morning Brief</span>
+            <div class="stock-card">
+              <h3>Dow Jones</h3>
+              <div class="stock-value">Watch</div>
+              <div class="stock-change">Major U.S. company movement</div>
+            </div>
+
+            <div class="stock-card">
+              <h3>Global Markets</h3>
+              <div class="stock-value">Watch</div>
+              <div class="stock-change">Country and region market direction</div>
+            </div>
+          </div>
+
+          <p class="notice">
+            TitanCore Holdings is private and is not shown as a public stock.
+          </p>
+        </section>
+
+        <!-- GLOBAL BUSINESS NEWS -->
+        <section class="panel wide-panel">
+          <div class="publication-head">
+            <h2>Global Business News</h2>
+            <a href="global-business-news.html">Open Global Business News →</a>
+          </div>
+
+          <p class="notice">
+            Business-only coverage by country and region. No random general news.
+          </p>
+
+          <div class="global-news-grid">
+            <article class="global-news-card">
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">North America</div>
+                  <div class="thumb-subtitle">Business • Stocks • Economy</div>
                 </div>
+              </div>
+              <div>
+                <small>North America</small>
+                <h3>Business activity, banking, stocks, real estate, and technology remain major market themes.</h3>
+                <p class="notice">Today</p>
+              </div>
+            </article>
 
-                <div class="card" style="min-height:auto;">
-                  <h3>Global Market Watch</h3>
-                  <p>
-                    Review international business activity, country-level economy updates,
-                    global stock markets, currency movement, oil, trade, and supply chain news.
-                  </p>
-                  <span class="badge green">Business Only</span>
+            <article class="global-news-card">
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Europe</div>
+                  <div class="thumb-subtitle">Finance • Energy • Trade</div>
                 </div>
+              </div>
+              <div>
+                <small>Europe</small>
+                <h3>European business markets continue watching finance, energy, inflation, trade, and industry movement.</h3>
+                <p class="notice">Today</p>
+              </div>
+            </article>
 
-                <div class="card" style="min-height:auto;">
-                  <h3>Florida / Orlando Pulse</h3>
-                  <p>
-                    Follow Florida and Orlando business activity, tourism, real estate,
-                    new business movement, hospitality, construction, and local economy updates.
-                  </p>
-                  <span class="badge green">Local Focus</span>
+            <article class="global-news-card">
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Asia Pacific</div>
+                  <div class="thumb-subtitle">Technology • Manufacturing</div>
                 </div>
+              </div>
+              <div>
+                <small>Asia Pacific</small>
+                <h3>Asia Pacific business activity remains tied to technology, manufacturing, exports, and supply chains.</h3>
+                <p class="notice">Today</p>
+              </div>
+            </article>
 
-                <div class="card" style="min-height:auto;">
-                  <h3>Top Industries Today</h3>
-                  <p>
-                    Finance, real estate, healthcare, auto, marine, technology, energy,
-                    infrastructure, logistics, tourism, and business services.
-                  </p>
-                  <span class="badge green">Sector Watch</span>
+            <article class="global-news-card">
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Middle East</div>
+                  <div class="thumb-subtitle">Energy • Infrastructure</div>
+                </div>
+              </div>
+              <div>
+                <small>Middle East / Africa</small>
+                <h3>Energy, infrastructure, finance, logistics, and construction remain important business categories.</h3>
+                <p class="notice">Today</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- CEO MESSAGE -->
+        <section class="panel">
+          <div class="publication-head">
+            <h2>CEO Message</h2>
+          </div>
+
+          <div class="ceo-logo-box">
+            <div class="logo-visual-box">
+              <div>
+                <div class="logo-big">T</div>
+                <div class="logo-text">TitanCore Holdings</div>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            TitanCore Holdings is being built to deliver trusted business intelligence,
+            company information, and market awareness for visitors, institutions, investors,
+            banks, and business decision-makers.
+          </p>
+
+          <a class="btn ghost" href="titancore-news.html">Read Updates →</a>
+        </section>
+
+        <!-- FEATURED RESOURCE -->
+        <section class="panel">
+          <div class="publication-head">
+            <h2>Featured Resource</h2>
+          </div>
+
+          <a class="featured-resource" href="business-book.html">
+            <div class="resource-visual">
+              <div class="thumb-content">
+                <div class="thumb-title">Business Book</div>
+                <div class="thumb-subtitle">Markets • Companies • Countries • Stocks</div>
+              </div>
+            </div>
+
+            <h3>TitanCore Business Intelligence Book</h3>
+
+            <p>
+              A public business learning library for country-level business research, stock market awareness,
+              credit, funding, real estate, care services, auto, marine, and company education.
+            </p>
+
+            <span>Learn More →</span>
+          </a>
+        </section>
+      </div>
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section class="section video-section">
+      <div class="container">
+        <div class="panel">
+          <div class="publication-head">
+            <h2>TitanCore Video Briefing</h2>
+            <a href="titancore-news.html">Open Updates →</a>
+          </div>
+
+          <div class="video-grid">
+            <div class="video-panel panel">
+              <div class="video-thumb">
+                <div class="thumb-content">
+                  <div class="play-circle">
+                    <div class="play-triangle"></div>
+                  </div>
+
+                  <div class="thumb-title">Daily Business Video</div>
+                  <div class="thumb-subtitle">Markets • Stocks • Global Business</div>
                 </div>
               </div>
             </div>
 
-            <div class="panel" style="margin-bottom:18px;">
-              <div class="kicker">Global Business News</div>
-              <h2>Business News by Country</h2>
+            <div class="video-info">
+              <h3>Video Information Area</h3>
 
               <p>
-                This is not general news. This section is only for business, economy,
-                stock market, company movement, banking, real estate, trade, industry,
-                and investment climate information by country.
+                This section is reserved for TitanCore video briefings, market summaries,
+                stock discussions, business updates, global business news, and future company videos.
               </p>
-
-              <div class="search-box" style="grid-template-columns:1fr auto;">
-                <select id="countrySelect">
-                  <option value="United States">United States</option>
-                  <option value="Canada">Canada</option>
-                  <option value="United Kingdom">United Kingdom</option>
-                  <option value="France">France</option>
-                  <option value="Germany">Germany</option>
-                  <option value="Japan">Japan</option>
-                  <option value="China">China</option>
-                  <option value="India">India</option>
-                  <option value="Brazil">Brazil</option>
-                  <option value="Mexico">Mexico</option>
-                  <option value="Haiti">Haiti</option>
-                  <option value="Dominican Republic">Dominican Republic</option>
-                </select>
-
-                <button class="btn" onclick="openCountryBusiness()">Open Country</button>
-              </div>
-
-              <div id="countryResult">
-                <div class="grid cols-2">
-                  <div class="card" style="min-height:auto;">
-                    <h3>Country Business Overview</h3>
-                    <p>
-                      Country-level business news, economy, major companies,
-                      industry movement, banking, real estate, trade, and market direction.
-                    </p>
-                  </div>
-
-                  <div class="card" style="min-height:auto;">
-                    <h3>Country Stock Market</h3>
-                    <p>
-                      Major stock index, public companies, sector movement, currency,
-                      business confidence, and market watch information.
-                    </p>
-                  </div>
-                </div>
-              </div>
 
               <p class="notice">
-                Country pages stay at the country level. We are not drilling into every city or county globally.
-              </p>
-            </div>
-
-            <div class="panel">
-              <div class="kicker">TitanCore Business Intelligence Book</div>
-              <h2>Research Library for Business Decisions</h2>
-
-              <p>
-                The TitanCore Business Intelligence Book organizes public business information
-                so visitors can learn before they trade, invest, open a company, request funding,
-                build credit, buy property, or study a market.
+                Right now this is a visual placeholder. Later, this can connect to real video content,
+                YouTube embeds, or TitanCore business media.
               </p>
 
               <div class="actions">
-                <a class="btn" href="business-book.html">Open Business Intelligence Book</a>
-                <a class="btn ghost" href="global-business-news.html">Global Business News</a>
+                <a class="btn" href="global-business-news.html">Business News</a>
                 <a class="btn ghost" href="stock-watch.html">Stock Market Watch</a>
               </div>
             </div>
-          </section>
-
-          <!-- RIGHT COLUMN -->
-          <aside>
-            <div class="panel" style="margin-bottom:18px;">
-              <div class="kicker">Stock Market Watch</div>
-              <h2 style="font-size:30px;">Market Board</h2>
-
-              <p class="notice">
-                Demo display only. Live stock prices require a market data API.
-              </p>
-
-              <div class="status-row">
-                <span>S&P 500</span>
-                <span class="badge green">Watch</span>
-              </div>
-
-              <div class="status-row">
-                <span>NASDAQ</span>
-                <span class="badge green">Watch</span>
-              </div>
-
-              <div class="status-row">
-                <span>Dow Jones</span>
-                <span class="badge green">Watch</span>
-              </div>
-
-              <div class="status-row">
-                <span>Global Markets</span>
-                <span class="badge green">Watch</span>
-              </div>
-
-              <div class="status-row">
-                <span>Florida Business</span>
-                <span class="badge green">Watch</span>
-              </div>
-
-              <div class="status-row">
-                <span>Orlando Business</span>
-                <span class="badge green">Watch</span>
-              </div>
-
-              <div class="actions">
-                <a class="btn" href="stock-watch.html">Open Stock Watch</a>
-              </div>
-
-              <p class="notice">
-                TitanCore Holdings is private and should not be shown as a public stock.
-              </p>
-            </div>
-
-            <div class="panel" style="margin-bottom:18px;">
-              <div class="kicker">CEO Message</div>
-              <h2 style="font-size:30px;">Message from TitanCore</h2>
-
-              <div class="card" style="min-height:auto;">
-                <h3>Public Message</h3>
-                <p>
-                  TitanCore Holdings is being built as a serious business information platform
-                  and private business ecosystem. Our public website is designed to help people
-                  learn about business, markets, companies, credit, funding, real estate,
-                  local growth, and global business movement.
-                </p>
-              </div>
-
-              <p class="notice">
-                CEO message placeholder. This can be updated monthly.
-              </p>
-            </div>
-
-            <div class="panel">
-              <div class="kicker">Public Access</div>
-              <h2 style="font-size:30px;">Investor, Institution & Bank Information</h2>
-
-              <a class="card" href="investor.html" style="min-height:auto;margin-bottom:12px;">
-                <h3>Investor</h3>
-                <p>
-                  Learn about TitanCore’s company network, market categories,
-                  business direction, and public investor-facing information.
-                </p>
-                <span class="card-link">Investor page →</span>
-              </a>
-
-              <a class="card" href="institution.html" style="min-height:auto;margin-bottom:12px;">
-                <h3>Institution</h3>
-                <p>
-                  Public information for institutions reviewing TitanCore’s structure,
-                  companies, business intelligence platform, and long-term direction.
-                </p>
-                <span class="card-link">Institution page →</span>
-              </a>
-
-              <a class="card" href="institution-financial.html" style="min-height:auto;margin-bottom:12px;">
-                <h3>Institution Financial</h3>
-                <p>
-                  Information for financial institutions reviewing the TitanCore ecosystem,
-                  business documentation, relationship opportunities, and company structure.
-                </p>
-                <span class="card-link">Financial institution page →</span>
-              </a>
-
-              <a class="card" href="banks.html" style="min-height:auto;">
-                <h3>Banks</h3>
-                <p>
-                  Public banking relationship information, company overview,
-                  funding relationship interest, and contact direction.
-                </p>
-                <span class="card-link">Banks page →</span>
-              </a>
-            </div>
-          </aside>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- TRUST SECTION -->
     <section class="section">
       <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Why People Come to TitanCore</div>
-            <h2>Information First. Trust Second. Business Third.</h2>
-            <p>
-              TitanCore should give visitors real business information first. When people find useful
-              information, they trust the platform. When they trust the platform, they may want to
-              learn about TitanCore companies and do business with the right company inside the network.
-            </p>
-          </div>
-        </div>
+        <div class="kicker">Why People Come to TitanCore</div>
+
+        <h2>Information First. Trust Second. Business Third.</h2>
+
+        <p>
+          TitanCore gives visitors useful business information first. When people trust the information,
+          they can learn about the companies, contact the right business, review investor information,
+          or explore institution and bank pages.
+        </p>
 
         <div class="grid cols-4">
-          <div class="card">
-            <h3>Morning Information</h3>
-            <p>
-              People can visit in the morning to see market, stock, and business movement.
-            </p>
-          </div>
+          <a class="card" href="business-book.html">
+            <h3>Business Intelligence</h3>
+            <p>Research business, credit, funding, real estate, care, auto/marine, and market topics.</p>
+            <span class="card-link">Open Book →</span>
+          </a>
 
-          <div class="card">
-            <h3>Business Research</h3>
-            <p>
-              People can research countries, industries, companies, and market direction.
-            </p>
-          </div>
+          <a class="card" href="stock-watch.html">
+            <h3>Stock Market Watch</h3>
+            <p>Understand public market movement, sectors, indexes, and company watchlists.</p>
+            <span class="card-link">Open Market →</span>
+          </a>
 
-          <div class="card">
-            <h3>Company Learning</h3>
-            <p>
-              People can learn about TitanCore companies and what each company does.
-            </p>
-          </div>
+          <a class="card" href="global-business-news.html">
+            <h3>Global Business News</h3>
+            <p>Country-level business news, economy, finance, stocks, companies, and trade.</p>
+            <span class="card-link">Open News →</span>
+          </a>
 
-          <div class="card">
-            <h3>Contact Path</h3>
-            <p>
-              People can contact TitanCore, investors can review information, and banks can learn more.
-            </p>
-          </div>
+          <a class="card" href="companies.html">
+            <h3>Company Directory</h3>
+            <p>Explore Vaultara, Family First, VitalPath, and RevMotion inside TitanCore.</p>
+            <span class="card-link">View Companies →</span>
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- PUBLIC NOTICE -->
     <section class="section" style="padding-top:0;">
       <div class="container panel">
         <h2>Public Information Notice</h2>
+
         <p>
           TitanCore public website content is for business information and public research only.
           Market, stock, business, country, and economic information is not financial advice,
@@ -418,23 +1250,45 @@
 
   <footer class="footer">
     <div class="container footer-grid">
-      <div>
-        <strong>TitanCore Holdings</strong>
-        <p class="notice">
-          Public business intelligence website for company, market, stock, country, investor,
-          institution, and banking information.
-        </p>
+      <div class="logo">
+        <span class="logo-mark">T</span>
+        <span>
+          TitanCore Holdings
+          <small>Business Intelligence Network</small>
+        </span>
       </div>
+
+      <p class="notice">
+        Building a smarter world through trusted business intelligence.
+      </p>
 
       <a class="btn ghost" href="contact.html">Contact TitanCore</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
-
   <script>
+    function toggleMenu() {
+      const nav = document.getElementById("mainNav");
+      if (nav) {
+        nav.classList.toggle("show");
+      }
+    }
+
+    document.addEventListener("click", function (event) {
+      const button = event.target.closest(".btn");
+
+      if (button) {
+        button.classList.add("clicked");
+
+        setTimeout(function () {
+          button.classList.remove("clicked");
+        }, 250);
+      }
+    });
+
     function updateTodayDate() {
       const dateBox = document.getElementById("todayDate");
+
       if (!dateBox) return;
 
       const now = new Date();
@@ -447,71 +1301,18 @@
       });
     }
 
-    function openCountryBusiness() {
-      const countrySelect = document.getElementById("countrySelect");
-      const resultBox = document.getElementById("countryResult");
+    document.addEventListener("DOMContentLoaded", function () {
+      updateTodayDate();
 
-      if (!countrySelect || !resultBox) return;
-
-      const country = countrySelect.value || "United States";
-
-      resultBox.innerHTML = `
-        <div class="panel" style="box-shadow:none;margin-top:18px;">
-          <h2>${country} Business Intelligence</h2>
-
-          <p>
-            This country page is for business-only information about ${country}.
-            It focuses on economy, business news, stock market, major industries,
-            major companies, finance, banking, real estate, trade, and business opportunities.
-          </p>
-
-          <div class="grid cols-2">
-            <div class="card" style="min-height:auto;">
-              <h3>${country} Business News</h3>
-              <p>
-                Business headlines, company movement, industry updates, finance,
-                banking, real estate, trade, jobs, and economic direction.
-              </p>
-              <span class="badge green">Business Only</span>
-            </div>
-
-            <div class="card" style="min-height:auto;">
-              <h3>${country} Stock Market</h3>
-              <p>
-                Country stock index, public companies, market movement,
-                currency, investor confidence, and sector watch information.
-              </p>
-              <span class="badge green">Market Watch</span>
-            </div>
-
-            <div class="card" style="min-height:auto;">
-              <h3>${country} Major Industries</h3>
-              <p>
-                Finance, real estate, healthcare, technology, energy, logistics,
-                tourism, manufacturing, agriculture, and business services.
-              </p>
-              <span class="badge green">Industries</span>
-            </div>
-
-            <div class="card" style="min-height:auto;">
-              <h3>${country} Business Opportunities</h3>
-              <p>
-                Public research about growing sectors, business risks,
-                market direction, company expansion, and economic opportunity areas.
-              </p>
-              <span class="badge green">Research</span>
-            </div>
-          </div>
-
-          <p class="notice">
-            This is country-level business intelligence only. No forced state, county, or city drill-down.
-            Live data will require approved APIs or licensed business data sources.
-          </p>
-        </div>
-      `;
-    }
-
-    updateTodayDate();
+      const nav = document.getElementById("mainNav");
+      if (nav) {
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            nav.classList.remove("show");
+          });
+        });
+      }
+    });
   </script>
 </body>
 </html>
