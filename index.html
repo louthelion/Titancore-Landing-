@@ -9,25 +9,18 @@
   <style>
     :root {
       --black:#000000;
-      --black2:#050805;
-      --panel:#071007;
       --green:#00a651;
       --gold:#d8b45a;
       --gold2:#f3d88b;
       --yellow:#ffd400;
-      --white:#ffffff;
       --border:rgba(216,180,90,.38);
       --border2:rgba(216,180,90,.65);
       --shadow:0 18px 55px rgba(0,0,0,.58);
     }
 
-    * {
-      box-sizing:border-box;
-    }
+    * { box-sizing:border-box; }
 
-    html {
-      scroll-behavior:smooth;
-    }
+    html { scroll-behavior:smooth; }
 
     body {
       margin:0;
@@ -40,82 +33,102 @@
       line-height:1.6;
     }
 
-    a {
-      color:inherit;
-      text-decoration:none;
-    }
+    a { color:inherit; text-decoration:none; }
 
-    .container de {
+    .container {
       width:min(1320px,calc(100% - 28px));
       margin:0 auto;
     }
 
-    /* HEADER */
+    /* ================= HEADER ================= */
+
     .topbar {
       position:sticky;
       top:0;
       z-index:100;
-      background:rgba(0,0,0,.97);
+      background:#000;
       border-bottom:1px solid var(--border2);
-      backdrop-filter:blur(12px);
+      box-shadow:0 14px 30px rgba(0,0,0,.45);
     }
 
     .navwrap {
-      min-height:86px;
       display:flex;
+      flex-direction:column;
       align-items:center;
       justify-content:center;
       gap:18px;
-      flex-wrap:wrap;
-      padding:18px 0;
+      padding:22px 0;
     }
 
-    .logo {
+    .brand {
       width:100%;
       display:flex;
       align-items:center;
       justify-content:center;
-      gap:12px;
-      color:var(--green);
-      font-weight:900;
-      font-size:22px;
+      gap:18px;
       text-align:left;
     }
 
-    .logo-mark {
-      width:54px;
-      height:54px;
-      border-radius:12px;
+    .logo-slot {
+      width:58px;
+      height:58px;
+      min-width:58px;
+      border-radius:14px;
       border:2px solid var(--gold);
       display:grid;
       place-items:center;
       color:var(--yellow);
-      background:linear-gradient(180deg,#101810,#020402);
-      font-size:31px;
+      background:
+        radial-gradient(circle at 30% 25%,rgba(216,180,90,.20),transparent 38%),
+        linear-gradient(180deg,#101810,#020402);
+      font-size:32px;
       font-weight:900;
       box-shadow:0 0 22px rgba(0,166,81,.25);
-      flex:0 0 auto;
+      overflow:hidden;
     }
 
-    .logo small {
+    /* Later, if you want real logo:
+       change <span class="logo-slot">T</span>
+       to <span class="logo-slot logo-bg"></span>
+       and put your image path in --logo-image below.
+    */
+    .logo-slot.logo-bg {
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.20)),
+        var(--logo-image),
+        linear-gradient(180deg,#101810,#020402);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+    }
+
+    .brand-text strong {
+      display:block;
+      color:var(--green);
+      font-size:clamp(26px,4.5vw,44px);
+      line-height:1.05;
+      font-weight:900;
+    }
+
+    .brand-text small {
       display:block;
       color:var(--gold);
-      font-size:12px;
-      letter-spacing:2px;
+      font-size:clamp(12px,2vw,18px);
+      letter-spacing:4px;
       text-transform:uppercase;
-      margin-top:-4px;
+      font-weight:900;
+      margin-top:6px;
     }
 
-    /* HORIZONTAL BUTTON MENU */
     .nav {
       width:100%;
       display:flex;
       flex-direction:row;
       flex-wrap:wrap;
-      align-items:center;
       justify-content:center;
+      align-items:center;
       gap:12px;
-      padding:18px 0 4px;
+      padding-top:18px;
       border-top:1px solid var(--border);
     }
 
@@ -127,9 +140,8 @@
       border-radius:16px;
       border:1px solid var(--border);
       background:rgba(0,0,0,.28);
-      text-decoration:none;
-      transition:.2s ease;
       white-space:nowrap;
+      transition:.2s ease;
     }
 
     .nav a:hover,
@@ -140,14 +152,13 @@
       transform:translateY(-2px);
     }
 
-    /* GENERAL */
-    h1,h2,h3,h4,h5,h6 {
-      color:var(--green);
-    }
+    /* ================= GENERAL ================= */
+
+    h1,h2,h3 { color:var(--green); }
 
     h1 {
-      font-size:clamp(28px,3.5vw,42px);
-      line-height:1.14;
+      font-size:clamp(28px,3.4vw,42px);
+      line-height:1.15;
       margin:0 0 18px;
       font-weight:900;
     }
@@ -173,8 +184,7 @@
 
     .lead {
       font-size:18px;
-      max-width:860px;
-      color:var(--gold2);
+      max-width:850px;
     }
 
     .notice {
@@ -186,125 +196,12 @@
       padding:30px 0;
     }
 
-    .panel,
-    .card {
+    .panel {
       background:linear-gradient(180deg,rgba(12,18,12,.96),rgba(3,6,3,.98));
       border:1px solid var(--border);
       border-radius:22px;
       box-shadow:var(--shadow);
-    }
-
-    .panel {
       padding:22px;
-    }
-
-    .card {
-      padding:20px;
-      min-height:170px;
-      transition:.2s ease;
-    }
-
-    a.card:hover,
-    .click-card:hover {
-      border-color:var(--green);
-      transform:translateY(-3px);
-      box-shadow:0 22px 60px rgba(0,166,81,.16);
-    }
-
-    .btn {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:44px;
-      padding:12px 18px;
-      border-radius:12px;
-      background:var(--yellow);
-      color:#000!important;
-      border:1px solid var(--yellow);
-      font-weight:900;
-      cursor:pointer;
-      transition:.2s ease;
-      text-align:center;
-    }
-
-    .btn:hover,
-    .btn.clicked {
-      background:var(--green);
-      color:#fff!important;
-      border-color:var(--green);
-      transform:translateY(-1px);
-    }
-
-    .grid {
-      display:grid;
-      gap:18px;
-    }
-
-    /* HERO */
-    .hero-publication {
-      min-height:380px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      border:1px solid var(--border2);
-      border-radius:24px;
-      overflow:hidden;
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.55)),
-        linear-gradient(135deg,#050805,#102010 55%,#050805);
-      box-shadow:var(--shadow);
-    }
-
-    .hero-publication-text {
-      padding:34px;
-    }
-
-    .hero-publication-image {
-      padding:20px;
-    }
-
-    .hero-media {
-      height:100%;
-      min-height:340px;
-      border-radius:22px;
-      border:1px solid var(--border2);
-      position:relative;
-      overflow:hidden;
-      display:block;
-      background:
-        radial-gradient(circle at 20% 20%,rgba(0,166,81,.36),transparent 28%),
-        radial-gradient(circle at 80% 12%,rgba(216,180,90,.28),transparent 28%),
-        linear-gradient(135deg,#071107,#0d1c0d 55%,#040704);
-    }
-
-    .hero-media::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(216,180,90,.09) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(216,180,90,.09) 1px,transparent 1px);
-      background-size:42px 42px;
-      opacity:.42;
-    }
-
-    .hero-media::after {
-      content:"";
-      position:absolute;
-      left:10%;
-      right:10%;
-      bottom:24%;
-      height:4px;
-      background:linear-gradient(90deg,transparent,#00a651,#ffd400,transparent);
-      box-shadow:0 0 26px rgba(0,166,81,.9);
-      transform:rotate(-10deg);
-    }
-
-    /* MAIN GRID */
-    .publication-grid {
-      display:grid;
-      grid-template-columns:1fr 1.45fr 1fr;
-      gap:18px;
-      align-items:start;
     }
 
     .publication-head {
@@ -312,34 +209,34 @@
       align-items:center;
       justify-content:center;
       text-align:center;
-      gap:12px;
       margin-bottom:16px;
       padding-bottom:12px;
       border-bottom:1px solid var(--border);
     }
 
     .publication-head h2 {
-      font-size:28px;
       margin:0;
     }
 
-    /* VISUAL BLOCKS */
-    .media-box,
-    .news-thumb,
-    .company-thumb {
-      border:1px solid var(--border2);
-      border-radius:18px;
+    /* ================= IMAGE / VIDEO PLACEHOLDERS ================= */
+
+    .visual-bg {
       position:relative;
       overflow:hidden;
+      border:1px solid var(--border2);
+      border-radius:20px;
       background:
+        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.72)),
+        var(--bg-img, none),
         radial-gradient(circle at 20% 20%,rgba(0,166,81,.35),transparent 30%),
         radial-gradient(circle at 80% 12%,rgba(216,180,90,.24),transparent 30%),
         linear-gradient(135deg,#050805,#102010 55%,#050805);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
     }
 
-    .media-box::before,
-    .news-thumb::before,
-    .company-thumb::before {
+    .visual-bg::before {
       content:"";
       position:absolute;
       inset:0;
@@ -347,7 +244,18 @@
         linear-gradient(rgba(216,180,90,.08) 1px,transparent 1px),
         linear-gradient(90deg,rgba(216,180,90,.08) 1px,transparent 1px);
       background-size:36px 36px;
-      opacity:.36;
+      opacity:.35;
+      pointer-events:none;
+    }
+
+    .visual-bg::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48)),
+        radial-gradient(circle at 25% 20%,rgba(0,166,81,.20),transparent 35%);
+      pointer-events:none;
     }
 
     .thumb-content {
@@ -372,14 +280,60 @@
       margin-top:7px;
     }
 
-    /* DATE + QUICK LINKS */
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height:380px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      border:1px solid var(--border2);
+      border-radius:24px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.55)),
+        linear-gradient(135deg,#050805,#102010 55%,#050805);
+      box-shadow:var(--shadow);
+    }
+
+    .hero-text {
+      padding:34px;
+    }
+
+    .hero-image-wrap {
+      padding:20px;
+    }
+
+    .hero-image {
+      height:100%;
+      min-height:340px;
+      display:grid;
+      place-items:center;
+    }
+
+    .hero-label {
+      position:relative;
+      z-index:2;
+      color:var(--gold2);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      text-align:center;
+      opacity:.95;
+    }
+
+    /* ================= MAIN GRID ================= */
+
+    .main-grid {
+      display:grid;
+      grid-template-columns:1fr 1.45fr 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
     .date-box {
       text-align:center;
       margin-bottom:18px;
-    }
-
-    .date-box h2 {
-      margin-bottom:4px;
     }
 
     .brief-list {
@@ -394,7 +348,6 @@
       padding:14px;
       border:1px solid var(--border);
       border-radius:18px;
-      cursor:pointer;
       background:rgba(0,0,0,.24);
       transition:.2s ease;
     }
@@ -422,14 +375,13 @@
       font-size:13px;
     }
 
-    /* COMPANY */
-    .company-mini-grid {
+    .company-grid {
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:14px;
     }
 
-    .company-mini-card {
+    .company-card {
       border:1px solid var(--border);
       border-radius:18px;
       overflow:hidden;
@@ -437,12 +389,12 @@
       transition:.2s ease;
     }
 
-    .company-mini-card:hover {
+    .company-card:hover {
       transform:translateY(-3px);
       border-color:var(--green);
     }
 
-    .company-thumb {
+    .company-image {
       min-height:150px;
       display:grid;
       place-items:center;
@@ -452,31 +404,30 @@
       border-top:none;
     }
 
-    .company-mini-card h3,
-    .company-mini-card p,
-    .company-mini-card span {
+    .company-card h3,
+    .company-card p,
+    .company-card span {
       padding-left:14px;
       padding-right:14px;
     }
 
-    .company-mini-card h3 {
+    .company-card h3 {
       color:var(--green);
       margin-top:14px;
     }
 
-    .company-mini-card p {
+    .company-card p {
       color:var(--gold2);
       font-size:14px;
     }
 
-    .company-mini-card span {
+    .company-card span {
       display:block;
       color:var(--yellow);
       font-weight:900;
       padding-bottom:16px;
     }
 
-    /* STOCK */
     .stock-grid {
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -516,7 +467,6 @@
       font-weight:900;
     }
 
-    /* CEO */
     .ceo-row {
       display:grid;
       grid-template-columns:80px 1fr;
@@ -540,6 +490,29 @@
       font-size:34px;
     }
 
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:12px 18px;
+      border-radius:12px;
+      background:var(--yellow);
+      color:#000!important;
+      border:1px solid var(--yellow);
+      font-weight:900;
+      cursor:pointer;
+      transition:.2s ease;
+      text-align:center;
+    }
+
+    .btn:hover,
+    .btn.clicked {
+      background:var(--green);
+      color:#fff!important;
+      border-color:var(--green);
+    }
+
     .monthly-message {
       display:none;
       border-top:1px solid var(--border);
@@ -551,20 +524,14 @@
       display:block;
     }
 
-    .message-history {
-      display:grid;
-      gap:10px;
-      margin-top:14px;
-    }
-
     .history-item {
       border:1px solid var(--border);
       border-radius:14px;
       padding:12px;
       color:var(--gold2);
+      margin-top:10px;
     }
 
-    /* MEDIA CENTER */
     .media-grid {
       display:grid;
       grid-template-columns:1.3fr 1fr 1fr;
@@ -579,13 +546,13 @@
       transition:.2s ease;
     }
 
+    .media-box.large {
+      min-height:320px;
+    }
+
     .media-box:hover {
       border-color:var(--green);
       transform:translateY(-3px);
-    }
-
-    .media-box.large {
-      min-height:320px;
     }
 
     .play-circle {
@@ -627,19 +594,32 @@
     }
 
     @media(max-width:1150px) {
-      .hero-publication,
-      .publication-grid,
+      .hero,
+      .main-grid,
       .media-grid {
         grid-template-columns:1fr;
       }
 
-      .company-mini-grid,
+      .company-grid,
       .stock-grid {
         grid-template-columns:repeat(2,1fr);
       }
     }
 
     @media(max-width:760px) {
+      .brand {
+        justify-content:flex-start;
+      }
+
+      .brand-text strong {
+        font-size:26px;
+      }
+
+      .brand-text small {
+        font-size:12px;
+        letter-spacing:2px;
+      }
+
       .nav {
         justify-content:center;
         gap:10px;
@@ -650,15 +630,15 @@
         padding:10px 14px;
       }
 
-      .hero-publication-text {
+      .hero-text {
         padding:24px;
       }
 
-      .hero-publication-image {
+      .hero-image-wrap {
         padding:12px;
       }
 
-      .company-mini-grid,
+      .company-grid,
       .stock-grid {
         grid-template-columns:1fr;
       }
@@ -682,16 +662,15 @@
 <body>
   <header class="topbar">
     <div class="container navwrap">
-      <a class="logo" href="index.html">
-<span class="logo-mark">T</span>
-<img class="logo-img" src="images/titancore-logo.png" alt="TitanCore Holdings logo">
-        <span>
-          TitanCore Holdings
+      <a class="brand" href="index.html">
+        <span class="logo-slot">T</span>
+        <span class="brand-text">
+          <strong>TitanCore Holdings</strong>
           <small>Business Intelligence Network</small>
         </span>
       </a>
 
-      <nav class="nav" id="mainNav">
+      <nav class="nav">
         <a class="active" href="index.html">Home</a>
         <a href="investor.html">Investor</a>
         <a href="institution.html">Institution</a>
@@ -710,10 +689,9 @@
   <main>
     <section class="section">
       <div class="container">
-        <div class="hero-publication">
-          <div class="hero-publication-text">
+        <div class="hero">
+          <div class="hero-text">
             <h1>Business Intelligence for Markets, Companies, Countries, Stocks, and Growth.</h1>
-
             <p class="lead">
               TitanCore Holdings is building a public business information platform where visitors can review
               business news, market movement, country-level business intelligence, stock watchlists,
@@ -721,16 +699,17 @@
             </p>
           </div>
 
-          <div class="hero-publication-image">
-            <a class="hero-media" href="business-book.html" aria-label="Open Business Intelligence Book"></a>
+          <div class="hero-image-wrap">
+            <a class="hero-image visual-bg" data-bg-group="hero" href="business-book.html">
+              <span class="hero-label">Daily Business Image Space</span>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section" style="padding-top:0;">
-      <div class="container publication-grid">
-
+      <div class="container main-grid">
         <section class="panel">
           <div class="date-box">
             <h2 id="todayDate">Today</h2>
@@ -738,10 +717,8 @@
 
           <div class="brief-list">
             <a class="brief-item" href="global-business-news.html#market">
-              <div class="news-thumb">
-                <div class="thumb-content">
-                  <div class="thumb-title">Market</div>
-                </div>
+              <div class="news-thumb visual-bg" data-bg-group="market">
+                <div class="thumb-content"><div class="thumb-title">Market</div></div>
               </div>
               <div>
                 <h3>Market News</h3>
@@ -750,10 +727,8 @@
             </a>
 
             <a class="brief-item" href="global-business-news.html#finance">
-              <div class="news-thumb">
-                <div class="thumb-content">
-                  <div class="thumb-title">Finance</div>
-                </div>
+              <div class="news-thumb visual-bg" data-bg-group="finance">
+                <div class="thumb-content"><div class="thumb-title">Finance</div></div>
               </div>
               <div>
                 <h3>Finance News</h3>
@@ -762,10 +737,8 @@
             </a>
 
             <a class="brief-item" href="global-business-news.html#technology">
-              <div class="news-thumb">
-                <div class="thumb-content">
-                  <div class="thumb-title">Tech</div>
-                </div>
+              <div class="news-thumb visual-bg" data-bg-group="tech">
+                <div class="thumb-content"><div class="thumb-title">Tech</div></div>
               </div>
               <div>
                 <h3>Technology News</h3>
@@ -774,10 +747,8 @@
             </a>
 
             <a class="brief-item" href="global-business-news.html#energy">
-              <div class="news-thumb">
-                <div class="thumb-content">
-                  <div class="thumb-title">Energy</div>
-                </div>
+              <div class="news-thumb visual-bg" data-bg-group="energy">
+                <div class="thumb-content"><div class="thumb-title">Energy</div></div>
               </div>
               <div>
                 <h3>Energy News</h3>
@@ -788,13 +759,11 @@
         </section>
 
         <section class="panel">
-          <div class="publication-head">
-            <h2>Companies</h2>
-          </div>
+          <div class="publication-head"><h2>Companies</h2></div>
 
-          <div class="company-mini-grid">
-            <a class="company-mini-card" href="vaultara.html">
-              <div class="company-thumb">
+          <div class="company-grid">
+            <a class="company-card" href="vaultara.html">
+              <div class="company-image visual-bg" data-bg-group="vaultara">
                 <div class="thumb-content">
                   <div class="thumb-title">Vaultara</div>
                   <div class="thumb-subtitle">Funding • Credit • Formation</div>
@@ -805,8 +774,8 @@
               <span>Learn More →</span>
             </a>
 
-            <a class="company-mini-card" href="family-first.html">
-              <div class="company-thumb">
+            <a class="company-card" href="family-first.html">
+              <div class="company-image visual-bg" data-bg-group="family">
                 <div class="thumb-content">
                   <div class="thumb-title">Family First</div>
                   <div class="thumb-subtitle">Real Estate • Property • Equity</div>
@@ -817,8 +786,8 @@
               <span>Learn More →</span>
             </a>
 
-            <a class="company-mini-card" href="vitalpath.html">
-              <div class="company-thumb">
+            <a class="company-card" href="vitalpath.html">
+              <div class="company-image visual-bg" data-bg-group="vitalpath">
                 <div class="thumb-content">
                   <div class="thumb-title">VitalPath</div>
                   <div class="thumb-subtitle">Care • Wellness • Support</div>
@@ -829,8 +798,8 @@
               <span>Learn More →</span>
             </a>
 
-            <a class="company-mini-card" href="revmotion.html">
-              <div class="company-thumb">
+            <a class="company-card" href="revmotion.html">
+              <div class="company-image visual-bg" data-bg-group="revmotion">
                 <div class="thumb-content">
                   <div class="thumb-title">RevMotion</div>
                   <div class="thumb-subtitle">Auto • Marine • Transport</div>
@@ -844,9 +813,7 @@
         </section>
 
         <section class="panel">
-          <div class="publication-head">
-            <h2>Stock Market Watch</h2>
-          </div>
+          <div class="publication-head"><h2>Stock Market Watch</h2></div>
 
           <div class="stock-grid">
             <a class="stock-card" href="stock-watch.html#sp500">
@@ -876,9 +843,7 @@
         </section>
 
         <section class="panel">
-          <div class="publication-head">
-            <h2>CEO Message</h2>
-          </div>
+          <div class="publication-head"><h2>CEO Message</h2></div>
 
           <div class="ceo-row">
             <div class="ceo-photo">T</div>
@@ -898,17 +863,13 @@
               banks, and business decision-makers.
             </p>
 
-            <div class="message-history">
-              <div class="history-item">Previous CEO Message — Archive placeholder</div>
-              <div class="history-item">Older CEO Message — Archive placeholder</div>
-            </div>
+            <div class="history-item">Previous CEO Message — Archive placeholder</div>
+            <div class="history-item">Older CEO Message — Archive placeholder</div>
           </div>
         </section>
 
         <section class="panel">
-          <div class="publication-head">
-            <h2>Business Intelligence Book</h2>
-          </div>
+          <div class="publication-head"><h2>Business Intelligence Book</h2></div>
 
           <p>
             Public business learning library for country-level research, stock awareness,
@@ -920,29 +881,25 @@
 
     <section class="section">
       <div class="container panel">
-        <div class="publication-head">
-          <h2>TitanCore Media Center</h2>
-        </div>
+        <div class="publication-head"><h2>TitanCore Media Center</h2></div>
 
         <div class="media-grid">
-          <a class="media-box large" href="titancore-news.html#video">
+          <a class="media-box large visual-bg" data-bg-group="video" href="titancore-news.html#video">
             <div class="thumb-content">
-              <div class="play-circle">
-                <div class="play-triangle"></div>
-              </div>
+              <div class="play-circle"><div class="play-triangle"></div></div>
               <div class="thumb-title">Daily Business Video</div>
               <div class="thumb-subtitle">Video space for market and business briefing</div>
             </div>
           </a>
 
-          <a class="media-box" href="global-business-news.html">
+          <a class="media-box visual-bg" data-bg-group="news" href="global-business-news.html">
             <div class="thumb-content">
               <div class="thumb-title">News Image</div>
               <div class="thumb-subtitle">Space for daily business news image</div>
             </div>
           </a>
 
-          <a class="media-box" href="stock-watch.html">
+          <a class="media-box visual-bg" data-bg-group="stock" href="stock-watch.html">
             <div class="thumb-content">
               <div class="thumb-title">Market Image</div>
               <div class="thumb-subtitle">Space for stock and economy image</div>
@@ -955,27 +912,25 @@
 
   <footer class="footer">
     <div class="container footer-grid">
-      <div class="logo">
-        <span class="logo-mark">T</span>
-        <span>
-          TitanCore Holdings
+      <a class="brand" href="index.html">
+        <span class="logo-slot">T</span>
+        <span class="brand-text">
+          <strong>TitanCore Holdings</strong>
           <small>Business Intelligence Network</small>
         </span>
-      </div>
+      </a>
 
-      <p class="notice">
-        Building a smarter world through trusted business intelligence.
-      </p>
+      <p class="notice">Building a smarter world through trusted business intelligence.</p>
     </div>
   </footer>
 
   <script>
     function updateTodayDate(){
-      const dateBox=document.getElementById("todayDate");
-      if(!dateBox)return;
+      const dateBox = document.getElementById("todayDate");
+      if(!dateBox) return;
 
-      const now=new Date();
-      dateBox.textContent=now.toLocaleDateString("en-US",{
+      const now = new Date();
+      dateBox.textContent = now.toLocaleDateString("en-US", {
         weekday:"long",
         month:"long",
         day:"numeric",
@@ -984,22 +939,52 @@
     }
 
     function toggleCEOMessage(){
-      const box=document.getElementById("monthlyCEOMessage");
-      if(box){box.classList.toggle("show");}
+      const box = document.getElementById("monthlyCEOMessage");
+      if(box) box.classList.toggle("show");
     }
 
-    document.addEventListener("click",function(event){
-      const button=event.target.closest(".btn");
+    function rotateDailyImages(){
+      const imageGroups = {
+        hero:["images/hero-1.jpg","images/hero-2.jpg","images/hero-3.jpg"],
+        market:["images/market-1.jpg","images/market-2.jpg"],
+        finance:["images/finance-1.jpg","images/finance-2.jpg"],
+        tech:["images/tech-1.jpg","images/tech-2.jpg"],
+        energy:["images/energy-1.jpg","images/energy-2.jpg"],
+        vaultara:["images/vaultara-1.jpg","images/vaultara-2.jpg"],
+        family:["images/family-first-1.jpg","images/family-first-2.jpg"],
+        vitalpath:["images/vitalpath-1.jpg","images/vitalpath-2.jpg"],
+        revmotion:["images/revmotion-1.jpg","images/revmotion-2.jpg"],
+        video:["images/video-1.jpg","images/video-2.jpg"],
+        news:["images/news-1.jpg","images/news-2.jpg"],
+        stock:["images/stock-1.jpg","images/stock-2.jpg"]
+      };
+
+      const dayNumber = Math.floor(new Date().getTime() / 86400000);
+
+      document.querySelectorAll("[data-bg-group]").forEach(function(box){
+        const group = box.getAttribute("data-bg-group");
+        const images = imageGroups[group];
+
+        if(!images || !images.length) return;
+
+        const chosen = images[dayNumber % images.length];
+        box.style.setProperty("--bg-img", "url('" + chosen + "')");
+      });
+    }
+
+    document.addEventListener("click", function(event){
+      const button = event.target.closest(".btn");
       if(button){
         button.classList.add("clicked");
         setTimeout(function(){
           button.classList.remove("clicked");
-        },250);
+        }, 250);
       }
     });
 
-    document.addEventListener("DOMContentLoaded",function(){
+    document.addEventListener("DOMContentLoaded", function(){
       updateTodayDate();
+      rotateDailyImages();
     });
   </script>
 </body>
