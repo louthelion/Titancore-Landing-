@@ -8,22 +8,28 @@
 
   <style>
     :root {
-      --black:#000;
+      --black:#000000;
       --black2:#050805;
       --panel:#071007;
       --green:#00a651;
       --gold:#d8b45a;
       --gold2:#f3d88b;
       --yellow:#ffd400;
-      --white:#fff;
+      --white:#ffffff;
       --border:rgba(216,180,90,.38);
       --border2:rgba(216,180,90,.65);
       --shadow:0 18px 55px rgba(0,0,0,.58);
     }
 
-    *{box-sizing:border-box}
+    * {
+      box-sizing:border-box;
+    }
 
-    body{
+    html {
+      scroll-behavior:smooth;
+    }
+
+    body {
       margin:0;
       background:
         radial-gradient(circle at top left,rgba(0,166,81,.14),transparent 30%),
@@ -34,14 +40,18 @@
       line-height:1.6;
     }
 
-    a{color:inherit;text-decoration:none}
+    a {
+      color:inherit;
+      text-decoration:none;
+    }
 
-    .container{
+    .container {
       width:min(1320px,calc(100% - 28px));
       margin:0 auto;
     }
 
-    .topbar{
+    /* HEADER */
+    .topbar {
       position:sticky;
       top:0;
       z-index:100;
@@ -50,26 +60,29 @@
       backdrop-filter:blur(12px);
     }
 
-    .navwrap{
+    .navwrap {
       min-height:86px;
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:center;
       gap:18px;
       flex-wrap:wrap;
-      padding:12px 0;
+      padding:18px 0;
     }
 
-    .logo{
+    .logo {
+      width:100%;
       display:flex;
       align-items:center;
+      justify-content:center;
       gap:12px;
       color:var(--green);
       font-weight:900;
       font-size:22px;
+      text-align:left;
     }
 
-    .logo-mark{
+    .logo-mark {
       width:54px;
       height:54px;
       border-radius:12px;
@@ -81,9 +94,10 @@
       font-size:31px;
       font-weight:900;
       box-shadow:0 0 22px rgba(0,166,81,.25);
+      flex:0 0 auto;
     }
 
-    .logo small{
+    .logo small {
       display:block;
       color:var(--gold);
       font-size:12px;
@@ -92,34 +106,112 @@
       margin-top:-4px;
     }
 
-    .nav{
+    /* HORIZONTAL BUTTON MENU */
+    .nav {
+      width:100%;
       display:flex;
+      flex-direction:row;
       flex-wrap:wrap;
-      gap:8px;
-      justify-content:flex-end;
       align-items:center;
+      justify-content:center;
+      gap:12px;
+      padding:18px 0 4px;
+      border-top:1px solid var(--border);
     }
 
-    .nav a{
+    .nav a {
       color:var(--gold2);
-      font-weight:800;
-      font-size:13px;
-      padding:10px 9px;
-      border-radius:10px;
-      border:1px solid transparent;
+      font-weight:900;
+      font-size:15px;
+      padding:12px 18px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.28);
+      text-decoration:none;
       transition:.2s ease;
+      white-space:nowrap;
     }
 
     .nav a:hover,
-    .nav a.active{
+    .nav a.active {
       color:var(--green);
       background:rgba(0,166,81,.12);
-      border-color:rgba(0,166,81,.35);
+      border-color:rgba(0,166,81,.70);
+      transform:translateY(-2px);
     }
 
-    .mobile-menu{display:none}
+    /* GENERAL */
+    h1,h2,h3,h4,h5,h6 {
+      color:var(--green);
+    }
 
-    .btn{
+    h1 {
+      font-size:clamp(28px,3.5vw,42px);
+      line-height:1.14;
+      margin:0 0 18px;
+      font-weight:900;
+    }
+
+    h2 {
+      font-size:clamp(25px,3vw,36px);
+      line-height:1.12;
+      margin:0 0 14px;
+      font-weight:900;
+    }
+
+    h3 {
+      font-size:21px;
+      line-height:1.2;
+      margin:0 0 10px;
+      font-weight:900;
+    }
+
+    p {
+      color:var(--gold2);
+      margin-top:0;
+    }
+
+    .lead {
+      font-size:18px;
+      max-width:860px;
+      color:var(--gold2);
+    }
+
+    .notice {
+      color:var(--gold);
+      font-size:14px;
+    }
+
+    .section {
+      padding:30px 0;
+    }
+
+    .panel,
+    .card {
+      background:linear-gradient(180deg,rgba(12,18,12,.96),rgba(3,6,3,.98));
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .panel {
+      padding:22px;
+    }
+
+    .card {
+      padding:20px;
+      min-height:170px;
+      transition:.2s ease;
+    }
+
+    a.card:hover,
+    .click-card:hover {
+      border-color:var(--green);
+      transform:translateY(-3px);
+      box-shadow:0 22px 60px rgba(0,166,81,.16);
+    }
+
+    .btn {
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -136,95 +228,21 @@
     }
 
     .btn:hover,
-    .btn.clicked{
+    .btn.clicked {
       background:var(--green);
       color:#fff!important;
       border-color:var(--green);
       transform:translateY(-1px);
     }
 
-    .btn.ghost{
-      background:transparent;
-      color:var(--gold2)!important;
-      border-color:var(--border2);
+    .grid {
+      display:grid;
+      gap:18px;
     }
-
-    .btn.ghost:hover,
-    .btn.ghost.clicked{
-      background:var(--green);
-      color:#fff!important;
-      border-color:var(--green);
-    }
-
-    h1,h2,h3,h4,h5,h6{color:var(--green)}
-
-    h1{
-      font-size:clamp(30px,3.8vw,46px);
-      line-height:1.12;
-      margin:0 0 18px;
-      font-weight:900;
-    }
-
-    h2{
-      font-size:clamp(26px,3.2vw,38px);
-      line-height:1.1;
-      margin:0 0 14px;
-      font-weight:900;
-    }
-
-    h3{
-      font-size:21px;
-      line-height:1.2;
-      margin:0 0 10px;
-      font-weight:900;
-    }
-
-    p{
-      color:var(--gold2);
-      margin-top:0;
-    }
-
-    .lead{
-      font-size:18px;
-      max-width:860px;
-      color:var(--gold2);
-    }
-
-    .notice{
-      color:var(--gold);
-      font-size:14px;
-    }
-
-    .section{padding:30px 0}
-
-    .panel,
-    .card{
-      background:linear-gradient(180deg,rgba(12,18,12,.96),rgba(3,6,3,.98));
-      border:1px solid var(--border);
-      border-radius:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .panel{padding:22px}
-
-    .card{
-      padding:20px;
-      min-height:170px;
-      transition:.2s ease;
-    }
-
-    a.card:hover,
-    .click-card:hover{
-      border-color:var(--green);
-      transform:translateY(-3px);
-      box-shadow:0 22px 60px rgba(0,166,81,.16);
-    }
-
-    .grid{display:grid;gap:18px}
 
     /* HERO */
-    .hero-publication{
-      min-height:400px;
+    .hero-publication {
+      min-height:380px;
       display:grid;
       grid-template-columns:1fr 1fr;
       border:1px solid var(--border2);
@@ -236,12 +254,17 @@
       box-shadow:var(--shadow);
     }
 
-    .hero-publication-text{padding:36px}
-    .hero-publication-image{padding:20px}
+    .hero-publication-text {
+      padding:34px;
+    }
 
-    .hero-media{
+    .hero-publication-image {
+      padding:20px;
+    }
+
+    .hero-media {
       height:100%;
-      min-height:360px;
+      min-height:340px;
       border-radius:22px;
       border:1px solid var(--border2);
       position:relative;
@@ -253,7 +276,7 @@
         linear-gradient(135deg,#071107,#0d1c0d 55%,#040704);
     }
 
-    .hero-media::before{
+    .hero-media::before {
       content:"";
       position:absolute;
       inset:0;
@@ -264,7 +287,7 @@
       opacity:.42;
     }
 
-    .hero-media::after{
+    .hero-media::after {
       content:"";
       position:absolute;
       left:10%;
@@ -277,14 +300,14 @@
     }
 
     /* MAIN GRID */
-    .publication-grid{
+    .publication-grid {
       display:grid;
       grid-template-columns:1fr 1.45fr 1fr;
       gap:18px;
       align-items:start;
     }
 
-    .publication-head{
+    .publication-head {
       display:flex;
       align-items:center;
       justify-content:center;
@@ -295,7 +318,7 @@
       border-bottom:1px solid var(--border);
     }
 
-    .publication-head h2{
+    .publication-head h2 {
       font-size:28px;
       margin:0;
     }
@@ -303,7 +326,7 @@
     /* VISUAL BLOCKS */
     .media-box,
     .news-thumb,
-    .company-thumb{
+    .company-thumb {
       border:1px solid var(--border2);
       border-radius:18px;
       position:relative;
@@ -316,7 +339,7 @@
 
     .media-box::before,
     .news-thumb::before,
-    .company-thumb::before{
+    .company-thumb::before {
       content:"";
       position:absolute;
       inset:0;
@@ -327,14 +350,14 @@
       opacity:.36;
     }
 
-    .thumb-content{
+    .thumb-content {
       position:relative;
       z-index:2;
       text-align:center;
       padding:16px;
     }
 
-    .thumb-title{
+    .thumb-title {
       color:var(--green);
       font-size:22px;
       font-weight:900;
@@ -342,7 +365,7 @@
       line-height:1.05;
     }
 
-    .thumb-subtitle{
+    .thumb-subtitle {
       color:var(--gold2);
       font-size:12px;
       font-weight:800;
@@ -350,21 +373,21 @@
     }
 
     /* DATE + QUICK LINKS */
-    .date-box{
+    .date-box {
       text-align:center;
       margin-bottom:18px;
     }
 
-    .date-box h2{
+    .date-box h2 {
       margin-bottom:4px;
     }
 
-    .brief-list{
+    .brief-list {
       display:grid;
       gap:14px;
     }
 
-    .brief-item{
+    .brief-item {
       display:grid;
       grid-template-columns:130px 1fr;
       gap:12px;
@@ -376,37 +399,37 @@
       transition:.2s ease;
     }
 
-    .brief-item:hover{
+    .brief-item:hover {
       border-color:var(--green);
       transform:translateY(-2px);
     }
 
-    .news-thumb{
+    .news-thumb {
       width:130px;
       height:92px;
       display:grid;
       place-items:center;
     }
 
-    .brief-item h3{
+    .brief-item h3 {
       color:var(--green);
       font-size:16px;
       margin:0 0 6px;
     }
 
-    .brief-meta{
+    .brief-meta {
       color:var(--gold);
       font-size:13px;
     }
 
     /* COMPANY */
-    .company-mini-grid{
+    .company-mini-grid {
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:14px;
     }
 
-    .company-mini-card{
+    .company-mini-card {
       border:1px solid var(--border);
       border-radius:18px;
       overflow:hidden;
@@ -414,12 +437,12 @@
       transition:.2s ease;
     }
 
-    .company-mini-card:hover{
+    .company-mini-card:hover {
       transform:translateY(-3px);
       border-color:var(--green);
     }
 
-    .company-thumb{
+    .company-thumb {
       min-height:150px;
       display:grid;
       place-items:center;
@@ -431,22 +454,22 @@
 
     .company-mini-card h3,
     .company-mini-card p,
-    .company-mini-card span{
+    .company-mini-card span {
       padding-left:14px;
       padding-right:14px;
     }
 
-    .company-mini-card h3{
+    .company-mini-card h3 {
       color:var(--green);
       margin-top:14px;
     }
 
-    .company-mini-card p{
+    .company-mini-card p {
       color:var(--gold2);
       font-size:14px;
     }
 
-    .company-mini-card span{
+    .company-mini-card span {
       display:block;
       color:var(--yellow);
       font-weight:900;
@@ -454,13 +477,13 @@
     }
 
     /* STOCK */
-    .stock-grid{
+    .stock-grid {
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:12px;
     }
 
-    .stock-card{
+    .stock-card {
       border:1px solid var(--border);
       border-radius:16px;
       padding:16px;
@@ -469,32 +492,32 @@
       display:block;
     }
 
-    .stock-card:hover{
+    .stock-card:hover {
       border-color:var(--green);
       transform:translateY(-2px);
     }
 
-    .stock-card h3{
+    .stock-card h3 {
       color:var(--green);
       font-size:15px;
       margin:0 0 10px;
     }
 
-    .stock-value{
+    .stock-value {
       color:var(--gold2);
       font-size:26px;
       font-weight:900;
       margin-bottom:6px;
     }
 
-    .stock-change{
+    .stock-change {
       color:var(--green);
       font-size:13px;
       font-weight:900;
     }
 
     /* CEO */
-    .ceo-row{
+    .ceo-row {
       display:grid;
       grid-template-columns:80px 1fr;
       gap:14px;
@@ -502,7 +525,7 @@
       margin-bottom:16px;
     }
 
-    .ceo-photo{
+    .ceo-photo {
       width:80px;
       height:80px;
       border-radius:18px;
@@ -517,22 +540,24 @@
       font-size:34px;
     }
 
-    .monthly-message{
+    .monthly-message {
       display:none;
       border-top:1px solid var(--border);
       margin-top:16px;
       padding-top:16px;
     }
 
-    .monthly-message.show{display:block}
+    .monthly-message.show {
+      display:block;
+    }
 
-    .message-history{
+    .message-history {
       display:grid;
       gap:10px;
       margin-top:14px;
     }
 
-    .history-item{
+    .history-item {
       border:1px solid var(--border);
       border-radius:14px;
       padding:12px;
@@ -540,13 +565,13 @@
     }
 
     /* MEDIA CENTER */
-    .media-grid{
+    .media-grid {
       display:grid;
       grid-template-columns:1.3fr 1fr 1fr;
       gap:18px;
     }
 
-    .media-box{
+    .media-box {
       min-height:240px;
       display:grid;
       place-items:center;
@@ -554,14 +579,16 @@
       transition:.2s ease;
     }
 
-    .media-box:hover{
+    .media-box:hover {
       border-color:var(--green);
       transform:translateY(-3px);
     }
 
-    .media-box.large{min-height:320px}
+    .media-box.large {
+      min-height:320px;
+    }
 
-    .play-circle{
+    .play-circle {
       width:78px;
       height:78px;
       border-radius:50%;
@@ -574,7 +601,7 @@
       z-index:2;
     }
 
-    .play-triangle{
+    .play-triangle {
       width:0;
       height:0;
       border-left:19px solid var(--yellow);
@@ -583,74 +610,69 @@
       margin-left:6px;
     }
 
-    .footer{
+    .footer {
       background:#000;
       border-top:1px solid var(--border);
       padding:26px 0;
       margin-top:28px;
     }
 
-    .footer-grid{
+    .footer-grid {
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:center;
       gap:18px;
       flex-wrap:wrap;
+      text-align:center;
     }
 
-    @media(max-width:1150px){
+    @media(max-width:1150px) {
       .hero-publication,
       .publication-grid,
-      .media-grid{
+      .media-grid {
         grid-template-columns:1fr;
       }
 
       .company-mini-grid,
-      .stock-grid{
+      .stock-grid {
         grid-template-columns:repeat(2,1fr);
       }
     }
 
-    @media(max-width:760px){
-      .mobile-menu{display:inline-flex}
-
-      .nav{
-        width:100%;
-        display:none;
-        flex-direction:row;
-        flex-wrap:wrap;
+    @media(max-width:760px) {
+      .nav {
         justify-content:center;
-        background:#050805;
-        border-top:1px solid var(--border);
-        padding:14px 0 4px;
+        gap:10px;
       }
 
-      .nav.show{display:flex}
-
-      .nav a{
+      .nav a {
         font-size:14px;
-        border:1px solid rgba(216,180,90,.25);
-        padding:10px 12px;
+        padding:10px 14px;
       }
 
-      .hero-publication-text{padding:24px}
-      .hero-publication-image{padding:12px}
+      .hero-publication-text {
+        padding:24px;
+      }
+
+      .hero-publication-image {
+        padding:12px;
+      }
 
       .company-mini-grid,
-      .stock-grid{
+      .stock-grid {
         grid-template-columns:1fr;
       }
 
-      .brief-item{
+      .brief-item {
         grid-template-columns:1fr;
       }
 
-      .news-thumb{
+      .news-thumb {
         width:100%;
         height:145px;
       }
 
-      .ceo-row{
+      .ceo-row {
         grid-template-columns:1fr;
       }
     }
@@ -667,8 +689,6 @@
           <small>Business Intelligence Network</small>
         </span>
       </a>
-
-      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
 
       <nav class="nav" id="mainNav">
         <a class="active" href="index.html">Home</a>
@@ -687,7 +707,6 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="section">
       <div class="container">
         <div class="hero-publication">
@@ -708,11 +727,9 @@
       </div>
     </section>
 
-    <!-- MAIN PUBLICATION GRID -->
     <section class="section" style="padding-top:0;">
       <div class="container publication-grid">
 
-        <!-- DATE + QUICK LINKS -->
         <section class="panel">
           <div class="date-box">
             <h2 id="todayDate">Today</h2>
@@ -720,7 +737,11 @@
 
           <div class="brief-list">
             <a class="brief-item" href="global-business-news.html#market">
-              <div class="news-thumb"><div class="thumb-content"><div class="thumb-title">Market</div></div></div>
+              <div class="news-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Market</div>
+                </div>
+              </div>
               <div>
                 <h3>Market News</h3>
                 <div class="brief-meta">Open market business headlines →</div>
@@ -728,7 +749,11 @@
             </a>
 
             <a class="brief-item" href="global-business-news.html#finance">
-              <div class="news-thumb"><div class="thumb-content"><div class="thumb-title">Finance</div></div></div>
+              <div class="news-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Finance</div>
+                </div>
+              </div>
               <div>
                 <h3>Finance News</h3>
                 <div class="brief-meta">Open finance and banking headlines →</div>
@@ -736,7 +761,11 @@
             </a>
 
             <a class="brief-item" href="global-business-news.html#technology">
-              <div class="news-thumb"><div class="thumb-content"><div class="thumb-title">Tech</div></div></div>
+              <div class="news-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Tech</div>
+                </div>
+              </div>
               <div>
                 <h3>Technology News</h3>
                 <div class="brief-meta">Open technology and AI headlines →</div>
@@ -744,7 +773,11 @@
             </a>
 
             <a class="brief-item" href="global-business-news.html#energy">
-              <div class="news-thumb"><div class="thumb-content"><div class="thumb-title">Energy</div></div></div>
+              <div class="news-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Energy</div>
+                </div>
+              </div>
               <div>
                 <h3>Energy News</h3>
                 <div class="brief-meta">Open energy and infrastructure headlines →</div>
@@ -753,7 +786,6 @@
           </div>
         </section>
 
-        <!-- COMPANIES -->
         <section class="panel">
           <div class="publication-head">
             <h2>Companies</h2>
@@ -761,28 +793,48 @@
 
           <div class="company-mini-grid">
             <a class="company-mini-card" href="vaultara.html">
-              <div class="company-thumb"><div class="thumb-content"><div class="thumb-title">Vaultara</div><div class="thumb-subtitle">Funding • Credit • Formation</div></div></div>
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Vaultara</div>
+                  <div class="thumb-subtitle">Funding • Credit • Formation</div>
+                </div>
+              </div>
               <h3>Vaultara Capital</h3>
               <p>Funding, business credit, personal credit, and formation support.</p>
               <span>Learn More →</span>
             </a>
 
             <a class="company-mini-card" href="family-first.html">
-              <div class="company-thumb"><div class="thumb-content"><div class="thumb-title">Family First</div><div class="thumb-subtitle">Real Estate • Property • Equity</div></div></div>
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">Family First</div>
+                  <div class="thumb-subtitle">Real Estate • Property • Equity</div>
+                </div>
+              </div>
               <h3>Family First Equity Group</h3>
               <p>Real estate investment, acquisitions, and property education.</p>
               <span>Learn More →</span>
             </a>
 
             <a class="company-mini-card" href="vitalpath.html">
-              <div class="company-thumb"><div class="thumb-content"><div class="thumb-title">VitalPath</div><div class="thumb-subtitle">Care • Wellness • Support</div></div></div>
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">VitalPath</div>
+                  <div class="thumb-subtitle">Care • Wellness • Support</div>
+                </div>
+              </div>
               <h3>VitalPath Care Group</h3>
               <p>Care services, wellness education, and family support information.</p>
               <span>Learn More →</span>
             </a>
 
             <a class="company-mini-card" href="revmotion.html">
-              <div class="company-thumb"><div class="thumb-content"><div class="thumb-title">RevMotion</div><div class="thumb-subtitle">Auto • Marine • Transport</div></div></div>
+              <div class="company-thumb">
+                <div class="thumb-content">
+                  <div class="thumb-title">RevMotion</div>
+                  <div class="thumb-subtitle">Auto • Marine • Transport</div>
+                </div>
+              </div>
               <h3>RevMotion Auto & Marine LLC</h3>
               <p>Auto, marine, repair education, and transportation support.</p>
               <span>Learn More →</span>
@@ -790,7 +842,6 @@
           </div>
         </section>
 
-        <!-- STOCK WATCH -->
         <section class="panel">
           <div class="publication-head">
             <h2>Stock Market Watch</h2>
@@ -823,7 +874,6 @@
           </div>
         </section>
 
-        <!-- CEO MESSAGE -->
         <section class="panel">
           <div class="publication-head">
             <h2>CEO Message</h2>
@@ -854,7 +904,6 @@
           </div>
         </section>
 
-        <!-- BUSINESS BOOK -->
         <section class="panel">
           <div class="publication-head">
             <h2>Business Intelligence Book</h2>
@@ -868,7 +917,6 @@
       </div>
     </section>
 
-    <!-- IMAGE / VIDEO MEDIA SPACES -->
     <section class="section">
       <div class="container panel">
         <div class="publication-head">
@@ -878,7 +926,9 @@
         <div class="media-grid">
           <a class="media-box large" href="titancore-news.html#video">
             <div class="thumb-content">
-              <div class="play-circle"><div class="play-triangle"></div></div>
+              <div class="play-circle">
+                <div class="play-triangle"></div>
+              </div>
               <div class="thumb-title">Daily Business Video</div>
               <div class="thumb-subtitle">Video space for market and business briefing</div>
             </div>
@@ -919,11 +969,6 @@
   </footer>
 
   <script>
-    function toggleMenu(){
-      const nav=document.getElementById("mainNav");
-      if(nav){nav.classList.toggle("show");}
-    }
-
     function updateTodayDate(){
       const dateBox=document.getElementById("todayDate");
       if(!dateBox)return;
@@ -954,15 +999,6 @@
 
     document.addEventListener("DOMContentLoaded",function(){
       updateTodayDate();
-
-      const nav=document.getElementById("mainNav");
-      if(nav){
-        nav.querySelectorAll("a").forEach(function(link){
-          link.addEventListener("click",function(){
-            nav.classList.remove("show");
-          });
-        });
-      }
     });
   </script>
 </body>
