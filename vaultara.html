@@ -5,23 +5,449 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Vaultara Capital | TitanCore Holdings</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root{
+      --black:#000;
+      --panel:#050b07;
+      --green:#00a651;
+      --gold:#d8b45a;
+      --gold2:#f5d98d;
+      --yellow:#ffd400;
+      --white:#fff;
+      --border:rgba(216,180,90,.42);
+      --blue:#2f73ff;
+      --silver:#cfd6df;
+    }
+
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(0,166,81,.18), transparent 28%),
+        linear-gradient(180deg,#000 0%,#041006 50%,#000 100%);
+      color:var(--gold2);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.55;
+    }
+
+    a{text-decoration:none;color:inherit;}
+
+    .page{
+      width:min(1200px,calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .site-header{
+      background:#000;
+      border-bottom:1px solid var(--border);
+      box-shadow:0 18px 45px rgba(0,0,0,.8);
+      position:relative;
+      z-index:10;
+    }
+
+    .header-inner{padding:22px 0 18px;}
+
+    .brand-row{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding-bottom:22px;
+      border-bottom:1px solid rgba(216,180,90,.34);
+    }
+
+    .logo-slot{
+      width:70px;
+      height:70px;
+      min-width:70px;
+      border:2px solid var(--gold);
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:var(--yellow);
+      font-size:42px;
+      font-weight:900;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,212,0,.18), transparent 35%),
+        linear-gradient(180deg,#101812,#020403);
+      box-shadow:0 0 26px rgba(0,166,81,.25);
+      overflow:hidden;
+    }
+
+    .logo-slot img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .brand-title{
+      display:block;
+      color:var(--green);
+      font-size:clamp(30px,5vw,48px);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:.3px;
+    }
+
+    .brand-subtitle{
+      display:block;
+      color:var(--gold);
+      margin-top:8px;
+      font-size:clamp(13px,2.3vw,18px);
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .nav{
+      padding:22px 0 4px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .nav a{
+      color:#fff;
+      font-weight:900;
+      font-size:14px;
+      padding:10px 13px;
+      border-radius:999px;
+      transition:.18s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:var(--yellow);
+      border:1px solid var(--border);
+      background:rgba(216,180,90,.08);
+    }
+
+    main{padding:22px 0 64px;}
+
+    .hero{
+      border:1px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.72),rgba(0,0,0,.32)),
+        url("https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=1800&q=80");
+      background-size:cover;
+      background-position:center;
+      box-shadow:0 22px 60px rgba(0,0,0,.65);
+    }
+
+    .hero-content{
+      padding:48px;
+      max-width:780px;
+    }
+
+    .kicker{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0;
+      color:var(--green);
+      font-size:clamp(42px,7vw,76px);
+      line-height:1.02;
+      font-weight:900;
+    }
+
+    .hero p{
+      color:var(--gold2);
+      font-size:clamp(18px,2.2vw,22px);
+      margin:22px 0 0;
+      max-width:720px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .btn{
+      border-radius:10px;
+      padding:14px 18px;
+      border:1px solid var(--border);
+      font-weight:900;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:48px;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      cursor:pointer;
+    }
+
+    .btn.gold{
+      background:var(--yellow);
+      color:#000;
+      border-color:var(--yellow);
+    }
+
+    .section{
+      margin-top:18px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:
+        radial-gradient(circle at top left,rgba(47,115,255,.12),transparent 34%),
+        linear-gradient(180deg,rgba(7,19,11,.96),rgba(0,0,0,.96));
+      box-shadow:0 16px 42px rgba(0,0,0,.5);
+      padding:24px;
+    }
+
+    .section-header{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      padding-bottom:16px;
+      margin-bottom:20px;
+    }
+
+    h2{
+      margin:0;
+      color:var(--green);
+      font-size:clamp(30px,5vw,50px);
+      line-height:1.07;
+      font-weight:900;
+    }
+
+    h3{
+      color:var(--green);
+      font-size:24px;
+      margin:0 0 10px;
+    }
+
+    p{
+      color:var(--gold2);
+      font-size:18px;
+      margin:0 0 14px;
+    }
+
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+
+    .grid.two{grid-template-columns:repeat(2,1fr);}
+    .grid.three{grid-template-columns:repeat(3,1fr);}
+
+    .card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(0,0,0,.58);
+      padding:20px;
+      transition:.18s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,166,81,.75);
+      box-shadow:0 0 22px rgba(0,166,81,.15);
+    }
+
+    .card .tag{
+      color:var(--blue);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:12px;
+      margin-bottom:8px;
+    }
+
+    .card-link{
+      color:var(--yellow);
+      font-weight:900;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      margin-top:8px;
+    }
+
+    .tab-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin:18px 0;
+    }
+
+    .tab{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:12px 18px;
+      background:#050505;
+      color:var(--gold2);
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .tab.active{
+      background:var(--yellow);
+      color:#000;
+      border-color:var(--yellow);
+    }
+
+    form{
+      margin-top:18px;
+      display:grid;
+      gap:16px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    label{
+      display:block;
+      color:var(--green);
+      font-weight:900;
+      font-size:16px;
+      margin-bottom:8px;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      background:#050505;
+      color:var(--gold2);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:15px;
+      font-size:16px;
+      min-height:52px;
+      outline:none;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:var(--green);
+      box-shadow:0 0 0 3px rgba(0,166,81,.15);
+    }
+
+    .hidden{display:none;}
+
+    .notice{
+      color:#cbbd8c;
+      font-size:16px;
+      border-left:3px solid var(--gold);
+      padding-left:14px;
+      margin-top:16px;
+    }
+
+    footer{
+      background:#000;
+      border-top:1px solid var(--border);
+      padding:28px 0;
+      color:#b9aa7a;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+      font-size:14px;
+    }
+
+    .footer-inner strong{color:var(--green);}
+
+    @media(max-width:900px){
+      .grid.two,
+      .grid.three,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-content{padding:34px 24px;}
+    }
+
+    @media(max-width:640px){
+      .page{width:calc(100% - 16px);}
+
+      .brand-row{align-items:flex-start;}
+
+      .logo-slot{
+        width:58px;
+        height:58px;
+        min-width:58px;
+        font-size:34px;
+      }
+
+      .brand-title{font-size:28px;}
+
+      .brand-subtitle{
+        font-size:11px;
+        letter-spacing:2.4px;
+      }
+
+      .nav{
+        gap:18px 24px;
+      }
+
+      .nav a{
+        font-size:18px;
+        padding:8px 2px;
+        border-radius:0;
+      }
+
+      .nav a:hover,
+      .nav a.active{
+        border:none;
+        background:transparent;
+        color:var(--yellow);
+      }
+
+      .section{padding:20px;}
+
+      .btn{width:100%;}
+
+      h1{font-size:42px;}
+    }
+  </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="container navwrap">
-      <a class="logo" href="index.html">
-        <span class="logo-mark">TC</span>
-        <span>
-          TitanCore Holdings
-          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
-            Vaultara Capital
-          </small>
-        </span>
-      </a>
+  <header class="site-header">
+    <div class="page header-inner">
+      <div class="brand-row">
+        <a class="logo-slot" href="index.html" aria-label="TitanCore Home">
+          <!-- Replace T later with your real logo:
+          <img src="titancore-logo.png" alt="TitanCore Holdings Logo">
+          -->
+          T
+        </a>
 
-      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
+        <a href="index.html">
+          <span class="brand-title">TitanCore Holdings</span>
+          <span class="brand-subtitle">Vaultara Capital</span>
+        </a>
+      </div>
 
       <nav class="nav">
         <a href="index.html">Home</a>
@@ -29,7 +455,7 @@
         <a href="institution.html">Institution</a>
         <a href="institution-financial.html">Institution Financial</a>
         <a href="banks.html">Banks</a>
-        <a class="active" href="companies.html">Company</a>
+        <a href="companies.html">Company</a>
         <a href="join-us.html">Join Us</a>
         <a href="business-book.html">Business Intelligence Book</a>
         <a href="stock-watch.html">Stock Market Watch</a>
@@ -39,355 +465,480 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="kicker">Vaultara Capital</div>
+  <main class="page">
+    <section class="hero" id="dailyHero">
+      <div class="hero-content">
+        <div class="kicker">Vaultara Capital</div>
 
-          <h1>Funding, Credit Education, and Business Formation Support</h1>
-
-          <p class="lead">
-            Vaultara Capital is the TitanCore company focused on helping people learn about funding,
-            personal credit, business credit, credit improvement, and business formation preparation.
-          </p>
-
-          <div class="actions">
-            <a class="btn" href="#vaultara-services">View Services</a>
-            <a class="btn ghost" href="#credit-education">Credit Education</a>
-            <a class="btn ghost" href="contact.html">Contact TitanCore</a>
-          </div>
-
-          <p class="notice">
-            Public information only. Vaultara content is not financial advice, credit repair guarantee, or funding approval.
-          </p>
-        </div>
-
-        <div class="panel">
-          <h3>Vaultara Focus Areas</h3>
-
-          <div class="status-row">
-            <span>Business Funding</span>
-            <span class="badge green">Info</span>
-          </div>
-
-          <div class="status-row">
-            <span>Personal Funding</span>
-            <span class="badge green">Info</span>
-          </div>
-
-          <div class="status-row">
-            <span>Business Credit</span>
-            <span class="badge green">Education</span>
-          </div>
-
-          <div class="status-row">
-            <span>Personal Credit</span>
-            <span class="badge green">Education</span>
-          </div>
-
-          <div class="status-row">
-            <span>Business Formation</span>
-            <span class="badge green">Support</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="vaultara-services" class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Vaultara Services</div>
-            <h2>What Vaultara Capital Helps People Understand</h2>
-            <p>
-              Vaultara is built to provide public information and support around funding readiness,
-              credit education, and business formation planning.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Business Funding</h3>
-            <p>
-              Information for business owners who want to understand funding options,
-              business readiness, revenue, documentation, credit profile, and lender expectations.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Personal Funding</h3>
-            <p>
-              Information for individuals who want to understand personal funding,
-              credit readiness, income review, debt management, and responsible borrowing.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Credit</h3>
-            <p>
-              Education about business credit profiles, vendor accounts, payment history,
-              business identity, banking, and credit-building preparation.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Personal Credit</h3>
-            <p>
-              Education about credit scores, payment history, utilization, accounts,
-              inquiries, collections, and habits that may affect credit health.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Credit Improvement Education</h3>
-            <p>
-              Information about reading credit reports, understanding negative items,
-              protecting credit, and building better financial habits.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Formation</h3>
-            <p>
-              Information about choosing a business structure, preparing to open a company,
-              organizing documents, and understanding basic startup readiness.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="credit-education" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Credit Education Center</div>
-            <h2>Learn Before You Apply</h2>
-            <p>
-              Vaultara should not only sell services. It should teach people how credit works,
-              what affects the score, and how to prepare before applying for funding, a house,
-              a car, or business credit.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Payment History</h3>
-            <p>
-              Paying on time is one of the most important credit habits.
-              Late payments may hurt a credit profile and make approval harder.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Credit Utilization</h3>
-            <p>
-              Using too much of a credit card limit may hurt the score.
-              Many people try to keep balances low compared with available credit.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Hard Inquiries</h3>
-            <p>
-              Applying for too much credit in a short time can create hard inquiries
-              and may make lenders view the borrower as higher risk.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Collections & Charge-Offs</h3>
-            <p>
-              Negative accounts can affect credit. People should understand what is reporting,
-              what is accurate, and what steps may be available.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Credit Mix</h3>
-            <p>
-              Different types of accounts may affect the credit profile,
-              including credit cards, auto loans, personal loans, and mortgages.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Length of Credit History</h3>
-            <p>
-              Older accounts can help show history. Closing old accounts without understanding the impact
-              can sometimes hurt the profile.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Home Buying Credit Education</div>
-            <h2>Credit and Buying a Home</h2>
-            <p>
-              Vaultara can help visitors understand how credit can affect home buying preparation.
-              Exact mortgage requirements depend on lender, loan program, income, debt, down payment,
-              and full underwriting.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Credit Score Range</h3>
-            <p>
-              Different loan programs may have different minimum credit score requirements.
-              Visitors should speak with a licensed mortgage professional before making decisions.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Debt-to-Income</h3>
-            <p>
-              Credit score is not the only factor. Lenders may also review income,
-              debts, employment, payment history, and available funds.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Preparation Matters</h3>
-            <p>
-              Before applying, people should review credit reports, reduce unnecessary balances,
-              avoid new debt if possible, and prepare documents.
-            </p>
-          </div>
-        </div>
-
-        <p class="notice">
-          Vaultara does not guarantee mortgage approval. This section is educational only.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Business Formation Education</div>
-            <h2>Before Opening a Business</h2>
-            <p>
-              Vaultara can help people think through what kind of business they want to open
-              and what structure may fit their goals before they start.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Business Idea</h3>
-            <p>
-              What problem will the business solve? Who is the customer?
-              What product or service will be sold?
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Structure</h3>
-            <p>
-              People may compare sole proprietorship, LLC, corporation, or other structures.
-              A legal or tax professional should review what fits best.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Identity</h3>
-            <p>
-              Business name, domain, email, phone number, address, records,
-              bank account, and business profile matter for credibility.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Bank Account</h3>
-            <p>
-              Separating personal and business money can help with organization,
-              accounting, and future financial review.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Credit Preparation</h3>
-            <p>
-              Business credit may require proper company setup, vendor accounts,
-              payment history, banking activity, and documentation.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Funding Readiness</h3>
-            <p>
-              Lenders may review revenue, time in business, credit, bank statements,
-              tax records, and business stability.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Contact Vaultara Through TitanCore</div>
-            <h2>Start With a Public Request</h2>
-            <p>
-              Visitors interested in Vaultara can use the TitanCore contact page and select Vaultara Capital
-              as the reason for contact.
-            </p>
-          </div>
-        </div>
-
-        <div class="actions">
-          <a class="btn" href="contact.html">Contact About Vaultara</a>
-          <a class="btn ghost" href="companies.html">Back to Companies</a>
-          <a class="btn ghost" href="business-book.html">Open Business Intelligence Book</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container panel">
-        <h2>Vaultara Notice</h2>
+        <h1>Funding, Credit Education, and Business Formation Support</h1>
 
         <p>
-          Vaultara Capital public content is for education and general information only.
-          It is not financial advice, legal advice, tax advice, credit repair guarantee,
-          funding approval, mortgage approval, or a promise of results.
+          Vaultara Capital is the TitanCore company focused on helping people understand business funding, personal funding, business credit, personal credit, credit education, and business formation preparation.
         </p>
 
-        <p class="notice">
-          Credit, funding, business formation, and financial decisions should be reviewed with the appropriate
-          licensed professionals, lenders, attorneys, tax professionals, or financial advisors when needed.
-        </p>
+        <div class="hero-buttons">
+          <a class="btn gold" href="#funding-form">Start Funding Request →</a>
+          <a class="btn" href="#credit-form">Start Credit Request →</a>
+          <a class="btn" href="#formation-form">Business Formation →</a>
+        </div>
       </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Vaultara Focus Areas</h2>
+      </div>
+
+      <div class="grid three">
+        <a class="card" href="#funding-form">
+          <div class="tag">Funding</div>
+          <h3>Business Funding</h3>
+          <p>Information for business owners who want to understand funding options, revenue review, credit profile, and lender expectations.</p>
+          <span class="card-link">Start Business Funding →</span>
+        </a>
+
+        <a class="card" href="#funding-form">
+          <div class="tag">Personal</div>
+          <h3>Personal Funding</h3>
+          <p>Information for individuals who want to understand personal funding, income review, debt, credit readiness, and borrowing preparation.</p>
+          <span class="card-link">Start Personal Funding →</span>
+        </a>
+
+        <a class="card" href="#credit-form">
+          <div class="tag">Credit</div>
+          <h3>Credit Education</h3>
+          <p>Personal and business credit education, including payment history, utilization, inquiries, collections, and credit-building preparation.</p>
+          <span class="card-link">Start Credit Request →</span>
+        </a>
+
+        <a class="card" href="#formation-form">
+          <div class="tag">Formation</div>
+          <h3>Business Formation</h3>
+          <p>Information about choosing a business structure, preparing records, organizing documents, and getting startup-ready.</p>
+          <span class="card-link">Start Formation Request →</span>
+        </a>
+
+        <a class="card" href="business-book.html">
+          <div class="tag">Learning</div>
+          <h3>Business Intelligence Book</h3>
+          <p>Public education and research for business, credit, funding, real estate, country intelligence, and market preparation.</p>
+          <span class="card-link">Open Business Book →</span>
+        </a>
+
+        <a class="card" href="contact.html">
+          <div class="tag">Contact</div>
+          <h3>Contact Through TitanCore</h3>
+          <p>Public requests can route through TitanCore Holdings before any private conversation or formal review.</p>
+          <span class="card-link">Contact TitanCore →</span>
+        </a>
+      </div>
+
+      <p class="notice">
+        Public information only. Vaultara Capital content is not financial advice, legal advice, tax advice, credit repair guarantee, funding approval, mortgage approval, or a promise of results.
+      </p>
+    </section>
+
+    <section class="section" id="funding-form">
+      <div class="section-header">
+        <h2>Funding Request</h2>
+      </div>
+
+      <p>
+        Choose whether this is for business funding or personal funding. The form changes based on the choice.
+      </p>
+
+      <div class="tab-row">
+        <button class="tab active" type="button" data-funding-tab="business">Business Funding</button>
+        <button class="tab" type="button" data-funding-tab="personal">Personal Funding</button>
+      </div>
+
+      <form name="vaultara-funding" method="POST" data-netlify="true" action="thank-you.html">
+        <input type="hidden" name="form-name" value="vaultara-funding" />
+        <input type="hidden" id="fundingType" name="fundingType" value="Business Funding" />
+
+        <div class="form-grid">
+          <div>
+            <label>Full Name</label>
+            <input name="fullName" type="text" placeholder="Enter your full name" required />
+          </div>
+
+          <div>
+            <label>Email Address</label>
+            <input name="email" type="email" placeholder="Enter your email address" required />
+          </div>
+
+          <div>
+            <label>Phone Number</label>
+            <input name="phone" type="tel" placeholder="Enter your phone number" />
+          </div>
+
+          <div>
+            <label>Funding Amount Needed</label>
+            <input name="fundingAmount" type="text" placeholder="Example: $25,000" />
+          </div>
+        </div>
+
+        <div id="businessFundingFields" class="form-grid">
+          <div>
+            <label>Business Name</label>
+            <input name="businessName" type="text" placeholder="Enter business name" />
+          </div>
+
+          <div>
+            <label>Time in Business</label>
+            <input name="timeInBusiness" type="text" placeholder="Example: 1 year" />
+          </div>
+
+          <div>
+            <label>Monthly Revenue</label>
+            <input name="monthlyRevenue" type="text" placeholder="Example: $10,000" />
+          </div>
+
+          <div>
+            <label>Credit Score Range</label>
+            <select name="businessCreditScore">
+              <option value="">Choose one</option>
+              <option>720+</option>
+              <option>680 - 719</option>
+              <option>640 - 679</option>
+              <option>600 - 639</option>
+              <option>Below 600</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="personalFundingFields" class="form-grid hidden">
+          <div>
+            <label>State</label>
+            <input name="state" type="text" placeholder="Enter your state" />
+          </div>
+
+          <div>
+            <label>Income Range</label>
+            <input name="incomeRange" type="text" placeholder="Example: $3,000/month" />
+          </div>
+
+          <div>
+            <label>Employment Type</label>
+            <select name="employmentType">
+              <option value="">Choose one</option>
+              <option>W-2 Employee</option>
+              <option>Self-Employed</option>
+              <option>Business Owner</option>
+              <option>Contractor</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Credit Score Range</label>
+            <select name="personalCreditScore">
+              <option value="">Choose one</option>
+              <option>720+</option>
+              <option>680 - 719</option>
+              <option>640 - 679</option>
+              <option>600 - 639</option>
+              <option>Below 600</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell Vaultara what you are trying to do"></textarea>
+        </div>
+
+        <button class="btn gold" type="submit">Submit Funding Request →</button>
+      </form>
+    </section>
+
+    <section class="section" id="credit-form">
+      <div class="section-header">
+        <h2>Credit Education Request</h2>
+      </div>
+
+      <p>
+        Choose business credit or personal credit. Vaultara should support both, not only business credit.
+      </p>
+
+      <div class="tab-row">
+        <button class="tab active" type="button" data-credit-tab="personal">Personal Credit</button>
+        <button class="tab" type="button" data-credit-tab="business">Business Credit</button>
+      </div>
+
+      <form name="vaultara-credit" method="POST" data-netlify="true" action="thank-you.html">
+        <input type="hidden" name="form-name" value="vaultara-credit" />
+        <input type="hidden" id="creditType" name="creditType" value="Personal Credit" />
+
+        <div class="form-grid">
+          <div>
+            <label>Full Name</label>
+            <input name="fullName" type="text" placeholder="Enter your full name" required />
+          </div>
+
+          <div>
+            <label>Email Address</label>
+            <input name="email" type="email" placeholder="Enter your email address" required />
+          </div>
+
+          <div>
+            <label>Phone Number</label>
+            <input name="phone" type="tel" placeholder="Enter your phone number" />
+          </div>
+
+          <div>
+            <label>Credit Situation</label>
+            <select name="creditSituation">
+              <option value="">Choose one</option>
+              <option>Need to build credit</option>
+              <option>Need to improve credit</option>
+              <option>Collections / charge-offs</option>
+              <option>High utilization</option>
+              <option>Late payments</option>
+              <option>Preparing for funding</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="personalCreditFields" class="form-grid">
+          <div>
+            <label>Personal Credit Goal</label>
+            <select name="personalCreditGoal">
+              <option value="">Choose one</option>
+              <option>Personal funding preparation</option>
+              <option>Home buying preparation</option>
+              <option>Auto financing preparation</option>
+              <option>Credit improvement education</option>
+              <option>General credit education</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Current Score Range</label>
+            <select name="personalScoreRange">
+              <option value="">Choose one</option>
+              <option>720+</option>
+              <option>680 - 719</option>
+              <option>640 - 679</option>
+              <option>600 - 639</option>
+              <option>Below 600</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="businessCreditFields" class="form-grid hidden">
+          <div>
+            <label>Business Name</label>
+            <input name="businessName" type="text" placeholder="Enter business name" />
+          </div>
+
+          <div>
+            <label>Business Credit Goal</label>
+            <select name="businessCreditGoal">
+              <option value="">Choose one</option>
+              <option>Build business credit</option>
+              <option>Prepare for vendor accounts</option>
+              <option>Prepare for business funding</option>
+              <option>Separate business and personal credit</option>
+              <option>General business credit education</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell Vaultara what credit help or education you need"></textarea>
+        </div>
+
+        <button class="btn gold" type="submit">Submit Credit Request →</button>
+      </form>
+    </section>
+
+    <section class="section" id="formation-form">
+      <div class="section-header">
+        <h2>Business Formation Request</h2>
+      </div>
+
+      <p>
+        This form is for people who want help preparing to open or organize a business.
+      </p>
+
+      <form name="vaultara-formation" method="POST" data-netlify="true" action="thank-you.html">
+        <input type="hidden" name="form-name" value="vaultara-formation" />
+
+        <div class="form-grid">
+          <div>
+            <label>Full Name</label>
+            <input name="fullName" type="text" placeholder="Enter your full name" required />
+          </div>
+
+          <div>
+            <label>Email Address</label>
+            <input name="email" type="email" placeholder="Enter your email address" required />
+          </div>
+
+          <div>
+            <label>Phone Number</label>
+            <input name="phone" type="tel" placeholder="Enter your phone number" />
+          </div>
+
+          <div>
+            <label>State</label>
+            <input name="state" type="text" placeholder="State where you want to form business" />
+          </div>
+
+          <div>
+            <label>Business Type</label>
+            <select name="businessType">
+              <option value="">Choose one</option>
+              <option>LLC</option>
+              <option>Corporation</option>
+              <option>Sole Proprietor</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Business Stage</label>
+            <select name="businessStage">
+              <option value="">Choose one</option>
+              <option>Idea stage</option>
+              <option>Already formed</option>
+              <option>Need EIN / setup guidance</option>
+              <option>Need bank account preparation</option>
+              <option>Need credit readiness</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell Vaultara what you are trying to start or organize"></textarea>
+        </div>
+
+        <button class="btn gold" type="submit">Submit Formation Request →</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Learn Before You Apply</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Payment History</h3>
+          <p>Paying on time is one of the most important credit habits. Late payments may hurt a credit profile and make approval harder.</p>
+        </div>
+
+        <div class="card">
+          <h3>Credit Utilization</h3>
+          <p>Using too much of a credit card limit may hurt the score. Many people try to keep balances low compared with available credit.</p>
+        </div>
+
+        <div class="card">
+          <h3>Business Bank Account</h3>
+          <p>Separating personal and business money can help with organization, accounting, and future financial review.</p>
+        </div>
+
+        <div class="card">
+          <h3>Funding Readiness</h3>
+          <p>Lenders may review revenue, time in business, credit, bank statements, tax records, and business stability.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Vaultara Notice</h2>
+      </div>
+
+      <p>
+        Vaultara Capital public content is for education and general information only. It is not financial advice, legal advice, tax advice, credit repair guarantee, funding approval, mortgage approval, or a promise of results.
+      </p>
+
+      <p>
+        Credit, funding, business formation, and financial decisions should be reviewed with the appropriate licensed professionals, lenders, attorneys, tax professionals, or financial advisors when needed.
+      </p>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>Vaultara Capital</strong>
-        <p class="notice">
-          Public company information page inside the TitanCore Holdings website.
-        </p>
-      </div>
-
-      <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+  <footer>
+    <div class="page footer-inner">
+      <strong>Vaultara Capital</strong>
+      <span>Public company information page inside TitanCore Holdings.</span>
+      <span>contact@vaultaracapital.com</span>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const heroImages = [
+      "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=80"
+    ];
+
+    const today = new Date();
+    const dayNumber = Math.floor(today.getTime() / 86400000);
+    const dailyImage = heroImages[dayNumber % heroImages.length];
+
+    const hero = document.getElementById("dailyHero");
+    hero.style.backgroundImage =
+      `linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.72),rgba(0,0,0,.32)), url("${dailyImage}")`;
+
+    const fundingTabs = document.querySelectorAll("[data-funding-tab]");
+    const fundingType = document.getElementById("fundingType");
+    const businessFundingFields = document.getElementById("businessFundingFields");
+    const personalFundingFields = document.getElementById("personalFundingFields");
+
+    fundingTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        fundingTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        const type = tab.dataset.fundingTab;
+
+        if(type === "business"){
+          fundingType.value = "Business Funding";
+          businessFundingFields.classList.remove("hidden");
+          personalFundingFields.classList.add("hidden");
+        } else {
+          fundingType.value = "Personal Funding";
+          personalFundingFields.classList.remove("hidden");
+          businessFundingFields.classList.add("hidden");
+        }
+      });
+    });
+
+    const creditTabs = document.querySelectorAll("[data-credit-tab]");
+    const creditType = document.getElementById("creditType");
+    const personalCreditFields = document.getElementById("personalCreditFields");
+    const businessCreditFields = document.getElementById("businessCreditFields");
+
+    creditTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        creditTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        const type = tab.dataset.creditTab;
+
+        if(type === "personal"){
+          creditType.value = "Personal Credit";
+          personalCreditFields.classList.remove("hidden");
+          businessCreditFields.classList.add("hidden");
+        } else {
+          creditType.value = "Business Credit";
+          businessCreditFields.classList.remove("hidden");
+          personalCreditFields.classList.add("hidden");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
