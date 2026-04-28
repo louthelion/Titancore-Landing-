@@ -1,0 +1,139 @@
+{
+  "siteDateMode": "auto",
+  "hero": {
+    "title": "Business Intelligence for Markets, Companies, Countries, Stocks, and Growth.",
+    "description": "TitanCore Holdings is building a public business information platform where visitors can review business news, market movement, country-level business intelligence, stock watchlists, company information, and investor-facing public content.",
+    "image": "images/hero-1.jpg"
+  },
+  "quickNews": [
+    {
+      "title": "Market News",
+      "label": "Market",
+      "description": "Open market business headlines",
+      "link": "global-business-news.html#market",
+      "image": "images/market-1.jpg"
+    },
+    {
+      "title": "Finance News",
+      "label": "Finance",
+      "description": "Open finance and banking headlines",
+      "link": "global-business-news.html#finance",
+      "image": "images/finance-1.jpg"
+    },
+    {
+      "title": "Technology News",
+      "label": "Tech",
+      "description": "Open technology and AI headlines",
+      "link": "global-business-news.html#technology",
+      "image": "images/tech-1.jpg"
+    },
+    {
+      "title": "Energy News",
+      "label": "Energy",
+      "description": "Open energy and infrastructure headlines",
+      "link": "global-business-news.html#energy",
+      "image": "images/energy-1.jpg"
+    },
+    {
+      "title": "Economy News",
+      "label": "Economy",
+      "description": "Open economy and business headlines",
+      "link": "global-business-news.html#economy",
+      "image": "images/economy-1.jpg"
+    }
+  ],
+  "stockWatch": [
+    {
+      "title": "S&P 500",
+      "value": "Watch",
+      "description": "Broad U.S. market direction",
+      "link": "stock-watch.html#sp500"
+    },
+    {
+      "title": "NASDAQ",
+      "value": "Watch",
+      "description": "Technology and growth market watch",
+      "link": "stock-watch.html#nasdaq"
+    },
+    {
+      "title": "Dow Jones",
+      "value": "Watch",
+      "description": "Major U.S. company movement",
+      "link": "stock-watch.html#dow"
+    },
+    {
+      "title": "Global Markets",
+      "value": "Watch",
+      "description": "Country and region market direction",
+      "link": "stock-watch.html#global-markets"
+    }
+  ],
+  "companies": [
+    {
+      "title": "Vaultara Capital",
+      "label": "Vaultara",
+      "subtitle": "Funding • Credit • Formation",
+      "description": "Funding, business credit, personal credit, and formation support.",
+      "link": "vaultara.html",
+      "image": "images/vaultara-1.jpg"
+    },
+    {
+      "title": "Family First Equity Group",
+      "label": "Family First",
+      "subtitle": "Real Estate • Property • Equity",
+      "description": "Real estate investment, acquisitions, and property education.",
+      "link": "family-first.html",
+      "image": "images/family-first-1.jpg"
+    },
+    {
+      "title": "VitalPath Care Group",
+      "label": "VitalPath",
+      "subtitle": "Care • Wellness • Support",
+      "description": "Care services, wellness education, and family support information.",
+      "link": "vitalpath.html",
+      "image": "images/vitalpath-1.jpg"
+    },
+    {
+      "title": "RevMotion Auto & Marine LLC",
+      "label": "RevMotion",
+      "subtitle": "Auto • Marine • Transport",
+      "description": "Auto, marine, repair education, and transportation support.",
+      "link": "revmotion.html",
+      "image": "images/revmotion-1.jpg"
+    }
+  ],
+  "ceoMessage": {
+    "mode": "monthly",
+    "title": "Monthly CEO Message",
+    "date": "Auto-updating monthly message",
+    "body": "TitanCore Holdings is being built to deliver trusted business intelligence, company information, and market awareness for visitors, institutions, investors, banks, and business decision-makers.",
+    "specialActive": false,
+    "specialTitle": "Special CEO Message",
+    "specialDate": "Special Update",
+    "specialBody": "A special public message from TitanCore Holdings can appear here when a major business, holiday, or world event requires a leadership update.",
+    "archive": [
+      "Previous CEO Message — Archive placeholder",
+      "Older CEO Message — Archive placeholder"
+    ]
+  },
+  "mediaCenter": {
+    "video": {
+      "title": "Daily Business Video",
+      "subtitle": "Video space for market and business briefing",
+      "link": "titancore-news.html#video",
+      "image": "images/video-1.jpg"
+    },
+    "news": {
+      "title": "News Image",
+      "subtitle": "Space for daily business news image",
+      "link": "global-business-news.html",
+      "image": "images/news-1.jpg"
+    },
+    "stock": {
+      "title": "Market Image",
+      "subtitle": "Space for stock and economy image",
+      "link": "stock-watch.html",
+      "image": "images/stock-1.jpg"
+    }
+  }
+}
