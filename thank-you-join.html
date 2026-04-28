@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>TitanCore Holdings | Thank You</title>
+
+  <style>
+    :root{
+      --black:#000;
+      --green:#00a651;
+      --green2:#22c66d;
+      --gold:#d8b45a;
+      --gold2:#f3d88b;
+      --yellow:#ffd400;
+      --border:rgba(216,180,90,.45);
+      --shadow:0 18px 55px rgba(0,0,0,.72);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left,rgba(0,166,81,.18),transparent 30%),
+        radial-gradient(circle at top right,rgba(216,180,90,.14),transparent 28%),
+        linear-gradient(180deg,#000 0%,#041005 55%,#000 100%);
+      color:var(--gold2);
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.55;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      width:min(1180px,calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:#000;
+      border-bottom:1px solid var(--border);
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow:0 12px 34px rgba(0,0,0,.75);
+    }
+
+    .header-inner{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:18px;
+      align-items:center;
+      padding:18px 0 12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo-slot{
+      width:58px;
+      height:58px;
+      min-width:58px;
+      border-radius:10px;
+      border:2px solid var(--gold);
+      display:grid;
+      place-items:center;
+      color:var(--yellow);
+      background:
+        radial-gradient(circle at 30% 25%,rgba(216,180,90,.25),transparent 38%),
+        linear-gradient(180deg,#101810,#020402);
+      font-size:34px;
+      font-weight:900;
+      box-shadow:0 0 22px rgba(0,166,81,.24);
+    }
+
+    .brand-text strong{
+      display:block;
+      color:var(--green);
+      font-size:28px;
+      font-weight:900;
+      line-height:1.05;
+    }
+
+    .brand-text small{
+      display:block;
+      color:var(--gold);
+      font-size:12px;
+      letter-spacing:2.2px;
+      text-transform:uppercase;
+      font-weight:900;
+      margin-top:4px;
+    }
+
+    .nav{
+      grid-column:1 / -1;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:6px;
+      padding-top:12px;
+      border-top:1px solid rgba(216,180,90,.25);
+    }
+
+    .nav a{
+      color:#fff;
+      font-size:13px;
+      font-weight:800;
+      padding:9px 14px;
+      border-radius:7px;
+      border:1px solid transparent;
+      white-space:nowrap;
+      background:transparent;
+      transition:.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:var(--yellow);
+      border-color:rgba(216,180,90,.45);
+      background:rgba(216,180,90,.07);
+    }
+
+    main{
+      padding:34px 0 60px;
+    }
+
+    .thank-card{
+      min-height:520px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.80)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .overlay{
+      min-height:520px;
+      padding:48px;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.78),rgba(0,0,0,.32)),
+        radial-gradient(circle at 20% 15%,rgba(0,166,81,.20),transparent 34%);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+
+    .kicker{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    h1{
+      color:var(--green);
+      font-size:clamp(38px,6vw,72px);
+      line-height:1.02;
+      margin:0 0 18px;
+      font-weight:900;
+      letter-spacing:-1px;
+    }
+
+    p{
+      color:var(--gold2);
+      font-size:clamp(18px,2.5vw,24px);
+      max-width:760px;
+      margin:0 0 18px;
+    }
+
+    .message-box{
+      margin-top:20px;
+      border:1px solid rgba(216,180,90,.42);
+      border-radius:14px;
+      background:rgba(0,0,0,.55);
+      padding:22px;
+      max-width:820px;
+    }
+
+    .message-box strong{
+      color:var(--green2);
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .btn{
+      min-height:50px;
+      padding:0 20px;
+      border-radius:10px;
+      border:1px solid var(--gold);
+      background:rgba(0,0,0,.45);
+      color:var(--gold2);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      background:var(--green);
+      border-color:var(--green);
+      color:#fff;
+      transform:translateY(-2px);
+    }
+
+    .gold-btn{
+      background:var(--yellow);
+      color:#000;
+      border-color:var(--yellow);
+    }
+
+    .gold-btn:hover{
+      background:var(--green);
+      color:#fff;
+      border-color:var(--green);
+    }
+
+    .notice{
+      margin-top:18px;
+      font-size:14px;
+      color:#b8ad8a;
+    }
+
+    footer{
+      border-top:1px solid rgba(216,180,90,.35);
+      padding:24px 0 34px;
+      background:#000;
+      color:#b8ad8a;
+      font-size:13px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .clicked{
+      transform:scale(.98)!important;
+    }
+
+    @media(max-width:700px){
+      .page{
+        width:calc(100% - 18px);
+      }
+
+      .brand-text strong{
+        font-size:24px;
+      }
+
+      .brand-text small{
+        font-size:11px;
+        letter-spacing:1.5px;
+      }
+
+      .nav a{
+        font-size:14px;
+        padding:10px 12px;
+      }
+
+      .overlay{
+        padding:30px 22px;
+      }
+
+      .actions{
+        flex-direction:column;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="page header-inner">
+      <a class="brand" href="index.html">
+        <span class="logo-slot">T</span>
+        <span class="brand-text">
+          <strong>TitanCore Holdings</strong>
+          <small>Join the TitanCore Network</small>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="investor.html">Investor</a>
+        <a href="institution.html">Institution</a>
+        <a href="institution-financial.html">Institution Financial</a>
+        <a href="banks.html">Banks</a>
+        <a href="companies.html">Company</a>
+        <a class="active" href="join-us.html">Join Us</a>
+        <a href="business-book.html">Business Intelligence Book</a>
+        <a href="stock-watch.html">Stock Market Watch</a>
+        <a href="global-business-news.html">Global Business News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="thank-card">
+      <div class="overlay">
+        <div class="kicker">Form Received</div>
+
+        <h1>Thank You for Connecting With TitanCore.</h1>
+
+        <p>
+          Your interest form has been received. TitanCore Holdings will review the information
+          and determine the correct next step or company routing.
+        </p>
+
+        <div class="message-box">
+          <p>
+            <strong>Next step:</strong> TitanCore may route your request to the correct public area,
+            company interest path, business partner review, vendor review, investor review,
+            institution review, or bank review.
+          </p>
+
+          <p>
+            This submission does not create employment, partnership, funding approval,
+            investment approval, banking relationship, contract, or legal obligation.
+          </p>
+        </div>
+
+        <div class="actions">
+          <a class="btn gold-btn" href="index.html">Back to Home →</a>
+          <a class="btn" href="companies.html">View Companies</a>
+          <a class="btn" href="business-book.html">Open Business Book</a>
+          <a class="btn" href="contact.html">Contact TitanCore</a>
+        </div>
+
+        <div class="notice">
+          Public information only. Do not submit confidential documents through public forms.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page footer-inner">
+      <strong style="color:var(--green)">TitanCore Holdings</strong>
+      <span>Public Join Us confirmation page.</span>
+      <a style="color:var(--yellow);font-weight:900" href="join-us.html">Return to Join Us</a>
+    </div>
+  </footer>
+
+  <script>
+    function applyButtonEffects(){
+      document.querySelectorAll("a, button").forEach(function(item){
+        item.addEventListener("click", function(){
+          item.classList.add("clicked");
+
+          setTimeout(function(){
+            item.classList.remove("clicked");
+          }, 220);
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      applyButtonEffects();
+    });
+  </script>
+</body>
+</html>
