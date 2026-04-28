@@ -925,67 +925,184 @@
   </footer>
 
   <script>
-    function updateTodayDate(){
-      const dateBox = document.getElementById("todayDate");
-      if(!dateBox) return;
+  function updateTodayDate(){
+    const dateBox = document.getElementById("todayDate");
+    if(!dateBox) return;
 
-      const now = new Date();
-      dateBox.textContent = now.toLocaleDateString("en-US", {
-        weekday:"long",
-        month:"long",
-        day:"numeric",
-        year:"numeric"
-      });
+    const now = new Date();
+    dateBox.textContent = now.toLocaleDateString("en-US", {
+      weekday:"long",
+      month:"long",
+      day:"numeric",
+      year:"numeric"
+    });
+  }
+
+  function toggleCEOMessage(){
+    const box = document.getElementById("monthlyCEOMessage");
+    if(box) box.classList.toggle("show");
+  }
+
+  function setBackground(element, imageUrl){
+    if(!element || !imageUrl) return;
+    element.style.setProperty("--bg-img", "url('" + imageUrl + "')");
+  }
+
+  function buildQuickNews(items){
+    const box = document.getElementById("quickNewsGrid");
+    if(!box || !Array.isArray(items)) return;
+
+    box.innerHTML = items.map(function(item){
+      return `
+        <a class="quick-card" href="${item.link}">
+          <div class="quick-thumb visual-bg" style="--bg-img:url('${item.image}')">
+            <div class="thumb-content">
+              <div class="thumb-title">${item.label}</div>
+            </div>
+          </div>
+          <div>
+            <h3>${item.title}</h3>
+            <div class="quick-meta">${item.description} →</div>
+          </div>
+        </a>
+      `;
+    }).join("");
+  }
+
+  function buildCompanies(items){
+    const box = document.getElementById("companyGrid");
+    if(!box || !Array.isArray(items)) return;
+
+    box.innerHTML = items.map(function(item){
+      return `
+        <a class="company-card" href="${item.link}">
+          <div class="company-image visual-bg" style="--bg-img:url('${item.image}')">
+            <div class="thumb-content">
+              <div class="thumb-title">${item.label}</div>
+              <div class="thumb-subtitle">${item.subtitle}</div>
+            </div>
+          </div>
+          <h3>${item.title}</h3>
+          <p>${item.description}</p>
+          <span>Learn More →</span>
+        </a>
+      `;
+    }).join("");
+  }
+
+  function buildStockWatch(items){
+    const box = document.getElementById("stockGrid");
+    if(!box || !Array.isArray(items)) return;
+
+    box.innerHTML = items.map(function(item){
+      return `
+        <a class="stock-card" href="${item.link}">
+          <h3>${item.title}</h3>
+          <div class="stock-value">${item.value}</div>
+          <div class="stock-change">${item.description}</div>
+        </a>
+      `;
+    }).join("");
+  }
+
+  function buildCEOMessage(data){
+    if(!data) return;
+
+    const activeTitle = data.specialActive ? data.specialTitle : data.title;
+    const activeDate = data.specialActive ? data.specialDate : data.date;
+    const activeBody = data.specialActive ? data.specialBody : data.body;
+
+    const titleBox = document.getElementById("ceoMessageTitle");
+    const dateBox = document.getElementById("ceoMessageDate");
+    const currentTitle = document.getElementById("ceoCurrentTitle");
+    const currentBody = document.getElementById("ceoCurrentBody");
+    const archiveBox = document.getElementById("ceoArchive");
+
+    if(titleBox) titleBox.textContent = activeTitle;
+    if(dateBox) dateBox.textContent = activeDate;
+    if(currentTitle) currentTitle.textContent = activeTitle;
+    if(currentBody) currentBody.textContent = activeBody;
+
+    if(archiveBox && Array.isArray(data.archive)){
+      archiveBox.innerHTML = data.archive.map(function(item){
+        return `<div class="history-item">${item}</div>`;
+      }).join("");
+    }
+  }
+
+  function buildMediaCenter(data){
+    if(!data) return;
+
+    const video = document.getElementById("mediaVideo");
+    const news = document.getElementById("mediaNews");
+    const stock = document.getElementById("mediaStock");
+
+    if(video && data.video){
+      video.href = data.video.link;
+      setBackground(video, data.video.image);
+      video.querySelector(".thumb-title").textContent = data.video.title;
+      video.querySelector(".thumb-subtitle").textContent = data.video.subtitle;
     }
 
-    function toggleCEOMessage(){
-      const box = document.getElementById("monthlyCEOMessage");
-      if(box) box.classList.toggle("show");
+    if(news && data.news){
+      news.href = data.news.link;
+      setBackground(news, data.news.image);
+      news.querySelector(".thumb-title").textContent = data.news.title;
+      news.querySelector(".thumb-subtitle").textContent = data.news.subtitle;
     }
 
-    function rotateDailyImages(){
-      const imageGroups = {
-        hero:["images/hero-1.jpg","images/hero-2.jpg","images/hero-3.jpg"],
-        market:["images/market-1.jpg","images/market-2.jpg"],
-        finance:["images/finance-1.jpg","images/finance-2.jpg"],
-        tech:["images/tech-1.jpg","images/tech-2.jpg"],
-        energy:["images/energy-1.jpg","images/energy-2.jpg"],
-        vaultara:["images/vaultara-1.jpg","images/vaultara-2.jpg"],
-        family:["images/family-first-1.jpg","images/family-first-2.jpg"],
-        vitalpath:["images/vitalpath-1.jpg","images/vitalpath-2.jpg"],
-        revmotion:["images/revmotion-1.jpg","images/revmotion-2.jpg"],
-        video:["images/video-1.jpg","images/video-2.jpg"],
-        news:["images/news-1.jpg","images/news-2.jpg"],
-        stock:["images/stock-1.jpg","images/stock-2.jpg"]
-      };
-
-      const dayNumber = Math.floor(new Date().getTime() / 86400000);
-
-      document.querySelectorAll("[data-bg-group]").forEach(function(box){
-        const group = box.getAttribute("data-bg-group");
-        const images = imageGroups[group];
-
-        if(!images || !images.length) return;
-
-        const chosen = images[dayNumber % images.length];
-        box.style.setProperty("--bg-img", "url('" + chosen + "')");
-      });
+    if(stock && data.stock){
+      stock.href = data.stock.link;
+      setBackground(stock, data.stock.image);
+      stock.querySelector(".thumb-title").textContent = data.stock.title;
+      stock.querySelector(".thumb-subtitle").textContent = data.stock.subtitle;
     }
+  }
 
-    document.addEventListener("click", function(event){
-      const button = event.target.closest(".btn");
-      if(button){
-        button.classList.add("clicked");
-        setTimeout(function(){
-          button.classList.remove("clicked");
-        }, 250);
+  async function loadDailyContent(){
+    try{
+      const response = await fetch("daily-content.json?v=" + Date.now());
+
+      if(!response.ok){
+        console.warn("daily-content.json not found yet.");
+        return;
       }
-    });
 
-    document.addEventListener("DOMContentLoaded", function(){
-      updateTodayDate();
-      rotateDailyImages();
-    });
-  </script>
-</body>
-</html> 
+      const data = await response.json();
+
+      const heroTitle = document.getElementById("heroTitle");
+      const heroDescription = document.getElementById("heroDescription");
+      const heroImage = document.getElementById("heroImage");
+
+      if(data.hero){
+        if(heroTitle) heroTitle.textContent = data.hero.title;
+        if(heroDescription) heroDescription.textContent = data.hero.description;
+        setBackground(heroImage, data.hero.image);
+      }
+
+      buildQuickNews(data.quickNews);
+      buildCompanies(data.companies);
+      buildStockWatch(data.stockWatch);
+      buildCEOMessage(data.ceoMessage);
+      buildMediaCenter(data.mediaCenter);
+
+    }catch(error){
+      console.warn("Daily content could not load:", error);
+    }
+  }
+
+  document.addEventListener("click", function(event){
+    const button = event.target.closest(".btn");
+    if(button){
+      button.classList.add("clicked");
+      setTimeout(function(){
+        button.classList.remove("clicked");
+      }, 250);
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", function(){
+    updateTodayDate();
+    loadDailyContent();
+  });
+</script>
