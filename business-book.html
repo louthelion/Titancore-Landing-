@@ -4,24 +4,607 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Business Intelligence Book | TitanCore Holdings</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>TitanCore Holdings | Business Intelligence Book</title>
+
+  <style>
+    :root{
+      --black:#000000;
+      --deep:#020805;
+      --panel:#050b07;
+      --panel2:#07130b;
+      --green:#00a651;
+      --green2:#04c96a;
+      --gold:#d8b45a;
+      --gold2:#f5d98d;
+      --yellow:#ffd400;
+      --white:#f7f7f7;
+      --muted:#b9aa7a;
+      --border:rgba(216,180,90,.42);
+      --soft:rgba(0,166,81,.16);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(0,166,81,.18), transparent 28%),
+        linear-gradient(180deg,#000 0%,#041006 48%,#000 100%);
+      color:var(--gold2);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.55;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      width:min(1200px,calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+    .site-header{
+      background:#000;
+      border-bottom:1px solid var(--border);
+      box-shadow:0 18px 45px rgba(0,0,0,.8);
+      position:relative;
+      z-index:10;
+    }
+
+    .header-inner{
+      padding:22px 0 18px;
+    }
+
+    .brand-row{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      padding-bottom:22px;
+      border-bottom:1px solid rgba(216,180,90,.34);
+    }
+
+    .logo-slot{
+      width:70px;
+      height:70px;
+      min-width:70px;
+      border:2px solid var(--gold);
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:var(--yellow);
+      font-size:42px;
+      font-weight:900;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,212,0,.18), transparent 35%),
+        linear-gradient(180deg,#101812,#020403);
+      box-shadow:0 0 26px rgba(0,166,81,.25);
+      overflow:hidden;
+    }
+
+    .logo-slot img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .brand-title{
+      display:block;
+      color:var(--green);
+      font-size:clamp(30px,5vw,48px);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:.3px;
+    }
+
+    .brand-subtitle{
+      display:block;
+      color:var(--gold);
+      margin-top:8px;
+      font-size:clamp(13px,2.3vw,18px);
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .top-actions{
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .search-dot{
+      width:40px;
+      height:40px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      background:rgba(255,255,255,.03);
+      font-size:18px;
+    }
+
+    .subscribe-btn{
+      background:var(--gold);
+      color:#000;
+      border:0;
+      border-radius:8px;
+      padding:12px 16px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .nav{
+      padding:22px 0 4px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .nav a{
+      color:#fff;
+      font-weight:900;
+      font-size:14px;
+      padding:10px 13px;
+      border-radius:999px;
+      transition:.18s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:var(--yellow);
+      border:1px solid var(--border);
+      background:rgba(216,180,90,.08);
+    }
+
+    /* HERO */
+    main{
+      padding:22px 0 64px;
+    }
+
+    .hero{
+      min-height:430px;
+      border:1px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.70),rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80");
+      background-size:cover;
+      background-position:center;
+      box-shadow:0 22px 60px rgba(0,0,0,.65);
+    }
+
+    .hero-content{
+      padding:48px;
+      max-width:720px;
+    }
+
+    .kicker{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    h1{
+      margin:0;
+      color:var(--green);
+      font-size:clamp(40px,7vw,78px);
+      line-height:1.02;
+      font-weight:900;
+    }
+
+    .hero p{
+      color:var(--gold2);
+      font-size:clamp(18px,2.2vw,22px);
+      margin:22px 0 0;
+      max-width:650px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .btn{
+      border-radius:10px;
+      padding:14px 18px;
+      border:1px solid var(--border);
+      font-weight:900;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      cursor:pointer;
+      min-height:48px;
+    }
+
+    .btn.gold{
+      background:var(--gold);
+      color:#000;
+      border-color:var(--gold);
+    }
+
+    .btn.dark{
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+    }
+
+    .btn.green{
+      background:var(--green);
+      color:#fff;
+      border-color:var(--green);
+    }
+
+    /* SECTIONS */
+    .section{
+      margin-top:18px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:
+        radial-gradient(circle at top left,rgba(0,166,81,.12),transparent 34%),
+        linear-gradient(180deg,rgba(7,19,11,.96),rgba(0,0,0,.96));
+      box-shadow:0 16px 42px rgba(0,0,0,.5);
+      padding:24px;
+    }
+
+    .section-header{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:16px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      padding-bottom:16px;
+      margin-bottom:20px;
+    }
+
+    h2{
+      margin:0;
+      color:var(--green);
+      font-size:clamp(30px,5vw,50px);
+      line-height:1.07;
+      font-weight:900;
+    }
+
+    .section-note{
+      color:var(--gold);
+      font-size:15px;
+      font-weight:800;
+    }
+
+    p{
+      color:var(--gold2);
+      font-size:18px;
+      margin:0 0 14px;
+    }
+
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+
+    .grid.three{
+      grid-template-columns:repeat(3,1fr);
+    }
+
+    .grid.four{
+      grid-template-columns:repeat(4,1fr);
+    }
+
+    .card{
+      border:1px solid var(--border);
+      border-radius:16px;
+      overflow:hidden;
+      background:rgba(0,0,0,.58);
+      transition:.18s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(0,166,81,.75);
+      box-shadow:0 0 22px rgba(0,166,81,.15);
+    }
+
+    .card-image{
+      min-height:155px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      color:var(--green);
+      font-size:28px;
+      font-weight:900;
+      text-align:center;
+      text-transform:uppercase;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.65)),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .card-body{
+      padding:18px;
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      color:var(--green);
+      font-size:22px;
+      line-height:1.15;
+    }
+
+    .card p{
+      font-size:16px;
+      margin:0 0 14px;
+    }
+
+    .card-link{
+      color:var(--yellow);
+      font-weight:900;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .feature-row{
+      display:grid;
+      grid-template-columns:1.35fr .65fr;
+      gap:18px;
+    }
+
+    .book-cover{
+      min-height:330px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.24),rgba(0,0,0,.84)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .book-box{
+      width:min(270px,85%);
+      min-height:230px;
+      border:2px solid var(--gold);
+      border-radius:10px;
+      background:rgba(0,0,0,.78);
+      box-shadow:0 0 28px rgba(216,180,90,.22);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+    }
+
+    .book-box strong{
+      color:var(--gold2);
+      font-size:24px;
+      line-height:1.15;
+      text-transform:uppercase;
+    }
+
+    .book-box span{
+      color:var(--green);
+      margin-top:14px;
+      font-weight:900;
+      letter-spacing:2px;
+      font-size:12px;
+      text-transform:uppercase;
+    }
+
+    /* COUNTRY TOOL */
+    .tool-panel{
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(0,0,0,.58);
+      padding:20px;
+      margin-top:16px;
+    }
+
+    .tool-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:14px;
+    }
+
+    select,
+    input{
+      background:#050505;
+      color:var(--gold2);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:14px 14px;
+      font-size:16px;
+      min-height:48px;
+      outline:none;
+    }
+
+    select:focus,
+    input:focus{
+      border-color:var(--green);
+      box-shadow:0 0 0 3px rgba(0,166,81,.15);
+    }
+
+    .result{
+      margin-top:16px;
+      border:1px solid rgba(0,166,81,.45);
+      border-radius:14px;
+      padding:18px;
+      background:rgba(0,166,81,.07);
+    }
+
+    .result h3{
+      color:var(--green);
+      margin:0 0 8px;
+      font-size:24px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .notice{
+      color:#cbbd8c;
+      font-size:16px;
+      border-left:3px solid var(--gold);
+      padding-left:14px;
+      margin-top:16px;
+    }
+
+    footer{
+      background:#000;
+      border-top:1px solid var(--border);
+      padding:28px 0;
+      color:#b9aa7a;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+      font-size:14px;
+    }
+
+    .footer-inner strong{
+      color:var(--green);
+    }
+
+    @media(max-width:900px){
+      .top-actions{
+        display:none;
+      }
+
+      .grid.three,
+      .grid.four,
+      .feature-row,
+      .split{
+        grid-template-columns:1fr;
+      }
+
+      .hero-content{
+        padding:34px 24px;
+      }
+    }
+
+    @media(max-width:640px){
+      .page{
+        width:calc(100% - 16px);
+      }
+
+      .brand-row{
+        align-items:flex-start;
+      }
+
+      .logo-slot{
+        width:58px;
+        height:58px;
+        min-width:58px;
+        font-size:34px;
+      }
+
+      .brand-title{
+        font-size:28px;
+      }
+
+      .brand-subtitle{
+        font-size:11px;
+        letter-spacing:2.4px;
+      }
+
+      .nav{
+        gap:18px 24px;
+      }
+
+      .nav a{
+        font-size:18px;
+        padding:8px 2px;
+        border-radius:0;
+      }
+
+      .nav a:hover,
+      .nav a.active{
+        border:none;
+        background:transparent;
+        color:var(--yellow);
+      }
+
+      .section{
+        padding:20px;
+      }
+
+      .hero{
+        min-height:420px;
+      }
+
+      .card-image{
+        min-height:180px;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      select,
+      input{
+        width:100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="container navwrap">
-      <a class="logo" href="index.html">
-        <span class="logo-mark">TC</span>
-        <span>
-          TitanCore Holdings
-          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
-            Business Intelligence Book
-          </small>
-        </span>
-      </a>
+  <header class="site-header">
+    <div class="page header-inner">
+      <div class="brand-row">
+        <a class="logo-slot" href="index.html" aria-label="TitanCore Home">
+          <!-- Later, you can replace the T with an image:
+          <img src="titancore-logo.png" alt="TitanCore Holdings Logo">
+          -->
+          T
+        </a>
 
-      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
+        <a href="index.html">
+          <span class="brand-title">TitanCore Holdings</span>
+          <span class="brand-subtitle">Business Intelligence Book</span>
+        </a>
+
+        <div class="top-actions">
+          <a class="search-dot" href="business-book.html" aria-label="Search">⌕</a>
+          <a class="subscribe-btn" href="join-us.html">Subscribe</a>
+        </div>
+      </div>
 
       <nav class="nav">
         <a href="index.html">Home</a>
@@ -39,622 +622,405 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="kicker">TitanCore Business Intelligence Book</div>
+  <main class="page">
+    <section class="hero" id="dailyHero">
+      <div class="hero-content">
+        <div class="kicker">TitanCore Public Learning Library</div>
+        <h1>Business Education, Country Intelligence, Stock Awareness, and Market Research</h1>
+        <p>
+          The TitanCore Business Intelligence Book is a public learning and research center for business, credit, funding, real estate, care services, auto and marine, stock markets, country-level business news, and local business opportunities.
+        </p>
 
-          <h1>Business Education, Country Intelligence, Stock Awareness, and Market Research</h1>
-
-          <p class="lead">
-            The TitanCore Business Intelligence Book is a public business learning and research center.
-            Visitors can learn about business, credit, funding, real estate, care services, auto and marine,
-            stock markets, country-level business news, and local business opportunities.
-          </p>
-
-          <div class="actions">
-            <a class="btn" href="#business-library">Open Library</a>
-            <a class="btn ghost" href="#country-intelligence">Country Intelligence</a>
-            <a class="btn ghost" href="#local-intelligence">Local Business Intelligence</a>
-          </div>
-
-          <p class="notice">
-            Public information only. Not financial, legal, investment, tax, medical, credit repair, or business advice.
-          </p>
-        </div>
-
-        <div class="panel">
-          <h3>Book Sections</h3>
-
-          <div class="status-row">
-            <span>Business Education</span>
-            <span class="badge green">Included</span>
-          </div>
-
-          <div class="status-row">
-            <span>Country Business Intelligence</span>
-            <span class="badge green">Country Level</span>
-          </div>
-
-          <div class="status-row">
-            <span>Stock Market Awareness</span>
-            <span class="badge green">Research</span>
-          </div>
-
-          <div class="status-row">
-            <span>Credit / Funding / Formation</span>
-            <span class="badge green">Education</span>
-          </div>
-
-          <div class="status-row">
-            <span>Local Business Research</span>
-            <span class="badge green">Optional</span>
-          </div>
+        <div class="hero-buttons">
+          <a class="btn gold" href="#learning-areas">Open Library →</a>
+          <a class="btn dark" href="#country-intelligence">Country Intelligence →</a>
+          <a class="btn dark" href="#local-business">Local Business Intelligence →</a>
         </div>
       </div>
     </section>
 
-    <section id="business-library" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Business Library</div>
-            <h2>Choose a Business Learning Area</h2>
-            <p>
-              This is the public learning side of TitanCore. People can come here to understand business topics
-              before they make decisions, contact a company, apply for funding, buy property, or research a market.
-            </p>
-          </div>
-        </div>
+    <section class="section" id="learning-areas">
+      <div class="section-header">
+        <h2>Choose a Business Learning Area</h2>
+        <span class="section-note">Public education only</span>
+      </div>
 
-        <div class="grid cols-3">
-          <a class="card" href="#country-intelligence">
+      <p>
+        This is the public learning side of TitanCore. Visitors can come here to understand business topics before they make decisions, contact a company, apply for funding, buy property, or research a market.
+      </p>
+
+      <div class="grid three">
+        <a class="card" href="#country-intelligence">
+          <div class="card-image daily-card-image">Country</div>
+          <div class="card-body">
             <h3>Country Business Intelligence</h3>
-            <p>
-              Country-level business news, stock markets, major companies, industries,
-              banking, finance, real estate, trade, and economic movement.
-            </p>
+            <p>Country-level business news, stock markets, major companies, industries, banking, finance, real estate, trade, and economic movement.</p>
             <span class="card-link">Open Country Section →</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="card" href="stock-watch.html">
+        <a class="card" href="stock-watch.html">
+          <div class="card-image daily-card-image">Stocks</div>
+          <div class="card-body">
             <h3>Stock Market Education</h3>
-            <p>
-              Learn how market indexes, sectors, watchlists, companies, and market movement
-              connect to business decisions.
-            </p>
+            <p>Learn how market indexes, sectors, watchlists, companies, and market movement connect to business decisions.</p>
             <span class="card-link">Open Stock Watch →</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="card" href="vaultara.html">
+        <a class="card" href="vaultara-landing.html">
+          <div class="card-image daily-card-image">Credit</div>
+          <div class="card-body">
             <h3>Credit & Funding Education</h3>
-            <p>
-              Learn about personal credit, business credit, funding readiness,
-              credit card habits, and business formation preparation.
-            </p>
+            <p>Learn about personal credit, business credit, funding readiness, credit card habits, and business formation preparation.</p>
             <span class="card-link">Open Vaultara →</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="card" href="family-first.html">
+        <a class="card" href="family-first.html">
+          <div class="card-image daily-card-image">Real Estate</div>
+          <div class="card-body">
             <h3>Real Estate Education</h3>
-            <p>
-              Learn about property value, real estate markets, selling property,
-              property management, rentals, and investment property basics.
-            </p>
+            <p>Learn about property value, real estate markets, selling property, property management, rentals, and investment property basics.</p>
             <span class="card-link">Open Family First →</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="card" href="vitalpath.html">
+        <a class="card" href="vitalpath.html">
+          <div class="card-image daily-card-image">Care</div>
+          <div class="card-body">
             <h3>Care & Wellness Education</h3>
-            <p>
-              Learn about care planning, family support, wellness awareness,
-              community needs, and care service preparation.
-            </p>
+            <p>Learn about care planning, family support, wellness awareness, community needs, and care service preparation.</p>
             <span class="card-link">Open VitalPath →</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="card" href="revmotion.html">
+        <a class="card" href="revmotion.html">
+          <div class="card-image daily-card-image">Auto</div>
+          <div class="card-body">
             <h3>Auto & Marine Education</h3>
-            <p>
-              Learn about vehicle maintenance, marine readiness, repair preparation,
-              warning signs, service records, and auto/marine market demand.
-            </p>
+            <p>Learn about vehicle maintenance, marine readiness, repair preparation, warning signs, service records, and auto/marine market demand.</p>
             <span class="card-link">Open RevMotion →</span>
-          </a>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="feature-row">
+        <div>
+          <div class="section-header">
+            <h2>Featured Resource</h2>
+          </div>
+
+          <p>
+            The featured resource area can change every day. Sometimes it can show a book cover, sometimes an open book, sometimes a business learning image, and sometimes a market research image.
+          </p>
+
+          <p>
+            This gives the Business Intelligence Book a real public learning-library look instead of plain text.
+          </p>
+
+          <a class="btn green" href="#learning-areas">View Learning Areas →</a>
+        </div>
+
+        <div class="book-cover" id="dailyBookCover">
+          <div class="book-box">
+            <strong>Business Intelligence Book</strong>
+            <span>TitanCore Holdings</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="country-intelligence" class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Country-Level Business Intelligence</div>
-            <h2>Research Business by Country</h2>
-            <p>
-              This section stays at the country level. It does not force users to search every state,
-              county, or city. It gives a big business picture for the country.
-            </p>
-          </div>
-        </div>
+    <section class="section" id="country-intelligence">
+      <div class="section-header">
+        <h2>Research Business by Country</h2>
+        <span class="section-note">Country-level view</span>
+      </div>
 
-        <div class="search-box" style="grid-template-columns:1fr auto;">
-          <select id="bookCountrySelect">
+      <p>
+        This section stays at the country level. It does not force users to search every state, county, or city. It gives a big business picture for the country.
+      </p>
+
+      <div class="tool-panel">
+        <h3 style="color:var(--green);font-size:26px;margin:0;">Country Business Intelligence Tool</h3>
+        <p>Select a country to show a public business learning summary.</p>
+
+        <div class="tool-row">
+          <select id="countrySelect">
             <option value="United States">United States</option>
             <option value="Canada">Canada</option>
             <option value="United Kingdom">United Kingdom</option>
-            <option value="France">France</option>
             <option value="Germany">Germany</option>
-            <option value="Italy">Italy</option>
-            <option value="Spain">Spain</option>
-            <option value="Japan">Japan</option>
-            <option value="China">China</option>
-            <option value="India">India</option>
+            <option value="France">France</option>
             <option value="Brazil">Brazil</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Haiti">Haiti</option>
-            <option value="Dominican Republic">Dominican Republic</option>
-            <option value="Jamaica">Jamaica</option>
-            <option value="Nigeria">Nigeria</option>
-            <option value="South Africa">South Africa</option>
+            <option value="India">India</option>
+            <option value="Japan">Japan</option>
             <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="South Africa">South Africa</option>
           </select>
 
-          <button class="btn" onclick="openBookCountry()">Open Country Intelligence</button>
+          <button class="btn gold" type="button" onclick="openCountryIntelligence()">Open Country Intelligence</button>
         </div>
 
-        <div id="bookCountryResult">
-          <div class="grid cols-3">
-            <div class="card">
-              <h3>Country Business News</h3>
-              <p>
-                Business-only headlines about companies, industries, banking, finance,
-                trade, economy, and market movement.
-              </p>
-              <span class="badge green">Business Only</span>
-            </div>
-
-            <div class="card">
-              <h3>Country Stock Market</h3>
-              <p>
-                Major indexes, public companies, sectors, investor confidence,
-                stock movement, and market direction.
-              </p>
-              <span class="badge green">Market</span>
-            </div>
-
-            <div class="card">
-              <h3>Country Economy</h3>
-              <p>
-                Jobs, inflation, currency, interest rates, growth pressure,
-                business confidence, and economic direction.
-              </p>
-              <span class="badge green">Economy</span>
-            </div>
-          </div>
-        </div>
-
-        <p class="notice">
-          Global business intelligence is country-level only. Local city detail belongs in the optional local section.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Country Page Information</div>
-            <h2>What Each Country View Should Show</h2>
-            <p>
-              A country page should give visitors enough business information without making them search every city.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Business News</h3>
-            <p>
-              Company movement, expansion, layoffs, earnings, banking, finance,
-              trade, industry updates, and business policy.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Stock Market</h3>
-            <p>
-              Country index, major public companies, top sectors, market movement,
-              and investor sentiment.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Major Companies</h3>
-            <p>
-              Public companies, major employers, national brands, growing companies,
-              and important business groups.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Major Industries</h3>
-            <p>
-              Finance, real estate, healthcare, technology, energy, transportation,
-              tourism, manufacturing, agriculture, and business services.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Banking & Finance</h3>
-            <p>
-              Banks, lending conditions, credit access, interest rates, funding movement,
-              and financial sector activity.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Real Estate & Construction</h3>
-            <p>
-              Housing, commercial real estate, construction, rentals,
-              development activity, and property market movement.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Trade & Currency</h3>
-            <p>
-              Imports, exports, ports, logistics, currency pressure,
-              supply chains, and trade movement.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Opportunities</h3>
-            <p>
-              Growing sectors, underserved needs, business demand, expansion trends,
-              and opportunity categories.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Risks</h3>
-            <p>
-              Inflation, currency risk, weak sectors, high debt, regulation pressure,
-              supply chain issues, and market slowdown.
-            </p>
-          </div>
+        <div class="result" id="countryResult">
+          <h3>United States Business View</h3>
+          <p>Business-only headlines, major indexes, public companies, banking, finance, real estate, trade, economy, market direction, and sector movement.</p>
         </div>
       </div>
-    </section>
 
-    <section id="local-intelligence" class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Optional Local Business Intelligence</div>
-            <h2>State, City, and Local Business Research</h2>
-            <p>
-              This section is optional. It is mainly for U.S., Florida, Orlando, and special local markets.
-              It is not forced inside every country.
-            </p>
+      <div class="grid three" style="margin-top:16px;">
+        <div class="card">
+          <div class="card-body">
+            <h3>Country Business News</h3>
+            <p>Business-only headlines about companies, industries, banking, finance, trade, economy, and market movement.</p>
           </div>
         </div>
 
-        <div class="search-box">
-          <input id="localState" type="text" value="Florida" placeholder="State or region" />
-          <input id="localCity" type="text" value="Orlando" placeholder="City" />
-          <button class="btn" onclick="openLocalBusiness()">Open Local View</button>
-        </div>
-
-        <div id="localBusinessResult">
-          <div class="grid cols-3">
-            <div class="card">
-              <h3>Florida Business Pulse</h3>
-              <p>
-                State business climate, tourism, real estate, population growth,
-                construction, finance, healthcare, and service industries.
-              </p>
-              <span class="badge green">State</span>
-            </div>
-
-            <div class="card">
-              <h3>Orlando Business Pulse</h3>
-              <p>
-                Local business openings, tourism, hospitality, real estate,
-                convention activity, restaurants, and local market movement.
-              </p>
-              <span class="badge green">City</span>
-            </div>
-
-            <div class="card">
-              <h3>Local Stock Connection</h3>
-              <p>
-                Public companies and sectors connected to the local market,
-                tourism, restaurants, real estate, healthcare, and transportation.
-              </p>
-              <span class="badge green">Stock Link</span>
-            </div>
+        <div class="card">
+          <div class="card-body">
+            <h3>Country Stock Market</h3>
+            <p>Major indexes, public companies, sectors, investor confidence, stock movement, and market direction.</p>
           </div>
         </div>
 
-        <p class="notice">
-          Local business intelligence is optional and separate from global country-level business news.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Morning Business Learning</div>
-            <h2>What Visitors Can Learn Every Morning</h2>
-            <p>
-              TitanCore should become a place where people wake up, open the website,
-              and learn what is moving in business before making decisions.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-4">
-          <div class="card">
-            <h3>Market Direction</h3>
-            <p>
-              Whether the market is strong, weak, mixed, uncertain, or sector-driven.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Business Headlines</h3>
-            <p>
-              Important business-only headlines about companies, banks, finance,
-              real estate, trade, and markets.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Stock Movement</h3>
-            <p>
-              Major indexes, sectors, public companies, and watchlist movement.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Decision Preparation</h3>
-            <p>
-              Information to help visitors think before they trade, apply, invest,
-              fund, buy property, or open a business.
-            </p>
+        <div class="card">
+          <div class="card-body">
+            <h3>Country Economy</h3>
+            <p>Jobs, inflation, currency, interest rates, growth pressure, business confidence, and economic direction.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">TitanCore Company Learning Paths</div>
-            <h2>Learn Through the Company Network</h2>
-            <p>
-              Each TitanCore company connects to an education area inside the Business Intelligence Book.
-            </p>
+      <div class="section-header">
+        <h2>What Each Country View Should Show</h2>
+      </div>
+
+      <div class="grid four">
+        <div class="card"><div class="card-body"><h3>Business News</h3><p>Company movement, expansion, layoffs, earnings, banking, finance, trade, industry updates, and business policy.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Stock Market</h3><p>Country index, major public companies, top sectors, market movement, and investor sentiment.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Major Companies</h3><p>Public companies, major employers, national brands, growing companies, and important business groups.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Major Industries</h3><p>Finance, real estate, healthcare, technology, energy, transportation, tourism, manufacturing, agriculture, and services.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Banking & Finance</h3><p>Banks, lending conditions, credit access, interest rates, funding movement, and financial sector activity.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Real Estate</h3><p>Housing, commercial real estate, construction, rentals, development activity, and property market movement.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Trade & Currency</h3><p>Imports, exports, ports, logistics, currency pressure, supply chains, and trade movement.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Business Risks</h3><p>Inflation, currency risk, weak sectors, high debt, regulation pressure, supply chain issues, and market slowdown.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="local-business">
+      <div class="section-header">
+        <h2>State, City, and Local Business Research</h2>
+        <span class="section-note">Optional local view</span>
+      </div>
+
+      <p>
+        This section is optional. It is mainly for U.S., Florida, Orlando, and special local markets. It is separate from global country-level business news.
+      </p>
+
+      <div class="tool-panel">
+        <h3 style="color:var(--green);font-size:26px;margin:0;">Local Business Intelligence Tool</h3>
+        <p>Use this for a state, city, or local business pulse.</p>
+
+        <div class="tool-row">
+          <input id="stateInput" value="Florida" placeholder="State" />
+          <input id="cityInput" value="Orlando" placeholder="City" />
+          <button class="btn gold" type="button" onclick="openLocalView()">Open Local View</button>
+        </div>
+
+        <div class="result" id="localResult">
+          <h3>Florida / Orlando Business Pulse</h3>
+          <p>State business climate, tourism, real estate, population growth, construction, finance, healthcare, service industries, convention activity, restaurants, and local market movement.</p>
+        </div>
+      </div>
+
+      <div class="split" style="margin-top:16px;">
+        <div class="card">
+          <div class="card-body">
+            <h3>Florida Business Pulse</h3>
+            <p>State business climate, tourism, real estate, population growth, construction, finance, healthcare, and service industries.</p>
           </div>
         </div>
 
-        <div class="grid cols-4">
-          <a class="card" href="vaultara.html">
+        <div class="card">
+          <div class="card-body">
+            <h3>Orlando Business Pulse</h3>
+            <p>Local business openings, tourism, hospitality, real estate, convention activity, restaurants, and local market movement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Morning Business Learning</h2>
+      </div>
+
+      <p>
+        TitanCore should become a place where people wake up, open the website, and learn what is moving in business before making decisions.
+      </p>
+
+      <div class="grid three">
+        <div class="card"><div class="card-body"><h3>Market Direction</h3><p>Whether the market is strong, weak, mixed, uncertain, or sector-driven.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Business Headlines</h3><p>Important business-only headlines about companies, banks, finance, real estate, trade, and markets.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Stock Movement</h3><p>Major indexes, sectors, public companies, and watchlist movement.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Decision Preparation</h3><p>Information to help visitors think before they trade, apply, invest, fund, buy property, or open a business.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Company Learning</h3><p>Each TitanCore company connects to an education area inside the Business Intelligence Book.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Public Research</h3><p>Public information only, built for business learning and awareness.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Learn Through the Company Network</h2>
+      </div>
+
+      <div class="grid four">
+        <a class="card" href="vaultara-landing.html">
+          <div class="card-body">
             <h3>Vaultara Capital</h3>
-            <p>
-              Learn about funding, credit, business credit, personal credit,
-              credit card habits, and business formation.
-            </p>
+            <p>Funding, credit, business credit, personal credit, credit card habits, and business formation.</p>
             <span class="card-link">Credit & Funding →</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="card" href="family-first.html">
+        <a class="card" href="family-first.html">
+          <div class="card-body">
             <h3>Family First Equity Group</h3>
-            <p>
-              Learn about real estate, property value, acquisitions,
-              property management, and market movement.
-            </p>
+            <p>Real estate, property value, acquisitions, property management, and market movement.</p>
             <span class="card-link">Real Estate →</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="card" href="vitalpath.html">
+        <a class="card" href="vitalpath.html">
+          <div class="card-body">
             <h3>VitalPath Care Group</h3>
-            <p>
-              Learn about care support, wellness, family planning,
-              safety, and community service needs.
-            </p>
+            <p>Care support, wellness, family planning, safety, and community service needs.</p>
             <span class="card-link">Care Services →</span>
-          </a>
+          </div>
+        </a>
 
-          <a class="card" href="revmotion.html">
+        <a class="card" href="revmotion.html">
+          <div class="card-body">
             <h3>RevMotion Auto & Marine LLC</h3>
-            <p>
-              Learn about auto services, marine services, repair readiness,
-              maintenance, and transportation support.
-            </p>
+            <p>Auto services, marine services, repair readiness, maintenance, and transportation support.</p>
             <span class="card-link">Auto / Marine →</span>
-          </a>
-        </div>
+          </div>
+        </a>
       </div>
     </section>
 
     <section class="section">
-      <div class="container panel">
+      <div class="section-header">
         <h2>Business Intelligence Book Notice</h2>
-
-        <p>
-          The TitanCore Business Intelligence Book is for public education and research only.
-          It does not provide financial advice, legal advice, investment advice, tax advice,
-          medical advice, credit repair guarantees, funding approvals, real estate brokerage advice,
-          auto repair approval, or a guarantee of business results.
-        </p>
-
-        <p class="notice">
-          Live stock prices, country business news, market data, and local business data will require
-          approved APIs, licensed data providers, or properly attributed public sources.
-        </p>
       </div>
+
+      <p>
+        The TitanCore Business Intelligence Book is for public education and research only. It does not provide financial advice, legal advice, investment advice, tax advice, medical advice, credit repair guarantees, funding approvals, real estate brokerage advice, auto repair approval, or a guarantee of business results.
+      </p>
+
+      <p>
+        Live stock prices, country business news, market data, and local business data will require approved APIs, licensed data providers, or properly attributed public sources.
+      </p>
+
+      <p class="notice">
+        TitanCore Holdings — Business Intelligence Book. Public education and research for business, markets, companies, countries, and decisions.
+      </p>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>TitanCore Holdings</strong>
-        <p class="notice">
-          Business Intelligence Book — public education and research for business, markets, companies, and decisions.
-        </p>
-      </div>
-
-      <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+  <footer>
+    <div class="page footer-inner">
+      <strong>TitanCore Holdings</strong>
+      <span>Business Intelligence Book</span>
+      <a href="contact.html">Contact TitanCore</a>
     </div>
   </footer>
 
-  <script src="script.js"></script>
-
   <script>
-    function openBookCountry() {
-      const countrySelect = document.getElementById("bookCountrySelect");
-      const resultBox = document.getElementById("bookCountryResult");
+    const dailyImages = [
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=80"
+    ];
 
-      if (!countrySelect || !resultBox) return;
+    const bookImages = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80"
+    ];
 
-      const country = countrySelect.value || "United States";
+    function dailyIndex(list){
+      const dayNumber = Math.floor(Date.now() / 86400000);
+      return dayNumber % list.length;
+    }
 
-      resultBox.innerHTML = `
-        <div class="panel" style="box-shadow:none;margin-top:18px;">
-          <h2>${country} Business Intelligence</h2>
+    function setDailyBackgrounds(){
+      const hero = document.getElementById("dailyHero");
+      const book = document.getElementById("dailyBookCover");
+      const heroImg = dailyImages[dailyIndex(dailyImages)];
+      const bookImg = bookImages[dailyIndex(bookImages)];
 
-          <p>
-            This is a country-level business view for ${country}. It focuses on business news,
-            the stock market, major companies, major industries, banking, finance, real estate,
-            trade, currency, business risks, and business opportunities.
-          </p>
+      if(hero){
+        hero.style.backgroundImage =
+          `linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.70),rgba(0,0,0,.18)), url("${heroImg}")`;
+      }
 
-          <div class="grid cols-3">
-            <div class="card">
-              <h3>${country} Business News</h3>
-              <p>
-                Business-only headlines, company movement, industry activity,
-                banking, finance, trade, real estate, and economy.
-              </p>
-              <span class="badge green">Business Only</span>
-            </div>
+      if(book){
+        book.style.backgroundImage =
+          `linear-gradient(180deg,rgba(0,0,0,.24),rgba(0,0,0,.84)), url("${bookImg}")`;
+      }
 
-            <div class="card">
-              <h3>${country} Stock Market</h3>
-              <p>
-                Market index, public companies, sector movement,
-                investor confidence, and market direction.
-              </p>
-              <span class="badge green">Stock Market</span>
-            </div>
+      document.querySelectorAll(".daily-card-image").forEach((box, index) => {
+        const img = dailyImages[(dailyIndex(dailyImages) + index) % dailyImages.length];
+        box.style.backgroundImage =
+          `linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.70)), url("${img}")`;
+      });
+    }
 
-            <div class="card">
-              <h3>${country} Major Companies</h3>
-              <p>
-                Public companies, major employers, national brands,
-                important industries, and business anchors.
-              </p>
-              <span class="badge green">Companies</span>
-            </div>
+    const countryData = {
+      "United States": "Business-only headlines, major indexes, public companies, banking, finance, real estate, trade, economy, market direction, and sector movement.",
+      "Canada": "Banking, energy, real estate, trade, natural resources, technology, currency movement, and North American business activity.",
+      "United Kingdom": "Finance, banking, currency movement, trade, real estate, public companies, regulation, and European business connection.",
+      "Germany": "Manufacturing, exports, automotive, banking, energy, industrial activity, technology, and European market movement.",
+      "France": "Finance, luxury brands, tourism, energy, transportation, agriculture, public companies, and European business direction.",
+      "Brazil": "Agriculture, energy, banking, currency, exports, infrastructure, real estate, and South American market activity.",
+      "India": "Technology, manufacturing, banking, energy, consumer growth, public markets, infrastructure, and business expansion.",
+      "Japan": "Technology, automotive, manufacturing, banking, exports, currency, public companies, and Asia Pacific business movement.",
+      "United Arab Emirates": "Real estate, finance, trade, energy, tourism, logistics, banking, and Middle East business movement.",
+      "South Africa": "Mining, banking, energy, trade, currency, real estate, infrastructure, and African market direction."
+    };
 
-            <div class="card">
-              <h3>${country} Economy</h3>
-              <p>
-                Jobs, inflation, interest rates, currency, growth pressure,
-                business confidence, and economic direction.
-              </p>
-              <span class="badge green">Economy</span>
-            </div>
+    function openCountryIntelligence(){
+      const select = document.getElementById("countrySelect");
+      const result = document.getElementById("countryResult");
+      const country = select.value;
 
-            <div class="card">
-              <h3>${country} Banking & Finance</h3>
-              <p>
-                Lending conditions, banks, business credit, capital movement,
-                funding access, and financial sector direction.
-              </p>
-              <span class="badge green">Finance</span>
-            </div>
-
-            <div class="card">
-              <h3>${country} Opportunities & Risks</h3>
-              <p>
-                Growing sectors, business demand, market risks,
-                regulation pressure, currency risk, and sector weakness.
-              </p>
-              <span class="badge green">Research</span>
-            </div>
-          </div>
-
-          <p class="notice">
-            Country-level only. No forced city/county/state drill-down.
-          </p>
-        </div>
+      result.innerHTML = `
+        <h3>${country} Business View</h3>
+        <p>${countryData[country]}</p>
       `;
     }
 
-    function openLocalBusiness() {
-      const stateInput = document.getElementById("localState");
-      const cityInput = document.getElementById("localCity");
-      const resultBox = document.getElementById("localBusinessResult");
+    function openLocalView(){
+      const state = document.getElementById("stateInput").value.trim() || "State";
+      const city = document.getElementById("cityInput").value.trim() || "City";
+      const result = document.getElementById("localResult");
 
-      if (!stateInput || !cityInput || !resultBox) return;
-
-      const state = stateInput.value.trim() || "Florida";
-      const city = cityInput.value.trim() || "Orlando";
-
-      resultBox.innerHTML = `
-        <div class="panel" style="box-shadow:none;margin-top:18px;">
-          <h2>${city}, ${state} Local Business Intelligence</h2>
-
-          <p>
-            This is an optional local business view. It can show local business openings,
-            real estate movement, tourism, jobs, construction, major employers,
-            stock connections, and business opportunity notes.
-          </p>
-
-          <div class="grid cols-3">
-            <div class="card">
-              <h3>${city} Business Pulse</h3>
-              <p>
-                New businesses, local company movement, commercial areas,
-                restaurants, services, and local economic activity.
-              </p>
-              <span class="badge green">Local</span>
-            </div>
-
-            <div class="card">
-              <h3>${city} Real Estate</h3>
-              <p>
-                Housing, rentals, commercial property, development,
-                construction, and property management demand.
-              </p>
-              <span class="badge green">Real Estate</span>
-            </div>
-
-            <div class="card">
-              <h3>${city} Market Opportunity</h3>
-              <p>
-                Local demand, growing sectors, tourism, jobs,
-                business services, and public opportunity notes.
-              </p>
-              <span class="badge green">Opportunity</span>
-            </div>
-          </div>
-
-          <p class="notice">
-            Optional local view only. Global Business News remains country-level.
-          </p>
-        </div>
+      result.innerHTML = `
+        <h3>${state} / ${city} Business Pulse</h3>
+        <p>Local business openings, population movement, real estate, tourism, construction, service industries, transportation, healthcare, hospitality, and local market activity.</p>
       `;
     }
+
+    document.addEventListener("DOMContentLoaded", setDailyBackgrounds);
   </script>
 </body>
 </html>
