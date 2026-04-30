@@ -9,30 +9,40 @@
   <style>
     :root{
       --black:#000000;
-      --panel:#070b0a;
-      --panel2:#0b1110;
-      --green:#00a651;
-      --green2:#25c76f;
+      --panel:#050705;
+      --panel2:#090c09;
+      --green:#00b85a;
+      --green2:#03d66b;
       --gold:#d8b45a;
-      --gold2:#f3d88b;
-      --yellow:#ffd400;
+      --gold2:#f4d98b;
+      --yellow:#ffd000;
       --white:#ffffff;
-      --muted:#b8ad8a;
-      --border:rgba(216,180,90,.32);
-      --border2:rgba(216,180,90,.62);
-      --shadow:0 18px 55px rgba(0,0,0,.65);
+      --muted:#c7b37a;
+      --border:rgba(216,180,90,.50);
+      --soft:rgba(0,184,90,.12);
+      --shadow:0 0 34px rgba(216,180,90,.12);
     }
 
     *{
       box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      background:var(--black);
     }
 
     body{
-      margin:0;
-      background:#000;
+      background:
+        radial-gradient(circle at top left,rgba(0,184,90,.16),transparent 30%),
+        radial-gradient(circle at top right,rgba(216,180,90,.10),transparent 28%),
+        linear-gradient(180deg,#000 0%,#031008 48%,#000 100%);
       color:var(--gold2);
       font-family:Arial,Helvetica,sans-serif;
-      line-height:1.45;
+      line-height:1.55;
+      overflow-x:hidden;
     }
 
     a{
@@ -40,886 +50,540 @@
       text-decoration:none;
     }
 
-    .page{
-      width:min(1540px,calc(100% - 28px));
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(1240px,94%);
       margin:0 auto;
     }
 
+    /* HEADER */
     .topbar{
       background:#000;
-      border-bottom:1px solid var(--border2);
-      position:sticky;
-      top:0;
-      z-index:100;
-      box-shadow:0 12px 34px rgba(0,0,0,.7);
-    }
-
-    .header-inner{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:18px;
-      padding:18px 0 10px;
+      border-bottom:1px solid var(--border);
+      padding:24px 0 28px;
+      position:relative;
+      z-index:10;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:18px;
+      padding-bottom:24px;
+      border-bottom:1px solid rgba(216,180,90,.30);
     }
 
-    .logo-slot{
-      width:58px;
-      height:58px;
-      min-width:58px;
-      border-radius:10px;
-      border:2px solid var(--gold);
-      display:grid;
-      place-items:center;
+    .logo-box{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       color:var(--yellow);
+      font-size:42px;
+      font-weight:900;
       background:
-        radial-gradient(circle at 30% 25%,rgba(216,180,90,.24),transparent 38%),
-        linear-gradient(180deg,#101810,#020402);
-      font-size:34px;
-      font-weight:900;
-      box-shadow:0 0 22px rgba(0,166,81,.22);
-      overflow:hidden;
+        radial-gradient(circle at center,rgba(255,208,0,.18),transparent 58%),
+        #050505;
+      box-shadow:0 0 22px rgba(216,180,90,.18);
+      flex:0 0 auto;
     }
 
-    .brand-text strong{
-      display:block;
+    .brand-title{
       color:var(--green);
-      font-size:28px;
+      font-size:clamp(30px,6vw,58px);
+      line-height:1;
       font-weight:900;
-      line-height:1.05;
-      letter-spacing:.4px;
+      letter-spacing:.5px;
     }
 
-    .brand-text small{
-      display:block;
+    .brand-subtitle{
+      margin-top:8px;
       color:var(--gold);
-      font-size:12px;
-      letter-spacing:2.2px;
+      font-size:clamp(12px,2.5vw,18px);
+      font-weight:900;
+      letter-spacing:4px;
       text-transform:uppercase;
-      font-weight:900;
-      margin-top:4px;
     }
 
-    .header-actions{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:12px;
-    }
-
-    .circle-btn{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      border:1px solid rgba(216,180,90,.45);
-      background:#070707;
-      color:#ffffff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 6px 20px rgba(0,0,0,.45);
-      transition:.2s ease;
-    }
-
-    .circle-btn:hover{
-      border-color:var(--yellow);
-      color:var(--yellow);
-      transform:translateY(-2px);
-    }
-
-    .subscribe-btn{
-      min-height:44px;
-      padding:0 16px;
-      border-radius:8px;
-      border:1px solid var(--gold);
-      background:#e6c66b;
-      color:#111;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-weight:900;
-      box-shadow:0 6px 20px rgba(0,0,0,.35);
-      transition:.2s ease;
-    }
-
-    .subscribe-btn:hover{
-      background:#f1d886;
-      transform:translateY(-2px);
-    }
-
+    /* MENU ALWAYS OPEN */
     .nav{
-      grid-column:1 / -1;
       display:flex;
-      justify-content:center;
       flex-wrap:wrap;
-      gap:6px;
-      padding-top:10px;
-      border-top:1px solid rgba(216,180,90,.25);
+      justify-content:center;
+      align-items:center;
+      gap:16px 34px;
+      padding-top:28px;
     }
 
     .nav a{
-      color:#fff;
-      font-size:13px;
-      font-weight:800;
-      padding:9px 14px;
-      border-radius:7px;
-      border:1px solid transparent;
-      white-space:nowrap;
-      transition:.2s ease;
+      color:var(--white);
+      font-size:clamp(15px,2.6vw,20px);
+      font-weight:900;
+      text-align:center;
+      padding:8px 4px;
+      border-bottom:2px solid transparent;
     }
 
     .nav a:hover,
     .nav a.active{
-      color:var(--yellow);
-      border-color:rgba(216,180,90,.45);
-      background:rgba(216,180,90,.07);
+      color:var(--white);
+      border-bottom-color:var(--gold);
     }
 
-    .nav a.active{
-      border-bottom-color:var(--yellow);
-    }
-
-    .section{
-      padding:12px 0;
-    }
-
-    .panel{
-      background:
-        linear-gradient(180deg,rgba(9,13,12,.96),rgba(3,5,4,.99));
-      border:1px solid var(--border);
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-
-    .panel-head{
+    /* HERO */
+    .hero{
+      min-height:540px;
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:13px 16px;
-      border-bottom:1px solid rgba(216,180,90,.22);
-      background:rgba(0,0,0,.22);
-    }
-
-    .panel-head h2{
-      margin:0;
-      color:var(--gold);
-      font-size:16px;
-      letter-spacing:.7px;
-      text-transform:uppercase;
-      font-weight:900;
-    }
-
-    .small-link{
-      color:var(--yellow);
-      font-size:12px;
-      font-weight:900;
-    }
-
-    .visual{
-      position:relative;
-      overflow:hidden;
+      padding:46px 0;
       background:
-        linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.70)),
-        var(--bg),
-        radial-gradient(circle at 20% 18%,rgba(0,166,81,.28),transparent 32%),
-        linear-gradient(135deg,#050805,#102010 55%,#050805);
+        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.72),rgba(0,0,0,.30)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80");
       background-size:cover;
       background-position:center;
-      background-repeat:no-repeat;
+      border-bottom:1px solid rgba(216,180,90,.28);
     }
 
-    .visual::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.50)),
-        radial-gradient(circle at 25% 20%,rgba(0,166,81,.10),transparent 36%);
-      pointer-events:none;
-    }
-
-    .visual > *{
-      position:relative;
-      z-index:2;
-    }
-
-    .visual-title{
-      color:var(--green2);
-      text-transform:uppercase;
-      font-weight:900;
-      text-align:center;
-      letter-spacing:.8px;
-      font-size:21px;
-      text-shadow:0 2px 10px rgba(0,0,0,.85);
-    }
-
-    .visual-sub{
-      color:var(--gold2);
-      font-weight:900;
-      font-size:12px;
-      text-align:center;
-      margin-top:5px;
-      text-shadow:0 2px 10px rgba(0,0,0,.85);
-    }
-
-    .hero{
-      min-height:310px;
-      display:grid;
-      grid-template-columns:1fr 1.45fr;
-      border:1px solid var(--border2);
-      border-radius:12px;
-      overflow:hidden;
+    .hero-card{
+      max-width:900px;
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:clamp(28px,6vw,64px);
+      background:rgba(0,0,0,.72);
       box-shadow:var(--shadow);
-      background:#050805;
-    }
-
-    .hero-copy{
-      padding:34px 48px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.97),rgba(0,0,0,.82),rgba(0,0,0,.20));
-      z-index:2;
     }
 
     .kicker{
       color:var(--gold);
-      text-transform:uppercase;
+      font-size:clamp(12px,2.5vw,17px);
       letter-spacing:5px;
-      font-size:13px;
+      text-transform:uppercase;
       font-weight:900;
-      margin-bottom:12px;
+      margin-bottom:18px;
     }
 
     h1{
-      color:#fff;
-      font-family:Georgia,serif;
-      font-size:clamp(33px,4vw,58px);
+      color:var(--green);
+      font-size:clamp(44px,9vw,86px);
       line-height:.98;
-      letter-spacing:-1px;
-      margin:0 0 18px;
-    }
-
-    .hero-copy p{
-      color:#fff;
-      font-size:18px;
-      max-width:610px;
-      margin:0 0 22px;
-    }
-
-    .hero-actions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .hero-btn{
-      min-height:48px;
-      padding:0 20px;
-      border-radius:8px;
+      letter-spacing:-2px;
       font-weight:900;
+      margin-bottom:24px;
+    }
+
+    h2{
+      color:var(--green);
+      font-size:clamp(32px,6vw,58px);
+      line-height:1.05;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    h3{
+      color:var(--green);
+      font-size:clamp(24px,4.8vw,38px);
+      line-height:1.12;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    p{
+      color:var(--gold2);
+      font-size:clamp(17px,3.2vw,23px);
+      margin-bottom:18px;
+    }
+
+    .lead{
+      font-size:clamp(20px,4vw,30px);
+      max-width:820px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .btn{
+      min-height:54px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      border:1px solid var(--gold);
+      padding:14px 22px;
+      border-radius:14px;
+      border:2px solid var(--yellow);
+      background:var(--yellow);
+      color:#000;
+      font-size:clamp(15px,2.8vw,18px);
+      font-weight:900;
+      text-align:center;
+      transition:.2s ease;
+    }
+
+    .btn.ghost{
+      background:rgba(0,0,0,.55);
+      color:var(--gold2);
+      border-color:var(--border);
+    }
+
+    .btn:hover{
+      background:var(--green);
+      border-color:var(--green);
+      color:var(--white);
+      transform:translateY(-2px);
+    }
+
+    /* SECTIONS */
+    .section{
+      padding:38px 0;
+    }
+
+    .panel{
+      border:1px solid var(--border);
+      border-radius:26px;
+      background:
+        radial-gradient(circle at top left,rgba(0,184,90,.12),transparent 34%),
+        rgba(0,0,0,.82);
+      padding:clamp(24px,5vw,46px);
+      box-shadow:var(--shadow);
+    }
+
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:flex-end;
+      border-bottom:1px solid rgba(216,180,90,.30);
+      padding-bottom:20px;
+      margin-bottom:24px;
+    }
+
+    .section-note{
+      color:var(--muted);
+      font-weight:900;
       font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      white-space:nowrap;
+    }
+
+    .grid{
+      display:grid;
+      gap:18px;
+    }
+
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+
+    .card{
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:22px;
+      overflow:hidden;
+      background:rgba(0,0,0,.72);
+      color:var(--gold2);
       transition:.2s ease;
+      min-height:100%;
     }
 
-    .hero-btn.primary{
-      background:var(--gold);
-      color:#111;
-    }
-
-    .hero-btn.primary:hover{
-      background:#f1d886;
+    .card:hover{
+      border-color:var(--green);
+      box-shadow:0 0 26px rgba(0,184,90,.14);
       transform:translateY(-2px);
     }
 
-    .hero-btn.secondary{
-      background:#0c0c0c;
-      color:#ffffff;
+    .card-img{
+      min-height:190px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      padding:16px;
+    }
+
+    .card-img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.78));
+    }
+
+    .icon-badge{
+      position:relative;
+      z-index:2;
+      width:54px;
+      height:54px;
+      border-radius:50%;
       border:1px solid var(--gold);
-    }
-
-    .hero-btn.secondary:hover{
-      color:var(--yellow);
-      border-color:var(--yellow);
-      transform:translateY(-2px);
-    }
-
-    .hero-image{
-      min-height:310px;
-      margin-left:-90px;
-    }
-
-    .dashboard-grid{
-      display:grid;
-      grid-template-columns:1.05fr 1.75fr 1.25fr;
-      gap:12px;
-    }
-
-    .brief-list{
-      display:grid;
-      gap:10px;
-      padding:12px;
-    }
-
-    .brief-item{
-      display:grid;
-      grid-template-columns:116px 1fr;
-      gap:12px;
+      display:flex;
       align-items:center;
-      padding-bottom:10px;
-      border-bottom:1px solid rgba(216,180,90,.18);
-      transition:.2s ease;
+      justify-content:center;
+      background:#050505;
+      color:var(--yellow);
+      font-size:28px;
+      font-weight:900;
     }
 
-    .brief-item:hover{
-      transform:translateY(-2px);
+    .card-body{
+      padding:22px;
     }
 
-    .brief-item:last-child{
-      border-bottom:none;
-      padding-bottom:0;
+    .card-body p{
+      font-size:clamp(15px,2.6vw,18px);
+    }
+
+    .card-link{
+      color:var(--yellow);
+      font-weight:900;
+      display:inline-block;
+      margin-top:6px;
+    }
+
+    .brief-card{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:16px;
+      align-items:center;
+      border:1px solid rgba(216,180,90,.35);
+      border-radius:18px;
+      padding:14px;
+      background:rgba(0,0,0,.62);
     }
 
     .brief-img{
-      height:74px;
-      border-radius:8px;
-      border:1px solid rgba(216,180,90,.25);
-      display:grid;
-      place-items:center;
+      height:92px;
+      border-radius:14px;
+      background-size:cover;
+      background-position:center;
+      border:1px solid rgba(216,180,90,.24);
     }
 
-    .brief-text h3{
-      color:#fff;
-      font-size:15px;
-      margin:0 0 5px;
+    .brief-card strong{
+      color:var(--white);
+      font-size:clamp(16px,2.6vw,20px);
+      display:block;
+      margin-bottom:6px;
+      line-height:1.25;
     }
 
-    .meta{
-      color:var(--gold);
-      font-size:12px;
-    }
-
-    .meta span{
-      color:var(--yellow);
-      margin-left:8px;
-    }
-
-    .company-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:12px;
-      padding:12px;
-    }
-
-    .company-card{
-      min-height:260px;
-      border:1px solid rgba(216,180,90,.28);
-      border-radius:10px;
-      overflow:hidden;
-      background:rgba(0,0,0,.28);
-      transition:.2s ease;
-    }
-
-    .company-card:hover,
-    .global-card:hover,
-    .stock-card:hover,
-    .media-box:hover{
-      border-color:var(--green);
-      transform:translateY(-2px);
-    }
-
-    .company-img{
-      height:118px;
-      border-bottom:1px solid rgba(216,180,90,.22);
-      display:grid;
-      place-items:center;
-    }
-
-    .company-body{
-      padding:14px;
-      text-align:center;
-    }
-
-    .company-body h3{
-      color:#fff;
-      font-size:17px;
-      margin:0 0 8px;
-    }
-
-    .company-body p{
-      color:var(--gold2);
-      font-size:13px;
-      min-height:54px;
-      margin:0 0 12px;
-    }
-
-    .company-body span{
-      color:var(--yellow);
-      font-size:13px;
-      font-weight:900;
-    }
-
-    .stock-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      padding:12px;
-    }
-
-    .stock-card{
-      min-height:132px;
-      padding:16px;
-      border:1px solid rgba(216,180,90,.28);
-      border-radius:10px;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.26),rgba(0,166,81,.08));
-      transition:.2s ease;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .stock-card::after{
-      content:"";
-      position:absolute;
-      left:12px;
-      right:12px;
-      bottom:18px;
-      height:32px;
-      background:
-        linear-gradient(135deg,transparent 0 14%,rgba(0,166,81,.8) 15% 17%,transparent 18% 24%,rgba(0,166,81,.55) 25% 27%,transparent 28% 39%,rgba(0,166,81,.9) 40% 42%,transparent 43% 100%);
-      opacity:.75;
-    }
-
-    .stock-card h3{
-      color:#fff;
-      font-size:14px;
-      margin:0 0 8px;
-      text-transform:uppercase;
-    }
-
-    .stock-value{
-      color:#fff;
-      font-size:25px;
-      font-weight:900;
-    }
-
-    .stock-change{
-      color:var(--green2);
-      font-size:13px;
-      font-weight:900;
-    }
-
-    .bottom-grid{
-      display:grid;
-      grid-template-columns:1.75fr 1fr .95fr;
-      gap:12px;
-      margin-top:12px;
-    }
-
-    .region-tabs{
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      padding:0 16px 10px;
-      border-bottom:1px solid rgba(216,180,90,.22);
-    }
-
-    .region-tabs a{
-      color:var(--gold2);
-      font-size:12px;
-      font-weight:800;
-      padding:4px 0;
-    }
-
-    .region-tabs a.active,
-    .region-tabs a:hover{
-      color:var(--yellow);
-    }
-
-    .global-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:12px;
-      padding:12px;
-    }
-
-    .global-card{
-      border:1px solid rgba(216,180,90,.28);
-      border-radius:10px;
-      overflow:hidden;
-      background:rgba(0,0,0,.28);
-      transition:.2s ease;
-    }
-
-    .global-img{
-      height:118px;
-      display:grid;
-      place-items:center;
-      border-bottom:1px solid rgba(216,180,90,.22);
-    }
-
-    .global-body{
-      padding:12px;
-    }
-
-    .global-body small{
-      color:var(--green2);
-      font-weight:900;
-      text-transform:uppercase;
-      font-size:11px;
-    }
-
-    .global-body h3{
-      color:#fff;
-      font-size:14px;
-      margin:6px 0 10px;
-    }
-
-    .ceo-card{
-      display:grid;
-      grid-template-columns:150px 1fr;
-      gap:18px;
-      padding:14px;
-    }
-
-    .ceo-logo-box{
-      min-height:205px;
-      border:1px solid rgba(216,180,90,.28);
-      border-radius:10px;
-      display:grid;
-      place-items:center;
-      color:var(--yellow);
-      font-size:54px;
-      font-weight:900;
-      background:
-        radial-gradient(circle at 30% 25%,rgba(216,180,90,.18),transparent 40%),
-        linear-gradient(180deg,#101810,#020402);
-    }
-
-    .quote{
-      color:var(--gold2);
-      font-size:14px;
-      margin-bottom:14px;
-    }
-
-    .ceo-name{
+    .brief-card span{
       color:var(--gold);
       font-weight:900;
-      margin-bottom:2px;
-    }
-
-    .ceo-title{
-      color:#fff;
-      font-size:12px;
-      margin-bottom:14px;
-    }
-
-    .read-btn{
-      display:inline-flex;
-      padding:10px 14px;
-      border-radius:8px;
-      border:1px solid var(--border2);
-      color:#fff;
       font-size:13px;
-      font-weight:900;
-      background:rgba(0,0,0,.25);
-      cursor:pointer;
-      transition:.2s ease;
-    }
-
-    .read-btn:hover{
-      background:var(--green);
-      border-color:var(--green);
-    }
-
-    .ceo-message-box{
-      display:none;
-      padding:0 14px 14px;
-    }
-
-    .ceo-message-box.show{
-      display:block;
-    }
-
-    .history-item{
-      border:1px solid rgba(216,180,90,.22);
-      border-radius:8px;
-      padding:10px;
-      margin-top:8px;
-      color:var(--gold2);
-      font-size:13px;
-    }
-
-    .resource-card{
-      display:block;
-      padding:14px;
-    }
-
-    .book-visual{
-      min-height:205px;
-      border:1px solid rgba(216,180,90,.28);
-      border-radius:10px;
-      display:grid;
-      place-items:center;
-      margin-bottom:14px;
-      padding:16px;
-    }
-
-    .book-cover{
-      width:100%;
-      max-width:185px;
-      min-height:170px;
-      border:1px solid rgba(216,180,90,.48);
-      border-radius:8px;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.62), rgba(0,0,0,.88)),
-        rgba(7,7,7,.9);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:16px 14px;
-      box-shadow:0 10px 28px rgba(0,0,0,.55);
-    }
-
-    .book-cover-top{
-      color:#e6c66b;
-      font-size:18px;
-      line-height:1.12;
-      font-weight:900;
+      text-transform:uppercase;
       letter-spacing:1px;
+    }
+
+    .market-card{
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:20px;
+      padding:22px;
+      background:rgba(0,0,0,.72);
+    }
+
+    .market-card .market-name{
+      color:var(--white);
+      font-size:22px;
+      font-weight:900;
       margin-bottom:10px;
     }
 
-    .book-cover-sub{
-      color:#f3d88b;
-      font-size:10px;
-      line-height:1.35;
+    .market-card .market-status{
+      color:var(--green2);
+      font-size:17px;
+      font-weight:900;
       margin-bottom:12px;
     }
 
-    .book-cover-brand{
-      color:#bca05b;
-      font-size:10px;
-      letter-spacing:1.4px;
-      font-weight:800;
-    }
-
-    .resource-card h3{
-      color:#fff;
-      font-size:17px;
-      margin:0 0 8px;
-    }
-
-    .resource-card p{
-      color:var(--gold2);
-      font-size:13px;
-      margin:0 0 10px;
-    }
-
-    .resource-card span{
-      color:var(--yellow);
-      font-weight:900;
-      font-size:13px;
-    }
-
-    .media-grid{
-      display:grid;
-      grid-template-columns:1.35fr 1fr 1fr;
-      gap:12px;
-      padding:12px;
-    }
-
-    .media-box{
-      min-height:190px;
-      border:1px solid rgba(216,180,90,.28);
+    .spark{
+      height:46px;
       border-radius:10px;
+      background:
+        linear-gradient(140deg,transparent 0 14%,rgba(0,184,90,.75) 15% 18%,transparent 19% 30%,rgba(255,208,0,.8) 31% 34%,transparent 35% 50%,rgba(0,184,90,.75) 51% 54%,transparent 55%);
+      border-bottom:1px solid rgba(0,184,90,.45);
+    }
+
+    .ceo-grid{
       display:grid;
-      place-items:center;
-      transition:.2s ease;
+      grid-template-columns:160px 1fr;
+      gap:24px;
+      align-items:center;
     }
 
-    .media-box.large{
-      min-height:260px;
+    .ceo-logo{
+      height:190px;
+      border:1px solid var(--border);
+      border-radius:22px;
+      background:
+        radial-gradient(circle at center,rgba(216,180,90,.18),transparent 55%),
+        #050505;
+      color:var(--yellow);
+      font-size:74px;
+      font-weight:900;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    .play-circle{
-      width:70px;
-      height:70px;
+    .video-card{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:24px;
+      align-items:center;
+      border:1px solid var(--border);
+      border-radius:26px;
+      background:rgba(0,0,0,.72);
+      overflow:hidden;
+    }
+
+    .video-thumb{
+      min-height:330px;
+      background:
+        linear-gradient(rgba(0,0,0,.16),rgba(0,0,0,.70)),
+        var(--video-image),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play{
+      width:92px;
+      height:92px;
       border-radius:50%;
       border:2px solid var(--yellow);
-      background:rgba(255,212,0,.12);
-      display:grid;
-      place-items:center;
-      margin:0 auto 12px;
+      background:rgba(0,0,0,.70);
+      color:var(--yellow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:40px;
+      padding-left:6px;
+      font-weight:900;
     }
 
-    .play-triangle{
-      width:0;
-      height:0;
-      border-left:18px solid var(--yellow);
-      border-top:12px solid transparent;
-      border-bottom:12px solid transparent;
-      margin-left:5px;
+    .video-copy{
+      padding:26px;
     }
 
     .footer{
-      padding:24px 0 36px;
-      border-top:1px solid rgba(216,180,90,.22);
-      margin-top:12px;
       background:#000;
+      border-top:1px solid var(--border);
+      padding:34px 0 46px;
     }
 
-    .footer-inner{
+    .footer-grid{
       display:grid;
-      grid-template-columns:1fr 1fr 1fr;
+      grid-template-columns:1fr auto 1fr;
+      gap:22px;
       align-items:center;
-      gap:18px;
     }
 
-    .footer-brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .footer-brand .logo-slot{
-      width:52px;
-      height:52px;
-      min-width:52px;
-    }
-
-    .footer-brand strong{
+    .footer strong{
       color:var(--green);
+      font-size:26px;
       display:block;
-      font-size:20px;
-      font-weight:900;
+      margin-bottom:8px;
     }
 
-    .footer-brand small{
-      color:var(--gold);
-      display:block;
-      font-size:11px;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-weight:900;
-    }
-
-    .footer-center{
-      text-align:center;
-      color:#8f8158;
-      font-size:12px;
+    .footer p{
+      font-size:15px;
+      color:var(--muted);
+      margin:0;
     }
 
     .footer-links{
       display:flex;
+      flex-wrap:wrap;
       justify-content:flex-end;
       gap:14px;
-      flex-wrap:wrap;
-      color:#8f8158;
-      font-size:12px;
     }
 
-    @media(max-width:1200px){
-      .header-inner,
-      .dashboard-grid,
-      .bottom-grid{
+    .footer-links a{
+      color:var(--white);
+      font-weight:900;
+      font-size:14px;
+    }
+
+    @media(max-width:980px){
+      .cols-4,.cols-3,.cols-2{
         grid-template-columns:1fr;
       }
 
-      .brand,
-      .header-actions{
-        justify-content:center;
+      .section-head{
+        display:block;
+      }
+
+      .section-note{
+        margin-top:8px;
+        display:block;
+      }
+
+      .video-card,
+      .ceo-grid,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-links{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:620px){
+      .brand{
+        align-items:flex-start;
+      }
+
+      .logo-box{
+        width:62px;
+        height:62px;
+        font-size:34px;
+      }
+
+      .brand-subtitle{
+        letter-spacing:3px;
+      }
+
+      .nav{
+        gap:12px 20px;
       }
 
       .hero{
-        grid-template-columns:1fr;
+        min-height:auto;
       }
 
-      .hero-image{
-        margin-left:0;
+      .actions{
+        display:grid;
       }
 
-      .company-grid,
-      .global-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-    }
-
-    @media(max-width:760px){
-      .page{
-        width:calc(100% - 18px);
+      .btn{
+        width:100%;
       }
 
-      .brand{
-        justify-content:flex-start;
-      }
-
-      .brand-text strong{
-        font-size:26px;
-      }
-
-      .brand-text small{
-        font-size:12px;
-        letter-spacing:2px;
-      }
-
-      .header-actions{
-        display:none;
-      }
-
-      .nav a{
-        font-size:14px;
-        padding:10px 13px;
-        border-radius:14px;
-      }
-
-      .hero-copy{
-        padding:26px 24px;
-      }
-
-      .hero-image{
-        min-height:240px;
-      }
-
-      .brief-item,
-      .ceo-card{
+      .brief-card{
         grid-template-columns:1fr;
       }
 
       .brief-img{
-        height:150px;
+        height:170px;
       }
 
-      .company-grid,
-      .stock-grid,
-      .global-grid,
-      .media-grid{
-        grid-template-columns:1fr;
-      }
-
-      .footer-inner{
-        grid-template-columns:1fr;
-        text-align:center;
-      }
-
-      .footer-brand,
-      .footer-links{
-        justify-content:center;
+      .card-img{
+        min-height:220px;
       }
     }
   </style>
@@ -927,35 +591,16 @@
 
 <body>
   <header class="topbar">
-    <div class="page header-inner">
+    <div class="container">
       <a class="brand" href="index.html">
-        <span class="logo-slot">T</span>
-        <span class="brand-text">
-          <strong>TitanCore Holdings</strong>
-          <small>Business Intelligence Network</small>
-        </span>
+        <div class="logo-box">T</div>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">Business Intelligence Network</div>
+        </div>
       </a>
 
-      <div></div>
-
-      <div class="header-actions">
-        <a class="circle-btn" href="business-book.html#search" aria-label="Search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="2"></circle>
-            <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-          </svg>
-        </a>
-
-        <a class="subscribe-btn" href="contact.html#subscribe">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M4 6H20V18H4V6Z" stroke="currentColor" stroke-width="2"></path>
-            <path d="M4 7L12 13L20 7" stroke="currentColor" stroke-width="2"></path>
-          </svg>
-          <span>Subscribe</span>
-        </a>
-      </div>
-
-      <nav class="nav">
+      <nav class="nav" aria-label="TitanCore Main Menu">
         <a class="active" href="index.html">Home</a>
         <a href="investor.html">Investor</a>
         <a href="institution.html">Institution</a>
@@ -971,489 +616,448 @@
     </div>
   </header>
 
-  <main class="page">
-    <section class="section">
-      <div class="hero">
-        <div class="hero-copy">
+  <main>
+    <section class="hero" id="heroSection">
+      <div class="container">
+        <div class="hero-card">
           <div class="kicker">TitanCore Holdings</div>
           <h1>Business Intelligence for Markets, Companies, Countries, Stocks, and Growth.</h1>
-          <p>Your trusted source for business news, market movement, company intelligence, and investor-focused insights.</p>
+          <p class="lead">
+            TitanCore Holdings is the father company and public business information hub
+            connecting market intelligence, company research, stock awareness, global business news,
+            and the TitanCore company network.
+          </p>
 
-          <div class="hero-actions">
-            <a class="hero-btn primary" href="business-book.html">
-              <span>Explore Business Intelligence</span>
-              <span>→</span>
-            </a>
-
-            <a class="hero-btn secondary" href="stock-watch.html">
-              <span>Market Watch</span>
-              <span>↗</span>
-            </a>
+          <div class="actions">
+            <a class="btn" href="business-book.html">📘 Explore Business Intelligence</a>
+            <a class="btn ghost" href="stock-watch.html">📈 Open Stock Market Watch</a>
+            <a class="btn ghost" href="global-business-news.html">🌍 Global Business News</a>
           </div>
         </div>
-
-        <a class="hero-image visual" data-bg-group="hero" href="business-book.html"
-          style="--bg:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80');">
-        </a>
       </div>
     </section>
 
-    <section class="section" style="padding-top:0;">
-      <div class="dashboard-grid">
-        <section class="panel">
-          <div class="panel-head">
-            <h2>Today’s Morning Brief</h2>
-            <a class="small-link" href="global-business-news.html">View All News →</a>
+    <section class="section" id="morning-brief">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Daily Business Brief</div>
+            <h2>Today’s Business Intelligence</h2>
           </div>
+          <span class="section-note" id="todayDate">Updated Today</span>
+        </div>
 
-          <div class="brief-list">
-            <a class="brief-item" href="global-business-news.html#technology">
-              <div class="brief-img visual" data-bg-group="tech"
-                style="--bg:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80');"></div>
-              <div class="brief-text">
-                <h3>Tech and AI Investment Drive New Wave of Data Center Growth</h3>
-                <div class="meta"><span class="today-date"></span> <span>Business</span></div>
-              </div>
-            </a>
-
-            <a class="brief-item" href="global-business-news.html#market">
-              <div class="brief-img visual" data-bg-group="market"
-                style="--bg:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80');"></div>
-              <div class="brief-text">
-                <h3>Global Markets Rebound as Investors Gain Confidence</h3>
-                <div class="meta"><span class="today-date"></span> <span>Markets</span></div>
-              </div>
-            </a>
-
-            <a class="brief-item" href="global-business-news.html#economy">
-              <div class="brief-img visual" data-bg-group="economy"
-                style="--bg:url('https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=900&q=80');"></div>
-              <div class="brief-text">
-                <h3>Global Trade Outlook Improves Amid Policy Clarity</h3>
-                <div class="meta"><span class="today-date"></span> <span>Economy</span></div>
-              </div>
-            </a>
-
-            <a class="brief-item" href="global-business-news.html#energy">
-              <div class="brief-img visual" data-bg-group="energy"
-                style="--bg:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80');"></div>
-              <div class="brief-text">
-                <h3>Clean Energy Transition Accelerates Across Key Regions</h3>
-                <div class="meta"><span class="today-date"></span> <span>Energy</span></div>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="panel-head">
-            <h2>Our Companies</h2>
-            <a class="small-link" href="companies.html">View Companies →</a>
-          </div>
-
-          <div class="company-grid">
-            <a class="company-card" href="vaultara.html">
-              <div class="company-img visual" data-bg-group="vaultara"
-                style="--bg:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80');">
-                <div>
-                  <div class="visual-title">V</div>
-                  <div class="visual-sub">Funding • Credit</div>
-                </div>
-              </div>
-              <div class="company-body">
-                <h3>Vaultara Capital</h3>
-                <p>Funding, business credit, personal credit, and formation support.</p>
-                <span>Learn More →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="family-first.html">
-              <div class="company-img visual" data-bg-group="family"
-                style="--bg:url('https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=800&q=80');">
-                <div>
-                  <div class="visual-title">F</div>
-                  <div class="visual-sub">Real Estate • Equity</div>
-                </div>
-              </div>
-              <div class="company-body">
-                <h3>Family First Equity Group</h3>
-                <p>Real estate investment, acquisitions, and property education.</p>
-                <span>Learn More →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="vitalpath.html">
-              <div class="company-img visual" data-bg-group="vitalpath"
-                style="--bg:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80');">
-                <div>
-                  <div class="visual-title">♣</div>
-                  <div class="visual-sub">Care • Wellness</div>
-                </div>
-              </div>
-              <div class="company-body">
-                <h3>VitalPath Care Group</h3>
-                <p>Care services, wellness education, and family support information.</p>
-                <span>Learn More →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="revmotion.html">
-              <div class="company-img visual" data-bg-group="revmotion"
-                style="--bg:url('https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=800&q=80');">
-                <div>
-                  <div class="visual-title">R</div>
-                  <div class="visual-sub">Auto • Marine</div>
-                </div>
-              </div>
-              <div class="company-body">
-                <h3>RevMotion Auto & Marine LLC</h3>
-                <p>Auto, marine, repair education, and transportation support.</p>
-                <span>Learn More →</span>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="panel-head">
-            <h2>Stock Market Watch</h2>
-            <a class="small-link" href="stock-watch.html">View Full Market →</a>
-          </div>
-
-          <div class="stock-grid">
-            <a class="stock-card" href="stock-watch.html#sp500">
-              <h3>S&P 500</h3>
-              <div class="stock-value">5,304.72</div>
-              <div class="stock-change">+45.18 (+0.86%)</div>
-            </a>
-
-            <a class="stock-card" href="stock-watch.html#nasdaq">
-              <h3>NASDAQ</h3>
-              <div class="stock-value">16,920.79</div>
-              <div class="stock-change">+156.95 (+0.94%)</div>
-            </a>
-
-            <a class="stock-card" href="stock-watch.html#dow">
-              <h3>Dow Jones</h3>
-              <div class="stock-value">39,069.59</div>
-              <div class="stock-change">+331.99 (+0.86%)</div>
-            </a>
-
-            <a class="stock-card" href="stock-watch.html#global-markets">
-              <h3>Global Markets</h3>
-              <div class="stock-value">4,512.33</div>
-              <div class="stock-change">+28.77 (+0.64%)</div>
-            </a>
-          </div>
-        </section>
-      </div>
-
-      <div class="bottom-grid">
-        <section class="panel">
-          <div class="panel-head">
-            <h2>Global Business News</h2>
-          </div>
-
-          <div class="region-tabs">
-            <a class="active" href="global-business-news.html">All</a>
-            <a href="global-business-news.html#north-america">North America</a>
-            <a href="global-business-news.html#europe">Europe</a>
-            <a href="global-business-news.html#asia-pacific">Asia Pacific</a>
-            <a href="global-business-news.html#latin-america">Latin America</a>
-            <a href="global-business-news.html#middle-east">Middle East</a>
-            <a href="global-business-news.html#africa">Africa</a>
-          </div>
-
-          <div class="global-grid">
-            <a class="global-card" href="global-business-news.html#north-america">
-              <div class="global-img visual" data-bg-group="northAmerica"
-                style="--bg:url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="global-body">
-                <small>North America</small>
-                <h3>U.S. Economy Shows Resilience in Business Outlook</h3>
-                <div class="meta">Today</div>
-              </div>
-            </a>
-
-            <a class="global-card" href="global-business-news.html#europe">
-              <div class="global-img visual" data-bg-group="europe"
-                style="--bg:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="global-body">
-                <small>Europe</small>
-                <h3>European Markets Watch Finance, Energy, and Trade</h3>
-                <div class="meta">Today</div>
-              </div>
-            </a>
-
-            <a class="global-card" href="global-business-news.html#asia-pacific">
-              <div class="global-img visual" data-bg-group="asiaPacific"
-                style="--bg:url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="global-body">
-                <small>Asia Pacific</small>
-                <h3>Asia Tech and Manufacturing Remain Key Business Themes</h3>
-                <div class="meta">Today</div>
-              </div>
-            </a>
-
-            <a class="global-card" href="global-business-news.html#middle-east">
-              <div class="global-img visual" data-bg-group="middleEast"
-                style="--bg:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80');"></div>
-              <div class="global-body">
-                <small>Middle East</small>
-                <h3>Energy, Infrastructure, and Investment Activity Expand</h3>
-                <div class="meta">Today</div>
-              </div>
-            </a>
-          </div>
-        </section>
-
-        <section class="panel">
-          <div class="panel-head">
-            <h2>CEO Message</h2>
-          </div>
-
-          <div class="ceo-card">
-            <div class="ceo-logo-box">T</div>
-
+        <div class="grid cols-2">
+          <a class="brief-card" href="business-book.html">
+            <div class="brief-img daily-brief-img"></div>
             <div>
-              <p class="quote" id="ceoCurrentBody">
-                At TitanCore Holdings, our mission is to deliver trusted business intelligence and company information that supports better decisions.
-              </p>
-
-              <div class="ceo-name" id="ceoMessageTitle">Monthly CEO Message</div>
-              <div class="ceo-title" id="ceoMessageDate">Auto-updating monthly message</div>
-
-              <button class="read-btn" onclick="toggleCEOMessage()">Read Full Message →</button>
+              <span>Business</span>
+              <strong>AI, automation, and business technology continue changing how companies work.</strong>
+              <p>Read business intelligence notes and company learning updates.</p>
             </div>
+          </a>
+
+          <a class="brief-card" href="stock-watch.html">
+            <div class="brief-img daily-brief-img"></div>
+            <div>
+              <span>Markets</span>
+              <strong>Market movement helps visitors understand business direction and sector confidence.</strong>
+              <p>Open market watch for broad stock and sector awareness.</p>
+            </div>
+          </a>
+
+          <a class="brief-card" href="global-business-news.html">
+            <div class="brief-img daily-brief-img"></div>
+            <div>
+              <span>Global</span>
+              <strong>Country-level business news connects trade, finance, companies, and opportunities.</strong>
+              <p>Review global business news by region and country.</p>
+            </div>
+          </a>
+
+          <a class="brief-card" href="companies.html">
+            <div class="brief-img daily-brief-img"></div>
+            <div>
+              <span>Company Network</span>
+              <strong>TitanCore connects public business information to its operating companies.</strong>
+              <p>Explore the TitanCore company directory.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="companies">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Our Companies</div>
+            <h2>TitanCore Company Network</h2>
+          </div>
+          <span class="section-note">Click a company to learn more</span>
+        </div>
+
+        <div class="grid cols-4">
+          <a class="card" href="vaultara-landing.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">💳</div>
+            </div>
+            <div class="card-body">
+              <h3>Vaultara Capital</h3>
+              <p>Funding, credit education, business formation, and financial readiness information.</p>
+              <span class="card-link">Learn More →</span>
+            </div>
+          </a>
+
+          <a class="card" href="family-first.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">🏠</div>
+            </div>
+            <div class="card-body">
+              <h3>Family First Equity Group</h3>
+              <p>Real estate investment, property opportunities, property management, and market education.</p>
+              <span class="card-link">Learn More →</span>
+            </div>
+          </a>
+
+          <a class="card" href="vitalpath.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">✚</div>
+            </div>
+            <div class="card-body">
+              <h3>VitalPath Care Group</h3>
+              <p>Care service education, wellness support, family care planning, and community service information.</p>
+              <span class="card-link">Learn More →</span>
+            </div>
+          </a>
+
+          <a class="card" href="revmotion.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">🚗</div>
+            </div>
+            <div class="card-body">
+              <h3>RevMotion Auto & Marine LLC</h3>
+              <p>Auto, marine, transportation, repair education, and service market information.</p>
+              <span class="card-link">Learn More →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="market">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Stock Market Watch</div>
+            <h2>Market Awareness Board</h2>
+          </div>
+          <span class="section-note">Demo board now, API later</span>
+        </div>
+
+        <div class="grid cols-4">
+          <a class="market-card" href="stock-watch.html#sp500">
+            <div class="market-name">📊 S&amp;P 500</div>
+            <div class="market-status">Broad U.S. market direction</div>
+            <div class="spark"></div>
+          </a>
+
+          <a class="market-card" href="stock-watch.html#nasdaq">
+            <div class="market-name">💻 NASDAQ</div>
+            <div class="market-status">Technology and growth watch</div>
+            <div class="spark"></div>
+          </a>
+
+          <a class="market-card" href="stock-watch.html#dow">
+            <div class="market-name">🏛 Dow Jones</div>
+            <div class="market-status">Blue-chip business sentiment</div>
+            <div class="spark"></div>
+          </a>
+
+          <a class="market-card" href="stock-watch.html#global">
+            <div class="market-name">🌍 Global Markets</div>
+            <div class="market-status">Country and region direction</div>
+            <div class="spark"></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="global-news">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Global Business News</div>
+            <h2>Business News by Region</h2>
+          </div>
+          <span class="section-note">Images rotate daily</span>
+        </div>
+
+        <div class="grid cols-3">
+          <a class="card" href="global-business-news.html#north-america">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🇺🇸</div>
+            </div>
+            <div class="card-body">
+              <h3>North America</h3>
+              <p>Business, finance, stocks, banks, real estate, and market movement.</p>
+              <span class="card-link">Open Region →</span>
+            </div>
+          </a>
+
+          <a class="card" href="global-business-news.html#europe">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🇪🇺</div>
+            </div>
+            <div class="card-body">
+              <h3>Europe</h3>
+              <p>Banking, energy, manufacturing, trade, finance, and company movement.</p>
+              <span class="card-link">Open Region →</span>
+            </div>
+          </a>
+
+          <a class="card" href="global-business-news.html#asia">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🌏</div>
+            </div>
+            <div class="card-body">
+              <h3>Asia Pacific</h3>
+              <p>Technology, manufacturing, exports, supply chain, and public markets.</p>
+              <span class="card-link">Open Region →</span>
+            </div>
+          </a>
+
+          <a class="card" href="global-business-news.html#latin-america">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🌎</div>
+            </div>
+            <div class="card-body">
+              <h3>Latin America</h3>
+              <p>Commodities, banking, agriculture, real estate, trade, and consumer markets.</p>
+              <span class="card-link">Open Region →</span>
+            </div>
+          </a>
+
+          <a class="card" href="global-business-news.html#middle-east">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🏗</div>
+            </div>
+            <div class="card-body">
+              <h3>Middle East</h3>
+              <p>Energy, construction, finance, tourism, logistics, and investment activity.</p>
+              <span class="card-link">Open Region →</span>
+            </div>
+          </a>
+
+          <a class="card" href="global-business-news.html#africa">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🌍</div>
+            </div>
+            <div class="card-body">
+              <h3>Africa</h3>
+              <p>Energy, infrastructure, trade, banking, telecom, agriculture, and emerging markets.</p>
+              <span class="card-link">Open Region →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="media">
+      <div class="container">
+        <div class="video-card">
+          <div class="video-thumb" id="videoThumb">
+            <div class="play">▶</div>
           </div>
 
-          <div class="ceo-message-box" id="monthlyCEOMessage">
-            <h3 id="ceoCurrentTitle">Current CEO Message</h3>
-            <p id="ceoFullBody">
-              TitanCore Holdings is being built to deliver trusted business intelligence, company information, and market awareness for visitors, institutions, investors, banks, and business decision-makers.
+          <div class="video-copy">
+            <div class="kicker">Business Media Area</div>
+            <h2>Daily Video / Market Update Slot</h2>
+            <p>
+              This section is ready for business videos, market updates, CEO announcements,
+              company explainers, or AI-generated video content later.
             </p>
-            <div id="ceoArchive">
-              <div class="history-item">Previous CEO Message — Archive placeholder</div>
-              <div class="history-item">Older CEO Message — Archive placeholder</div>
+            <div class="actions">
+              <a class="btn" href="business-book.html">📘 Open Business Book</a>
+              <a class="btn ghost" href="global-business-news.html">🌍 Read Global News</a>
             </div>
           </div>
-        </section>
-
-        <section class="panel">
-          <div class="panel-head">
-            <h2>Featured Resource</h2>
-          </div>
-
-          <a class="resource-card" href="business-book.html">
-            <div class="book-visual visual" data-bg-group="resourceBook"
-              style="--bg:url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80');">
-              <div class="book-cover">
-                <div class="book-cover-top">BUSINESS<br>INTELLIGENCE<br>STRATEGIES</div>
-                <div class="book-cover-sub">For Markets, Companies, Countries, Stocks, and Growth</div>
-                <div class="book-cover-brand">TITANCORE HOLDINGS</div>
-              </div>
-            </div>
-
-            <h3>Business Intelligence Book</h3>
-            <p>Insights and strategies for navigating today’s complex global business landscape.</p>
-            <span>Learn More →</span>
-          </a>
-        </section>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <section class="panel">
-        <div class="panel-head">
-          <h2>TitanCore Media Center</h2>
-          <a class="small-link" href="global-business-news.html">Open Media →</a>
+    <section class="section" id="ceo">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">CEO Message</div>
+            <h2>Message From TitanCore</h2>
+          </div>
+          <span class="section-note">Monthly / urgent update ready</span>
         </div>
 
-        <div class="media-grid">
-          <a class="media-box large visual" data-bg-group="video" href="titancore-news.html#video"
-            style="--bg:url('https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1000&q=80');">
-            <div>
-              <div class="play-circle"><div class="play-triangle"></div></div>
-              <div class="visual-title">Daily Business Video</div>
-              <div class="visual-sub">Video space for market and business briefing</div>
+        <div class="ceo-grid">
+          <div class="ceo-logo">T</div>
+          <div>
+            <p>
+              TitanCore Holdings is being built as a business intelligence and company network
+              designed to organize information, connect companies, support decision-making,
+              and prepare a stronger business future.
+            </p>
+            <p class="notice">
+              CEO image is intentionally left as a logo/placeholder. A personal photo or official logo
+              can be added later.
+            </p>
+            <div class="actions">
+              <a class="btn" href="ceo-message.html">Read CEO Messages →</a>
+              <a class="btn ghost" href="contact.html">Contact TitanCore →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured-resource">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Featured Resource</div>
+            <h2>Business Intelligence Book</h2>
+          </div>
+          <span class="section-note">Learning center</span>
+        </div>
+
+        <div class="grid cols-2">
+          <a class="card" href="business-book.html">
+            <div class="card-img" id="resourceImg">
+              <div class="icon-badge">📘</div>
+            </div>
+            <div class="card-body">
+              <h3>Business Intelligence Book</h3>
+              <p>
+                Public education for business, markets, credit, funding, real estate,
+                auto/marine, care services, countries, and decision preparation.
+              </p>
+              <span class="card-link">Open Resource →</span>
             </div>
           </a>
 
-          <a class="media-box visual" data-bg-group="news" href="global-business-news.html"
-            style="--bg:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80');">
-            <div>
-              <div class="visual-title">News Image</div>
-              <div class="visual-sub">Space for daily business news image</div>
+          <a class="card" href="join-us.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80');">
+              <div class="icon-badge">🤝</div>
             </div>
-          </a>
-
-          <a class="media-box visual" data-bg-group="stock" href="stock-watch.html"
-            style="--bg:url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80');">
-            <div>
-              <div class="visual-title">Market Image</div>
-              <div class="visual-sub">Space for stock and economy image</div>
+            <div class="card-body">
+              <h3>Join the Network</h3>
+              <p>
+                Partners, vendors, professionals, institutions, banks, and business contacts
+                can connect through the TitanCore public intake path.
+              </p>
+              <span class="card-link">Open Join Us →</span>
             </div>
           </a>
         </div>
-      </section>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="page footer-inner">
-      <div class="footer-brand">
-        <span class="logo-slot">T</span>
-        <span>
-          <strong>TitanCore Holdings</strong>
-          <small>Business Intelligence Network</small>
-        </span>
+    <div class="container footer-grid">
+      <div>
+        <strong>TitanCore Holdings</strong>
+        <p>Business Intelligence Network and public company information hub.</p>
       </div>
 
-      <div class="footer-center">
-        © <span id="footerYear"></span> TitanCore Holdings. All rights reserved.
-      </div>
+      <div class="logo-box" style="width:58px;height:58px;font-size:32px;">T</div>
 
       <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Use</a>
-        <a href="disclaimers.html">Disclaimers</a>
+        <a href="contact.html">Contact</a>
+        <a href="companies.html">Companies</a>
+        <a href="business-book.html">Business Book</a>
+        <a href="stock-watch.html">Stock Watch</a>
+        <a href="global-business-news.html">Global News</a>
       </div>
     </div>
   </footer>
 
   <script>
-    function updateDates(){
+    const dailyImages = [
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=80"
+    ];
+
+    const videoImages = [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
+    ];
+
+    const resourceImages = [
+      "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1000&q=80"
+    ];
+
+    function dayIndex(list){
+      const dayNumber = Math.floor(Date.now() / 86400000);
+      return dayNumber % list.length;
+    }
+
+    function setTodayDate(){
+      const box = document.getElementById("todayDate");
       const today = new Date();
 
-      const dateText = today.toLocaleDateString("en-US", {
-        month:"short",
-        day:"numeric",
-        year:"numeric"
-      });
-
-      document.querySelectorAll(".today-date").forEach(function(el){
-        el.textContent = dateText;
-      });
-
-      const footerYear = document.getElementById("footerYear");
-      if(footerYear) footerYear.textContent = today.getFullYear();
+      if(box){
+        box.textContent = today.toLocaleDateString(undefined,{
+          weekday:"long",
+          month:"long",
+          day:"numeric",
+          year:"numeric"
+        });
+      }
     }
 
-    function toggleCEOMessage(){
-      const box = document.getElementById("monthlyCEOMessage");
-      if(box) box.classList.toggle("show");
-    }
+    function setDailyMedia(){
+      const hero = document.getElementById("heroSection");
+      const video = document.getElementById("videoThumb");
+      const resource = document.getElementById("resourceImg");
 
-    function rotateDailyImages(){
-      const imageGroups = {
-        hero:[
-          "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80",
-          "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80",
-          "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80"
-        ],
-        tech:[
-          "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
-        ],
-        market:[
-          "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80"
-        ],
-        finance:[
-          "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80"
-        ],
-        energy:[
-          "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80"
-        ],
-        economy:[
-          "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1523289333742-be1143f6b766?auto=format&fit=crop&w=900&q=80"
-        ],
-        vaultara:[
-          "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
-        ],
-        family:[
-          "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
-        ],
-        vitalpath:[
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80"
-        ],
-        revmotion:[
-          "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=800&q=80",
-          "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80"
-        ],
-        northAmerica:[
-          "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?auto=format&fit=crop&w=800&q=80"
-        ],
-        europe:[
-          "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80"
-        ],
-        asiaPacific:[
-          "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80"
-        ],
-        middleEast:[
-          "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80"
-        ],
-        resourceBook:[
-          "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=900&q=80"
-        ],
-        video:[
-          "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1000&q=80",
-          "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80"
-        ],
-        news:[
-          "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80"
-        ],
-        stock:[
-          "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=900&q=80"
-        ]
-      };
+      const heroImg = dailyImages[dayIndex(dailyImages)];
+      const videoImg = videoImages[dayIndex(videoImages)];
+      const resourceImg = resourceImages[dayIndex(resourceImages)];
 
-      const dayNumber = Math.floor(Date.now() / 86400000);
+      if(hero){
+        hero.style.setProperty("--hero-image", `url("${heroImg}")`);
+      }
 
-      document.querySelectorAll("[data-bg-group]").forEach(function(el){
-        const group = el.getAttribute("data-bg-group");
-        const list = imageGroups[group];
-        if(!list || !list.length) return;
+      if(video){
+        video.style.setProperty("--video-image", `url("${videoImg}")`);
+      }
 
-        const selected = list[dayNumber % list.length];
-        el.style.setProperty("--bg", "url('" + selected + "')");
+      if(resource){
+        resource.style.backgroundImage =
+          `linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.75)), url("${resourceImg}")`;
+      }
+
+      document.querySelectorAll(".daily-brief-img").forEach((item,index)=>{
+        const img = dailyImages[(dayIndex(dailyImages) + index) % dailyImages.length];
+        item.style.backgroundImage = `url("${img}")`;
       });
-    }
 
-    function updateCEOMessage(){
-      const now = new Date();
-      const monthName = now.toLocaleDateString("en-US", { month:"long", year:"numeric" });
-
-      const message = {
-        title:"Monthly CEO Message",
-        date:monthName,
-        body:"At TitanCore Holdings, our mission is to deliver trusted business intelligence, company information, and market awareness that supports better decisions for visitors, institutions, investors, banks, and business leaders."
-      };
-
-      const titleBox = document.getElementById("ceoMessageTitle");
-      const dateBox = document.getElementById("ceoMessageDate");
-      const currentBody = document.getElementById("ceoCurrentBody");
-      const fullBody = document.getElementById("ceoFullBody");
-
-      if(titleBox) titleBox.textContent = message.title;
-      if(dateBox) dateBox.textContent = message.date;
-      if(currentBody) currentBody.textContent = message.body;
-      if(fullBody) fullBody.textContent = message.body;
+      document.querySelectorAll(".daily-card-img").forEach((item,index)=>{
+        const img = dailyImages[(dayIndex(dailyImages) + index + 1) % dailyImages.length];
+        item.style.backgroundImage =
+          `linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.75)), url("${img}")`;
+      });
     }
 
     document.addEventListener("DOMContentLoaded", function(){
-      updateDates();
-      rotateDailyImages();
-      updateCEOMessage();
+      setTodayDate();
+      setDailyMedia();
     });
   </script>
 </body>
