@@ -9,31 +9,34 @@
   <style>
     :root{
       --black:#000000;
-      --panel:#070b0a;
-      --green:#00a651;
-      --green2:#22c66d;
+      --panel:#050705;
+      --green:#00b85a;
+      --green2:#03d66b;
       --gold:#d8b45a;
-      --gold2:#f3d88b;
-      --yellow:#ffd400;
+      --gold2:#f4d98b;
+      --yellow:#ffd000;
       --white:#ffffff;
-      --muted:#b8ad8a;
-      --border:rgba(216,180,90,.38);
-      --border2:rgba(216,180,90,.70);
-      --shadow:0 18px 55px rgba(0,0,0,.68);
+      --muted:#c7b37a;
+      --border:rgba(216,180,90,.50);
+      --shadow:0 0 34px rgba(216,180,90,.12);
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html{
+      scroll-behavior:smooth;
+      background:var(--black);
+    }
 
     body{
-      margin:0;
       background:
-        radial-gradient(circle at top left,rgba(0,166,81,.16),transparent 28%),
-        radial-gradient(circle at top right,rgba(216,180,90,.12),transparent 28%),
-        linear-gradient(180deg,#000 0%,#051006 50%,#000 100%);
+        radial-gradient(circle at top left,rgba(0,184,90,.16),transparent 30%),
+        radial-gradient(circle at top right,rgba(216,180,90,.10),transparent 28%),
+        linear-gradient(180deg,#000 0%,#031008 48%,#000 100%);
       color:var(--gold2);
       font-family:Arial,Helvetica,sans-serif;
       line-height:1.55;
+      overflow-x:hidden;
     }
 
     a{
@@ -41,515 +44,534 @@
       text-decoration:none;
     }
 
-    .page{
-      width:min(1380px,calc(100% - 28px));
+    .container{
+      width:min(1240px,94%);
       margin:0 auto;
     }
 
     .topbar{
       background:#000;
-      border-bottom:1px solid var(--border2);
-      position:sticky;
-      top:0;
-      z-index:100;
-      box-shadow:0 12px 34px rgba(0,0,0,.72);
-    }
-
-    .header-inner{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:18px;
-      padding:18px 0 12px;
+      border-bottom:1px solid var(--border);
+      padding:24px 0 28px;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:18px;
+      padding-bottom:24px;
+      border-bottom:1px solid rgba(216,180,90,.30);
     }
 
-    .logo-slot{
-      width:58px;
-      height:58px;
-      min-width:58px;
-      border-radius:10px;
-      border:2px solid var(--gold);
-      display:grid;
-      place-items:center;
-      color:var(--yellow);
-      background:
-        radial-gradient(circle at 30% 25%,rgba(216,180,90,.24),transparent 38%),
-        linear-gradient(180deg,#101810,#020402);
-      font-size:34px;
-      font-weight:900;
-      box-shadow:0 0 22px rgba(0,166,81,.22);
-      overflow:hidden;
-    }
-
-    .brand-text strong{
-      display:block;
-      color:var(--green);
-      font-size:28px;
-      font-weight:900;
-      line-height:1.05;
-      letter-spacing:.4px;
-    }
-
-    .brand-text small{
-      display:block;
-      color:var(--gold);
-      font-size:12px;
-      letter-spacing:2.2px;
-      text-transform:uppercase;
-      font-weight:900;
-      margin-top:4px;
-    }
-
-    .header-actions{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .circle-btn{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      border:1px solid rgba(216,180,90,.45);
-      background:#070707;
-      color:#fff;
+    .logo-box{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      border-radius:16px;
       display:flex;
       align-items:center;
       justify-content:center;
-      transition:.2s ease;
-    }
-
-    .circle-btn:hover{
-      border-color:var(--yellow);
       color:var(--yellow);
-      transform:translateY(-2px);
-    }
-
-    .subscribe-btn{
-      min-height:44px;
-      padding:0 16px;
-      border-radius:8px;
-      border:1px solid var(--gold);
-      background:#e6c66b;
-      color:#111;
-      display:flex;
-      align-items:center;
-      gap:8px;
+      font-size:42px;
       font-weight:900;
-      transition:.2s ease;
+      background:
+        radial-gradient(circle at center,rgba(255,208,0,.18),transparent 58%),
+        #050505;
+      box-shadow:0 0 22px rgba(216,180,90,.18);
+      flex:0 0 auto;
     }
 
-    .subscribe-btn:hover{
-      background:#f1d886;
-      transform:translateY(-2px);
+    .brand-title{
+      color:var(--green);
+      font-size:clamp(30px,6vw,58px);
+      line-height:1;
+      font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    .brand-subtitle{
+      margin-top:8px;
+      color:var(--gold);
+      font-size:clamp(12px,2.5vw,18px);
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
     }
 
     .nav{
-      grid-column:1 / -1;
       display:flex;
-      justify-content:center;
       flex-wrap:wrap;
-      gap:6px;
-      padding-top:12px;
-      border-top:1px solid rgba(216,180,90,.25);
+      justify-content:center;
+      align-items:center;
+      gap:16px 34px;
+      padding-top:28px;
     }
 
     .nav a{
-      color:#fff;
-      font-size:13px;
-      font-weight:800;
-      padding:9px 14px;
-      border-radius:7px;
-      border:1px solid transparent;
-      white-space:nowrap;
-      background:transparent;
-      transition:.2s ease;
+      color:var(--white);
+      font-size:clamp(15px,2.6vw,20px);
+      font-weight:900;
+      text-align:center;
+      padding:8px 4px;
+      border-bottom:2px solid transparent;
     }
 
     .nav a:hover,
     .nav a.active{
-      color:var(--yellow);
-      border-color:rgba(216,180,90,.45);
-      background:rgba(216,180,90,.07);
+      color:var(--white);
+      border-bottom-color:var(--gold);
     }
 
-    .section{padding:16px 0}
+    .hero{
+      min-height:520px;
+      display:flex;
+      align-items:center;
+      padding:46px 0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.72),rgba(0,0,0,.30)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=80");
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid rgba(216,180,90,.28);
+    }
 
-    .panel{
-      background:linear-gradient(180deg,rgba(9,13,12,.97),rgba(3,5,4,.99));
+    .hero-card{
+      max-width:930px;
       border:1px solid var(--border);
-      border-radius:14px;
-      overflow:hidden;
+      border-radius:28px;
+      padding:clamp(28px,6vw,64px);
+      background:rgba(0,0,0,.74);
       box-shadow:var(--shadow);
-    }
-
-    .panel-pad{padding:28px}
-
-    h1,h2,h3{margin-top:0}
-
-    h1{
-      color:var(--green);
-      font-size:clamp(34px,5vw,62px);
-      line-height:1.04;
-      margin-bottom:18px;
-      font-weight:900;
-      letter-spacing:-1px;
-    }
-
-    h2{
-      color:var(--green);
-      font-size:clamp(26px,3vw,42px);
-      line-height:1.12;
-      margin-bottom:16px;
-      font-weight:900;
-    }
-
-    h3{
-      color:var(--green2);
-      font-size:22px;
-      line-height:1.15;
-      margin-bottom:10px;
-      font-weight:900;
-    }
-
-    p{
-      color:var(--gold2);
-      font-size:18px;
-      margin-top:0;
     }
 
     .kicker{
       color:var(--gold);
+      font-size:clamp(12px,2.5vw,17px);
+      letter-spacing:5px;
       text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:13px;
       font-weight:900;
-      margin-bottom:12px;
+      margin-bottom:18px;
     }
 
-    .hero{
-      min-height:390px;
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      border:1px solid var(--border2);
-      border-radius:14px;
-      overflow:hidden;
-      background:#050805;
-      box-shadow:var(--shadow);
+    h1{
+      color:var(--green);
+      font-size:clamp(44px,9vw,86px);
+      line-height:.98;
+      letter-spacing:-2px;
+      font-weight:900;
+      margin-bottom:24px;
     }
 
-    .hero-copy{
-      padding:40px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      background:linear-gradient(90deg,rgba(0,0,0,.98),rgba(0,0,0,.84),rgba(0,0,0,.25));
-      z-index:2;
+    h2{
+      color:var(--green);
+      font-size:clamp(32px,6vw,58px);
+      line-height:1.05;
+      font-weight:900;
+      margin-bottom:20px;
     }
 
-    .hero-visual{
-      min-height:390px;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.70)),
-        var(--bg),
-        radial-gradient(circle at 25% 20%,rgba(0,166,81,.24),transparent 35%),
-        linear-gradient(135deg,#061106,#101d10);
-      background-size:cover;
-      background-position:center;
-      position:relative;
+    h3{
+      color:var(--green);
+      font-size:clamp(24px,4.8vw,38px);
+      line-height:1.12;
+      font-weight:900;
+      margin-bottom:14px;
     }
 
-    .hero-visual::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.38),transparent),
-        radial-gradient(circle at 42% 28%,rgba(216,180,90,.18),transparent 36%);
+    p{
+      color:var(--gold2);
+      font-size:clamp(17px,3.2vw,23px);
+      margin-bottom:18px;
     }
 
-    .hero-actions,
-    .quick-links{
+    .lead{
+      font-size:clamp(20px,4vw,30px);
+      max-width:850px;
+    }
+
+    .actions{
       display:flex;
       flex-wrap:wrap;
-      gap:12px;
-      margin-top:22px;
+      gap:14px;
+      margin-top:28px;
     }
 
-    .btn,
-    .quick-links a{
-      min-height:46px;
-      padding:0 18px;
-      border-radius:10px;
-      border:1px solid var(--gold);
-      background:rgba(0,0,0,.36);
-      color:var(--gold2);
+    .btn{
+      min-height:54px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      gap:10px;
+      padding:14px 22px;
+      border-radius:14px;
+      border:2px solid var(--yellow);
+      background:var(--yellow);
+      color:#000;
+      font-size:clamp(15px,2.8vw,18px);
       font-weight:900;
+      text-align:center;
       transition:.2s ease;
+      cursor:pointer;
     }
 
-    .btn:hover,
-    .quick-links a:hover,
-    .active-section-link{
-      background:var(--green)!important;
-      border-color:var(--green)!important;
-      color:#fff!important;
+    .btn.ghost{
+      background:rgba(0,0,0,.55);
+      color:var(--gold2);
+      border-color:var(--border);
+    }
+
+    .btn:hover{
+      background:var(--green);
+      border-color:var(--green);
+      color:var(--white);
       transform:translateY(-2px);
     }
 
-    .gold-btn{
-      background:var(--yellow)!important;
-      color:#000!important;
-      border-color:var(--yellow)!important;
+    .section{
+      padding:38px 0;
     }
 
-    .gold-btn:hover{
-      background:var(--green)!important;
-      color:#fff!important;
-      border-color:var(--green)!important;
+    .panel{
+      border:1px solid var(--border);
+      border-radius:26px;
+      background:
+        radial-gradient(circle at top left,rgba(0,184,90,.12),transparent 34%),
+        rgba(0,0,0,.82);
+      padding:clamp(24px,5vw,46px);
+      box-shadow:var(--shadow);
     }
 
-    .stats-grid{
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:flex-end;
+      border-bottom:1px solid rgba(216,180,90,.30);
+      padding-bottom:20px;
+      margin-bottom:24px;
+    }
+
+    .section-note{
+      color:var(--muted);
+      font-weight:900;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      white-space:nowrap;
+    }
+
+    .grid{
       display:grid;
-      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+    }
+
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+
+    .card{
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:22px;
+      overflow:hidden;
+      background:rgba(0,0,0,.72);
+      color:var(--gold2);
+      transition:.2s ease;
+      min-height:100%;
+    }
+
+    .card:hover{
+      border-color:var(--green);
+      box-shadow:0 0 26px rgba(0,184,90,.14);
+      transform:translateY(-2px);
+    }
+
+    .card-img{
+      min-height:220px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      padding:16px;
+    }
+
+    .card-img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.82));
+    }
+
+    .icon-badge{
+      position:relative;
+      z-index:2;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      border:1px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#050505;
+      color:var(--yellow);
+      font-size:30px;
+      font-weight:900;
+    }
+
+    .card-body{
+      padding:24px;
+    }
+
+    .card-body p{
+      font-size:clamp(15px,2.6vw,18px);
+    }
+
+    .card-link{
+      color:var(--yellow);
+      font-weight:900;
+      display:inline-block;
+      margin-top:6px;
+    }
+
+    .info-box{
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:22px;
+      padding:26px;
+      background:rgba(0,0,0,.70);
+    }
+
+    .info-box h3{
+      display:flex;
+      align-items:center;
       gap:12px;
     }
 
-    .stat-card{
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:18px;
-      background:rgba(0,0,0,.32);
-      min-height:125px;
-    }
-
-    .stat-card small{
-      display:block;
-      color:var(--gold);
-      font-weight:900;
-      text-transform:uppercase;
-      font-size:12px;
-      margin-bottom:10px;
-    }
-
-    .stat-card strong{
-      display:block;
-      color:#fff;
-      font-size:21px;
-      line-height:1.15;
-    }
-
-    .content-grid{
+    .image-strip{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-
-    .info-card{
+      grid-template-columns:1.05fr .95fr;
+      gap:22px;
+      align-items:center;
       border:1px solid var(--border);
-      border-radius:12px;
-      padding:22px;
-      background:rgba(0,0,0,.28);
-      transition:.2s ease;
-    }
-
-    .info-card:hover{
-      border-color:var(--green);
-      transform:translateY(-2px);
-    }
-
-    .company-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
-
-    .company-card{
-      border:1px solid var(--border);
-      border-radius:12px;
+      border-radius:26px;
       overflow:hidden;
-      background:rgba(0,0,0,.28);
-      transition:.2s ease;
-      display:block;
+      background:rgba(0,0,0,.76);
     }
 
-    .company-card:hover{
-      border-color:var(--green);
-      transform:translateY(-2px);
-    }
-
-    .company-img{
-      min-height:145px;
-      display:grid;
-      place-items:center;
-      text-align:center;
-      color:var(--yellow);
-      font-size:34px;
-      font-weight:900;
+    .strip-image{
+      min-height:420px;
       background:
-        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.72)),
-        var(--bg),
-        linear-gradient(135deg,#071107,#0e2010);
+        linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.76)),
+        var(--strip-image),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80");
       background-size:cover;
       background-position:center;
-      border-bottom:1px solid var(--border);
-      text-shadow:0 2px 12px rgba(0,0,0,.85);
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
-    .company-body{padding:18px}
-
-    .company-body p{
-      font-size:15px;
-      margin-bottom:12px;
+    .strip-copy{
+      padding:30px;
     }
 
-    .company-body span{
+    .play{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      border:2px solid var(--yellow);
+      background:rgba(0,0,0,.72);
       color:var(--yellow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:38px;
+      padding-left:6px;
       font-weight:900;
     }
 
-    .form-wrap{
+    .process-card{
+      border-left:4px solid var(--green);
+      padding:22px;
+      background:rgba(0,0,0,.70);
+      border-radius:18px;
+      border-top:1px solid rgba(216,180,90,.25);
+      border-right:1px solid rgba(216,180,90,.25);
+      border-bottom:1px solid rgba(216,180,90,.25);
+    }
+
+    .process-card h3{
+      color:var(--white);
+    }
+
+    form{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-      margin-top:20px;
+      gap:18px;
     }
 
-    .field{
-      display:flex;
-      flex-direction:column;
-      gap:7px;
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
     }
 
-    .field.full{grid-column:1 / -1}
+    .full{
+      grid-column:1 / -1;
+    }
 
     label{
-      color:var(--green2);
+      display:block;
+      color:var(--green);
+      font-size:17px;
       font-weight:900;
-      font-size:15px;
+      margin-bottom:8px;
     }
 
     input,
     select,
     textarea{
       width:100%;
-      border:1px solid rgba(216,180,90,.55);
-      background:#050505;
-      color:#fff;
-      border-radius:10px;
-      padding:14px 14px;
+      min-height:54px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:#020202;
+      color:var(--white);
+      padding:15px 16px;
       font-size:16px;
       outline:none;
       font-family:Arial,Helvetica,sans-serif;
     }
 
     textarea{
-      min-height:130px;
+      min-height:150px;
       resize:vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder{
+      color:rgba(255,255,255,.48);
     }
 
     input:focus,
     select:focus,
     textarea:focus{
       border-color:var(--green);
-      box-shadow:0 0 0 3px rgba(0,166,81,.20);
-    }
-
-    .form-note{
-      color:var(--muted);
-      font-size:14px;
-      margin-top:12px;
+      box-shadow:0 0 0 3px rgba(0,184,90,.2);
     }
 
     .notice{
-      border:1px solid rgba(255,212,0,.48);
-      border-radius:14px;
-      background:linear-gradient(180deg,rgba(255,212,0,.08),rgba(0,0,0,.28));
-      padding:26px;
+      color:var(--muted);
+      font-size:clamp(15px,2.8vw,18px);
     }
 
-    .notice h2{color:var(--yellow)}
-
-    .notice p{font-size:16px}
+    .highlight-note{
+      border:1px solid rgba(255,208,0,.45);
+      border-radius:18px;
+      background:rgba(255,208,0,.06);
+      padding:20px;
+      margin-top:18px;
+    }
 
     .footer{
-      border-top:1px solid var(--border);
-      margin-top:20px;
-      padding:24px 0 34px;
       background:#000;
+      border-top:1px solid var(--border);
+      padding:34px 0 46px;
     }
 
-    .footer-inner{
-      display:flex;
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:22px;
       align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
+    }
+
+    .footer strong{
+      color:var(--green);
+      font-size:26px;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .footer p{
+      font-size:15px;
       color:var(--muted);
-      font-size:13px;
+      margin:0;
     }
 
-    .clicked{transform:scale(.98)!important}
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:14px;
+    }
 
-    @media(max-width:1100px){
-      .header-inner,
+    .footer-links a{
+      color:var(--white);
+      font-weight:900;
+      font-size:14px;
+    }
+
+    @media(max-width:980px){
+      .cols-4,.cols-3,.cols-2,.form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .full{
+        grid-column:auto;
+      }
+
+      .section-head{
+        display:block;
+      }
+
+      .section-note{
+        margin-top:8px;
+        display:block;
+      }
+
+      .image-strip,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-links{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:620px){
+      .brand{
+        align-items:flex-start;
+      }
+
+      .logo-box{
+        width:62px;
+        height:62px;
+        font-size:34px;
+      }
+
+      .brand-subtitle{
+        letter-spacing:3px;
+      }
+
+      .nav{
+        gap:12px 20px;
+      }
+
       .hero{
-        grid-template-columns:1fr;
+        min-height:auto;
       }
 
-      .header-actions{display:none}
-
-      .stats-grid,
-      .company-grid{
-        grid-template-columns:1fr 1fr;
+      .actions{
+        display:grid;
       }
 
-      .content-grid,
-      .form-wrap{
-        grid-template-columns:1fr;
+      .btn{
+        width:100%;
       }
 
-      .hero-visual{min-height:260px}
-    }
-
-    @media(max-width:680px){
-      .page{width:calc(100% - 18px)}
-
-      .brand-text strong{font-size:24px}
-
-      .brand-text small{
-        font-size:11px;
-        letter-spacing:1.5px;
-      }
-
-      .nav a{
-        font-size:14px;
-        padding:10px 13px;
-      }
-
-      .hero-copy,
-      .panel-pad,
-      .notice{
-        padding:22px;
-      }
-
-      .stats-grid,
-      .company-grid{
-        grid-template-columns:1fr;
-      }
-
-      .footer-inner{
-        flex-direction:column;
-        text-align:center;
+      .card-img{
+        min-height:230px;
       }
     }
   </style>
@@ -557,35 +579,16 @@
 
 <body>
   <header class="topbar">
-    <div class="page header-inner">
+    <div class="container">
       <a class="brand" href="index.html">
-        <span class="logo-slot">T</span>
-        <span class="brand-text">
-          <strong>TitanCore Holdings</strong>
-          <small>Join the TitanCore Network</small>
-        </span>
+        <div class="logo-box">T</div>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">Join Us</div>
+        </div>
       </a>
 
-      <div></div>
-
-      <div class="header-actions">
-        <a class="circle-btn" href="business-book.html#search" aria-label="Search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="2"></circle>
-            <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-          </svg>
-        </a>
-
-        <a class="subscribe-btn" href="contact.html#subscribe">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M4 6H20V18H4V6Z" stroke="currentColor" stroke-width="2"></path>
-            <path d="M4 7L12 13L20 7" stroke="currentColor" stroke-width="2"></path>
-          </svg>
-          <span>Subscribe</span>
-        </a>
-      </div>
-
-      <nav class="nav">
+      <nav class="nav" aria-label="TitanCore Main Menu">
         <a href="index.html">Home</a>
         <a href="investor.html">Investor</a>
         <a href="institution.html">Institution</a>
@@ -601,444 +604,363 @@
     </div>
   </header>
 
-  <main class="page">
-    <section class="section">
-      <div class="hero">
-        <div class="hero-copy">
-          <div class="kicker">Join Us</div>
-          <h1>Connect With the TitanCore Business Network</h1>
-          <p>
-            TitanCore Holdings is building a private business ecosystem and public business intelligence platform.
-            This page is for people, companies, professionals, vendors, partners, and organizations that want to connect
-            with TitanCore or one of its companies.
-          </p>
-          <p>
-            Public interest page only. This page does not guarantee employment, partnership, funding, approval, or acceptance.
+  <main>
+    <section class="hero" id="heroSection">
+      <div class="container">
+        <div class="hero-card">
+          <div class="kicker">Join the TitanCore Network</div>
+          <h1>Connect With TitanCore Holdings Through One Public Intake Path.</h1>
+
+          <p class="lead">
+            This page is for professionals, vendors, service providers, partners, institutions,
+            banking contacts, technology contacts, and serious business connections who want to
+            reach TitanCore Holdings or its company network.
           </p>
 
-          <div class="hero-actions">
-            <a class="btn gold-btn" href="#interest-form">Start Interest Form →</a>
-            <a class="btn" href="companies.html">View Companies</a>
-            <a class="btn" href="contact.html">Contact TitanCore</a>
-          </div>
-        </div>
-
-        <div class="hero-visual" data-bg-group="joinHero"
-          style="--bg:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1300&q=80');">
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <small>Business Partner</small>
-          <strong>Open</strong>
-        </div>
-        <div class="stat-card">
-          <small>Vendor / Provider</small>
-          <strong>Open</strong>
-        </div>
-        <div class="stat-card">
-          <small>Professional Talent</small>
-          <strong>Open</strong>
-        </div>
-        <div class="stat-card">
-          <small>Institution / Bank</small>
-          <strong>Review</strong>
-        </div>
-        <div class="stat-card">
-          <small>Company Interest</small>
-          <strong>Available</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="panel">
-        <div class="panel-pad">
-          <div class="kicker">Connection Categories</div>
-          <h2>Who This Page Is For</h2>
-          <p>
-            TitanCore can use this page to collect public interest from people and organizations that may want
-            to work with, support, serve, or connect with the TitanCore ecosystem.
-          </p>
-
-          <div class="content-grid">
-            <div class="info-card">
-              <h3>Business Partners</h3>
-              <p>
-                Companies or professionals interested in working with TitanCore, Vaultara, Family First,
-                VitalPath, RevMotion, or future TitanCore business areas.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Vendors & Service Providers</h3>
-              <p>
-                Technology providers, marketing teams, legal support, accounting support, finance vendors,
-                real estate vendors, healthcare vendors, auto/marine vendors, and operations providers.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Professional Talent</h3>
-              <p>
-                People interested in future roles, contract work, consulting, business development,
-                administration, operations, customer support, research, or technical support.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Investors</h3>
-              <p>
-                People or groups interested in reviewing public investor information and learning about
-                TitanCore’s private business ecosystem.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Institutions & Banks</h3>
-              <p>
-                Institutions, banks, lenders, financial organizations, and relationship managers that want
-                to review TitanCore’s public structure.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Company Interest</h3>
-              <p>
-                People interested in a specific TitanCore company: Vaultara Capital, Family First Equity Group,
-                VitalPath Care Group, or RevMotion Auto & Marine LLC.
-              </p>
-            </div>
+          <div class="actions">
+            <a class="btn" href="#join-request">🤝 Submit Join Request</a>
+            <a class="btn ghost" href="#connection-paths">🧭 View Connection Paths</a>
+            <a class="btn ghost" href="companies.html">🏢 View Companies</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="panel">
-        <div class="panel-pad">
-          <div class="kicker">TitanCore Companies</div>
-          <h2>Choose the Company You Want to Connect With</h2>
-          <p>
-            Visitors can connect with TitanCore Holdings or select a specific company inside the network.
-          </p>
-
-          <div class="company-grid">
-            <a class="company-card" href="index.html">
-              <div class="company-img" data-bg-group="titancore"
-                style="--bg:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80');">
-                TITANCORE
-              </div>
-              <div class="company-body">
-                <h3>TitanCore Holdings</h3>
-                <p>Umbrella company, business intelligence network, company structure, and public platform.</p>
-                <span>View TitanCore →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="vaultara-landing.html">
-              <div class="company-img" data-bg-group="vaultara"
-                style="--bg:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80');">
-                VAULTARA
-              </div>
-              <div class="company-body">
-                <h3>Vaultara Capital</h3>
-                <p>Funding, business credit, personal credit, credit education, and business formation support.</p>
-                <span>View Vaultara →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="family-first-landing.html">
-              <div class="company-img" data-bg-group="family"
-                style="--bg:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80');">
-                FAMILY FIRST
-              </div>
-              <div class="company-body">
-                <h3>Family First Equity Group</h3>
-                <p>Real estate investment, acquisitions, property management, and property market information.</p>
-                <span>View Family First →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="vitalpath.html">
-              <div class="company-img" data-bg-group="vitalpath"
-                style="--bg:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80');">
-                VITALPATH
-              </div>
-              <div class="company-body">
-                <h3>VitalPath Care Group</h3>
-                <p>Care services, healthcare support, wellness operations, and people-centered service growth.</p>
-                <span>View VitalPath →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="revmotion.html">
-              <div class="company-img" data-bg-group="revmotion"
-                style="--bg:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80');">
-                REVMOTION
-              </div>
-              <div class="company-body">
-                <h3>RevMotion Auto & Marine LLC</h3>
-                <p>Auto, marine, transportation, repair, service operations, and vehicle market research.</p>
-                <span>View RevMotion →</span>
-              </div>
-            </a>
+    <section class="section" id="join-overview">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Connection Overview</div>
+            <h2>Who Can Use the Join Us Page?</h2>
           </div>
+          <span class="section-note">Public intake now, CRM/CIM later</span>
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="interest-form">
-      <div class="panel">
-        <div class="panel-pad">
-          <div class="kicker">Interest Form</div>
-          <h2>Join / Connect With TitanCore</h2>
-          <p>
-            Use this public form to submit your interest. This can connect to Netlify Forms, email routing,
-            and TitanCore’s public intake workflow.
-          </p>
-
-          <form name="titancore-join-interest" method="POST" data-netlify="true" action="thank-you-join.html">
-            <input type="hidden" name="form-name" value="titancore-join-interest" />
-
-            <div class="form-wrap">
-              <div class="field">
-                <label for="fullName">Full Name</label>
-                <input id="fullName" name="fullName" type="text" placeholder="Enter your full name" required />
-              </div>
-
-              <div class="field">
-                <label for="email">Email Address</label>
-                <input id="email" name="email" type="email" placeholder="Enter your email address" required />
-              </div>
-
-              <div class="field">
-                <label for="phone">Phone Number</label>
-                <input id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
-              </div>
-
-              <div class="field">
-                <label for="interestType">Interest Type</label>
-                <select id="interestType" name="interestType" required>
-                  <option value="">Choose one</option>
-                  <option>Business Partner</option>
-                  <option>Vendor / Service Provider</option>
-                  <option>Professional Talent</option>
-                  <option>Investor Interest</option>
-                  <option>Institution / Bank Review</option>
-                  <option>Company Interest</option>
-                  <option>General Public Contact</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="companyInterest">Company Interest</label>
-                <select id="companyInterest" name="companyInterest">
-                  <option value="">Choose one if applicable</option>
-                  <option>TitanCore Holdings</option>
-                  <option>Vaultara Capital</option>
-                  <option>Family First Equity Group</option>
-                  <option>VitalPath Care Group</option>
-                  <option>RevMotion Auto & Marine LLC</option>
-                  <option>Multiple Companies</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="state">State</label>
-                <input id="state" name="state" type="text" placeholder="State or location" />
-              </div>
-
-              <div class="field full">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Tell TitanCore how you want to connect" required></textarea>
-              </div>
-
-              <div class="field full">
-                <button class="btn gold-btn" type="submit">Submit Interest →</button>
-              </div>
-            </div>
-          </form>
-
-          <p class="form-note">
-            Do not submit passwords, Social Security numbers, bank account information, or confidential documents through this public form.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="panel">
-        <div class="panel-pad">
-          <div class="kicker">How the Process Works</div>
-          <h2>Simple Public Connection Path</h2>
-          <p>
-            This keeps TitanCore professional and organized while still letting people reach out.
-          </p>
-
-          <div class="content-grid">
-            <div class="info-card">
-              <h3>1. Review TitanCore</h3>
-              <p>
-                Visitors review the public website, company pages, business intelligence book,
-                stock market watch, and global business news.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>2. Choose Interest</h3>
-              <p>
-                Visitor selects partner, vendor, talent, investor, institution, bank, or company interest.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>3. Submit Form</h3>
-              <p>
-                Visitor submits public contact information and message through the Join Us form.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>4. TitanCore Reviews</h3>
-              <p>
-                TitanCore reviews the request and determines the correct next step or company routing.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="notice">
-        <h2>Join Us Notice</h2>
         <p>
-          This page is for public interest only. Submission of this form does not create employment,
-          partnership, vendor approval, financial relationship, investment relationship, funding approval,
-          banking relationship, contract, or legal obligation.
+          TitanCore Holdings needs one organized public path for people who want to connect, support,
+          partner, provide services, discuss business, or request review.
         </p>
+
         <p>
-          Any formal relationship with TitanCore Holdings or a connected company would require review,
-          authorization, proper documentation, and written agreement.
+          Later, these requests can route into Supabase and the CRM/CIM, where AI can classify the request,
+          summarize the message, and route it to the correct company or review area.
+        </p>
+
+        <div class="grid cols-3">
+          <div class="info-box">
+            <h3>🤝 Partners</h3>
+            <p>Business partners, professional contacts, referral partners, and organizations seeking collaboration.</p>
+          </div>
+
+          <div class="info-box">
+            <h3>🧰 Vendors</h3>
+            <p>Service providers, vendors, software tools, contractors, support teams, and operational providers.</p>
+          </div>
+
+          <div class="info-box">
+            <h3>🧠 Talent / AI Support</h3>
+            <p>People or companies that can help with AI, automation, dashboards, business systems, or operations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="connection-paths">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Connection Paths</div>
+            <h2>Choose the Best Reason for Contact</h2>
+          </div>
+          <span class="section-note">Visual request categories</span>
+        </div>
+
+        <div class="grid cols-4">
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">🤝</div>
+            </div>
+            <div class="card-body">
+              <h3>Business Partnership</h3>
+              <p>For business groups, collaborators, and professional partners who want to connect with TitanCore.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">🧰</div>
+            </div>
+            <div class="card-body">
+              <h3>Vendor / Provider</h3>
+              <p>For vendors, contractors, platforms, tools, software, and service providers.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">🤖</div>
+            </div>
+            <div class="card-body">
+              <h3>AI / Technology</h3>
+              <p>For AI tools, automation systems, dashboards, app builders, CRM/CIM support, and backend help.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">🏛</div>
+            </div>
+            <div class="card-body">
+              <h3>Institution / Bank</h3>
+              <p>For institutions, banks, funding contacts, financial organizations, and formal review contacts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="join-media">
+      <div class="container">
+        <div class="image-strip">
+          <div class="strip-image" id="stripImage">
+            <div class="play">▶</div>
+          </div>
+
+          <div class="strip-copy">
+            <div class="kicker">Join Us Media Area</div>
+            <h2>Partner Videos, Vendor Briefings, and Network Updates Can Live Here</h2>
+            <p>
+              This section is ready for TitanCore introduction videos, partner explainers,
+              vendor instructions, hiring updates, business system videos, or AI-generated media.
+            </p>
+            <p class="notice">
+              Later, Supabase can control which image, video, article, or joining announcement appears here.
+            </p>
+
+            <div class="actions">
+              <a class="btn" href="companies.html">🏢 View Companies</a>
+              <a class="btn ghost" href="business-book.html">📘 Business Book</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="join-process">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Join Process</div>
+            <h2>How Join Requests Should Move</h2>
+          </div>
+          <span class="section-note">Simple public process</span>
+        </div>
+
+        <div class="grid cols-4">
+          <div class="process-card">
+            <h3>1. Submit Public Request</h3>
+            <p>
+              The contact submits a basic request explaining who they are and why they want to connect.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <h3>2. TitanCore Reviews</h3>
+            <p>
+              TitanCore reviews the request and checks whether it belongs to partner, vendor, talent, bank, or institution.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <h3>3. Request Is Routed</h3>
+            <p>
+              The request can route to the right company, department, or review category.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <h3>4. Private Follow-Up</h3>
+            <p>
+              If appropriate, TitanCore can respond and move the conversation into a private review path.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight-note">
+          <p class="notice">
+            This public request does not create employment, vendor approval, partnership, contract,
+            financial relationship, banking relationship, or guarantee of response.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="join-request">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Join Request</div>
+            <h2>Submit a Public Join Request</h2>
+          </div>
+          <span class="section-note">Routes to thank-you page</span>
+        </div>
+
+        <p>
+          Use this form to request contact with TitanCore Holdings or the TitanCore company network.
+          Do not submit private documents or confidential information through this public form.
+        </p>
+
+        <form name="titancore-join-request" method="POST" data-netlify="true" action="thank-you.html">
+          <input type="hidden" name="form-name" value="titancore-join-request" />
+
+          <div class="form-grid">
+            <div>
+              <label for="full-name">Full Name</label>
+              <input id="full-name" name="full_name" type="text" placeholder="Enter full name" required />
+            </div>
+
+            <div>
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" placeholder="Enter email address" required />
+            </div>
+
+            <div>
+              <label for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="tel" placeholder="Enter phone number" />
+            </div>
+
+            <div>
+              <label for="organization">Company / Organization</label>
+              <input id="organization" name="organization" type="text" placeholder="Enter company or organization name" />
+            </div>
+
+            <div>
+              <label for="connection-type">Connection Type</label>
+              <select id="connection-type" name="connection_type" required>
+                <option value="">Choose one</option>
+                <option>Business Partner</option>
+                <option>Vendor / Service Provider</option>
+                <option>Professional Talent</option>
+                <option>AI / Technology Support</option>
+                <option>Institution / Organization</option>
+                <option>Bank / Financial Contact</option>
+                <option>General Connection</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="best-area">Best Fit Area</label>
+              <select id="best-area" name="best_fit_area">
+                <option value="">Choose one</option>
+                <option>TitanCore Holdings</option>
+                <option>Vaultara Capital</option>
+                <option>Family First Equity Group</option>
+                <option>VitalPath Care Group</option>
+                <option>RevMotion Auto & Marine LLC</option>
+                <option>Multiple Companies</option>
+                <option>Not Sure Yet</option>
+              </select>
+            </div>
+
+            <div class="full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell TitanCore why you want to connect" required></textarea>
+            </div>
+          </div>
+
+          <button class="btn" type="submit">Submit Join Request →</button>
+
+          <div class="highlight-note">
+            <p class="notice">
+              Do not submit passwords, Social Security numbers, bank account information,
+              private legal documents, confidential financial documents, medical information,
+              or tax documents through this public form.
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="kicker">Join Us Notice</div>
+        <h2>Public Information Only</h2>
+        <p>
+          The Join Us page is for public intake and general connection requests only. Submission of this form
+          does not create employment, vendor approval, contractor relationship, partnership, service agreement,
+          financial relationship, banking relationship, legal relationship, or guarantee of response.
+        </p>
+        <p class="notice">
+          Formal relationships require private review, written agreement, authorized approval, and proper documentation.
         </p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="page footer-inner">
-      <strong style="color:var(--green)">TitanCore Holdings</strong>
-      <span>Public Join Us page for TitanCore Holdings and connected company interest.</span>
-      <a style="color:var(--yellow);font-weight:900" href="contact.html">Contact TitanCore</a>
+    <div class="container footer-grid">
+      <div>
+        <strong>TitanCore Holdings</strong>
+        <p>Join Us page for organized public connection intake.</p>
+      </div>
+
+      <div class="logo-box" style="width:58px;height:58px;font-size:32px;">T</div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="companies.html">Companies</a>
+        <a href="business-book.html">Business Book</a>
+        <a href="stock-watch.html">Stock Watch</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
   </footer>
 
   <script>
-    function setActiveNav(){
-      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const heroImages = [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80"
+    ];
 
-      document.querySelectorAll(".nav a").forEach(function(link){
-        const linkPage = link.getAttribute("href");
+    const stripImages = [
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80"
+    ];
 
-        if(linkPage === currentPage){
-          link.classList.add("active");
-        }else{
-          link.classList.remove("active");
-        }
-      });
+    function dayIndex(list){
+      const dayNumber = Math.floor(Date.now() / 86400000);
+      return dayNumber % list.length;
+    }
 
-      const joinLink = document.querySelector('.nav a[href="join-us.html"]');
-      if(joinLink){
-        joinLink.classList.add("active");
+    function setDailyMedia(){
+      const hero = document.getElementById("heroSection");
+      const strip = document.getElementById("stripImage");
+
+      if(hero){
+        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
+      }
+
+      if(strip){
+        strip.style.setProperty("--strip-image", `url("${stripImages[dayIndex(stripImages)]}")`);
       }
     }
 
-    function smoothHashScroll(){
-      document.querySelectorAll('a[href^="#"]').forEach(function(link){
-        link.addEventListener("click", function(event){
-          const targetId = link.getAttribute("href");
-          const target = document.querySelector(targetId);
+    document.addEventListener("DOMContentLoaded", function(){
+      setDailyMedia();
 
-          if(target){
-            event.preventDefault();
-
-            const topOffset = 125;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - topOffset;
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth"
-            });
-
-            history.pushState(null, "", targetId);
+      const form = document.querySelector("form[name='titancore-join-request']");
+      if(form){
+        form.addEventListener("submit", function(){
+          const btn = form.querySelector("button[type='submit']");
+          if(btn){
+            btn.textContent = "Submitting...";
           }
         });
-      });
-    }
-
-    function rotateJoinImages(){
-      const imageGroups = {
-        joinHero:[
-          "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1300&q=80",
-          "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1300&q=80",
-          "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1300&q=80"
-        ],
-        titancore:[
-          "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
-        ],
-        vaultara:[
-          "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80"
-        ],
-        family:[
-          "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=900&q=80"
-        ],
-        vitalpath:[
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80"
-        ],
-        revmotion:[
-          "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=900&q=80"
-        ]
-      };
-
-      const dayNumber = Math.floor(Date.now() / 86400000);
-
-      document.querySelectorAll("[data-bg-group]").forEach(function(box){
-        const group = box.getAttribute("data-bg-group");
-        const images = imageGroups[group];
-
-        if(!images || !images.length) return;
-
-        const selected = images[dayNumber % images.length];
-        box.style.setProperty("--bg", "url('" + selected + "')");
-      });
-    }
-
-    function applyButtonEffects(){
-      document.querySelectorAll("a, button").forEach(function(item){
-        item.addEventListener("click", function(){
-          item.classList.add("clicked");
-
-          setTimeout(function(){
-            item.classList.remove("clicked");
-          }, 220);
-        });
-      });
-    }
-
-    document.addEventListener("DOMContentLoaded", function(){
-      setActiveNav();
-      smoothHashScroll();
-      rotateJoinImages();
-      applyButtonEffects();
+      }
     });
   </script>
 </body>
