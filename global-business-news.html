@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -8,30 +8,35 @@
 
   <style>
     :root{
-      --black:#000;
-      --deep:#020805;
-      --panel:#050b07;
-      --green:#00a651;
-      --green2:#04c96a;
+      --black:#000000;
+      --panel:#050705;
+      --green:#00b85a;
+      --green2:#03d66b;
       --gold:#d8b45a;
-      --gold2:#f5d98d;
-      --yellow:#ffd400;
-      --white:#fff;
-      --muted:#b9aa7a;
-      --border:rgba(216,180,90,.42);
+      --gold2:#f4d98b;
+      --yellow:#ffd000;
+      --white:#ffffff;
+      --muted:#c7b37a;
+      --border:rgba(216,180,90,.50);
+      --shadow:0 0 34px rgba(216,180,90,.12);
     }
 
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html{
+      scroll-behavior:smooth;
+      background:var(--black);
+    }
 
     body{
-      margin:0;
       background:
-        radial-gradient(circle at 12% 0%, rgba(0,166,81,.18), transparent 28%),
-        linear-gradient(180deg,#000 0%,#041006 48%,#000 100%);
+        radial-gradient(circle at top left,rgba(0,184,90,.16),transparent 30%),
+        radial-gradient(circle at top right,rgba(216,180,90,.10),transparent 28%),
+        linear-gradient(180deg,#000 0%,#031008 48%,#000 100%);
       color:var(--gold2);
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:Arial,Helvetica,sans-serif;
       line-height:1.55;
+      overflow-x:hidden;
     }
 
     a{
@@ -39,176 +44,153 @@
       text-decoration:none;
     }
 
-    .page{
-      width:min(1200px,calc(100% - 28px));
+    .container{
+      width:min(1240px,94%);
       margin:0 auto;
     }
 
-    .site-header{
+    .topbar{
       background:#000;
       border-bottom:1px solid var(--border);
-      box-shadow:0 18px 45px rgba(0,0,0,.8);
-      position:relative;
-      z-index:10;
+      padding:24px 0 28px;
     }
 
-    .header-inner{
-      padding:22px 0 18px;
-    }
-
-    .brand-row{
+    .brand{
       display:flex;
       align-items:center;
-      gap:16px;
-      padding-bottom:22px;
-      border-bottom:1px solid rgba(216,180,90,.34);
+      gap:18px;
+      padding-bottom:24px;
+      border-bottom:1px solid rgba(216,180,90,.30);
     }
 
-    .logo-slot{
-      width:70px;
-      height:70px;
-      min-width:70px;
-      border:2px solid var(--gold);
-      border-radius:14px;
-      display:grid;
-      place-items:center;
+    .logo-box{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       color:var(--yellow);
       font-size:42px;
       font-weight:900;
       background:
-        radial-gradient(circle at 30% 25%, rgba(255,212,0,.18), transparent 35%),
-        linear-gradient(180deg,#101812,#020403);
-      box-shadow:0 0 26px rgba(0,166,81,.25);
-      overflow:hidden;
-    }
-
-    .logo-slot img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+        radial-gradient(circle at center,rgba(255,208,0,.18),transparent 58%),
+        #050505;
+      box-shadow:0 0 22px rgba(216,180,90,.18);
+      flex:0 0 auto;
     }
 
     .brand-title{
-      display:block;
       color:var(--green);
-      font-size:clamp(30px,5vw,48px);
-      font-weight:900;
+      font-size:clamp(30px,6vw,58px);
       line-height:1;
-      letter-spacing:.3px;
+      font-weight:900;
+      letter-spacing:.5px;
     }
 
     .brand-subtitle{
-      display:block;
-      color:var(--gold);
       margin-top:8px;
-      font-size:clamp(13px,2.3vw,18px);
+      color:var(--gold);
+      font-size:clamp(12px,2.5vw,18px);
+      font-weight:900;
       letter-spacing:4px;
       text-transform:uppercase;
-      font-weight:900;
-    }
-
-    .top-actions{
-      margin-left:auto;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .search-dot{
-      width:40px;
-      height:40px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      display:grid;
-      place-items:center;
-      color:#fff;
-      background:rgba(255,255,255,.03);
-      font-size:18px;
-    }
-
-    .subscribe-btn{
-      background:var(--gold);
-      color:#000;
-      border:0;
-      border-radius:8px;
-      padding:12px 16px;
-      font-weight:900;
-      cursor:pointer;
     }
 
     .nav{
-      padding:22px 0 4px;
       display:flex;
-      align-items:center;
-      justify-content:center;
       flex-wrap:wrap;
-      gap:12px;
+      justify-content:center;
+      align-items:center;
+      gap:16px 34px;
+      padding-top:28px;
     }
 
     .nav a{
-      color:#fff;
+      color:var(--white);
+      font-size:clamp(15px,2.6vw,20px);
       font-weight:900;
-      font-size:14px;
-      padding:10px 13px;
-      border-radius:999px;
-      transition:.18s ease;
+      text-align:center;
+      padding:8px 4px;
+      border-bottom:2px solid transparent;
     }
 
     .nav a:hover,
     .nav a.active{
-      color:var(--yellow);
-      border:1px solid var(--border);
-      background:rgba(216,180,90,.08);
-    }
-
-    main{
-      padding:22px 0 64px;
+      color:var(--white);
+      border-bottom-color:var(--gold);
     }
 
     .hero{
-      min-height:430px;
-      border:1px solid var(--border);
-      border-radius:20px;
-      overflow:hidden;
+      min-height:540px;
+      display:flex;
+      align-items:center;
+      padding:46px 0;
       background:
-        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.70),rgba(0,0,0,.16)),
-        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80");
+        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.72),rgba(0,0,0,.30)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80");
       background-size:cover;
       background-position:center;
-      box-shadow:0 22px 60px rgba(0,0,0,.65);
+      border-bottom:1px solid rgba(216,180,90,.28);
     }
 
-    .hero-content{
-      padding:48px;
-      max-width:720px;
+    .hero-card{
+      max-width:930px;
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:clamp(28px,6vw,64px);
+      background:rgba(0,0,0,.74);
+      box-shadow:var(--shadow);
     }
 
     .kicker{
       color:var(--gold);
-      text-transform:uppercase;
+      font-size:clamp(12px,2.5vw,17px);
       letter-spacing:5px;
-      font-size:13px;
+      text-transform:uppercase;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    h1{
+      color:var(--green);
+      font-size:clamp(44px,9vw,86px);
+      line-height:.98;
+      letter-spacing:-2px;
+      font-weight:900;
+      margin-bottom:24px;
+    }
+
+    h2{
+      color:var(--green);
+      font-size:clamp(32px,6vw,58px);
+      line-height:1.05;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    h3{
+      color:var(--green);
+      font-size:clamp(24px,4.8vw,38px);
+      line-height:1.12;
       font-weight:900;
       margin-bottom:14px;
     }
 
-    h1{
-      margin:0;
-      color:var(--green);
-      font-size:clamp(40px,7vw,76px);
-      line-height:1.02;
-      font-weight:900;
-    }
-
-    .hero p{
+    p{
       color:var(--gold2);
-      font-size:clamp(18px,2.2vw,22px);
-      margin:22px 0 0;
-      max-width:680px;
+      font-size:clamp(17px,3.2vw,23px);
+      margin-bottom:18px;
     }
 
-    .hero-buttons{
+    .lead{
+      font-size:clamp(20px,4vw,30px);
+      max-width:850px;
+    }
+
+    .actions{
       display:flex;
       flex-wrap:wrap;
       gap:14px;
@@ -216,332 +198,386 @@
     }
 
     .btn{
-      border-radius:10px;
-      padding:14px 18px;
-      border:1px solid var(--border);
-      font-weight:900;
+      min-height:54px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      cursor:pointer;
-      min-height:48px;
-      background:rgba(0,0,0,.58);
-      color:var(--gold2);
-    }
-
-    .btn.gold{
-      background:var(--gold);
+      padding:14px 22px;
+      border-radius:14px;
+      border:2px solid var(--yellow);
+      background:var(--yellow);
       color:#000;
-      border-color:var(--gold);
+      font-size:clamp(15px,2.8vw,18px);
+      font-weight:900;
+      text-align:center;
+      transition:.2s ease;
+      cursor:pointer;
     }
 
-    .btn.green{
+    .btn.ghost{
+      background:rgba(0,0,0,.55);
+      color:var(--gold2);
+      border-color:var(--border);
+    }
+
+    .btn:hover{
       background:var(--green);
-      color:#fff;
       border-color:var(--green);
+      color:var(--white);
+      transform:translateY(-2px);
     }
 
     .section{
-      margin-top:18px;
+      padding:38px 0;
+    }
+
+    .panel{
       border:1px solid var(--border);
-      border-radius:18px;
+      border-radius:26px;
       background:
-        radial-gradient(circle at top left,rgba(0,166,81,.12),transparent 34%),
-        linear-gradient(180deg,rgba(7,19,11,.96),rgba(0,0,0,.96));
-      box-shadow:0 16px 42px rgba(0,0,0,.5);
-      padding:24px;
+        radial-gradient(circle at top left,rgba(0,184,90,.12),transparent 34%),
+        rgba(0,0,0,.82);
+      padding:clamp(24px,5vw,46px);
+      box-shadow:var(--shadow);
     }
 
-    .section-header{
+    .section-head{
       display:flex;
-      align-items:end;
       justify-content:space-between;
-      gap:16px;
-      border-bottom:1px solid rgba(216,180,90,.35);
-      padding-bottom:16px;
-      margin-bottom:20px;
-    }
-
-    h2{
-      margin:0;
-      color:var(--green);
-      font-size:clamp(30px,5vw,50px);
-      line-height:1.07;
-      font-weight:900;
+      gap:20px;
+      align-items:flex-end;
+      border-bottom:1px solid rgba(216,180,90,.30);
+      padding-bottom:20px;
+      margin-bottom:24px;
     }
 
     .section-note{
-      color:var(--gold);
-      font-size:15px;
-      font-weight:800;
-    }
-
-    p{
-      color:var(--gold2);
-      font-size:18px;
-      margin:0 0 14px;
-    }
-
-    .coverage-list{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .pill{
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:12px 14px;
-      text-align:center;
-      color:var(--gold2);
+      color:var(--muted);
       font-weight:900;
-      background:rgba(0,0,0,.55);
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      white-space:nowrap;
     }
 
     .grid{
       display:grid;
-      gap:16px;
+      gap:18px;
     }
 
-    .grid.two{grid-template-columns:repeat(2,1fr);}
-    .grid.three{grid-template-columns:repeat(3,1fr);}
-    .grid.four{grid-template-columns:repeat(4,1fr);}
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
 
     .card{
-      border:1px solid var(--border);
-      border-radius:16px;
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:22px;
       overflow:hidden;
-      background:rgba(0,0,0,.58);
-      transition:.18s ease;
+      background:rgba(0,0,0,.72);
+      color:var(--gold2);
+      transition:.2s ease;
+      min-height:100%;
     }
 
     .card:hover{
+      border-color:var(--green);
+      box-shadow:0 0 26px rgba(0,184,90,.14);
       transform:translateY(-2px);
-      border-color:rgba(0,166,81,.75);
-      box-shadow:0 0 22px rgba(0,166,81,.15);
     }
 
-    .card-image{
-      min-height:155px;
+    .card-img{
+      min-height:220px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      padding:16px;
+    }
+
+    .card-img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.82));
+    }
+
+    .icon-badge{
+      position:relative;
+      z-index:2;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      border:1px solid var(--gold);
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:20px;
-      color:var(--green);
-      font-size:28px;
+      background:#050505;
+      color:var(--yellow);
+      font-size:30px;
       font-weight:900;
-      text-align:center;
-      text-transform:uppercase;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.70)),
-        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80");
-      background-size:cover;
-      background-position:center;
     }
 
     .card-body{
-      padding:18px;
+      padding:24px;
     }
 
-    .card h3{
-      margin:0 0 8px;
-      color:var(--green);
-      font-size:22px;
-      line-height:1.15;
-    }
-
-    .card p{
-      font-size:16px;
-      margin:0 0 14px;
+    .card-body p{
+      font-size:clamp(15px,2.6vw,18px);
     }
 
     .card-link{
       color:var(--yellow);
       font-weight:900;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
+      display:inline-block;
+      margin-top:6px;
     }
 
-    .tool-panel{
-      border:1px solid var(--border);
-      border-radius:16px;
-      background:rgba(0,0,0,.58);
-      padding:20px;
-      margin-top:16px;
+    .region-section{
+      scroll-margin-top:20px;
     }
 
-    .tool-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top:14px;
+    .article-card{
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:22px;
+      padding:24px;
+      background:rgba(0,0,0,.72);
+      transition:.2s ease;
     }
 
-    input,
-    select{
-      background:#050505;
-      color:var(--gold2);
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:14px 14px;
-      font-size:16px;
-      min-height:48px;
-      outline:none;
-    }
-
-    input:focus,
-    select:focus{
+    .article-card:hover{
       border-color:var(--green);
-      box-shadow:0 0 0 3px rgba(0,166,81,.15);
+      box-shadow:0 0 26px rgba(0,184,90,.14);
     }
 
-    .country-result{
-      margin-top:16px;
-      border:1px solid rgba(0,166,81,.45);
-      border-radius:14px;
-      padding:18px;
-      background:rgba(0,166,81,.07);
+    .article-top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      margin-bottom:14px;
     }
 
-    .country-result h3{
-      color:var(--green);
-      margin:0 0 8px;
-      font-size:26px;
+    .article-tag{
+      color:var(--yellow);
+      font-size:13px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .article-date{
+      color:var(--muted);
+      font-size:13px;
+      font-weight:900;
+    }
+
+    .article-card h3{
+      color:var(--white);
+    }
+
+    .topic-pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .topic-pill{
+      display:inline-flex;
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:999px;
+      padding:10px 14px;
+      color:var(--gold2);
+      font-weight:900;
+      background:rgba(0,0,0,.58);
+    }
+
+    .topic-pill:hover{
+      background:var(--green);
+      border-color:var(--green);
+      color:var(--white);
+    }
+
+    .video-card{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:22px;
+      align-items:center;
+      border:1px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      background:rgba(0,0,0,.76);
+    }
+
+    .video-thumb{
+      min-height:420px;
+      background:
+        linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.76)),
+        var(--video-image),
+        url("https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      border:2px solid var(--yellow);
+      background:rgba(0,0,0,.72);
+      color:var(--yellow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:38px;
+      padding-left:6px;
+      font-weight:900;
+    }
+
+    .video-copy{
+      padding:30px;
     }
 
     .notice{
-      color:#cbbd8c;
-      font-size:16px;
-      border-left:3px solid var(--gold);
-      padding-left:14px;
-      margin-top:16px;
+      color:var(--muted);
+      font-size:clamp(15px,2.8vw,18px);
     }
 
-    footer{
+    .highlight-note{
+      border:1px solid rgba(255,208,0,.45);
+      border-radius:18px;
+      background:rgba(255,208,0,.06);
+      padding:20px;
+      margin-top:18px;
+    }
+
+    .footer{
       background:#000;
       border-top:1px solid var(--border);
-      padding:28px 0;
-      color:#b9aa7a;
+      padding:34px 0 46px;
     }
 
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:22px;
       align-items:center;
+    }
+
+    .footer strong{
+      color:var(--green);
+      font-size:26px;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .footer p{
+      font-size:15px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:14px;
+    }
+
+    .footer-links a{
+      color:var(--white);
+      font-weight:900;
       font-size:14px;
     }
 
-    .footer-inner strong{
-      color:var(--green);
-    }
-
-    @media(max-width:900px){
-      .top-actions{display:none;}
-
-      .grid.two,
-      .grid.three,
-      .grid.four,
-      .coverage-list{
+    @media(max-width:980px){
+      .cols-4,.cols-3,.cols-2{
         grid-template-columns:1fr;
       }
 
-      .hero-content{
-        padding:34px 24px;
+      .section-head{
+        display:block;
+      }
+
+      .section-note{
+        margin-top:8px;
+        display:block;
+      }
+
+      .video-card,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-links{
+        justify-content:flex-start;
       }
     }
 
-    @media(max-width:640px){
-      .page{
-        width:calc(100% - 16px);
-      }
-
-      .brand-row{
+    @media(max-width:620px){
+      .brand{
         align-items:flex-start;
       }
 
-      .logo-slot{
-        width:58px;
-        height:58px;
-        min-width:58px;
+      .logo-box{
+        width:62px;
+        height:62px;
         font-size:34px;
       }
 
-      .brand-title{
-        font-size:28px;
-      }
-
       .brand-subtitle{
-        font-size:11px;
-        letter-spacing:2.4px;
+        letter-spacing:3px;
       }
 
       .nav{
-        gap:18px 24px;
-      }
-
-      .nav a{
-        font-size:18px;
-        padding:8px 2px;
-        border-radius:0;
-      }
-
-      .nav a:hover,
-      .nav a.active{
-        border:none;
-        background:transparent;
-        color:var(--yellow);
-      }
-
-      .section{
-        padding:20px;
+        gap:12px 20px;
       }
 
       .hero{
-        min-height:440px;
+        min-height:auto;
       }
 
-      .btn,
-      input,
-      select{
+      .actions{
+        display:grid;
+      }
+
+      .btn{
         width:100%;
       }
 
-      .card-image{
-        min-height:180px;
+      .card-img{
+        min-height:230px;
+      }
+
+      .article-top{
+        display:block;
+      }
+
+      .article-date{
+        display:block;
+        margin-top:6px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="page header-inner">
-      <div class="brand-row">
-        <a class="logo-slot" href="index.html" aria-label="TitanCore Home">
-          <!-- Replace T later with your real logo:
-          <img src="titancore-logo.png" alt="TitanCore Holdings Logo">
-          -->
-          T
-        </a>
-
-        <a href="index.html">
-          <span class="brand-title">TitanCore Holdings</span>
-          <span class="brand-subtitle">Global Business News</span>
-        </a>
-
-        <div class="top-actions">
-          <a class="search-dot" href="#choose-country" aria-label="Search">⌕</a>
-          <a class="subscribe-btn" href="join-us.html">Subscribe</a>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <div class="logo-box">T</div>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">Global Business News</div>
         </div>
-      </div>
+      </a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="TitanCore Main Menu">
         <a href="index.html">Home</a>
         <a href="investor.html">Investor</a>
         <a href="institution.html">Institution</a>
@@ -557,495 +593,612 @@
     </div>
   </header>
 
-  <main class="page">
-    <section class="hero" id="dailyHero">
-      <div class="hero-content">
-        <div class="kicker">TitanCore Business-Only Coverage</div>
+  <main>
+    <section class="hero" id="heroSection">
+      <div class="container">
+        <div class="hero-card">
+          <div class="kicker">Global Business Intelligence</div>
+          <h1>Track Countries, Regions, Markets, Trade, Finance, and Business Movement.</h1>
 
-        <h1>Business News, Markets, Stocks, Companies, and Economic Movement by Country</h1>
+          <p class="lead">
+            TitanCore Global Business News is a public intelligence page for business movement across regions:
+            North America, Europe, Asia Pacific, Latin America, Middle East, and Africa.
+          </p>
 
+          <div class="actions">
+            <a class="btn" href="#region-board">🌍 View Regions</a>
+            <a class="btn ghost" href="#global-brief">📰 Today’s Global Brief</a>
+            <a class="btn ghost" href="stock-watch.html">📈 Stock Market Watch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="region-board">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Region Board</div>
+            <h2>Choose a Global Region</h2>
+          </div>
+          <span class="section-note" id="todayDate">Updated Today</span>
+        </div>
+
+        <div class="grid cols-3">
+          <a class="card" href="#north-america">
+            <div class="card-img region-img">
+              <div class="icon-badge">🇺🇸</div>
+            </div>
+            <div class="card-body">
+              <h3>North America</h3>
+              <p>United States, Canada, Mexico, finance, trade, technology, real estate, and business activity.</p>
+              <span class="card-link">Open North America →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#europe">
+            <div class="card-img region-img">
+              <div class="icon-badge">🇪🇺</div>
+            </div>
+            <div class="card-body">
+              <h3>Europe</h3>
+              <p>Banking, energy, manufacturing, trade, policy, markets, and company movement.</p>
+              <span class="card-link">Open Europe →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#asia-pacific">
+            <div class="card-img region-img">
+              <div class="icon-badge">🌏</div>
+            </div>
+            <div class="card-body">
+              <h3>Asia Pacific</h3>
+              <p>Technology, manufacturing, supply chain, exports, finance, and public markets.</p>
+              <span class="card-link">Open Asia Pacific →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#latin-america">
+            <div class="card-img region-img">
+              <div class="icon-badge">🌎</div>
+            </div>
+            <div class="card-body">
+              <h3>Latin America</h3>
+              <p>Commodities, agriculture, banking, real estate, energy, trade, and consumer markets.</p>
+              <span class="card-link">Open Latin America →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#middle-east">
+            <div class="card-img region-img">
+              <div class="icon-badge">🏗</div>
+            </div>
+            <div class="card-body">
+              <h3>Middle East</h3>
+              <p>Energy, construction, finance, tourism, logistics, investment, and infrastructure.</p>
+              <span class="card-link">Open Middle East →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#africa">
+            <div class="card-img region-img">
+              <div class="icon-badge">🌍</div>
+            </div>
+            <div class="card-body">
+              <h3>Africa</h3>
+              <p>Energy, infrastructure, trade, banking, telecom, agriculture, and emerging markets.</p>
+              <span class="card-link">Open Africa →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="global-brief">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Today’s Global Brief</div>
+            <h2>Business News Topics TitanCore Should Watch</h2>
+          </div>
+          <span class="section-note">AI/news API later</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Markets</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Global market movement can affect investor confidence.</h3>
+            <p>
+              Stock markets, interest rates, banks, currency pressure, oil prices, and business confidence
+              all affect how companies plan growth.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Trade</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Trade and supply chains can affect costs and timing.</h3>
+            <p>
+              Shipping, ports, manufacturing, tariffs, country policy, and logistics can influence prices,
+              delivery, and business decisions.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Business</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Countries create opportunities and risks for business.</h3>
+            <p>
+              Real estate, lending, jobs, energy, technology, care services, transportation,
+              and consumer activity all connect to country-level business conditions.
+            </p>
+          </div>
+        </div>
+
+        <div class="highlight-note">
+          <p class="notice">
+            These are public education briefs now. Later, AI automation can pull news topics,
+            summarize articles, update region cards, and store the daily brief in Supabase.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section region-section" id="north-america">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">North America</div>
+            <h2>United States, Canada, Mexico</h2>
+          </div>
+          <span class="section-note">Business region</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Finance</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Interest rates, banks, and credit affect business growth.</h3>
+            <p>
+              North American finance movement can affect funding, credit, real estate,
+              consumer spending, and company expansion.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Real Estate</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Housing and commercial property influence local markets.</h3>
+            <p>
+              Housing demand, rental markets, mortgages, construction, and local development
+              connect to Family First Equity Group education.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Technology</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>AI and automation can change company operations.</h3>
+            <p>
+              Technology trends affect TitanCore dashboards, AI employees, CRM/CIM, Replit,
+              Supabase, and business automation.
+            </p>
+          </div>
+        </div>
+
+        <div class="topic-pill-row">
+          <a class="topic-pill" href="stock-watch.html#finance">Finance</a>
+          <a class="topic-pill" href="stock-watch.html#real-estate">Real Estate</a>
+          <a class="topic-pill" href="stock-watch.html#technology">Technology</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section region-section" id="europe">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Europe</div>
+            <h2>Banking, Energy, Trade, and Policy</h2>
+          </div>
+          <span class="section-note">Business region</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Banking</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>European banking conditions can affect global confidence.</h3>
+            <p>
+              Bank stability, lending conditions, rates, and currency movement can affect
+              global capital and business relationships.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Energy</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Energy markets can move costs across industries.</h3>
+            <p>
+              Energy pricing affects transportation, real estate, manufacturing, consumer costs,
+              and business operating expenses.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Trade</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Trade policy can affect companies and supply chains.</h3>
+            <p>
+              Rules, tariffs, imports, exports, and regulation can affect business costs
+              and expansion decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section region-section" id="asia-pacific">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Asia Pacific</div>
+            <h2>Technology, Manufacturing, Supply Chain</h2>
+          </div>
+          <span class="section-note">Business region</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Manufacturing</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Manufacturing activity can move global business costs.</h3>
+            <p>
+              Factories, exports, shipping, and supply chains affect pricing,
+              inventory, and business timing across multiple industries.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Technology</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Technology production affects AI and automation markets.</h3>
+            <p>
+              Chips, devices, software, cloud infrastructure, and electronics can affect
+              the tools companies depend on.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Exports</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Exports and shipping affect worldwide business flow.</h3>
+            <p>
+              Shipping conditions, port activity, and trade routes can affect cost,
+              delivery speed, and business planning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section region-section" id="latin-america">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Latin America</div>
+            <h2>Commodities, Agriculture, Banking, Real Estate</h2>
+          </div>
+          <span class="section-note">Business region</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Commodities</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Commodity movement can affect global pricing.</h3>
+            <p>
+              Agriculture, energy, metals, food, and raw materials can affect
+              inflation, trade, and consumer costs.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Banking</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Banking and currency conditions shape business access.</h3>
+            <p>
+              Currency pressure, bank lending, consumer credit, and inflation can affect
+              business confidence and financial access.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Real Estate</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Property markets connect to tourism and development.</h3>
+            <p>
+              Tourism, population growth, construction, and investment interest can affect
+              local real estate conditions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section region-section" id="middle-east">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Middle East</div>
+            <h2>Energy, Construction, Finance, Logistics</h2>
+          </div>
+          <span class="section-note">Business region</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Energy</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Energy prices can affect nearly every business sector.</h3>
+            <p>
+              Oil, gas, renewables, and utilities affect transportation, inflation,
+              logistics, and consumer costs.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Construction</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Large development projects can create business movement.</h3>
+            <p>
+              Infrastructure, tourism, real estate, and construction spending can affect
+              finance, labor, and regional growth.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Logistics</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Logistics routes connect regions and markets.</h3>
+            <p>
+              Ports, air routes, shipping lanes, and trade corridors can affect supply chains
+              and business delivery.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section region-section" id="africa">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Africa</div>
+            <h2>Infrastructure, Energy, Telecom, Agriculture</h2>
+          </div>
+          <span class="section-note">Business region</span>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Infrastructure</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Infrastructure growth can support new business markets.</h3>
+            <p>
+              Roads, power, ports, housing, and technology infrastructure can support
+              long-term economic activity.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Telecom</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Telecom and mobile finance can expand business access.</h3>
+            <p>
+              Connectivity, fintech, mobile banking, and digital services can affect
+              consumer and business growth.
+            </p>
+          </div>
+
+          <div class="article-card">
+            <div class="article-top">
+              <span class="article-tag">Agriculture</span>
+              <span class="article-date current-date">Today</span>
+            </div>
+            <h3>Agriculture and commodities affect global supply.</h3>
+            <p>
+              Food, land, exports, minerals, and energy resources can connect regional activity
+              to worldwide markets.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="global-media">
+      <div class="container">
+        <div class="video-card">
+          <div class="video-thumb" id="videoThumb">
+            <div class="play">▶</div>
+          </div>
+
+          <div class="video-copy">
+            <div class="kicker">Global Media Area</div>
+            <h2>Daily Global Business Video, Region Brief, or AI Summary</h2>
+            <p>
+              This section is ready for global business videos, country-level market briefings,
+              AI-generated daily summaries, or region-specific business education.
+            </p>
+            <p class="notice">
+              Later, Supabase can store the daily global video, region image, article links,
+              and AI-generated summaries.
+            </p>
+
+            <div class="actions">
+              <a class="btn" href="stock-watch.html">📈 Stock Market Watch</a>
+              <a class="btn ghost" href="business-book.html">📘 Business Book</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="kicker">Global News Notice</div>
+        <h2>Public Business Education Only</h2>
         <p>
-          TitanCore Global Business News is built for people who want business-only information: country markets, stocks, major companies, banking, finance, real estate, trade, currency, industry movement, and business opportunity notes.
+          Global Business News is for public business education, market awareness, and general information only.
+          It is not financial advice, investment advice, legal advice, tax advice, political advice,
+          or a promise of business results.
         </p>
 
-        <div class="hero-buttons">
-          <a class="btn gold" href="#choose-country">Choose Country →</a>
-          <a class="btn" href="stock-watch.html">Stock Market Watch →</a>
-          <a class="btn" href="business-book.html">Business Intelligence Book →</a>
+        <p>
+          The purpose is to help visitors understand country and region movement that may affect business,
+          finance, real estate, care services, transportation, banking, and investment decisions.
+        </p>
+
+        <div class="highlight-note">
+          <p class="notice">
+            Future version: news APIs, AI summaries, Supabase content storage, and daily automation
+            can keep this page updated with fresh region-specific articles and media.
+          </p>
         </div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>Business-Only Coverage</h2>
-        <span class="section-note" id="todayDate">Today</span>
-      </div>
-
-      <p>
-        This is not general news. This page is only for business, economy, market, stock, company, banking, finance, trade, and country-level business information.
-      </p>
-
-      <div class="coverage-list">
-        <div class="pill">Country Business News</div>
-        <div class="pill">Country Stock Market</div>
-        <div class="pill">Major Companies</div>
-        <div class="pill">Banking / Finance</div>
-        <div class="pill">Trade / Currency</div>
-      </div>
-    </section>
-
-    <section class="section" id="choose-country">
-      <div class="section-header">
-        <h2>Choose a Country</h2>
-        <span class="section-note">Country-level business view</span>
-      </div>
-
-      <p>
-        Select a country to view its business intelligence overview. This page stays at the country level. It does not force users to go into every state, county, or city.
-      </p>
-
-      <div class="tool-panel">
-        <div class="tool-row">
-          <select id="countrySelect">
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="Mexico">Mexico</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="France">France</option>
-            <option value="Germany">Germany</option>
-            <option value="Italy">Italy</option>
-            <option value="Spain">Spain</option>
-            <option value="China">China</option>
-            <option value="Japan">Japan</option>
-            <option value="India">India</option>
-            <option value="South Korea">South Korea</option>
-            <option value="Haiti">Haiti</option>
-            <option value="Dominican Republic">Dominican Republic</option>
-            <option value="Jamaica">Jamaica</option>
-            <option value="Brazil">Brazil</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Nigeria">Nigeria</option>
-            <option value="South Africa">South Africa</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="Saudi Arabia">Saudi Arabia</option>
-          </select>
-
-          <button class="btn gold" type="button" onclick="openCountryView()">Open Country Business News</button>
-        </div>
-
-        <div class="country-result" id="countryResult">
-          <h3>United States Business Overview</h3>
-          <p>Business climate, economy, major companies, industry movement, business confidence, and country-level opportunities.</p>
-          <p><strong>Stock Market:</strong> S&amp;P 500, NASDAQ, Dow Jones, major U.S. companies, banks, technology, real estate, healthcare, energy, and consumer sectors.</p>
-        </div>
-      </div>
-
-      <p class="notice">
-        Live country business news, stock prices, and market data will require approved APIs, licensed sources, or properly attributed public sources.
-      </p>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>What Visitors Should See Every Morning</h2>
-        <span class="section-note">Morning business view</span>
-      </div>
-
-      <p>
-        This page should help visitors quickly understand what is happening in global business before they make business, trading, investment, funding, or company decisions.
-      </p>
-
-      <div class="grid four">
-        <div class="card">
-          <div class="card-body">
-            <h3>Market Direction</h3>
-            <p>Are markets moving up, down, or mixed? What sectors are leading or falling?</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Business Headlines</h3>
-            <p>Major company moves, earnings, layoffs, expansion, acquisitions, banking, and trade updates.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Country Economy</h3>
-            <p>Inflation, currency movement, jobs, business confidence, interest rates, and economic pressure.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Stock Market Watch</h3>
-            <p>Major indexes, public companies, top sectors, global stocks, and market movement.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>What Each Country Page Should Include</h2>
-        <span class="section-note">Country page structure</span>
-      </div>
-
-      <p>
-        Each country should have a clean business overview without going too deep into each city.
-      </p>
-
-      <div class="grid three">
-        <div class="card">
-          <div class="card-body">
-            <h3>Business News</h3>
-            <p>Country-level business headlines, company movement, mergers, expansion, layoffs, banking, finance, and business regulation.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Stock Market</h3>
-            <p>Country index, public companies, major movers, sector movement, investor confidence, and market summary.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Major Companies</h3>
-            <p>Large public companies, major employers, national brands, growing companies, and important business groups.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Major Industries</h3>
-            <p>Finance, real estate, technology, healthcare, energy, transportation, tourism, manufacturing, agriculture, and business services.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Banking &amp; Finance</h3>
-            <p>Banks, interest rates, lending conditions, business credit, financial policy, funding access, and capital movement.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Real Estate &amp; Construction</h3>
-            <p>Property market, housing, commercial real estate, construction, development, rentals, and investment activity.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Trade &amp; Currency</h3>
-            <p>Imports, exports, currency changes, supply chain movement, tariffs, ports, logistics, and international trade.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Business Opportunities</h3>
-            <p>Growing sectors, underserved markets, expansion trends, startup activity, and business demand.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Business Risks</h3>
-            <p>Inflation pressure, market slowdown, regulation risk, currency risk, supply chain issues, and sector weakness.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>Global Business Categories</h2>
-        <span class="section-note">Regional business focus</span>
-      </div>
-
-      <p>
-        These categories keep the page focused on business, not random news.
-      </p>
-
-      <div class="grid three">
-        <a class="card" href="#choose-country">
-          <div class="card-image daily-card-image">North America</div>
-          <div class="card-body">
-            <h3>North America</h3>
-            <p>United States, Canada, Mexico, business markets, stocks, banks, trade, real estate, and major companies.</p>
-            <span class="card-link">Open Country View →</span>
-          </div>
-        </a>
-
-        <a class="card" href="#choose-country">
-          <div class="card-image daily-card-image">Europe</div>
-          <div class="card-body">
-            <h3>Europe</h3>
-            <p>United Kingdom, France, Germany, Italy, Spain, EU business, banking, energy, manufacturing, and market movement.</p>
-            <span class="card-link">Open Country View →</span>
-          </div>
-        </a>
-
-        <a class="card" href="#choose-country">
-          <div class="card-image daily-card-image">Asia</div>
-          <div class="card-body">
-            <h3>Asia</h3>
-            <p>China, Japan, India, South Korea, manufacturing, technology, trade, supply chain, and market growth.</p>
-            <span class="card-link">Open Country View →</span>
-          </div>
-        </a>
-
-        <a class="card" href="#choose-country">
-          <div class="card-image daily-card-image">Caribbean</div>
-          <div class="card-body">
-            <h3>Caribbean</h3>
-            <p>Haiti, Dominican Republic, Jamaica, tourism, imports, exports, remittances, banking, and local business development.</p>
-            <span class="card-link">Open Country View →</span>
-          </div>
-        </a>
-
-        <a class="card" href="#choose-country">
-          <div class="card-image daily-card-image">Latin America</div>
-          <div class="card-body">
-            <h3>Latin America</h3>
-            <p>Brazil, Mexico, Colombia, Chile, trade, commodities, finance, agriculture, and regional business movement.</p>
-            <span class="card-link">Open Country View →</span>
-          </div>
-        </a>
-
-        <a class="card" href="#choose-country">
-          <div class="card-image daily-card-image">Africa &amp; Middle East</div>
-          <div class="card-body">
-            <h3>Africa &amp; Middle East</h3>
-            <p>Energy, infrastructure, banking, trade, logistics, technology, construction, and emerging market business activity.</p>
-            <span class="card-link">Open Country View →</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>How Global Business News Connects to TitanCore</h2>
-        <span class="section-note">Business intelligence connection</span>
-      </div>
-
-      <p>
-        TitanCore gives visitors valuable business information first. That builds trust before people explore TitanCore companies or contact the business.
-      </p>
-
-      <div class="grid three">
-        <a class="card" href="stock-watch.html">
-          <div class="card-body">
-            <h3>Stock Market Watch</h3>
-            <p>Visitors can move from country business news into market and stock research.</p>
-            <span class="card-link">Open Stock Watch →</span>
-          </div>
-        </a>
-
-        <a class="card" href="business-book.html">
-          <div class="card-body">
-            <h3>Business Intelligence Book</h3>
-            <p>Visitors can continue learning about business, funding, credit, real estate, markets, and company research.</p>
-            <span class="card-link">Open Business Book →</span>
-          </div>
-        </a>
-
-        <a class="card" href="companies.html">
-          <div class="card-body">
-            <h3>TitanCore Companies</h3>
-            <p>Visitors can learn about Vaultara, Family First, VitalPath, RevMotion, and the TitanCore business network.</p>
-            <span class="card-link">View Companies →</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>Global Business News Notice</h2>
-      </div>
-
-      <p>
-        This page is for public business information only. It does not provide general news, political news, crime news, entertainment news, or unrelated headlines.
-      </p>
-
-      <p>
-        Market, stock, country, business, and economic information is not financial advice, investment advice, legal advice, tax advice, or a recommendation to buy or sell securities.
-      </p>
-
-      <p class="notice">
-        Live data requires approved APIs, licensed feeds, or properly attributed public sources.
-      </p>
     </section>
   </main>
 
-  <footer>
-    <div class="page footer-inner">
-      <strong>TitanCore Holdings</strong>
-      <span>Global Business News</span>
-      <a href="contact.html">Contact TitanCore</a>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>TitanCore Holdings</strong>
+        <p>Global Business News and public region intelligence page.</p>
+      </div>
+
+      <div class="logo-box" style="width:58px;height:58px;font-size:32px;">T</div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="companies.html">Companies</a>
+        <a href="business-book.html">Business Book</a>
+        <a href="stock-watch.html">Stock Watch</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
   </footer>
 
   <script>
-    const dailyImages = [
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80"
+    const heroImages = [
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1800&q=80"
     ];
 
-    function dailyIndex(list){
+    const regionImages = [
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1000&q=80"
+    ];
+
+    const videoImages = [
+      "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=1400&q=80"
+    ];
+
+    function dayIndex(list){
       const dayNumber = Math.floor(Date.now() / 86400000);
       return dayNumber % list.length;
     }
 
-    function setDailyBackgrounds(){
-      const hero = document.getElementById("dailyHero");
-      const heroImg = dailyImages[dailyIndex(dailyImages)];
+    function setTodayDate(){
+      const today = new Date();
+      const formatted = today.toLocaleDateString(undefined,{
+        weekday:"long",
+        month:"long",
+        day:"numeric",
+        year:"numeric"
+      });
+
+      const box = document.getElementById("todayDate");
+      if(box){
+        box.textContent = formatted;
+      }
+
+      document.querySelectorAll(".current-date").forEach(function(item){
+        item.textContent = formatted;
+      });
+    }
+
+    function setDailyMedia(){
+      const hero = document.getElementById("heroSection");
+      const video = document.getElementById("videoThumb");
 
       if(hero){
-        hero.style.backgroundImage =
-          `linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.70),rgba(0,0,0,.16)), url("${heroImg}")`;
+        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
       }
 
-      document.querySelectorAll(".daily-card-image").forEach((box, index) => {
-        const img = dailyImages[(dailyIndex(dailyImages) + index) % dailyImages.length];
-        box.style.backgroundImage =
-          `linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.72)), url("${img}")`;
+      if(video){
+        video.style.setProperty("--video-image", `url("${videoImages[dayIndex(videoImages)]}")`);
+      }
+
+      document.querySelectorAll(".region-img").forEach((item,index)=>{
+        const img = regionImages[(dayIndex(regionImages) + index) % regionImages.length];
+        item.style.backgroundImage =
+          `linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.78)), url("${img}")`;
       });
     }
 
-    function setTodayDate(){
-      const dateBox = document.getElementById("todayDate");
-      const today = new Date();
-
-      const formatted = today.toLocaleDateString(undefined, {
-        weekday:"long",
-        year:"numeric",
-        month:"long",
-        day:"numeric"
-      });
-
-      if(dateBox){
-        dateBox.textContent = formatted;
-      }
-    }
-
-    const countryData = {
-      "United States":{
-        summary:"Business climate, economy, major companies, industry movement, business confidence, and country-level opportunities.",
-        market:"S&P 500, NASDAQ, Dow Jones, major U.S. companies, banks, technology, real estate, healthcare, energy, and consumer sectors."
-      },
-      "Canada":{
-        summary:"Banking, energy, real estate, mining, trade, technology, agriculture, and cross-border business activity.",
-        market:"Toronto Stock Exchange, banks, energy companies, mining companies, industrial groups, and Canadian consumer sectors."
-      },
-      "Mexico":{
-        summary:"Manufacturing, trade, logistics, banking, tourism, nearshoring, real estate, and North American supply chain movement.",
-        market:"Mexican public companies, manufacturing sectors, trade-connected companies, and banking movement."
-      },
-      "United Kingdom":{
-        summary:"Finance, banking, real estate, trade, technology, energy, insurance, and London market activity.",
-        market:"FTSE companies, banking, insurance, energy, consumer brands, and UK market movement."
-      },
-      "France":{
-        summary:"Luxury goods, banking, energy, manufacturing, tourism, agriculture, transportation, and EU business activity.",
-        market:"French public companies, luxury groups, banks, energy firms, industrial companies, and consumer sectors."
-      },
-      "Germany":{
-        summary:"Manufacturing, automobiles, banking, industrial exports, energy, logistics, technology, and European trade.",
-        market:"German public companies, auto manufacturers, industrial groups, banks, and export-driven sectors."
-      },
-      "Italy":{
-        summary:"Manufacturing, tourism, luxury, banking, food, real estate, trade, and regional business activity.",
-        market:"Italian public companies, banking, fashion, manufacturing, energy, and consumer sectors."
-      },
-      "Spain":{
-        summary:"Tourism, banking, energy, real estate, infrastructure, trade, and EU market activity.",
-        market:"Spanish public companies, banks, renewable energy, infrastructure, telecom, and consumer sectors."
-      },
-      "China":{
-        summary:"Manufacturing, exports, technology, banking, real estate, supply chain, consumer demand, and industrial policy.",
-        market:"Chinese public companies, technology, banks, manufacturing, electric vehicles, and export sectors."
-      },
-      "Japan":{
-        summary:"Technology, manufacturing, automobiles, banking, electronics, exports, currency movement, and industrial strength.",
-        market:"Japanese public companies, auto manufacturers, electronics companies, banks, and industrial sectors."
-      },
-      "India":{
-        summary:"Technology, banking, manufacturing, consumer growth, infrastructure, energy, real estate, and startup activity.",
-        market:"Indian public companies, banking, technology, consumer brands, energy, and infrastructure sectors."
-      },
-      "South Korea":{
-        summary:"Technology, electronics, manufacturing, exports, shipbuilding, auto, banking, and supply chain movement.",
-        market:"South Korean public companies, semiconductor firms, electronics groups, auto companies, and industrial exporters."
-      },
-      "Haiti":{
-        summary:"Local business development, imports, exports, remittances, banking access, agriculture, construction, and trade activity.",
-        market:"Country-level business movement, trade, banking, diaspora investment interest, and local economic conditions."
-      },
-      "Dominican Republic":{
-        summary:"Tourism, real estate, banking, construction, ports, trade, manufacturing zones, and Caribbean business movement.",
-        market:"Country-level business sectors, banks, tourism, real estate, exports, and regional trade activity."
-      },
-      "Jamaica":{
-        summary:"Tourism, banking, trade, ports, logistics, agriculture, energy, real estate, and Caribbean market activity.",
-        market:"Country-level business sectors, public companies where available, tourism, banks, and consumer movement."
-      },
-      "Brazil":{
-        summary:"Agriculture, commodities, banking, energy, real estate, manufacturing, exports, and consumer markets.",
-        market:"Brazilian public companies, banks, energy, mining, agriculture, consumer brands, and commodity sectors."
-      },
-      "Nigeria":{
-        summary:"Energy, banking, telecom, agriculture, consumer markets, infrastructure, trade, and emerging business activity.",
-        market:"Nigerian public companies, banks, energy, telecom, consumer sectors, and regional market movement."
-      },
-      "South Africa":{
-        summary:"Mining, banking, energy, infrastructure, real estate, manufacturing, agriculture, and regional trade.",
-        market:"South African public companies, banks, mining, energy, retail, and industrial sectors."
-      },
-      "United Arab Emirates":{
-        summary:"Real estate, tourism, finance, logistics, ports, energy, technology, construction, and international business movement.",
-        market:"UAE public companies, banks, real estate groups, logistics, energy, and regional investment activity."
-      },
-      "Saudi Arabia":{
-        summary:"Energy, infrastructure, construction, finance, tourism development, logistics, technology, and industrial growth.",
-        market:"Saudi public companies, energy firms, banks, infrastructure, industrial companies, and regional market movement."
-      }
-    };
-
-    function openCountryView(){
-      const select = document.getElementById("countrySelect");
-      const result = document.getElementById("countryResult");
-      const country = select.value;
-
-      const data = countryData[country] || {
-        summary:"Country-level business overview, economic direction, major industries, market movement, and opportunity notes.",
-        market:"Major public companies, country stock market, banking, finance, trade, and sector movement."
-      };
-
-      result.innerHTML = `
-        <h3>${country} Business Overview</h3>
-        <p>${data.summary}</p>
-        <p><strong>Stock Market:</strong> ${data.market}</p>
-      `;
-
-      result.scrollIntoView({behavior:"smooth", block:"center"});
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      setDailyBackgrounds();
+    document.addEventListener("DOMContentLoaded", function(){
       setTodayDate();
+      setDailyMedia();
     });
   </script>
 </body>
