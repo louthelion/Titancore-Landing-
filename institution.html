@@ -4,617 +4,389 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>TitanCore Holdings | Institution Information</title>
+  <title>Institution Information | TitanCore Holdings</title>
 
   <style>
-    :root{
-      --black:#000000;
-      --panel:#070b0a;
-      --panel2:#0c1410;
-      --green:#00a651;
-      --green2:#24c873;
-      --gold:#d8b45a;
-      --gold2:#f3d88b;
-      --yellow:#ffd400;
-      --white:#ffffff;
-      --muted:#b8ad8a;
-      --border:rgba(216,180,90,.34);
-      --border2:rgba(216,180,90,.65);
-      --shadow:0 18px 55px rgba(0,0,0,.65);
+    :root {
+      --black: #000000;
+      --green: #00b85f;
+      --gold: #d8b45a;
+      --soft-gold: #f3d98b;
+      --yellow: #ffd000;
+      --white: #ffffff;
+      --border: rgba(216, 180, 90, 0.58);
+      --panel: rgba(0, 0, 0, 0.82);
     }
 
-    *{box-sizing:border-box}
+    * {
+      box-sizing: border-box;
+    }
 
-    html{scroll-behavior:smooth}
+    html {
+      scroll-behavior: smooth;
+    }
 
-    body{
-      margin:0;
+    body {
+      margin: 0;
       background:
-        radial-gradient(circle at top left,rgba(0,166,81,.15),transparent 28%),
-        radial-gradient(circle at top right,rgba(216,180,90,.12),transparent 26%),
-        linear-gradient(180deg,#000 0%,#051006 50%,#000 100%);
-      color:var(--gold2);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.55;
+        radial-gradient(circle at top left, rgba(0, 184, 95, 0.18), transparent 32%),
+        linear-gradient(180deg, #000000 0%, #031108 45%, #000000 100%);
+      color: var(--soft-gold);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
     }
 
-    a{color:inherit;text-decoration:none}
-
-    .page{
-      width:min(1380px,calc(100% - 28px));
-      margin:0 auto;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .topbar{
-      background:#000;
-      border-bottom:1px solid var(--border2);
-      position:sticky;
-      top:0;
-      z-index:100;
-      box-shadow:0 12px 34px rgba(0,0,0,.72);
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
     }
 
-    .header-inner{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:18px;
-      padding:18px 0 10px;
+    .topbar {
+      background: #000;
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0 34px;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 34px;
     }
 
-    .logo-slot{
-      width:58px;
-      height:58px;
-      min-width:58px;
-      border-radius:10px;
-      border:2px solid var(--gold);
-      display:grid;
-      place-items:center;
-      color:var(--yellow);
-      background:
-        radial-gradient(circle at 30% 25%,rgba(216,180,90,.24),transparent 38%),
-        linear-gradient(180deg,#101810,#020402);
-      font-size:34px;
-      font-weight:900;
-      box-shadow:0 0 22px rgba(0,166,81,.22);
-      overflow:hidden;
+    .logo-box {
+      width: 88px;
+      height: 88px;
+      border: 3px solid var(--gold);
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: var(--yellow);
+      font-size: 48px;
+      font-weight: 900;
+      background: rgba(216, 180, 90, 0.08);
+      box-shadow: 0 0 25px rgba(0, 184, 95, 0.28);
     }
 
-    .brand-text strong{
-      display:block;
-      color:var(--green);
-      font-size:28px;
-      font-weight:900;
-      line-height:1.05;
-      letter-spacing:.4px;
+    .brand-title {
+      color: var(--green);
+      font-size: clamp(32px, 6vw, 62px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.5px;
     }
 
-    .brand-text small{
-      display:block;
-      color:var(--gold);
-      font-size:12px;
-      letter-spacing:2.2px;
-      text-transform:uppercase;
-      font-weight:900;
-      margin-top:4px;
+    .brand-subtitle {
+      color: var(--gold);
+      font-size: clamp(14px, 3vw, 24px);
+      font-weight: 900;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-top: 12px;
     }
 
-    .header-actions{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap:12px;
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px 56px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(216, 180, 90, 0.35);
     }
 
-    .circle-btn{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      border:1px solid rgba(216,180,90,.45);
-      background:#070707;
-      color:#fff;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow:0 6px 20px rgba(0,0,0,.45);
-      transition:.2s ease;
-    }
-
-    .circle-btn:hover{
-      border-color:var(--yellow);
-      color:var(--yellow);
-      transform:translateY(-2px);
-    }
-
-    .subscribe-btn{
-      min-height:44px;
-      padding:0 16px;
-      border-radius:8px;
-      border:1px solid var(--gold);
-      background:#e6c66b;
-      color:#111;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-weight:900;
-      box-shadow:0 6px 20px rgba(0,0,0,.35);
-      transition:.2s ease;
-    }
-
-    .subscribe-btn:hover{
-      background:#f1d886;
-      transform:translateY(-2px);
-    }
-
-    .nav{
-      grid-column:1 / -1;
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:6px;
-      padding-top:10px;
-      border-top:1px solid rgba(216,180,90,.25);
-    }
-
-    .nav a{
-      color:#fff;
-      font-size:13px;
-      font-weight:800;
-      padding:9px 14px;
-      border-radius:7px;
-      border:1px solid transparent;
-      white-space:nowrap;
-      transition:.2s ease;
+    .nav a {
+      color: var(--white);
+      font-size: clamp(20px, 4vw, 34px);
+      font-weight: 900;
     }
 
     .nav a:hover,
-    .nav a.active{
-      color:var(--yellow);
-      border-color:rgba(216,180,90,.45);
-      background:rgba(216,180,90,.07);
+    .nav a.active {
+      color: var(--yellow);
     }
 
-    .section{padding:16px 0}
+    .hero {
+      padding: 56px 0 40px;
+    }
 
-    .panel{
+    .hero-card {
+      min-height: 720px;
+      border: 1.5px solid var(--border);
+      border-radius: 34px;
+      padding: clamp(34px, 7vw, 76px);
       background:
-        linear-gradient(180deg,rgba(9,13,12,.96),rgba(3,5,4,.99));
-      border:1px solid var(--border);
-      border-radius:14px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
+        linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.90)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1700&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 0 38px rgba(0, 184, 95, 0.16);
     }
 
-    .panel-pad{
-      padding:28px;
+    .kicker {
+      color: var(--gold);
+      font-size: clamp(18px, 4vw, 34px);
+      font-weight: 900;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
     }
 
-    h1,h2,h3{margin-top:0}
-
-    h1{
-      color:var(--green);
-      font-size:clamp(34px,5vw,66px);
-      line-height:1.02;
-      margin-bottom:18px;
-      font-weight:900;
-      letter-spacing:-1px;
+    h1,
+    h2,
+    h3 {
+      color: var(--green);
+      font-weight: 1000;
+      margin-top: 0;
     }
 
-    h2{
-      color:var(--green);
-      font-size:clamp(26px,3vw,42px);
-      line-height:1.12;
-      margin-bottom:16px;
-      font-weight:900;
+    h1 {
+      font-size: clamp(56px, 11vw, 118px);
+      line-height: 0.96;
+      letter-spacing: -2px;
+      margin-bottom: 30px;
     }
 
-    h3{
-      color:var(--green2);
-      font-size:22px;
-      line-height:1.15;
-      margin-bottom:10px;
-      font-weight:900;
+    h2 {
+      font-size: clamp(44px, 8vw, 86px);
+      line-height: 1;
+      margin-bottom: 24px;
     }
 
-    p{
-      color:var(--gold2);
-      font-size:18px;
-      margin-top:0;
+    h3 {
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.08;
+      margin-bottom: 14px;
     }
 
-    .kicker{
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:13px;
-      font-weight:900;
-      margin-bottom:12px;
+    p {
+      color: var(--soft-gold);
+      font-size: clamp(20px, 3.9vw, 32px);
+      font-weight: 650;
+      margin: 0;
     }
 
-    .small-text{
-      color:var(--muted);
-      font-size:14px;
+    .lead {
+      font-size: clamp(25px, 5vw, 46px);
+      font-weight: 750;
+      max-width: 990px;
+      margin-bottom: 36px;
     }
 
-    .gold-text{
-      color:var(--yellow);
-      font-weight:900;
+    .notice {
+      color: rgba(243, 217, 139, 0.86);
+      font-size: clamp(18px, 3.4vw, 27px);
+      font-weight: 700;
+      margin-top: 24px;
     }
 
-    .divider{
-      height:1px;
-      background:rgba(216,180,90,.25);
-      margin:24px 0;
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 32px;
     }
 
-    .hero{
-      min-height:400px;
-      display:grid;
-      grid-template-columns:1.08fr .92fr;
-      border:1px solid var(--border2);
-      border-radius:14px;
-      overflow:hidden;
-      background:#050805;
-      box-shadow:var(--shadow);
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      padding: 18px 30px;
+      border-radius: 18px;
+      border: 1.5px solid var(--gold);
+      background: var(--yellow);
+      color: #000;
+      font-size: clamp(18px, 3.5vw, 28px);
+      font-weight: 900;
+      text-align: center;
     }
 
-    .hero-copy{
-      padding:40px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
+    .btn.ghost {
+      background: rgba(0, 0, 0, 0.72);
+      color: var(--soft-gold);
+    }
+
+    .btn:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .panel {
+      border: 1.5px solid var(--border);
+      border-radius: 32px;
       background:
-        linear-gradient(90deg,rgba(0,0,0,.98),rgba(0,0,0,.84),rgba(0,0,0,.25));
-      z-index:2;
+        linear-gradient(rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.90)),
+        radial-gradient(circle at top left, rgba(0, 184, 95, 0.13), transparent 42%);
+      padding: clamp(30px, 6vw, 64px);
+      box-shadow: 0 0 24px rgba(0, 184, 95, 0.10);
     }
 
-    .hero-copy p{
-      max-width:760px;
-      margin-bottom:18px;
+    .section-head {
+      margin-bottom: 34px;
     }
 
-    .hero-visual{
-      min-height:400px;
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1.5px solid var(--border);
+      border-radius: 28px;
+      background: rgba(0, 0, 0, 0.76);
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .card-body {
+      padding: clamp(26px, 5vw, 44px);
+    }
+
+    .card-img {
+      height: 260px;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--yellow);
+      font-size: clamp(19px, 3.6vw, 28px);
+      font-weight: 900;
+    }
+
+    .wide-image {
+      min-height: 430px;
+      border: 1.5px solid var(--border);
+      border-radius: 32px;
+      padding: clamp(30px, 6vw, 64px);
       background:
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.72)),
-        var(--bg),
-        radial-gradient(circle at 25% 20%,rgba(0,166,81,.24),transparent 35%),
-        linear-gradient(135deg,#061106,#101d10);
-      background-size:cover;
-      background-position:center;
-      position:relative;
+        linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.88)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1700&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 28px;
     }
 
-    .hero-visual::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.35),transparent),
-        radial-gradient(circle at 40% 30%,rgba(216,180,90,.16),transparent 35%);
+    .path-card {
+      display: grid;
+      grid-template-columns: 78px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      border-radius: 26px;
+      background: rgba(0, 0, 0, 0.78);
+      padding: 28px;
     }
 
-    .hero-actions,
-    .quick-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:22px;
+    .path-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-2px);
     }
 
-    .btn,
-    .quick-links a{
-      min-height:46px;
-      padding:0 18px;
-      border-radius:10px;
-      border:1px solid var(--gold);
-      background:rgba(0,0,0,.36);
-      color:var(--gold2);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      transition:.2s ease;
+    .icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      font-size: 32px;
+      font-weight: 900;
     }
 
-    .btn:hover,
-    .quick-links a:hover,
-    .active-section-link{
-      background:var(--green)!important;
-      border-color:var(--green)!important;
-      color:#fff!important;
-      transform:translateY(-2px);
+    .arrow {
+      color: var(--gold);
+      font-size: 46px;
+      font-weight: 900;
     }
 
-    .gold-btn{
-      background:var(--yellow)!important;
-      color:#000!important;
-      border-color:var(--yellow)!important;
+    .number {
+      color: var(--yellow);
+      font-size: clamp(34px, 5vw, 54px);
+      font-weight: 1000;
+      margin-bottom: 8px;
     }
 
-    .gold-btn:hover{
-      background:var(--green)!important;
-      color:#fff!important;
-      border-color:var(--green)!important;
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 44px 0 58px;
+      background: #000;
     }
 
-    .clicked{
-      transform:scale(.98)!important;
+    .footer strong {
+      display: block;
+      color: var(--green);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
 
-    .stats-grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:12px;
-    }
-
-    .stat-card{
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:18px;
-      background:rgba(0,0,0,.32);
-      min-height:125px;
-    }
-
-    .stat-card small{
-      display:block;
-      color:var(--gold);
-      font-weight:900;
-      text-transform:uppercase;
-      font-size:12px;
-      margin-bottom:10px;
-    }
-
-    .stat-card strong{
-      display:block;
-      color:#fff;
-      font-size:21px;
-      line-height:1.15;
-    }
-
-    .content-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-
-    .info-card{
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:22px;
-      background:rgba(0,0,0,.28);
-      transition:.2s ease;
-    }
-
-    .info-card:hover{
-      border-color:var(--green);
-      transform:translateY(-2px);
-    }
-
-    .highlight-box{
-      border:1px solid rgba(255,212,0,.48);
-      background:rgba(255,212,0,.06);
-      border-radius:14px;
-      padding:24px;
-      margin-top:18px;
-    }
-
-    .highlight-box h3{
-      color:var(--yellow);
-    }
-
-    .company-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
-
-    .company-card{
-      border:1px solid var(--border);
-      border-radius:12px;
-      overflow:hidden;
-      background:rgba(0,0,0,.28);
-      transition:.2s ease;
-    }
-
-    .company-card:hover{
-      border-color:var(--green);
-      transform:translateY(-2px);
-    }
-
-    .company-img{
-      min-height:135px;
-      display:grid;
-      place-items:center;
-      color:var(--yellow);
-      font-size:42px;
-      font-weight:900;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.70)),
-        var(--bg),
-        linear-gradient(135deg,#071107,#0e2010);
-      background-size:cover;
-      background-position:center;
-      border-bottom:1px solid var(--border);
-      text-shadow:0 2px 12px rgba(0,0,0,.85);
-    }
-
-    .company-body{
-      padding:16px;
-    }
-
-    .company-body p{
-      font-size:15px;
-      margin-bottom:12px;
-    }
-
-    .company-body span{
-      color:var(--yellow);
-      font-weight:900;
-    }
-
-    .center-note{
-      text-align:center;
-      max-width:900px;
-      margin:0 auto 24px;
-    }
-
-    .process-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:14px;
-    }
-
-    .step-card{
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:20px;
-      background:rgba(0,0,0,.27);
-      position:relative;
-      overflow:hidden;
-    }
-
-    .step-number{
-      width:38px;
-      height:38px;
-      display:grid;
-      place-items:center;
-      border-radius:50%;
-      background:var(--yellow);
-      color:#000;
-      font-weight:900;
-      margin-bottom:14px;
-    }
-
-    .step-card p{
-      font-size:15px;
-      margin-bottom:0;
-    }
-
-    .cta{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:18px;
-      align-items:center;
-      border:1px solid var(--border2);
-      border-radius:14px;
-      padding:28px;
-      background:
-        linear-gradient(90deg,rgba(0,166,81,.12),rgba(0,0,0,.40)),
-        rgba(0,0,0,.28);
-    }
-
-    .cta h2{
-      margin-bottom:10px;
-    }
-
-    .cta-actions{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-
-    .notice{
-      border:1px solid rgba(255,212,0,.48);
-      border-radius:14px;
-      background:
-        linear-gradient(180deg,rgba(255,212,0,.08),rgba(0,0,0,.28));
-      padding:26px;
-    }
-
-    .notice h2{
-      color:var(--yellow);
-    }
-
-    .notice p{
-      font-size:16px;
-    }
-
-    .footer{
-      border-top:1px solid var(--border);
-      margin-top:20px;
-      padding:24px 0 34px;
-      background:#000;
-    }
-
-    .footer-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    @media(max-width:1100px){
-      .header-inner,
-      .hero,
-      .cta{
-        grid-template-columns:1fr;
+    @media (max-width: 900px) {
+      .cols-2,
+      .cols-3 {
+        grid-template-columns: 1fr;
       }
 
-      .header-actions{
-        display:none;
+      .path-card {
+        grid-template-columns: 1fr auto;
       }
 
-      .stats-grid,
-      .company-grid,
-      .process-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .content-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-visual{
-        min-height:260px;
+      .icon {
+        display: none;
       }
     }
 
-    @media(max-width:680px){
-      .page{
-        width:calc(100% - 18px);
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 32px, 1120px);
       }
 
-      .brand-text strong{
-        font-size:24px;
+      .brand {
+        align-items: flex-start;
       }
 
-      .brand-text small{
-        font-size:11px;
-        letter-spacing:1.5px;
+      .logo-box {
+        width: 72px;
+        height: 72px;
+        font-size: 40px;
       }
 
-      .nav a{
-        font-size:14px;
-        padding:10px 13px;
-        border-radius:14px;
+      .nav {
+        gap: 32px 44px;
       }
 
-      .hero-copy,
-      .panel-pad,
-      .cta,
-      .notice{
-        padding:22px;
+      .hero-card {
+        min-height: 620px;
       }
 
-      .stats-grid,
-      .company-grid,
-      .process-grid{
-        grid-template-columns:1fr;
-      }
-
-      .footer-inner{
-        flex-direction:column;
-        text-align:center;
+      .btn {
+        width: 100%;
       }
     }
   </style>
@@ -622,32 +394,14 @@
 
 <body>
   <header class="topbar">
-    <div class="page header-inner">
-      <a class="brand" href="index.html">
-        <span class="logo-slot">T</span>
-        <span class="brand-text">
-          <strong>TitanCore Holdings</strong>
-          <small>Institution Information</small>
-        </span>
-      </a>
+    <div class="container">
+      <div class="brand">
+        <div class="logo-box">T</div>
 
-      <div></div>
-
-      <div class="header-actions">
-        <a class="circle-btn" href="business-book.html#search" aria-label="Search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="2"></circle>
-            <path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-          </svg>
-        </a>
-
-        <a class="subscribe-btn" href="contact.html#subscribe">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M4 6H20V18H4V6Z" stroke="currentColor" stroke-width="2"></path>
-            <path d="M4 7L12 13L20 7" stroke="currentColor" stroke-width="2"></path>
-          </svg>
-          <span>Subscribe</span>
-        </a>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">Institution Information</div>
+        </div>
       </div>
 
       <nav class="nav">
@@ -666,301 +420,228 @@
     </div>
   </header>
 
-  <main class="page">
-    <section class="section">
-      <div class="hero">
-        <div class="hero-copy">
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
           <div class="kicker">Institution Information</div>
+
           <h1>Public Information for Institutions Reviewing TitanCore</h1>
-          <p>
-            TitanCore Holdings provides a public institution page for organizations that want to understand
-            the company structure, business network, market intelligence platform, operating categories,
-            and long-term business direction.
-          </p>
-          <p>
-            This page is for public review only. It is not a contract, partnership offer, investment request,
-            financial agreement, or legal obligation.
+
+          <p class="lead">
+            TitanCore Holdings gives organizations a public place to understand the company network,
+            business categories, public intelligence platform, investor path, financial institution path,
+            banking relationship path, and company directory before contacting TitanCore.
           </p>
 
-          <div class="hero-actions">
-            <a class="btn gold-btn" href="institution-request.html">Request Institution Review →</a>
-            <a class="btn" href="#institution-overview">Review Institution Overview</a>
-            <a class="btn" href="index.html">Back to Home</a>
+          <div class="actions">
+            <a class="btn" href="institution-start.html">Start Institution Review →</a>
+            <a class="btn ghost" href="institution-financial.html">Financial Institution →</a>
+            <a class="btn ghost" href="banks.html">Bank Review →</a>
           </div>
-        </div>
 
-        <div class="hero-visual" data-bg-group="institutionHero"
-          style="--bg:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1300&q=80');">
+          <p class="notice">
+            Public information only. This page does not create a contract, approval, partnership, investment relationship, banking relationship, funding approval, or legal obligation.
+          </p>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="quick-links">
-        <a href="#institution-overview">Institution Overview</a>
-        <a href="#review-areas">Review Areas</a>
-        <a href="#company-network">Company Network</a>
-        <a href="#business-intelligence">Business Intelligence</a>
-        <a href="#relationship-path">Relationship Path</a>
-        <a href="#notice">Institution Notice</a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <small>Company Structure</small>
-          <strong>Public Review</strong>
-        </div>
-        <div class="stat-card">
-          <small>Business Network</small>
-          <strong>Multi-Company</strong>
-        </div>
-        <div class="stat-card">
-          <small>Market Intelligence</small>
-          <strong>Business-Only</strong>
-        </div>
-        <div class="stat-card">
-          <small>Institution Path</small>
-          <strong>Contact Review</strong>
-        </div>
-        <div class="stat-card">
-          <small>Status</small>
-          <strong>Informational</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="institution-overview">
-      <div class="panel">
-        <div class="panel-pad">
-          <div class="kicker">Institution Overview</div>
-          <h2>How Institutions Can Understand TitanCore</h2>
-          <p>
-            TitanCore Holdings is being built as a private umbrella company with connected businesses,
-            public business intelligence, company information, and structured business categories.
-          </p>
-
-          <div class="content-grid">
-            <div class="info-card">
-              <h3>Umbrella Company</h3>
-              <p>
-                TitanCore Holdings acts as the central public brand and information structure for the
-                larger company ecosystem.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Connected Companies</h3>
-              <p>
-                The TitanCore network includes companies focused on finance, credit, funding, real estate,
-                care services, auto, marine, and public business intelligence.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Public Intelligence Platform</h3>
-              <p>
-                TitanCore’s public website gives visitors business information, global business news,
-                stock watch areas, market categories, and company education.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Contact Direction</h3>
-              <p>
-                Institutions can use the public contact path to request the correct next step, depending
-                on the type of relationship or review needed.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="review-areas">
-      <div class="panel">
-        <div class="panel-pad">
+      <div class="container panel">
+        <div class="section-head">
           <div class="kicker">Institution Review</div>
-          <h2>What an Institution May Review</h2>
+          <h2>Who This Page Is For</h2>
           <p>
-            This page gives institutions a clean public view of TitanCore before any formal conversation.
+            This page is for organizations, institutions, professional groups, vendors, relationship managers,
+            banks, lenders, and business groups that want to review TitanCore Holdings from a public information level.
           </p>
+        </div>
 
-          <div class="content-grid">
-            <div class="info-card">
-              <h3>Company Purpose</h3>
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Organizations</h3>
               <p>
-                TitanCore is built to organize multiple business interests under one umbrella brand while
-                giving each company its own public identity and service direction.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Business Categories</h3>
-              <p>
-                TitanCore connects finance, credit, funding, real estate, healthcare support, auto, marine,
-                business information, and market research.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Public Value</h3>
-              <p>
-                The public website helps people learn about business, markets, countries, stocks, credit,
-                funding, real estate, and company opportunities.
-              </p>
-            </div>
-
-            <div class="info-card">
-              <h3>Market Awareness</h3>
-              <p>
-                TitanCore’s website keeps visitors informed about business movement, market conditions,
-                global business news, and stock market categories.
+                Public review area for organizations that want to understand TitanCore’s structure and connected company network.
               </p>
             </div>
           </div>
 
-          <div class="highlight-box">
-            <h3>Institution Purpose</h3>
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Professional Groups</h3>
+              <p>
+                For professionals, vendors, service providers, advisors, and business teams reviewing TitanCore before contacting.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Financial Groups</h3>
+              <p>
+                For banks, lenders, capital groups, and financial institutions reviewing TitanCore’s public information path.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="wide-image">
+          <div>
+            <div class="kicker">Public Review Path</div>
+            <h2>Choose the Right Institution Path</h2>
             <p>
-              This page should help an institution understand TitanCore before requesting a formal review,
-              banking conversation, financial relationship, or business conversation.
+              Institutions should not be confused. TitanCore gives each visitor the right public route before any private conversation starts.
             </p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="company-network">
-      <div class="panel">
-        <div class="panel-pad">
-          <div class="kicker">Company Network</div>
-          <h2>TitanCore Company Ecosystem</h2>
-          <p class="center-note">
-            Institutions can review each connected company and understand how it fits into the larger TitanCore ecosystem.
-          </p>
-
-          <div class="company-grid">
-            <a class="company-card" href="vaultara.html">
-              <div class="company-img" data-bg-group="vaultara"
-                style="--bg:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80');">V</div>
-              <div class="company-body">
-                <h3>Vaultara Capital</h3>
-                <p>Funding, credit education, personal credit, business credit, and business formation information.</p>
-                <span>Review Vaultara →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="family-first.html">
-              <div class="company-img" data-bg-group="family"
-                style="--bg:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80');">F</div>
-              <div class="company-body">
-                <h3>Family First Equity Group</h3>
-                <p>Real estate investment, acquisitions, property management, and property market information.</p>
-                <span>Review Family First →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="vitalpath.html">
-              <div class="company-img" data-bg-group="vitalpath"
-                style="--bg:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80');">♣</div>
-              <div class="company-body">
-                <h3>VitalPath Care Group</h3>
-                <p>Care services, healthcare support, wellness, and community-centered service information.</p>
-                <span>Review VitalPath →</span>
-              </div>
-            </a>
-
-            <a class="company-card" href="revmotion.html">
-              <div class="company-img" data-bg-group="revmotion"
-                style="--bg:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80');">R</div>
-              <div class="company-body">
-                <h3>RevMotion Auto & Marine LLC</h3>
-                <p>Auto, marine, transportation, repair, vehicle services, and market research information.</p>
-                <span>Review RevMotion →</span>
-              </div>
-            </a>
-          </div>
-
-          <div class="quick-links">
-            <a class="gold-btn" href="companies.html">Open Company Directory →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="business-intelligence">
-      <div class="panel">
-        <div class="panel-pad">
-          <div class="kicker">Business Intelligence</div>
-          <h2>Institution-Level Public Research Areas</h2>
-          <p>
-            TitanCore is not only a company directory. It is also being shaped as a public business intelligence platform.
-          </p>
-
-          <div class="content-grid">
-            <a class="info-card" href="global-business-news.html">
-              <h3>Global Business News</h3>
-              <p>Country-level business news, country stock markets, major companies, economy, finance, banking, trade, and business movement.</p>
-              <strong style="color:var(--yellow)">Open Global Business News →</strong>
-            </a>
-
-            <a class="info-card" href="stock-watch.html">
-              <h3>Stock Market Watch</h3>
-              <p>Market information, sector watchlists, U.S. market, global market, Florida/Orlando watch, and business-related stock research.</p>
-              <strong style="color:var(--yellow)">Open Stock Market Watch →</strong>
-            </a>
-
-            <a class="info-card" href="business-book.html">
-              <h3>Business Intelligence Book</h3>
-              <p>Public learning and research library for business, credit, funding, real estate, country markets, and company decision preparation.</p>
-              <strong style="color:var(--yellow)">Open Business Book →</strong>
-            </a>
-
-            <a class="info-card" href="institution-financial.html">
-              <h3>Institution Financial</h3>
-              <p>Separate public page for financial institution review, banking, funding, finance, and institution-level contact direction.</p>
-              <strong style="color:var(--yellow)">Open Institution Financial →</strong>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="relationship-path">
-      <div class="panel">
-        <div class="panel-pad">
-          <div class="kicker">Institution Relationship Path</div>
-          <h2>How an Institution Can Start</h2>
-          <p>
-            TitanCore should make the first step easy: review public information, understand the companies,
-            and then contact TitanCore through the proper public channel.
-          </p>
-
-          <div class="process-grid">
-            <div class="step-card">
-              <div class="step-number">1</div>
-              <h3>Review TitanCore</h3>
-              <p>Understand the umbrella structure, public website purpose, and business intelligence direction.</p>
+        <div class="grid">
+          <a class="path-card" href="institution-start.html">
+            <div class="icon">✓</div>
+            <div>
+              <h3>Start Institution Review</h3>
+              <p>
+                Begin on the bridge page and choose the correct review path.
+              </p>
             </div>
+            <div class="arrow">→</div>
+          </a>
 
-            <div class="step-card">
-              <div class="step-number">2</div>
-              <h3>Review the Network</h3>
-              <p>Learn about the companies inside the TitanCore ecosystem and their market categories.</p>
+          <a class="path-card" href="institution-financial.html">
+            <div class="icon">$</div>
+            <div>
+              <h3>Financial Institution Review</h3>
+              <p>
+                For lenders, funding groups, capital partners, credit unions, and financial organizations.
+              </p>
             </div>
+            <div class="arrow">→</div>
+          </a>
 
-            <div class="step-card">
-              <div class="step-number">3</div>
-              <h3>Review Public Intelligence</h3>
-              <p>Study the business book, global business news, and stock market watch areas.</p>
+          <a class="path-card" href="banks.html">
+            <div class="icon">B</div>
+            <div>
+              <h3>Banking Relationship Review</h3>
+              <p>
+                For banking relationship questions, business banking review, documentation direction, and banking contact paths.
+              </p>
             </div>
+            <div class="arrow">→</div>
+          </a>
 
-            <div class="step-card">
-              <div class="step-number">4</div>
+          <a class="path-card" href="investor.html">
+            <div class="icon">I</div>
+            <div>
+              <h3>Investor Information</h3>
+              <p>
+                For people reviewing TitanCore’s company network and public long-term direction.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="path-card" href="companies.html">
+            <div class="icon">C</div>
+            <div>
+              <h3>Company Network Review</h3>
+              <p>
+                Review Vaultara Capital, Family First Equity Group, VitalPath Care Group, and RevMotion Auto & Marine LLC.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="path-card" href="contact.html">
+            <div class="icon">☎</div>
+            <div>
               <h3>Contact TitanCore</h3>
-              <p>Use the public contact page to request the correct next step or conversation path.</p>
+              <p>
+                Use the public contact center for institution questions, company questions, bank questions, or public review.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">What Institutions Can Review</div>
+          <h2>TitanCore Public Review Areas</h2>
+          <p>
+            TitanCore should give enough public information for serious organizations to understand the ecosystem before asking for documents or private review.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Company Structure</h3>
+              <p>
+                TitanCore Holdings as the umbrella company connecting public company information and business categories.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Company Network</h3>
+              <p>
+                Public overview of connected company pages and how each company fits inside the TitanCore ecosystem.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Financial Direction</h3>
+              <p>
+                Public path for financial institution review, banking relationship review, and investor information.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Business Intelligence</h3>
+              <p>
+                Public education, stock market watch, business news, company research, and market awareness.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Public Contact Routing</h3>
+              <p>
+                Public forms can later connect to Netlify Forms, email routing, CRM, Supabase, and TitanCore intake workflow.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Document Review Later</h3>
+              <p>
+                Private documents, financial records, legal files, or confidential review should only happen through authorized channels.
+              </p>
             </div>
           </div>
         </div>
@@ -968,196 +649,157 @@
     </section>
 
     <section class="section">
-      <div class="cta">
-        <div>
-          <div class="kicker">Institution Contact Path</div>
-          <h2>Request Institution Review</h2>
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Simple Process</div>
+          <h2>How Institution Review Should Work</h2>
           <p>
-            This button should send the visitor to the institution review form page. After the form is submitted,
-            the visitor should be redirected to a thank-you page.
-          </p>
-          <p class="small-text">
-            Flow: institution.html → institution-request.html → thank-you-institution.html
+            The page should make TitanCore look organized, serious, and professional before anyone sends a request.
           </p>
         </div>
 
-        <div class="cta-actions">
-          <a class="btn gold-btn" href="institution-request.html">Open Institution Form →</a>
-          <a class="btn" href="institution-financial.html">Institution Financial →</a>
-          <a class="btn" href="banks.html">Banks Information →</a>
-          <a class="btn" href="index.html">Return to Home →</a>
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="number">1</div>
+              <h3>Review Public Information</h3>
+              <p>
+                Institution reviews TitanCore’s public pages, company structure, investor page, banks page, and business intelligence areas.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">2</div>
+              <h3>Choose the Correct Path</h3>
+              <p>
+                Visitor chooses institution review, financial institution, bank review, investor information, company network, or contact path.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">3</div>
+              <h3>Submit Public Inquiry</h3>
+              <p>
+                Visitor submits a public inquiry without uploading passwords, Social Security numbers, bank files, or confidential documents.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">4</div>
+              <h3>TitanCore Reviews</h3>
+              <p>
+                TitanCore reviews the public inquiry and decides the correct next step, company route, or authorized contact path.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="institution-start.html">Start Institution Review →</a>
+          <a class="btn ghost" href="contact.html">Contact TitanCore →</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="notice">
-      <div class="notice">
-        <h2>Institution Notice</h2>
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Connected Information</div>
+          <h2>Institution Page Connects the Public Website</h2>
+          <p>
+            Institutions can move from this page into the correct TitanCore public information area without getting lost.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <a class="card" href="business-book.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Business Intelligence Book</h3>
+              <p>
+                Public education and research for business, credit, funding, real estate, care, auto/marine, and markets.
+              </p>
+              <span class="card-link">Open Business Book →</span>
+            </div>
+          </a>
+
+          <a class="card" href="stock-watch.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Stock Market Watch</h3>
+              <p>
+                Public market movement, sector watchlists, stock education, and business-related market research.
+              </p>
+              <span class="card-link">Open Stock Watch →</span>
+            </div>
+          </a>
+
+          <a class="card" href="global-business-news.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Global Business News</h3>
+              <p>
+                Country-level business news, companies, finance, banking, real estate, trade, economy, and markets.
+              </p>
+              <span class="card-link">Open Global Business News →</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Public Notice</div>
+          <h2>Institution Notice</h2>
+        </div>
+
         <p>
-          This page is for public institution information only. It does not create a partnership,
-          financing relationship, banking relationship, investment relationship, contract, or legal obligation.
+          This Institution Information page is for public business information only. It does not create employment,
+          partnership, vendor approval, investor relationship, banking relationship, funding approval, credit approval,
+          service agreement, contract, legal obligation, or guarantee of response.
         </p>
-        <p>
-          Any formal institutional, financial, banking, or business relationship would require direct communication,
-          proper documentation, review, authorization, and compliance with applicable laws and policies.
+
+        <p class="notice">
+          Any formal relationship, financial review, bank review, institution review, investment review,
+          document exchange, or private communication must happen through authorized TitanCore channels.
         </p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="page footer-inner">
-      <strong style="color:var(--green)">TitanCore Holdings</strong>
-      <span>Public institution information page. Informational only.</span>
-      <a style="color:var(--yellow);font-weight:900" href="contact.html">Contact TitanCore</a>
+    <div class="container">
+      <strong>TitanCore Holdings</strong>
+      <p>
+        Public Institution Information page for organizations reviewing the TitanCore Holdings business ecosystem.
+      </p>
+
+      <div class="actions">
+        <a class="btn ghost" href="institution-start.html">Start Institution Review →</a>
+        <a class="btn ghost" href="contact.html">Contact TitanCore →</a>
+      </div>
     </div>
   </footer>
 
   <script>
-    function setActiveNav(){
+    document.addEventListener("DOMContentLoaded", function () {
       const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-      document.querySelectorAll(".nav a").forEach(function(link){
-        const linkPage = link.getAttribute("href");
+      document.querySelectorAll(".nav a").forEach(function (link) {
+        const href = link.getAttribute("href");
 
-        if(linkPage === currentPage){
+        if (href === currentPage) {
           link.classList.add("active");
-        }else{
-          link.classList.remove("active");
         }
       });
-
-      const institutionLink = document.querySelector('.nav a[href="institution.html"]');
-      if(institutionLink){
-        institutionLink.classList.add("active");
-      }
-    }
-
-    function smoothHashScroll(){
-      document.querySelectorAll('a[href^="#"]').forEach(function(link){
-        link.addEventListener("click", function(event){
-          const targetId = link.getAttribute("href");
-          const target = document.querySelector(targetId);
-
-          if(target){
-            event.preventDefault();
-
-            const topOffset = 125;
-            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - topOffset;
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth"
-            });
-
-            history.pushState(null, "", targetId);
-          }
-        });
-      });
-    }
-
-    function highlightSectionOnScroll(){
-      const sections = document.querySelectorAll("section[id]");
-      const quickLinks = document.querySelectorAll(".quick-links a[href^='#']");
-
-      function updateActiveSection(){
-        let currentId = "";
-
-        sections.forEach(function(section){
-          const sectionTop = section.offsetTop - 150;
-
-          if(window.scrollY >= sectionTop){
-            currentId = section.getAttribute("id");
-          }
-        });
-
-        quickLinks.forEach(function(link){
-          link.classList.remove("active-section-link");
-
-          if(link.getAttribute("href") === "#" + currentId){
-            link.classList.add("active-section-link");
-          }
-        });
-      }
-
-      window.addEventListener("scroll", updateActiveSection);
-      updateActiveSection();
-    }
-
-    function rotateInstitutionImages(){
-      const imageGroups = {
-        institutionHero:[
-          "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1300&q=80",
-          "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1300&q=80",
-          "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1300&q=80"
-        ],
-        vaultara:[
-          "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80"
-        ],
-        family:[
-          "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=900&q=80"
-        ],
-        vitalpath:[
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=900&q=80"
-        ],
-        revmotion:[
-          "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
-          "https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=900&q=80"
-        ]
-      };
-
-      const dayNumber = Math.floor(Date.now() / 86400000);
-
-      document.querySelectorAll("[data-bg-group]").forEach(function(box){
-        const group = box.getAttribute("data-bg-group");
-        const images = imageGroups[group];
-
-        if(!images || !images.length) return;
-
-        const selected = images[dayNumber % images.length];
-        box.style.setProperty("--bg", "url('" + selected + "')");
-      });
-    }
-
-    function applyButtonEffects(){
-      document.querySelectorAll("a, button").forEach(function(item){
-        item.addEventListener("click", function(){
-          item.classList.add("clicked");
-
-          setTimeout(function(){
-            item.classList.remove("clicked");
-          }, 220);
-        });
-      });
-    }
-
-    function scrollToHashOnLoad(){
-      if(!window.location.hash) return;
-
-      const target = document.querySelector(window.location.hash);
-      if(!target) return;
-
-      setTimeout(function(){
-        const topOffset = 125;
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - topOffset;
-
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth"
-        });
-      }, 250);
-    }
-
-    document.addEventListener("DOMContentLoaded", function(){
-      setActiveNav();
-      smoothHashScroll();
-      highlightSectionOnScroll();
-      rotateInstitutionImages();
-      applyButtonEffects();
-      scrollToHashOnLoad();
     });
   </script>
 </body>
