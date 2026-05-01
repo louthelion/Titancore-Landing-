@@ -1,27 +1,390 @@
-<!doctype<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Thank You | TitanCore Holdings</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root{
+      --black:#000000;
+      --deep:#020806;
+      --green:#00b85f;
+      --green-bright:#00d676;
+      --gold:#f4d27a;
+      --yellow:#ffd000;
+      --white:#ffffff;
+      --line:rgba(244,210,122,.48);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left, rgba(0,184,95,.22), transparent 34%),
+        linear-gradient(180deg, #000 0%, #03100b 44%, #000 100%);
+      color:var(--gold);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.45;
+    }
+
+    a{
+      color:var(--white);
+      text-decoration:none;
+      font-weight:900;
+    }
+
+    a:hover{
+      color:var(--yellow);
+    }
+
+    .page{
+      width:100%;
+      max-width:980px;
+      margin:0 auto;
+      padding:24px 20px 60px;
+    }
+
+    .topbar{
+      background:#000;
+      border-bottom:1px solid var(--line);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin-bottom:26px;
+    }
+
+    .logo-box{
+      width:92px;
+      height:92px;
+      border:3px solid var(--gold);
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--yellow);
+      font-size:52px;
+      font-weight:1000;
+      background:linear-gradient(145deg, #05140e, #000);
+      box-shadow:0 0 24px rgba(0,184,95,.25);
+      flex:0 0 auto;
+    }
+
+    .brand-title{
+      color:var(--green);
+      font-size:42px;
+      font-weight:1000;
+      line-height:1;
+    }
+
+    .brand-subtitle{
+      margin-top:10px;
+      color:var(--gold);
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:6px;
+      text-transform:uppercase;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:28px 46px;
+      padding:28px 0 8px;
+    }
+
+    .nav a{
+      color:var(--white);
+      font-size:24px;
+      font-weight:1000;
+    }
+
+    .thank-card{
+      margin-top:30px;
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:34px 36px 42px;
+      background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.95)),
+        radial-gradient(circle at top left, rgba(0,184,95,.26), transparent 46%);
+      box-shadow:0 24px 70px rgba(0,0,0,.78);
+    }
+
+    .thank-header{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      margin-bottom:26px;
+    }
+
+    .check-wrap{
+      width:92px;
+      height:92px;
+      border-radius:50%;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--yellow);
+      font-size:58px;
+      font-weight:1000;
+      background:#000;
+      box-shadow:0 0 32px rgba(0,184,95,.28);
+      flex:0 0 auto;
+    }
+
+    .thank-you{
+      margin:0;
+      color:var(--yellow);
+      font-size:clamp(72px, 18vw, 138px);
+      line-height:.85;
+      font-weight:1000;
+      letter-spacing:-3px;
+      text-transform:uppercase;
+    }
+
+    .success-title{
+      margin:26px 0 0;
+      color:var(--green);
+      font-size:clamp(46px, 11vw, 86px);
+      line-height:1;
+      font-weight:1000;
+      letter-spacing:-2px;
+    }
+
+    .lead{
+      margin:32px 0 0;
+      color:var(--gold);
+      font-size:clamp(28px, 7vw, 42px);
+      line-height:1.4;
+      font-weight:900;
+    }
+
+    .date-line{
+      margin-top:30px;
+      color:#d6c38a;
+      font-size:24px;
+      font-weight:900;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:22px;
+      margin-top:36px;
+    }
+
+    .info-box{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:24px;
+      background:rgba(0,0,0,.55);
+    }
+
+    .info-box h2{
+      margin:0 0 10px;
+      color:var(--green-bright);
+      font-size:30px;
+      line-height:1.1;
+    }
+
+    .info-box p{
+      margin:0;
+      color:var(--gold);
+      font-size:22px;
+      font-weight:800;
+      line-height:1.45;
+    }
+
+    .next-section{
+      margin-top:36px;
+      border-top:1px solid var(--line);
+      padding-top:32px;
+    }
+
+    .next-section h2{
+      margin:0 0 22px;
+      color:var(--white);
+      font-size:44px;
+      line-height:1.1;
+      font-weight:1000;
+    }
+
+    .steps{
+      display:grid;
+      gap:18px;
+    }
+
+    .step{
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:22px 24px;
+      background:rgba(0,0,0,.5);
+    }
+
+    .step strong{
+      display:block;
+      color:var(--green-bright);
+      font-size:26px;
+      margin-bottom:8px;
+    }
+
+    .step span{
+      display:block;
+      color:var(--gold);
+      font-size:22px;
+      font-weight:800;
+      line-height:1.45;
+    }
+
+    .notice{
+      margin-top:34px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px;
+      color:var(--gold);
+      background:rgba(0,0,0,.62);
+      font-size:22px;
+      font-weight:800;
+      line-height:1.5;
+    }
+
+    .footer{
+      margin-top:42px;
+      border-top:1px solid var(--line);
+      padding-top:32px;
+    }
+
+    .footer h3{
+      margin:0 0 12px;
+      color:var(--green);
+      font-size:34px;
+    }
+
+    .footer p{
+      margin:0;
+      color:var(--gold);
+      font-size:22px;
+      font-weight:800;
+    }
+
+    @media(max-width:720px){
+      .logo-box{
+        width:78px;
+        height:78px;
+        font-size:44px;
+      }
+
+      .brand-title{
+        font-size:33px;
+      }
+
+      .brand-subtitle{
+        font-size:14px;
+        letter-spacing:4px;
+      }
+
+      .nav{
+        gap:30px 40px;
+      }
+
+      .nav a{
+        font-size:24px;
+      }
+
+      .thank-card{
+        padding:30px 26px 38px;
+      }
+
+      .thank-header{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:18px;
+      }
+
+      .check-wrap{
+        width:86px;
+        height:86px;
+        font-size:54px;
+      }
+
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .next-section h2{
+        font-size:38px;
+      }
+    }
+
+    @media(max-width:430px){
+      .page{
+        padding-left:18px;
+        padding-right:18px;
+      }
+
+      .brand-title{
+        font-size:29px;
+      }
+
+      .brand-subtitle{
+        font-size:12px;
+        letter-spacing:3px;
+      }
+
+      .nav{
+        gap:28px 34px;
+      }
+
+      .nav a{
+        font-size:22px;
+      }
+
+      .thank-card{
+        padding:28px 24px 36px;
+        border-radius:28px;
+      }
+
+      .thank-you{
+        font-size:76px;
+      }
+
+      .success-title{
+        font-size:50px;
+      }
+
+      .lead{
+        font-size:28px;
+      }
+
+      .info-box p,
+      .step span,
+      .notice{
+        font-size:20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <header class="topbar">
-    <div class="container navwrap">
-      <a class="logo" href="index.html">
-        <span class="logo-mark">TC</span>
-        <span>
-          TitanCore Holdings
-          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
-            Message Received
-          </small>
-        </span>
-      </a>
+    <div class="page">
+      <div class="brand">
+        <div class="logo-box">T</div>
 
-      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">Form Received</div>
+        </div>
+      </div>
 
       <nav class="nav">
         <a href="index.html">Home</a>
@@ -39,107 +402,107 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="kicker">Thank You</div>
+  <main class="page">
+    <section class="thank-card">
+      <div class="thank-header">
+        <div class="check-wrap">✓</div>
+        <h1 class="thank-you">Thank You</h1>
+      </div>
 
-          <h1>Your Message Was Received</h1>
+      <h2 class="success-title">Your Request Was Submitted Successfully.</h2>
 
-          <p class="lead">
-            Thank you for contacting TitanCore Holdings. Your public inquiry has been submitted.
-            TitanCore will review the message and determine the correct public contact path.
-          </p>
+      <p class="lead">
+        TitanCore Holdings received your public submission. The request can now be reviewed,
+        classified, and routed to the correct public contact path or company area.
+      </p>
 
-          <div class="actions">
-            <a class="btn" href="index.html">Back to Home</a>
-            <a class="btn ghost" href="companies.html">View Companies</a>
-            <a class="btn ghost" href="business-book.html">Open Business Intelligence Book</a>
-          </div>
+      <p class="date-line" id="dateLine">Submission received.</p>
 
-          <p class="notice">
-            Submission of a form does not create a contract, approval, partnership, funding relationship,
-            employment relationship, banking relationship, or service agreement.
+      <div class="info-grid">
+        <div class="info-box">
+          <h2>Request Received</h2>
+          <p>
+            Your message or form information has been sent through the public TitanCore intake path.
           </p>
         </div>
 
-        <div class="panel">
-          <h3>Next Step</h3>
+        <div class="info-box">
+          <h2>Review Process</h2>
+          <p>
+            TitanCore may review the request to understand the purpose, company interest, and correct next step.
+          </p>
+        </div>
 
-          <div class="status-row">
-            <span>Message Status</span>
-            <span class="badge green">Received</span>
+        <div class="info-box">
+          <h2>Company Routing</h2>
+          <p>
+            If your request connects to Vaultara, Family First, VitalPath, or RevMotion,
+            it may be routed to that company area.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h2>Public Form Only</h2>
+          <p>
+            Do not send passwords, Social Security numbers, bank information, or confidential documents through public forms.
+          </p>
+        </div>
+      </div>
+
+      <div class="next-section">
+        <h2>What Happens Next</h2>
+
+        <div class="steps">
+          <div class="step">
+            <strong>1. TitanCore Reviews</strong>
+            <span>The public submission is checked for category, purpose, and company connection.</span>
           </div>
 
-          <div class="status-row">
-            <span>Review Type</span>
-            <span class="badge green">Public Intake</span>
+          <div class="step">
+            <strong>2. Request Is Classified</strong>
+            <span>The request may be classified as contact, investor, institution, bank, company interest, service interest, or general public inquiry.</span>
           </div>
 
-          <div class="status-row">
-            <span>Company Routing</span>
-            <span class="badge green">If Needed</span>
+          <div class="step">
+            <strong>3. Correct Path Is Selected</strong>
+            <span>The information may be routed to the proper public contact path, company review path, or future intake workflow.</span>
           </div>
 
-          <div class="status-row">
-            <span>Response</span>
-            <span class="badge green">Pending Review</span>
+          <div class="step">
+            <strong>4. Follow-Up May Happen</strong>
+            <span>If a response is needed, TitanCore or the correct company area may follow up through an authorized contact path.</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="container panel">
-        <h2>What Happens After Submission</h2>
-
-        <div class="grid cols-4">
-          <div class="card">
-            <h3>1. Message Received</h3>
-            <p>
-              Your public inquiry is received through the TitanCore website form.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>2. Request Reviewed</h3>
-            <p>
-              TitanCore reviews the reason for contact and company interest.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>3. Routed Correctly</h3>
-            <p>
-              The message may be routed to TitanCore, Vaultara, Family First, VitalPath, or RevMotion.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>4. Follow-Up</h3>
-            <p>
-              If appropriate, TitanCore or the correct company may follow up through an authorized contact path.
-            </p>
-          </div>
-        </div>
+      <div class="notice">
+        This confirmation page does not create employment, partnership, investment relationship,
+        banking relationship, funding approval, credit approval, service agreement, contract,
+        legal obligation, or guarantee of response. TitanCore public website content is informational only.
       </div>
     </section>
+
+    <footer class="footer">
+      <h3>TitanCore Holdings</h3>
+      <p>
+        Public submission confirmation page for TitanCore Holdings and connected company inquiries.
+      </p>
+    </footer>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>TitanCore Holdings</strong>
-        <p class="notice">
-          Public thank-you page for TitanCore Holdings website form submissions.
-        </p>
-      </div>
+  <script>
+    const dateLine = document.getElementById("dateLine");
 
-      <a class="btn ghost" href="contact.html">Contact TitanCore</a>
-    </div>
-  </footer>
+    const now = new Date();
 
-  <script src="script.js"></script>
+    const formattedDate = now.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+    dateLine.textContent = "Submission received on " + formattedDate + ".";
+  </script>
 </body>
 </html>
