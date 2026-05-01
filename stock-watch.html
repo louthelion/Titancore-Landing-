@@ -8,31 +8,36 @@
 
   <style>
     :root{
-      --black:#000;
-      --deep:#020805;
-      --panel:#050b07;
-      --green:#00a651;
-      --green2:#04c96a;
+      --black:#000000;
+      --panel:#050705;
+      --green:#00b85a;
+      --green2:#03d66b;
+      --red:#ff5d5d;
       --gold:#d8b45a;
-      --gold2:#f5d98d;
-      --yellow:#ffd400;
-      --white:#fff;
-      --muted:#b9aa7a;
-      --border:rgba(216,180,90,.42);
-      --soft:rgba(0,166,81,.14);
+      --gold2:#f4d98b;
+      --yellow:#ffd000;
+      --white:#ffffff;
+      --muted:#c7b37a;
+      --border:rgba(216,180,90,.50);
+      --shadow:0 0 34px rgba(216,180,90,.12);
     }
 
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html{
+      scroll-behavior:smooth;
+      background:var(--black);
+    }
 
     body{
-      margin:0;
       background:
-        radial-gradient(circle at 12% 0%, rgba(0,166,81,.18), transparent 28%),
-        linear-gradient(180deg,#000 0%,#041006 48%,#000 100%);
+        radial-gradient(circle at top left,rgba(0,184,90,.16),transparent 30%),
+        radial-gradient(circle at top right,rgba(216,180,90,.10),transparent 28%),
+        linear-gradient(180deg,#000 0%,#031008 48%,#000 100%);
       color:var(--gold2);
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:Arial,Helvetica,sans-serif;
       line-height:1.55;
+      overflow-x:hidden;
     }
 
     a{
@@ -40,176 +45,153 @@
       text-decoration:none;
     }
 
-    .page{
-      width:min(1200px,calc(100% - 28px));
+    .container{
+      width:min(1240px,94%);
       margin:0 auto;
     }
 
-    .site-header{
+    .topbar{
       background:#000;
       border-bottom:1px solid var(--border);
-      box-shadow:0 18px 45px rgba(0,0,0,.8);
-      position:relative;
-      z-index:10;
+      padding:24px 0 28px;
     }
 
-    .header-inner{
-      padding:22px 0 18px;
-    }
-
-    .brand-row{
+    .brand{
       display:flex;
       align-items:center;
-      gap:16px;
-      padding-bottom:22px;
-      border-bottom:1px solid rgba(216,180,90,.34);
+      gap:18px;
+      padding-bottom:24px;
+      border-bottom:1px solid rgba(216,180,90,.30);
     }
 
-    .logo-slot{
-      width:70px;
-      height:70px;
-      min-width:70px;
-      border:2px solid var(--gold);
-      border-radius:14px;
-      display:grid;
-      place-items:center;
+    .logo-box{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       color:var(--yellow);
       font-size:42px;
       font-weight:900;
       background:
-        radial-gradient(circle at 30% 25%, rgba(255,212,0,.18), transparent 35%),
-        linear-gradient(180deg,#101812,#020403);
-      box-shadow:0 0 26px rgba(0,166,81,.25);
-      overflow:hidden;
-    }
-
-    .logo-slot img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+        radial-gradient(circle at center,rgba(255,208,0,.18),transparent 58%),
+        #050505;
+      box-shadow:0 0 22px rgba(216,180,90,.18);
+      flex:0 0 auto;
     }
 
     .brand-title{
-      display:block;
       color:var(--green);
-      font-size:clamp(30px,5vw,48px);
-      font-weight:900;
+      font-size:clamp(30px,6vw,58px);
       line-height:1;
-      letter-spacing:.3px;
+      font-weight:900;
+      letter-spacing:.5px;
     }
 
     .brand-subtitle{
-      display:block;
-      color:var(--gold);
       margin-top:8px;
-      font-size:clamp(13px,2.3vw,18px);
+      color:var(--gold);
+      font-size:clamp(12px,2.5vw,18px);
+      font-weight:900;
       letter-spacing:4px;
       text-transform:uppercase;
-      font-weight:900;
-    }
-
-    .top-actions{
-      margin-left:auto;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .search-dot{
-      width:40px;
-      height:40px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      display:grid;
-      place-items:center;
-      color:#fff;
-      background:rgba(255,255,255,.03);
-      font-size:18px;
-    }
-
-    .subscribe-btn{
-      background:var(--gold);
-      color:#000;
-      border:0;
-      border-radius:8px;
-      padding:12px 16px;
-      font-weight:900;
-      cursor:pointer;
     }
 
     .nav{
-      padding:22px 0 4px;
       display:flex;
-      align-items:center;
-      justify-content:center;
       flex-wrap:wrap;
-      gap:12px;
+      justify-content:center;
+      align-items:center;
+      gap:16px 34px;
+      padding-top:28px;
     }
 
     .nav a{
-      color:#fff;
+      color:var(--white);
+      font-size:clamp(15px,2.6vw,20px);
       font-weight:900;
-      font-size:14px;
-      padding:10px 13px;
-      border-radius:999px;
-      transition:.18s ease;
+      text-align:center;
+      padding:8px 4px;
+      border-bottom:2px solid transparent;
     }
 
     .nav a:hover,
     .nav a.active{
-      color:var(--yellow);
-      border:1px solid var(--border);
-      background:rgba(216,180,90,.08);
-    }
-
-    main{
-      padding:22px 0 64px;
+      color:var(--white);
+      border-bottom-color:var(--gold);
     }
 
     .hero{
-      min-height:430px;
-      border:1px solid var(--border);
-      border-radius:20px;
-      overflow:hidden;
+      min-height:540px;
+      display:flex;
+      align-items:center;
+      padding:46px 0;
       background:
-        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.70),rgba(0,0,0,.16)),
-        url("https://images.unsplash.com/photo-1642790551116-18e150f248e5?auto=format&fit=crop&w=1800&q=80");
+        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.72),rgba(0,0,0,.30)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80");
       background-size:cover;
       background-position:center;
-      box-shadow:0 22px 60px rgba(0,0,0,.65);
+      border-bottom:1px solid rgba(216,180,90,.28);
     }
 
-    .hero-content{
-      padding:48px;
-      max-width:720px;
+    .hero-card{
+      max-width:930px;
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:clamp(28px,6vw,64px);
+      background:rgba(0,0,0,.74);
+      box-shadow:var(--shadow);
     }
 
     .kicker{
       color:var(--gold);
-      text-transform:uppercase;
+      font-size:clamp(12px,2.5vw,17px);
       letter-spacing:5px;
-      font-size:13px;
+      text-transform:uppercase;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    h1{
+      color:var(--green);
+      font-size:clamp(44px,9vw,86px);
+      line-height:.98;
+      letter-spacing:-2px;
+      font-weight:900;
+      margin-bottom:24px;
+    }
+
+    h2{
+      color:var(--green);
+      font-size:clamp(32px,6vw,58px);
+      line-height:1.05;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    h3{
+      color:var(--green);
+      font-size:clamp(24px,4.8vw,38px);
+      line-height:1.12;
       font-weight:900;
       margin-bottom:14px;
     }
 
-    h1{
-      margin:0;
-      color:var(--green);
-      font-size:clamp(40px,7vw,76px);
-      line-height:1.02;
-      font-weight:900;
-    }
-
-    .hero p{
+    p{
       color:var(--gold2);
-      font-size:clamp(18px,2.2vw,22px);
-      margin:22px 0 0;
-      max-width:680px;
+      font-size:clamp(17px,3.2vw,23px);
+      margin-bottom:18px;
     }
 
-    .hero-buttons{
+    .lead{
+      font-size:clamp(20px,4vw,30px);
+      max-width:850px;
+    }
+
+    .actions{
       display:flex;
       flex-wrap:wrap;
       gap:14px;
@@ -217,347 +199,418 @@
     }
 
     .btn{
-      border-radius:10px;
-      padding:14px 18px;
-      border:1px solid var(--border);
-      font-weight:900;
+      min-height:54px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      cursor:pointer;
-      min-height:48px;
-    }
-
-    .btn.gold{
-      background:var(--gold);
+      padding:14px 22px;
+      border-radius:14px;
+      border:2px solid var(--yellow);
+      background:var(--yellow);
       color:#000;
-      border-color:var(--gold);
+      font-size:clamp(15px,2.8vw,18px);
+      font-weight:900;
+      text-align:center;
+      transition:.2s ease;
+      cursor:pointer;
     }
 
-    .btn.dark{
-      background:rgba(0,0,0,.58);
+    .btn.ghost{
+      background:rgba(0,0,0,.55);
       color:var(--gold2);
+      border-color:var(--border);
     }
 
-    .btn.green{
+    .btn:hover{
       background:var(--green);
-      color:#fff;
       border-color:var(--green);
+      color:var(--white);
+      transform:translateY(-2px);
     }
 
     .section{
-      margin-top:18px;
+      padding:38px 0;
+    }
+
+    .panel{
       border:1px solid var(--border);
-      border-radius:18px;
+      border-radius:26px;
       background:
-        radial-gradient(circle at top left,rgba(0,166,81,.12),transparent 34%),
-        linear-gradient(180deg,rgba(7,19,11,.96),rgba(0,0,0,.96));
-      box-shadow:0 16px 42px rgba(0,0,0,.5);
-      padding:24px;
+        radial-gradient(circle at top left,rgba(0,184,90,.12),transparent 34%),
+        rgba(0,0,0,.82);
+      padding:clamp(24px,5vw,46px);
+      box-shadow:var(--shadow);
     }
 
-    .section-header{
+    .section-head{
       display:flex;
-      align-items:end;
       justify-content:space-between;
-      gap:16px;
-      border-bottom:1px solid rgba(216,180,90,.35);
-      padding-bottom:16px;
-      margin-bottom:20px;
-    }
-
-    h2{
-      margin:0;
-      color:var(--green);
-      font-size:clamp(30px,5vw,50px);
-      line-height:1.07;
-      font-weight:900;
+      gap:20px;
+      align-items:flex-end;
+      border-bottom:1px solid rgba(216,180,90,.30);
+      padding-bottom:20px;
+      margin-bottom:24px;
     }
 
     .section-note{
-      color:var(--gold);
-      font-size:15px;
-      font-weight:800;
-    }
-
-    p{
-      color:var(--gold2);
-      font-size:18px;
-      margin:0 0 14px;
+      color:var(--muted);
+      font-weight:900;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      white-space:nowrap;
     }
 
     .grid{
       display:grid;
-      gap:16px;
+      gap:18px;
     }
 
-    .grid.two{grid-template-columns:repeat(2,1fr);}
-    .grid.three{grid-template-columns:repeat(3,1fr);}
-    .grid.four{grid-template-columns:repeat(4,1fr);}
-
-    .market-card,
-    .card{
-      border:1px solid var(--border);
-      border-radius:16px;
-      overflow:hidden;
-      background:rgba(0,0,0,.58);
-      transition:.18s ease;
-    }
-
-    .market-card:hover,
-    .card:hover{
-      transform:translateY(-2px);
-      border-color:rgba(0,166,81,.75);
-      box-shadow:0 0 22px rgba(0,166,81,.15);
-    }
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
 
     .market-card{
-      padding:20px;
-      min-height:150px;
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:22px;
+      padding:24px;
+      background:rgba(0,0,0,.72);
+      color:var(--gold2);
+      transition:.2s ease;
+      min-height:100%;
     }
 
-    .market-card h3,
-    .card h3{
-      margin:0 0 8px;
-      color:var(--green);
-      font-size:22px;
-      line-height:1.15;
+    .market-card:hover{
+      border-color:var(--green);
+      box-shadow:0 0 26px rgba(0,184,90,.14);
+      transform:translateY(-2px);
     }
 
-    .market-number{
-      color:#fff;
-      font-size:30px;
-      font-weight:900;
-      margin:6px 0 4px;
-    }
-
-    .market-up{
-      color:var(--green2);
-      font-weight:900;
-      margin-bottom:12px;
-    }
-
-    .sparkline{
-      height:44px;
-      border-radius:8px;
-      background:
-        linear-gradient(135deg, transparent 15%, rgba(0,166,81,.18) 15%, transparent 25%),
-        linear-gradient(160deg, transparent 50%, rgba(0,166,81,.75) 51%, rgba(255,212,0,.8) 54%, transparent 55%);
-      border:1px solid rgba(0,166,81,.18);
-      opacity:.92;
-    }
-
-    .card-image{
-      min-height:155px;
+    .market-icon{
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      border:1px solid var(--gold);
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:20px;
-      color:var(--green);
-      font-size:28px;
+      color:var(--yellow);
+      font-size:30px;
+      background:#050505;
+      margin-bottom:18px;
+    }
+
+    .market-title{
+      color:var(--white);
+      font-size:clamp(22px,4vw,32px);
       font-weight:900;
-      text-align:center;
-      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .market-detail{
+      color:var(--gold2);
+      font-size:clamp(15px,2.8vw,19px);
+      margin-bottom:14px;
+    }
+
+    .market-status{
+      color:var(--green2);
+      font-weight:900;
+      font-size:17px;
+      margin-bottom:14px;
+    }
+
+    .market-status.red{
+      color:var(--red);
+    }
+
+    .spark{
+      height:48px;
+      border-radius:12px;
       background:
-        linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.70)),
-        url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80");
+        linear-gradient(140deg,transparent 0 14%,rgba(0,184,90,.75) 15% 18%,transparent 19% 30%,rgba(255,208,0,.8) 31% 34%,transparent 35% 50%,rgba(0,184,90,.75) 51% 54%,transparent 55%);
+      border-bottom:1px solid rgba(0,184,90,.45);
+    }
+
+    .card{
+      border:1px solid rgba(216,180,90,.38);
+      border-radius:22px;
+      overflow:hidden;
+      background:rgba(0,0,0,.72);
+      color:var(--gold2);
+      transition:.2s ease;
+      min-height:100%;
+    }
+
+    .card:hover{
+      border-color:var(--green);
+      box-shadow:0 0 26px rgba(0,184,90,.14);
+      transform:translateY(-2px);
+    }
+
+    .card-img{
+      min-height:220px;
       background-size:cover;
       background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      padding:16px;
+    }
+
+    .card-img::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.82));
+    }
+
+    .icon-badge{
+      position:relative;
+      z-index:2;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      border:1px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#050505;
+      color:var(--yellow);
+      font-size:30px;
+      font-weight:900;
     }
 
     .card-body{
-      padding:18px;
+      padding:24px;
     }
 
-    .card p{
-      font-size:16px;
-      margin:0 0 14px;
+    .card-body p{
+      font-size:clamp(15px,2.6vw,18px);
     }
 
     .card-link{
       color:var(--yellow);
       font-weight:900;
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
+      display:inline-block;
+      margin-top:6px;
     }
 
-    .tool-panel{
-      border:1px solid var(--border);
-      border-radius:16px;
-      background:rgba(0,0,0,.58);
-      padding:20px;
-      margin-top:16px;
+    .watch-table{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid rgba(216,180,90,.38);
+      background:rgba(0,0,0,.68);
     }
 
-    .tool-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top:14px;
-    }
-
-    input,
-    select{
-      background:#050505;
+    .watch-table th,
+    .watch-table td{
+      padding:16px;
+      border-bottom:1px solid rgba(216,180,90,.20);
+      text-align:left;
       color:var(--gold2);
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:14px 14px;
-      font-size:16px;
-      min-height:48px;
-      outline:none;
+      font-size:15px;
     }
 
-    input:focus,
-    select:focus{
-      border-color:var(--green);
-      box-shadow:0 0 0 3px rgba(0,166,81,.15);
-    }
-
-    .result{
-      margin-top:16px;
-      border:1px solid rgba(0,166,81,.45);
-      border-radius:14px;
-      padding:18px;
-      background:rgba(0,166,81,.07);
-    }
-
-    .result h3{
+    .watch-table th{
       color:var(--green);
-      margin:0 0 8px;
-      font-size:24px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-size:13px;
+      background:rgba(0,184,90,.08);
+    }
+
+    .watch-table tr:last-child td{
+      border-bottom:none;
+    }
+
+    .positive{
+      color:var(--green2) !important;
+      font-weight:900;
+    }
+
+    .neutral{
+      color:var(--yellow) !important;
+      font-weight:900;
+    }
+
+    .video-card{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:22px;
+      align-items:center;
+      border:1px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      background:rgba(0,0,0,.76);
+    }
+
+    .video-thumb{
+      min-height:420px;
+      background:
+        linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.76)),
+        var(--video-image),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play{
+      width:90px;
+      height:90px;
+      border-radius:50%;
+      border:2px solid var(--yellow);
+      background:rgba(0,0,0,.72);
+      color:var(--yellow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:38px;
+      padding-left:6px;
+      font-weight:900;
+    }
+
+    .video-copy{
+      padding:30px;
     }
 
     .notice{
-      color:#cbbd8c;
-      font-size:16px;
-      border-left:3px solid var(--gold);
-      padding-left:14px;
-      margin-top:16px;
+      color:var(--muted);
+      font-size:clamp(15px,2.8vw,18px);
     }
 
-    footer{
+    .highlight-note{
+      border:1px solid rgba(255,208,0,.45);
+      border-radius:18px;
+      background:rgba(255,208,0,.06);
+      padding:20px;
+      margin-top:18px;
+    }
+
+    .footer{
       background:#000;
       border-top:1px solid var(--border);
-      padding:28px 0;
-      color:#b9aa7a;
+      padding:34px 0 46px;
     }
 
-    .footer-inner{
-      display:flex;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      gap:22px;
       align-items:center;
+    }
+
+    .footer strong{
+      color:var(--green);
+      font-size:26px;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .footer p{
+      font-size:15px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:14px;
+    }
+
+    .footer-links a{
+      color:var(--white);
+      font-weight:900;
       font-size:14px;
     }
 
-    .footer-inner strong{
-      color:var(--green);
-    }
-
-    @media(max-width:900px){
-      .top-actions{display:none;}
-      .grid.two,
-      .grid.three,
-      .grid.four{
+    @media(max-width:980px){
+      .cols-4,.cols-3,.cols-2{
         grid-template-columns:1fr;
       }
 
-      .hero-content{
-        padding:34px 24px;
+      .section-head{
+        display:block;
+      }
+
+      .section-note{
+        margin-top:8px;
+        display:block;
+      }
+
+      .video-card,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-links{
+        justify-content:flex-start;
+      }
+
+      .watch-table{
+        display:block;
+        overflow-x:auto;
       }
     }
 
-    @media(max-width:640px){
-      .page{
-        width:calc(100% - 16px);
-      }
-
-      .brand-row{
+    @media(max-width:620px){
+      .brand{
         align-items:flex-start;
       }
 
-      .logo-slot{
-        width:58px;
-        height:58px;
-        min-width:58px;
+      .logo-box{
+        width:62px;
+        height:62px;
         font-size:34px;
       }
 
-      .brand-title{
-        font-size:28px;
-      }
-
       .brand-subtitle{
-        font-size:11px;
-        letter-spacing:2.4px;
+        letter-spacing:3px;
       }
 
       .nav{
-        gap:18px 24px;
-      }
-
-      .nav a{
-        font-size:18px;
-        padding:8px 2px;
-        border-radius:0;
-      }
-
-      .nav a:hover,
-      .nav a.active{
-        border:none;
-        background:transparent;
-        color:var(--yellow);
-      }
-
-      .section{
-        padding:20px;
+        gap:12px 20px;
       }
 
       .hero{
-        min-height:420px;
+        min-height:auto;
       }
 
-      .btn,
-      input,
-      select{
+      .actions{
+        display:grid;
+      }
+
+      .btn{
         width:100%;
       }
 
-      .card-image{
-        min-height:180px;
+      .card-img{
+        min-height:230px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="page header-inner">
-      <div class="brand-row">
-        <a class="logo-slot" href="index.html" aria-label="TitanCore Home">
-          <!-- Later you can replace T with your real logo:
-          <img src="titancore-logo.png" alt="TitanCore Holdings Logo">
-          -->
-          T
-        </a>
-
-        <a href="index.html">
-          <span class="brand-title">TitanCore Holdings</span>
-          <span class="brand-subtitle">Stock Market Watch</span>
-        </a>
-
-        <div class="top-actions">
-          <a class="search-dot" href="#symbol-search" aria-label="Search">⌕</a>
-          <a class="subscribe-btn" href="join-us.html">Subscribe</a>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <div class="logo-box">T</div>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">Stock Market Watch</div>
         </div>
-      </div>
+      </a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="TitanCore Main Menu">
         <a href="index.html">Home</a>
         <a href="investor.html">Investor</a>
         <a href="institution.html">Institution</a>
@@ -573,435 +626,463 @@
     </div>
   </header>
 
-  <main class="page">
-    <section class="hero" id="dailyHero">
-      <div class="hero-content">
-        <div class="kicker">TitanCore Public Market Research</div>
-        <h1>Public Stock, Market, Sector, and Business Movement Research</h1>
-        <p>
-          TitanCore Stock Market Watch gives visitors a public research area for U.S. markets, global markets, country markets, sector movement, company watchlists, Florida business, Orlando business, and market education.
-        </p>
+  <main>
+    <section class="hero" id="heroSection">
+      <div class="container">
+        <div class="hero-card">
+          <div class="kicker">Market Awareness Board</div>
+          <h1>Track Markets, Sectors, Companies, and Business Movement.</h1>
 
-        <div class="hero-buttons">
-          <a class="btn gold" href="#market-board">View Market Board →</a>
-          <a class="btn dark" href="#symbol-search">Search Symbol →</a>
-          <a class="btn dark" href="global-business-news.html">Global Business News →</a>
+          <p class="lead">
+            TitanCore Stock Market Watch is a public education page for market awareness, stock sectors,
+            company signals, global indexes, business confidence, and future API-powered market updates.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#major-markets">📊 Major Markets</a>
+            <a class="btn ghost" href="#sector-watch">🏢 Sector Watch</a>
+            <a class="btn ghost" href="#market-education">📘 Market Education</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="market-board">
-      <div class="section-header">
-        <h2>Morning Market Board</h2>
-        <span class="section-note" id="todayDate">Today</span>
-      </div>
-
-      <p>
-        This board is designed to help visitors understand broad market direction before making business decisions. TitanCore Holdings is private and is not shown as a public stock.
-      </p>
-
-      <div class="grid four">
-        <div class="market-card">
-          <h3>S&amp;P 500</h3>
-          <div class="market-number">Watch</div>
-          <div class="market-up">Broad U.S. market direction</div>
-          <div class="sparkline"></div>
+    <section class="section" id="major-markets">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Major Market Board</div>
+            <h2>Market Direction Overview</h2>
+          </div>
+          <span class="section-note" id="todayDate">Updated Today</span>
         </div>
 
-        <div class="market-card">
-          <h3>NASDAQ</h3>
-          <div class="market-number">Watch</div>
-          <div class="market-up">Technology and growth market watch</div>
-          <div class="sparkline"></div>
+        <div class="grid cols-4">
+          <a class="market-card" href="#sp500">
+            <div class="market-icon">📊</div>
+            <div class="market-title">S&amp;P 500</div>
+            <div class="market-detail">Broad U.S. market direction and large-company confidence.</div>
+            <div class="market-status">Demo watch card</div>
+            <div class="spark"></div>
+          </a>
+
+          <a class="market-card" href="#nasdaq">
+            <div class="market-icon">💻</div>
+            <div class="market-title">NASDAQ</div>
+            <div class="market-detail">Technology, innovation, AI, software, and growth-company watch.</div>
+            <div class="market-status">Demo watch card</div>
+            <div class="spark"></div>
+          </a>
+
+          <a class="market-card" href="#dow">
+            <div class="market-icon">🏛</div>
+            <div class="market-title">Dow Jones</div>
+            <div class="market-detail">Large blue-chip company sentiment and industrial business movement.</div>
+            <div class="market-status">Demo watch card</div>
+            <div class="spark"></div>
+          </a>
+
+          <a class="market-card" href="#global">
+            <div class="market-icon">🌍</div>
+            <div class="market-title">Global Markets</div>
+            <div class="market-detail">Country and region movement across business and financial markets.</div>
+            <div class="market-status">Demo watch card</div>
+            <div class="spark"></div>
+          </a>
         </div>
 
-        <div class="market-card">
-          <h3>Dow Jones</h3>
-          <div class="market-number">Watch</div>
-          <div class="market-up">Blue-chip business sentiment</div>
-          <div class="sparkline"></div>
+        <div class="highlight-note">
+          <p class="notice">
+            These are public watch cards and education placeholders. Later, this page can connect to market APIs,
+            Supabase, and AI summaries so market data updates automatically.
+          </p>
         </div>
-
-        <div class="market-card">
-          <h3>Global Markets</h3>
-          <div class="market-number">Watch</div>
-          <div class="market-up">Country and region market direction</div>
-          <div class="sparkline"></div>
-        </div>
-      </div>
-
-      <p class="notice">
-        Demo market board only. Live stock prices and real-time charts require an approved market data API.
-      </p>
-    </section>
-
-    <section class="section" id="symbol-search">
-      <div class="section-header">
-        <h2>Search a Public Stock Symbol</h2>
-        <span class="section-note">Demo tool</span>
-      </div>
-
-      <p>
-        Type a public ticker symbol. This demo block can later connect to live stock APIs to show price, chart, company data, sector, news, and financial information.
-      </p>
-
-      <div class="tool-panel">
-        <div class="tool-row">
-          <input id="tickerInput" placeholder="Example: AAPL, DRI, DIS, TNL" />
-          <button class="btn gold" type="button" onclick="searchTicker()">Search Stock</button>
-        </div>
-
-        <div class="result" id="tickerResult">
-          <h3>Stock Overview</h3>
-          <p>Company name, ticker, market, sector, price movement, and watchlist status will appear here.</p>
-        </div>
-      </div>
-
-      <p class="notice">
-        Stock search is informational only. It is not a buy, sell, hold, or trading recommendation.
-      </p>
-    </section>
-
-    <section class="section" id="country-markets">
-      <div class="section-header">
-        <h2>Stock Market by Country</h2>
-        <span class="section-note">Country-level view</span>
-      </div>
-
-      <p>
-        Visitors can understand country-level stock market movement without going deep into every city or county.
-      </p>
-
-      <div class="grid three">
-        <a class="card" href="global-business-news.html">
-          <div class="card-image daily-card-image">United States</div>
-          <div class="card-body">
-            <h3>United States Market</h3>
-            <p>S&amp;P 500, NASDAQ, Dow Jones, major U.S. companies, banks, technology, real estate, healthcare, energy, and consumer sectors.</p>
-            <span class="card-link">Open Global Business News →</span>
-          </div>
-        </a>
-
-        <a class="card" href="global-business-news.html">
-          <div class="card-image daily-card-image">Europe</div>
-          <div class="card-body">
-            <h3>European Markets</h3>
-            <p>United Kingdom, France, Germany, Italy, Spain, banking, energy, manufacturing, luxury, technology, and trade movement.</p>
-            <span class="card-link">Open Global Business News →</span>
-          </div>
-        </a>
-
-        <a class="card" href="global-business-news.html">
-          <div class="card-image daily-card-image">Asia</div>
-          <div class="card-body">
-            <h3>Asian Markets</h3>
-            <p>Japan, China, India, South Korea, technology, manufacturing, supply chain, exports, banking, and growth sectors.</p>
-            <span class="card-link">Open Global Business News →</span>
-          </div>
-        </a>
-
-        <a class="card" href="global-business-news.html">
-          <div class="card-image daily-card-image">Caribbean</div>
-          <div class="card-body">
-            <h3>Caribbean Markets</h3>
-            <p>Haiti, Dominican Republic, Jamaica, tourism, banking, imports, exports, remittances, and local business movement.</p>
-            <span class="card-link">Open Global Business News →</span>
-          </div>
-        </a>
-
-        <a class="card" href="global-business-news.html">
-          <div class="card-image daily-card-image">Latin America</div>
-          <div class="card-body">
-            <h3>Latin America Markets</h3>
-            <p>Brazil, Mexico, Colombia, Chile, commodities, banking, agriculture, real estate, trade, and market activity.</p>
-            <span class="card-link">Open Global Business News →</span>
-          </div>
-        </a>
-
-        <a class="card" href="global-business-news.html">
-          <div class="card-image daily-card-image">Africa / Middle East</div>
-          <div class="card-body">
-            <h3>Africa &amp; Middle East Markets</h3>
-            <p>Energy, infrastructure, banking, logistics, technology, real estate, construction, and emerging market business activity.</p>
-            <span class="card-link">Open Global Business News →</span>
-          </div>
-        </a>
       </div>
     </section>
 
     <section class="section" id="sector-watch">
-      <div class="section-header">
-        <h2>Business Sector Stock Watch</h2>
-        <span class="section-note">TitanCore categories</span>
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Sector Watch</div>
+            <h2>Business Sectors TitanCore Should Watch</h2>
+          </div>
+          <span class="section-note">Images rotate daily</span>
+        </div>
+
+        <div class="grid cols-4">
+          <a class="card" href="#technology">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🤖</div>
+            </div>
+            <div class="card-body">
+              <h3>Technology / AI</h3>
+              <p>AI, automation, software, cloud, chips, apps, and enterprise technology.</p>
+              <span class="card-link">Open Sector →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#finance">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🏦</div>
+            </div>
+            <div class="card-body">
+              <h3>Finance / Banks</h3>
+              <p>Banks, lenders, credit, fintech, interest rates, capital markets, and finance companies.</p>
+              <span class="card-link">Open Sector →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#real-estate">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🏠</div>
+            </div>
+            <div class="card-body">
+              <h3>Real Estate</h3>
+              <p>REITs, builders, property managers, housing activity, mortgage rates, and rental demand.</p>
+              <span class="card-link">Open Sector →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#healthcare">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">✚</div>
+            </div>
+            <div class="card-body">
+              <h3>Healthcare / Care</h3>
+              <p>Care services, medical providers, healthcare operations, senior care, and wellness markets.</p>
+              <span class="card-link">Open Sector →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#auto">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🚗</div>
+            </div>
+            <div class="card-body">
+              <h3>Auto / Transportation</h3>
+              <p>Auto companies, parts, repair, transportation, marine, logistics, and vehicle markets.</p>
+              <span class="card-link">Open Sector →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#energy">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">⚡</div>
+            </div>
+            <div class="card-body">
+              <h3>Energy</h3>
+              <p>Oil, gas, renewables, utilities, charging infrastructure, and global energy markets.</p>
+              <span class="card-link">Open Sector →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#consumer">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🛒</div>
+            </div>
+            <div class="card-body">
+              <h3>Consumer</h3>
+              <p>Retail, food, services, consumer demand, spending, jobs, and household trends.</p>
+              <span class="card-link">Open Sector →</span>
+            </div>
+          </a>
+
+          <a class="card" href="#global-business">
+            <div class="card-img daily-card-img">
+              <div class="icon-badge">🌐</div>
+            </div>
+            <div class="card-body">
+              <h3>Global Business</h3>
+              <p>Countries, trade, supply chain, currency pressure, policy, and worldwide business direction.</p>
+              <span class="card-link">Open Sector →</span>
+            </div>
+          </a>
+        </div>
       </div>
+    </section>
 
-      <p>
-        TitanCore connects public stock market categories with the industries inside the TitanCore ecosystem.
-      </p>
-
-      <div class="grid three">
-        <div class="card">
-          <div class="card-body">
-            <h3>Finance &amp; Funding</h3>
-            <p>Banks, lenders, fintech, credit companies, payment companies, capital markets, and funding-related public companies.</p>
-            <span class="card-link">Connected to Vaultara Capital</span>
+    <section class="section" id="market-table">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Watchlist Table</div>
+            <h2>Sample Market Watchlist</h2>
           </div>
+          <span class="section-note">Demo now, API later</span>
         </div>
 
-        <div class="card">
-          <div class="card-body">
-            <h3>Real Estate</h3>
-            <p>REITs, home builders, property management companies, commercial real estate, housing market, and mortgage-related companies.</p>
-            <span class="card-link">Connected to Family First Equity Group</span>
-          </div>
-        </div>
+        <table class="watch-table">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>What TitanCore Watches</th>
+              <th>Why It Matters</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="sp500">
+              <td>S&amp;P 500</td>
+              <td>Large U.S. company movement</td>
+              <td>Shows broad market confidence and business direction</td>
+              <td class="positive">Watch</td>
+            </tr>
+            <tr id="nasdaq">
+              <td>NASDAQ</td>
+              <td>Tech, AI, growth companies</td>
+              <td>Connects to automation, software, AI, and future business systems</td>
+              <td class="positive">Watch</td>
+            </tr>
+            <tr id="dow">
+              <td>Dow Jones</td>
+              <td>Blue-chip business sentiment</td>
+              <td>Shows strength of major established companies</td>
+              <td class="neutral">Monitor</td>
+            </tr>
+            <tr id="technology">
+              <td>Technology / AI</td>
+              <td>Automation, software, cloud, data</td>
+              <td>Important for TitanCore dashboards, AI employees, CRM/CIM, and automation</td>
+              <td class="positive">Priority</td>
+            </tr>
+            <tr id="finance">
+              <td>Finance / Banks</td>
+              <td>Rates, credit, lending, banks</td>
+              <td>Important for investor, bank, and institution financial pages</td>
+              <td class="positive">Priority</td>
+            </tr>
+            <tr id="real-estate">
+              <td>Real Estate</td>
+              <td>Housing, REITs, builders, rent</td>
+              <td>Important for Family First Equity Group and property market education</td>
+              <td class="positive">Priority</td>
+            </tr>
+            <tr id="healthcare">
+              <td>Healthcare / Care</td>
+              <td>Care services and healthcare operations</td>
+              <td>Important for VitalPath Care Group</td>
+              <td class="neutral">Monitor</td>
+            </tr>
+            <tr id="auto">
+              <td>Auto / Marine</td>
+              <td>Vehicles, repair, transport, marine</td>
+              <td>Important for RevMotion Auto & Marine LLC</td>
+              <td class="neutral">Monitor</td>
+            </tr>
+            <tr id="energy">
+              <td>Energy</td>
+              <td>Oil, gas, utilities, renewables</td>
+              <td>Energy costs affect businesses, consumers, transportation, and real estate</td>
+              <td class="neutral">Monitor</td>
+            </tr>
+            <tr id="global">
+              <td>Global Markets</td>
+              <td>Regions, countries, trade, currency</td>
+              <td>Global business movement affects investment, banks, and operating companies</td>
+              <td class="positive">Watch</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-        <div class="card">
-          <div class="card-body">
-            <h3>Healthcare &amp; Care</h3>
-            <p>Healthcare providers, insurance, care service companies, wellness companies, medical support, and healthcare technology.</p>
-            <span class="card-link">Connected to VitalPath Care Group</span>
+    <section class="section" id="market-media">
+      <div class="container">
+        <div class="video-card">
+          <div class="video-thumb" id="videoThumb">
+            <div class="play">▶</div>
           </div>
-        </div>
 
-        <div class="card">
-          <div class="card-body">
-            <h3>Auto &amp; Marine</h3>
-            <p>Auto manufacturers, auto parts, repair companies, transportation, logistics, marine companies, and service sectors.</p>
-            <span class="card-link">Connected to RevMotion Auto &amp; Marine LLC</span>
-          </div>
-        </div>
+          <div class="video-copy">
+            <div class="kicker">Market Media Area</div>
+            <h2>Daily Market Video, AI Summary, or Stock Education Clip</h2>
+            <p>
+              This area is ready for daily market videos, AI-generated stock explanations,
+              company sector updates, or business intelligence briefings.
+            </p>
+            <p class="notice">
+              Later, Supabase can store the daily market video link, article, image, and AI summary.
+            </p>
 
-        <div class="card">
-          <div class="card-body">
-            <h3>Technology</h3>
-            <p>AI, software, cybersecurity, cloud systems, data centers, chips, automation, and business technology companies.</p>
-            <span class="card-link">Business Intelligence Category</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Energy &amp; Infrastructure</h3>
-            <p>Oil, gas, utilities, solar, infrastructure, construction, transportation systems, and industrial development.</p>
-            <span class="card-link">Market Watch Category</span>
+            <div class="actions">
+              <a class="btn" href="business-book.html">📘 Business Book</a>
+              <a class="btn ghost" href="global-business-news.html">🌍 Global News</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="local-watch">
-      <div class="section-header">
-        <h2>Florida / Orlando Watch</h2>
-        <span class="section-note">Local business stock connection</span>
-      </div>
-
-      <p>
-        This local watchlist connects public companies and sectors with Florida and Orlando business activity.
-      </p>
-
-      <div class="grid three">
-        <div class="card">
-          <div class="card-body">
-            <h3>Darden Restaurants</h3>
-            <p>Restaurant, hospitality, consumer spending, Orlando corporate presence, and food service market watch.</p>
-            <span class="card-link">Ticker Example: DRI</span>
+    <section class="section" id="company-watch">
+      <div class="container panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">TitanCore Company Watch</div>
+            <h2>Market Areas Connected to the Company Network</h2>
           </div>
+          <span class="section-note">Company-linked market education</span>
         </div>
 
-        <div class="card">
-          <div class="card-body">
-            <h3>Disney</h3>
-            <p>Tourism, entertainment, hospitality, theme parks, travel demand, and Central Florida economy impact.</p>
-            <span class="card-link">Ticker Example: DIS</span>
-          </div>
+        <div class="grid cols-4">
+          <a class="card" href="vaultara-landing.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">💳</div>
+            </div>
+            <div class="card-body">
+              <h3>Vaultara Market Watch</h3>
+              <p>Credit, lending, banking, funding, fintech, and business finance sectors.</p>
+              <span class="card-link">Open Vaultara →</span>
+            </div>
+          </a>
+
+          <a class="card" href="family-first.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">🏠</div>
+            </div>
+            <div class="card-body">
+              <h3>Family First Market Watch</h3>
+              <p>Housing, property, REITs, builders, rental demand, and real estate finance.</p>
+              <span class="card-link">Open Family First →</span>
+            </div>
+          </a>
+
+          <a class="card" href="vitalpath.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">✚</div>
+            </div>
+            <div class="card-body">
+              <h3>VitalPath Market Watch</h3>
+              <p>Care services, healthcare operations, wellness, labor, and service demand.</p>
+              <span class="card-link">Open VitalPath →</span>
+            </div>
+          </a>
+
+          <a class="card" href="revmotion.html">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80');">
+              <div class="icon-badge">🚗</div>
+            </div>
+            <div class="card-body">
+              <h3>RevMotion Market Watch</h3>
+              <p>Auto, marine, logistics, transportation, repairs, parts, and vehicle demand.</p>
+              <span class="card-link">Open RevMotion →</span>
+            </div>
+          </a>
         </div>
-
-        <div class="card">
-          <div class="card-body">
-            <h3>Travel + Leisure Co.</h3>
-            <p>Vacation ownership, hospitality, tourism, Orlando business activity, and travel market movement.</p>
-            <span class="card-link">Ticker Example: TNL</span>
-          </div>
-        </div>
-      </div>
-
-      <p class="notice">
-        These are example watchlist companies only. This page does not recommend buying or selling any stock.
-      </p>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <h2>Markets Help People Understand Business Movement</h2>
-      </div>
-
-      <p>
-        Stock Market Watch is not here to tell people what to buy. It is here to help visitors understand business movement, sector strength, economic pressure, and company activity.
-      </p>
-
-      <div class="grid four">
-        <div class="card"><div class="card-body"><h3>1. Check Market Direction</h3><p>Visitors can see if markets are strong, weak, mixed, or sector-driven.</p></div></div>
-        <div class="card"><div class="card-body"><h3>2. Review Sectors</h3><p>Finance, real estate, healthcare, auto, marine, technology, and energy.</p></div></div>
-        <div class="card"><div class="card-body"><h3>3. Connect to Business News</h3><p>Visitors can connect stock movement to business headlines and country-level business news.</p></div></div>
-        <div class="card"><div class="card-body"><h3>4. Learn More</h3><p>Visitors can open the Business Intelligence Book or company pages to continue learning.</p></div></div>
-      </div>
-
-      <div class="hero-buttons">
-        <a class="btn gold" href="business-book.html">Open Business Intelligence Book →</a>
-        <a class="btn dark" href="global-business-news.html">Global Business News →</a>
-        <a class="btn dark" href="companies.html">Company Directory →</a>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-header">
-        <h2>Stock Market Watch Notice</h2>
+    <section class="section" id="market-education">
+      <div class="container panel">
+        <div class="kicker">Market Education Notice</div>
+        <h2>Public Education Only</h2>
+        <p>
+          Stock Market Watch is for public business education, market awareness, and general information only.
+          It is not financial advice, investment advice, stock recommendation, trading advice, tax advice,
+          legal advice, or a promise of returns.
+        </p>
+
+        <p>
+          The purpose is to help visitors understand market movement and business sectors connected to TitanCore’s
+          public company network.
+        </p>
+
+        <div class="highlight-note">
+          <p class="notice">
+            Future version: market APIs can update index movement, sector watch cards, article summaries,
+            charts, and AI-generated daily briefs automatically.
+          </p>
+        </div>
       </div>
-
-      <p>
-        TitanCore Stock Market Watch is for public market research and business education only. TitanCore Holdings is a private company and should not be shown as a public stock.
-      </p>
-
-      <p>
-        Live market prices, charts, ticker details, company news, and financial data will require an approved market data API, licensed provider, or properly attributed public source.
-      </p>
-
-      <p class="notice">
-        Nothing on this page is financial advice, investment advice, tax advice, legal advice, or a recommendation to buy, sell, or hold any security.
-      </p>
     </section>
   </main>
 
-  <footer>
-    <div class="page footer-inner">
-      <strong>TitanCore Holdings</strong>
-      <span>Stock Market Watch</span>
-      <a href="contact.html">Contact TitanCore</a>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>TitanCore Holdings</strong>
+        <p>Stock Market Watch and public market education page.</p>
+      </div>
+
+      <div class="logo-box" style="width:58px;height:58px;font-size:32px;">T</div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="companies.html">Companies</a>
+        <a href="business-book.html">Business Book</a>
+        <a href="global-business-news.html">Global News</a>
+        <a href="contact.html">Contact</a>
+      </div>
     </div>
   </footer>
 
   <script>
-    const dailyImages = [
-      "https://images.unsplash.com/photo-1642790551116-18e150f248e5?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80"
+    const heroImages = [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80"
     ];
 
-    function dailyIndex(list){
+    const sectorImages = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1515165562835-c3b8c3d03c23?auto=format&fit=crop&w=1000&q=80",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80"
+    ];
+
+    const videoImages = [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80"
+    ];
+
+    function dayIndex(list){
       const dayNumber = Math.floor(Date.now() / 86400000);
       return dayNumber % list.length;
     }
 
-    function setDailyBackgrounds(){
-      const hero = document.getElementById("dailyHero");
-      const heroImg = dailyImages[dailyIndex(dailyImages)];
-
-      if(hero){
-        hero.style.backgroundImage =
-          `linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.70),rgba(0,0,0,.16)), url("${heroImg}")`;
-      }
-
-      document.querySelectorAll(".daily-card-image").forEach((box, index) => {
-        const img = dailyImages[(dailyIndex(dailyImages) + index) % dailyImages.length];
-        box.style.backgroundImage =
-          `linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.72)), url("${img}")`;
-      });
-    }
-
     function setTodayDate(){
-      const dateBox = document.getElementById("todayDate");
+      const box = document.getElementById("todayDate");
       const today = new Date();
 
-      const formatted = today.toLocaleDateString(undefined, {
-        weekday:"long",
-        year:"numeric",
-        month:"long",
-        day:"numeric"
+      if(box){
+        box.textContent = today.toLocaleDateString(undefined,{
+          weekday:"long",
+          month:"long",
+          day:"numeric",
+          year:"numeric"
+        });
+      }
+    }
+
+    function setDailyMedia(){
+      const hero = document.getElementById("heroSection");
+      const video = document.getElementById("videoThumb");
+
+      if(hero){
+        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
+      }
+
+      if(video){
+        video.style.setProperty("--video-image", `url("${videoImages[dayIndex(videoImages)]}")`);
+      }
+
+      document.querySelectorAll(".daily-card-img").forEach((item,index)=>{
+        const img = sectorImages[(dayIndex(sectorImages) + index) % sectorImages.length];
+        item.style.backgroundImage =
+          `linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.78)), url("${img}")`;
       });
-
-      if(dateBox){
-        dateBox.textContent = formatted;
-      }
     }
 
-    const tickerData = {
-      AAPL:{
-        name:"Apple Inc.",
-        sector:"Technology / Consumer Devices",
-        note:"Example public stock overview for business education."
-      },
-      MSFT:{
-        name:"Microsoft Corporation",
-        sector:"Technology / Cloud / AI",
-        note:"Example public stock overview for business education."
-      },
-      TSLA:{
-        name:"Tesla Inc.",
-        sector:"Auto / Energy / Technology",
-        note:"Example public stock overview for business education."
-      },
-      JPM:{
-        name:"JPMorgan Chase & Co.",
-        sector:"Banking / Financial Services",
-        note:"Example public stock overview for business education."
-      },
-      XOM:{
-        name:"Exxon Mobil Corporation",
-        sector:"Energy / Oil & Gas",
-        note:"Example public stock overview for business education."
-      },
-      DRI:{
-        name:"Darden Restaurants",
-        sector:"Restaurant / Hospitality / Orlando Connection",
-        note:"Local Florida and Orlando example watchlist company."
-      },
-      DIS:{
-        name:"The Walt Disney Company",
-        sector:"Tourism / Entertainment / Central Florida Economy",
-        note:"Local Florida and Orlando example watchlist company."
-      },
-      TNL:{
-        name:"Travel + Leisure Co.",
-        sector:"Travel / Hospitality / Vacation Ownership",
-        note:"Local Florida and Orlando example watchlist company."
-      }
-    };
-
-    function searchTicker(){
-      const input = document.getElementById("tickerInput");
-      const result = document.getElementById("tickerResult");
-
-      const symbol = input.value.trim().toUpperCase();
-
-      if(!symbol){
-        result.innerHTML = `
-          <h3>Enter a Stock Symbol</h3>
-          <p>Type a public ticker symbol such as AAPL, MSFT, DRI, DIS, or TNL.</p>
-        `;
-        return;
-      }
-
-      const data = tickerData[symbol] || {
-        name:"Public Company Search",
-        sector:"Market / Sector / Company Research",
-        note:"This symbol can later connect to a live stock API for real market data."
-      };
-
-      result.innerHTML = `
-        <h3>${data.name} — ${symbol}</h3>
-        <p><strong>Sector:</strong> ${data.sector}</p>
-        <p>${data.note}</p>
-        <p>This is demo information only. Live price, chart, company news, and financial data require an approved market data API.</p>
-      `;
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      setDailyBackgrounds();
+    document.addEventListener("DOMContentLoaded", function(){
       setTodayDate();
+      setDailyMedia();
     });
   </script>
 </body>
