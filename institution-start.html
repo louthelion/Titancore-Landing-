@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Start Institution Review | TitanCore Holdings</title>
+
+  <style>
+    :root {
+      --black: #000000;
+      --green: #00b85f;
+      --gold: #d8b45a;
+      --soft-gold: #f3d98b;
+      --yellow: #ffd000;
+      --white: #ffffff;
+      --border: rgba(216, 180, 90, 0.58);
+      --panel: rgba(0, 0, 0, 0.82);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(0, 184, 95, 0.18), transparent 32%),
+        linear-gradient(180deg, #000000 0%, #031108 46%, #000000 100%);
+      color: var(--soft-gold);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: #000;
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0 34px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .logo-box {
+      width: 88px;
+      height: 88px;
+      border: 3px solid var(--gold);
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: var(--yellow);
+      font-size: 48px;
+      font-weight: 900;
+      background: rgba(216, 180, 90, 0.08);
+      box-shadow: 0 0 25px rgba(0, 184, 95, 0.28);
+    }
+
+    .brand-title {
+      color: var(--green);
+      font-size: clamp(32px, 6vw, 62px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-subtitle {
+      color: var(--gold);
+      font-size: clamp(14px, 3vw, 24px);
+      font-weight: 900;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px 56px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(216, 180, 90, 0.35);
+    }
+
+    .nav a {
+      color: var(--white);
+      font-size: clamp(20px, 4vw, 34px);
+      font-weight: 900;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--yellow);
+    }
+
+    .hero {
+      padding: 56px 0 40px;
+    }
+
+    .hero-card {
+      min-height: 700px;
+      border: 1.5px solid var(--border);
+      border-radius: 34px;
+      padding: clamp(34px, 7vw, 76px);
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.90)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1700&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 0 38px rgba(0, 184, 95, 0.16);
+    }
+
+    .kicker {
+      color: var(--gold);
+      font-size: clamp(18px, 4vw, 34px);
+      font-weight: 900;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--green);
+      font-weight: 1000;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(56px, 11vw, 118px);
+      line-height: 0.96;
+      letter-spacing: -2px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: clamp(44px, 8vw, 86px);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.08;
+      margin-bottom: 14px;
+    }
+
+    p {
+      color: var(--soft-gold);
+      font-size: clamp(20px, 3.9vw, 32px);
+      font-weight: 650;
+      margin: 0;
+    }
+
+    .lead {
+      font-size: clamp(25px, 5vw, 46px);
+      font-weight: 750;
+      max-width: 990px;
+      margin-bottom: 36px;
+    }
+
+    .section {
+      padding: 42px 0;
+    }
+
+    .panel {
+      border: 1.5px solid var(--border);
+      border-radius: 32px;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.90)),
+        radial-gradient(circle at top left, rgba(0, 184, 95, 0.13), transparent 42%);
+      padding: clamp(30px, 6vw, 64px);
+      box-shadow: 0 0 24px rgba(0, 184, 95, 0.10);
+    }
+
+    .section-head {
+      margin-bottom: 34px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .path-card {
+      display: grid;
+      grid-template-columns: 78px 1fr auto;
+      gap: 24px;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      border-radius: 26px;
+      background: rgba(0, 0, 0, 0.78);
+      padding: 28px;
+    }
+
+    .path-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      font-size: 32px;
+      font-weight: 900;
+    }
+
+    .arrow {
+      color: var(--gold);
+      font-size: 46px;
+      font-weight: 900;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 72px;
+      padding: 18px 30px;
+      border-radius: 18px;
+      border: 1.5px solid var(--gold);
+      background: var(--yellow);
+      color: #000;
+      font-size: clamp(18px, 3.5vw, 28px);
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .btn.ghost {
+      background: rgba(0, 0, 0, 0.72);
+      color: var(--soft-gold);
+    }
+
+    .btn:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .image-card {
+      min-height: 420px;
+      border: 1.5px solid var(--border);
+      border-radius: 32px;
+      padding: clamp(30px, 6vw, 64px);
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.88)),
+        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1700&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    form {
+      display: grid;
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    label {
+      color: var(--green);
+      font-size: clamp(20px, 3.8vw, 32px);
+      font-weight: 900;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      background: #000;
+      color: var(--soft-gold);
+      padding: 22px;
+      font-size: clamp(18px, 3.5vw, 28px);
+      font-weight: 700;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(243, 217, 139, 0.55);
+    }
+
+    .notice {
+      color: rgba(243, 217, 139, 0.86);
+      font-size: clamp(18px, 3.4vw, 27px);
+      font-weight: 700;
+      margin-top: 24px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 44px 0 58px;
+      background: #000;
+    }
+
+    .footer strong {
+      display: block;
+      color: var(--green);
+      font-size: clamp(34px, 6vw, 58px);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .path-card {
+        grid-template-columns: 1fr auto;
+      }
+
+      .icon {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 32px, 1120px);
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .logo-box {
+        width: 72px;
+        height: 72px;
+        font-size: 40px;
+      }
+
+      .nav {
+        gap: 32px 44px;
+      }
+
+      .hero-card {
+        min-height: 620px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <div class="logo-box">T</div>
+
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">Start Institution Review</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="investor.html">Investor</a>
+        <a href="institution.html">Institution</a>
+        <a href="institution-financial.html">Institution Financial</a>
+        <a href="banks.html">Banks</a>
+        <a href="companies.html">Company</a>
+        <a href="join-us.html">Join Us</a>
+        <a href="business-book.html">Business Intelligence Book</a>
+        <a href="stock-watch.html">Stock Market Watch</a>
+        <a href="global-business-news.html">Global Business News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="kicker">Institution Bridge</div>
+
+          <h1>Start the Right Public Institution Review Path</h1>
+
+          <p class="lead">
+            This page helps institutions, banks, financial groups, investors, vendors, and organizations choose the correct TitanCore public review path before submitting a request.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#choose-path">Choose Review Path →</a>
+            <a class="btn ghost" href="#institution-form">Submit Institution Interest →</a>
+          </div>
+
+          <p class="notice">
+            Public information only. Do not submit confidential documents, passwords, bank account information, private financial files, legal files, or Social Security numbers through this public form.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="choose-path" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Choose Path</div>
+          <h2>Where Should This Institution Request Go?</h2>
+          <p>
+            TitanCore should not send every visitor into the same place. Each institution visitor should choose the correct public path first.
+          </p>
+        </div>
+
+        <div class="grid">
+          <a class="path-card" href="institution.html">
+            <div class="icon">I</div>
+            <div>
+              <h3>Institution Information</h3>
+              <p>
+                For organizations reviewing TitanCore’s public company structure, company network, and information platform.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="path-card" href="institution-financial.html">
+            <div class="icon">$</div>
+            <div>
+              <h3>Financial Institution Review</h3>
+              <p>
+                For lenders, funding groups, capital partners, credit unions, and financial organizations reviewing TitanCore.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="path-card" href="banks.html">
+            <div class="icon">B</div>
+            <div>
+              <h3>Banking Relationship Review</h3>
+              <p>
+                For banks reviewing banking relationship questions, business banking, documentation, and account structure.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="path-card" href="investor.html">
+            <div class="icon">V</div>
+            <div>
+              <h3>Investor Information</h3>
+              <p>
+                For investor-facing questions. TitanCore controls distribution across the ecosystem, not the visitor choosing one company only.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="path-card" href="companies.html">
+            <div class="icon">C</div>
+            <div>
+              <h3>Company Network Review</h3>
+              <p>
+                For visitors reviewing Vaultara, Family First, VitalPath, RevMotion, and the connected TitanCore company network.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+
+          <a class="path-card" href="contact.html">
+            <div class="icon">☎</div>
+            <div>
+              <h3>General Public Contact</h3>
+              <p>
+                For public questions that do not clearly belong to investor, bank, financial institution, or company review.
+              </p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="image-card">
+          <div>
+            <div class="kicker">Important Direction</div>
+            <h2>TitanCore Reviews First, Then Routes Correctly</h2>
+            <p>
+              This keeps TitanCore organized. Institutions can submit public interest, and TitanCore decides the correct next step, company route, review path, or authorized communication.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="institution-form" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Public Institution Intake</div>
+          <h2>Submit Institution Interest</h2>
+          <p>
+            This is a public inquiry form only. TitanCore can later connect this form to Netlify Forms, email routing, CRM, Supabase, and internal review workflow.
+          </p>
+        </div>
+
+        <form name="institution-start-review" method="POST" data-netlify="true" action="thank-you.html">
+          <input type="hidden" name="form-name" value="institution-start-review" />
+
+          <div>
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" placeholder="Enter your full name" required />
+          </div>
+
+          <div>
+            <label for="organization">Organization Name</label>
+            <input id="organization" name="organization" type="text" placeholder="Enter organization name" required />
+          </div>
+
+          <div>
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email address" required />
+          </div>
+
+          <div>
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" placeholder="Enter your phone number" />
+          </div>
+
+          <div>
+            <label for="reviewType">Review Type</label>
+            <select id="reviewType" name="reviewType" required>
+              <option value="">Choose one</option>
+              <option>Institution Review</option>
+              <option>Financial Institution Review</option>
+              <option>Banking Relationship Review</option>
+              <option>Investor Information</option>
+              <option>Company Network Review</option>
+              <option>Vendor / Partner Interest</option>
+              <option>General Public Contact</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your public message here" required></textarea>
+          </div>
+
+          <button class="btn" type="submit">Submit Institution Interest →</button>
+        </form>
+
+        <p class="notice">
+          Submission of this form does not create employment, partnership, vendor approval, investment relationship, banking relationship, funding approval, contract, service agreement, legal obligation, or guarantee of response.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>TitanCore Holdings</strong>
+      <p>
+        Public institution bridge page for routing institution, bank, financial, investor, company, and general public review requests.
+      </p>
+
+      <div class="actions">
+        <a class="btn ghost" href="institution.html">Back to Institution →</a>
+        <a class="btn ghost" href="contact.html">Contact TitanCore →</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll(".nav a").forEach(function (link) {
+        const href = link.getAttribute("href");
+
+        if (href === currentPage) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
