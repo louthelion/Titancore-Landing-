@@ -5,23 +5,395 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Family First Equity Group | TitanCore Holdings</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root{
+      --black:#000000;
+      --green:#00b85f;
+      --gold:#d8b45a;
+      --soft-gold:#f3d98b;
+      --yellow:#ffd000;
+      --white:#ffffff;
+      --border:rgba(216,180,90,.58);
+      --panel:rgba(0,0,0,.82);
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left,rgba(0,184,95,.18),transparent 32%),
+        linear-gradient(180deg,#000 0%,#031108 45%,#000 100%);
+      color:var(--soft-gold);
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.5;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1120px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:#000;
+      border-bottom:1px solid var(--border);
+      padding:28px 0 34px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin-bottom:34px;
+    }
+
+    .logo-box{
+      width:88px;
+      height:88px;
+      border:3px solid var(--gold);
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      color:var(--yellow);
+      font-size:48px;
+      font-weight:900;
+      background:rgba(216,180,90,.08);
+      box-shadow:0 0 25px rgba(0,184,95,.28);
+      flex:0 0 auto;
+    }
+
+    .brand-title{
+      color:var(--green);
+      font-size:clamp(32px,6vw,62px);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:.5px;
+    }
+
+    .brand-subtitle{
+      color:var(--gold);
+      font-size:clamp(14px,3vw,24px);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-top:12px;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px 56px;
+      padding-top:24px;
+      border-top:1px solid rgba(216,180,90,.35);
+    }
+
+    .nav a{
+      color:var(--white);
+      font-size:clamp(20px,4vw,34px);
+      font-weight:900;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:var(--yellow);
+    }
+
+    .hero{
+      padding:56px 0 40px;
+    }
+
+    .hero-card{
+      min-height:720px;
+      border:1.5px solid var(--border);
+      border-radius:34px;
+      padding:clamp(34px,7vw,76px);
+      background:
+        linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.90)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1700&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      box-shadow:0 0 38px rgba(0,184,95,.16);
+    }
+
+    .kicker{
+      color:var(--gold);
+      font-size:clamp(18px,4vw,34px);
+      font-weight:900;
+      letter-spacing:10px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{
+      color:var(--green);
+      font-weight:1000;
+      margin-top:0;
+    }
+
+    h1{
+      font-size:clamp(58px,11vw,122px);
+      line-height:.95;
+      letter-spacing:-2px;
+      margin-bottom:30px;
+    }
+
+    h2{
+      font-size:clamp(44px,8vw,86px);
+      line-height:1;
+      margin-bottom:24px;
+    }
+
+    h3{
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.08;
+      margin-bottom:14px;
+    }
+
+    p{
+      color:var(--soft-gold);
+      font-size:clamp(20px,3.9vw,32px);
+      font-weight:650;
+      margin:0;
+    }
+
+    .lead{
+      font-size:clamp(25px,5vw,46px);
+      font-weight:750;
+      max-width:990px;
+      margin-bottom:36px;
+    }
+
+    .notice{
+      color:rgba(243,217,139,.86);
+      font-size:clamp(18px,3.4vw,27px);
+      font-weight:700;
+      margin-top:24px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-top:32px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72px;
+      padding:18px 30px;
+      border-radius:18px;
+      border:1.5px solid var(--gold);
+      background:var(--yellow);
+      color:#000;
+      font-size:clamp(18px,3.5vw,28px);
+      font-weight:900;
+      text-align:center;
+    }
+
+    .btn.ghost{
+      background:rgba(0,0,0,.72);
+      color:var(--soft-gold);
+    }
+
+    .btn:hover{
+      background:var(--green);
+      color:var(--white);
+    }
+
+    .section{
+      padding:42px 0;
+    }
+
+    .panel{
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      background:
+        linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.90)),
+        radial-gradient(circle at top left,rgba(0,184,95,.13),transparent 42%);
+      padding:clamp(30px,6vw,64px);
+      box-shadow:0 0 24px rgba(0,184,95,.10);
+    }
+
+    .section-head{
+      margin-bottom:34px;
+    }
+
+    .grid{
+      display:grid;
+      gap:24px;
+    }
+
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    .card{
+      border:1.5px solid var(--border);
+      border-radius:28px;
+      background:rgba(0,0,0,.76);
+      overflow:hidden;
+      min-height:100%;
+    }
+
+    .card-img{
+      height:270px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--border);
+    }
+
+    .card-body{
+      padding:clamp(26px,5vw,44px);
+    }
+
+    .card-link{
+      display:inline-block;
+      margin-top:24px;
+      color:var(--yellow);
+      font-size:clamp(19px,3.6vw,28px);
+      font-weight:900;
+    }
+
+    .wide-image{
+      min-height:460px;
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      padding:clamp(30px,6vw,64px);
+      background:
+        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.88)),
+        var(--wide-image),
+        url("https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?auto=format&fit=crop&w=1700&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:flex-end;
+      margin-bottom:28px;
+    }
+
+    .path-card{
+      display:grid;
+      grid-template-columns:78px 1fr auto;
+      gap:24px;
+      align-items:center;
+      border:1.5px solid var(--border);
+      border-radius:26px;
+      background:rgba(0,0,0,.78);
+      padding:28px;
+    }
+
+    .path-card:hover{
+      border-color:var(--yellow);
+      transform:translateY(-2px);
+    }
+
+    .icon{
+      width:66px;
+      height:66px;
+      border-radius:50%;
+      border:1px solid var(--border);
+      display:grid;
+      place-items:center;
+      color:var(--green);
+      font-size:32px;
+      font-weight:900;
+    }
+
+    .arrow{
+      color:var(--gold);
+      font-size:46px;
+      font-weight:900;
+    }
+
+    .number{
+      color:var(--yellow);
+      font-size:clamp(34px,5vw,54px);
+      font-weight:1000;
+      margin-bottom:8px;
+    }
+
+    .footer{
+      border-top:1px solid var(--border);
+      padding:44px 0 58px;
+      background:#000;
+    }
+
+    .footer strong{
+      display:block;
+      color:var(--green);
+      font-size:clamp(34px,6vw,58px);
+      line-height:1.1;
+      margin-bottom:14px;
+    }
+
+    @media(max-width:900px){
+      .cols-2,.cols-3{
+        grid-template-columns:1fr;
+      }
+
+      .path-card{
+        grid-template-columns:1fr auto;
+      }
+
+      .icon{
+        display:none;
+      }
+    }
+
+    @media(max-width:640px){
+      .container{
+        width:min(100% - 32px,1120px);
+      }
+
+      .brand{
+        align-items:flex-start;
+      }
+
+      .logo-box{
+        width:72px;
+        height:72px;
+        font-size:40px;
+      }
+
+      .nav{
+        gap:32px 44px;
+      }
+
+      .hero-card{
+        min-height:620px;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <header class="topbar">
-    <div class="container navwrap">
-      <a class="logo" href="index.html">
-        <span class="logo-mark">TC</span>
-        <span>
-          TitanCore Holdings
-          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
-            Family First Equity Group
-          </small>
-        </span>
-      </a>
+    <div class="container">
+      <div class="brand">
+        <div class="logo-box">T</div>
 
-      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">Family First Equity Group</div>
+        </div>
+      </div>
 
       <nav class="nav">
         <a href="index.html">Home</a>
@@ -29,7 +401,7 @@
         <a href="institution.html">Institution</a>
         <a href="institution-financial.html">Institution Financial</a>
         <a href="banks.html">Banks</a>
-        <a class="active" href="companies.html">Company</a>
+        <a href="companies.html">Company</a>
         <a href="join-us.html">Join Us</a>
         <a href="business-book.html">Business Intelligence Book</a>
         <a href="stock-watch.html">Stock Market Watch</a>
@@ -41,281 +413,129 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
+      <div class="container">
+        <div class="hero-card" id="heroCard">
           <div class="kicker">Family First Equity Group</div>
 
-          <h1>Real Estate Investment, Property Opportunities, and Market Information</h1>
+          <h1>Real Estate, Property Opportunities, and Market Education</h1>
 
           <p class="lead">
-            Family First Equity Group is the TitanCore company focused on real estate investment,
-            property opportunities, acquisitions, property management information, and real estate market education.
+            Family First Equity Group is the TitanCore company focused on real estate investment information,
+            property opportunities, acquisition education, property management awareness, and real estate market learning.
           </p>
 
           <div class="actions">
-            <a class="btn" href="#family-services">View Focus Areas</a>
-            <a class="btn ghost" href="#real-estate-education">Real Estate Education</a>
-            <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+            <a class="btn" href="https://familyfirstequitygroup.com">Learn More on Family First Website →</a>
+            <a class="btn ghost" href="#family-info">View Family First Information →</a>
+            <a class="btn ghost" href="companies.html">Back to Companies →</a>
           </div>
 
           <p class="notice">
-            Public information only. Family First Equity Group is not presenting itself as a real estate broker or agent.
+            This TitanCore page is information only. Property requests, seller inquiries, buyer inquiries,
+            management requests, and new projects should be completed on the Family First Equity Group website.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="family-info" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Company Overview</div>
+          <h2>What Family First Represents</h2>
+          <p>
+            Family First gives visitors a public place to understand property opportunities, real estate decision-making,
+            market education, acquisitions, property management, and investor-style property review before they leave
+            TitanCore to continue with Family First.
           </p>
         </div>
 
-        <div class="panel">
-          <h3>Family First Focus Areas</h3>
-
-          <div class="status-row">
-            <span>Property Acquisition</span>
-            <span class="badge green">Info</span>
-          </div>
-
-          <div class="status-row">
-            <span>Sell Property Interest</span>
-            <span class="badge green">Info</span>
-          </div>
-
-          <div class="status-row">
-            <span>Property Management</span>
-            <span class="badge green">Info</span>
-          </div>
-
-          <div class="status-row">
-            <span>Real Estate Market</span>
-            <span class="badge green">Research</span>
-          </div>
-
-          <div class="status-row">
-            <span>Investment Education</span>
-            <span class="badge green">Public</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="family-services" class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Family First Services</div>
-            <h2>What Family First Helps People Understand</h2>
-            <p>
-              Family First Equity Group is designed to provide public information around property opportunities,
-              selling property, buying property as an investor, property management, and real estate market movement.
-            </p>
-          </div>
-        </div>
-
         <div class="grid cols-3">
           <div class="card">
-            <h3>Sell Property</h3>
-            <p>
-              Public information for owners who may want to sell a property, understand investor interest,
-              review property condition, and learn what information may be needed.
-            </p>
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Property Opportunities</h3>
+              <p>
+                Information about property value, condition, location, market demand, repairs, holding costs,
+                and possible investor interest.
+              </p>
+            </div>
           </div>
 
           <div class="card">
-            <h3>Buy Property / Acquisitions</h3>
-            <p>
-              Information about acquisition interest, property review, investment goals,
-              location research, property condition, and deal evaluation.
-            </p>
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Acquisition Education</h3>
+              <p>
+                Education about how property buyers and investors may review condition, price, rental potential,
+                market value, neighborhood activity, and long-term opportunity.
+              </p>
+            </div>
           </div>
 
           <div class="card">
-            <h3>Property Management</h3>
-            <p>
-              Information about rental operations, maintenance, tenant communication,
-              property organization, and owner support.
-            </p>
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Property Management Awareness</h3>
+              <p>
+                Information about rental operations, tenant communication, maintenance, property organization,
+                owner support, and property performance.
+              </p>
+            </div>
           </div>
-
-          <div class="card">
-            <h3>Real Estate Market Research</h3>
-            <p>
-              Public research around local market movement, housing activity,
-              commercial property, rental demand, and development trends.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Investment Property Education</h3>
-            <p>
-              Educational information about cash flow, repairs, location, property risks,
-              market demand, and long-term holding strategy.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Owner Information</h3>
-            <p>
-              Information for property owners who want to understand options before deciding
-              whether to sell, hold, rent, or request management help.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="real-estate-education" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Real Estate Education Center</div>
-            <h2>Learn Before Making a Property Decision</h2>
-            <p>
-              Family First should give people helpful information first, so visitors can understand
-              property value, market conditions, rental demand, repairs, and investment risk before taking action.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Property Condition</h3>
-            <p>
-              Roof, plumbing, electrical, HVAC, foundation, interior condition,
-              and repair needs can affect property value and investor interest.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Location Matters</h3>
-            <p>
-              Neighborhood, schools, traffic, jobs, population growth, safety,
-              and nearby development can affect property demand.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Market Value</h3>
-            <p>
-              Property value may depend on comparable sales, condition, demand,
-              rental potential, location, and current market conditions.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Rental Demand</h3>
-            <p>
-              Rental demand can be affected by jobs, schools, local wages,
-              population growth, tourism, and housing supply.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Repair Costs</h3>
-            <p>
-              Repairs can change the numbers quickly. Investors and owners should understand
-              the likely cost before making a decision.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Holding Costs</h3>
-            <p>
-              Taxes, insurance, HOA, utilities, mortgage payments, maintenance,
-              and vacancies can affect property ownership costs.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Property Owner Path</div>
-            <h2>If Someone Wants to Sell a Property</h2>
-            <p>
-              This section explains the public information path for property owners.
-              It does not promise an offer or guarantee a sale.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-4">
-          <div class="card">
-            <h3>1. Share Property Info</h3>
-            <p>
-              Address, property type, condition, occupancy, photos, mortgage status,
-              and reason for selling may help with review.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>2. Review Condition</h3>
-            <p>
-              Repairs, age of systems, damages, tenant status, code issues,
-              and property access may affect the review.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>3. Review Market</h3>
-            <p>
-              Local sales, rental demand, neighborhood activity, and investor demand
-              can affect interest.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>4. Discuss Next Step</h3>
-            <p>
-              If there is interest, the next step would require direct communication
-              and proper review.
-            </p>
-          </div>
-        </div>
-
-        <div class="actions">
-          <a class="btn" href="contact.html">Contact About Property</a>
-          <a class="btn ghost" href="business-book.html">Open Business Intelligence Book</a>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="section-head">
+        <div class="wide-image" id="wideImage">
           <div>
-            <div class="kicker">Market Intelligence</div>
-            <h2>Real Estate Market Information</h2>
+            <div class="kicker">Important Direction</div>
+            <h2>TitanCore Explains. Family First Handles the Property Request.</h2>
             <p>
-              Family First connects real estate with the larger TitanCore Business Intelligence platform.
+              Visitors can learn about Family First here on TitanCore. When they are ready to submit a property inquiry,
+              seller request, buyer interest, management request, or project, they should go to the Family First website.
             </p>
+
+            <div class="actions">
+              <a class="btn" href="https://familyfirstequitygroup.com">Go to Family First Website →</a>
+            </div>
           </div>
         </div>
 
-        <div class="grid cols-3">
-          <a class="card" href="business-book.html">
-            <h3>Local Market Research</h3>
-            <p>
-              City and local business movement, real estate activity, population growth,
-              rental demand, and business development.
-            </p>
-            <span class="card-link">Open Business Book →</span>
+        <div class="grid">
+          <a class="path-card" href="https://familyfirstequitygroup.com">
+            <div class="icon">→</div>
+            <div>
+              <h3>Go to Family First Equity Group Website</h3>
+              <p>
+                Seller inquiries, buyer inquiries, property management requests, and real estate project requests belong on the Family First website.
+              </p>
+            </div>
+            <div class="arrow">→</div>
           </a>
 
-          <a class="card" href="stock-watch.html">
-            <h3>Real Estate Stock Watch</h3>
-            <p>
-              Public real estate companies, REITs, home builders,
-              property management companies, and housing market sectors.
-            </p>
-            <span class="card-link">Open Stock Watch →</span>
+          <a class="path-card" href="business-book.html">
+            <div class="icon">B</div>
+            <div>
+              <h3>Learn Real Estate and Business Basics</h3>
+              <p>
+                Visitors can use TitanCore’s Business Intelligence Book to learn before making a property decision.
+              </p>
+            </div>
+            <div class="arrow">→</div>
           </a>
 
-          <a class="card" href="global-business-news.html">
-            <h3>Real Estate Business News</h3>
-            <p>
-              Country-level real estate, construction, housing, banking,
-              interest rates, and business market movement.
-            </p>
-            <span class="card-link">Open Global Business News →</span>
+          <a class="path-card" href="stock-watch.html">
+            <div class="icon">$</div>
+            <div>
+              <h3>Review Market and Real Estate Information</h3>
+              <p>
+                Visitors can learn about housing, REITs, interest rates, construction, finance, and market sectors through TitanCore.
+              </p>
+            </div>
+            <div class="arrow">→</div>
           </a>
         </div>
       </div>
@@ -324,56 +544,242 @@
     <section class="section">
       <div class="container panel">
         <div class="section-head">
-          <div>
-            <div class="kicker">Contact Family First Through TitanCore</div>
-            <h2>Start With a Public Request</h2>
-            <p>
-              Visitors interested in Family First Equity Group can use the TitanCore contact page
-              and select Family First Equity Group as the reason for contact.
-            </p>
+          <div class="kicker">Family First Information Areas</div>
+          <h2>What Visitors Can Learn Here</h2>
+          <p>
+            This TitanCore page should give enough information for visitors to understand Family First before leaving TitanCore
+            to continue on the Family First website.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Sell Property Interest</h3>
+              <p>
+                Learn what property owners may need to understand before selling: property condition, mortgage status,
+                repair needs, occupancy, photos, location, and market demand.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Buy Property / Acquisitions</h3>
+              <p>
+                Learn how acquisition interest may involve property value, comparable sales, rental demand,
+                repairs, risk, location, and long-term strategy.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560184897-ae75f418493e?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Property Management</h3>
+              <p>
+                Learn about property organization, maintenance, tenant communication, rent collection,
+                owner reporting, property performance, and management readiness.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Market Research</h3>
+              <p>
+                Learn how local jobs, population movement, schools, development, traffic, interest rates,
+                and neighborhood activity can affect real estate demand.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Property Education</h3>
+              <p>
+                Learn about roofs, HVAC, plumbing, electrical systems, foundation, interior condition,
+                repairs, taxes, insurance, HOA, and holding costs.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Owner Information</h3>
+              <p>
+                Learn what owners may consider before selling, holding, renting, repairing, refinancing,
+                or requesting professional review.
+              </p>
+            </div>
           </div>
         </div>
 
         <div class="actions">
-          <a class="btn" href="contact.html">Contact About Family First</a>
-          <a class="btn ghost" href="companies.html">Back to Companies</a>
-          <a class="btn ghost" href="business-book.html">Open Business Intelligence Book</a>
+          <a class="btn" href="https://familyfirstequitygroup.com">Continue to Family First Website →</a>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container panel">
-        <h2>Family First Notice</h2>
+        <div class="section-head">
+          <div class="kicker">How the Flow Works</div>
+          <h2>From TitanCore to Family First</h2>
+          <p>
+            TitanCore is the information layer. Family First is where visitors continue when they need to request property support,
+            submit seller interest, discuss acquisitions, or ask about property management.
+          </p>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="number">1</div>
+              <h3>Visitor Reads on TitanCore</h3>
+              <p>
+                The visitor clicks Family First from TitanCore and learns what Family First does and how it connects to the TitanCore network.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">2</div>
+              <h3>Visitor Learns Before Requesting</h3>
+              <p>
+                The visitor can learn about property opportunities, acquisitions, management, market conditions, and ownership decisions.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">3</div>
+              <h3>Visitor Leaves TitanCore</h3>
+              <p>
+                When ready, the visitor clicks the Family First website button and leaves TitanCore to continue on Family First’s own website.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">4</div>
+              <h3>Family First Handles the Request</h3>
+              <p>
+                Seller requests, buyer interest, property management requests, and real estate project inquiries belong on the Family First website.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="https://familyfirstequitygroup.com">Go to Family First Website →</a>
+          <a class="btn ghost" href="companies.html">Return to Company Network →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Public Notice</div>
+          <h2>Family First Notice</h2>
+        </div>
 
         <p>
-          Family First Equity Group public content is for education and general information only.
-          It is not legal advice, tax advice, financial advice, investment advice, real estate brokerage advice,
-          appraisal advice, property management guarantee, or a promise to buy or sell any property.
+          This TitanCore Family First page is for public information and education only. It does not create a real estate brokerage relationship,
+          agency relationship, property management agreement, purchase agreement, sale agreement, investment agreement, legal advice,
+          tax advice, financial advice, appraisal advice, or guarantee of property results.
         </p>
 
         <p class="notice">
-          Real estate decisions should be reviewed with the appropriate licensed professionals,
-          attorneys, tax professionals, lenders, inspectors, appraisers, real estate professionals,
-          or property management professionals when needed.
+          Family First Equity Group is not presenting itself as a real estate broker or agent on this TitanCore information page.
+          Visitors who want to request property review, submit seller interest, ask about buying opportunities, or request management support
+          should continue to the Family First Equity Group website.
         </p>
+
+        <div class="actions">
+          <a class="btn" href="https://familyfirstequitygroup.com">Learn More on Family First Website →</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>Family First Equity Group</strong>
-        <p class="notice">
-          Public company information page inside the TitanCore Holdings website.
-        </p>
-      </div>
+    <div class="container">
+      <strong>Family First Equity Group</strong>
+      <p>
+        Public information page inside TitanCore Holdings. Property requests and business inquiries belong on the Family First Equity Group website.
+      </p>
 
-      <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+      <div class="actions">
+        <a class="btn ghost" href="https://familyfirstequitygroup.com">Family First Website →</a>
+        <a class="btn ghost" href="companies.html">Company Network →</a>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const heroImages = [
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1700&q=80"
+    ];
+
+    const wideImages = [
+      "https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1700&q=80"
+    ];
+
+    const dailyImages = [
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80"
+    ];
+
+    function dayIndex(list){
+      const dayNumber = Math.floor(Date.now() / 86400000);
+      return dayNumber % list.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll(".nav a").forEach(function(link){
+        if(link.getAttribute("href") === currentPage){
+          link.classList.add("active");
+        }
+      });
+
+      const hero = document.getElementById("heroCard");
+      const wide = document.getElementById("wideImage");
+
+      if(hero){
+        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
+      }
+
+      if(wide){
+        wide.style.setProperty("--wide-image", `url("${wideImages[dayIndex(wideImages)]}")`);
+      }
+
+      document.querySelectorAll(".daily-card-img").forEach(function(item,index){
+        const img = dailyImages[(dayIndex(dailyImages) + index) % dailyImages.length];
+
+        item.style.backgroundImage =
+          `linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.30)), url("${img}")`;
+      });
+    });
+  </script>
 </body>
 </html>
