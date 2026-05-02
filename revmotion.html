@@ -1,27 +1,395 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>RevMotion Auto & Marine LLC | TitanCore Holdings</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root{
+      --black:#000000;
+      --green:#00b85f;
+      --gold:#d8b45a;
+      --soft-gold:#f3d98b;
+      --yellow:#ffd000;
+      --white:#ffffff;
+      --border:rgba(216,180,90,.58);
+      --panel:rgba(0,0,0,.82);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left,rgba(0,184,95,.18),transparent 32%),
+        linear-gradient(180deg,#000 0%,#031108 45%,#000 100%);
+      color:var(--soft-gold);
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.5;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(1120px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:#000;
+      border-bottom:1px solid var(--border);
+      padding:28px 0 34px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin-bottom:34px;
+    }
+
+    .logo-box{
+      width:88px;
+      height:88px;
+      border:3px solid var(--gold);
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      color:var(--yellow);
+      font-size:48px;
+      font-weight:900;
+      background:rgba(216,180,90,.08);
+      box-shadow:0 0 25px rgba(0,184,95,.28);
+      flex:0 0 auto;
+    }
+
+    .brand-title{
+      color:var(--green);
+      font-size:clamp(32px,6vw,62px);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:.5px;
+    }
+
+    .brand-subtitle{
+      color:var(--gold);
+      font-size:clamp(14px,3vw,24px);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-top:12px;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px 56px;
+      padding-top:24px;
+      border-top:1px solid rgba(216,180,90,.35);
+    }
+
+    .nav a{
+      color:var(--white);
+      font-size:clamp(20px,4vw,34px);
+      font-weight:900;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:var(--yellow);
+    }
+
+    .hero{
+      padding:56px 0 40px;
+    }
+
+    .hero-card{
+      min-height:720px;
+      border:1.5px solid var(--border);
+      border-radius:34px;
+      padding:clamp(34px,7vw,76px);
+      background:
+        linear-gradient(rgba(0,0,0,.68),rgba(0,0,0,.90)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1700&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      box-shadow:0 0 38px rgba(0,184,95,.16);
+    }
+
+    .kicker{
+      color:var(--gold);
+      font-size:clamp(18px,4vw,34px);
+      font-weight:900;
+      letter-spacing:10px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{
+      color:var(--green);
+      font-weight:1000;
+      margin-top:0;
+    }
+
+    h1{
+      font-size:clamp(58px,11vw,122px);
+      line-height:.95;
+      letter-spacing:-2px;
+      margin-bottom:30px;
+    }
+
+    h2{
+      font-size:clamp(44px,8vw,86px);
+      line-height:1;
+      margin-bottom:24px;
+    }
+
+    h3{
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.08;
+      margin-bottom:14px;
+    }
+
+    p{
+      color:var(--soft-gold);
+      font-size:clamp(20px,3.9vw,32px);
+      font-weight:650;
+      margin:0;
+    }
+
+    .lead{
+      font-size:clamp(25px,5vw,46px);
+      font-weight:750;
+      max-width:990px;
+      margin-bottom:36px;
+    }
+
+    .notice{
+      color:rgba(243,217,139,.86);
+      font-size:clamp(18px,3.4vw,27px);
+      font-weight:700;
+      margin-top:24px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-top:32px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72px;
+      padding:18px 30px;
+      border-radius:18px;
+      border:1.5px solid var(--gold);
+      background:var(--yellow);
+      color:#000;
+      font-size:clamp(18px,3.5vw,28px);
+      font-weight:900;
+      text-align:center;
+    }
+
+    .btn.ghost{
+      background:rgba(0,0,0,.72);
+      color:var(--soft-gold);
+    }
+
+    .btn:hover{
+      background:var(--green);
+      color:var(--white);
+    }
+
+    .section{
+      padding:42px 0;
+    }
+
+    .panel{
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      background:
+        linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.90)),
+        radial-gradient(circle at top left,rgba(0,184,95,.13),transparent 42%);
+      padding:clamp(30px,6vw,64px);
+      box-shadow:0 0 24px rgba(0,184,95,.10);
+    }
+
+    .section-head{
+      margin-bottom:34px;
+    }
+
+    .grid{
+      display:grid;
+      gap:24px;
+    }
+
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    .card{
+      border:1.5px solid var(--border);
+      border-radius:28px;
+      background:rgba(0,0,0,.76);
+      overflow:hidden;
+      min-height:100%;
+    }
+
+    .card-img{
+      height:270px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--border);
+    }
+
+    .card-body{
+      padding:clamp(26px,5vw,44px);
+    }
+
+    .card-link{
+      display:inline-block;
+      margin-top:24px;
+      color:var(--yellow);
+      font-size:clamp(19px,3.6vw,28px);
+      font-weight:900;
+    }
+
+    .wide-image{
+      min-height:460px;
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      padding:clamp(30px,6vw,64px);
+      background:
+        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.88)),
+        var(--wide-image),
+        url("https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1700&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:flex-end;
+      margin-bottom:28px;
+    }
+
+    .path-card{
+      display:grid;
+      grid-template-columns:78px 1fr auto;
+      gap:24px;
+      align-items:center;
+      border:1.5px solid var(--border);
+      border-radius:26px;
+      background:rgba(0,0,0,.78);
+      padding:28px;
+    }
+
+    .path-card:hover{
+      border-color:var(--yellow);
+      transform:translateY(-2px);
+    }
+
+    .icon{
+      width:66px;
+      height:66px;
+      border-radius:50%;
+      border:1px solid var(--border);
+      display:grid;
+      place-items:center;
+      color:var(--green);
+      font-size:32px;
+      font-weight:900;
+    }
+
+    .arrow{
+      color:var(--gold);
+      font-size:46px;
+      font-weight:900;
+    }
+
+    .number{
+      color:var(--yellow);
+      font-size:clamp(34px,5vw,54px);
+      font-weight:1000;
+      margin-bottom:8px;
+    }
+
+    .footer{
+      border-top:1px solid var(--border);
+      padding:44px 0 58px;
+      background:#000;
+    }
+
+    .footer strong{
+      display:block;
+      color:var(--green);
+      font-size:clamp(34px,6vw,58px);
+      line-height:1.1;
+      margin-bottom:14px;
+    }
+
+    @media(max-width:900px){
+      .cols-2,.cols-3{
+        grid-template-columns:1fr;
+      }
+
+      .path-card{
+        grid-template-columns:1fr auto;
+      }
+
+      .icon{
+        display:none;
+      }
+    }
+
+    @media(max-width:640px){
+      .container{
+        width:min(100% - 32px,1120px);
+      }
+
+      .brand{
+        align-items:flex-start;
+      }
+
+      .logo-box{
+        width:72px;
+        height:72px;
+        font-size:40px;
+      }
+
+      .nav{
+        gap:32px 44px;
+      }
+
+      .hero-card{
+        min-height:620px;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <header class="topbar">
-    <div class="container navwrap">
-      <a class="logo" href="index.html">
-        <span class="logo-mark">TC</span>
-        <span>
-          TitanCore Holdings
-          <small style="display:block;color:#d8b45a;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
-            RevMotion Auto & Marine LLC
-          </small>
-        </span>
-      </a>
+    <div class="container">
+      <div class="brand">
+        <div class="logo-box">T</div>
 
-      <button class="btn ghost mobile-menu" onclick="toggleMenu()">Menu</button>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">RevMotion Auto & Marine LLC</div>
+        </div>
+      </div>
 
       <nav class="nav">
         <a href="index.html">Home</a>
@@ -29,7 +397,7 @@
         <a href="institution.html">Institution</a>
         <a href="institution-financial.html">Institution Financial</a>
         <a href="banks.html">Banks</a>
-        <a class="active" href="companies.html">Company</a>
+        <a href="companies.html">Company</a>
         <a href="join-us.html">Join Us</a>
         <a href="business-book.html">Business Intelligence Book</a>
         <a href="stock-watch.html">Stock Market Watch</a>
@@ -41,282 +409,129 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
+      <div class="container">
+        <div class="hero-card" id="heroCard">
           <div class="kicker">RevMotion Auto & Marine LLC</div>
 
-          <h1>Auto, Marine, Transportation, Repair, and Service Market Information</h1>
+          <h1>Auto, Marine, Marketplace, and Vehicle Service Information</h1>
 
           <p class="lead">
-            RevMotion Auto & Marine LLC is the TitanCore company focused on auto services,
-            marine services, transportation support, repair information, vehicle service education,
-            and auto/marine market research.
+            RevMotion Auto & Marine LLC is the TitanCore company focused on auto and marine information,
+            vehicle marketplace education, repair awareness, listing support concepts, and transportation market learning.
           </p>
 
           <div class="actions">
-            <a class="btn" href="#revmotion-services">View Focus Areas</a>
-            <a class="btn ghost" href="#vehicle-education">Vehicle Education</a>
-            <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+            <a class="btn" href="https://revmotionautomarine.com">Learn More on RevMotion Website →</a>
+            <a class="btn ghost" href="#revmotion-info">View RevMotion Information →</a>
+            <a class="btn ghost" href="companies.html">Back to Companies →</a>
           </div>
 
           <p class="notice">
-            Public information only. RevMotion content is not mechanical advice, legal advice, insurance advice, or service approval.
+            This TitanCore page is information only. Vehicle listings, auto requests, marine requests,
+            service inquiries, and new projects should be completed on the RevMotion Auto & Marine website.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="revmotion-info" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Company Overview</div>
+          <h2>What RevMotion Represents</h2>
+          <p>
+            RevMotion gives visitors a public place to understand vehicle marketplace ideas,
+            auto and marine service categories, vehicle condition awareness, listing education,
+            repair readiness, and transportation market information before they leave TitanCore.
           </p>
         </div>
 
-        <div class="panel">
-          <h3>RevMotion Focus Areas</h3>
-
-          <div class="status-row">
-            <span>Auto Services</span>
-            <span class="badge green">Info</span>
-          </div>
-
-          <div class="status-row">
-            <span>Marine Services</span>
-            <span class="badge green">Info</span>
-          </div>
-
-          <div class="status-row">
-            <span>Vehicle Repair Education</span>
-            <span class="badge green">Public</span>
-          </div>
-
-          <div class="status-row">
-            <span>Transportation Support</span>
-            <span class="badge green">Info</span>
-          </div>
-
-          <div class="status-row">
-            <span>Auto / Marine Market</span>
-            <span class="badge green">Research</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="revmotion-services" class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">RevMotion Services</div>
-            <h2>What RevMotion Helps People Understand</h2>
-            <p>
-              RevMotion Auto & Marine LLC is designed to provide public information around auto,
-              marine, repair readiness, maintenance education, transportation needs, and service planning.
-            </p>
-          </div>
-        </div>
-
         <div class="grid cols-3">
           <div class="card">
-            <h3>Auto Service Information</h3>
-            <p>
-              Public information about vehicle maintenance, common service needs,
-              repair planning, diagnostics, parts, and responsible vehicle ownership.
-            </p>
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Auto Marketplace Education</h3>
+              <p>
+                Information about vehicle listings, seller readiness, buyer awareness, vehicle details,
+                pricing, condition, and marketplace preparation.
+              </p>
+            </div>
           </div>
 
           <div class="card">
-            <h3>Marine Service Information</h3>
-            <p>
-              Public information about boats, marine equipment, seasonal preparation,
-              maintenance awareness, service needs, and safety planning.
-            </p>
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Marine Market Awareness</h3>
+              <p>
+                Education about boats, marine listings, condition review, seasonal demand,
+                maintenance awareness, and responsible marine ownership.
+              </p>
+            </div>
           </div>
 
           <div class="card">
-            <h3>Repair Readiness</h3>
-            <p>
-              Information to help people prepare before seeking repair service,
-              including symptoms, warning lights, noises, leaks, and service history.
-            </p>
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Repair and Service Readiness</h3>
+              <p>
+                Information about inspections, repairs, maintenance, service history,
+                parts, cost awareness, and preparing vehicles for use or sale.
+              </p>
+            </div>
           </div>
-
-          <div class="card">
-            <h3>Transportation Support</h3>
-            <p>
-              Information around vehicle reliability, business transportation needs,
-              service scheduling, fleet awareness, and mobility support.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Parts & Maintenance Awareness</h3>
-            <p>
-              Education about tires, brakes, batteries, fluids, belts, filters,
-              lights, engines, transmissions, trailers, and marine systems.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Auto / Marine Market Research</h3>
-            <p>
-              Public market information about vehicle demand, repair demand,
-              marine demand, transportation trends, and service industry movement.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="vehicle-education" class="section">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Vehicle Education Center</div>
-            <h2>Learn Before You Repair, Buy, Sell, or Service</h2>
-            <p>
-              RevMotion should give visitors helpful information first, so people can understand
-              their vehicle, boat, repair needs, warning signs, and service options before making decisions.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <h3>Warning Lights</h3>
-            <p>
-              Check engine lights, battery lights, oil pressure lights, brake warnings,
-              and temperature warnings should not be ignored.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Maintenance Schedule</h3>
-            <p>
-              Oil changes, filters, tires, brakes, fluids, belts, batteries,
-              and inspections can help protect long-term vehicle reliability.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Repair Symptoms</h3>
-            <p>
-              Noises, vibration, leaks, smoke, overheating, weak starts,
-              poor braking, and rough shifting can help identify service needs.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Marine Readiness</h3>
-            <p>
-              Boats may need battery checks, fuel checks, hull inspection,
-              trailer review, safety equipment, and seasonal maintenance.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Service Records</h3>
-            <p>
-              Keeping records of repairs, parts, inspections, and maintenance
-              helps owners understand the history and condition of a vehicle or boat.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Buying Used Vehicles</h3>
-            <p>
-              Buyers should review condition, title status, service history,
-              mileage, leaks, warning lights, test drive results, and inspection needs.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Customer Service Path</div>
-            <h2>If Someone Needs Auto or Marine Information</h2>
-            <p>
-              This section explains a simple public path for visitors.
-              It does not replace inspection by a qualified mechanic, marine technician, or licensed professional.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid cols-4">
-          <div class="card">
-            <h3>1. Identify the Issue</h3>
-            <p>
-              Write down the problem, warning light, sound, leak, smell,
-              driving change, or marine system issue.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>2. Gather Details</h3>
-            <p>
-              Vehicle year, make, model, mileage, service history, photos,
-              symptoms, and when the issue started.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>3. Review Safety</h3>
-            <p>
-              If the issue may affect brakes, steering, overheating, electrical safety,
-              fuel, or water safety, get professional help quickly.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>4. Contact RevMotion</h3>
-            <p>
-              Visitors can contact TitanCore and select RevMotion Auto & Marine LLC
-              for the correct public inquiry path.
-            </p>
-          </div>
-        </div>
-
-        <div class="actions">
-          <a class="btn" href="contact.html">Contact About RevMotion</a>
-          <a class="btn ghost" href="companies.html">Back to Companies</a>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <div class="section-head">
+        <div class="wide-image" id="wideImage">
           <div>
-            <div class="kicker">Market Intelligence</div>
-            <h2>Auto and Marine Market Information</h2>
+            <div class="kicker">Important Direction</div>
+            <h2>TitanCore Explains. RevMotion Handles the Auto and Marine Request.</h2>
             <p>
-              RevMotion connects auto and marine services with TitanCore’s larger public business intelligence platform.
+              Visitors can learn about RevMotion here on TitanCore. When they are ready to list a vehicle,
+              request auto or marine information, ask about service, or start a project, they should go to the RevMotion website.
             </p>
+
+            <div class="actions">
+              <a class="btn" href="https://revmotionautomarine.com">Go to RevMotion Website →</a>
+            </div>
           </div>
         </div>
 
-        <div class="grid cols-3">
-          <a class="card" href="business-book.html">
-            <h3>Local Auto / Marine Demand</h3>
-            <p>
-              City and local demand for auto repair, marine services, transportation,
-              business fleets, mobile services, and service industry growth.
-            </p>
-            <span class="card-link">Open Business Book →</span>
+        <div class="grid">
+          <a class="path-card" href="https://revmotionautomarine.com">
+            <div class="icon">→</div>
+            <div>
+              <h3>Go to RevMotion Auto & Marine Website</h3>
+              <p>
+                Vehicle listings, seller requests, buyer interest, marine inquiries, and service-related projects belong on RevMotion’s website.
+              </p>
+            </div>
+            <div class="arrow">→</div>
           </a>
 
-          <a class="card" href="stock-watch.html">
-            <h3>Auto / Marine Stock Watch</h3>
-            <p>
-              Public auto companies, parts companies, transportation companies,
-              marine companies, logistics, and service market sectors.
-            </p>
-            <span class="card-link">Open Stock Watch →</span>
+          <a class="path-card" href="business-book.html">
+            <div class="icon">B</div>
+            <div>
+              <h3>Learn Auto, Marine, and Business Basics</h3>
+              <p>
+                Visitors can use TitanCore’s Business Intelligence Book to learn before making an auto, marine, or marketplace decision.
+              </p>
+            </div>
+            <div class="arrow">→</div>
           </a>
 
-          <a class="card" href="global-business-news.html">
-            <h3>Auto / Marine Business News</h3>
-            <p>
-              Country-level vehicle markets, transportation, oil, parts supply,
-              shipping, marine activity, and business movement.
-            </p>
-            <span class="card-link">Open Global Business News →</span>
+          <a class="path-card" href="stock-watch.html">
+            <div class="icon">$</div>
+            <div>
+              <h3>Review Auto and Transportation Markets</h3>
+              <p>
+                Visitors can learn about auto companies, parts, logistics, marine markets, transportation, and consumer demand through TitanCore.
+              </p>
+            </div>
+            <div class="arrow">→</div>
           </a>
         </div>
       </div>
@@ -325,56 +540,241 @@
     <section class="section">
       <div class="container panel">
         <div class="section-head">
-          <div>
-            <div class="kicker">Contact RevMotion Through TitanCore</div>
-            <h2>Start With a Public Request</h2>
-            <p>
-              Visitors interested in RevMotion Auto & Marine LLC can use the TitanCore contact page
-              and select RevMotion Auto & Marine LLC as the reason for contact.
-            </p>
+          <div class="kicker">RevMotion Information Areas</div>
+          <h2>What Visitors Can Learn Here</h2>
+          <p>
+            This TitanCore page should give enough information for visitors to understand RevMotion before leaving TitanCore
+            to continue on the RevMotion website.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Vehicle Listing Education</h3>
+              <p>
+                Learn what sellers may need before listing a vehicle: photos, title status,
+                mileage, condition, repair history, price range, and contact information.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Buyer Awareness</h3>
+              <p>
+                Learn why buyers should review condition, title, mileage, service records,
+                inspections, pricing, and ownership costs before making a decision.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Marine Information</h3>
+              <p>
+                Learn about boat condition, maintenance, storage, seasonal usage,
+                trailer condition, engine care, and marine ownership readiness.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Auto Service Awareness</h3>
+              <p>
+                Learn about maintenance, diagnostics, tires, brakes, oil service,
+                battery issues, repairs, inspections, and service preparation.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Vehicle Value Education</h3>
+              <p>
+                Learn how condition, mileage, title status, market demand, brand, service history,
+                and location can affect vehicle value.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Repair Cost Awareness</h3>
+              <p>
+                Learn why repair estimates, parts availability, labor time, diagnostics,
+                and maintenance history matter before buying, selling, or repairing.
+              </p>
+            </div>
           </div>
         </div>
 
         <div class="actions">
-          <a class="btn" href="contact.html">Contact About RevMotion</a>
-          <a class="btn ghost" href="companies.html">Back to Companies</a>
-          <a class="btn ghost" href="business-book.html">Open Business Intelligence Book</a>
+          <a class="btn" href="https://revmotionautomarine.com">Continue to RevMotion Website →</a>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container panel">
-        <h2>RevMotion Notice</h2>
+        <div class="section-head">
+          <div class="kicker">How the Flow Works</div>
+          <h2>From TitanCore to RevMotion</h2>
+          <p>
+            TitanCore is the information layer. RevMotion is where visitors continue when they need to list,
+            buy, sell, request service information, ask marine questions, or start a RevMotion project.
+          </p>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="number">1</div>
+              <h3>Visitor Reads on TitanCore</h3>
+              <p>
+                The visitor clicks RevMotion from TitanCore and learns what RevMotion does and how it connects to the TitanCore network.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">2</div>
+              <h3>Visitor Learns Before Requesting</h3>
+              <p>
+                The visitor can learn about vehicle listings, marine information, repairs, service readiness, and marketplace basics.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">3</div>
+              <h3>Visitor Leaves TitanCore</h3>
+              <p>
+                When ready, the visitor clicks the RevMotion website button and leaves TitanCore to continue on RevMotion’s own website.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">4</div>
+              <h3>RevMotion Handles the Request</h3>
+              <p>
+                Vehicle listings, seller interest, buyer interest, marine requests, and service-related inquiries belong on the RevMotion website.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="https://revmotionautomarine.com">Go to RevMotion Website →</a>
+          <a class="btn ghost" href="companies.html">Return to Company Network →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Public Notice</div>
+          <h2>RevMotion Notice</h2>
+        </div>
 
         <p>
-          RevMotion Auto & Marine LLC public content is for education and general information only.
-          It is not mechanical advice, marine safety advice, legal advice, insurance advice,
-          financial advice, warranty advice, inspection approval, repair approval, or a guarantee of results.
+          This TitanCore RevMotion page is for public information and education only. It does not create a dealership relationship,
+          brokerage relationship, sale agreement, purchase agreement, service agreement, repair agreement, financing agreement,
+          appraisal, inspection guarantee, legal advice, financial advice, or guarantee of vehicle results.
         </p>
 
         <p class="notice">
-          Auto, marine, repair, safety, insurance, title, warranty, and transportation decisions should be reviewed
-          with the appropriate qualified mechanics, marine technicians, inspectors, insurers, attorneys,
-          lenders, or licensed professionals when needed.
+          RevMotion Auto & Marine LLC is not presented on this TitanCore page as a dealership. Visitors who want to list,
+          buy, sell, request auto or marine information, or start a RevMotion project should continue to the RevMotion Auto & Marine website.
         </p>
+
+        <div class="actions">
+          <a class="btn" href="https://revmotionautomarine.com">Learn More on RevMotion Website →</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>RevMotion Auto & Marine LLC</strong>
-        <p class="notice">
-          Public company information page inside the TitanCore Holdings website.
-        </p>
-      </div>
+    <div class="container">
+      <strong>RevMotion Auto & Marine LLC</strong>
+      <p>
+        Public information page inside TitanCore Holdings. Vehicle, auto, marine, and marketplace requests belong on the RevMotion Auto & Marine website.
+      </p>
 
-      <a class="btn ghost" href="contact.html">Contact TitanCore</a>
+      <div class="actions">
+        <a class="btn ghost" href="https://revmotionautomarine.com">RevMotion Website →</a>
+        <a class="btn ghost" href="companies.html">Company Network →</a>
+      </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const heroImages = [
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1700&q=80"
+    ];
+
+    const wideImages = [
+      "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1700&q=80"
+    ];
+
+    const dailyImages = [
+      "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?auto=format&fit=crop&w=1200&q=80"
+    ];
+
+    function dayIndex(list){
+      const dayNumber = Math.floor(Date.now() / 86400000);
+      return dayNumber % list.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll(".nav a").forEach(function(link){
+        if(link.getAttribute("href") === currentPage){
+          link.classList.add("active");
+        }
+      });
+
+      const hero = document.getElementById("heroCard");
+      const wide = document.getElementById("wideImage");
+
+      if(hero){
+        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
+      }
+
+      if(wide){
+        wide.style.setProperty("--wide-image", `url("${wideImages[dayIndex(wideImages)]}")`);
+      }
+
+      document.querySelectorAll(".daily-card-img").forEach(function(item,index){
+        const img = dailyImages[(dayIndex(dailyImages) + index) % dailyImages.length];
+
+        item.style.backgroundImage =
+          `linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.30)), url("${img}")`;
+      });
+    });
+  </script>
 </body>
 </html>
