@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AI Automation & Business Technology | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#000000;
+      --green:#00b85f;
+      --gold:#d8b45a;
+      --soft-gold:#f3d98b;
+      --yellow:#ffd000;
+      --white:#ffffff;
+      --border:rgba(216,180,90,.58);
+      --panel:rgba(0,0,0,.82);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left,rgba(0,184,95,.18),transparent 32%),
+        linear-gradient(180deg,#000 0%,#031108 45%,#000 100%);
+      color:var(--soft-gold);
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.5;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(1120px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:#000;
+      border-bottom:1px solid var(--border);
+      padding:28px 0 34px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin-bottom:34px;
+    }
+
+    .logo-box{
+      width:88px;
+      height:88px;
+      border:3px solid var(--gold);
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      color:var(--yellow);
+      font-size:48px;
+      font-weight:900;
+      background:rgba(216,180,90,.08);
+      box-shadow:0 0 25px rgba(0,184,95,.28);
+      flex:0 0 auto;
+    }
+
+    .brand-title{
+      color:var(--green);
+      font-size:clamp(32px,6vw,62px);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:.5px;
+    }
+
+    .brand-subtitle{
+      color:var(--gold);
+      font-size:clamp(14px,3vw,24px);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-top:12px;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px 56px;
+      padding-top:24px;
+      border-top:1px solid rgba(216,180,90,.35);
+    }
+
+    .nav a{
+      color:var(--white);
+      font-size:clamp(20px,4vw,34px);
+      font-weight:900;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:var(--yellow);
+    }
+
+    .hero{
+      padding:56px 0 40px;
+    }
+
+    .hero-card{
+      min-height:720px;
+      border:1.5px solid var(--border);
+      border-radius:34px;
+      padding:clamp(34px,7vw,76px);
+      background:
+        linear-gradient(rgba(0,0,0,.60),rgba(0,0,0,.92)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1700&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      box-shadow:0 0 38px rgba(0,184,95,.16);
+    }
+
+    .kicker{
+      color:var(--gold);
+      font-size:clamp(18px,4vw,34px);
+      font-weight:900;
+      letter-spacing:10px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{
+      color:var(--green);
+      font-weight:1000;
+      margin-top:0;
+    }
+
+    h1{
+      font-size:clamp(58px,11vw,122px);
+      line-height:.95;
+      letter-spacing:-2px;
+      margin-bottom:30px;
+    }
+
+    h2{
+      font-size:clamp(44px,8vw,86px);
+      line-height:1;
+      margin-bottom:24px;
+    }
+
+    h3{
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.08;
+      margin-bottom:14px;
+    }
+
+    p{
+      color:var(--soft-gold);
+      font-size:clamp(20px,3.9vw,32px);
+      font-weight:650;
+      margin:0;
+    }
+
+    .lead{
+      font-size:clamp(25px,5vw,46px);
+      font-weight:750;
+      max-width:990px;
+      margin-bottom:36px;
+    }
+
+    .notice{
+      color:rgba(243,217,139,.86);
+      font-size:clamp(18px,3.4vw,27px);
+      font-weight:700;
+      margin-top:24px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-top:32px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72px;
+      padding:18px 30px;
+      border-radius:18px;
+      border:1.5px solid var(--gold);
+      background:var(--yellow);
+      color:#000;
+      font-size:clamp(18px,3.5vw,28px);
+      font-weight:900;
+      text-align:center;
+    }
+
+    .btn.ghost{
+      background:rgba(0,0,0,.72);
+      color:var(--soft-gold);
+    }
+
+    .btn:hover{
+      background:var(--green);
+      color:var(--white);
+    }
+
+    .section{
+      padding:42px 0;
+    }
+
+    .panel{
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      background:
+        linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.90)),
+        radial-gradient(circle at top left,rgba(0,184,95,.13),transparent 42%);
+      padding:clamp(30px,6vw,64px);
+      box-shadow:0 0 24px rgba(0,184,95,.10);
+    }
+
+    .section-head{
+      margin-bottom:34px;
+    }
+
+    .grid{
+      display:grid;
+      gap:24px;
+    }
+
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    .card{
+      border:1.5px solid var(--border);
+      border-radius:28px;
+      background:rgba(0,0,0,.76);
+      overflow:hidden;
+      min-height:100%;
+    }
+
+    .card-img{
+      height:270px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--border);
+    }
+
+    .card-body{
+      padding:clamp(26px,5vw,44px);
+    }
+
+    .daily-box{
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      background:rgba(0,0,0,.80);
+      overflow:hidden;
+      box-shadow:0 0 24px rgba(0,184,95,.10);
+    }
+
+    .daily-img{
+      min-height:370px;
+      background:
+        linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.58)),
+        var(--daily-image),
+        url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play{
+      width:94px;
+      height:94px;
+      border-radius:50%;
+      border:3px solid var(--gold);
+      background:rgba(0,0,0,.74);
+      color:var(--yellow);
+      display:grid;
+      place-items:center;
+      font-size:42px;
+      font-weight:900;
+      padding-left:6px;
+      box-shadow:0 0 34px rgba(0,184,95,.28);
+    }
+
+    .daily-content{
+      padding:clamp(28px,5vw,54px);
+    }
+
+    .wide-image{
+      min-height:460px;
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      padding:clamp(30px,6vw,64px);
+      background:
+        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.88)),
+        var(--wide-image),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1700&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:flex-end;
+      margin-bottom:28px;
+    }
+
+    .number{
+      color:var(--yellow);
+      font-size:clamp(34px,5vw,54px);
+      font-weight:1000;
+      margin-bottom:8px;
+    }
+
+    .footer{
+      border-top:1px solid var(--border);
+      padding:44px 0 58px;
+      background:#000;
+    }
+
+    .footer strong{
+      display:block;
+      color:var(--green);
+      font-size:clamp(34px,6vw,58px);
+      line-height:1.1;
+      margin-bottom:14px;
+    }
+
+    @media(max-width:900px){
+      .cols-2,.cols-3{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:640px){
+      .container{
+        width:min(100% - 32px,1120px);
+      }
+
+      .brand{
+        align-items:flex-start;
+      }
+
+      .logo-box{
+        width:72px;
+        height:72px;
+        font-size:40px;
+      }
+
+      .nav{
+        gap:32px 44px;
+      }
+
+      .hero-card{
+        min-height:620px;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <div class="logo-box">T</div>
+
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">AI Automation & Business Technology</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="investor.html">Investor</a>
+        <a href="institution.html">Institution</a>
+        <a href="institution-financial.html">Institution Financial</a>
+        <a href="banks.html">Banks</a>
+        <a href="companies.html">Company</a>
+        <a href="join-us.html">Join Us</a>
+        <a class="active" href="business-book.html">Business Intelligence Book</a>
+        <a href="stock-watch.html">Stock Market Watch</a>
+        <a href="global-business-news.html">Global Business News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card" id="heroCard">
+          <div class="kicker">AI Business Education</div>
+
+          <h1>AI, Automation, and Business Technology</h1>
+
+          <p class="lead">
+            This public education page explains what artificial intelligence, automation,
+            and business technology mean in the modern marketplace.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#daily-ai">Today’s AI Lesson →</a>
+            <a class="btn ghost" href="#ai-basics">AI Basics →</a>
+            <a class="btn ghost" href="business-book.html">Back to Business Book →</a>
+          </div>
+
+          <p class="notice">
+            Public education only. This page does not describe any internal company system,
+            private workflow, internal dashboard, private technology process, or company operation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="daily-ai" class="section">
+      <div class="container">
+        <div class="daily-box">
+          <div class="daily-img" id="dailyImage">
+            <div class="play">▶</div>
+          </div>
+
+          <div class="daily-content">
+            <div class="kicker" id="dailyTag">Daily AI Business Lesson</div>
+            <h2 id="dailyTitle">Today’s AI Business Topic</h2>
+            <p id="dailyText">
+              AI is becoming a major topic in business because it can affect productivity,
+              competition, customer service, research, marketing, and how companies understand information.
+            </p>
+
+            <div class="actions">
+              <a class="btn" href="#ai-basics">Learn More →</a>
+              <a class="btn ghost" href="business-book.html">Open Business Book →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai-basics" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">AI Basics</div>
+          <h2>What AI Means for Business</h2>
+          <p>
+            Artificial intelligence is a technology category that can help computers understand patterns,
+            generate text, summarize information, organize data, answer questions, and support digital work.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Information</h3>
+              <p>
+                AI can help people understand large amounts of information, summarize topics, and explain complicated ideas in simpler language.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Productivity</h3>
+              <p>
+                Businesses study AI because it may help with writing, planning, organization, research, customer education, and repetitive work.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Technology Trends</h3>
+              <p>
+                AI is part of a larger technology trend that can affect software, markets, jobs, education, media, and business competition.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="wide-image" id="wideImage">
+          <div>
+            <div class="kicker">Automation Education</div>
+            <h2>Automation Means Repeating a Clear Process With Technology</h2>
+            <p>
+              Automation is different from AI. Automation usually means a repeated process is handled by software,
+              such as reminders, confirmations, routing, scheduling, or updating records.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="number">1</div>
+              <h3>Clear Process</h3>
+              <p>
+                Automation works best when the steps are clear, organized, and easy to repeat.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">2</div>
+              <h3>Less Repetition</h3>
+              <p>
+                Automation can reduce manual repetitive work when used responsibly and reviewed properly.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">3</div>
+              <h3>Better Organization</h3>
+              <p>
+                Automation can help organize reminders, messages, records, follow-ups, and basic business steps.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">4</div>
+              <h3>Human Review</h3>
+              <p>
+                Even with automation, important decisions should be reviewed carefully by responsible people.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Public Business Education</div>
+          <h2>Why Business Owners Should Understand AI</h2>
+          <p>
+            AI is becoming an important topic in business, technology, customer service, marketing,
+            operations, research, productivity, competition, and market planning.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-body">
+              <h3>Market Competition</h3>
+              <p>
+                Businesses that understand technology trends may be better prepared to adapt when markets change.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3>Customer Expectations</h3>
+              <p>
+                Customers may expect faster answers, cleaner websites, better information, and more organized service experiences.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3>Responsible Use</h3>
+              <p>
+                AI should be understood carefully, especially when private data, customer communication, and important decisions are involved.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3>Research</h3>
+              <p>
+                AI can help people explore topics faster, but important information should still be checked with trusted sources.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3>Writing and Planning</h3>
+              <p>
+                AI may help people draft ideas, organize outlines, plan projects, and improve communication when used properly.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3>Technology Awareness</h3>
+              <p>
+                Understanding AI helps visitors follow changes in software, jobs, industries, markets, and business education.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Business Risk</div>
+          <h2>AI Should Be Used Carefully</h2>
+          <p>
+            AI can be useful, but it can also make mistakes. It may misunderstand information, generate incorrect statements,
+            or create content that still needs review.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-body">
+              <h3>Check Important Facts</h3>
+              <p>
+                AI answers should be checked when the topic involves money, legal issues, health, taxes, contracts, compliance, or safety.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3>Protect Private Data</h3>
+              <p>
+                People should avoid putting passwords, Social Security numbers, bank accounts, tax files, or private documents into public tools.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3>Use Professional Review</h3>
+              <p>
+                Legal, tax, financial, medical, insurance, or regulated questions should be reviewed by the proper licensed professional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Important Notice</div>
+          <h2>Public AI Education Only</h2>
+        </div>
+
+        <p>
+          This page is a public education chapter about AI, automation, and business technology.
+          It is not financial advice, legal advice, tax advice, medical advice, investment advice,
+          business implementation advice, or a statement about private company operations.
+        </p>
+
+        <p class="notice">
+          Do not place private passwords, Social Security numbers, bank account numbers, full credit reports,
+          medical files, tax files, legal files, or confidential business documents inside public AI tools or public website forms.
+        </p>
+
+        <div class="actions">
+          <a class="btn" href="business-book.html">Back to Business Intelligence Book →</a>
+          <a class="btn ghost" href="stock-watch.html">Stock Market Watch →</a>
+          <a class="btn ghost" href="global-business-news.html">Global Business News →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>AI Automation & Business Technology</strong>
+      <p>
+        A public education chapter inside the TitanCore Business Intelligence Book.
+      </p>
+
+      <div class="actions">
+        <a class="btn ghost" href="business-book.html">Business Intelligence Book →</a>
+        <a class="btn ghost" href="index.html">Home →</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const heroImages = [
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1700&q=80"
+    ];
+
+    const wideImages = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1700&q=80"
+    ];
+
+    const dailyLessons = [
+      {
+        tag:"Daily AI Business Lesson",
+        title:"AI is a technology trend business owners should understand.",
+        text:"AI can affect productivity, customer service, research, writing, education, marketing, and competition. Visitors should understand the topic before making business decisions.",
+        image:"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Automation Lesson",
+        title:"Automation works best when a process is already clear.",
+        text:"Automation can repeat steps, send reminders, organize records, or support basic workflows, but unclear processes should be cleaned up before automation is added.",
+        image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Responsible Use Lesson",
+        title:"AI can make mistakes, so important facts still need review.",
+        text:"AI output should be checked carefully for legal, financial, medical, tax, safety, contract, or regulated topics.",
+        image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Privacy Lesson",
+        title:"Private information should stay protected.",
+        text:"People should avoid putting passwords, Social Security numbers, bank account information, private documents, or sensitive records into public tools.",
+        image:"https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80"
+      }
+    ];
+
+    const dailyCardImages = [
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
+    ];
+
+    function dayIndex(list){
+      const dayNumber = Math.floor(Date.now() / 86400000);
+      return dayNumber % list.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll(".nav a").forEach(function(link){
+        if(link.getAttribute("href") === currentPage){
+          link.classList.add("active");
+        }
+      });
+
+      const hero = document.getElementById("heroCard");
+      const wide = document.getElementById("wideImage");
+
+      if(hero){
+        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
+      }
+
+      if(wide){
+        wide.style.setProperty("--wide-image", `url("${wideImages[dayIndex(wideImages)]}")`);
+      }
+
+      const lesson = dailyLessons[dayIndex(dailyLessons)];
+      const dailyImage = document.getElementById("dailyImage");
+      const dailyTag = document.getElementById("dailyTag");
+      const dailyTitle = document.getElementById("dailyTitle");
+      const dailyText = document.getElementById("dailyText");
+
+      if(dailyImage){
+        dailyImage.style.setProperty("--daily-image", `url("${lesson.image}")`);
+      }
+
+      if(dailyTag){ dailyTag.textContent = lesson.tag; }
+      if(dailyTitle){ dailyTitle.textContent = lesson.title; }
+      if(dailyText){ dailyText.textContent = lesson.text; }
+
+      document.querySelectorAll(".daily-card-img").forEach(function(item,index){
+        const img = dailyCardImages[(dayIndex(dailyCardImages) + index) % dailyCardImages.length];
+        item.style.backgroundImage =
+          `linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.30)), url("${img}")`;
+      });
+    });
+  </script>
+</body>
+</html>
