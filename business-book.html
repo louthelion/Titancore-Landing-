@@ -1064,6 +1064,20 @@
     }
 
     document.addEventListener("DOMContentLoaded", setDailyMedia);
-  </script>
+  </script><script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("a").forEach(function (link) {
+      const text = link.innerText.toLowerCase();
+
+      if (
+        text.includes("ai") ||
+        text.includes("automation") ||
+        text.includes("business technology")
+      ) {
+        link.setAttribute("href", "business-ai-automation.html");
+      }
+    });
+  });
+</script>
 </body>
 </html>
