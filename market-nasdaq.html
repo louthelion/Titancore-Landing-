@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>NASDAQ Market Watch | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#000000;
+      --green:#00b85f;
+      --gold:#d8b45a;
+      --soft-gold:#f3d98b;
+      --yellow:#ffd000;
+      --white:#ffffff;
+      --border:rgba(216,180,90,.58);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left,rgba(0,184,95,.18),transparent 32%),
+        linear-gradient(180deg,#000 0%,#031108 45%,#000 100%);
+      color:var(--soft-gold);
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.5;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .container{
+      width:min(1120px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:#000;
+      border-bottom:1px solid var(--border);
+      padding:28px 0 34px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin-bottom:34px;
+    }
+
+    .logo-box{
+      width:88px;
+      height:88px;
+      border:3px solid var(--gold);
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      color:var(--yellow);
+      font-size:48px;
+      font-weight:900;
+      background:rgba(216,180,90,.08);
+      box-shadow:0 0 25px rgba(0,184,95,.28);
+      flex:0 0 auto;
+    }
+
+    .brand-title{
+      color:var(--green);
+      font-size:clamp(32px,6vw,62px);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:.5px;
+    }
+
+    .brand-subtitle{
+      color:var(--gold);
+      font-size:clamp(14px,3vw,24px);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-top:12px;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px 56px;
+      padding-top:24px;
+      border-top:1px solid rgba(216,180,90,.35);
+    }
+
+    .nav a{
+      color:var(--white);
+      font-size:clamp(20px,4vw,34px);
+      font-weight:900;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:var(--yellow);
+    }
+
+    .hero{
+      padding:56px 0 40px;
+    }
+
+    .hero-card{
+      min-height:720px;
+      border:1.5px solid var(--border);
+      border-radius:34px;
+      padding:clamp(34px,7vw,76px);
+      background:
+        linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.92)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1700&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      box-shadow:0 0 38px rgba(0,184,95,.16);
+    }
+
+    .kicker{
+      color:var(--gold);
+      font-size:clamp(18px,4vw,34px);
+      font-weight:900;
+      letter-spacing:10px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{
+      color:var(--green);
+      font-weight:1000;
+      margin-top:0;
+    }
+
+    h1{
+      font-size:clamp(58px,11vw,122px);
+      line-height:.95;
+      letter-spacing:-2px;
+      margin-bottom:30px;
+    }
+
+    h2{
+      font-size:clamp(44px,8vw,86px);
+      line-height:1;
+      margin-bottom:24px;
+    }
+
+    h3{
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.08;
+      margin-bottom:14px;
+    }
+
+    p{
+      color:var(--soft-gold);
+      font-size:clamp(20px,3.9vw,32px);
+      font-weight:650;
+      margin:0;
+    }
+
+    .lead{
+      font-size:clamp(25px,5vw,46px);
+      font-weight:750;
+      max-width:990px;
+      margin-bottom:36px;
+    }
+
+    .notice{
+      color:rgba(243,217,139,.86);
+      font-size:clamp(18px,3.4vw,27px);
+      font-weight:700;
+      margin-top:24px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-top:32px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72px;
+      padding:18px 30px;
+      border-radius:18px;
+      border:1.5px solid var(--gold);
+      background:var(--yellow);
+      color:#000;
+      font-size:clamp(18px,3.5vw,28px);
+      font-weight:900;
+      text-align:center;
+    }
+
+    .btn.ghost{
+      background:rgba(0,0,0,.72);
+      color:var(--soft-gold);
+    }
+
+    .btn:hover{
+      background:var(--green);
+      color:var(--white);
+    }
+
+    .section{
+      padding:42px 0;
+      scroll-margin-top:24px;
+    }
+
+    .panel{
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      background:
+        linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.90)),
+        radial-gradient(circle at top left,rgba(0,184,95,.13),transparent 42%);
+      padding:clamp(30px,6vw,64px);
+      box-shadow:0 0 24px rgba(0,184,95,.10);
+    }
+
+    .section-head{
+      margin-bottom:34px;
+    }
+
+    .grid{
+      display:grid;
+      gap:24px;
+    }
+
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    .card{
+      border:1.5px solid var(--border);
+      border-radius:28px;
+      background:rgba(0,0,0,.76);
+      overflow:hidden;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .card-img{
+      height:290px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--border);
+    }
+
+    .card-body{
+      padding:clamp(26px,5vw,44px);
+      flex:1;
+    }
+
+    .daily-box{
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      background:rgba(0,0,0,.80);
+      overflow:hidden;
+      box-shadow:0 0 24px rgba(0,184,95,.10);
+    }
+
+    .daily-img{
+      min-height:390px;
+      background:
+        linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.62)),
+        var(--daily-image),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play{
+      width:94px;
+      height:94px;
+      border-radius:50%;
+      border:3px solid var(--gold);
+      background:rgba(0,0,0,.74);
+      color:var(--yellow);
+      display:grid;
+      place-items:center;
+      font-size:42px;
+      font-weight:900;
+      padding-left:6px;
+      box-shadow:0 0 34px rgba(0,184,95,.28);
+    }
+
+    .daily-content{
+      padding:clamp(28px,5vw,54px);
+    }
+
+    .market-box{
+      border:1.5px solid var(--border);
+      border-radius:28px;
+      background:rgba(0,0,0,.76);
+      padding:clamp(26px,5vw,44px);
+    }
+
+    .market-box strong{
+      display:block;
+      color:var(--green);
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.05;
+      margin-bottom:12px;
+    }
+
+    .market-box span{
+      display:block;
+      color:var(--soft-gold);
+      font-size:clamp(20px,3.7vw,30px);
+      font-weight:750;
+    }
+
+    .bar{
+      height:76px;
+      border-radius:20px;
+      border:1px solid rgba(0,184,95,.35);
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(0,184,95,.88) 0px,
+          rgba(0,184,95,.88) 48px,
+          rgba(255,208,0,.88) 48px,
+          rgba(255,208,0,.88) 84px,
+          rgba(0,184,95,.88) 84px,
+          rgba(0,184,95,.88) 132px
+        );
+      opacity:.92;
+      margin-top:22px;
+    }
+
+    .number{
+      color:var(--yellow);
+      font-size:clamp(34px,5vw,54px);
+      font-weight:1000;
+      margin-bottom:8px;
+    }
+
+    .footer{
+      border-top:1px solid var(--border);
+      padding:44px 0 58px;
+      background:#000;
+    }
+
+    .footer strong{
+      display:block;
+      color:var(--green);
+      font-size:clamp(34px,6vw,58px);
+      line-height:1.1;
+      margin-bottom:14px;
+    }
+
+    @media(max-width:900px){
+      .cols-2,.cols-3{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:640px){
+      .container{
+        width:min(100% - 32px,1120px);
+      }
+
+      .brand{
+        align-items:flex-start;
+      }
+
+      .logo-box{
+        width:72px;
+        height:72px;
+        font-size:40px;
+      }
+
+      .nav{
+        gap:32px 44px;
+      }
+
+      .hero-card{
+        min-height:620px;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <div class="logo-box">T</div>
+
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">NASDAQ Market Watch</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="investor.html">Investor</a>
+        <a href="institution.html">Institution</a>
+        <a href="institution-financial.html">Institution Financial</a>
+        <a href="banks.html">Banks</a>
+        <a href="companies.html">Company</a>
+        <a href="join-us.html">Join Us</a>
+        <a href="business-book.html">Business Intelligence Book</a>
+        <a class="active" href="stock-watch.html">Stock Market Watch</a>
+        <a href="global-business-news.html">Global Business News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card" id="heroCard">
+          <div class="kicker">NASDAQ Focus</div>
+
+          <h1>NASDAQ Market Information</h1>
+
+          <p class="lead">
+            This page focuses only on NASDAQ. Visitors can learn about technology-heavy market movement,
+            growth companies, software, innovation, investor confidence, and business technology trends.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#daily-nasdaq">Today’s NASDAQ Brief →</a>
+            <a class="btn ghost" href="#nasdaq-basics">NASDAQ Basics →</a>
+            <a class="btn ghost" href="stock-watch.html">Back to Stock Watch →</a>
+          </div>
+
+          <p class="notice">
+            Public education only. This page is not investment advice, trading advice,
+            financial advice, tax advice, legal advice, or a recommendation to buy or sell any security.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="daily-nasdaq" class="section">
+      <div class="container">
+        <div class="daily-box">
+          <div class="daily-img" id="dailyImage">
+            <div class="play">▶</div>
+          </div>
+
+          <div class="daily-content">
+            <div class="kicker" id="dailyTag">Daily NASDAQ Brief</div>
+            <h2 id="dailyTitle">Today’s NASDAQ Learning Note</h2>
+            <p id="dailyText">
+              NASDAQ is often watched for technology, growth companies, software, innovation,
+              digital platforms, and investor appetite for fast-growing businesses.
+            </p>
+
+            <div class="grid cols-3" style="margin-top:30px;">
+              <div class="market-box">
+                <strong>Technology</strong>
+                <span>Software, cloud, chips, digital platforms, and innovation</span>
+                <div class="bar"></div>
+              </div>
+
+              <div class="market-box">
+                <strong>Growth Watch</strong>
+                <span>Investor confidence in fast-growing companies</span>
+                <div class="bar"></div>
+              </div>
+
+              <div class="market-box">
+                <strong>Business Trends</strong>
+                <span>Technology spending, productivity tools, and digital demand</span>
+                <div class="bar"></div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn" href="#nasdaq-basics">Learn NASDAQ Basics →</a>
+              <a class="btn ghost" href="stock-watch.html">Back to Stock Watch →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nasdaq-basics" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">NASDAQ Basics</div>
+          <h2>What NASDAQ Means</h2>
+          <p>
+            NASDAQ is commonly connected with technology-heavy public companies.
+            It can help visitors understand how technology, software, innovation,
+            growth expectations, and investor confidence are moving.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Technology Companies</h3>
+              <p>
+                NASDAQ often reflects technology companies, software businesses, cloud platforms,
+                chips, digital tools, and growth-focused public companies.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Growth Sentiment</h3>
+              <p>
+                NASDAQ movement can show how investors feel about growth, innovation,
+                high expectations, interest rates, and future company earnings.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Innovation Pressure</h3>
+              <p>
+                AI, software, cybersecurity, automation, semiconductors, cloud tools,
+                and digital business demand can influence technology market movement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="business-impact" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Business Impact</div>
+          <h2>Why Businesses Watch NASDAQ</h2>
+          <p>
+            NASDAQ can help businesses understand technology demand, innovation pressure,
+            digital competition, software spending, and investor confidence in future growth.
+          </p>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="number">1</div>
+              <h3>Technology Spending</h3>
+              <p>
+                When technology companies move strongly, businesses may watch software budgets,
+                digital tools, automation, cybersecurity, and cloud demand.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">2</div>
+              <h3>Growth Confidence</h3>
+              <p>
+                NASDAQ can show whether investors are confident or cautious about high-growth companies.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">3</div>
+              <h3>Digital Competition</h3>
+              <p>
+                Technology market movement can affect how businesses think about websites,
+                software, online services, automation, and customer experience.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">4</div>
+              <h3>Innovation Risk</h3>
+              <p>
+                Fast-moving technology markets can create opportunity, but they can also create risk,
+                cost pressure, and competition.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="stock-watch.html">Back to Stock Market Watch →</a>
+          <a class="btn ghost" href="market-sp500.html">S&P 500 Page →</a>
+          <a class="btn ghost" href="market-dow-jones.html">Dow Jones Page →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Future Live Data</div>
+          <h2>Daily education now. Live market API later.</h2>
+        </div>
+
+        <p>
+          Right now, this page rotates daily images and daily learning notes using JavaScript.
+          Later, this page can connect to a market API, Supabase, and daily content automation
+          to show real NASDAQ movement, technology headlines, sector pressure, and business summaries.
+        </p>
+
+        <p class="notice">
+          This page is for public education only and should not be used as investment advice.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>NASDAQ Market Watch</strong>
+      <p>
+        Focused NASDAQ information inside TitanCore Stock Market Watch.
+      </p>
+
+      <div class="actions">
+        <a class="btn ghost" href="stock-watch.html">Stock Market Watch →</a>
+        <a class="btn ghost" href="business-book.html">Business Intelligence Book →</a>
+        <a class="btn ghost" href="global-business-news.html">Global Business News →</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const heroImages = [
+      "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1700&q=80"
+    ];
+
+    const dailyLessons = [
+      {
+        tag:"Daily NASDAQ Brief",
+        title:"NASDAQ often reflects technology and growth sentiment.",
+        text:"NASDAQ can help visitors understand technology demand, growth expectations, software spending, digital competition, and investor appetite for innovation.",
+        image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Technology Lesson",
+        title:"Technology companies can move with innovation pressure.",
+        text:"Software, cloud, chips, AI, cybersecurity, and digital platforms can all affect NASDAQ movement.",
+        image:"https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Growth Lesson",
+        title:"Growth stocks can be sensitive to confidence and rates.",
+        text:"When investors feel confident, growth companies may get attention. When risk rises, technology-heavy markets can become more cautious.",
+        image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Digital Business Lesson",
+        title:"NASDAQ can show where digital business is moving.",
+        text:"Businesses can watch technology market movement to understand software trends, online services, customer behavior, and digital competition.",
+        image:"https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1400&q=80"
+      }
+    ];
+
+    const dailyCardImages = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80"
+    ];
+
+    function dayIndex(list){
+      const dayNumber = Math.floor(Date.now() / 86400000);
+      return dayNumber % list.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll(".nav a").forEach(function(link){
+        if(link.getAttribute("href") === currentPage){
+          link.classList.add("active");
+        }
+      });
+
+      const hero = document.getElementById("heroCard");
+
+      if(hero){
+        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
+      }
+
+      const lesson = dailyLessons[dayIndex(dailyLessons)];
+      const dailyImage = document.getElementById("dailyImage");
+      const dailyTag = document.getElementById("dailyTag");
+      const dailyTitle = document.getElementById("dailyTitle");
+      const dailyText = document.getElementById("dailyText");
+
+      if(dailyImage){
+        dailyImage.style.setProperty("--daily-image", `url("${lesson.image}")`);
+      }
+
+      if(dailyTag){ dailyTag.textContent = lesson.tag; }
+      if(dailyTitle){ dailyTitle.textContent = lesson.title; }
+      if(dailyText){ dailyText.textContent = lesson.text; }
+
+      document.querySelectorAll(".daily-card-img").forEach(function(item,index){
+        const img = dailyCardImages[(dayIndex(dailyCardImages) + index) % dailyCardImages.length];
+
+        item.style.backgroundImage =
+          `linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.30)), url("${img}")`;
+      });
+    });
+  </script>
+</body>
+</html>
