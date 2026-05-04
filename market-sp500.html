@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>S&P 500 Market Watch | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#000000;
+      --green:#00b85f;
+      --gold:#d8b45a;
+      --soft-gold:#f3d98b;
+      --yellow:#ffd000;
+      --white:#ffffff;
+      --border:rgba(216,180,90,.58);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at top left,rgba(0,184,95,.18),transparent 32%),
+        linear-gradient(180deg,#000 0%,#031108 45%,#000 100%);
+      color:var(--soft-gold);
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.5;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1120px,calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:#000;
+      border-bottom:1px solid var(--border);
+      padding:28px 0 34px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin-bottom:34px;
+    }
+
+    .logo-box{
+      width:88px;
+      height:88px;
+      border:3px solid var(--gold);
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      color:var(--yellow);
+      font-size:48px;
+      font-weight:900;
+      background:rgba(216,180,90,.08);
+      box-shadow:0 0 25px rgba(0,184,95,.28);
+      flex:0 0 auto;
+    }
+
+    .brand-title{
+      color:var(--green);
+      font-size:clamp(32px,6vw,62px);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:.5px;
+    }
+
+    .brand-subtitle{
+      color:var(--gold);
+      font-size:clamp(14px,3vw,24px);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-top:12px;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:30px 56px;
+      padding-top:24px;
+      border-top:1px solid rgba(216,180,90,.35);
+    }
+
+    .nav a{
+      color:var(--white);
+      font-size:clamp(20px,4vw,34px);
+      font-weight:900;
+    }
+
+    .nav a:hover,
+    .nav a.active{
+      color:var(--yellow);
+    }
+
+    .hero{
+      padding:56px 0 40px;
+    }
+
+    .hero-card{
+      min-height:720px;
+      border:1.5px solid var(--border);
+      border-radius:34px;
+      padding:clamp(34px,7vw,76px);
+      background:
+        linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.92)),
+        var(--hero-image),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1700&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      box-shadow:0 0 38px rgba(0,184,95,.16);
+    }
+
+    .kicker{
+      color:var(--gold);
+      font-size:clamp(18px,4vw,34px);
+      font-weight:900;
+      letter-spacing:10px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3{
+      color:var(--green);
+      font-weight:1000;
+      margin-top:0;
+    }
+
+    h1{
+      font-size:clamp(58px,11vw,122px);
+      line-height:.95;
+      letter-spacing:-2px;
+      margin-bottom:30px;
+    }
+
+    h2{
+      font-size:clamp(44px,8vw,86px);
+      line-height:1;
+      margin-bottom:24px;
+    }
+
+    h3{
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.08;
+      margin-bottom:14px;
+    }
+
+    p{
+      color:var(--soft-gold);
+      font-size:clamp(20px,3.9vw,32px);
+      font-weight:650;
+      margin:0;
+    }
+
+    .lead{
+      font-size:clamp(25px,5vw,46px);
+      font-weight:750;
+      max-width:990px;
+      margin-bottom:36px;
+    }
+
+    .notice{
+      color:rgba(243,217,139,.86);
+      font-size:clamp(18px,3.4vw,27px);
+      font-weight:700;
+      margin-top:24px;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      margin-top:32px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72px;
+      padding:18px 30px;
+      border-radius:18px;
+      border:1.5px solid var(--gold);
+      background:var(--yellow);
+      color:#000;
+      font-size:clamp(18px,3.5vw,28px);
+      font-weight:900;
+      text-align:center;
+    }
+
+    .btn.ghost{
+      background:rgba(0,0,0,.72);
+      color:var(--soft-gold);
+    }
+
+    .btn:hover{
+      background:var(--green);
+      color:var(--white);
+    }
+
+    .section{
+      padding:42px 0;
+      scroll-margin-top:24px;
+    }
+
+    .panel{
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      background:
+        linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.90)),
+        radial-gradient(circle at top left,rgba(0,184,95,.13),transparent 42%);
+      padding:clamp(30px,6vw,64px);
+      box-shadow:0 0 24px rgba(0,184,95,.10);
+    }
+
+    .section-head{
+      margin-bottom:34px;
+    }
+
+    .grid{
+      display:grid;
+      gap:24px;
+    }
+
+    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+    .card{
+      border:1.5px solid var(--border);
+      border-radius:28px;
+      background:rgba(0,0,0,.76);
+      overflow:hidden;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .card-img{
+      height:290px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid var(--border);
+    }
+
+    .card-body{
+      padding:clamp(26px,5vw,44px);
+      flex:1;
+    }
+
+    .daily-box{
+      border:1.5px solid var(--border);
+      border-radius:32px;
+      background:rgba(0,0,0,.80);
+      overflow:hidden;
+      box-shadow:0 0 24px rgba(0,184,95,.10);
+    }
+
+    .daily-img{
+      min-height:390px;
+      background:
+        linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.62)),
+        var(--daily-image),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .play{
+      width:94px;
+      height:94px;
+      border-radius:50%;
+      border:3px solid var(--gold);
+      background:rgba(0,0,0,.74);
+      color:var(--yellow);
+      display:grid;
+      place-items:center;
+      font-size:42px;
+      font-weight:900;
+      padding-left:6px;
+      box-shadow:0 0 34px rgba(0,184,95,.28);
+    }
+
+    .daily-content{
+      padding:clamp(28px,5vw,54px);
+    }
+
+    .market-box{
+      border:1.5px solid var(--border);
+      border-radius:28px;
+      background:rgba(0,0,0,.76);
+      padding:clamp(26px,5vw,44px);
+    }
+
+    .market-box strong{
+      display:block;
+      color:var(--green);
+      font-size:clamp(30px,5vw,52px);
+      line-height:1.05;
+      margin-bottom:12px;
+    }
+
+    .market-box span{
+      display:block;
+      color:var(--soft-gold);
+      font-size:clamp(20px,3.7vw,30px);
+      font-weight:750;
+    }
+
+    .bar{
+      height:76px;
+      border-radius:20px;
+      border:1px solid rgba(0,184,95,.35);
+      background:
+        repeating-linear-gradient(
+          135deg,
+          rgba(0,184,95,.88) 0px,
+          rgba(0,184,95,.88) 48px,
+          rgba(255,208,0,.88) 48px,
+          rgba(255,208,0,.88) 84px,
+          rgba(0,184,95,.88) 84px,
+          rgba(0,184,95,.88) 132px
+        );
+      opacity:.92;
+      margin-top:22px;
+    }
+
+    .number{
+      color:var(--yellow);
+      font-size:clamp(34px,5vw,54px);
+      font-weight:1000;
+      margin-bottom:8px;
+    }
+
+    .footer{
+      border-top:1px solid var(--border);
+      padding:44px 0 58px;
+      background:#000;
+    }
+
+    .footer strong{
+      display:block;
+      color:var(--green);
+      font-size:clamp(34px,6vw,58px);
+      line-height:1.1;
+      margin-bottom:14px;
+    }
+
+    @media(max-width:900px){
+      .cols-2,.cols-3{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:640px){
+      .container{
+        width:min(100% - 32px,1120px);
+      }
+
+      .brand{
+        align-items:flex-start;
+      }
+
+      .logo-box{
+        width:72px;
+        height:72px;
+        font-size:40px;
+      }
+
+      .nav{
+        gap:32px 44px;
+      }
+
+      .hero-card{
+        min-height:620px;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <div class="logo-box">T</div>
+
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-subtitle">S&P 500 Market Watch</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="investor.html">Investor</a>
+        <a href="institution.html">Institution</a>
+        <a href="institution-financial.html">Institution Financial</a>
+        <a href="banks.html">Banks</a>
+        <a href="companies.html">Company</a>
+        <a href="join-us.html">Join Us</a>
+        <a href="business-book.html">Business Intelligence Book</a>
+        <a class="active" href="stock-watch.html">Stock Market Watch</a>
+        <a href="global-business-news.html">Global Business News</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card" id="heroCard">
+          <div class="kicker">S&P 500 Focus</div>
+
+          <h1>S&P 500 Market Information</h1>
+
+          <p class="lead">
+            This page focuses only on the S&P 500. Visitors can learn what the S&P 500 means,
+            why businesses watch it, and how broad market movement can affect confidence.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#daily-sp500">Today’s S&P 500 Brief →</a>
+            <a class="btn ghost" href="#sp500-basics">S&P 500 Basics →</a>
+            <a class="btn ghost" href="stock-watch.html">Back to Stock Watch →</a>
+          </div>
+
+          <p class="notice">
+            Public education only. This page is not investment advice, trading advice,
+            financial advice, tax advice, legal advice, or a recommendation to buy or sell any security.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="daily-sp500" class="section">
+      <div class="container">
+        <div class="daily-box">
+          <div class="daily-img" id="dailyImage">
+            <div class="play">▶</div>
+          </div>
+
+          <div class="daily-content">
+            <div class="kicker" id="dailyTag">Daily S&P 500 Brief</div>
+            <h2 id="dailyTitle">Today’s S&P 500 Learning Note</h2>
+            <p id="dailyText">
+              The S&P 500 is commonly watched as a broad signal for large U.S. public companies.
+              Big movement may connect to interest rates, earnings, inflation, technology, banks, and consumer demand.
+            </p>
+
+            <div class="grid cols-3" style="margin-top:30px;">
+              <div class="market-box">
+                <strong>Broad U.S. Market</strong>
+                <span>Large public company direction</span>
+                <div class="bar"></div>
+              </div>
+
+              <div class="market-box">
+                <strong>Company Confidence</strong>
+                <span>Business sentiment and earnings pressure</span>
+                <div class="bar"></div>
+              </div>
+
+              <div class="market-box">
+                <strong>Sector Movement</strong>
+                <span>Technology, finance, healthcare, energy, consumer, and more</span>
+                <div class="bar"></div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn" href="#sp500-basics">Learn S&P 500 Basics →</a>
+              <a class="btn ghost" href="stock-watch.html">Back to Stock Watch →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sp500-basics" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">S&P 500 Basics</div>
+          <h2>What the S&P 500 Means</h2>
+          <p>
+            The S&P 500 is used by many people as a broad view of major U.S. public companies.
+            It does not tell the full economy by itself, but it can help visitors understand
+            investor confidence, business strength, and sector pressure.
+          </p>
+        </div>
+
+        <div class="grid cols-3">
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Broad Market Signal</h3>
+              <p>
+                The S&P 500 helps people watch how a large group of major U.S. companies may be moving together.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Sector Pressure</h3>
+              <p>
+                Technology, financials, healthcare, energy, industrials, and consumer companies can affect market direction.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80');"></div>
+            <div class="card-body">
+              <h3>Business Confidence</h3>
+              <p>
+                When large companies perform well, people often connect that with confidence, earnings, growth, and spending.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="business-impact" class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Business Impact</div>
+          <h2>Why Businesses Watch the S&P 500</h2>
+          <p>
+            A business does not need to trade stocks to learn from the market.
+            Market movement can help a business understand confidence, credit conditions,
+            investor mood, consumer spending, and sector pressure.
+          </p>
+        </div>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="number">1</div>
+              <h3>Investor Confidence</h3>
+              <p>
+                The S&P 500 can show whether investors are feeling confident or cautious about large company performance.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">2</div>
+              <h3>Funding Environment</h3>
+              <p>
+                Market conditions can affect lending, capital access, investor behavior, business valuations, and risk appetite.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">3</div>
+              <h3>Consumer Demand</h3>
+              <p>
+                When large consumer companies move, businesses may watch spending, wages, inflation, and customer behavior.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="number">4</div>
+              <h3>Sector Signals</h3>
+              <p>
+                Technology, banks, real estate, auto, healthcare, and energy sectors can give clues about opportunities and risks.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="stock-watch.html">Back to Stock Market Watch →</a>
+          <a class="btn ghost" href="business-book.html">Business Intelligence Book →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container panel">
+        <div class="section-head">
+          <div class="kicker">Future Live Data</div>
+          <h2>Daily education now. Live market API later.</h2>
+        </div>
+
+        <p>
+          Right now, this page rotates daily images and daily learning notes using JavaScript.
+          Later, this page can connect to a market API, Supabase, and daily content automation
+          to show real S&P 500 price movement, market headlines, sector pressure, and business summaries.
+        </p>
+
+        <p class="notice">
+          This page is for public education only and should not be used as investment advice.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>S&P 500 Market Watch</strong>
+      <p>
+        Focused S&P 500 information inside TitanCore Stock Market Watch.
+      </p>
+
+      <div class="actions">
+        <a class="btn ghost" href="stock-watch.html">Stock Market Watch →</a>
+        <a class="btn ghost" href="business-book.html">Business Intelligence Book →</a>
+        <a class="btn ghost" href="global-business-news.html">Global Business News →</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const heroImages = [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1700&q=80",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1700&q=80"
+    ];
+
+    const dailyLessons = [
+      {
+        tag:"Daily S&P 500 Brief",
+        title:"Watch the broad market before reading the details.",
+        text:"The S&P 500 can help visitors understand the mood around major U.S. public companies. Big movement may come from rates, earnings, inflation, technology, banks, or consumer demand.",
+        image:"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Sector Lesson",
+        title:"The S&P 500 is moved by many sectors.",
+        text:"Technology, financials, healthcare, consumer, industrials, real estate, and energy can all affect the index. A visitor should learn which sectors are pushing the market.",
+        image:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Business Confidence Lesson",
+        title:"Market movement can show confidence or caution.",
+        text:"When the S&P 500 is strong, people may feel more confident. When it falls, businesses may watch credit, hiring, spending, and investor caution more closely.",
+        image:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80"
+      },
+      {
+        tag:"Funding Environment Lesson",
+        title:"Markets can affect funding and lending conditions.",
+        text:"Broad market stress can influence capital access, lending appetite, investor interest, valuations, and business expansion plans.",
+        image:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80"
+      }
+    ];
+
+    const dailyCardImages = [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80"
+    ];
+
+    function dayIndex(list){
+      const dayNumber = Math.floor(Date.now() / 86400000);
+      return dayNumber % list.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+      const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+      document.querySelectorAll(".nav a").forEach(function(link){
+        if(link.getAttribute("href") === currentPage){
+          link.classList.add("active");
+        }
+      });
+
+      const hero = document.getElementById("heroCard");
+
+      if(hero){
+        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
+      }
+
+      const lesson = dailyLessons[dayIndex(dailyLessons)];
+      const dailyImage = document.getElementById("dailyImage");
+      const dailyTag = document.getElementById("dailyTag");
+      const dailyTitle = document.getElementById("dailyTitle");
+      const dailyText = document.getElementById("dailyText");
+
+      if(dailyImage){
+        dailyImage.style.setProperty("--daily-image", `url("${lesson.image}")`);
+      }
+
+      if(dailyTag){ dailyTag.textContent = lesson.tag; }
+      if(dailyTitle){ dailyTitle.textContent = lesson.title; }
+      if(dailyText){ dailyText.textContent = lesson.text; }
+
+      document.querySelectorAll(".daily-card-img").forEach(function(item,index){
+        const img = dailyCardImages[(dayIndex(dailyCardImages) + index) % dailyCardImages.length];
+
+        item.style.backgroundImage =
+          `linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.30)), url("${img}")`;
+      });
+    });
+  </script>
+</body>
+</html>
