@@ -26,7 +26,10 @@
       font-family:Arial, Helvetica, sans-serif;
     }
 
-    a{color:inherit;text-decoration:none;}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
     .page{
       max-width:1180px;
@@ -74,7 +77,9 @@
       text-overflow:ellipsis;
     }
 
-    .brand span{color:var(--gold);}
+    .brand span{
+      color:var(--gold);
+    }
 
     .menu-btn{
       width:78px;
@@ -84,6 +89,12 @@
       color:var(--white);
       font-size:38px;
       cursor:pointer;
+      transition:.25s ease;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
     }
 
     .menu{
@@ -93,7 +104,9 @@
       padding:20px 28px;
     }
 
-    .menu.active{display:block;}
+    .menu.active{
+      display:block;
+    }
 
     .menu a{
       display:block;
@@ -103,9 +116,13 @@
       letter-spacing:2px;
       color:var(--soft);
       font-size:16px;
+      transition:.25s ease;
     }
 
-    .menu a:hover{color:var(--gold2);}
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
 
     .hero{
       display:grid;
@@ -133,7 +150,9 @@
       margin-bottom:26px;
     }
 
-    .hero-text h1 span{color:var(--gold2);}
+    .hero-text h1 span{
+      color:var(--gold2);
+    }
 
     .hero-text p{
       color:var(--soft);
@@ -148,20 +167,14 @@
       background-size:cover;
       background-position:center;
       position:relative;
-      transition:.6s ease;
+      transition:.7s ease;
     }
 
     .hero-image::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.10),rgba(0,0,0,.28));
-    }
-
-    .btn-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:16px;
+      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.30));
     }
 
     .btn{
@@ -178,6 +191,7 @@
       font-weight:800;
       letter-spacing:1px;
       transition:.25s ease;
+      width:fit-content;
     }
 
     .btn:hover{
@@ -287,45 +301,14 @@
       background-position:center;
       border-left:1px solid var(--line);
       position:relative;
+      transition:.7s ease;
     }
 
     .split-image::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.24));
-    }
-
-    .button-panel{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      margin-top:30px;
-    }
-
-    .wide-btn{
-      min-height:92px;
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.20);
-      padding:22px 24px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-weight:800;
-      color:var(--white);
-      transition:.25s ease;
-    }
-
-    .wide-btn:hover{
-      background:rgba(215,179,93,.15);
-      transform:translateY(-2px);
-    }
-
-    .wide-btn span:last-child{
-      color:var(--gold2);
-      font-size:30px;
+      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.25));
     }
 
     .contact{
@@ -376,8 +359,7 @@
         border-top:1px solid var(--line);
       }
 
-      .cards,
-      .button-panel{
+      .cards{
         grid-template-columns:1fr;
       }
 
@@ -410,7 +392,7 @@
       }
 
       .brand{
-        font-size:21px;
+        font-size:20px;
         letter-spacing:2px;
       }
 
@@ -450,9 +432,10 @@
       <a href="#purpose">Purpose</a>
       <a href="#strategy">Strategy</a>
       <a href="#leadership">Leadership</a>
-      <a href="business-intelligence.html">Business Intelligence</a>
       <a href="companies.html">Company</a>
       <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
     </nav>
 
     <section class="hero" id="home">
@@ -468,10 +451,7 @@
           guide, and support a disciplined business structure for long-term growth.
         </p>
 
-        <div class="btn-row">
-          <a href="#purpose" class="btn">Learn More ›</a>
-          <a href="companies.html" class="btn">View Portfolio ›</a>
-        </div>
+        <a href="#purpose" class="btn">Learn More ›</a>
       </div>
 
       <div class="hero-image" id="heroImage"></div>
@@ -484,39 +464,39 @@
       <p>
         TitanCore Holdings serves as the parent company and strategic center for
         its business network. Its purpose is to provide direction, structure,
-        discipline, and oversight so each business can operate with clarity and
-        consistency.
+        discipline, and oversight so business activity can operate with clarity,
+        consistency, and professional standards.
       </p>
 
       <p>
-        The company focuses on professional leadership, planning, internal
-        coordination, operating standards, and long-term value creation.
+        TitanCore is focused on long-term value, organized leadership, strategic
+        planning, internal coordination, and responsible growth.
       </p>
     </section>
 
     <section class="section black-section" id="strategy">
       <div class="eyebrow">TitanCore Strategy</div>
-      <h2>One company structure with clear direction.</h2>
+      <h2>One parent company. One structure. One direction.</h2>
 
       <p>
         TitanCore supports business planning, operational review, brand structure,
-        executive oversight, reporting standards, and organized decision-making.
+        leadership alignment, reporting standards, and organized decision-making.
       </p>
 
       <div class="cards">
         <div class="card">
           <h3>Direction</h3>
           <p>
-            TitanCore provides the central direction needed to keep the business
-            network aligned under one parent company.
+            TitanCore provides central direction so the business network stays
+            aligned under one parent company.
           </p>
         </div>
 
         <div class="card">
           <h3>Discipline</h3>
           <p>
-            TitanCore keeps the organization focused on standards, review,
-            structure, and responsible growth.
+            TitanCore keeps the structure focused on standards, review,
+            accountability, and responsible growth.
           </p>
         </div>
 
@@ -524,7 +504,7 @@
           <h3>Scale</h3>
           <p>
             TitanCore prepares the business system for future expansion while
-            keeping leadership, planning, and control organized.
+            keeping leadership and planning organized.
           </p>
         </div>
       </div>
@@ -537,60 +517,37 @@
 
         <p>
           TitanCore Holdings is designed to keep business activity organized,
-          professional, and prepared for future expansion through strong leadership
-          and clear internal structure.
+          professional, and prepared for future expansion through clear leadership,
+          strong internal standards, and strategic oversight.
         </p>
 
-        <a href="about.html" class="btn">About Us ›</a>
+        <p>
+          The company’s public website separates each major audience into its own
+          page. Company information stays on the Company page. Institution, investor,
+          and bank information stays inside the Institution page. Business intelligence
+          and stock information stay inside the Business Intelligence page. News,
+          media, and global updates stay inside the News &amp; Media page.
+        </p>
       </div>
 
       <div class="split-image" id="leadershipImage"></div>
     </section>
 
-    <section class="section green-section" id="intelligence-front">
-      <div class="eyebrow">Business Intelligence</div>
-      <h2>Information that supports better decisions.</h2>
+    <section class="section green-section">
+      <div class="eyebrow">TitanCore Standards</div>
+      <h2>Organized information. Clear pathways. Professional presentation.</h2>
 
       <p>
-        TitanCore uses business intelligence, market awareness, industry research,
-        stock information, and internal reporting to support smarter planning and
-        stronger decisions across the organization.
+        TitanCore Holdings is structured so visitors first understand the parent
+        company, then use the menu to choose the correct public area. This keeps
+        the homepage clean and prevents the front page from becoming crowded.
       </p>
-
-      <div class="button-panel">
-        <a href="business-intelligence.html" class="wide-btn">
-          <span>Business Intelligence</span>
-          <span>›</span>
-        </a>
-
-        <a href="stock.html" class="wide-btn">
-          <span>Stock Information</span>
-          <span>›</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="section black-section" id="news-front">
-      <div class="eyebrow">News &amp; Media</div>
-      <h2>News, updates, and global business information.</h2>
 
       <p>
-        The News &amp; Media area gives visitors access to TitanCore updates,
-        business news, media information, and global market news in one organized
-        section.
+        Visitors can use the three-line menu to access Company, Institution,
+        Business Intelligence, and News &amp; Media pages when they need deeper
+        information.
       </p>
-
-      <div class="button-panel">
-        <a href="news-media.html" class="wide-btn">
-          <span>News &amp; Media</span>
-          <span>›</span>
-        </a>
-
-        <a href="global-news.html" class="wide-btn">
-          <span>Global News</span>
-          <span>›</span>
-        </a>
-      </div>
     </section>
 
     <section class="contact">
