@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TitanCore Structure | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:var(--black);
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:14px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,4vw,52px);
+      letter-spacing:clamp(1px,.8vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:var(--white);
+      font-size:36px;
+      cursor:pointer;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:24px 42px 28px;
+    }
+
+    .menu.active{
+      display:block;
+    }
+
+    .menu a{
+      display:block;
+      padding:18px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 1.05fr;
+      min-height:470px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero-text{
+      padding:64px 42px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:
+        radial-gradient(circle at 10% 18%, rgba(215,179,93,.10), transparent 30%),
+        linear-gradient(180deg,#080808,#010101);
+      border-right:1px solid var(--line);
+    }
+
+    .hero-text h1{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      font-size:clamp(42px,5vw,72px);
+      line-height:1.08;
+      margin-bottom:24px;
+    }
+
+    .hero-text h1 span{
+      color:var(--gold2);
+    }
+
+    .hero-text p{
+      color:var(--soft);
+      font-size:20px;
+      line-height:1.65;
+      margin-bottom:26px;
+    }
+
+    .hero-image{
+      min-height:470px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.24)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      padding:18px 26px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:1.5px;
+      width:fit-content;
+    }
+
+    .section{
+      padding:58px 42px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .green-section{
+      background:
+        radial-gradient(circle at 85% 20%, rgba(215,179,93,.10), transparent 35%),
+        linear-gradient(135deg,#043124,#0b5c46 48%,#043528);
+    }
+
+    .black-section{
+      background:#030303;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .section h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(32px,4vw,54px);
+      font-weight:400;
+      line-height:1.08;
+      margin-bottom:24px;
+    }
+
+    .section p{
+      color:var(--soft);
+      font-size:20px;
+      line-height:1.65;
+      margin-bottom:20px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:32px;
+    }
+
+    .card{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.20);
+      padding:28px;
+      min-height:190px;
+    }
+
+    .card h3{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold2);
+      font-size:28px;
+      font-weight:400;
+      margin-bottom:14px;
+    }
+
+    .card p{
+      font-size:17px;
+      line-height:1.58;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1.2fr auto;
+      gap:28px;
+      align-items:center;
+      padding:36px 42px;
+      background:linear-gradient(90deg,#064b38,#0b5c46,#041f18);
+      border-bottom:1px solid var(--line);
+    }
+
+    .contact h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(30px,4vw,48px);
+      font-weight:400;
+    }
+
+    .contact p{
+      color:var(--soft);
+      font-size:18px;
+      line-height:1.5;
+      border-left:1px solid var(--gold);
+      padding-left:26px;
+    }
+
+    .footer{
+      padding:18px 24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:14px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .hero,
+      .contact{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text{
+        border-right:none;
+      }
+
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .contact p{
+        border-left:none;
+        border-top:1px solid var(--gold);
+        padding-left:0;
+        padding-top:20px;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:18px;
+        letter-spacing:1.8px;
+      }
+
+      .menu{
+        padding:24px 30px 28px;
+      }
+
+      .menu a{
+        font-size:16px;
+        letter-spacing:3px;
+      }
+
+      .hero-text,
+      .section,
+      .contact{
+        padding-left:26px;
+        padding-right:26px;
+      }
+
+      .hero-text h1{
+        font-size:42px;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+
+      <a href="index.html" class="brand">
+        <span>TitanCore</span> Holdings
+      </a>
+
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h1>
+          TitanCore<br>
+          <span>Structure.</span>
+        </h1>
+
+        <p>
+          A deeper page explaining how TitanCore Holdings is organized as the
+          parent company and strategic center for its business network.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+
+      <div class="hero-image"></div>
+    </section>
+
+    <section class="section green-section">
+      <div class="eyebrow">Parent Company Structure</div>
+
+      <h2>One parent company above a growing business network.</h2>
+
+      <p>
+        TitanCore Holdings sits above its business network as the organizing
+        parent company. The goal is to keep direction, standards, review, and
+        public presentation clear.
+      </p>
+
+      <p>
+        This page explains the structure behind TitanCore without crowding the
+        front homepage.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Parent Layer</h3>
+          <p>
+            TitanCore provides central identity, oversight, and strategic direction.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Company Layer</h3>
+          <p>
+            Each operating company keeps its own brand and direct business webpage.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Public Pathway</h3>
+          <p>
+            Visitors use the menu to reach the correct deeper area.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section black-section">
+      <div class="eyebrow">Structure Path</div>
+
+      <h2>Designed to keep public information organized.</h2>
+
+      <p>
+        The homepage introduces TitanCore Holdings. This page explains the
+        structure in more detail, while other pages handle companies, institution
+        information, business intelligence, and news media.
+      </p>
+    </section>
+
+    <section class="contact">
+      <h2>Contact us today</h2>
+
+      <p>
+        For general questions or professional inquiries, contact TitanCore Holdings.
+      </p>
+
+      <a href="contact.html" class="btn">Get In Touch ›</a>
+    </section>
+
+    <footer class="footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
