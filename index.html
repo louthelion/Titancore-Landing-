@@ -18,7 +18,6 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0;}
-
     html{scroll-behavior:smooth;}
 
     body{
@@ -27,10 +26,7 @@
       font-family:Arial, Helvetica, sans-serif;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+    a{color:inherit;text-decoration:none;}
 
     .page{
       max-width:1180px;
@@ -78,9 +74,7 @@
       text-overflow:ellipsis;
     }
 
-    .brand span{
-      color:var(--gold);
-    }
+    .brand span{color:var(--gold);}
 
     .menu-btn{
       width:78px;
@@ -99,9 +93,7 @@
       padding:20px 28px;
     }
 
-    .menu.active{
-      display:block;
-    }
+    .menu.active{display:block;}
 
     .menu a{
       display:block;
@@ -113,9 +105,7 @@
       font-size:16px;
     }
 
-    .menu a:hover{
-      color:var(--gold2);
-    }
+    .menu a:hover{color:var(--gold2);}
 
     .hero{
       display:grid;
@@ -143,9 +133,7 @@
       margin-bottom:26px;
     }
 
-    .hero-text h1 span{
-      color:var(--gold2);
-    }
+    .hero-text h1 span{color:var(--gold2);}
 
     .hero-text p{
       color:var(--soft);
@@ -308,6 +296,38 @@
       background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.24));
     }
 
+    .button-panel{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+    }
+
+    .wide-btn{
+      min-height:92px;
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.20);
+      padding:22px 24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:800;
+      color:var(--white);
+      transition:.25s ease;
+    }
+
+    .wide-btn:hover{
+      background:rgba(215,179,93,.15);
+      transform:translateY(-2px);
+    }
+
+    .wide-btn span:last-child{
+      color:var(--gold2);
+      font-size:30px;
+    }
+
     .contact{
       display:grid;
       grid-template-columns:1fr 1.2fr auto;
@@ -356,7 +376,8 @@
         border-top:1px solid var(--line);
       }
 
-      .cards{
+      .cards,
+      .button-panel{
         grid-template-columns:1fr;
       }
 
@@ -429,9 +450,9 @@
       <a href="#purpose">Purpose</a>
       <a href="#strategy">Strategy</a>
       <a href="#leadership">Leadership</a>
-      <a href="#intelligence">Business Intelligence</a>
-      <a href="companies.html">Companies</a>
-      <a href="news.html">News &amp; Media</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
     </nav>
 
     <section class="hero" id="home">
@@ -526,21 +547,50 @@
       <div class="split-image" id="leadershipImage"></div>
     </section>
 
-    <section class="section green-section" id="intelligence">
+    <section class="section green-section" id="intelligence-front">
       <div class="eyebrow">Business Intelligence</div>
       <h2>Information that supports better decisions.</h2>
 
       <p>
         TitanCore uses business intelligence, market awareness, industry research,
-        and internal reporting to support smarter planning and stronger decisions
-        across the organization.
+        stock information, and internal reporting to support smarter planning and
+        stronger decisions across the organization.
       </p>
 
+      <div class="button-panel">
+        <a href="business-intelligence.html" class="wide-btn">
+          <span>Business Intelligence</span>
+          <span>›</span>
+        </a>
+
+        <a href="stock.html" class="wide-btn">
+          <span>Stock Information</span>
+          <span>›</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section black-section" id="news-front">
+      <div class="eyebrow">News &amp; Media</div>
+      <h2>News, updates, and global business information.</h2>
+
       <p>
-        This area is designed for business news, market updates, global trends,
-        strategic insights, and company-level information that supports long-term
-        decision-making.
+        The News &amp; Media area gives visitors access to TitanCore updates,
+        business news, media information, and global market news in one organized
+        section.
       </p>
+
+      <div class="button-panel">
+        <a href="news-media.html" class="wide-btn">
+          <span>News &amp; Media</span>
+          <span>›</span>
+        </a>
+
+        <a href="global-news.html" class="wide-btn">
+          <span>Global News</span>
+          <span>›</span>
+        </a>
+      </div>
     </section>
 
     <section class="contact">
