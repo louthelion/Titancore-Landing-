@@ -7,84 +7,70 @@
 
   <style>
     :root{
-      --bg:#020202;
-      --panel:#050505;
-      --green:#0b5c46;
-      --green-dark:#06382b;
-      --green-soft:#0f6e55;
-      --gold:#d8b15a;
-      --gold-light:#f1d289;
-      --white:#f7f2e8;
-      --soft:#d6d0c5;
-      --line:rgba(216,177,90,.75);
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
     }
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
+    *{box-sizing:border-box;margin:0;padding:0;}
 
-    html{
-      scroll-behavior:smooth;
-    }
+    html{scroll-behavior:smooth;}
 
     body{
       background:#000;
       color:var(--white);
       font-family:Arial, Helvetica, sans-serif;
-      overflow-x:hidden;
     }
 
     a{
-      text-decoration:none;
       color:inherit;
+      text-decoration:none;
     }
 
     .page{
-      max-width:1200px;
+      max-width:1180px;
       margin:0 auto;
-      background:var(--bg);
+      background:var(--black);
       border-left:1px solid var(--line);
       border-right:1px solid var(--line);
       min-height:100vh;
     }
 
-    /* HEADER */
     .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
       display:grid;
       grid-template-columns:auto 1fr auto;
       align-items:center;
-      gap:24px;
+      gap:18px;
       padding:16px 28px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(216,177,90,.08), transparent 28%),
-        linear-gradient(180deg, #050505, #020202);
+      background:linear-gradient(180deg,#050505,#010101);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
-      position:sticky;
-      top:0;
-      z-index:50;
     }
 
-    .brand-box{
+    .logo{
       width:78px;
       height:78px;
-      border:2px solid var(--gold);
+      border:3px solid var(--gold);
       display:grid;
       place-items:center;
-      background:#050505;
-      color:var(--gold-light);
       font-family:Georgia, "Times New Roman", serif;
-      font-size:30px;
+      font-size:33px;
       font-weight:700;
-      letter-spacing:-2px;
-      flex-shrink:0;
+      color:var(--gold2);
+      background:#030303;
     }
 
-    .brand-title{
+    .brand{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(25px, 3vw, 54px);
+      font-size:clamp(22px,4vw,52px);
       letter-spacing:5px;
       text-transform:uppercase;
       white-space:nowrap;
@@ -92,131 +78,117 @@
       text-overflow:ellipsis;
     }
 
-    .brand-title .gold{
+    .brand span{
       color:var(--gold);
     }
 
     .menu-btn{
       width:78px;
       height:78px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg, var(--green), #073a2d);
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
       color:var(--white);
       font-size:38px;
-      display:grid;
-      place-items:center;
       cursor:pointer;
-      transition:.25s ease;
     }
 
-    .menu-btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
-
-    .menu-panel{
+    .menu{
       display:none;
-      background:#0b0b0b;
+      background:#080808;
       border-bottom:1px solid var(--line);
-      padding:20px 28px 28px;
+      padding:20px 28px;
     }
 
-    .menu-panel.active{
+    .menu.active{
       display:block;
     }
 
-    .menu-panel a{
+    .menu a{
       display:block;
       padding:16px 0;
-      border-bottom:1px solid rgba(216,177,90,.25);
-      color:var(--soft);
-      font-size:16px;
+      border-bottom:1px solid rgba(215,179,93,.25);
       text-transform:uppercase;
       letter-spacing:2px;
+      color:var(--soft);
+      font-size:16px;
     }
 
-    .menu-panel a:hover{
-      color:var(--gold);
+    .menu a:hover{
+      color:var(--gold2);
     }
 
-    /* HERO */
     .hero{
       display:grid;
-      grid-template-columns:1fr 1.08fr;
+      grid-template-columns:1fr 1.05fr;
       min-height:560px;
       border-bottom:1px solid var(--line);
     }
 
-    .hero-copy{
-      padding:58px 40px;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(216,177,90,.07), transparent 32%),
-        linear-gradient(180deg, #070707, #020202);
+    .hero-text{
+      padding:60px 42px;
       display:flex;
       flex-direction:column;
       justify-content:center;
+      background:
+        radial-gradient(circle at 10% 18%, rgba(215,179,93,.10), transparent 30%),
+        linear-gradient(180deg,#080808,#010101);
       border-right:1px solid var(--line);
     }
 
-    .hero-copy h1{
+    .hero-text h1{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(42px, 5vw, 74px);
-      line-height:1.05;
       font-weight:400;
+      font-size:clamp(40px,5vw,72px);
+      line-height:1.06;
       margin-bottom:26px;
     }
 
-    .hero-copy h1 .gold{
-      color:var(--gold-light);
+    .hero-text h1 span{
+      color:var(--gold2);
     }
 
-    .hero-copy p{
+    .hero-text p{
       color:var(--soft);
-      font-size:clamp(18px, 1.8vw, 23px);
-      line-height:1.5;
-      max-width:470px;
+      font-size:clamp(18px,2vw,23px);
+      line-height:1.55;
+      max-width:520px;
       margin-bottom:32px;
     }
 
-    .hero-media{
-      position:relative;
+    .hero-image{
       min-height:560px;
       background-size:cover;
       background-position:center;
-      overflow:hidden;
+      position:relative;
+      transition:.6s ease;
     }
 
-    .hero-media::before{
+    .hero-image::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.25));
+      background:linear-gradient(90deg,rgba(0,0,0,.10),rgba(0,0,0,.26));
     }
 
-    .hero-media.fade{
-      animation:fadeSwap .8s ease;
-    }
-
-    @keyframes fadeSwap{
-      0%{opacity:.55; transform:scale(1.01);}
-      100%{opacity:1; transform:scale(1);}
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
     }
 
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      width:fit-content;
       min-width:210px;
-      padding:18px 28px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:18px 26px;
       border:2px solid var(--gold);
-      background:linear-gradient(135deg, var(--green), var(--green-dark));
+      background:linear-gradient(135deg,var(--green2),var(--green));
       color:#fff;
       text-transform:uppercase;
+      font-weight:800;
       letter-spacing:1px;
-      font-size:16px;
-      font-weight:700;
       transition:.25s ease;
     }
 
@@ -226,165 +198,133 @@
       transform:translateY(-2px);
     }
 
-    .arrow{
-      font-size:24px;
-      line-height:1;
+    .section{
+      padding:56px 42px;
+      border-bottom:1px solid var(--line);
     }
 
-    /* COMPANIES */
-    .companies{
-      padding:42px 40px 48px;
+    .green-section{
       background:
-        radial-gradient(circle at 85% 20%, rgba(216,177,90,.08), transparent 34%),
-        linear-gradient(135deg, #063528, #0a5c47 50%, #06382b);
-      border-bottom:1px solid var(--line);
+        radial-gradient(circle at 85% 20%, rgba(215,179,93,.10), transparent 35%),
+        linear-gradient(135deg,#043124,#0b5c46 48%,#043528);
+    }
+
+    .black-section{
+      background:
+        radial-gradient(circle at 18% 20%, rgba(215,179,93,.08), transparent 28%),
+        #030303;
     }
 
     .eyebrow{
-      color:var(--gold-light);
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:4px;
       font-size:14px;
-      letter-spacing:3px;
-      text-transform:uppercase;
-      font-weight:800;
-      margin-bottom:10px;
+      font-weight:900;
+      margin-bottom:12px;
     }
 
-    .section-title{
+    .section h2{
       font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(32px,4vw,54px);
       font-weight:400;
-      font-size:clamp(30px, 3vw, 48px);
-      margin-bottom:28px;
+      line-height:1.1;
+      margin-bottom:22px;
     }
 
-    .company-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
+    .section p{
+      color:var(--soft);
+      font-size:20px;
+      line-height:1.65;
+      max-width:930px;
+      margin-bottom:20px;
     }
 
-    .company-card{
+    .cards{
       display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
+      grid-template-columns:repeat(3,1fr);
       gap:18px;
-      min-height:110px;
-      padding:18px 20px;
+      margin-top:30px;
+    }
+
+    .card{
       border:1.5px solid var(--gold);
-      border-radius:6px;
-      background:rgba(0,0,0,.14);
-      transition:.25s ease;
+      background:rgba(0,0,0,.20);
+      padding:26px;
+      min-height:190px;
     }
 
-    .company-card:hover{
-      background:rgba(216,177,90,.08);
-      transform:translateY(-2px);
-    }
-
-    .company-card.wide{
-      grid-column:1 / -1;
-    }
-
-    .icon-box{
-      width:58px;
-      height:58px;
-      border:2px solid var(--gold);
-      display:grid;
-      place-items:center;
-      color:var(--gold-light);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:24px;
-      font-weight:700;
-    }
-
-    .company-name{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:18px;
-      line-height:1.18;
-      letter-spacing:1px;
-      text-transform:uppercase;
-    }
-
-    .company-name small{
-      display:block;
-      margin-top:4px;
-      color:var(--gold-light);
-      font-size:17px;
-    }
-
-    .company-arrow{
-      font-size:30px;
-      color:var(--gold-light);
-    }
-
-    /* INSIGHTS */
-    .insights{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      border-bottom:1px solid var(--line);
-      background:#040404;
-    }
-
-    .insights-copy{
-      padding:42px 40px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .insights-copy h2{
+    .card h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
-      font-size:clamp(30px, 3vw, 46px);
+      color:var(--gold2);
+      font-size:27px;
       margin-bottom:14px;
     }
 
-    .insights-copy p{
-      color:var(--soft);
-      font-size:19px;
+    .card p{
+      font-size:17px;
       line-height:1.55;
-      margin-bottom:26px;
-      max-width:500px;
+      margin-bottom:0;
     }
 
-    .insights-media{
-      min-height:320px;
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      border-bottom:1px solid var(--line);
+    }
+
+    .split-text{
+      padding:56px 42px;
+      background:#030303;
+    }
+
+    .split-text h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(32px,4vw,52px);
+      font-weight:400;
+      margin-bottom:18px;
+    }
+
+    .split-text p{
+      color:var(--soft);
+      font-size:20px;
+      line-height:1.6;
+      margin-bottom:28px;
+    }
+
+    .split-image{
+      min-height:420px;
       background-size:cover;
       background-position:center;
       border-left:1px solid var(--line);
       position:relative;
     }
 
-    .insights-media::before{
+    .split-image::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.18));
+      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.24));
     }
 
-    .insights-media.fade{
-      animation:fadeSwap .8s ease;
-    }
-
-    /* CONTACT */
-    .contact-strip{
+    .contact{
       display:grid;
       grid-template-columns:1fr 1.2fr auto;
       gap:28px;
       align-items:center;
-      padding:26px 40px;
-      background:
-        radial-gradient(circle at 20% 50%, rgba(216,177,90,.08), transparent 30%),
-        linear-gradient(90deg, #0b5c46, #094736, #03241b);
+      padding:34px 42px;
+      background:linear-gradient(90deg,#064b38,#0b5c46,#041f18);
       border-bottom:1px solid var(--line);
     }
 
-    .contact-strip h2{
+    .contact h2{
       font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(30px,4vw,48px);
       font-weight:400;
-      font-size:clamp(26px, 3vw, 46px);
     }
 
-    .contact-strip p{
+    .contact p{
       color:var(--soft);
       font-size:18px;
       line-height:1.5;
@@ -392,379 +332,256 @@
       padding-left:26px;
     }
 
-    /* FOOTER */
-    .footer{
-      display:grid;
-      grid-template-columns:1fr 1.2fr;
-      gap:30px;
-      padding:28px 40px 16px;
-      background:#020202;
-      border-bottom:1px solid var(--line);
-    }
-
-    .footer-brand{
-      display:flex;
-      gap:18px;
-      align-items:flex-start;
-      border-right:1px solid rgba(216,177,90,.4);
-      padding-right:26px;
-    }
-
-    .footer-brand .brand-box{
-      width:56px;
-      height:56px;
-      font-size:22px;
-      flex-shrink:0;
-    }
-
-    .footer-brand-text h3{
-      font-family:Georgia, "Times New Roman", serif;
-      font-weight:400;
-      font-size:clamp(26px, 3vw, 38px);
-      line-height:1.05;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:14px;
-    }
-
-    .footer-brand-text p{
-      color:var(--soft);
-      font-size:16px;
-      line-height:1.6;
-    }
-
-    .quick-links h4{
-      color:var(--gold-light);
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:14px;
-      margin-bottom:10px;
-    }
-
-    .quick-links a{
-      display:flex;
-      justify-content:space-between;
-      padding:10px 0;
-      border-bottom:1px solid rgba(216,177,90,.22);
-      color:var(--soft);
-      font-size:17px;
-    }
-
-    .quick-links a:hover{
-      color:var(--gold);
-    }
-
-    .copyright{
+    .simple-footer{
+      padding:18px 24px;
       text-align:center;
       color:var(--gold);
       font-size:14px;
-      padding:14px 20px 24px;
-      background:#020202;
+      background:#010101;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px){
+    @media(max-width:900px){
       .hero,
-      .insights,
-      .contact-strip,
-      .footer{
+      .split,
+      .contact{
         grid-template-columns:1fr;
       }
 
-      .hero-copy{
+      .hero-text{
         border-right:none;
-        border-bottom:1px solid var(--line);
       }
 
-      .insights-media{
+      .split-image{
         border-left:none;
         border-top:1px solid var(--line);
       }
 
-      .contact-strip p{
+      .cards{
+        grid-template-columns:1fr;
+      }
+
+      .contact p{
         border-left:none;
         border-top:1px solid var(--gold);
         padding-left:0;
-        padding-top:18px;
-      }
-
-      .footer-brand{
-        border-right:none;
-        padding-right:0;
-        border-bottom:1px solid rgba(216,177,90,.25);
-        padding-bottom:20px;
+        padding-top:20px;
       }
     }
 
-    @media (max-width: 760px){
+    @media(max-width:600px){
       .topbar{
-        grid-template-columns:auto 1fr auto;
         padding:12px 14px;
         gap:12px;
       }
 
-      .brand-box,
+      .logo,
       .menu-btn{
-        width:62px;
-        height:62px;
+        width:64px;
+        height:64px;
       }
 
-      .brand-box{
-        font-size:24px;
+      .logo{
+        font-size:27px;
       }
 
       .menu-btn{
-        font-size:28px;
+        font-size:30px;
       }
 
-      .brand-title{
+      .brand{
         font-size:21px;
         letter-spacing:2px;
       }
 
-      .hero-copy,
-      .companies,
-      .insights-copy,
-      .contact-strip,
-      .footer{
-        padding-left:20px;
-        padding-right:20px;
+      .hero-text,
+      .section,
+      .split-text,
+      .contact{
+        padding-left:24px;
+        padding-right:24px;
       }
 
-      .company-grid{
-        grid-template-columns:1fr;
-      }
-
-      .company-card.wide{
-        grid-column:auto;
+      .hero-text h1{
+        font-size:42px;
       }
 
       .btn{
         width:100%;
       }
     }
-
-    @media (max-width: 520px){
-      .brand-title{
-        font-size:18px;
-      }
-
-      .hero-copy h1{
-        font-size:36px;
-      }
-
-      .hero-copy p,
-      .insights-copy p,
-      .contact-strip p{
-        font-size:16px;
-      }
-
-      .company-name{
-        font-size:16px;
-      }
-
-      .company-name small{
-        font-size:15px;
-      }
-    }
   </style>
 </head>
-<body>
 
+<body>
   <main class="page">
 
     <header class="topbar">
-      <a href="index.html" class="brand-box">TH</a>
+      <a href="index.html" class="logo">TH</a>
 
-      <a href="index.html" class="brand-title">
-        <span class="gold">TitanCore</span> Holdings
+      <a href="index.html" class="brand">
+        <span>TitanCore</span> Holdings
       </a>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
     </header>
 
-    <nav class="menu-panel" id="menuPanel">
-      <a href="#about">About</a>
-      <a href="#companies">Companies</a>
-      <a href="#insights">Business Intelligence</a>
-      <a href="global-news.html">Global News</a>
+    <nav class="menu" id="menu">
+      <a href="#about">About TitanCore</a>
+      <a href="#purpose">Purpose</a>
+      <a href="#structure">Structure</a>
+      <a href="companies.html">Companies / Portfolio</a>
+      <a href="about.html">About Us</a>
       <a href="contact.html">Contact</a>
     </nav>
 
     <section class="hero" id="about">
-      <div class="hero-copy">
+      <div class="hero-text">
         <h1>
           Integrated<br>
           leadership for<br>
-          <span class="gold">strategic growth.</span>
+          <span>strategic growth.</span>
         </h1>
 
         <p>
-          TitanCore Holdings builds and invests in exceptional companies
-          that create lasting value across multiple industries.
+          TitanCore Holdings is a private holding company built to organize,
+          guide, and support a disciplined business structure for long-term growth.
         </p>
 
-        <a href="#companies" class="btn">
-          Learn More <span class="arrow">›</span>
-        </a>
-      </div>
-
-      <div class="hero-media" id="heroMedia" aria-label="Changing corporate hero image"></div>
-    </section>
-
-    <section class="companies" id="companies">
-      <div class="eyebrow">Our Companies</div>
-      <h2 class="section-title">A diverse portfolio. A unified purpose.</h2>
-
-      <div class="company-grid">
-        <a href="titancore.html" class="company-card">
-          <div class="icon-box">TC</div>
-          <div class="company-name">TitanCore <small>Holdings</small></div>
-          <div class="company-arrow">›</div>
-        </a>
-
-        <a href="vaultara.html" class="company-card">
-          <div class="icon-box">V</div>
-          <div class="company-name">Vaultara <small>Capital</small></div>
-          <div class="company-arrow">›</div>
-        </a>
-
-        <a href="familyfirst.html" class="company-card">
-          <div class="icon-box">FF</div>
-          <div class="company-name">Family First <small>Equity Group</small></div>
-          <div class="company-arrow">›</div>
-        </a>
-
-        <a href="vitalpath.html" class="company-card">
-          <div class="icon-box">VP</div>
-          <div class="company-name">VitalPath <small>Care Group</small></div>
-          <div class="company-arrow">›</div>
-        </a>
-
-        <a href="revmotion.html" class="company-card wide">
-          <div class="icon-box">RM</div>
-          <div class="company-name">RevMotion <small>Auto &amp; Marine</small></div>
-          <div class="company-arrow">›</div>
-        </a>
-      </div>
-    </section>
-
-    <section class="insights" id="insights">
-      <div class="insights-copy">
-        <div class="eyebrow">Business Intelligence</div>
-        <h2>Insights that drive decisions.</h2>
-        <p>
-          Access the latest market insights, global business news,
-          strategic updates, and business intelligence from across the
-          TitanCore portfolio and the industries we serve.
-        </p>
-
-        <a href="business-intelligence.html" class="btn">
-          Explore Insights <span class="arrow">›</span>
-        </a>
-      </div>
-
-      <div class="insights-media" id="insightsMedia" aria-label="Changing insights image"></div>
-    </section>
-
-    <section class="contact-strip">
-      <h2>Contact us today</h2>
-      <p>
-        Our team is here to answer your questions and explore how we can
-        work together.
-      </p>
-      <a href="contact.html" class="btn">
-        Get In Touch <span class="arrow">›</span>
-      </a>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-brand">
-        <div class="brand-box">TC</div>
-        <div class="footer-brand-text">
-          <h3>TitanCore Holdings</h3>
-          <p>
-            Building companies.<br>
-            Creating enduring value.
-          </p>
+        <div class="btn-row">
+          <a href="#purpose" class="btn">Learn More ›</a>
+          <a href="companies.html" class="btn">View Portfolio ›</a>
         </div>
       </div>
 
-      <div class="quick-links">
-        <h4>Quick Links</h4>
-        <a href="#about"><span>About</span><span>›</span></a>
-        <a href="#companies"><span>Companies</span><span>›</span></a>
-        <a href="#insights"><span>Business Intelligence</span><span>›</span></a>
-        <a href="global-news.html"><span>Global News</span><span>›</span></a>
-        <a href="contact.html"><span>Contact</span><span>›</span></a>
-      </div>
-    </footer>
+      <div class="hero-image" id="heroImage"></div>
+    </section>
 
-    <div class="copyright">
+    <section class="section green-section" id="purpose">
+      <div class="eyebrow">TitanCore Holdings</div>
+      <h2>Built to lead, organize, and protect long-term business growth.</h2>
+
+      <p>
+        TitanCore Holdings serves as the parent company and strategic center for
+        the business network. Its purpose is to provide direction, structure,
+        discipline, and oversight so each business can operate with clarity and
+        consistency.
+      </p>
+
+      <p>
+        The company focuses on leadership, planning, professional standards,
+        internal coordination, and long-term value creation.
+      </p>
+    </section>
+
+    <section class="section black-section" id="structure">
+      <div class="eyebrow">What TitanCore Does</div>
+      <h2>One company structure with clear direction.</h2>
+
+      <p>
+        TitanCore supports business planning, operational review, brand structure,
+        executive oversight, reporting standards, and organized decision-making.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Leadership</h3>
+          <p>
+            Provides direction and professional oversight for the broader business
+            structure.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Organization</h3>
+          <p>
+            Keeps business activity structured, coordinated, and aligned under
+            one parent company.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Growth</h3>
+          <p>
+            Focuses on long-term business strength, stability, and disciplined
+            expansion.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="split">
+      <div class="split-text">
+        <div class="eyebrow">Professional Direction</div>
+        <h2>A holding company built for order and scale.</h2>
+
+        <p>
+          TitanCore Holdings is designed to keep business activity organized,
+          professional, and prepared for future expansion.
+        </p>
+
+        <a href="about.html" class="btn">About Us ›</a>
+      </div>
+
+      <div class="split-image" id="businessImage"></div>
+    </section>
+
+    <section class="contact">
+      <h2>Contact us today</h2>
+      <p>
+        For general questions or professional inquiries, contact TitanCore Holdings.
+      </p>
+      <a href="contact.html" class="btn">Get In Touch ›</a>
+    </section>
+
+    <footer class="simple-footer">
       © 2025 TitanCore Holdings. All rights reserved.
-    </div>
+    </footer>
 
   </main>
 
   <script>
-    // MENU
-    const menuBtn = document.getElementById("menuBtn");
-    const menuPanel = document.getElementById("menuPanel");
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
+    }
 
-    menuBtn.addEventListener("click", function () {
-      menuPanel.classList.toggle("active");
-    });
-
-    // HERO IMAGES - executive / corporate / holding company style
     const heroImages = [
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1400&q=80"
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85"
     ];
 
-    // SECOND SECTION IMAGES
-    const insightsImages = [
-      "https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
+    const businessImages = [
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=85",
+      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1400&q=85"
     ];
 
-    const heroMedia = document.getElementById("heroMedia");
-    const insightsMedia = document.getElementById("insightsMedia");
+    let heroIndex = new Date().getDate() % heroImages.length;
+    let businessIndex = (new Date().getDate() + 1) % businessImages.length;
 
-    // Start at a different image each day
-    const daySeed = new Date().getDate();
-    let heroIndex = daySeed % heroImages.length;
-    let insightIndex = (daySeed + 2) % insightsImages.length;
+    const hero = document.getElementById("heroImage");
+    const business = document.getElementById("businessImage");
 
-    function setBackground(el, url) {
-      el.classList.remove("fade");
-      void el.offsetWidth;
-      el.style.backgroundImage = `linear-gradient(90deg, rgba(0,0,0,.12), rgba(0,0,0,.22)), url('${url}')`;
-      el.classList.add("fade");
+    function setImage(element, image){
+      element.style.backgroundImage =
+        "linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.24)), url('" + image + "')";
     }
 
-    function rotateHero() {
+    setImage(hero, heroImages[heroIndex]);
+    setImage(business, businessImages[businessIndex]);
+
+    setInterval(function(){
       heroIndex = (heroIndex + 1) % heroImages.length;
-      setBackground(heroMedia, heroImages[heroIndex]);
-    }
+      setImage(hero, heroImages[heroIndex]);
+    }, 9000);
 
-    function rotateInsights() {
-      insightIndex = (insightIndex + 1) % insightsImages.length;
-      setBackground(insightsMedia, insightsImages[insightIndex]);
-    }
-
-    // First load
-    setBackground(heroMedia, heroImages[heroIndex]);
-    setBackground(insightsMedia, insightsImages[insightIndex]);
-
-    // Change automatically
-    setInterval(rotateHero, 8000);      // every 8 seconds
-    setInterval(rotateInsights, 10000); // every 10 seconds
+    setInterval(function(){
+      businessIndex = (businessIndex + 1) % businessImages.length;
+      setImage(business, businessImages[businessIndex]);
+    }, 11000);
   </script>
+
 </body>
 </html>
