@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -47,30 +47,33 @@
       display:grid;
       grid-template-columns:auto 1fr auto;
       align-items:center;
-      gap:18px;
-      padding:16px 28px;
-      background:linear-gradient(180deg,#050505,#010101);
+      gap:14px;
+      padding:14px 24px;
+      background:
+        radial-gradient(circle at 16% 20%, rgba(215,179,93,.10), transparent 30%),
+        linear-gradient(180deg,#050505,#010101);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
     }
 
     .logo{
-      width:78px;
-      height:78px;
+      width:76px;
+      height:76px;
       border:3px solid var(--gold);
       display:grid;
       place-items:center;
       font-family:Georgia, "Times New Roman", serif;
-      font-size:33px;
+      font-size:32px;
       font-weight:700;
       color:var(--gold2);
       background:#030303;
+      flex-shrink:0;
     }
 
     .brand{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(22px,4vw,52px);
-      letter-spacing:5px;
+      font-size:clamp(18px,4vw,52px);
+      letter-spacing:clamp(1px,.8vw,5px);
       text-transform:uppercase;
       white-space:nowrap;
       overflow:hidden;
@@ -82,14 +85,15 @@
     }
 
     .menu-btn{
-      width:78px;
-      height:78px;
+      width:76px;
+      height:76px;
       border:3px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
       color:var(--white);
-      font-size:38px;
+      font-size:36px;
       cursor:pointer;
       transition:.25s ease;
+      flex-shrink:0;
     }
 
     .menu-btn:hover{
@@ -101,7 +105,7 @@
       display:none;
       background:#080808;
       border-bottom:1px solid var(--line);
-      padding:20px 28px;
+      padding:24px 42px 28px;
     }
 
     .menu.active{
@@ -110,12 +114,12 @@
 
     .menu a{
       display:block;
-      padding:17px 0;
+      padding:18px 0;
       border-bottom:1px solid rgba(215,179,93,.25);
       text-transform:uppercase;
-      letter-spacing:2px;
+      letter-spacing:4px;
       color:var(--soft);
-      font-size:16px;
+      font-size:18px;
       transition:.25s ease;
     }
 
@@ -132,7 +136,7 @@
     }
 
     .hero-text{
-      padding:60px 42px;
+      padding:64px 42px;
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -145,9 +149,9 @@
     .hero-text h1{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
-      font-size:clamp(40px,5vw,72px);
+      font-size:clamp(42px,5vw,72px);
       line-height:1.06;
-      margin-bottom:26px;
+      margin-bottom:28px;
     }
 
     .hero-text h1 span{
@@ -157,9 +161,9 @@
     .hero-text p{
       color:var(--soft);
       font-size:clamp(18px,2vw,23px);
-      line-height:1.55;
-      max-width:520px;
-      margin-bottom:32px;
+      line-height:1.6;
+      max-width:540px;
+      margin-bottom:34px;
     }
 
     .hero-image{
@@ -178,18 +182,18 @@
     }
 
     .btn{
-      min-width:210px;
+      min-width:230px;
       display:inline-flex;
       justify-content:center;
       align-items:center;
       gap:14px;
-      padding:18px 26px;
+      padding:19px 28px;
       border:2px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
       color:#fff;
       text-transform:uppercase;
-      font-weight:800;
-      letter-spacing:1px;
+      font-weight:900;
+      letter-spacing:1.5px;
       transition:.25s ease;
       width:fit-content;
     }
@@ -201,7 +205,7 @@
     }
 
     .section{
-      padding:56px 42px;
+      padding:58px 42px;
       border-bottom:1px solid var(--line);
     }
 
@@ -223,7 +227,7 @@
       letter-spacing:4px;
       font-size:14px;
       font-weight:900;
-      margin-bottom:12px;
+      margin-bottom:14px;
     }
 
     .section h2{
@@ -231,14 +235,14 @@
       font-size:clamp(32px,4vw,54px);
       font-weight:400;
       line-height:1.1;
-      margin-bottom:22px;
+      margin-bottom:24px;
     }
 
     .section p{
       color:var(--soft);
       font-size:20px;
-      line-height:1.65;
-      max-width:930px;
+      line-height:1.7;
+      max-width:940px;
       margin-bottom:20px;
     }
 
@@ -246,13 +250,13 @@
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
-      margin-top:30px;
+      margin-top:32px;
     }
 
     .card{
       border:1.5px solid var(--gold);
       background:rgba(0,0,0,.20);
-      padding:26px;
+      padding:28px;
       min-height:190px;
     }
 
@@ -260,13 +264,13 @@
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
       color:var(--gold2);
-      font-size:27px;
+      font-size:28px;
       margin-bottom:14px;
     }
 
     .card p{
       font-size:17px;
-      line-height:1.55;
+      line-height:1.58;
       margin-bottom:0;
     }
 
@@ -277,7 +281,7 @@
     }
 
     .split-text{
-      padding:56px 42px;
+      padding:58px 42px;
       background:#030303;
     }
 
@@ -285,18 +289,18 @@
       font-family:Georgia, "Times New Roman", serif;
       font-size:clamp(32px,4vw,52px);
       font-weight:400;
-      margin-bottom:18px;
+      margin-bottom:20px;
     }
 
     .split-text p{
       color:var(--soft);
       font-size:20px;
-      line-height:1.6;
-      margin-bottom:28px;
+      line-height:1.65;
+      margin-bottom:22px;
     }
 
     .split-image{
-      min-height:420px;
+      min-height:430px;
       background-size:cover;
       background-position:center;
       border-left:1px solid var(--line);
@@ -316,7 +320,7 @@
       grid-template-columns:1fr 1.2fr auto;
       gap:28px;
       align-items:center;
-      padding:34px 42px;
+      padding:36px 42px;
       background:linear-gradient(90deg,#064b38,#0b5c46,#041f18);
       border-bottom:1px solid var(--line);
     }
@@ -374,13 +378,13 @@
     @media(max-width:600px){
       .topbar{
         padding:12px 14px;
-        gap:12px;
+        gap:10px;
       }
 
       .logo,
       .menu-btn{
-        width:64px;
-        height:64px;
+        width:62px;
+        height:62px;
       }
 
       .logo{
@@ -392,16 +396,25 @@
       }
 
       .brand{
-        font-size:20px;
-        letter-spacing:2px;
+        font-size:18px;
+        letter-spacing:1.8px;
+      }
+
+      .menu{
+        padding:24px 30px 28px;
+      }
+
+      .menu a{
+        font-size:16px;
+        letter-spacing:3px;
       }
 
       .hero-text,
       .section,
       .split-text,
       .contact{
-        padding-left:24px;
-        padding-right:24px;
+        padding-left:26px;
+        padding-right:26px;
       }
 
       .hero-text h1{
@@ -410,6 +423,23 @@
 
       .btn{
         width:100%;
+      }
+    }
+
+    @media(max-width:420px){
+      .brand{
+        font-size:16px;
+        letter-spacing:1.2px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:58px;
+        height:58px;
+      }
+
+      .logo{
+        font-size:25px;
       }
     }
   </style>
@@ -429,9 +459,9 @@
     </header>
 
     <nav class="menu" id="menu">
-      <a href="#purpose">Purpose</a>
-      <a href="#strategy">Strategy</a>
-      <a href="#leadership">Leadership</a>
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
       <a href="companies.html">Company</a>
       <a href="institution.html">Institution</a>
       <a href="business-intelligence.html">Business Intelligence</a>
@@ -451,82 +481,81 @@
           guide, and support a disciplined business structure for long-term growth.
         </p>
 
-        <a href="#purpose" class="btn">Learn More ›</a>
+        <a href="operating-model.html" class="btn">Learn More ›</a>
       </div>
 
       <div class="hero-image" id="heroImage"></div>
     </section>
 
-    <section class="section green-section" id="purpose">
-      <div class="eyebrow">TitanCore Purpose</div>
-      <h2>Built to lead, organize, and protect long-term business growth.</h2>
+    <section class="section green-section">
+      <div class="eyebrow">TitanCore Holdings</div>
+      <h2>A parent company built to create order, direction, and long-term value.</h2>
 
       <p>
-        TitanCore Holdings serves as the parent company and strategic center for
-        its business network. Its purpose is to provide direction, structure,
-        discipline, and oversight so business activity can operate with clarity,
-        consistency, and professional standards.
+        TitanCore Holdings serves as the central structure for its business network.
+        The company is designed to provide organization, executive direction,
+        professional standards, and long-term planning across the broader
+        TitanCore ecosystem.
       </p>
 
       <p>
-        TitanCore is focused on long-term value, organized leadership, strategic
-        planning, internal coordination, and responsible growth.
+        The front page introduces TitanCore as the parent company. Deeper information
+        is separated into dedicated pages so visitors can choose the exact area they
+        need from the menu.
       </p>
     </section>
 
-    <section class="section black-section" id="strategy">
-      <div class="eyebrow">TitanCore Strategy</div>
-      <h2>One parent company. One structure. One direction.</h2>
+    <section class="section black-section">
+      <div class="eyebrow">Core Focus</div>
+      <h2>Focused on structure, oversight, and disciplined growth.</h2>
 
       <p>
-        TitanCore supports business planning, operational review, brand structure,
-        leadership alignment, reporting standards, and organized decision-making.
+        TitanCore is built around the idea that companies grow stronger when they
+        are organized under clear leadership, consistent standards, accountable
+        review, and a long-term plan.
       </p>
 
       <div class="cards">
         <div class="card">
-          <h3>Direction</h3>
+          <h3>Structure</h3>
           <p>
-            TitanCore provides central direction so the business network stays
-            aligned under one parent company.
+            TitanCore creates a clear parent-company structure so business activity
+            can be organized, reviewed, and directed properly.
           </p>
         </div>
 
         <div class="card">
-          <h3>Discipline</h3>
+          <h3>Oversight</h3>
           <p>
-            TitanCore keeps the structure focused on standards, review,
-            accountability, and responsible growth.
+            TitanCore supports executive review, reporting discipline, professional
+            standards, and responsible decision-making.
           </p>
         </div>
 
         <div class="card">
-          <h3>Scale</h3>
+          <h3>Growth</h3>
           <p>
-            TitanCore prepares the business system for future expansion while
-            keeping leadership and planning organized.
+            TitanCore focuses on long-term business strength, scalable systems,
+            and stable expansion across its network.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="split" id="leadership">
+    <section class="split">
       <div class="split-text">
-        <div class="eyebrow">Leadership Structure</div>
-        <h2>A holding company built for order and scale.</h2>
+        <div class="eyebrow">Professional Presentation</div>
+        <h2>Each public area has its own dedicated page.</h2>
 
         <p>
-          TitanCore Holdings is designed to keep business activity organized,
-          professional, and prepared for future expansion through clear leadership,
-          strong internal standards, and strategic oversight.
+          The homepage stays clean and focused on TitanCore Holdings only.
+          Company information, institution information, business intelligence,
+          stock information, and news sections are organized on separate pages.
         </p>
 
         <p>
-          The company’s public website separates each major audience into its own
-          page. Company information stays on the Company page. Institution, investor,
-          and bank information stays inside the Institution page. Business intelligence
-          and stock information stay inside the Business Intelligence page. News,
-          media, and global updates stay inside the News &amp; Media page.
+          Visitors can use the three-line menu to enter the right area without
+          crowding the front page with every department, company, or public section.
         </p>
       </div>
 
@@ -534,19 +563,18 @@
     </section>
 
     <section class="section green-section">
-      <div class="eyebrow">TitanCore Standards</div>
-      <h2>Organized information. Clear pathways. Professional presentation.</h2>
+      <div class="eyebrow">Public Pathway</div>
+      <h2>Simple front page. Deeper pages behind the menu.</h2>
 
       <p>
-        TitanCore Holdings is structured so visitors first understand the parent
-        company, then use the menu to choose the correct public area. This keeps
-        the homepage clean and prevents the front page from becoming crowded.
+        The three-line menu leads visitors to new information that is not repeated
+        on the homepage. TitanCore Structure, Operating Model, and Governance are
+        deeper pages for people who want to understand how TitanCore is organized.
       </p>
 
       <p>
-        Visitors can use the three-line menu to access Company, Institution,
-        Business Intelligence, and News &amp; Media pages when they need deeper
-        information.
+        Company, Institution, Business Intelligence, and News &amp; Media each open
+        their own public areas with more detailed information and next-step links.
       </p>
     </section>
 
