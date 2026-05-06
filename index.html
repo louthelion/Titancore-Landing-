@@ -105,7 +105,7 @@
 
     .menu a{
       display:block;
-      padding:16px 0;
+      padding:17px 0;
       border-bottom:1px solid rgba(215,179,93,.25);
       text-transform:uppercase;
       letter-spacing:2px;
@@ -167,7 +167,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.10),rgba(0,0,0,.26));
+      background:linear-gradient(90deg,rgba(0,0,0,.10),rgba(0,0,0,.28));
     }
 
     .btn-row{
@@ -426,15 +426,15 @@
     </header>
 
     <nav class="menu" id="menu">
-      <a href="#about">About TitanCore</a>
       <a href="#purpose">Purpose</a>
-      <a href="#structure">Structure</a>
-      <a href="companies.html">Companies / Portfolio</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact</a>
+      <a href="#strategy">Strategy</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#intelligence">Business Intelligence</a>
+      <a href="companies.html">Companies</a>
+      <a href="news.html">News &amp; Media</a>
     </nav>
 
-    <section class="hero" id="about">
+    <section class="hero" id="home">
       <div class="hero-text">
         <h1>
           Integrated<br>
@@ -457,24 +457,24 @@
     </section>
 
     <section class="section green-section" id="purpose">
-      <div class="eyebrow">TitanCore Holdings</div>
+      <div class="eyebrow">TitanCore Purpose</div>
       <h2>Built to lead, organize, and protect long-term business growth.</h2>
 
       <p>
         TitanCore Holdings serves as the parent company and strategic center for
-        the business network. Its purpose is to provide direction, structure,
+        its business network. Its purpose is to provide direction, structure,
         discipline, and oversight so each business can operate with clarity and
         consistency.
       </p>
 
       <p>
-        The company focuses on leadership, planning, professional standards,
-        internal coordination, and long-term value creation.
+        The company focuses on professional leadership, planning, internal
+        coordination, operating standards, and long-term value creation.
       </p>
     </section>
 
-    <section class="section black-section" id="structure">
-      <div class="eyebrow">What TitanCore Does</div>
+    <section class="section black-section" id="strategy">
+      <div class="eyebrow">TitanCore Strategy</div>
       <h2>One company structure with clear direction.</h2>
 
       <p>
@@ -484,45 +484,63 @@
 
       <div class="cards">
         <div class="card">
-          <h3>Leadership</h3>
+          <h3>Direction</h3>
           <p>
-            Provides direction and professional oversight for the broader business
-            structure.
+            TitanCore provides the central direction needed to keep the business
+            network aligned under one parent company.
           </p>
         </div>
 
         <div class="card">
-          <h3>Organization</h3>
+          <h3>Discipline</h3>
           <p>
-            Keeps business activity structured, coordinated, and aligned under
-            one parent company.
+            TitanCore keeps the organization focused on standards, review,
+            structure, and responsible growth.
           </p>
         </div>
 
         <div class="card">
-          <h3>Growth</h3>
+          <h3>Scale</h3>
           <p>
-            Focuses on long-term business strength, stability, and disciplined
-            expansion.
+            TitanCore prepares the business system for future expansion while
+            keeping leadership, planning, and control organized.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="split">
+    <section class="split" id="leadership">
       <div class="split-text">
-        <div class="eyebrow">Professional Direction</div>
+        <div class="eyebrow">Leadership Structure</div>
         <h2>A holding company built for order and scale.</h2>
 
         <p>
           TitanCore Holdings is designed to keep business activity organized,
-          professional, and prepared for future expansion.
+          professional, and prepared for future expansion through strong leadership
+          and clear internal structure.
         </p>
 
         <a href="about.html" class="btn">About Us ›</a>
       </div>
 
-      <div class="split-image" id="businessImage"></div>
+      <div class="split-image" id="leadershipImage"></div>
+    </section>
+
+    <section class="section green-section" id="intelligence">
+      <div class="eyebrow">Business Intelligence</div>
+      <h2>Information that supports better decisions.</h2>
+
+      <p>
+        TitanCore uses business intelligence, market awareness, industry research,
+        and internal reporting to support smarter planning and stronger decisions
+        across the organization.
+      </p>
+
+      <p>
+        This area is designed for business news, market updates, global trends,
+        strategic insights, and company-level information that supports long-term
+        decision-making.
+      </p>
     </section>
 
     <section class="contact">
@@ -551,7 +569,7 @@
       "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85"
     ];
 
-    const businessImages = [
+    const leadershipImages = [
       "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=85",
       "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=85",
       "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=85",
@@ -559,10 +577,10 @@
     ];
 
     let heroIndex = new Date().getDate() % heroImages.length;
-    let businessIndex = (new Date().getDate() + 1) % businessImages.length;
+    let leadershipIndex = (new Date().getDate() + 1) % leadershipImages.length;
 
     const hero = document.getElementById("heroImage");
-    const business = document.getElementById("businessImage");
+    const leadership = document.getElementById("leadershipImage");
 
     function setImage(element, image){
       element.style.backgroundImage =
@@ -570,7 +588,7 @@
     }
 
     setImage(hero, heroImages[heroIndex]);
-    setImage(business, businessImages[businessIndex]);
+    setImage(leadership, leadershipImages[leadershipIndex]);
 
     setInterval(function(){
       heroIndex = (heroIndex + 1) % heroImages.length;
@@ -578,8 +596,8 @@
     }, 9000);
 
     setInterval(function(){
-      businessIndex = (businessIndex + 1) % businessImages.length;
-      setImage(business, businessImages[businessIndex]);
+      leadershipIndex = (leadershipIndex + 1) % leadershipImages.length;
+      setImage(leadership, leadershipImages[leadershipIndex]);
     }, 11000);
   </script>
 
