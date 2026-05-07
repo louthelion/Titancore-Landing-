@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:var(--white);
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.68), rgba(0,0,0,.34)),
+        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.50), rgba(6,75,56,.55)),
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.35));
+    }
+
+    .hero{
+      min-height:660px;
+      display:flex;
+      align-items:center;
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:980px;
+    }
+
+    .hero .content{
+      max-width:900px;
+      padding-top:74px;
+      padding-bottom:74px;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+      text-shadow:0 2px 12px rgba(0,0,0,.75);
+    }
+
+    h1,h2,h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+      text-shadow:0 3px 16px rgba(0,0,0,.88);
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:900px;
+    }
+
+    h1 span,
+    h2 span{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:950px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:940px;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
+    }
+
+    strong{
+      color:var(--gold2);
+      font-weight:900;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      cursor:pointer;
+      margin-top:34px;
+      box-shadow:0 16px 35px rgba(0,0,0,.35);
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+      margin-top:28px;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:26px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      display:block;
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.46);
+      padding:44px 46px;
+      backdrop-filter:blur(1px);
+      transition:.25s ease;
+      cursor:pointer;
+      box-shadow:0 16px 40px rgba(0,0,0,.30);
+    }
+
+    .info-card:hover{
+      background:rgba(6,75,56,.54);
+      transform:translateY(-2px);
+    }
+
+    .info-card h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4vw,54px);
+      margin-bottom:22px;
+    }
+
+    .info-card p{
+      color:#f7f1e6;
+      font-size:22px;
+      line-height:1.62;
+      margin-bottom:0;
+    }
+
+    .card-bottom{
+      border-top:1px solid rgba(215,179,93,.55);
+      margin-top:28px;
+      padding-top:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:900;
+      color:var(--white);
+    }
+
+    .card-bottom span:last-child{
+      color:var(--gold2);
+      font-size:34px;
+    }
+
+    .search-box,
+    .daily-box,
+    .contact-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.46);
+      padding:36px;
+      max-width:960px;
+      margin-top:34px;
+      backdrop-filter:blur(1px);
+      box-shadow:0 16px 40px rgba(0,0,0,.30);
+    }
+
+    .search-box label{
+      display:block;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .search-row{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .search-row input{
+      width:100%;
+      padding:18px;
+      border:2px solid rgba(215,179,93,.75);
+      background:rgba(0,0,0,.62);
+      color:var(--white);
+      font-size:18px;
+      outline:none;
+    }
+
+    .search-row input:focus{
+      border-color:var(--gold2);
+    }
+
+    .search-note{
+      color:#f7f1e6;
+      font-size:17px;
+      line-height:1.55;
+      margin-top:18px;
+      margin-bottom:0;
+    }
+
+    .daily-date{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .daily-box h3{
+      color:var(--gold2);
+      font-size:clamp(32px,4vw,52px);
+      margin-bottom:20px;
+    }
+
+    .contact-box p{
+      margin-bottom:14px;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+      border-bottom:1px solid var(--line);
+    }
+
+    @media(max-width:700px){
+      .search-row{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .hero{
+        min-height:640px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{font-size:42px}
+      h2{font-size:40px}
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .eyebrow{
+        font-size:13px;
+        letter-spacing:5px;
+      }
+
+      .btn,
+      .btn-row{
+        width:100%;
+      }
+
+      .info-card,
+      .search-box,
+      .daily-box,
+      .contact-box{
+        padding:34px 32px;
+      }
+
+      .info-card h3,
+      .daily-box h3{
+        font-size:38px;
+      }
+
+      .info-card p{
+        font-size:21px;
+        line-height:1.62;
+      }
+
+      .simple-footer{
+        font-size:16px;
+      }
+    }
+
+    @media(max-width:420px){
+      .brand{
+        font-size:15px;
+        letter-spacing:.8px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:58px;
+        height:58px;
+      }
+
+      .logo{font-size:25px}
+
+      h1{font-size:40px}
+      h2{font-size:36px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Research Intelligence</div>
+
+        <h1>
+          Research before
+          <span>business decisions.</span>
+        </h1>
+
+        <p>
+          Research Intelligence helps visitors understand how business owners,
+          leaders, investors, and professionals can study a market before making
+          decisions.
+        </p>
+
+        <p>
+          This page is for market discovery, customer needs, competitor review,
+          opportunity search, risk signals, and business research education.
+        </p>
+
+        <div class="btn-row">
+          <a href="business-intelligence.html" class="btn">Back to Intelligence ›</a>
+          <a href="#research-search" class="btn">Research Search ›</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Research Areas</div>
+
+        <h2>
+          What people can research before starting or growing a business.
+        </h2>
+
+        <p>
+          Business research should help people understand the environment before
+          they spend money, open a business, enter a market, or make a major move.
+        </p>
+
+        <div class="card-grid">
+          <a href="#market-research" class="info-card">
+            <h3>Market Research</h3>
+            <p>
+              Study demand, pricing, location, industry trends, business timing,
+              and the overall market environment.
+            </p>
+            <div class="card-bottom">
+              <span>Review Details</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="#customer-research" class="info-card">
+            <h3>Customer Research</h3>
+            <p>
+              Understand the type of customer, what they need, what problem they
+              want solved, and what they are willing to pay for.
+            </p>
+            <div class="card-bottom">
+              <span>Review Details</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="#competitor-research" class="info-card">
+            <h3>Competitor Research</h3>
+            <p>
+              Review who is already in the market, how they position themselves,
+              what they charge, and where opportunity may still exist.
+            </p>
+            <div class="card-bottom">
+              <span>Review Details</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="#opportunity-research" class="info-card">
+            <h3>Opportunity Search</h3>
+            <p>
+              Look for gaps, new needs, underserved customers, local demand,
+              business trends, and growth openings.
+            </p>
+            <div class="card-bottom">
+              <span>Review Details</span>
+              <span>›</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="business" id="research-search">
+      <div class="content">
+        <div class="eyebrow">TitanCore Research Search</div>
+
+        <h2>
+          Search business research topics.
+        </h2>
+
+        <p>
+          This search box can help visitors research business topics from the web.
+          Later, this can be connected to a live search API and AI summary system.
+        </p>
+
+        <div class="search-box">
+          <label for="researchQuery">Type a business research question</label>
+
+          <div class="search-row">
+            <input id="researchQuery" type="text" placeholder="Example: best business to start in Florida 2026" />
+            <button class="btn" onclick="runResearchSearch()" type="button">Search ›</button>
+          </div>
+
+          <p class="search-note">
+            This current version opens a public web search. Later, TitanCore can
+            connect this to Perplexity, Tavily, OpenAI, Supabase, and Netlify
+            Functions so results can be summarized inside the website.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="market" id="market-research">
+      <div class="content">
+        <div class="eyebrow">Market Research</div>
+
+        <h2>
+          Market research studies the environment around a business idea.
+        </h2>
+
+        <p>
+          Before a person opens a business or expands a service, they should review
+          market size, customer demand, pricing, location, industry movement, and
+          whether the market is growing, stable, or under pressure.
+        </p>
+
+        <div class="daily-box">
+          <div class="daily-date">Market research questions</div>
+          <h3>What should be checked?</h3>
+          <p>
+            How many people need this service? Who is already providing it? What
+            do customers complain about? Is the market getting stronger or weaker?
+            What makes this business different?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="customer" id="customer-research">
+      <div class="content">
+        <div class="eyebrow">Customer Research</div>
+
+        <h2>
+          Customer research explains who the business is trying to serve.
+        </h2>
+
+        <p>
+          A business becomes stronger when it understands its customer. Customer
+          research includes needs, pain points, buying habits, income level,
+          urgency, trust, service expectations, and how the customer makes decisions.
+        </p>
+
+        <div class="daily-box">
+          <div class="daily-date">Customer research questions</div>
+          <h3>What should be understood?</h3>
+          <p>
+            Who is the customer? What problem do they need solved? How often do
+            they need the service? What makes them trust a company? What makes
+            them walk away?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="competitor" id="competitor-research">
+      <div class="content">
+        <div class="eyebrow">Competitor Research</div>
+
+        <h2>
+          Competitor research shows what already exists in the market.
+        </h2>
+
+        <p>
+          Competitor research helps business owners understand pricing, service
+          quality, reputation, weakness, strengths, marketing, customer complaints,
+          and open space in the market.
+        </p>
+
+        <div class="daily-box">
+          <div class="daily-date">Competitor research questions</div>
+          <h3>What should be compared?</h3>
+          <p>
+            Who are the main competitors? What do they offer? What do they charge?
+            What are customers saying about them? What can a new company do better?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="opportunity" id="opportunity-research">
+      <div class="content">
+        <div class="eyebrow">Opportunity Search</div>
+
+        <h2>
+          Opportunity search looks for gaps and future growth.
+        </h2>
+
+        <p>
+          Opportunity search is about finding where demand exists but service is
+          weak, expensive, slow, confusing, or missing. It also looks at new trends,
+          local changes, new customer needs, and under-served markets.
+        </p>
+
+        <div class="daily-box">
+          <div class="daily-date" id="dailyDate">Loading date...</div>
+          <h3 id="dailyTitle">Loading daily research focus...</h3>
+          <p id="dailyText">Loading daily research note...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="business">
+      <div class="content">
+        <div class="eyebrow">Future Live Research</div>
+
+        <h2>
+          Later this page can become a live research engine.
+        </h2>
+
+        <p>
+          The next phase can connect this page to live search, business news,
+          market APIs, AI summaries, and Supabase storage. That is how TitanCore
+          can show daily updated business research information instead of only
+          static text.
+        </p>
+
+        <p>
+          For now, this page gives TitanCore a full Research Intelligence page
+          with working buttons, search direction, and daily-changing content.
+        </p>
+      </div>
+    </section>
+  <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, research intelligence
+          questions, or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+ <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+  <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    function runResearchSearch(){
+      const input = document.getElementById("researchQuery");
+      const query = input.value.trim();
+
+      if(!query){
+        alert("Please type a business research question first.");
+        return;
+      }
+
+      const finalQuery = "business research " + query;
+      const url = "https://www.google.com/search?q=" + encodeURIComponent(finalQuery);
+      window.open(url, "_blank");
+    }
+
+    const backgroundSets = {
+      corporate: [
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
+      ],
+      business: [
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85"
+      ],
+      research: [
+        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
+      ],
+      market: [
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      customer: [
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=85"
+      ],
+      competitor: [
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=85"
+      ],
+      opportunity: [
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
+
+      sections.forEach(function(section, index){
+        const group = section.dataset.bgGroup || "research";
+        const images = backgroundSets[group] || backgroundSets.research;
+        const selected = images[(day + index) % images.length];
+        section.style.backgroundImage = "url('" + selected + "')";
+      });
+    }
+
+    const dailyResearchFocus = [
+      {
+        title:"Study customer demand before building the offer.",
+        text:"Today’s research focus is demand: who needs the product or service, how often they need it, and what problem they are trying to solve."
+      },
+      {
+        title:"Compare competitors before entering the market.",
+        text:"Today’s research focus is competition: pricing, reputation, customer complaints, service quality, and open gaps in the market."
+      },
+      {
+        title:"Look for underserved customers and weak service areas.",
+        text:"Today’s research focus is opportunity: customers who are not being served well, markets with slow service, and areas where better organization can win."
+      },
+      {
+        title:"Review risk before spending serious money.",
+        text:"Today’s research focus is risk: cost, timing, regulation, competition, customer trust, and the danger of entering a market too quickly."
+      }
+    ];
+
+    function applyDailyResearchFocus(){
+      const today = new Date();
+      const day = today.getDate();
+      const selected = dailyResearchFocus[day % dailyResearchFocus.length];
+
+      document.getElementById("dailyDate").textContent =
+        today.toLocaleDateString("en-US", {
+          weekday:"long",
+          year:"numeric",
+          month:"long",
+          day:"numeric"
+        });
+
+      document.getElementById("dailyTitle").textContent = selected.title;
+      document.getElementById("dailyText").textContent = selected.text;
+    }
+
+    applyDailyBackgrounds();
+    applyDailyResearchFocus();
+  </script>
+</body>
+</html>
