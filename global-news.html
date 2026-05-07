@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -88,7 +88,10 @@
       flex-shrink:0;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .menu{
       display:none;
@@ -114,9 +117,7 @@
       padding-left:8px;
     }
 
-    .hero-banner,
-    .image-section,
-    .contact-section{
+    .section{
       position:relative;
       background-size:cover;
       background-position:center;
@@ -125,109 +126,79 @@
       overflow:hidden;
     }
 
-    .hero-banner{
-      min-height:520px;
-      display:flex;
-      align-items:center;
-    }
-
-    .image-section{
-      min-height:430px;
-    }
-
-    .contact-section{
-      min-height:330px;
-      display:flex;
-      align-items:center;
-    }
-
-    .hero-banner::before,
-    .image-section::before,
-    .contact-section::before{
+    .section::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.82), rgba(0,0,0,.50)),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.40));
+        linear-gradient(90deg, rgba(0,0,0,.90), rgba(0,0,0,.68)),
+        linear-gradient(180deg, rgba(0,0,0,.26), rgba(0,0,0,.62));
+      z-index:0;
     }
 
-    .green-overlay::before{
+    .section.green::before{
       background:
-        linear-gradient(90deg, rgba(2,37,27,.88), rgba(6,75,56,.64)),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+        linear-gradient(90deg, rgba(0,0,0,.80), rgba(6,75,56,.78)),
+        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.42));
     }
 
-    .global-overlay::before{
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.84), rgba(4,36,48,.58)),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.42));
+    .hero{
+      min-height:660px;
+      display:flex;
+      align-items:center;
     }
 
-    .media-overlay::before{
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.82), rgba(40,28,8,.58)),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.40));
-    }
-
-    .hero-content,
-    .section-content,
-    .contact-content{
+    .content{
       position:relative;
       z-index:1;
       padding:58px 42px;
       max-width:980px;
     }
 
-    .hero-content{
-      max-width:820px;
-      padding-top:64px;
-      padding-bottom:64px;
+    .hero .content{
+      max-width:900px;
+      padding-top:74px;
+      padding-bottom:74px;
     }
 
-    .eyebrow,
-    .hero-eyebrow{
+    .eyebrow{
       color:var(--gold2);
       text-transform:uppercase;
       letter-spacing:5px;
       font-size:14px;
       font-weight:900;
-      margin-bottom:18px;
+      margin-bottom:22px;
     }
 
-    .hero-content h1,
-    .section-content h2,
-    .contact-content h2{
+    h1,h2,h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
       color:var(--white);
       line-height:1.06;
     }
 
-    .hero-content h1{
-      font-size:clamp(42px,5vw,74px);
-      margin-bottom:22px;
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:900px;
     }
 
-    .hero-content h1 span,
-    .section-content h2 span{
+    h1 span,
+    h2 span{
       color:var(--gold2);
     }
 
-    .section-content h2,
-    .contact-content h2{
-      font-size:clamp(32px,4vw,54px);
-      margin-bottom:22px;
-      max-width:920px;
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:950px;
     }
 
-    .hero-content p,
-    .section-content p,
-    .contact-content p{
+    p{
       color:#f2ece1;
-      font-size:19px;
-      line-height:1.62;
-      margin-bottom:18px;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
       max-width:940px;
     }
 
@@ -237,165 +208,140 @@
       justify-content:center;
       align-items:center;
       gap:14px;
-      padding:17px 26px;
+      padding:20px 30px;
       border:2px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
       color:#fff;
       text-transform:uppercase;
       font-weight:900;
-      letter-spacing:1.5px;
+      letter-spacing:3px;
       width:fit-content;
-      margin-top:8px;
+      cursor:pointer;
+      margin-top:34px;
     }
 
-    .btn:hover{background:var(--gold);color:#000}
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
-    .global-grid{
+    .card-grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:30px;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:960px;
     }
 
-    .global-box{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.42);
-      padding:24px;
-      min-height:170px;
+    .info-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.68);
+      padding:44px 46px;
       backdrop-filter:blur(2px);
     }
 
-    .global-box h3{
-      font-family:Georgia, "Times New Roman", serif;
+    .info-card h3{
       color:var(--gold2);
-      font-size:28px;
-      font-weight:400;
-      margin-bottom:12px;
-      line-height:1.1;
+      font-size:clamp(34px,4vw,54px);
+      margin-bottom:22px;
     }
 
-    .global-box p{
+    .info-card p{
       color:#f7f1e6;
-      font-size:16px;
-      line-height:1.5;
+      font-size:22px;
+      line-height:1.62;
       margin-bottom:0;
     }
 
-    .region-grid{
+    .link-grid{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px;
-      margin-top:30px;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
     }
 
-    .region-card{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.42);
-      padding:26px;
-      min-height:190px;
+    .link-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.68);
+      padding:34px;
+      min-height:270px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
       backdrop-filter:blur(2px);
+      transition:.25s ease;
     }
 
-    .region-card h3{
-      font-family:Georgia, "Times New Roman", serif;
+    .link-card:hover{
+      background:rgba(215,179,93,.14);
+      transform:translateY(-2px);
+    }
+
+    .link-card h3{
       color:var(--gold2);
-      font-size:30px;
-      font-weight:400;
-      margin-bottom:12px;
+      font-size:clamp(30px,4vw,48px);
+      margin-bottom:20px;
     }
 
-    .region-card p{
-      color:#f7f1e6;
-      font-size:16.5px;
-      line-height:1.55;
-      margin-bottom:0;
+    .link-card p{
+      font-size:19px;
+      line-height:1.58;
+      margin-bottom:26px;
     }
 
-    .process-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-      margin-top:30px;
+    .card-bottom{
+      border-top:1px solid rgba(215,179,93,.45);
+      padding-top:18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:900;
+      color:var(--white);
     }
 
-    .process-step{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.42);
-      padding:22px;
-      min-height:180px;
+    .card-bottom span:last-child{
+      color:var(--gold2);
+      font-size:34px;
+    }
+
+    .daily-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.68);
+      padding:44px 46px;
+      margin-top:38px;
+      max-width:960px;
       backdrop-filter:blur(2px);
     }
 
-    .step-number{
+    .daily-date{
       color:var(--gold2);
       text-transform:uppercase;
       letter-spacing:3px;
-      font-size:12px;
+      font-size:13px;
       font-weight:900;
-      margin-bottom:12px;
+      margin-bottom:22px;
     }
 
-    .process-step h3{
-      font-family:Georgia, "Times New Roman", serif;
+    .daily-box h3{
       color:var(--gold2);
-      font-size:25px;
-      font-weight:400;
-      margin-bottom:10px;
-      line-height:1.1;
-    }
-
-    .process-step p{
-      color:#f7f1e6;
-      font-size:15.5px;
-      line-height:1.5;
-      margin-bottom:0;
-    }
-
-    .note-box{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.42);
-      padding:26px;
-      margin-top:28px;
-      backdrop-filter:blur(2px);
-      max-width:980px;
-    }
-
-    .note-box h3{
-      font-family:Georgia, "Times New Roman", serif;
-      color:var(--gold2);
-      font-size:30px;
-      font-weight:400;
-      margin-bottom:12px;
-    }
-
-    .note-box p{
-      color:#f7f1e6;
-      font-size:17px;
-      line-height:1.58;
-      margin-bottom:0;
+      font-size:clamp(34px,4vw,54px);
+      margin-bottom:22px;
     }
 
     .simple-footer{
-      padding:18px 24px;
+      padding:24px;
       text-align:center;
       color:var(--gold);
-      font-size:14px;
+      font-size:18px;
       background:#010101;
+      border-bottom:1px solid var(--line);
     }
 
-    @media(max-width:1000px){
-      .global-grid,
-      .region-grid{
-        grid-template-columns:1fr;
-      }
-
-      .process-grid{
-        grid-template-columns:1fr 1fr;
-      }
-    }
-
-    @media(max-width:700px){
-      .process-grid{
+    @media(max-width:900px){
+      .link-grid{
         grid-template-columns:1fr;
       }
     }
@@ -429,52 +375,52 @@
         letter-spacing:2.5px;
       }
 
-      .hero-banner{
-        min-height:430px;
+      .hero{
+        min-height:640px;
       }
 
-      .image-section{
-        min-height:360px;
+      .content{
+        padding:48px 28px;
       }
 
-      .contact-section{
-        min-height:310px;
+      h1{font-size:42px}
+      h2{font-size:40px}
+
+      p{
+        font-size:21px;
+        line-height:1.68;
       }
 
-      .hero-content,
-      .section-content,
-      .contact-content{
-        padding:38px 24px;
+      .eyebrow{
+        font-size:13px;
+        letter-spacing:5px;
       }
 
-      .hero-content h1{font-size:40px}
-
-      .section-content h2,
-      .contact-content h2{
-        font-size:32px;
+      .btn{
+        width:100%;
+        margin-top:34px;
       }
 
-      .hero-content p,
-      .section-content p,
-      .contact-content p{
-        font-size:16.5px;
-        line-height:1.55;
+      .info-card,
+      .link-card,
+      .daily-box{
+        padding:34px 32px;
       }
 
-      .eyebrow,
-      .hero-eyebrow{
-        font-size:12.5px;
-        letter-spacing:3px;
+      .info-card h3,
+      .link-card h3,
+      .daily-box h3{
+        font-size:38px;
       }
 
-      .btn{width:100%}
+      .info-card p,
+      .link-card p{
+        font-size:21px;
+        line-height:1.62;
+      }
 
-      .global-box,
-      .region-card,
-      .process-step,
-      .note-box{
-        padding:22px;
-        min-height:auto;
+      .simple-footer{
+        font-size:16px;
       }
     }
 
@@ -491,6 +437,9 @@
       }
 
       .logo{font-size:25px}
+
+      h1{font-size:40px}
+      h2{font-size:36px}
     }
   </style>
 </head>
@@ -514,213 +463,153 @@
       <a href="news-media.html">News &amp; Media</a>
     </nav>
 
-    <section class="hero-banner daily-bg" data-bg-group="global">
-      <div class="hero-content">
-        <div class="hero-eyebrow">Global News</div>
+    <section class="section hero daily-bg" data-bg-group="global">
+      <div class="content">
+        <div class="eyebrow">Global News</div>
 
         <h1>
-          Global<br>
-          <span>News.</span>
+          International information for
+          <span>business awareness.</span>
         </h1>
 
         <p>
-          Global News gives TitanCore Holdings a dedicated public area for
-          international business context, worldwide market movement, country-level
-          updates, and global economic awareness.
+          Global News is the international public information area for TitanCore
+          Holdings. It can help visitors review country-level updates, regional
+          business context, global market movement, and major world events from a
+          business perspective.
         </p>
 
-        <a href="news-media.html" class="btn">Back to News & Media ›</a>
+        <p>
+          This page is a hub. Visitors can use the cards below to continue into
+          deeper global information pages.
+        </p>
+
+        <a href="news-media.html" class="btn">Back to News &amp; Media ›</a>
       </div>
     </section>
 
-    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
-      <div class="section-content">
-        <div class="eyebrow">Global News Purpose</div>
+    <section class="section daily-bg" data-bg-group="global">
+      <div class="content">
+        <div class="eyebrow">Global News Categories</div>
 
-        <h2>International news belongs on its own page.</h2>
-
-        <p>
-          Global News should be separate from the main News & Media page. News &
-          Media can cover TitanCore updates, media information, U.S. business news,
-          and state-level context, while Global News focuses on international
-          movement.
-        </p>
+        <h2>
+          Choose the type of global information to review.
+        </h2>
 
         <p>
-          This structure keeps the website clean, organized, and professional.
-          Visitors who want worldwide context can come to this page without
-          crowding the homepage or the general media hub.
+          These cards are built as clicking buttons. Later, each page can connect
+          to live sources, country filters, search tools, RSS feeds, or a database
+          so information can update automatically.
         </p>
 
-        <div class="note-box">
-          <h3>Country-Level Focus</h3>
-          <p>
-            Global News can later include country-level summaries, international
-            business updates, and worldwide market context without going too deep
-            into city-level news.
+        <div class="link-grid">
+          <a href="country-updates.html" class="link-card">
+            <div>
+              <h3>Country-Level Updates</h3>
+              <p>
+                Review country-by-country business, economic, policy, and market
+                updates in a simple public format.
+              </p>
+            </div>
+
+            <div class="card-bottom">
+              <span>Open Country Updates</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="regional-business.html" class="link-card">
+            <div>
+              <h3>Regional Business Context</h3>
+              <p>
+                Review how different regions of the world connect to business,
+                trade, finance, supply chains, and market movement.
+              </p>
+            </div>
+
+            <div class="card-bottom">
+              <span>Open Regional Business</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="global-market.html" class="link-card">
+            <div>
+              <h3>Global Market Movement</h3>
+              <p>
+                Review market-related global updates that connect to Business
+                Intelligence and Stock Information.
+              </p>
+            </div>
+
+            <div class="card-bottom">
+              <span>Open Global Market</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="world-events.html" class="link-card">
+            <div>
+              <h3>World Event Awareness</h3>
+              <p>
+                Review major world events from a business awareness perspective,
+                not as entertainment or general gossip news.
+              </p>
+            </div>
+
+            <div class="card-bottom">
+              <span>Open World Events</span>
+              <span>›</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="global">
+      <div class="content">
+        <div class="eyebrow">Daily Global Focus</div>
+
+        <h2>
+          Daily-changing global information area.
+        </h2>
+
+        <p>
+          This section can rotate daily now with simple JavaScript. Later, it can
+          connect to a real global news source so visitors can search by country,
+          region, market, or business topic.
+        </p>
+
+        <div class="daily-box">
+          <div class="daily-date" id="dailyDate">Loading daily date...</div>
+          <h3 id="dailyTitle">Loading daily global focus...</h3>
+          <p id="dailyText">
+            Loading daily global business summary...
           </p>
         </div>
       </div>
     </section>
 
-    <section class="image-section daily-bg global-overlay" data-bg-group="global">
-      <div class="section-content">
-        <div class="eyebrow">Global Coverage Areas</div>
+    <section class="section daily-bg" data-bg-group="business">
+      <div class="content">
+        <div class="eyebrow">Future Live Connection</div>
 
-        <h2>Organized worldwide information for business awareness.</h2>
-
-        <div class="global-grid">
-          <div class="global-box">
-            <h3>International Business</h3>
-            <p>
-              Worldwide business movement, company activity, global economic
-              conditions, and international trade context.
-            </p>
-          </div>
-
-          <div class="global-box">
-            <h3>Global Markets</h3>
-            <p>
-              International market categories, global index movement, worldwide
-              financial trends, and cross-border market information.
-            </p>
-          </div>
-
-          <div class="global-box">
-            <h3>Country Context</h3>
-            <p>
-              Country-level updates that help visitors understand business,
-              economic, and market activity across different regions.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="image-section daily-bg media-overlay" data-bg-group="media">
-      <div class="section-content">
-        <div class="eyebrow">Regional View</div>
-
-        <h2>Global information should be grouped in a simple way.</h2>
+        <h2>
+          This page is ready for real global search later.
+        </h2>
 
         <p>
-          The page should not overwhelm visitors with too many levels. A clean
-          country and region structure is better than forcing visitors through
-          state, city, and neighborhood layers.
-        </p>
-
-        <div class="region-grid">
-          <div class="region-card">
-            <h3>Country-Level Updates</h3>
-            <p>
-              Country-level summaries can explain major business and economic
-              changes in a simple public format.
-            </p>
-          </div>
-
-          <div class="region-card">
-            <h3>Regional Business Context</h3>
-            <p>
-              Regional summaries can help visitors understand how different areas
-              of the world connect to business and market movement.
-            </p>
-          </div>
-
-          <div class="region-card">
-            <h3>Global Market Movement</h3>
-            <p>
-              Market-related updates can connect global news to the Business
-              Intelligence and Stock Information pages.
-            </p>
-          </div>
-
-          <div class="region-card">
-            <h3>World Event Awareness</h3>
-            <p>
-              Major world events can be explained from a business awareness
-              perspective without turning the page into general entertainment news.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
-      <div class="section-content">
-        <div class="eyebrow">Global News Flow</div>
-
-        <h2>Keep international information clear and professional.</h2>
-
-        <p>
-          Visitors should be able to understand where global information belongs.
-          Local and national information can stay inside News & Media, while
-          international business context belongs here.
-        </p>
-
-        <div class="process-grid">
-          <div class="process-step">
-            <div class="step-number">Step 01</div>
-            <h3>Identify</h3>
-            <p>
-              Identify the international topic, region, market, or country update.
-            </p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">Step 02</div>
-            <h3>Explain</h3>
-            <p>
-              Explain why the global update matters for business awareness.
-            </p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">Step 03</div>
-            <h3>Connect</h3>
-            <p>
-              Connect global news to markets, trade, business, or economic movement.
-            </p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">Step 04</div>
-            <h3>Organize</h3>
-            <p>
-              Keep the information in the right page so the website stays clean.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="image-section daily-bg" data-bg-group="global">
-      <div class="section-content">
-        <div class="eyebrow">Professional Purpose</div>
-
-        <h2>Global News helps TitanCore look informed and connected.</h2>
-
-        <p>
-          A strong holding company website should feel aware of the business world.
-          Global News gives TitanCore a public area for worldwide context without
-          changing the homepage into a general news site.
+          The next phase can connect this page to live global news sources, search
+          by country, market data, RSS feeds, Netlify functions, or Supabase. That
+          is how the website can show daily information instead of only static text.
         </p>
 
         <p>
-          Later, this page can include daily rotating global summaries, market
-          notes, country-level business updates, and international image panels.
-        </p>
-      </div>
-    </section>
-
-    <section class="contact-section daily-bg green-overlay" data-bg-group="corporate">
-      <div class="contact-content">
-        <h2>Return to News & Media</h2>
-
-        <p>
-          Global News is part of TitanCore’s public News & Media section.
+          For now, the design is ready. The cards already route visitors to the
+          right deeper pages.
         </p>
 
-        <a href="news-media.html" class="btn">News & Media ›</a>
+        <a href="news-media.html" class="btn">Back to News &amp; Media ›</a>
       </div>
     </section>
 
@@ -732,28 +621,24 @@
 
   <script>
     function toggleMenu(){
-      document.getElementById("menu").classList.toggle("active");
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
     }
 
     const backgroundSets = {
-      corporate: [
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
-      ],
-      media: [
-        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1600&q=85"
-      ],
       global: [
         "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85"
+      ],
+      business: [
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1600&q=85"
       ]
     };
 
@@ -762,14 +647,51 @@
       const day = new Date().getDate();
 
       sections.forEach(function(section, index){
-        const group = section.dataset.bgGroup || "corporate";
-        const images = backgroundSets[group] || backgroundSets.corporate;
+        const group = section.dataset.bgGroup || "global";
+        const images = backgroundSets[group] || backgroundSets.global;
         const selected = images[(day + index) % images.length];
         section.style.backgroundImage = "url('" + selected + "')";
       });
     }
 
+    const dailyGlobalFocus = [
+      {
+        title:"Country updates help visitors understand business movement.",
+        text:"Today’s focus is country-level information: policy changes, economic direction, business environment, trade movement, and market awareness."
+      },
+      {
+        title:"Regional business context connects countries together.",
+        text:"Today’s focus is regional awareness: how different parts of the world affect business activity, supply chains, investment confidence, and market direction."
+      },
+      {
+        title:"Global market movement connects news to business intelligence.",
+        text:"Today’s focus is market movement: major global conditions, financial pressure, currency awareness, commodity movement, and economic signals."
+      },
+      {
+        title:"World events should be explained through a business lens.",
+        text:"Today’s focus is world event awareness: major events that may affect business confidence, logistics, markets, institutions, and long-term planning."
+      }
+    ];
+
+    function applyDailyFocus(){
+      const today = new Date();
+      const day = today.getDate();
+      const selected = dailyGlobalFocus[day % dailyGlobalFocus.length];
+
+      document.getElementById("dailyDate").textContent =
+        today.toLocaleDateString("en-US", {
+          weekday:"long",
+          year:"numeric",
+          month:"long",
+          day:"numeric"
+        });
+
+      document.getElementById("dailyTitle").textContent = selected.title;
+      document.getElementById("dailyText").textContent = selected.text;
+    }
+
     applyDailyBackgrounds();
+    applyDailyFocus();
   </script>
 </body>
 </html>
