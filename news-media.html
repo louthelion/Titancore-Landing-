@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News & Media | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:var(--white);
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .hero-banner,
+    .image-section,
+    .contact-section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .hero-banner{
+      min-height:520px;
+      display:flex;
+      align-items:center;
+    }
+
+    .image-section{
+      min-height:430px;
+    }
+
+    .contact-section{
+      min-height:330px;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-banner::before,
+    .image-section::before,
+    .contact-section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.80), rgba(0,0,0,.50)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+    }
+
+    .green-overlay::before{
+      background:
+        linear-gradient(90deg, rgba(2,37,27,.88), rgba(6,75,56,.64)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+    }
+
+    .media-overlay::before{
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(40,28,8,.58)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.40));
+    }
+
+    .global-overlay::before{
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.82), rgba(4,36,48,.56)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.40));
+    }
+
+    .hero-content,
+    .section-content,
+    .contact-content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:980px;
+    }
+
+    .hero-content{
+      max-width:820px;
+      padding-top:64px;
+      padding-bottom:64px;
+    }
+
+    .eyebrow,
+    .hero-eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .hero-content h1,
+    .section-content h2,
+    .contact-content h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    .hero-content h1{
+      font-size:clamp(42px,5vw,74px);
+      margin-bottom:22px;
+    }
+
+    .hero-content h1 span,
+    .section-content h2 span{
+      color:var(--gold2);
+    }
+
+    .section-content h2,
+    .contact-content h2{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:22px;
+      max-width:920px;
+    }
+
+    .hero-content p,
+    .section-content p,
+    .contact-content p{
+      color:#f2ece1;
+      font-size:19px;
+      line-height:1.62;
+      margin-bottom:18px;
+      max-width:940px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:17px 26px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:1.5px;
+      width:fit-content;
+      margin-top:8px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .hub-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:32px;
+    }
+
+    .hub-card{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.44);
+      min-height:250px;
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      backdrop-filter:blur(2px);
+      transition:.25s ease;
+    }
+
+    .hub-card:hover{
+      transform:translateY(-2px);
+      background:rgba(215,179,93,.12);
+    }
+
+    .hub-card h3{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold2);
+      font-size:32px;
+      font-weight:400;
+      line-height:1.1;
+      margin-bottom:14px;
+    }
+
+    .hub-card p{
+      color:#f7f1e6;
+      font-size:16.5px;
+      line-height:1.55;
+      margin-bottom:22px;
+    }
+
+    .card-tag{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .card-link{
+      margin-top:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-top:1px solid rgba(215,179,93,.42);
+      padding-top:16px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:900;
+      color:var(--white);
+      font-size:14px;
+    }
+
+    .card-link span:last-child{
+      color:var(--gold2);
+      font-size:30px;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:30px;
+    }
+
+    .info-box{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.40);
+      padding:24px;
+      min-height:170px;
+      backdrop-filter:blur(2px);
+    }
+
+    .info-box h3{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold2);
+      font-size:28px;
+      font-weight:400;
+      margin-bottom:12px;
+      line-height:1.1;
+    }
+
+    .info-box p{
+      color:#f7f1e6;
+      font-size:16px;
+      line-height:1.5;
+      margin-bottom:0;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:30px;
+    }
+
+    .process-step{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.40);
+      padding:22px;
+      min-height:180px;
+      backdrop-filter:blur(2px);
+    }
+
+    .step-number{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:12px;
+    }
+
+    .process-step h3{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold2);
+      font-size:25px;
+      font-weight:400;
+      margin-bottom:10px;
+      line-height:1.1;
+    }
+
+    .process-step p{
+      color:#f7f1e6;
+      font-size:15.5px;
+      line-height:1.5;
+      margin-bottom:0;
+    }
+
+    .note-box{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.42);
+      padding:26px;
+      margin-top:28px;
+      backdrop-filter:blur(2px);
+      max-width:980px;
+    }
+
+    .note-box h3{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold2);
+      font-size:30px;
+      font-weight:400;
+      margin-bottom:12px;
+    }
+
+    .note-box p{
+      color:#f7f1e6;
+      font-size:17px;
+      line-height:1.58;
+      margin-bottom:0;
+    }
+
+    .simple-footer{
+      padding:18px 24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:14px;
+      background:#010101;
+    }
+
+    @media(max-width:1000px){
+      .hub-grid,
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .process-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:700px){
+      .process-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .hero-banner{
+        min-height:430px;
+      }
+
+      .image-section{
+        min-height:360px;
+      }
+
+      .contact-section{
+        min-height:310px;
+      }
+
+      .hero-content,
+      .section-content,
+      .contact-content{
+        padding:38px 24px;
+      }
+
+      .hero-content h1{font-size:40px}
+
+      .section-content h2,
+      .contact-content h2{
+        font-size:32px;
+      }
+
+      .hero-content p,
+      .section-content p,
+      .contact-content p{
+        font-size:16.5px;
+        line-height:1.55;
+      }
+
+      .eyebrow,
+      .hero-eyebrow{
+        font-size:12.5px;
+        letter-spacing:3px;
+      }
+
+      .btn{width:100%}
+
+      .hub-card,
+      .info-box,
+      .process-step,
+      .note-box{
+        padding:22px;
+        min-height:auto;
+      }
+
+      .hub-card h3{
+        font-size:30px;
+      }
+    }
+
+    @media(max-width:420px){
+      .brand{
+        font-size:15px;
+        letter-spacing:.8px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:58px;
+        height:58px;
+      }
+
+      .logo{font-size:25px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="hero-banner daily-bg" data-bg-group="media">
+      <div class="hero-content">
+        <div class="hero-eyebrow">News & Media</div>
+
+        <h1>
+          News<br>
+          <span>& Media.</span>
+        </h1>
+
+        <p>
+          TitanCore Holdings uses the News & Media section as a public information
+          hub for company updates, media content, United States news context, and
+          global news access.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
+      <div class="section-content">
+        <div class="eyebrow">News & Media Hub</div>
+
+        <h2>Public updates, media information, and business news context.</h2>
+
+        <p>
+          The News & Media page keeps public information organized without putting
+          every update on the homepage. This page can include TitanCore updates,
+          media announcements, public notices, and business news context.
+        </p>
+
+        <p>
+          The purpose is to give visitors a professional place to review public
+          information while keeping the front page clean and focused on TitanCore
+          Holdings.
+        </p>
+
+        <div class="note-box">
+          <h3>Clean Public Communication</h3>
+          <p>
+            News & Media should act like a public information room. Company updates,
+            media items, and global news should live here instead of crowding the homepage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-section daily-bg media-overlay" data-bg-group="media">
+      <div class="section-content">
+        <div class="eyebrow">News Categories</div>
+
+        <h2>Separate local, national, media, and global information.</h2>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <h3>TitanCore Updates</h3>
+            <p>
+              Public updates, company notices, leadership messages, and official
+              TitanCore information.
+            </p>
+          </div>
+
+          <div class="info-box">
+            <h3>U.S. News Context</h3>
+            <p>
+              United States business news, state-level context, and local business
+              information.
+            </p>
+          </div>
+
+          <div class="info-box">
+            <h3>Media Information</h3>
+            <p>
+              Public media content, announcements, press-style updates, and group
+              information.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
+      <div class="section-content">
+        <div class="eyebrow">Inside News & Media</div>
+
+        <h2>Global News and About Group belong inside this section.</h2>
+
+        <p>
+          News & Media should work like a hub page. Visitors open News & Media
+          first, then choose the deeper page they need, such as Global News or
+          About Group.
+        </p>
+
+        <div class="hub-grid">
+          <a href="global-news.html" class="hub-card">
+            <div>
+              <div class="card-tag">International News</div>
+              <h3>Global News</h3>
+              <p>
+                Open the Global News page for international news, global business
+                movement, world market context, and country-level updates.
+              </p>
+            </div>
+
+            <div class="card-link">
+              <span>Open Global News</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="about-group.html" class="hub-card">
+            <div>
+              <div class="card-tag">Public Group Information</div>
+              <h3>About Group</h3>
+              <p>
+                Open the About Group page for public information about the TitanCore
+                group, ecosystem, and broader public structure.
+              </p>
+            </div>
+
+            <div class="card-link">
+              <span>Open About Group</span>
+              <span>›</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-section daily-bg global-overlay" data-bg-group="global">
+      <div class="section-content">
+        <div class="eyebrow">News Flow</div>
+
+        <h2>News should be easy to read and easy to navigate.</h2>
+
+        <p>
+          Visitors should understand the difference between TitanCore news, U.S.
+          business news context, media information, and global news. Each area
+          should have a clear purpose.
+        </p>
+
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="step-number">Step 01</div>
+            <h3>Update</h3>
+            <p>
+              Share TitanCore public updates and official company information.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">Step 02</div>
+            <h3>Inform</h3>
+            <p>
+              Provide United States business news and state-level information context.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">Step 03</div>
+            <h3>Connect</h3>
+            <p>
+              Connect visitors to global news when the information becomes international.
+            </p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">Step 04</div>
+            <h3>Archive</h3>
+            <p>
+              Keep public media items organized for later review and reference.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-section daily-bg" data-bg-group="media">
+      <div class="section-content">
+        <div class="eyebrow">Professional Purpose</div>
+
+        <h2>Built to make TitanCore’s public communication more serious.</h2>
+
+        <p>
+          The News & Media section gives TitanCore a professional public space for
+          updates, media, and business context. It helps the website look more alive
+          without putting too much information on the homepage.
+        </p>
+
+        <p>
+          Global news should stay separate from U.S. or state-level news. Global
+          News focuses on international movement, while News & Media handles the
+          main public information hub.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section daily-bg green-overlay" data-bg-group="corporate">
+      <div class="contact-content">
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions or professional inquiries, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
+    }
+
+    const backgroundSets = {
+      corporate: [
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ],
+      media: [
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1600&q=85"
+      ],
+      global: [
+        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
+
+      sections.forEach(function(section, index){
+        const group = section.dataset.bgGroup || "corporate";
+        const images = backgroundSets[group] || backgroundSets.corporate;
+        const selected = images[(day + index) % images.length];
+        section.style.backgroundImage = "url('" + selected + "')";
+      });
+    }
+
+    applyDailyBackgrounds();
+  </script>
+</body>
+</html>
