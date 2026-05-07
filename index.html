@@ -1,4 +1,4 @@
-<!DOCTYPE<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -17,8 +17,15 @@
       --line:rgba(215,179,93,.78);
     }
 
-    *{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       background:#000;
@@ -34,7 +41,7 @@
     .page{
       max-width:1180px;
       margin:0 auto;
-      background:var(--black);
+      background:#000;
       border-left:1px solid var(--line);
       border-right:1px solid var(--line);
       min-height:100vh;
@@ -47,11 +54,9 @@
       display:grid;
       grid-template-columns:auto 1fr auto;
       align-items:center;
-      gap:14px;
+      gap:12px;
       padding:14px 24px;
-      background:
-        radial-gradient(circle at 16% 20%, rgba(215,179,93,.10), transparent 30%),
-        linear-gradient(180deg,#050505,#010101);
+      background:linear-gradient(180deg,#050505,#010101);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
     }
@@ -72,8 +77,8 @@
 
     .brand{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(18px,4vw,52px);
-      letter-spacing:clamp(1px,.8vw,5px);
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
       text-transform:uppercase;
       white-space:nowrap;
       overflow:hidden;
@@ -92,7 +97,6 @@
       color:var(--white);
       font-size:36px;
       cursor:pointer;
-      transition:.25s ease;
       flex-shrink:0;
     }
 
@@ -105,7 +109,7 @@
       display:none;
       background:#080808;
       border-bottom:1px solid var(--line);
-      padding:24px 42px 28px;
+      padding:22px 42px 26px;
     }
 
     .menu.active{
@@ -114,13 +118,12 @@
 
     .menu a{
       display:block;
-      padding:18px 0;
+      padding:17px 0;
       border-bottom:1px solid rgba(215,179,93,.25);
       text-transform:uppercase;
       letter-spacing:4px;
       color:var(--soft);
       font-size:18px;
-      transition:.25s ease;
     }
 
     .menu a:hover{
@@ -128,251 +131,151 @@
       padding-left:8px;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:1fr 1.05fr;
-      min-height:560px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .hero-text{
-      padding:64px 42px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      background:
-        radial-gradient(circle at 10% 18%, rgba(215,179,93,.10), transparent 30%),
-        linear-gradient(180deg,#080808,#010101);
-      border-right:1px solid var(--line);
-    }
-
-    .hero-text h1{
-      font-family:Georgia, "Times New Roman", serif;
-      font-weight:400;
-      font-size:clamp(42px,5vw,72px);
-      line-height:1.06;
-      margin-bottom:28px;
-    }
-
-    .hero-text h1 span{
-      color:var(--gold2);
-    }
-
-    .hero-text p{
-      color:var(--soft);
-      font-size:clamp(18px,2vw,23px);
-      line-height:1.6;
-      max-width:540px;
-      margin-bottom:34px;
-    }
-
-    .hero-image{
-      min-height:560px;
+    /* MAIN SECTIONS */
+    .section{
+      position:relative;
       background-size:cover;
       background-position:center;
-      position:relative;
-      transition:.7s ease;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
     }
 
-    .hero-image::before{
+    .section::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.30));
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.90), rgba(0,0,0,.68)),
+        linear-gradient(180deg, rgba(0,0,0,.26), rgba(0,0,0,.62));
+      z-index:0;
     }
 
-    .btn{
-      min-width:230px;
-      display:inline-flex;
-      justify-content:center;
+    .section.green::before{
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.80), rgba(6,75,56,.78)),
+        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.42));
+    }
+
+    .hero{
+      min-height:660px;
+      display:flex;
       align-items:center;
-      gap:14px;
-      padding:19px 28px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:#fff;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:1.5px;
-      transition:.25s ease;
-      width:fit-content;
     }
 
-    .btn:hover{
-      background:var(--gold);
-      color:#000;
-      transform:translateY(-2px);
-    }
-
-    .section{
+    .content{
+      position:relative;
+      z-index:1;
       padding:58px 42px;
-      border-bottom:1px solid var(--line);
+      max-width:980px;
     }
 
-    .green-section{
-      background:
-        radial-gradient(circle at 85% 20%, rgba(215,179,93,.10), transparent 35%),
-        linear-gradient(135deg,#043124,#0b5c46 48%,#043528);
-    }
-
-    .black-section{
-      background:
-        radial-gradient(circle at 18% 20%, rgba(215,179,93,.08), transparent 28%),
-        #030303;
+    .hero .content{
+      max-width:860px;
+      padding-top:74px;
+      padding-bottom:74px;
     }
 
     .eyebrow{
       color:var(--gold2);
       text-transform:uppercase;
-      letter-spacing:4px;
+      letter-spacing:5px;
       font-size:14px;
       font-weight:900;
-      margin-bottom:14px;
-    }
-
-    .section h2{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(32px,4vw,54px);
-      font-weight:400;
-      line-height:1.1;
-      margin-bottom:24px;
-    }
-
-    .section p{
-      color:var(--soft);
-      font-size:20px;
-      line-height:1.7;
-      max-width:940px;
-      margin-bottom:20px;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:32px;
-    }
-
-    .card{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.20);
-      padding:28px;
-      min-height:190px;
-    }
-
-    .card h3{
-      font-family:Georgia, "Times New Roman", serif;
-      font-weight:400;
-      color:var(--gold2);
-      font-size:28px;
-      margin-bottom:14px;
-    }
-
-    .card p{
-      font-size:17px;
-      line-height:1.58;
-      margin-bottom:0;
-    }
-
-    .split{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      border-bottom:1px solid var(--line);
-    }
-
-    .split-text{
-      padding:58px 42px;
-      background:#030303;
-    }
-
-    .split-text h2{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(32px,4vw,52px);
-      font-weight:400;
-      margin-bottom:20px;
-    }
-
-    .split-text p{
-      color:var(--soft);
-      font-size:20px;
-      line-height:1.65;
       margin-bottom:22px;
     }
 
-    .split-image{
-      min-height:430px;
-      background-size:cover;
-      background-position:center;
-      border-left:1px solid var(--line);
-      position:relative;
-      transition:.7s ease;
-    }
-
-    .split-image::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.25));
-    }
-
-    .contact{
-      display:grid;
-      grid-template-columns:1fr 1.2fr auto;
-      gap:28px;
-      align-items:center;
-      padding:36px 42px;
-      background:linear-gradient(90deg,#064b38,#0b5c46,#041f18);
-      border-bottom:1px solid var(--line);
-    }
-
-    .contact h2{
+    h1,
+    h2,
+    h3{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(30px,4vw,48px);
       font-weight:400;
+      color:var(--white);
+      line-height:1.06;
     }
 
-    .contact p{
-      color:var(--soft);
-      font-size:18px;
-      line-height:1.5;
-      border-left:1px solid var(--gold);
-      padding-left:26px;
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:860px;
+    }
+
+    h1 span{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:950px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:940px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      cursor:pointer;
+      margin-top:34px;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:960px;
+    }
+
+    .focus-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.68);
+      padding:44px 46px;
+      backdrop-filter:blur(2px);
+    }
+
+    .focus-card h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4vw,54px);
+      margin-bottom:22px;
+    }
+
+    .focus-card p{
+      color:#f7f1e6;
+      font-size:22px;
+      line-height:1.62;
+      margin-bottom:0;
     }
 
     .simple-footer{
-      padding:18px 24px;
+      padding:24px;
       text-align:center;
       color:var(--gold);
-      font-size:14px;
+      font-size:18px;
       background:#010101;
-    }
-
-    @media(max-width:900px){
-      .hero,
-      .split,
-      .contact{
-        grid-template-columns:1fr;
-      }
-
-      .hero-text{
-        border-right:none;
-      }
-
-      .split-image{
-        border-left:none;
-        border-top:1px solid var(--line);
-      }
-
-      .cards{
-        grid-template-columns:1fr;
-      }
-
-      .contact p{
-        border-left:none;
-        border-top:1px solid var(--gold);
-        padding-left:0;
-        padding-top:20px;
-      }
+      border-bottom:1px solid var(--line);
     }
 
     @media(max-width:600px){
@@ -396,40 +299,72 @@
       }
 
       .brand{
-        font-size:18px;
-        letter-spacing:1.8px;
+        font-size:16px;
+        letter-spacing:1px;
       }
 
       .menu{
-        padding:24px 30px 28px;
+        padding:22px 30px 26px;
       }
 
       .menu a{
-        font-size:16px;
-        letter-spacing:3px;
+        font-size:15px;
+        letter-spacing:2.5px;
       }
 
-      .hero-text,
-      .section,
-      .split-text,
-      .contact{
-        padding-left:26px;
-        padding-right:26px;
+      .hero{
+        min-height:640px;
       }
 
-      .hero-text h1{
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
         font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .eyebrow{
+        font-size:13px;
+        letter-spacing:5px;
       }
 
       .btn{
         width:100%;
+        margin-top:34px;
+      }
+
+      .focus-card{
+        padding:34px 32px;
+      }
+
+      .focus-card h3{
+        font-size:38px;
+      }
+
+      .focus-card p{
+        font-size:21px;
+        line-height:1.62;
+      }
+
+      .simple-footer{
+        font-size:16px;
       }
     }
 
     @media(max-width:420px){
       .brand{
-        font-size:16px;
-        letter-spacing:1.2px;
+        font-size:15px;
+        letter-spacing:.8px;
       }
 
       .logo,
@@ -441,6 +376,14 @@
       .logo{
         font-size:25px;
       }
+
+      h1{
+        font-size:40px;
+      }
+
+      h2{
+        font-size:36px;
+      }
     }
   </style>
 </head>
@@ -450,11 +393,7 @@
 
     <header class="topbar">
       <a href="index.html" class="logo">TH</a>
-
-      <a href="index.html" class="brand">
-        <span>TitanCore</span> Holdings
-      </a>
-
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
       <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
     </header>
 
@@ -468,84 +407,71 @@
       <a href="news-media.html">News &amp; Media</a>
     </nav>
 
-    <section class="hero" id="home">
-      <div class="hero-text">
+    <section class="section hero daily-bg" data-bg-group="corporate">
+      <div class="content">
         <h1>
-          Integrated<br>
-          leadership for<br>
+          Integrated leadership for<br>
           <span>strategic growth.</span>
         </h1>
 
         <p>
-          TitanCore Holdings is a private holding company built to organize,
-          guide, and support a disciplined business structure for long-term growth.
+          TitanCore Holdings is a private holding company built to organize, guide,
+          and support a disciplined business structure for long-term growth.
         </p>
 
-        <a href="operating-model.html" class="btn">Learn More ›</a>
+        <a href="titancore-structure.html" class="btn">Learn More ›</a>
       </div>
-
-      <div class="hero-image" id="heroImage"></div>
     </section>
 
-    <section class="section green-section">
-      <div class="eyebrow">TitanCore Holdings</div>
-      <h2>A parent company built to create order, direction, and long-term value.</h2>
+    <section class="section daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Core Focus</div>
 
-      <p>
-        TitanCore Holdings serves as the central structure for its business network.
-        The company is designed to provide organization, executive direction,
-        professional standards, and long-term planning across the broader
-        TitanCore ecosystem.
-      </p>
+        <h2>
+          Focused on structure, oversight, and disciplined growth.
+        </h2>
 
-      <p>
-        The front page introduces TitanCore as the parent company. Deeper information
-        is separated into dedicated pages so visitors can choose the exact area they
-        need from the menu.
-      </p>
-    </section>
+        <p>
+          TitanCore is built around the idea that companies grow stronger when
+          they are organized under clear leadership, consistent standards,
+          accountable review, and a long-term plan.
+        </p>
 
-    <section class="section black-section">
-      <div class="eyebrow">Core Focus</div>
-      <h2>Focused on structure, oversight, and disciplined growth.</h2>
+        <div class="card-grid">
+          <div class="focus-card">
+            <h3>Structure</h3>
+            <p>
+              TitanCore creates a clear parent-company structure so business
+              activity can be organized, reviewed, and directed properly.
+            </p>
+          </div>
 
-      <p>
-        TitanCore is built around the idea that companies grow stronger when they
-        are organized under clear leadership, consistent standards, accountable
-        review, and a long-term plan.
-      </p>
+          <div class="focus-card">
+            <h3>Oversight</h3>
+            <p>
+              TitanCore supports executive review, reporting discipline,
+              professional standards, and responsible decision-making.
+            </p>
+          </div>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Structure</h3>
-          <p>
-            TitanCore creates a clear parent-company structure so business activity
-            can be organized, reviewed, and directed properly.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Oversight</h3>
-          <p>
-            TitanCore supports executive review, reporting discipline, professional
-            standards, and responsible decision-making.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Growth</h3>
-          <p>
-            TitanCore focuses on long-term business strength, scalable systems,
-            and stable expansion across its network.
-          </p>
+          <div class="focus-card">
+            <h3>Growth</h3>
+            <p>
+              TitanCore focuses on long-term business strength, scalable systems,
+              and stable expansion across its network.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="split">
-      <div class="split-text">
+    <section class="section daily-bg" data-bg-group="finance">
+      <div class="content">
         <div class="eyebrow">Professional Presentation</div>
-        <h2>Each public area has its own dedicated page.</h2>
+
+        <h2>
+          Each public area has its own dedicated page.
+        </h2>
 
         <p>
           The homepage stays clean and focused on TitanCore Holdings only.
@@ -558,32 +484,39 @@
           crowding the front page with every department, company, or public section.
         </p>
       </div>
-
-      <div class="split-image" id="leadershipImage"></div>
     </section>
 
-    <section class="section green-section">
-      <div class="eyebrow">Public Pathway</div>
-      <h2>Simple front page. Deeper pages behind the menu.</h2>
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Public Pathway</div>
 
-      <p>
-        The three-line menu leads visitors to new information that is not repeated
-        on the homepage. TitanCore Structure, Operating Model, and Governance are
-        deeper pages for people who want to understand how TitanCore is organized.
-      </p>
+        <h2>
+          Simple front page. Deeper pages behind the menu.
+        </h2>
 
-      <p>
-        Company, Institution, Business Intelligence, and News &amp; Media each open
-        their own public areas with more detailed information and next-step links.
-      </p>
+        <p>
+          The three-line menu leads visitors to new information that is not repeated
+          on the homepage. TitanCore Structure, Operating Model, and Governance are
+          deeper pages for people who want to understand how TitanCore is organized.
+        </p>
+
+        <p>
+          Company, Institution, Business Intelligence, and News &amp; Media each open
+          their own public areas with more detailed information and next-step links.
+        </p>
+      </div>
     </section>
 
-    <section class="contact">
-      <h2>Contact us today</h2>
-      <p>
-        For general questions or professional inquiries, contact TitanCore Holdings.
-      </p>
-      <a href="contact.html" class="btn">Get In Touch ›</a>
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions or professional inquiries, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
     </section>
 
     <footer class="simple-footer">
@@ -594,47 +527,42 @@
 
   <script>
     function toggleMenu(){
-      document.getElementById("menu").classList.toggle("active");
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
     }
 
-    const heroImages = [
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85"
-    ];
+    const backgroundSets = {
+      corporate: [
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ],
+      finance: [
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
 
-    const leadershipImages = [
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1400&q=85"
-    ];
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
 
-    let heroIndex = new Date().getDate() % heroImages.length;
-    let leadershipIndex = (new Date().getDate() + 1) % leadershipImages.length;
+      sections.forEach(function(section, index){
+        const group = section.dataset.bgGroup || "corporate";
+        const images = backgroundSets[group] || backgroundSets.corporate;
+        const selected = images[(day + index) % images.length];
 
-    const hero = document.getElementById("heroImage");
-    const leadership = document.getElementById("leadershipImage");
-
-    function setImage(element, image){
-      element.style.backgroundImage =
-        "linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.24)), url('" + image + "')";
+        section.style.backgroundImage = "url('" + selected + "')";
+      });
     }
 
-    setImage(hero, heroImages[heroIndex]);
-    setImage(leadership, leadershipImages[leadershipIndex]);
-
-    setInterval(function(){
-      heroIndex = (heroIndex + 1) % heroImages.length;
-      setImage(hero, heroImages[heroIndex]);
-    }, 9000);
-
-    setInterval(function(){
-      leadershipIndex = (leadershipIndex + 1) % leadershipImages.length;
-      setImage(leadership, leadershipImages[leadershipIndex]);
-    }, 11000);
+    applyDailyBackgrounds();
   </script>
-
 </body>
 </html>
