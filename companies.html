@@ -3,823 +3,600 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>TitanCore Holdings | Company Network</title>
+  <title>Company | TitanCore Holdings</title>
 
   <style>
     :root{
-      --black:#000000;
-      --panel:#050705;
-      --green:#00b85a;
-      --green2:#03d66b;
-      --gold:#d8b45a;
-      --gold2:#f4d98b;
-      --yellow:#ffd000;
-      --white:#ffffff;
-      --muted:#c7b37a;
-      --border:rgba(216,180,90,.50);
-      --shadow:0 0 34px rgba(216,180,90,.12);
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-
-    html{
-      scroll-behavior:smooth;
-      background:var(--black);
-    }
-
+    html{scroll-behavior:smooth}
     body{
-      background:
-        radial-gradient(circle at top left,rgba(0,184,90,.16),transparent 30%),
-        radial-gradient(circle at top right,rgba(216,180,90,.10),transparent 28%),
-        linear-gradient(180deg,#000 0%,#031008 48%,#000 100%);
-      color:var(--gold2);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.55;
-      overflow-x:hidden;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
     }
+    a{text-decoration:none;color:inherit}
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    .container{
-      width:min(1240px,94%);
+    .page{
+      max-width:1180px;
       margin:0 auto;
+      background:var(--black);
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
     }
 
     .topbar{
-      background:#000;
-      border-bottom:1px solid var(--border);
-      padding:24px 0 28px;
-    }
-
-    .brand{
-      display:flex;
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
       align-items:center;
-      gap:18px;
-      padding-bottom:24px;
-      border-bottom:1px solid rgba(216,180,90,.30);
+      gap:14px;
+      padding:14px 24px;
+      background:
+        radial-gradient(circle at 16% 20%, rgba(215,179,93,.10), transparent 30%),
+        linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
     }
 
-    .logo-box{
+    .logo{
       width:76px;
       height:76px;
       border:3px solid var(--gold);
-      border-radius:16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--yellow);
-      font-size:42px;
-      font-weight:900;
-      background:
-        radial-gradient(circle at center,rgba(255,208,0,.18),transparent 58%),
-        #050505;
-      box-shadow:0 0 22px rgba(216,180,90,.18);
-      flex:0 0 auto;
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
     }
 
-    .brand-title{
-      color:var(--green);
-      font-size:clamp(30px,6vw,58px);
-      line-height:1;
-      font-weight:900;
-      letter-spacing:.5px;
-    }
-
-    .brand-subtitle{
-      margin-top:8px;
-      color:var(--gold);
-      font-size:clamp(12px,2.5vw,18px);
-      font-weight:900;
-      letter-spacing:4px;
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,4vw,52px);
+      letter-spacing:clamp(1px,.8vw,5px);
       text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .nav{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      align-items:center;
-      gap:16px 34px;
-      padding-top:28px;
-    }
+    .brand span{color:var(--gold)}
 
-    .nav a{
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
       color:var(--white);
-      font-size:clamp(15px,2.6vw,20px);
-      font-weight:900;
-      text-align:center;
-      padding:8px 4px;
-      border-bottom:2px solid transparent;
+      font-size:36px;
+      cursor:pointer;
     }
 
-    .nav a:hover,
-    .nav a.active{
-      color:var(--white);
-      border-bottom-color:var(--gold);
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:24px 42px 28px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:18px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
     }
 
     .hero{
-      min-height:500px;
+      display:grid;
+      grid-template-columns:1fr 1.05fr;
+      min-height:450px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .hero-text{
+      padding:58px 42px;
       display:flex;
-      align-items:center;
-      padding:46px 0;
+      flex-direction:column;
+      justify-content:center;
       background:
-        linear-gradient(90deg,rgba(0,0,0,.96),rgba(0,0,0,.72),rgba(0,0,0,.30)),
-        var(--hero-image),
-        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80");
+        radial-gradient(circle at 10% 18%, rgba(215,179,93,.10), transparent 30%),
+        linear-gradient(180deg,#080808,#010101);
+      border-right:1px solid var(--line);
+    }
+
+    .hero-text h1{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      font-size:clamp(40px,5vw,70px);
+      line-height:1.08;
+      margin-bottom:22px;
+    }
+
+    .hero-text h1 span{color:var(--gold2)}
+
+    .hero-text p{
+      color:var(--soft);
+      font-size:20px;
+      line-height:1.6;
+      margin-bottom:26px;
+    }
+
+    .hero-image{
+      min-height:450px;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.28)),
+        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85');
       background-size:cover;
       background-position:center;
-      border-bottom:1px solid rgba(216,180,90,.28);
     }
 
-    .hero-card{
-      max-width:900px;
-      border:1px solid var(--border);
-      border-radius:28px;
-      padding:clamp(28px,6vw,64px);
-      background:rgba(0,0,0,.72);
-      box-shadow:var(--shadow);
-    }
-
-    .kicker{
-      color:var(--gold);
-      font-size:clamp(12px,2.5vw,17px);
-      letter-spacing:5px;
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:18px 26px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
       text-transform:uppercase;
       font-weight:900;
-      margin-bottom:18px;
+      letter-spacing:1.5px;
+      width:fit-content;
     }
 
-    h1{
-      color:var(--green);
-      font-size:clamp(44px,9vw,86px);
-      line-height:.98;
-      letter-spacing:-2px;
-      font-weight:900;
-      margin-bottom:24px;
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
     }
 
-    h2{
-      color:var(--green);
-      font-size:clamp(32px,6vw,58px);
-      line-height:1.05;
-      font-weight:900;
-      margin-bottom:20px;
+    .section{
+      padding:52px 42px;
+      border-bottom:1px solid var(--line);
     }
 
-    h3{
-      color:var(--green);
-      font-size:clamp(24px,4.8vw,38px);
-      line-height:1.12;
+    .green-section{
+      background:
+        radial-gradient(circle at 85% 20%, rgba(215,179,93,.10), transparent 35%),
+        linear-gradient(135deg,#043124,#0b5c46 48%,#043528);
+    }
+
+    .black-section{
+      background:#030303;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:14px;
       font-weight:900;
       margin-bottom:14px;
     }
 
-    p{
-      color:var(--gold2);
-      font-size:clamp(17px,3.2vw,23px);
-      margin-bottom:18px;
-    }
-
-    .lead{
-      font-size:clamp(20px,4vw,30px);
-      max-width:820px;
-    }
-
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-top:28px;
-    }
-
-    .btn{
-      min-height:54px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px 22px;
-      border-radius:14px;
-      border:2px solid var(--yellow);
-      background:var(--yellow);
-      color:#000;
-      font-size:clamp(15px,2.8vw,18px);
-      font-weight:900;
-      text-align:center;
-      transition:.2s ease;
-    }
-
-    .btn.ghost{
-      background:rgba(0,0,0,.55);
-      color:var(--gold2);
-      border-color:var(--border);
-    }
-
-    .btn:hover{
-      background:var(--green);
-      border-color:var(--green);
-      color:var(--white);
-      transform:translateY(-2px);
-    }
-
-    .section{
-      padding:38px 0;
-    }
-
-    .panel{
-      border:1px solid var(--border);
-      border-radius:26px;
-      background:
-        radial-gradient(circle at top left,rgba(0,184,90,.12),transparent 34%),
-        rgba(0,0,0,.82);
-      padding:clamp(24px,5vw,46px);
-      box-shadow:var(--shadow);
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      align-items:flex-end;
-      border-bottom:1px solid rgba(216,180,90,.30);
-      padding-bottom:20px;
+    .section h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(32px,4vw,54px);
+      font-weight:400;
+      line-height:1.08;
       margin-bottom:24px;
     }
 
-    .section-note{
-      color:var(--muted);
+    .section p{
+      color:var(--soft);
+      font-size:19px;
+      line-height:1.65;
+      margin-bottom:18px;
+      max-width:950px;
+    }
+
+    .company-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:30px;
+    }
+
+    .company-card{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.22);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      transition:.25s ease;
+    }
+
+    .company-card:hover{
+      transform:translateY(-2px);
+      background:rgba(215,179,93,.08);
+    }
+
+    .company-image{
+      height:190px;
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid rgba(215,179,93,.45);
+    }
+
+    .company-content{
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+
+    .company-tag{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
       font-weight:900;
-      font-size:14px;
+      margin-bottom:14px;
+    }
+
+    .company-card h3{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold2);
+      font-weight:400;
+      font-size:clamp(30px,3vw,42px);
+      line-height:1.1;
+      margin-bottom:14px;
+    }
+
+    .company-card p{
+      color:var(--soft);
+      font-size:17px;
+      line-height:1.55;
+      margin-bottom:22px;
+    }
+
+    .company-link{
+      margin-top:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-top:1px solid rgba(215,179,93,.42);
+      padding-top:16px;
       text-transform:uppercase;
       letter-spacing:2px;
-      white-space:nowrap;
-    }
-
-    .grid{
-      display:grid;
-      gap:18px;
-    }
-
-    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
-    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
-    .cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
-
-    .card{
-      border:1px solid rgba(216,180,90,.38);
-      border-radius:22px;
-      overflow:hidden;
-      background:rgba(0,0,0,.72);
-      color:var(--gold2);
-      transition:.2s ease;
-      min-height:100%;
-    }
-
-    .card:hover{
-      border-color:var(--green);
-      box-shadow:0 0 26px rgba(0,184,90,.14);
-      transform:translateY(-2px);
-    }
-
-    .card-img{
-      min-height:220px;
-      background-size:cover;
-      background-position:center;
-      position:relative;
-      display:flex;
-      align-items:flex-end;
-      padding:16px;
-    }
-
-    .card-img::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.80));
-    }
-
-    .icon-badge{
-      position:relative;
-      z-index:2;
-      width:58px;
-      height:58px;
-      border-radius:50%;
-      border:1px solid var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#050505;
-      color:var(--yellow);
-      font-size:30px;
       font-weight:900;
-    }
-
-    .card-body{
-      padding:24px;
-    }
-
-    .card-body p{
-      font-size:clamp(15px,2.6vw,18px);
-    }
-
-    .card-link{
-      color:var(--yellow);
-      font-weight:900;
-      display:inline-block;
-      margin-top:6px;
-    }
-
-    .route-card{
-      border:1px solid rgba(216,180,90,.38);
-      border-radius:22px;
-      padding:26px;
-      background:rgba(0,0,0,.72);
-    }
-
-    .route-number{
-      width:54px;
-      height:54px;
-      border-radius:50%;
-      border:1px solid var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--yellow);
-      font-size:24px;
-      font-weight:900;
-      margin-bottom:16px;
-    }
-
-    .image-strip{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:22px;
-      align-items:center;
-      border:1px solid var(--border);
-      border-radius:26px;
-      overflow:hidden;
-      background:rgba(0,0,0,.76);
-    }
-
-    .strip-image{
-      min-height:390px;
-      background:
-        linear-gradient(rgba(0,0,0,.20),rgba(0,0,0,.72)),
-        var(--strip-image),
-        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80");
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .strip-copy{
-      padding:30px;
-    }
-
-    .play{
-      width:90px;
-      height:90px;
-      border-radius:50%;
-      border:2px solid var(--yellow);
-      background:rgba(0,0,0,.72);
-      color:var(--yellow);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:38px;
-      padding-left:6px;
-      font-weight:900;
-    }
-
-    .notice{
-      color:var(--muted);
-      font-size:clamp(15px,2.8vw,18px);
-    }
-
-    .footer{
-      background:#000;
-      border-top:1px solid var(--border);
-      padding:34px 0 46px;
-    }
-
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
-      gap:22px;
-      align-items:center;
-    }
-
-    .footer strong{
-      color:var(--green);
-      font-size:26px;
-      display:block;
-      margin-bottom:8px;
-    }
-
-    .footer p{
-      font-size:15px;
-      color:var(--muted);
-      margin:0;
-    }
-
-    .footer-links{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-      gap:14px;
-    }
-
-    .footer-links a{
       color:var(--white);
-      font-weight:900;
+      font-size:15px;
+    }
+
+    .company-link span:last-child{
+      color:var(--gold2);
+      font-size:30px;
+    }
+
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1.2fr auto;
+      gap:28px;
+      align-items:center;
+      padding:36px 42px;
+      background:linear-gradient(90deg,#064b38,#0b5c46,#041f18);
+      border-bottom:1px solid var(--line);
+    }
+
+    .contact h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(30px,4vw,48px);
+      font-weight:400;
+    }
+
+    .contact p{
+      color:var(--soft);
+      font-size:18px;
+      line-height:1.5;
+      border-left:1px solid var(--gold);
+      padding-left:26px;
+    }
+
+    .simple-footer{
+      padding:18px 24px;
+      text-align:center;
+      color:var(--gold);
       font-size:14px;
+      background:#010101;
     }
 
-    @media(max-width:980px){
-      .cols-4,.cols-3,.cols-2{
+    @media(max-width:900px){
+      .hero,
+      .contact{
         grid-template-columns:1fr;
       }
 
-      .section-head{
-        display:block;
+      .hero-text{
+        border-right:none;
       }
 
-      .section-note{
-        margin-top:8px;
-        display:block;
-      }
-
-      .image-strip,
-      .footer-grid{
+      .company-grid{
         grid-template-columns:1fr;
       }
 
-      .footer-links{
-        justify-content:flex-start;
+      .contact p{
+        border-left:none;
+        border-top:1px solid var(--gold);
+        padding-left:0;
+        padding-top:20px;
       }
     }
 
-    @media(max-width:620px){
-      .brand{
-        align-items:flex-start;
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
       }
 
-      .logo-box{
+      .logo,.menu-btn{
         width:62px;
         height:62px;
-        font-size:34px;
       }
 
-      .brand-subtitle{
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+
+      .brand{
+        font-size:18px;
+        letter-spacing:1.8px;
+      }
+
+      .menu{
+        padding:24px 30px 28px;
+      }
+
+      .menu a{
+        font-size:16px;
         letter-spacing:3px;
       }
 
-      .nav{
-        gap:12px 20px;
+      .hero-text,.section,.contact{
+        padding-left:24px;
+        padding-right:24px;
       }
 
-      .hero{
-        min-height:auto;
+      .hero-text h1{
+        font-size:40px;
       }
 
-      .actions{
-        display:grid;
+      .hero-text p,.section p{
+        font-size:17px;
       }
 
       .btn{
         width:100%;
       }
 
-      .card-img{
-        min-height:230px;
+      .company-image{
+        height:170px;
+      }
+
+      .company-content{
+        padding:22px;
+      }
+
+      .company-card h3{
+        font-size:32px;
+      }
+
+      .company-card p{
+        font-size:16px;
+      }
+
+      .company-link{
+        font-size:13px;
+        letter-spacing:1.5px;
+      }
+    }
+
+    @media(max-width:420px){
+      .brand{
+        font-size:16px;
+        letter-spacing:1.2px;
+      }
+
+      .logo,.menu-btn{
+        width:58px;
+        height:58px;
+      }
+
+      .logo{font-size:25px}
+
+      .company-card h3{
+        font-size:29px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="container">
-      <a class="brand" href="index.html">
-        <div class="logo-box">T</div>
-        <div>
-          <div class="brand-title">TitanCore Holdings</div>
-          <div class="brand-subtitle">Company Network</div>
-        </div>
-      </a>
+  <main class="page">
 
-      <nav class="nav" aria-label="TitanCore Main Menu">
-        <a href="index.html">Home</a>
-        <a href="investor.html">Investor</a>
-        <a href="institution.html">Institution</a>
-        <a href="institution-financial.html">Institution Financial</a>
-        <a href="banks.html">Banks</a>
-        <a class="active" href="companies.html">Company</a>
-        <a href="join-us.html">Join Us</a>
-        <a href="business-book.html">Business Intelligence Book</a>
-        <a href="stock-watch.html">Stock Market Watch</a>
-        <a href="global-business-news.html">Global Business News</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
 
-  <main>
-    <section class="hero" id="heroSection">
-      <div class="container">
-        <div class="hero-card">
-          <div class="kicker">TitanCore Company Network</div>
-          <h1>One Umbrella. Multiple Companies. One Organized Business System.</h1>
-          <p class="lead">
-            TitanCore Holdings is the father company that organizes the public business network,
-            company information, market intelligence, and public request paths for its connected companies.
-          </p>
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
 
-          <div class="actions">
-            <a class="btn" href="#company-directory">🏢 View Companies</a>
-            <a class="btn ghost" href="#routing-system">🧭 How Routing Works</a>
-            <a class="btn ghost" href="contact.html">✉ Contact TitanCore</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="company-directory">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Company Directory</div>
-            <h2>Choose a TitanCore Company</h2>
-          </div>
-          <span class="section-note">Each card opens its own company page</span>
-        </div>
-
-        <div class="grid cols-4">
-          <a class="card" href="vaultara.html">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80');">
-              <div class="icon-badge">💳</div>
-            </div>
-            <div class="card-body">
-              <h3>Vaultara Capital</h3>
-              <p>
-                Funding, personal lcredit, business credit, credit education,
-                and business formation support information.
-              </p>
-              <span class="card-link">Open Vaultara →</span>
-            </div>
-          </a>
-
-          <a class="card" href="family-first.html">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80');">
-              <div class="icon-badge">🏠</div>
-            </div>
-            <div class="card-body">
-              <h3>Family First Equity Group</h3>
-              <p>
-                Real estate investment, property opportunities, property management,
-                and real estate market education.
-              </p>
-              <span class="card-link">Open Family First →</span>
-            </div>
-          </a>
-
-          <a class="card" href="vitalpath.html">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80');">
-              <div class="icon-badge">✚</div>
-            </div>
-            <div class="card-body">
-              <h3>VitalPath Care Group</h3>
-              <p>
-                Care support, wellness information, family care planning,
-                and community service education.
-              </p>
-              <span class="card-link">Open VitalPath →</span>
-            </div>
-          </a>
-
-          <a class="card" href="revmotion.html">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80');">
-              <div class="icon-badge">🚗</div>
-            </div>
-            <div class="card-body">
-              <h3>RevMotion Auto & Marine LLC</h3>
-              <p>
-                Auto, marine, transportation, repair education,
-                and vehicle market information.
-              </p>
-              <span class="card-link">Open RevMotion →</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="routing-system">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Routing System</div>
-            <h2>How TitanCore Routes Public Requests</h2>
-          </div>
-          <span class="section-note">Website now, CRM/CIM later</span>
-        </div>
-
-        <div class="grid cols-4">
-          <div class="route-card">
-            <div class="route-number">1</div>
-            <h3>Visitor Chooses a Company</h3>
-            <p>
-              The visitor starts on TitanCore and chooses the company that matches the need.
-            </p>
-          </div>
-
-          <div class="route-card">
-            <div class="route-number">2</div>
-            <h3>Company Page Explains the Path</h3>
-            <p>
-              Each company page gives information, images, learning sections, and request options.
-            </p>
-          </div>
-
-          <div class="route-card">
-            <div class="route-number">3</div>
-            <h3>Form or Contact Is Submitted</h3>
-            <p>
-              The request goes to email now, then later also goes to Supabase.
-            </p>
-          </div>
-
-          <div class="route-card">
-            <div class="route-number">4</div>
-            <h3>AI / CRM Routes Later</h3>
-            <p>
-              The CRM/CIM will organize, summarize, and route the request to the correct company.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="visual-media">
-      <div class="container">
-        <div class="image-strip">
-          <div class="strip-image" id="stripImage">
-            <div class="play">▶</div>
-          </div>
-
-          <div class="strip-copy">
-            <div class="kicker">Company Media Area</div>
-            <h2>Company Videos, Images, and Updates Can Rotate Here</h2>
-            <p>
-              This area is ready for company overview videos, AI-generated business clips,
-              company announcements, or rotating company images.
-            </p>
-            <p class="notice">
-              Later, Supabase can control the image or video shown here for each company page.
-            </p>
-
-            <div class="actions">
-              <a class="btn" href="business-book.html">📘 Open Business Book</a>
-              <a class="btn ghost" href="global-business-news.html">🌍 Global Business News</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="choose-right-company">
-      <div class="container panel">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Choose the Right Path</div>
-            <h2>Which Company Should Visitors Pick?</h2>
-          </div>
-        </div>
-
-        <div class="grid cols-2">
-          <div class="card">
-            <div class="card-body">
-              <h3>💳 Funding, Credit, Formation</h3>
-              <p>
-                Choose Vaultara Capital for funding questions, credit education,
-                business credit, personal credit, and business formation interest.
-              </p>
-              <a class="card-link" href="vaultara-landing.html">Open Vaultara →</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h3>🏠 Real Estate / Property</h3>
-              <p>
-                Choose Family First Equity Group for property interest, real estate education,
-                property management information, and market research.
-              </p>
-              <a class="card-link" href="family-first.html">Open Family First →</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h3>✚ Care / Wellness</h3>
-              <p>
-                Choose VitalPath Care Group for care support information,
-                family care planning, wellness, and community service education.
-              </p>
-              <a class="card-link" href="vitalpath.html">Open VitalPath →</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <h3>🚗 Auto / Marine</h3>
-              <p>
-                Choose RevMotion Auto & Marine for auto, marine, repair education,
-                transportation support, and service market information.
-              </p>
-              <a class="card-link" href="revmotion.html">Open RevMotion →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container panel">
-        <div class="kicker">TitanCore Notice</div>
-        <h2>Public Company Information Only</h2>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Companies under<br><span>TitanCore.</span></h1>
         <p>
-          TitanCore Holdings public company pages are for education, information, public request routing,
-          and company overview purposes. Formal business relationships, funding, property, care, auto, marine,
-          investment, banking, or service relationships require proper review and written agreement.
+          TitanCore Holdings introduces the companies under its structure.
+          Each company keeps its own public website and its own direct business path.
         </p>
-        <p class="notice">
-          The CRM/CIM and Supabase system will later help organize form submissions, company requests,
-          and AI routing across the TitanCore ecosystem.
-        </p>
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+
+      <div class="hero-image"></div>
+    </section>
+
+    <section class="section green-section">
+      <div class="eyebrow">Company Portfolio</div>
+      <h2>Each company has its own public business path.</h2>
+
+      <p>
+        TitanCore Holdings introduces the companies here. If a visitor wants
+        more details or wants to do business with one company, they should
+        continue directly to that company’s own website.
+      </p>
+    </section>
+
+    <section class="section black-section">
+      <div class="eyebrow">Operating Companies</div>
+      <h2>Review each company and continue to its website.</h2>
+
+      <div class="company-grid">
+
+        <a href="https://www.vaultaracapital.com" class="company-card">
+          <div class="company-image" style="background-image:
+            linear-gradient(90deg, rgba(0,0,0,.15), rgba(0,0,0,.30)),
+            url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="company-content">
+            <div class="company-tag">Funding • Credit • Formation</div>
+            <h3>Vaultara Capital</h3>
+            <p>
+              Funding, credit solutions, and business formation services.
+              Continue to Vaultara Capital for applications and service details.
+            </p>
+            <div class="company-link">
+              <span>Visit Vaultara</span>
+              <span>›</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.familyfirstequitygroup.com" class="company-card">
+          <div class="company-image" style="background-image:
+            linear-gradient(90deg, rgba(0,0,0,.15), rgba(0,0,0,.30)),
+            url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="company-content">
+            <div class="company-tag">Real Estate • Property • Equity</div>
+            <h3>Family First Equity Group</h3>
+            <p>
+              Real estate investment and property-related opportunities.
+              Continue to Family First for company-specific information.
+            </p>
+            <div class="company-link">
+              <span>Visit Family First</span>
+              <span>›</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.vitalpathcaregroup.com" class="company-card">
+          <div class="company-image" style="background-image:
+            linear-gradient(90deg, rgba(0,0,0,.15), rgba(0,0,0,.30)),
+            url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="company-content">
+            <div class="company-tag">Care • Service • Support</div>
+            <h3>VitalPath Care Group</h3>
+            <p>
+              Care-focused business services under the TitanCore ecosystem.
+              Continue to VitalPath for company-specific information.
+            </p>
+            <div class="company-link">
+              <span>Visit VitalPath</span>
+              <span>›</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://www.revmotionautomarine.com" class="company-card">
+          <div class="company-image" style="background-image:
+            linear-gradient(90deg, rgba(0,0,0,.15), rgba(0,0,0,.30)),
+            url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80');">
+          </div>
+          <div class="company-content">
+            <div class="company-tag">Auto • Marine • Marketplace</div>
+            <h3>RevMotion Auto &amp; Marine</h3>
+            <p>
+              Auto and marine marketplace opportunities. Continue to RevMotion
+              for more information and company-specific activity.
+            </p>
+            <div class="company-link">
+              <span>Visit RevMotion</span>
+              <span>›</span>
+            </div>
+          </div>
+        </a>
+
       </div>
     </section>
+
+    <section class="section green-section">
+      <div class="eyebrow">Company Page Purpose</div>
+      <h2>TitanCore introduces. Each company handles its own business.</h2>
+
+      <p>
+        This page is a clean company directory under TitanCore Holdings.
+        It helps people understand the companies under TitanCore and then move
+        directly to the correct company website.
+      </p>
+    </section>
+
+    <section class="contact">
+      <h2>Contact us today</h2>
+      <p>For general questions or professional inquiries, contact TitanCore Holdings.</p>
+      <a href="contact.html" class="btn">Get In Touch ›</a>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>TitanCore Holdings</strong>
-        <p>Company Network and public company directory.</p>
-      </div>
-
-      <div class="logo-box" style="width:58px;height:58px;font-size:32px;">T</div>
-
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="contact.html">Contact</a>
-        <a href="business-book.html">Business Book</a>
-        <a href="stock-watch.html">Stock Watch</a>
-        <a href="global-business-news.html">Global News</a>
-      </div>
-    </div>
-  </footer>
-
   <script>
-    const heroImages = [
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=80",
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1800&q=80"
-    ];
-
-    const stripImages = [
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80"
-    ];
-
-    function dayIndex(list){
-      const dayNumber = Math.floor(Date.now() / 86400000);
-      return dayNumber % list.length;
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
     }
-
-    function setDailyMedia(){
-      const hero = document.getElementById("heroSection");
-      const strip = document.getElementById("stripImage");
-
-      if(hero){
-        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
-      }
-
-      if(strip){
-        strip.style.setProperty("--strip-image", `url("${stripImages[dayIndex(stripImages)]}")`);
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", setDailyMedia);
   </script>
 </body>
 </html>
