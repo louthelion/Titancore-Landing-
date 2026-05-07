@@ -3,506 +3,556 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Thank You | TitanCore Holdings</title>
 
   <style>
     :root{
-      --black:#000000;
-      --deep:#020806;
-      --green:#00b85f;
-      --green-bright:#00d676;
-      --gold:#f4d27a;
-      --yellow:#ffd000;
-      --white:#ffffff;
-      --line:rgba(244,210,122,.48);
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
 
     body{
-      margin:0;
-      background:
-        radial-gradient(circle at top left, rgba(0,184,95,.22), transparent 34%),
-        linear-gradient(180deg, #000 0%, #03100b 44%, #000 100%);
-      color:var(--gold);
-      font-family:Arial, Helvetica, sans-serif;
-      line-height:1.45;
-    }
-
-    a{
+      background:#000;
       color:var(--white);
-      text-decoration:none;
-      font-weight:900;
+      font-family:Arial, Helvetica, sans-serif;
     }
 
-    a:hover{
-      color:var(--yellow);
-    }
+    a{color:inherit;text-decoration:none}
 
     .page{
-      width:100%;
-      max-width:980px;
+      max-width:1180px;
       margin:0 auto;
-      padding:24px 20px 60px;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
     }
 
     .topbar{
-      background:#000;
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      margin-bottom:26px;
-    }
-
-    .logo-box{
-      width:92px;
-      height:92px;
+    .logo{
+      width:76px;
+      height:76px;
       border:3px solid var(--gold);
-      border-radius:18px;
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:var(--white);
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .hero-banner,
+    .image-section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .hero-banner{
+      min-height:620px;
       display:flex;
       align-items:center;
-      justify-content:center;
-      color:var(--yellow);
-      font-size:52px;
-      font-weight:1000;
-      background:linear-gradient(145deg, #05140e, #000);
-      box-shadow:0 0 24px rgba(0,184,95,.25);
-      flex:0 0 auto;
     }
 
-    .brand-title{
-      color:var(--green);
-      font-size:42px;
-      font-weight:1000;
-      line-height:1;
+    .image-section{
+      min-height:430px;
     }
 
-    .brand-subtitle{
-      margin-top:10px;
-      color:var(--gold);
-      font-size:18px;
-      font-weight:900;
-      letter-spacing:6px;
+    .hero-banner::before,
+    .image-section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.84), rgba(0,0,0,.52)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.42));
+    }
+
+    .green-overlay::before{
+      background:
+        linear-gradient(90deg, rgba(2,37,27,.90), rgba(6,75,56,.66)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+    }
+
+    .hero-content,
+    .section-content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:980px;
+    }
+
+    .hero-content{
+      max-width:820px;
+      padding-top:70px;
+      padding-bottom:70px;
+    }
+
+    .eyebrow,
+    .hero-eyebrow{
+      color:var(--gold2);
       text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:18px;
     }
 
-    .nav{
+    .hero-content h1,
+    .section-content h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    .hero-content h1{
+      font-size:clamp(44px,5vw,78px);
+      margin-bottom:22px;
+    }
+
+    .hero-content h1 span,
+    .section-content h2 span{
+      color:var(--gold2);
+    }
+
+    .section-content h2{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:22px;
+      max-width:920px;
+    }
+
+    .hero-content p,
+    .section-content p{
+      color:#f2ece1;
+      font-size:19px;
+      line-height:1.62;
+      margin-bottom:18px;
+      max-width:940px;
+    }
+
+    .btn-row{
       display:flex;
       flex-wrap:wrap;
+      gap:16px;
+      margin-top:28px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
       justify-content:center;
-      gap:28px 46px;
-      padding:28px 0 8px;
-    }
-
-    .nav a{
-      color:var(--white);
-      font-size:24px;
-      font-weight:1000;
-    }
-
-    .thank-card{
-      margin-top:30px;
-      border:1px solid var(--line);
-      border-radius:34px;
-      padding:34px 36px 42px;
-      background:
-        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.95)),
-        radial-gradient(circle at top left, rgba(0,184,95,.26), transparent 46%);
-      box-shadow:0 24px 70px rgba(0,0,0,.78);
-    }
-
-    .thank-header{
-      display:flex;
       align-items:center;
-      gap:22px;
-      margin-bottom:26px;
-    }
-
-    .check-wrap{
-      width:92px;
-      height:92px;
-      border-radius:50%;
-      border:6px solid var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--yellow);
-      font-size:58px;
-      font-weight:1000;
-      background:#000;
-      box-shadow:0 0 32px rgba(0,184,95,.28);
-      flex:0 0 auto;
-    }
-
-    .thank-you{
-      margin:0;
-      color:var(--yellow);
-      font-size:clamp(72px, 18vw, 138px);
-      line-height:.85;
-      font-weight:1000;
-      letter-spacing:-3px;
+      gap:14px;
+      padding:17px 26px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
       text-transform:uppercase;
-    }
-
-    .success-title{
-      margin:26px 0 0;
-      color:var(--green);
-      font-size:clamp(46px, 11vw, 86px);
-      line-height:1;
-      font-weight:1000;
-      letter-spacing:-2px;
-    }
-
-    .lead{
-      margin:32px 0 0;
-      color:var(--gold);
-      font-size:clamp(28px, 7vw, 42px);
-      line-height:1.4;
       font-weight:900;
+      letter-spacing:1.5px;
+      width:fit-content;
+      cursor:pointer;
     }
 
-    .date-line{
+    .btn:hover{background:var(--gold);color:#000}
+
+    .confirmation-box{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.48);
+      padding:30px;
       margin-top:30px;
-      color:#d6c38a;
-      font-size:24px;
-      font-weight:900;
+      backdrop-filter:blur(2px);
+      max-width:900px;
     }
 
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:22px;
-      margin-top:36px;
-    }
-
-    .info-box{
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:24px;
-      background:rgba(0,0,0,.55);
-    }
-
-    .info-box h2{
-      margin:0 0 10px;
-      color:var(--green-bright);
-      font-size:30px;
-      line-height:1.1;
-    }
-
-    .info-box p{
-      margin:0;
-      color:var(--gold);
-      font-size:22px;
-      font-weight:800;
-      line-height:1.45;
-    }
-
-    .next-section{
-      margin-top:36px;
-      border-top:1px solid var(--line);
-      padding-top:32px;
-    }
-
-    .next-section h2{
-      margin:0 0 22px;
-      color:var(--white);
-      font-size:44px;
-      line-height:1.1;
-      font-weight:1000;
-    }
-
-    .steps{
-      display:grid;
-      gap:18px;
-    }
-
-    .step{
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:22px 24px;
-      background:rgba(0,0,0,.5);
-    }
-
-    .step strong{
-      display:block;
-      color:var(--green-bright);
-      font-size:26px;
-      margin-bottom:8px;
-    }
-
-    .step span{
-      display:block;
-      color:var(--gold);
-      font-size:22px;
-      font-weight:800;
-      line-height:1.45;
-    }
-
-    .notice{
-      margin-top:34px;
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:28px;
-      color:var(--gold);
-      background:rgba(0,0,0,.62);
-      font-size:22px;
-      font-weight:800;
-      line-height:1.5;
-    }
-
-    .footer{
-      margin-top:42px;
-      border-top:1px solid var(--line);
-      padding-top:32px;
-    }
-
-    .footer h3{
-      margin:0 0 12px;
-      color:var(--green);
+    .confirmation-box h3{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold2);
       font-size:34px;
+      font-weight:400;
+      margin-bottom:14px;
+      line-height:1.1;
     }
 
-    .footer p{
-      margin:0;
+    .confirmation-box p{
+      color:#f7f1e6;
+      font-size:17px;
+      line-height:1.58;
+      margin-bottom:0;
+    }
+
+    .route-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:30px;
+    }
+
+    .route-card{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.42);
+      padding:24px;
+      min-height:190px;
+      backdrop-filter:blur(2px);
+      transition:.25s ease;
+    }
+
+    .route-card:hover{
+      transform:translateY(-2px);
+      background:rgba(215,179,93,.12);
+    }
+
+    .route-card h3{
+      font-family:Georgia, "Times New Roman", serif;
+      color:var(--gold2);
+      font-size:28px;
+      font-weight:400;
+      margin-bottom:12px;
+      line-height:1.1;
+    }
+
+    .route-card p{
+      color:#f7f1e6;
+      font-size:16px;
+      line-height:1.5;
+      margin-bottom:0;
+    }
+
+    .simple-footer{
+      padding:18px 24px;
+      text-align:center;
       color:var(--gold);
-      font-size:22px;
-      font-weight:800;
+      font-size:14px;
+      background:#010101;
     }
 
-    @media(max-width:720px){
-      .logo-box{
-        width:78px;
-        height:78px;
-        font-size:44px;
-      }
-
-      .brand-title{
-        font-size:33px;
-      }
-
-      .brand-subtitle{
-        font-size:14px;
-        letter-spacing:4px;
-      }
-
-      .nav{
-        gap:30px 40px;
-      }
-
-      .nav a{
-        font-size:24px;
-      }
-
-      .thank-card{
-        padding:30px 26px 38px;
-      }
-
-      .thank-header{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:18px;
-      }
-
-      .check-wrap{
-        width:86px;
-        height:86px;
-        font-size:54px;
-      }
-
-      .info-grid{
+    @media(max-width:1000px){
+      .route-grid{
         grid-template-columns:1fr;
       }
-
-      .next-section h2{
-        font-size:38px;
-      }
     }
 
-    @media(max-width:430px){
-      .page{
-        padding-left:18px;
-        padding-right:18px;
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
       }
 
-      .brand-title{
-        font-size:29px;
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
       }
 
-      .brand-subtitle{
-        font-size:12px;
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .hero-banner{
+        min-height:520px;
+      }
+
+      .image-section{
+        min-height:360px;
+      }
+
+      .hero-content,
+      .section-content{
+        padding:38px 24px;
+      }
+
+      .hero-content h1{
+        font-size:40px;
+      }
+
+      .section-content h2{
+        font-size:32px;
+      }
+
+      .hero-content p,
+      .section-content p{
+        font-size:16.5px;
+        line-height:1.55;
+      }
+
+      .eyebrow,
+      .hero-eyebrow{
+        font-size:12.5px;
         letter-spacing:3px;
       }
 
-      .nav{
-        gap:28px 34px;
+      .btn,
+      .btn-row{
+        width:100%;
       }
 
-      .nav a{
-        font-size:22px;
+      .confirmation-box,
+      .route-card{
+        padding:22px;
+        min-height:auto;
       }
 
-      .thank-card{
-        padding:28px 24px 36px;
-        border-radius:28px;
+      .confirmation-box h3{
+        font-size:30px;
+      }
+    }
+
+    @media(max-width:420px){
+      .brand{
+        font-size:15px;
+        letter-spacing:.8px;
       }
 
-      .thank-you{
-        font-size:76px;
+      .logo,
+      .menu-btn{
+        width:58px;
+        height:58px;
       }
 
-      .success-title{
-        font-size:50px;
-      }
-
-      .lead{
-        font-size:28px;
-      }
-
-      .info-box p,
-      .step span,
-      .notice{
-        font-size:20px;
-      }
+      .logo{font-size:25px}
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="page">
-      <div class="brand">
-        <div class="logo-box">T</div>
-
-        <div>
-          <div class="brand-title">TitanCore Holdings</div>
-          <div class="brand-subtitle">Form Received</div>
-        </div>
-      </div>
-
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="investor.html">Investor</a>
-        <a href="institution.html">Institution</a>
-        <a href="institution-financial.html">Institution Financial</a>
-        <a href="banks.html">Banks</a>
-        <a href="companies.html">Company</a>
-        <a href="join-us.html">Join Us</a>
-        <a href="business-book.html">Business Intelligence Book</a>
-        <a href="stock-watch.html">Stock Market Watch</a>
-        <a href="global-business-news.html">Global Business News</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
   <main class="page">
-    <section class="thank-card">
-      <div class="thank-header">
-        <div class="check-wrap">✓</div>
-        <h1 class="thank-you">Thank You</h1>
-      </div>
 
-      <h2 class="success-title">Your Request Was Submitted Successfully.</h2>
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
 
-      <p class="lead">
-        TitanCore Holdings received your public submission. The request can now be reviewed,
-        classified, and routed to the correct public contact path or company area.
-      </p>
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
 
-      <p class="date-line" id="dateLine">Submission received.</p>
+    <section class="hero-banner daily-bg" data-bg-group="corporate">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Submission Received</div>
 
-      <div class="info-grid">
-        <div class="info-box">
-          <h2>Request Received</h2>
+        <h1>
+          Thank<br>
+          <span>You.</span>
+        </h1>
+
+        <p>
+          Your message has been submitted to TitanCore Holdings. The information
+          can be reviewed and routed to the appropriate public or professional area.
+        </p>
+
+        <div class="confirmation-box">
+          <h3>Message received successfully.</h3>
           <p>
-            Your message or form information has been sent through the public TitanCore intake path.
+            Thank you for contacting TitanCore Holdings. Please keep a copy of any
+            information you submitted for your own records. This confirmation page
+            means the website form process has completed.
           </p>
         </div>
 
-        <div class="info-box">
-          <h2>Review Process</h2>
-          <p>
-            TitanCore may review the request to understand the purpose, company interest, and correct next step.
-          </p>
+        <div class="btn-row">
+          <a href="index.html" class="btn">Back Home ›</a>
+          <a href="contact.html" class="btn">Contact Page ›</a>
         </div>
-
-        <div class="info-box">
-          <h2>Company Routing</h2>
-          <p>
-            If your request connects to Vaultara, Family First, VitalPath, or RevMotion,
-            it may be routed to that company area.
-          </p>
-        </div>
-
-        <div class="info-box">
-          <h2>Public Form Only</h2>
-          <p>
-            Do not send passwords, Social Security numbers, bank information, or confidential documents through public forms.
-          </p>
-        </div>
-      </div>
-
-      <div class="next-section">
-        <h2>What Happens Next</h2>
-
-        <div class="steps">
-          <div class="step">
-            <strong>1. TitanCore Reviews</strong>
-            <span>The public submission is checked for category, purpose, and company connection.</span>
-          </div>
-
-          <div class="step">
-            <strong>2. Request Is Classified</strong>
-            <span>The request may be classified as contact, investor, institution, bank, company interest, service interest, or general public inquiry.</span>
-          </div>
-
-          <div class="step">
-            <strong>3. Correct Path Is Selected</strong>
-            <span>The information may be routed to the proper public contact path, company review path, or future intake workflow.</span>
-          </div>
-
-          <div class="step">
-            <strong>4. Follow-Up May Happen</strong>
-            <span>If a response is needed, TitanCore or the correct company area may follow up through an authorized contact path.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="notice">
-        This confirmation page does not create employment, partnership, investment relationship,
-        banking relationship, funding approval, credit approval, service agreement, contract,
-        legal obligation, or guarantee of response. TitanCore public website content is informational only.
       </div>
     </section>
 
-    <footer class="footer">
-      <h3>TitanCore Holdings</h3>
-      <p>
-        Public submission confirmation page for TitanCore Holdings and connected company inquiries.
-      </p>
+    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
+      <div class="section-content">
+        <div class="eyebrow">Next Step</div>
+
+        <h2>Your inquiry can be reviewed and directed properly.</h2>
+
+        <p>
+          TitanCore uses separate public sections to keep communication organized.
+          General questions can stay with TitanCore contact, while institution,
+          investor, bank, company, business intelligence, or news-related inquiries
+          can be routed to the correct area.
+        </p>
+
+        <div class="route-grid">
+          <a href="institution.html" class="route-card">
+            <h3>Institution</h3>
+            <p>
+              For institution financial, investor, or bank-specific information,
+              return to the Institution hub.
+            </p>
+          </a>
+
+          <a href="companies.html" class="route-card">
+            <h3>Company</h3>
+            <p>
+              For direct business with an operating company, use the Company page
+              and continue to that company’s own website.
+            </p>
+          </a>
+
+          <a href="business-intelligence.html" class="route-card">
+            <h3>Business Intelligence</h3>
+            <p>
+              For market education, stock information, and public business context,
+              visit Business Intelligence.
+            </p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-section daily-bg" data-bg-group="global">
+      <div class="section-content">
+        <div class="eyebrow">TitanCore Holdings</div>
+
+        <h2>Thank you for using the TitanCore public website.</h2>
+
+        <p>
+          The TitanCore website is organized to keep the homepage clean and give
+          each public area its own dedicated place. This makes the company look
+          more professional and helps visitors move to the right information.
+        </p>
+
+        <div class="btn-row">
+          <a href="news-media.html" class="btn">News & Media ›</a>
+          <a href="about-group.html" class="btn">About Group ›</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
     </footer>
+
   </main>
 
   <script>
-    const dateLine = document.getElementById("dateLine");
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
+    }
 
-    const now = new Date();
+    const backgroundSets = {
+      corporate: [
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ],
+      global: [
+        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
 
-    const formattedDate = now.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    });
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
 
-    dateLine.textContent = "Submission received on " + formattedDate + ".";
+      sections.forEach(function(section, index){
+        const group = section.dataset.bgGroup || "corporate";
+        const images = backgroundSets[group] || backgroundSets.corporate;
+        const selected = images[(day + index) % images.length];
+        section.style.backgroundImage = "url('" + selected + "')";
+      });
+    }
+
+    applyDailyBackgrounds();
   </script>
 </body>
 </html>
