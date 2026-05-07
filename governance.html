@@ -17,15 +17,8 @@
       --line:rgba(215,179,93,.78);
     }
 
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
 
     body{
       background:#000;
@@ -33,15 +26,12 @@
       font-family:Arial, Helvetica, sans-serif;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
+    a{color:inherit;text-decoration:none}
 
     .page{
       max-width:1180px;
       margin:0 auto;
-      background:var(--black);
+      background:#000;
       border-left:1px solid var(--line);
       border-right:1px solid var(--line);
       min-height:100vh;
@@ -54,11 +44,9 @@
       display:grid;
       grid-template-columns:auto 1fr auto;
       align-items:center;
-      gap:14px;
+      gap:12px;
       padding:14px 24px;
-      background:
-        radial-gradient(circle at 16% 20%, rgba(215,179,93,.10), transparent 30%),
-        linear-gradient(180deg,#050505,#010101);
+      background:linear-gradient(180deg,#050505,#010101);
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
     }
@@ -79,17 +67,15 @@
 
     .brand{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(18px,4vw,52px);
-      letter-spacing:clamp(1px,.8vw,5px);
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
       text-transform:uppercase;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    .brand span{
-      color:var(--gold);
-    }
+    .brand span{color:var(--gold)}
 
     .menu-btn{
       width:76px;
@@ -99,35 +85,28 @@
       color:var(--white);
       font-size:36px;
       cursor:pointer;
-      transition:.25s ease;
       flex-shrink:0;
     }
 
-    .menu-btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
+    .menu-btn:hover{background:var(--gold);color:#000}
 
     .menu{
       display:none;
       background:#080808;
       border-bottom:1px solid var(--line);
-      padding:24px 42px 28px;
+      padding:22px 42px 26px;
     }
 
-    .menu.active{
-      display:block;
-    }
+    .menu.active{display:block}
 
     .menu a{
       display:block;
-      padding:18px 0;
+      padding:17px 0;
       border-bottom:1px solid rgba(215,179,93,.25);
       text-transform:uppercase;
       letter-spacing:4px;
       color:var(--soft);
       font-size:18px;
-      transition:.25s ease;
     }
 
     .menu a:hover{
@@ -135,55 +114,109 @@
       padding-left:8px;
     }
 
-    .hero{
-      display:grid;
-      grid-template-columns:1fr 1.05fr;
-      min-height:520px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .hero-text{
-      padding:64px 42px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      background:
-        radial-gradient(circle at 10% 18%, rgba(215,179,93,.10), transparent 30%),
-        linear-gradient(180deg,#080808,#010101);
-      border-right:1px solid var(--line);
-    }
-
-    .hero-text h1{
-      font-family:Georgia, "Times New Roman", serif;
-      font-weight:400;
-      font-size:clamp(42px,5vw,72px);
-      line-height:1.08;
-      margin-bottom:24px;
-    }
-
-    .hero-text h1 span{
-      color:var(--gold2);
-    }
-
-    .hero-text p{
-      color:var(--soft);
-      font-size:20px;
-      line-height:1.65;
-      margin-bottom:26px;
-    }
-
-    .hero-image{
-      min-height:520px;
+    .hero-banner,
+    .image-section,
+    .contact-section{
+      position:relative;
       background-size:cover;
       background-position:center;
-      position:relative;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
     }
 
-    .hero-image::before{
+    .hero-banner{
+      min-height:520px;
+      display:flex;
+      align-items:center;
+    }
+
+    .image-section{
+      min-height:430px;
+    }
+
+    .contact-section{
+      min-height:330px;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-banner::before,
+    .image-section::before,
+    .contact-section::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.30));
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.80), rgba(0,0,0,.50)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+    }
+
+    .green-overlay::before{
+      background:
+        linear-gradient(90deg, rgba(2,37,27,.88), rgba(6,75,56,.64)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+    }
+
+    .hero-content,
+    .section-content,
+    .contact-content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:980px;
+    }
+
+    .hero-content{
+      max-width:800px;
+      padding-top:64px;
+      padding-bottom:64px;
+    }
+
+    .eyebrow,
+    .hero-eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .hero-content h1,
+    .section-content h2,
+    .contact-content h2{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    .hero-content h1{
+      font-size:clamp(42px,5vw,74px);
+      margin-bottom:22px;
+    }
+
+    .hero-content h1 span,
+    .section-content h2 span{
+      color:var(--gold2);
+    }
+
+    .section-content h2,
+    .contact-content h2{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:22px;
+      max-width:920px;
+    }
+
+    .hero-content p,
+    .section-content p,
+    .contact-content p{
+      color:#f2ece1;
+      font-size:19px;
+      line-height:1.62;
+      margin-bottom:18px;
+      max-width:940px;
     }
 
     .btn{
@@ -192,105 +225,63 @@
       justify-content:center;
       align-items:center;
       gap:14px;
-      padding:18px 26px;
+      padding:17px 26px;
       border:2px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
       color:#fff;
       text-transform:uppercase;
       font-weight:900;
       letter-spacing:1.5px;
-      transition:.25s ease;
       width:fit-content;
+      margin-top:8px;
     }
 
-    .btn:hover{
-      background:var(--gold);
-      color:#000;
-      transform:translateY(-2px);
-    }
-
-    .section{
-      padding:58px 42px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .green-section{
-      background:
-        radial-gradient(circle at 85% 20%, rgba(215,179,93,.10), transparent 35%),
-        linear-gradient(135deg,#043124,#0b5c46 48%,#043528);
-    }
-
-    .black-section{
-      background:
-        radial-gradient(circle at 18% 20%, rgba(215,179,93,.08), transparent 28%),
-        #030303;
-    }
-
-    .eyebrow{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:14px;
-      font-weight:900;
-      margin-bottom:14px;
-    }
-
-    .section h2{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(32px,4vw,54px);
-      font-weight:400;
-      line-height:1.08;
-      margin-bottom:24px;
-    }
-
-    .section p{
-      color:var(--soft);
-      font-size:20px;
-      line-height:1.65;
-      margin-bottom:20px;
-      max-width:940px;
-    }
+    .btn:hover{background:var(--gold);color:#000}
 
     .cards{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:18px;
-      margin-top:32px;
+      margin-top:30px;
     }
 
     .card{
       border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.20);
-      padding:28px;
-      min-height:190px;
+      background:rgba(0,0,0,.40);
+      padding:24px;
+      min-height:165px;
+      backdrop-filter:blur(2px);
     }
 
     .card h3{
       font-family:Georgia, "Times New Roman", serif;
-      font-weight:400;
       color:var(--gold2);
       font-size:28px;
-      margin-bottom:14px;
+      font-weight:400;
+      margin-bottom:12px;
+      line-height:1.1;
     }
 
     .card p{
-      font-size:17px;
-      line-height:1.58;
+      font-size:16px;
+      line-height:1.5;
       margin-bottom:0;
+      color:#f7f1e6;
     }
 
     .principles{
       display:grid;
       grid-template-columns:repeat(2,1fr);
       gap:18px;
-      margin-top:32px;
+      margin-top:30px;
     }
 
     .principle{
       border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.20);
-      padding:28px;
+      background:rgba(0,0,0,.40);
+      padding:26px;
       min-height:180px;
+      backdrop-filter:blur(2px);
     }
 
     .principle h3{
@@ -298,79 +289,44 @@
       color:var(--gold2);
       font-size:30px;
       font-weight:400;
-      margin-bottom:14px;
+      margin-bottom:12px;
+      line-height:1.1;
     }
 
     .principle p{
-      color:var(--soft);
-      font-size:17px;
-      line-height:1.58;
+      color:#f7f1e6;
+      font-size:16.5px;
+      line-height:1.55;
       margin-bottom:0;
     }
 
-    .split{
+    .standard-list{
       display:grid;
       grid-template-columns:1fr 1fr;
-      border-bottom:1px solid var(--line);
+      gap:18px;
+      margin-top:30px;
     }
 
-    .split-text{
-      padding:58px 42px;
-      background:#030303;
+    .standard-box{
+      border:1.5px solid var(--gold);
+      background:rgba(0,0,0,.38);
+      padding:26px;
+      backdrop-filter:blur(2px);
     }
 
-    .split-text h2{
+    .standard-box h3{
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(32px,4vw,54px);
+      color:var(--gold2);
+      font-size:30px;
       font-weight:400;
-      line-height:1.08;
-      margin-bottom:24px;
+      margin-bottom:12px;
     }
 
-    .split-text p{
-      color:var(--soft);
-      font-size:20px;
-      line-height:1.65;
-      margin-bottom:20px;
-    }
-
-    .split-image{
-      min-height:430px;
-      background-size:cover;
-      background-position:center;
-      border-left:1px solid var(--line);
-      position:relative;
-    }
-
-    .split-image::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(90deg,rgba(0,0,0,.08),rgba(0,0,0,.30));
-    }
-
-    .contact{
-      display:grid;
-      grid-template-columns:1fr 1.2fr auto;
-      gap:28px;
-      align-items:center;
-      padding:36px 42px;
-      background:linear-gradient(90deg,#064b38,#0b5c46,#041f18);
-      border-bottom:1px solid var(--line);
-    }
-
-    .contact h2{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(30px,4vw,48px);
-      font-weight:400;
-    }
-
-    .contact p{
-      color:var(--soft);
-      font-size:18px;
-      line-height:1.5;
-      border-left:1px solid var(--gold);
-      padding-left:26px;
+    .standard-box p{
+      color:#f7f1e6;
+      font-size:16.5px;
+      line-height:1.55;
+      margin-bottom:0;
     }
 
     .simple-footer{
@@ -382,31 +338,10 @@
     }
 
     @media(max-width:900px){
-      .hero,
-      .split,
-      .contact{
-        grid-template-columns:1fr;
-      }
-
-      .hero-text{
-        border-right:none;
-      }
-
-      .split-image{
-        border-left:none;
-        border-top:1px solid var(--line);
-      }
-
       .cards,
-      .principles{
+      .principles,
+      .standard-list{
         grid-template-columns:1fr;
-      }
-
-      .contact p{
-        border-left:none;
-        border-top:1px solid var(--gold);
-        padding-left:0;
-        padding-top:20px;
       }
     }
 
@@ -422,49 +357,75 @@
         height:62px;
       }
 
-      .logo{
-        font-size:27px;
-      }
-
-      .menu-btn{
-        font-size:30px;
-      }
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
 
       .brand{
-        font-size:18px;
-        letter-spacing:1.8px;
+        font-size:16px;
+        letter-spacing:1px;
       }
 
       .menu{
-        padding:24px 30px 28px;
+        padding:22px 30px 26px;
       }
 
       .menu a{
-        font-size:16px;
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .hero-banner{
+        min-height:430px;
+      }
+
+      .image-section{
+        min-height:360px;
+      }
+
+      .contact-section{
+        min-height:310px;
+      }
+
+      .hero-content,
+      .section-content,
+      .contact-content{
+        padding:38px 24px;
+      }
+
+      .hero-content h1{font-size:40px}
+
+      .section-content h2,
+      .contact-content h2{
+        font-size:32px;
+      }
+
+      .hero-content p,
+      .section-content p,
+      .contact-content p{
+        font-size:16.5px;
+        line-height:1.55;
+      }
+
+      .eyebrow,
+      .hero-eyebrow{
+        font-size:12.5px;
         letter-spacing:3px;
       }
 
-      .hero-text,
-      .section,
-      .split-text,
-      .contact{
-        padding-left:26px;
-        padding-right:26px;
-      }
+      .btn{width:100%}
 
-      .hero-text h1{
-        font-size:42px;
-      }
-
-      .btn{
-        width:100%;
+      .card,
+      .principle,
+      .standard-box{
+        padding:22px;
+        min-height:auto;
       }
     }
 
     @media(max-width:420px){
       .brand{
-        font-size:16px;
-        letter-spacing:1.2px;
+        font-size:15px;
+        letter-spacing:.8px;
       }
 
       .logo,
@@ -473,9 +434,7 @@
         height:58px;
       }
 
-      .logo{
-        font-size:25px;
-      }
+      .logo{font-size:25px}
     }
   </style>
 </head>
@@ -485,11 +444,7 @@
 
     <header class="topbar">
       <a href="index.html" class="logo">TH</a>
-
-      <a href="index.html" class="brand">
-        <span>TitanCore</span> Holdings
-      </a>
-
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
       <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
     </header>
 
@@ -503,160 +458,179 @@
       <a href="news-media.html">News &amp; Media</a>
     </nav>
 
-    <section class="hero">
-      <div class="hero-text">
+    <section class="hero-banner daily-bg" data-bg-group="corporate">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Governance & Standards</div>
+
         <h1>
           Governance<br>
           <span>& Standards.</span>
         </h1>
 
         <p>
-          A deeper look at TitanCore’s public governance approach, oversight
-          standards, accountability, discipline, and professional decision-making.
+          TitanCore Holdings uses governance to support order, accountability,
+          professional standards, responsible review, and long-term business discipline.
         </p>
 
         <a href="index.html" class="btn">Back Home ›</a>
       </div>
-
-      <div class="hero-image" id="heroImage"></div>
     </section>
 
-    <section class="section green-section">
-      <div class="eyebrow">TitanCore Governance</div>
+    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
+      <div class="section-content">
+        <div class="eyebrow">TitanCore Governance</div>
 
-      <h2>Professional standards for responsible growth.</h2>
+        <h2>Professional standards for responsible growth.</h2>
 
-      <p>
-        TitanCore Holdings is built around the idea that a growing business
-        network needs clear standards, accountability, oversight, and disciplined
-        decision-making.
-      </p>
+        <p>
+          TitanCore governance is built around order, oversight, accountability,
+          ethics, and professional decision-making. The goal is to protect the
+          company’s structure as the business network grows.
+        </p>
 
-      <p>
-        Governance helps keep the organization professional as it grows. It gives
-        TitanCore a framework for review, responsibility, communication, and
-        long-term protection of the business structure.
-      </p>
+        <p>
+          Governance gives TitanCore a clear way to review decisions, organize
+          information, and maintain public confidence in the company’s direction.
+        </p>
 
-      <div class="cards">
-        <div class="card">
-          <h3>Accountability</h3>
-          <p>
-            TitanCore supports clear responsibility, proper review, and structured
-            expectations for business decisions.
-          </p>
-        </div>
+        <div class="cards">
+          <div class="card">
+            <h3>Accountability</h3>
+            <p>
+              Clear responsibilities and review steps help support stronger,
+              more disciplined decisions.
+            </p>
+          </div>
 
-        <div class="card">
-          <h3>Standards</h3>
-          <p>
-            Consistent standards help keep the parent company and business network
-            aligned under one professional structure.
-          </p>
-        </div>
+          <div class="card">
+            <h3>Standards</h3>
+            <p>
+              Consistent standards keep the parent company and business network
+              aligned under one professional structure.
+            </p>
+          </div>
 
-        <div class="card">
-          <h3>Discipline</h3>
-          <p>
-            TitanCore governance keeps growth organized, controlled, and prepared
-            for future expansion.
-          </p>
+          <div class="card">
+            <h3>Protection</h3>
+            <p>
+              Governance protects the public identity, long-term direction, and
+              reputation of TitanCore Holdings.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section black-section">
-      <div class="eyebrow">Governance Principles</div>
+    <section class="image-section daily-bg" data-bg-group="finance">
+      <div class="section-content">
+        <div class="eyebrow">Governance Principles</div>
 
-      <h2>Built on order, review, and responsible leadership.</h2>
+        <h2>Built on order, review, and responsible leadership.</h2>
 
-      <p>
-        Governance is not just about rules. It is about making sure the company
-        operates with professional judgment, careful review, and clear direction.
-      </p>
+        <p>
+          Governance is not only about rules. It is about giving TitanCore a
+          professional method for leadership, review, communication, and public
+          presentation.
+        </p>
 
-      <div class="principles">
-        <div class="principle">
-          <h3>Clear Authority</h3>
-          <p>
-            TitanCore’s structure separates the parent company role from the
-            operating company role so public responsibility stays organized.
-          </p>
-        </div>
+        <div class="principles">
+          <div class="principle">
+            <h3>Clear Authority</h3>
+            <p>
+              TitanCore separates the parent company role from the operating
+              company role so public responsibility stays organized.
+            </p>
+          </div>
 
-        <div class="principle">
-          <h3>Review Before Action</h3>
-          <p>
-            Major business activity should move through planning and review before
-            it reaches final execution.
-          </p>
-        </div>
+          <div class="principle">
+            <h3>Review Before Action</h3>
+            <p>
+              Major business activity should move through planning and review
+              before it reaches final execution.
+            </p>
+          </div>
 
-        <div class="principle">
-          <h3>Professional Conduct</h3>
-          <p>
-            TitanCore presents itself with serious standards for communication,
-            public information, and professional relationships.
-          </p>
-        </div>
+          <div class="principle">
+            <h3>Professional Conduct</h3>
+            <p>
+              TitanCore presents itself with serious standards for communication,
+              public information, and professional relationships.
+            </p>
+          </div>
 
-        <div class="principle">
-          <h3>Long-Term Protection</h3>
-          <p>
-            Governance helps protect the company’s structure, reputation, and
-            growth direction over time.
-          </p>
+          <div class="principle">
+            <h3>Long-Term Protection</h3>
+            <p>
+              Governance helps protect the company’s structure, reputation, and
+              growth direction over time.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="split">
-      <div class="split-text">
+    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
+      <div class="section-content">
         <div class="eyebrow">Oversight Model</div>
 
-        <h2>Governance keeps the company from becoming confusing.</h2>
+        <h2>Governance keeps the organization from becoming confusing.</h2>
 
         <p>
-          As TitanCore grows, the public website and company structure must stay
-          organized. That is why each major area has its own page: Company,
-          Institution, Business Intelligence, and News &amp; Media.
+          As TitanCore grows, the company structure and public website must stay
+          organized. The website separates major public areas into Company,
+          Institution, Business Intelligence, and News &amp; Media so visitors
+          can find the right information quickly.
+        </p>
+
+        <div class="standard-list">
+          <div class="standard-box">
+            <h3>Public Clarity</h3>
+            <p>
+              Each public area has its own page, so visitors do not see every
+              company, institution, market, and news item crowded on the homepage.
+            </p>
+          </div>
+
+          <div class="standard-box">
+            <h3>Internal Discipline</h3>
+            <p>
+              Governance supports organized standards behind the public structure,
+              including review, responsibility, and long-term planning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-section daily-bg" data-bg-group="global">
+      <div class="section-content">
+        <div class="eyebrow">Public Trust</div>
+
+        <h2>Governance supports confidence in the TitanCore structure.</h2>
+
+        <p>
+          Public visitors, institutions, investors, banks, and company partners
+          need to understand that TitanCore is organized with seriousness,
+          structure, and professional standards.
         </p>
 
         <p>
-          The same principle applies inside the organization. TitanCore’s
-          governance approach supports clear pathways, professional review, and
-          disciplined decision-making.
+          The homepage introduces TitanCore Holdings. This governance page gives
+          deeper information about the standards behind the company’s public direction.
         </p>
       </div>
-
-      <div class="split-image" id="sideImage"></div>
     </section>
 
-    <section class="section green-section">
-      <div class="eyebrow">Public Trust</div>
+    <section class="contact-section daily-bg green-overlay" data-bg-group="corporate">
+      <div class="contact-content">
+        <h2>Contact us today</h2>
 
-      <h2>Governance supports confidence in the TitanCore structure.</h2>
+        <p>
+          For general questions or professional inquiries, contact TitanCore Holdings.
+        </p>
 
-      <p>
-        Public visitors, institutions, investors, banks, and company partners need
-        to understand that TitanCore is organized with structure and seriousness.
-      </p>
-
-      <p>
-        This page gives deeper information than the homepage. The homepage
-        introduces TitanCore Holdings. This governance page explains the standards
-        behind the company’s public direction.
-      </p>
-    </section>
-
-    <section class="contact">
-      <h2>Contact us today</h2>
-
-      <p>
-        For general questions or professional inquiries, contact TitanCore Holdings.
-      </p>
-
-      <a href="contact.html" class="btn">Get In Touch ›</a>
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
     </section>
 
     <footer class="simple-footer">
@@ -670,27 +644,41 @@
       document.getElementById("menu").classList.toggle("active");
     }
 
-    const rotatingImages = [
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=85",
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85"
-    ];
+    const backgroundSets = {
+      corporate: [
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ],
+      finance: [
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      global: [
+        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
 
-    function setImage(id, offset){
-      const el = document.getElementById(id);
-      if(!el) return;
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
 
-      const index = (new Date().getDate() + offset) % rotatingImages.length;
-
-      el.style.backgroundImage =
-        "linear-gradient(90deg, rgba(0,0,0,.08), rgba(0,0,0,.24)), url('" +
-        rotatingImages[index] +
-        "')";
+      sections.forEach(function(section, index){
+        const group = section.dataset.bgGroup || "corporate";
+        const images = backgroundSets[group] || backgroundSets.corporate;
+        const selected = images[(day + index) % images.length];
+        section.style.backgroundImage = "url('" + selected + "')";
+      });
     }
 
-    setImage("heroImage", 0);
-    setImage("sideImage", 1);
+    applyDailyBackgrounds();
   </script>
 </body>
 </html>
