@@ -247,7 +247,8 @@
       max-width:1020px;
     }
 
-    .info-card{
+    .info-card,
+    .question-card{
       position:relative;
       display:block;
       border:2px solid var(--gold);
@@ -260,7 +261,8 @@
       overflow:hidden;
     }
 
-    .info-card:hover{
+    .info-card:hover,
+    .question-card:hover{
       background:rgba(6,75,56,.58);
       transform:translateY(-2px);
       border-color:var(--gold2);
@@ -272,11 +274,28 @@
       margin-bottom:24px;
     }
 
-    .info-card p{
+    .info-card p,
+    .question-card p{
       color:#f7f1e6;
       font-size:22px;
       line-height:1.62;
       margin-bottom:0;
+    }
+
+    .question-card h3{
+      color:var(--gold2);
+      font-size:clamp(44px,6vw,74px);
+      margin-bottom:28px;
+    }
+
+    .question-card .q-label{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:18px;
+      line-height:1.4;
     }
 
     .card-bottom{
@@ -444,6 +463,7 @@
       }
 
       .info-card,
+      .question-card,
       .search-box,
       .contact-box{
         padding:34px 32px;
@@ -453,7 +473,12 @@
         font-size:42px;
       }
 
-      .info-card p{
+      .question-card h3{
+        font-size:42px;
+      }
+
+      .info-card p,
+      .question-card p{
         font-size:21px;
         line-height:1.62;
       }
@@ -538,7 +563,6 @@
 
         <div class="btn-row">
           <a href="business-intelligence.html" class="btn">Back to Intelligence ›</a>
-          <a href="#research-search" class="btn">Research Search ›</a>
         </div>
       </div>
     </section>
@@ -610,7 +634,77 @@
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="search" id="research-search">
+    <section class="section green daily-bg" data-bg-group="questions">
+      <div class="content">
+        <div class="eyebrow">Research Questions</div>
+
+        <h2>
+          Click a question to open the full answer page.
+        </h2>
+
+        <div class="card-grid">
+
+          <a href="market-research.html" class="question-card">
+            <div class="q-label">Market Research Questions</div>
+            <h3>What should be checked?</h3>
+            <p>
+              How many people need this service? Who is already providing it?
+              What do customers complain about? Is the market getting stronger
+              or weaker? What makes this business different?
+            </p>
+            <div class="card-bottom">
+              <span>Open Market Research</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="customer-research.html" class="question-card">
+            <div class="q-label">Customer Research Questions</div>
+            <h3>What should be understood?</h3>
+            <p>
+              Who is the customer? What problem do they need solved? How often
+              do they need the service? What makes them trust a company? What
+              makes them walk away?
+            </p>
+            <div class="card-bottom">
+              <span>Open Customer Research</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="competitor-research.html" class="question-card">
+            <div class="q-label">Competitor Research Questions</div>
+            <h3>What should be compared?</h3>
+            <p>
+              Who are the main competitors? What do they offer? What do they
+              charge? What are customers saying about them? What can a new
+              company do better?
+            </p>
+            <div class="card-bottom">
+              <span>Open Competitor Research</span>
+              <span>›</span>
+            </div>
+          </a>
+
+          <a href="opportunity-research.html" class="question-card">
+            <div class="q-label">Opportunity Search Questions</div>
+            <h3>Where is the opportunity?</h3>
+            <p>
+              Where is demand strong but service is weak? What needs are not
+              being served? What local changes are creating new openings? What
+              business gap can be solved?
+            </p>
+            <div class="card-bottom">
+              <span>Open Opportunity Search</span>
+              <span>›</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="search" id="research-search">
       <div class="content">
         <div class="eyebrow">TitanCore Research Search</div>
 
@@ -674,13 +768,7 @@
           For general questions, professional inquiries, research intelligence
           questions, or TitanCore-related information, contact TitanCore Holdings.
         </p>
-
-        <div class="contact-box">
-          <p>Phone: <strong>(800) 827-9016</strong></p>
-          <p>Email: <strong>contact@titancoreholdings.com</strong></p>
-        </div>
-
-        <a href="contact.html" class="btn">Get In Touch ›</a>
+  <a href="contact.html" class="btn">Get In Touch ›</a>
       </div>
     </section>
 
@@ -728,6 +816,11 @@
         "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85"
+      ],
+      questions: [
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85"
       ],
       search: [
         "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
