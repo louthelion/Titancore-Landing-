@@ -19,7 +19,6 @@
 
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-
     body{
       background:#000;
       color:var(--white);
@@ -88,7 +87,10 @@
       flex-shrink:0;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .menu{
       display:none;
@@ -109,7 +111,10 @@
       font-size:18px;
     }
 
-    .menu a:hover{color:var(--gold2);padding-left:8px}
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
 
     .section{
       position:relative;
@@ -125,19 +130,25 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.38)),
-        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.50));
+        linear-gradient(90deg,rgba(0,0,0,.80),rgba(0,0,0,.45)),
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.55));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.56), rgba(6,75,56,.64)),
-        linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.40));
+        linear-gradient(90deg,rgba(0,0,0,.55),rgba(6,75,56,.74)),
+        linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.44));
+    }
+
+    .section.dark::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.58)),
+        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.62));
     }
 
     .hero{
-      min-height:720px;
+      min-height:760px;
       display:flex;
       align-items:center;
     }
@@ -145,14 +156,14 @@
     .content{
       position:relative;
       z-index:1;
-      padding:58px 42px;
-      max-width:1060px;
+      padding:62px 42px;
+      max-width:1080px;
     }
 
     .hero .content{
-      max-width:950px;
-      padding-top:78px;
-      padding-bottom:78px;
+      max-width:980px;
+      padding-top:82px;
+      padding-bottom:82px;
     }
 
     .eyebrow{
@@ -162,32 +173,26 @@
       font-size:15px;
       font-weight:900;
       margin-bottom:22px;
-      text-shadow:0 2px 12px rgba(0,0,0,.75);
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     h1,h2,h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
-      color:var(--white);
       line-height:1.06;
       text-shadow:0 3px 16px rgba(0,0,0,.88);
     }
 
     h1{
-      font-size:clamp(48px,6vw,90px);
+      font-size:clamp(48px,6vw,92px);
       margin-bottom:34px;
-      max-width:950px;
-    }
-
-    h1 span,
-    h2 span{
-      color:var(--gold2);
+      max-width:980px;
     }
 
     h2{
-      font-size:clamp(40px,5vw,74px);
+      font-size:clamp(40px,5vw,76px);
       margin-bottom:34px;
-      max-width:980px;
+      max-width:1000px;
     }
 
     h3{
@@ -196,12 +201,18 @@
       margin-bottom:22px;
     }
 
+    h1 span,
+    h2 span,
+    h3 span{
+      color:var(--gold2);
+    }
+
     p{
       color:#f2ece1;
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:980px;
+      max-width:1000px;
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
@@ -219,7 +230,6 @@
       display:inline-flex;
       justify-content:center;
       align-items:center;
-      gap:14px;
       padding:22px 32px;
       border:2px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
@@ -227,20 +237,28 @@
       text-transform:uppercase;
       font-weight:900;
       letter-spacing:4px;
-      cursor:pointer;
       box-shadow:0 16px 35px rgba(0,0,0,.35);
     }
 
-    .btn:hover{background:var(--gold);color:#000}
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .info-box{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:42px 46px;
-      max-width:1040px;
-      margin-top:34px;
+      background:rgba(0,0,0,.50);
+      padding:44px 48px;
+      margin-top:38px;
+      max-width:1060px;
       backdrop-filter:blur(1px);
       box-shadow:0 16px 40px rgba(0,0,0,.35);
+    }
+
+    .info-box h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4.5vw,58px);
+      margin-bottom:22px;
     }
 
     .info-box ul{
@@ -254,8 +272,9 @@
       color:#f7f1e6;
       font-size:22px;
       line-height:1.6;
-      padding-left:28px;
+      padding-left:30px;
       position:relative;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     .info-box li::before{
@@ -267,61 +286,73 @@
       font-weight:900;
     }
 
-    .card-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:28px;
-      margin-top:44px;
-      max-width:1040px;
-    }
-
-    .info-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:44px 46px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.34);
-    }
-
-    .info-card h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:22px;
-    }
-
-    .info-card p{
-      color:#f7f1e6;
-      font-size:22px;
-      line-height:1.62;
-      margin-bottom:0;
-    }
-
-    .mini-grid{
+    .guide-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
       margin-top:38px;
-      max-width:1040px;
+      max-width:1080px;
     }
 
-    .mini-card{
+    .guide-card{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.45);
-      padding:34px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.30);
+      background:rgba(0,0,0,.48);
+      padding:38px;
+      box-shadow:0 16px 40px rgba(0,0,0,.34);
     }
 
-    .mini-card h3{
-      font-size:clamp(30px,4vw,48px);
+    .guide-card h3{
+      font-size:clamp(32px,4vw,52px);
       color:var(--gold2);
       margin-bottom:18px;
     }
 
-    .mini-card p{
-      font-size:20px;
+    .guide-card p{
+      font-size:21px;
+      line-height:1.62;
+      margin-bottom:0;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:40px;
+      max-width:1080px;
+    }
+
+    .process-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.48);
+      padding:34px;
+      min-height:280px;
+    }
+
+    .process-number{
+      color:var(--gold2);
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-weight:900;
+      font-size:13px;
+      margin-bottom:16px;
+    }
+
+    .process-card h3{
+      font-size:clamp(28px,3.8vw,44px);
+      margin-bottom:18px;
+    }
+
+    .process-card p{
+      font-size:19px;
       line-height:1.58;
       margin-bottom:0;
+    }
+
+    .contact-clean{
+      position:relative;
+      z-index:1;
+      padding:76px 42px 88px;
+      max-width:980px;
     }
 
     .simple-footer{
@@ -333,12 +364,19 @@
       border-bottom:1px solid var(--line);
     }
 
-    @media(max-width:800px){
-      .mini-grid{grid-template-columns:1fr}
+    @media(max-width:1000px){
+      .process-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:900px){
+      .guide-grid{grid-template-columns:1fr}
     }
 
     @media(max-width:600px){
-      .topbar{padding:12px 14px;gap:10px}
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
 
       .logo,
       .menu-btn{
@@ -354,16 +392,21 @@
         letter-spacing:1px;
       }
 
-      .menu{padding:22px 30px 26px}
+      .menu{
+        padding:22px 30px 26px;
+      }
 
       .menu a{
         font-size:15px;
         letter-spacing:2.5px;
       }
 
-      .hero{min-height:720px}
+      .hero{min-height:760px}
 
-      .content{padding:48px 28px}
+      .content,
+      .contact-clean{
+        padding:48px 28px;
+      }
 
       h1{font-size:42px}
       h2{font-size:40px}
@@ -380,23 +423,30 @@
       }
 
       .btn-row,
-      .btn{width:100%}
+      .btn{
+        width:100%;
+      }
 
       .info-box,
-      .info-card,
-      .mini-card{
+      .guide-card,
+      .process-card{
         padding:34px 32px;
       }
 
-      .info-card h3{font-size:38px}
-
-      .info-card p,
-      .info-box li{
-        font-size:21px;
-        line-height:1.62;
+      .info-box h3,
+      .guide-card h3{
+        font-size:38px;
       }
 
-      .simple-footer{font-size:16px}
+      .info-box li,
+      .guide-card p,
+      .process-card p{
+        font-size:21px;
+      }
+
+      .simple-footer{
+        font-size:16px;
+      }
     }
 
     @media(max-width:420px){
@@ -412,7 +462,6 @@
       }
 
       .logo{font-size:25px}
-
       h1{font-size:40px}
       h2{font-size:36px}
     }
@@ -429,6 +478,7 @@
     </header>
 
     <nav class="menu" id="menu">
+      <a href="index.html">Home</a>
       <a href="titancore-structure.html">TitanCore Structure</a>
       <a href="operating-model.html">Operating Model</a>
       <a href="governance.html">Governance</a>
@@ -436,6 +486,7 @@
       <a href="institution.html">Institution</a>
       <a href="business-intelligence.html">Business Intelligence</a>
       <a href="news-media.html">News &amp; Media</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <section class="section hero daily-bg" data-bg-group="hero">
@@ -443,26 +494,26 @@
         <div class="eyebrow">Operations Intelligence</div>
 
         <h1>
-          Organize the work before the business
-          <span>gets crowded.</span>
+          Operations keeps a business
+          <span>moving with discipline.</span>
         </h1>
 
         <p>
-          Operations Intelligence explains how a business turns plans into daily
-          action. It helps visitors understand workflow, service delivery,
-          communication, performance tracking, accountability, and repeatable
-          systems.
+          Operations Intelligence explains how work is received, processed,
+          routed, reviewed, followed up, measured, and improved. A business can
+          have a strong idea, but without strong operations, the company can become
+          confused, delayed, inconsistent, or difficult to manage.
         </p>
 
         <p>
-          A business can have a strong idea and still fail if the work is not
-          organized. Operations makes sure people know what happens first, what
-          happens next, who is responsible, and how problems are handled.
+          This page gives visitors a clear business guide for workflows, service
+          quality, reporting, performance, accountability, customer handling,
+          systems, and operational control.
         </p>
 
         <div class="btn-row">
           <a href="index.html" class="btn">Back Home ›</a>
-           </div>
+        </div>
       </div>
     </section>
 
@@ -475,75 +526,158 @@
         </h2>
 
         <p>
-          Operations is the way a company receives work, processes work, follows up,
-          solves problems, communicates with customers, tracks results, and improves
-          performance over time.
+          Operations is the way a company receives work, processes work, assigns
+          responsibility, tracks progress, completes tasks, reviews results, and
+          improves over time.
+        </p>
+
+        <p>
+          Strong operations help a business reduce mistakes, improve customer
+          experience, organize staff activity, protect records, and support better
+          decision-making.
         </p>
 
         <div class="info-box">
-          <h3>Operations Intelligence helps answer</h3>
+          <h3>Operations should answer</h3>
           <ul>
-            <li>How does work enter the business?</li>
-            <li>Who receives the request or customer information?</li>
-            <li>What steps must happen before the work is complete?</li>
-            <li>Who is responsible for each step?</li>
-            <li>How is follow-up handled?</li>
-            <li>How are problems escalated?</li>
-            <li>What information should be tracked every day or every week?</li>
-            <li>What systems prevent confusion, delay, and missed communication?</li>
+            <li>How does work enter the company?</li>
+            <li>Who receives the request?</li>
+            <li>Who reviews the information?</li>
+            <li>Who completes the work?</li>
+            <li>How is progress tracked?</li>
+            <li>How are delays identified?</li>
+            <li>How does follow-up happen?</li>
+            <li>How does management know the work was done correctly?</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="workflow">
+    <section class="section dark daily-bg" data-bg-group="workflow">
       <div class="content">
         <div class="eyebrow">Workflow Control</div>
 
         <h2>
-          A business needs a clear workflow before it grows.
+          A workflow shows how work moves from start to finish.
         </h2>
 
         <p>
-          Workflow is the path work follows from beginning to completion. Without a
-          workflow, people guess what to do, customers wait too long, documents get
-          missed, and leadership cannot see what is happening.
+          Workflow control is one of the most important parts of operations.
+          Without workflow, people may receive requests but not know what happens
+          next. A strong workflow makes the process clear.
         </p>
 
-        <div class="card-grid">
-          <div class="info-card">
+        <div class="guide-grid">
+          <div class="guide-card">
             <h3>Intake</h3>
             <p>
-              Intake is where the business collects the first information. A good
-              intake process asks the right questions, captures the customer need,
-              and sends the request to the correct place.
+              Intake collects the first information from a client, visitor,
+              partner, vendor, or internal department.
             </p>
           </div>
 
-          <div class="info-card">
+          <div class="guide-card">
             <h3>Routing</h3>
             <p>
-              Routing sends the work to the correct person, department, system, or
-              next step. Routing prevents confusion and keeps the customer from
-              being passed around without progress.
+              Routing sends the request to the correct person, page, department,
+              company, or approval path.
             </p>
           </div>
 
-          <div class="info-card">
+          <div class="guide-card">
             <h3>Review</h3>
             <p>
-              Review checks whether the information is complete, accurate, and ready
-              for action. Review also helps catch mistakes before they become bigger
-              customer or business problems.
+              Review checks whether the information is complete, accurate,
+              useful, and ready for the next step.
             </p>
           </div>
 
-          <div class="info-card">
+          <div class="guide-card">
             <h3>Completion</h3>
             <p>
-              Completion means the customer request, business task, or internal
-              process has reached the right finish point. The business should know
-              what complete means and how to confirm it.
+              Completion confirms that the work was handled, documented, followed
+              up, and closed properly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="service">
+      <div class="content">
+        <div class="eyebrow">Service Quality</div>
+
+        <h2>
+          Service quality protects trust and professionalism.
+        </h2>
+
+        <p>
+          Operations is not only about internal work. It also controls how the
+          customer or visitor experiences the company. A business should know how
+          people are being treated, how fast responses happen, and whether promises
+          are being kept.
+        </p>
+
+        <div class="info-box">
+          <h3>Service quality should check</h3>
+          <ul>
+            <li>Was the visitor or customer answered properly?</li>
+            <li>Was the request understood clearly?</li>
+            <li>Was the next step explained?</li>
+            <li>Was the information routed correctly?</li>
+            <li>Was the response professional?</li>
+            <li>Was follow-up completed?</li>
+            <li>Was the customer left waiting too long?</li>
+            <li>Was the issue closed or still pending?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="reporting">
+      <div class="content">
+        <div class="eyebrow">Reporting Discipline</div>
+
+        <h2>
+          Reporting helps leaders understand what is happening.
+        </h2>
+
+        <p>
+          A business cannot manage what it cannot see. Reporting gives leadership
+          visibility into work volume, pending items, delays, problems, completed
+          tasks, customer issues, and business performance.
+        </p>
+
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>Daily Reports</h3>
+            <p>
+              Daily reports show what happened today, what was completed, what is
+              still pending, and what needs attention.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Weekly Reports</h3>
+            <p>
+              Weekly reports show trends, repeated delays, department pressure,
+              customer movement, and leadership priorities.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Issue Reports</h3>
+            <p>
+              Issue reports identify problems that require review, correction,
+              escalation, documentation, or leadership awareness.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Performance Reports</h3>
+            <p>
+              Performance reports show how well the operation is working and
+              whether the company is improving or weakening.
             </p>
           </div>
         </div>
@@ -555,148 +689,172 @@
         <div class="eyebrow">Performance Tracking</div>
 
         <h2>
-          Operations should be measured, not guessed.
+          Performance tracking shows whether the operation is improving.
         </h2>
 
         <p>
-          A business needs simple measurements to know whether the operation is
-          healthy. The numbers do not need to be complicated, but they must show
-          whether work is moving, customers are being helped, and problems are being
-          solved.
-        </p>
-
-        <div class="mini-grid">
-          <div class="mini-card">
-            <h3>Speed</h3>
-            <p>
-              How long does it take to respond, review, complete, or follow up?
-              Slow movement can hurt trust and reduce sales.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Quality</h3>
-            <p>
-              Are customers receiving clear service? Are mistakes being reduced?
-              Quality protects the company reputation.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Volume</h3>
-            <p>
-              How many requests, leads, projects, calls, messages, or tasks are
-              being handled each day or each week?
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Follow-Up</h3>
-            <p>
-              Are customers, partners, and internal teams being followed up with at
-              the right time and with the right information?
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="service">
-      <div class="content">
-        <div class="eyebrow">Service Operations</div>
-
-        <h2>
-          Good service needs structure.
-        </h2>
-
-        <p>
-          Service operations explain how a business handles the customer after the
-          first contact. This includes communication, scheduling, document requests,
-          updates, problem solving, and closing the service properly.
+          Performance tracking helps a business understand whether staff,
+          departments, systems, and workflows are producing the right results.
+          It helps leadership catch problems before they become bigger.
         </p>
 
         <div class="info-box">
-          <h3>Service operation standards</h3>
+          <h3>Performance areas to watch</h3>
           <ul>
-            <li>Respond to customer requests in a consistent way.</li>
-            <li>Explain the next step clearly.</li>
-            <li>Collect missing information without confusing the customer.</li>
-            <li>Keep notes so the customer does not have to repeat everything.</li>
-            <li>Follow up when the customer is waiting.</li>
-            <li>Escalate problems before the customer loses trust.</li>
-            <li>Confirm when the work is completed.</li>
+            <li>Response time.</li>
+            <li>Completion time.</li>
+            <li>Customer satisfaction signals.</li>
+            <li>Repeated errors.</li>
+            <li>Missed follow-ups.</li>
+            <li>Department workload.</li>
+            <li>Pending requests.</li>
+            <li>Operational bottlenecks.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="accountability">
+    <section class="section dark daily-bg" data-bg-group="process">
       <div class="content">
-        <div class="eyebrow">Accountability</div>
+        <div class="eyebrow">Operations Process</div>
 
         <h2>
-          Every operation needs ownership.
+          Every business needs a clean operating process.
         </h2>
 
         <p>
-          A business becomes weaker when everyone assumes someone else is handling
-          the work. Operations Intelligence teaches that every step needs ownership,
-          time expectations, and a clear way to see progress.
+          A clean operating process helps the business stay organized from the
+          first request to the final result.
         </p>
 
-        <div class="card-grid">
-          <div class="info-card">
-            <h3>Owner</h3>
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-number">Step One</div>
+            <h3>Receive</h3>
             <p>
-              Every task should have a responsible person, team, or role. Ownership
-              prevents important work from floating without direction.
+              The company receives information through a form, phone call, email,
+              dashboard, staff member, or public website path.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Deadline</h3>
+          <div class="process-card">
+            <div class="process-number">Step Two</div>
+            <h3>Route</h3>
             <p>
-              Every important task should have a time expectation. Deadlines help
-              the business know what is urgent, late, or blocked.
+              The request is sent to the correct area so it does not sit in the
+              wrong place or get ignored.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Status</h3>
+          <div class="process-card">
+            <div class="process-number">Step Three</div>
+            <h3>Review</h3>
             <p>
-              Status tracking shows where the work stands: new, waiting, in review,
-              approved, blocked, completed, or returned for correction.
+              The information is checked for completeness, accuracy, urgency,
+              and next-step responsibility.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Four</div>
+            <h3>Assign</h3>
+            <p>
+              The correct person, department, company, or process receives
+              ownership of the work.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Five</div>
+            <h3>Complete</h3>
+            <p>
+              The work is handled, documented, reviewed, and moved toward closure.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Six</div>
+            <h3>Improve</h3>
+            <p>
+              Reports and results are reviewed so the operation can become better,
+              faster, clearer, and more professional.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="systems">
+    <section class="section green daily-bg" data-bg-group="systems">
       <div class="content">
         <div class="eyebrow">Systems Support</div>
 
         <h2>
-          Systems help operations repeat the right way.
+          Operations works best when systems support the process.
         </h2>
 
         <p>
-          A system can be a checklist, form, dashboard, shared file, approval flow,
-          email route, customer record, calendar, or reporting process. The purpose
-          is to make the work easier to repeat and easier to control.
+          Good operations are supported by tools and systems. A company should not
+          depend only on memory, random messages, or scattered notes. Systems help
+          preserve structure.
         </p>
 
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>Forms</h3>
+            <p>
+              Forms collect the right information so the business does not start
+              with missing details.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Dashboards</h3>
+            <p>
+              Dashboards give leadership a place to review work, status, reports,
+              and company activity.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Records</h3>
+            <p>
+              Records preserve proof of requests, decisions, reports, approvals,
+              communication, and completed work.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Follow-Up</h3>
+            <p>
+              Follow-up systems help make sure people are contacted again and
+              important work does not disappear.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="questions">
+      <div class="content">
+        <div class="eyebrow">Operations Questions</div>
+
+        <h2>
+          What should a business ask before improving operations?
+        </h2>
+
         <div class="info-box">
-          <h3>Examples of operations systems</h3>
+          <h3>Important operations questions</h3>
           <ul>
-            <li>Customer intake forms.</li>
-            <li>Lead tracking and follow-up lists.</li>
-            <li>Project status dashboards.</li>
-            <li>Approval and review workflows.</li>
-            <li>Document request checklists.</li>
-            <li>Customer communication templates.</li>
-            <li>Weekly performance reports.</li>
-            <li>Issue escalation notes.</li>
+            <li>Where does the work start?</li>
+            <li>Who owns the first response?</li>
+            <li>How is the request documented?</li>
+            <li>How is the request routed?</li>
+            <li>How does leadership know the status?</li>
+            <li>What happens when work is delayed?</li>
+            <li>How is customer follow-up handled?</li>
+            <li>What system prevents the same mistake from happening again?</li>
+            <li>What should be automated later?</li>
+            <li>What must always stay under human review?</li>
           </ul>
         </div>
       </div>
@@ -707,24 +865,25 @@
         <div class="eyebrow">Future Operations Intelligence</div>
 
         <h2>
-          Later this page can become a live operations education area.
+          Later, this page can connect to live operational tools.
         </h2>
 
         <p>
-          In the future, this page can connect to live business education updates,
-          workflow examples, AI summaries, operating checklists, and stored page
-          content through Supabase and website functions.
+          The public page can explain operations, while the private dashboard can
+          manage the real internal process. Later, TitanCore can connect website
+          forms, Netlify, Supabase, Replit, email routing, dashboards, and AI
+          summaries so operational work can be tracked more automatically.
         </p>
 
         <p>
-          For now, this page gives visitors a strong public explanation of how
-          operations help a business organize work, protect service quality, and
-          grow with better discipline.
+          The public visitor sees education and professional guidance. The private
+          dashboard can become the control room where work is routed, reviewed,
+          approved, assigned, and reported.
         </p>
+      </div>
+    </section>
 
-     
-        
-        <section class="section daily-bg" data-bg-group="contact">
+    <section class="section daily-bg" data-bg-group="contact">
       <div class="contact-clean">
         <div class="eyebrow">Contact TitanCore</div>
 
@@ -740,7 +899,6 @@
         </div>
       </div>
     </section>
-
 
     <footer class="simple-footer">
       © 2025 TitanCore Holdings. All rights reserved.
@@ -758,37 +916,49 @@
 
     const backgroundSets = {
       hero: [
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
       ],
       definition: [
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
       ],
       workflow: [
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85"
       ],
-      performance: [
+      service: [
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85"
+      ],
+      reporting: [
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
       ],
-      service: [
-        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+      performance: [
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
       ],
-      accountability: [
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      process: [
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
       ],
       systems: [
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
+      ],
+      questions: [
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
       ],
       future: [
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      ],
+      contact: [
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
       ]
     };
 
@@ -796,7 +966,7 @@
       const sections = document.querySelectorAll(".daily-bg");
       const day = new Date().getDate();
 
-      sections.forEach(function(section, index){
+      sections.forEach(function(section,index){
         const group = section.dataset.bgGroup || "hero";
         const images = backgroundSets[group] || backgroundSets.hero;
         const selected = images[(day + index) % images.length];
