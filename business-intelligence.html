@@ -374,68 +374,6 @@
       margin-bottom:0;
     }
 
-    .search-box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:42px 46px;
-      max-width:980px;
-      margin-top:34px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-
-    .search-box label{
-      display:block;
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:5px;
-      font-size:15px;
-      font-weight:900;
-      margin-bottom:26px;
-      line-height:1.5;
-    }
-
-    .search-input{
-      width:100%;
-      min-height:78px;
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.68);
-      color:var(--white);
-      font-size:24px;
-      font-weight:700;
-      padding:20px 24px;
-      outline:none;
-      margin-bottom:30px;
-    }
-
-    .search-input::placeholder{
-      color:rgba(247,241,230,.62);
-    }
-
-    .search-input:focus{
-      border-color:var(--gold2);
-      box-shadow:0 0 0 3px rgba(215,179,93,.18);
-    }
-
-    .search-button{
-      width:100%;
-      min-height:78px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:#fff;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:7px;
-      font-size:18px;
-      cursor:pointer;
-      margin-bottom:30px;
-    }
-
-    .search-button:hover{
-      background:var(--gold);
-      color:#000;
-    }
-
     .daily-date{
       color:var(--gold2);
       text-transform:uppercase;
@@ -443,22 +381,6 @@
       font-size:14px;
       font-weight:900;
       margin-bottom:18px;
-    }
-
-    .contact-box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:36px;
-      max-width:900px;
-      margin-top:34px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-
-    .contact-box p{
-      margin-bottom:14px;
-      overflow-wrap:anywhere;
-      word-break:break-word;
     }
 
     .simple-footer{
@@ -536,9 +458,7 @@
       .feature-card,
       .daily-card,
       .info-box,
-      .mini-card,
-      .search-box,
-      .contact-box{
+      .mini-card{
         padding:34px 32px;
       }
 
@@ -554,20 +474,6 @@
       .info-box li{
         font-size:21px;
         line-height:1.62;
-      }
-
-      .search-box label{
-        font-size:13px;
-        letter-spacing:4px;
-      }
-
-      .search-input{
-        font-size:20px;
-      }
-
-      .search-button{
-        font-size:15px;
-        letter-spacing:5px;
       }
 
       .simple-footer{
@@ -636,8 +542,7 @@
         </p>
 
         <div class="btn-row">
-          <a href="#intelligence-areas" class="btn">Explore Intelligence ›</a>
-          <a href="#bi-search" class="btn">Search Intelligence ›</a>
+          <a href="index.html" class="btn">Back Home ›</a>
         </div>
       </div>
     </section>
@@ -693,7 +598,7 @@
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="pathways" id="intelligence-areas">
+    <section class="section green daily-bg" data-bg-group="pathways">
       <div class="content">
         <div class="eyebrow">Business Intelligence Areas</div>
 
@@ -916,12 +821,12 @@
         </p>
 
         <p>
-          The Business Intelligence page should introduce the idea, but the deeper
-          market tracking should live inside the Stock &amp; Market Information page.
+          The Business Intelligence page introduces the idea, while deeper market
+          tracking belongs inside the Stock &amp; Market Information page.
         </p>
 
         <a href="stock.html" class="feature-card">
-          <h3>Open Stock &amp; Market Information</h3>
+          <h3>Stock &amp; Market Information</h3>
           <p>
             Use the Stock page for market watch, stock education, U.S. markets,
             international markets, commodities, forex, crypto/coins, market news,
@@ -1014,44 +919,6 @@
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="search" id="bi-search">
-      <div class="content">
-        <div class="eyebrow">Business Intelligence Search</div>
-
-        <h2>
-          Search business intelligence topics.
-        </h2>
-
-        <p>
-          Visitors can use this search box to research business intelligence,
-          market research, strategy, operations, AI awareness, systems, data
-          thinking, and business planning topics.
-        </p>
-
-        <div class="search-box">
-          <label for="biQuery">Type a business intelligence question</label>
-
-          <input
-            id="biQuery"
-            class="search-input"
-            type="text"
-            placeholder="Example: how to use business intelligence for small business"
-            onkeydown="handleSearchKey(event)"
-          />
-
-          <button class="search-button" type="button" onclick="runBISearch()">
-            Search ›
-          </button>
-
-          <p>
-            This current version opens a public web search. Later, TitanCore can
-            connect this to live search, AI summaries, market APIs, business news,
-            and Supabase so results can appear directly inside the website.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <section class="section daily-bg" data-bg-group="future">
       <div class="content">
         <div class="eyebrow">Future Live Intelligence System</div>
@@ -1078,12 +945,6 @@
             <li>The website can display updated briefings without rebuilding every page manually.</li>
           </ul>
         </div>
-
-        <div class="btn-row">
-          <a href="research-intelligence.html" class="btn">Research ›</a>
-          <a href="strategy-intelligence.html" class="btn">Strategy ›</a>
-          <a href="stock.html" class="btn">Market Watch ›</a>
-        </div>
       </div>
     </section>
 
@@ -1097,11 +958,6 @@
           For general questions, professional inquiries, business intelligence
           questions, or TitanCore-related information, contact TitanCore Holdings.
         </p>
-
-        <div class="contact-box">
-          <p>Phone: <strong>(800) 827-9016</strong></p>
-          <p>Email: <strong>contact@titancoreholdings.com</strong></p>
-        </div>
 
         <a href="contact.html" class="btn">Get In Touch ›</a>
       </div>
@@ -1118,26 +974,6 @@
       const menu = document.getElementById("menu");
       if(menu){
         menu.classList.toggle("active");
-      }
-    }
-
-    function runBISearch(){
-      const input = document.getElementById("biQuery");
-      const query = input.value.trim();
-
-      if(!query){
-        alert("Please type a business intelligence question first.");
-        return;
-      }
-
-      const finalQuery = "business intelligence " + query;
-      const url = "https://www.google.com/search?q=" + encodeURIComponent(finalQuery);
-      window.open(url, "_blank");
-    }
-
-    function handleSearchKey(event){
-      if(event.key === "Enter"){
-        runBISearch();
       }
     }
 
@@ -1178,10 +1014,6 @@
       questions: [
         "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
-      ],
-      search: [
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
       ],
       future: [
         "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
