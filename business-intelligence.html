@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Business Intelligence | TitanCore Holdings</title>
+  <title>Stock & Market Information | TitanCore Holdings</title>
 
   <style>
     :root{
@@ -88,10 +88,7 @@
       flex-shrink:0;
     }
 
-    .menu-btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
+    .menu-btn:hover{background:var(--gold);color:#000}
 
     .menu{
       display:none;
@@ -112,10 +109,7 @@
       font-size:18px;
     }
 
-    .menu a:hover{
-      color:var(--gold2);
-      padding-left:8px;
-    }
+    .menu a:hover{color:var(--gold2);padding-left:8px}
 
     .section{
       position:relative;
@@ -131,21 +125,21 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.42)),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.52));
+        linear-gradient(90deg,rgba(0,0,0,.83),rgba(0,0,0,.48)),
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.58));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg,rgba(0,0,0,.60),rgba(6,75,56,.75)),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.42));
+        linear-gradient(90deg,rgba(0,0,0,.58),rgba(6,75,56,.76)),
+        linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.44));
     }
 
     .section.dark::before{
       background:
-        linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.58)),
-        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.64));
+        linear-gradient(90deg,rgba(0,0,0,.90),rgba(0,0,0,.62)),
+        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.66));
     }
 
     .hero{
@@ -190,12 +184,6 @@
       max-width:980px;
     }
 
-    h1 span,
-    h2 span,
-    h3 span{
-      color:var(--gold2);
-    }
-
     h2{
       font-size:clamp(40px,5vw,76px);
       margin-bottom:34px;
@@ -208,6 +196,10 @@
       margin-bottom:22px;
     }
 
+    h1 span,
+    h2 span,
+    h3 span{color:var(--gold2)}
+
     p{
       color:#f2ece1;
       font-size:22px;
@@ -217,10 +209,7 @@
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
-    strong{
-      color:var(--gold2);
-      font-weight:900;
-    }
+    strong{color:var(--gold2);font-weight:900}
 
     .btn-row{
       display:flex;
@@ -244,12 +233,10 @@
       box-shadow:0 16px 35px rgba(0,0,0,.35);
     }
 
-    .btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
+    .btn:hover{background:var(--gold);color:#000}
 
-    .info-box{
+    .info-box,
+    .daily-card{
       border:2px solid var(--gold);
       background:rgba(0,0,0,.50);
       padding:44px 48px;
@@ -257,16 +244,6 @@
       max-width:1060px;
       backdrop-filter:blur(1px);
       box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-
-    .info-box h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:22px;
-    }
-
-    .info-box p{
-      margin-bottom:22px;
     }
 
     .info-box ul{
@@ -294,37 +271,36 @@
       font-weight:900;
     }
 
-    .open-grid{
+    .market-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:28px;
-      margin-top:44px;
+      gap:26px;
+      margin-top:40px;
       max-width:1080px;
     }
 
-    .open-card{
+    .market-card{
       display:block;
-      min-height:470px;
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:44px 46px;
-      backdrop-filter:blur(1px);
+      background:rgba(0,0,0,.48);
+      padding:38px;
+      min-height:320px;
       box-shadow:0 16px 40px rgba(0,0,0,.34);
       transition:.25s ease;
     }
 
-    .open-card:hover{
+    .market-card:hover{
+      background:rgba(6,75,56,.78);
       transform:translateY(-3px);
-      background:rgba(6,75,56,.76);
     }
 
-    .open-card h3{
+    .market-card h3{
+      font-size:clamp(32px,4vw,52px);
       color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:26px;
+      margin-bottom:18px;
     }
 
-    .open-card p{
+    .market-card p{
       font-size:21px;
       line-height:1.62;
       margin-bottom:0;
@@ -333,53 +309,26 @@
     .card-line{
       height:1px;
       background:rgba(215,179,93,.65);
-      margin:34px 0 26px;
+      margin:30px 0 24px;
     }
 
-    .open-card strong{
+    .market-card strong{
       display:flex;
       justify-content:space-between;
       align-items:center;
       color:#fff;
       text-transform:uppercase;
-      letter-spacing:5px;
-      font-size:17px;
+      letter-spacing:4px;
+      font-size:16px;
     }
 
-    .open-card strong span{
+    .market-card strong span{
       color:var(--gold2);
-      font-size:48px;
+      font-size:42px;
       line-height:0;
     }
 
-    .guide-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      margin-top:38px;
-      max-width:1080px;
-    }
-
-    .guide-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.48);
-      padding:36px;
-      box-shadow:0 16px 40px rgba(0,0,0,.34);
-    }
-
-    .guide-card h3{
-      font-size:clamp(30px,4vw,48px);
-      color:var(--gold2);
-      margin-bottom:18px;
-    }
-
-    .guide-card p{
-      font-size:20px;
-      line-height:1.6;
-      margin-bottom:0;
-    }
-
-    .process-grid{
+    .watch-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:22px;
@@ -387,43 +336,88 @@
       max-width:1080px;
     }
 
-    .process-card{
+    .watch-box{
       border:2px solid var(--gold);
       background:rgba(0,0,0,.48);
-      padding:34px;
-      min-height:280px;
+      padding:32px;
+      min-height:250px;
     }
 
-    .process-number{
+    .watch-box .label{
       color:var(--gold2);
-      letter-spacing:4px;
       text-transform:uppercase;
-      font-weight:900;
+      letter-spacing:4px;
       font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .watch-box h3{
+      font-size:clamp(28px,3.5vw,42px);
       margin-bottom:16px;
     }
 
-    .process-card h3{
-      font-size:clamp(28px,3.8vw,44px);
-      margin-bottom:18px;
-    }
-
-    .process-card p{
+    .watch-box p{
       font-size:19px;
       line-height:1.58;
       margin-bottom:0;
     }
 
-    .daily-card{
-      border:2px solid var(--gold);
+    .price-table{
+      width:100%;
+      max-width:1080px;
+      border-collapse:collapse;
+      margin-top:38px;
       background:rgba(0,0,0,.50);
-      padding:44px 48px;
-      margin-top:34px;
-      max-width:1060px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      border:2px solid var(--gold);
+      box-shadow:0 16px 40px rgba(0,0,0,.34);
     }
 
-    .daily-date{
+    .price-table th,
+    .price-table td{
+      border-bottom:1px solid rgba(215,179,93,.35);
+      padding:18px;
+      text-align:left;
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.4;
+    }
+
+    .price-table th{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:14px;
+      background:rgba(6,75,56,.42);
+    }
+
+    .price-table tr:last-child td{
+      border-bottom:none;
+    }
+
+    .status-note{
+      display:inline-block;
+      color:var(--gold2);
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:13px;
+      border:1px solid rgba(215,179,93,.7);
+      padding:8px 12px;
+      margin-top:12px;
+      background:rgba(0,0,0,.42);
+    }
+
+    .search-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:38px;
+      margin-top:38px;
+      max-width:1060px;
+    }
+
+    .search-box label{
+      display:block;
       color:var(--gold2);
       text-transform:uppercase;
       letter-spacing:4px;
@@ -432,22 +426,44 @@
       margin-bottom:18px;
     }
 
-    .daily-card h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
+    .search-box input{
+      width:100%;
+      min-height:70px;
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.68);
+      color:var(--white);
+      font-size:22px;
+      padding:18px 22px;
       margin-bottom:22px;
+      outline:none;
     }
 
-    .daily-card p{
-      font-size:22px;
-      line-height:1.62;
-      margin-bottom:0;
+    .search-box input::placeholder{
+      color:rgba(247,241,230,.62);
+    }
+
+    .search-box button{
+      width:100%;
+      min-height:70px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:5px;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    .search-box button:hover{
+      background:var(--gold);
+      color:#000;
     }
 
     .contact-clean{
       position:relative;
       z-index:1;
-      padding:62px 42px;
+      padding:76px 42px 88px;
       max-width:980px;
     }
 
@@ -461,121 +477,33 @@
     }
 
     @media(max-width:1000px){
-      .process-grid{
-        grid-template-columns:1fr;
-      }
+      .watch-grid{grid-template-columns:1fr}
     }
 
     @media(max-width:900px){
-      .open-grid,
-      .guide-grid{
-        grid-template-columns:1fr;
-      }
+      .market-grid{grid-template-columns:1fr}
+      .price-table{display:block;overflow-x:auto}
     }
 
     @media(max-width:600px){
-      .topbar{
-        padding:12px 14px;
-        gap:10px;
-      }
-
-      .logo,
-      .menu-btn{
-        width:62px;
-        height:62px;
-      }
-
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
       .logo{font-size:27px}
       .menu-btn{font-size:30px}
-
-      .brand{
-        font-size:16px;
-        letter-spacing:1px;
-      }
-
-      .menu{
-        padding:22px 30px 26px;
-      }
-
-      .menu a{
-        font-size:15px;
-        letter-spacing:2.5px;
-      }
-
-      .hero{
-        min-height:760px;
-      }
-
-      .content,
-      .contact-clean{
-        padding:48px 28px;
-      }
-
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .hero{min-height:760px}
+      .content,.contact-clean{padding:48px 28px}
       h1{font-size:42px}
       h2{font-size:40px}
       h3{font-size:38px}
-
-      p{
-        font-size:21px;
-        line-height:1.68;
-      }
-
-      .eyebrow{
-        font-size:13px;
-        letter-spacing:5px;
-      }
-
-      .btn-row,
-      .btn{
-        width:100%;
-      }
-
-      .info-box,
-      .open-card,
-      .guide-card,
-      .process-card,
-      .daily-card{
-        padding:34px 32px;
-      }
-
-      .open-card{
-        min-height:auto;
-      }
-
-      .open-card h3,
-      .info-box h3,
-      .daily-card h3{
-        font-size:38px;
-      }
-
-      .open-card p,
-      .info-box li,
-      .guide-card p,
-      .process-card p,
-      .daily-card p{
-        font-size:21px;
-      }
-
-      .simple-footer{
-        font-size:16px;
-      }
-    }
-
-    @media(max-width:420px){
-      .brand{
-        font-size:15px;
-        letter-spacing:.8px;
-      }
-
-      .logo,
-      .menu-btn{
-        width:58px;
-        height:58px;
-      }
-
-      .logo{font-size:25px}
-      h1{font-size:40px}
-      h2{font-size:36px}
+      p{font-size:21px;line-height:1.68}
+      .eyebrow{font-size:13px;letter-spacing:5px}
+      .btn-row,.btn{width:100%}
+      .info-box,.daily-card,.market-card,.watch-box,.search-box{padding:34px 32px}
+      .info-box li,.market-card p,.watch-box p{font-size:21px}
+      .simple-footer{font-size:16px}
     }
   </style>
 </head>
@@ -603,794 +531,608 @@
 
     <section class="section hero daily-bg" data-bg-group="hero">
       <div class="content">
-        <div class="eyebrow">Business Intelligence</div>
+        <div class="eyebrow">Stock & Market Information</div>
 
         <h1>
-          A public knowledge center for business
-          <span>research, strategy, and decisions.</span>
+          A global market hub for stocks, coins, commodities, and
+          <span>business signals.</span>
         </h1>
 
         <p>
-          Business Intelligence gives visitors a professional place to understand
-          how business information should be reviewed before making important
-          decisions. It explains research, strategy, operations, AI awareness,
-          data thinking, systems, market education, and economic signals.
+          Stock & Market Information is a major public market-awareness page for
+          TitanCore Business Intelligence. This page is designed to organize U.S.
+          stocks, international markets, indexes, crypto/coins, commodities,
+          forex, housing movement, economic news, and major market alerts.
         </p>
 
         <p>
-          This page is different from the Company page and the Institution page.
-          The Company page explains TitanCore’s operating companies. The Institution
-          page explains investor, bank, and financial institution pathways.
-          Business Intelligence explains knowledge, research, market awareness,
-          and decision support.
+          The first version gives the full page structure. Later, TitanCore can
+          connect live market APIs so prices, market movement, daily alerts, stock
+          direction, and coin movement can update automatically.
         </p>
+
         <div class="btn-row">
-         <a href="index.html" class="btn">Back Home ›</a>
-        </div>
-      </div>
-    </section>
- <section class="section green daily-bg" data-bg-group="purpose">
-      <div class="content">
-        <div class="eyebrow">Purpose</div>
-
-        <h2>
-          Business Intelligence helps people understand what to check before they move.
-        </h2>
-
-        <p>
-          Many people want to start a business, invest money, enter a market,
-          launch a service, build a system, or make a major business decision.
-          The problem is that people often move too fast without understanding
-          demand, competition, cost, risk, customer behavior, timing, or market
-          pressure.
-        </p>
-
-        <p>
-          TitanCore Business Intelligence is designed to guide visitors through
-          the thinking process. It gives them a structured way to ask better
-          questions before they spend money, open a business, enter a market, or
-          make a major move.
-        </p>
-
-        <div class="info-box">
-          <h3>What this page helps visitors understand</h3>
-          <ul>
-            <li>What business research means and why it matters.</li>
-            <li>How to think about strategy before making a move.</li>
-            <li>How operations and systems help a business stay organized.</li>
-            <li>How AI and digital tools are changing business education.</li>
-            <li>How data, reports, and patterns can support better decisions.</li>
-            <li>How stock, market, and economic movement can affect confidence.</li>
-            <li>How to separate business education from sales pressure.</li>
-            <li>How to understand risk before committing serious money.</li>
-          </ul>
+          <a href="index.html" class="btn">Back Home ›</a>
         </div>
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="daily">
+    <section class="section green daily-bg" data-bg-group="daily">
       <div class="content">
-        <div class="eyebrow">Daily Intelligence Focus</div>
+        <div class="eyebrow">Daily Market Watch</div>
 
         <h2>
-          This page can rotate business education daily.
+          Daily market focus and major movement.
         </h2>
 
         <p>
-          This section changes automatically with JavaScript. Later, it can connect
-          to live search, market APIs, news APIs, AI summaries, Supabase storage,
-          and Netlify Functions so TitanCore can update public business information
-          every day.
+          This section changes daily now with JavaScript. In the live version, this
+          area should update from market data APIs, business news APIs, AI summaries,
+          and Supabase storage.
         </p>
 
         <div class="daily-card">
-          <div class="daily-date" id="dailyDate">Loading date...</div>
-          <h3 id="dailyTitle">Loading business intelligence focus...</h3>
-          <p id="dailyText">Loading daily business intelligence note...</p>
+          <div class="eyebrow" id="dailyDate">Loading date...</div>
+          <h3 id="dailyTitle">Loading market focus...</h3>
+          <p id="dailyText">Loading market note...</p>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="map" id="open-areas">
+    <section class="section dark daily-bg" data-bg-group="map">
       <div class="content">
-        <div class="eyebrow">Open Intelligence Areas</div>
+        <div class="eyebrow">Market Navigation</div>
 
         <h2>
-          Choose the business knowledge area you need.
+          Choose the market area you want to review.
         </h2>
 
         <p>
-          Each area below opens its own full page. This keeps Business Intelligence
-          organized while still giving visitors a strong guideline on this main
-          page.
+          Each card below moves visitors to a specific area on this page. This keeps
+          the page big, organized, and ready for live data later.
         </p>
 
-        <div class="open-grid">
+        <div class="market-grid">
 
-          <a href="research-intelligence.html" class="open-card">
-            <h3>Research Intelligence</h3>
+          <a href="#us-market" class="market-card">
+            <h3>U.S. Stock Market</h3>
             <p>
-              Learn how to research a market, understand customers, compare
-              competitors, review opportunity, study demand, and identify risk
-              before starting or growing a business.
+              Review U.S. stocks, major companies, sectors, indexes, earnings,
+              market direction, and daily movement.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN RESEARCH <span>›</span></strong>
+            <strong>OPEN U.S. MARKET <span>›</span></strong>
           </a>
 
-          <a href="strategy-intelligence.html" class="open-card">
-            <h3>Strategy Intelligence</h3>
+          <a href="#international-markets" class="market-card">
+            <h3>International Markets</h3>
             <p>
-              Learn how strategy turns information into direction, helps a company
-              choose priorities, avoid weak moves, plan growth, and build long-term
-              business value.
+              Review markets by country and region including Europe, Asia, Canada,
+              Latin America, Africa, and global exchanges.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN STRATEGY <span>›</span></strong>
+            <strong>OPEN INTERNATIONAL <span>›</span></strong>
           </a>
 
-          <a href="operations-intelligence.html" class="open-card">
-            <h3>Operations Intelligence</h3>
+          <a href="#indexes" class="market-card">
+            <h3>Major Indexes</h3>
             <p>
-              Understand how businesses organize workflows, improve systems, track
-              performance, manage service quality, reduce confusion, and operate
-              with better discipline.
+              Review broad market indexes that show overall market movement,
+              sector pressure, investor confidence, and market direction.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN OPERATIONS <span>›</span></strong>
+            <strong>OPEN INDEXES <span>›</span></strong>
           </a>
 
-          <a href="ai-awareness.html" class="open-card">
-            <h3>AI Awareness</h3>
+          <a href="#crypto" class="market-card">
+            <h3>Crypto / Coins</h3>
             <p>
-              Learn what AI is, how AI tools can support business education, what
-              business owners should understand, and how automation should be
-              reviewed responsibly.
+              Review Bitcoin, Ethereum, major coins, altcoins, digital asset
+              movement, volatility, market risk, and crypto education.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN AI AWARENESS <span>›</span></strong>
+            <strong>OPEN COINS <span>›</span></strong>
           </a>
 
-          <a href="data-thinking.html" class="open-card">
-            <h3>Data Thinking</h3>
+          <a href="#commodities" class="market-card">
+            <h3>Commodities</h3>
             <p>
-              Learn how reports, numbers, patterns, customer signals, business
-              performance, market movement, and warning signs can support better
-              decisions.
+              Review oil, gold, silver, gas, metals, materials, agriculture, energy
+              movement, and business cost pressure.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN DATA THINKING <span>›</span></strong>
+            <strong>OPEN COMMODITIES <span>›</span></strong>
           </a>
 
-          <a href="business-systems.html" class="open-card">
-            <h3>Business Systems</h3>
+          <a href="#forex" class="market-card">
+            <h3>Forex / Currency</h3>
             <p>
-              Understand how organized workflows, routing, forms, follow-up,
-              reviews, approvals, records, and repeatable processes help a company
-              become stronger.
+              Review major currencies, exchange movement, dollar strength, global
+              trade effects, and currency market education.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN SYSTEMS <span>›</span></strong>
-          </a
-            <a href="stock-market-intelligence.html">
-  Open Stock Market Intelligence ›
-</a>
-              Use the Stock page for market watch, stock education, U.S. markets,
-              international markets, commodities, forex, crypto/coins, housing
-              movement, market news, and future live market alerts.
-            </p>
-            <div class="card-line"></div>
-            <strong>OPEN STOCK PAGE <span>›</span></strong>
+            <strong>OPEN FOREX <span>›</span></strong>
           </a>
 
-          <a href="economic-signals.html" class="open-card">
-            <h3>Economic Indicators &amp; Business Signals</h3>
+          <a href="#housing" class="market-card">
+            <h3>Housing Market</h3>
             <p>
-              Review inflation, interest rates, jobs reports, housing signals,
-              consumer spending, banking movement, lending conditions, and business
-              confidence before making major business decisions.
+              Review housing movement, mortgage rates, rent pressure, inventory,
+              home prices, and real estate business signals.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN ECONOMIC SIGNALS <span>›</span></strong>
+            <strong>OPEN HOUSING <span>›</span></strong>
+          </a>
+
+          <a href="#alerts" class="market-card">
+            <h3>Market News & Alerts</h3>
+            <p>
+              Review major announcements, breaking business news, market selloffs,
+              rallies, banking stress, and economic alerts.
+            </p>
+            <div class="card-line"></div>
+            <strong>OPEN ALERTS <span>›</span></strong>
           </a>
 
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="research">
+    <section class="section green daily-bg" data-bg-group="search">
       <div class="content">
-        <div class="eyebrow">Research Intelligence Guide</div>
+        <div class="eyebrow">Market Search</div>
 
         <h2>
-          Research Intelligence explains what must be checked before starting or growing.
+          Search a stock, country, coin, commodity, or market topic.
         </h2>
 
         <p>
-          Research is the first step before a serious business move. It helps a
-          visitor understand whether an idea has demand, whether customers need it,
-          whether competitors already control the space, and whether the timing
-          makes sense.
+          This simple version opens a public search. Later, it can connect directly
+          to a market API and show live data inside the TitanCore page.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Market Research</h3>
-            <p>
-              Study demand, pricing, location, industry trends, business timing,
-              customer behavior, and the overall market environment.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Customer Research</h3>
-            <p>
-              Understand who the customer is, what problem they need solved, how
-              often they need the service, and what makes them trust a company.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Competitor Research</h3>
-            <p>
-              Review who is already in the market, what they offer, what they
-              charge, how customers respond, and where a new company can do better.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Opportunity Search</h3>
-            <p>
-              Look for gaps, new needs, underserved customers, local demand,
-              business trends, weak service areas, and growth openings.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Research questions visitors should ask</h3>
-          <ul>
-            <li>How many people need this service or product?</li>
-            <li>Who is already providing it?</li>
-            <li>What do customers complain about?</li>
-            <li>Is the market getting stronger or weaker?</li>
-            <li>What makes this business different?</li>
-            <li>What risks should be reviewed before spending money?</li>
-            <li>What problem does the business solve?</li>
-            <li>What proof shows the business idea has a real market?</li>
-          </ul>
-        </div>
-
-        <div class="btn-row">
-          
+        <div class="search-box">
+          <label for="marketQuery">Type a market search</label>
+          <input id="marketQuery" type="text" placeholder="Example: Apple stock, Bitcoin, gold price, Japan stock market, housing market" onkeydown="handleSearchKey(event)" />
+          <button type="button" onclick="runMarketSearch()">Search Market ›</button>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="strategy">
+    <section class="section daily-bg" data-bg-group="us" id="us-market">
       <div class="content">
-        <div class="eyebrow">Strategy Intelligence Guide</div>
+        <div class="eyebrow">U.S. Stock Market</div>
 
         <h2>
-          Strategy turns information into direction.
+          United States stock market information.
         </h2>
 
         <p>
-          Strategy is how a business chooses what to focus on, what to avoid, what
-          to build first, what to delay, how to compete, and how to create long-term
-          value. Strategy helps a company move with discipline instead of guessing.
+          The U.S. market section should track major stocks, indexes, technology
+          companies, banks, energy companies, healthcare companies, retail companies,
+          real estate companies, earnings news, and market direction.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Direction</h3>
+        <div class="watch-grid">
+          <div class="watch-box">
+            <div class="label">U.S. Stocks</div>
+            <h3>Large Companies</h3>
             <p>
-              Direction explains where the business is going, what the company is
-              trying to become, and what decisions support that goal.
+              Apple, Microsoft, NVIDIA, Amazon, Meta, Tesla, Alphabet, banks,
+              retailers, energy companies, and other major U.S. public companies.
             </p>
           </div>
 
-          <div class="guide-card">
-            <h3>Positioning</h3>
+          <div class="watch-box">
+            <div class="label">Market Direction</div>
+            <h3>Up / Down Movement</h3>
             <p>
-              Positioning explains how the business wants to be seen by customers,
-              partners, lenders, investors, and the public market.
+              This area should show whether the market is up, down, volatile,
+              recovering, selling off, or reacting to major news.
             </p>
           </div>
 
-          <div class="guide-card">
-            <h3>Priorities</h3>
+          <div class="watch-box">
+            <div class="label">Company News</div>
+            <h3>Earnings & Alerts</h3>
             <p>
-              Priorities help a business decide what matters first, what can wait,
-              and what should not distract the company.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Growth Plan</h3>
-            <p>
-              A growth plan explains how the business can expand without becoming
-              disorganized, overextended, or financially weak.
+              Earnings reports, leadership news, product announcements, lawsuits,
+              layoffs, mergers, and market-moving company events.
             </p>
           </div>
         </div>
 
-        <div class="info-box">
-          <h3>Strategy questions visitors should ask</h3>
-          <ul>
-            <li>What is the main goal of the business?</li>
-            <li>Who is the business trying to serve?</li>
-            <li>What makes the business different from competitors?</li>
-            <li>What should be built first?</li>
-            <li>What should the business avoid?</li>
-            <li>What could create long-term value?</li>
-            <li>What could weaken the company if done too early?</li>
-            <li>How will the business know if the strategy is working?</li>
-          </ul>
-        </div>
-
-        <div class="btn-row">
-          
-        </div>
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>What It Shows</th>
+              <th>Live Future Connection</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Major U.S. Stocks</td>
+              <td>Price, daily change, percentage change, volume, company news.</td>
+              <td>Market API + AI summary.</td>
+            </tr>
+            <tr>
+              <td>U.S. Sectors</td>
+              <td>Technology, finance, energy, healthcare, real estate, consumer sectors.</td>
+              <td>Sector API + dashboard archive.</td>
+            </tr>
+            <tr>
+              <td>Earnings Watch</td>
+              <td>Companies reporting earnings and market reaction.</td>
+              <td>News API + earnings calendar.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="operations">
+    <section class="section green daily-bg" data-bg-group="international" id="international-markets">
       <div class="content">
-        <div class="eyebrow">Operations Intelligence Guide</div>
+        <div class="eyebrow">International Markets</div>
 
         <h2>
-          Operations Intelligence explains how work gets done.
+          Global stock information by country and region.
         </h2>
 
         <p>
-          A company can have a strong idea but still fail if the operation is weak.
-          Operations Intelligence explains workflow, follow-up, service quality,
-          reporting, accountability, performance tracking, and the daily structure
-          that keeps a company moving.
+          International Markets should help visitors review stock movement outside
+          the United States. Later, this section can show country-level market
+          performance, leading companies, major indexes, currency effects, and
+          country-specific business news.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Workflow</h3>
+        <div class="watch-grid">
+          <div class="watch-box">
+            <div class="label">North America</div>
+            <h3>U.S. / Canada / Mexico</h3>
             <p>
-              Workflow explains how tasks move from start to finish without being
-              lost, delayed, duplicated, or handled by the wrong person.
+              Regional stocks, banks, energy, trade, currency, housing, and economic
+              signals affecting North American markets.
             </p>
           </div>
 
-          <div class="guide-card">
-            <h3>Service Quality</h3>
+          <div class="watch-box">
+            <div class="label">Europe</div>
+            <h3>UK / Germany / France</h3>
             <p>
-              Service quality explains whether customers are being handled properly,
-              whether promises are being kept, and whether issues are being fixed.
+              European market movement, banking news, industrial companies,
+              inflation, energy, currency, and business confidence.
             </p>
           </div>
 
-          <div class="guide-card">
-            <h3>Reporting</h3>
+          <div class="watch-box">
+            <div class="label">Asia</div>
+            <h3>Japan / China / India</h3>
             <p>
-              Reporting helps leaders understand what happened, what is pending,
-              what is delayed, and what needs attention.
+              Asian market movement, technology, manufacturing, exports, policy
+              changes, currency movement, and global supply chain effects.
             </p>
           </div>
 
-          <div class="guide-card">
-            <h3>Performance</h3>
+          <div class="watch-box">
+            <div class="label">Latin America</div>
+            <h3>Brazil / Chile / Colombia</h3>
             <p>
-              Performance review helps a business track productivity, response
-              time, customer outcomes, financial results, and operational risk.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Operations questions visitors should ask</h3>
-          <ul>
-            <li>How does work move through the company?</li>
-            <li>Who handles each step?</li>
-            <li>How are requests tracked?</li>
-            <li>How does the business follow up?</li>
-            <li>How does management know what is delayed?</li>
-            <li>How are customer issues handled?</li>
-            <li>How are errors corrected?</li>
-            <li>What systems keep the operation organized?</li>
-          </ul>
-        </div>
-
-        <div class="btn-row">
-         
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="ai">
-      <div class="content">
-        <div class="eyebrow">AI Awareness Guide</div>
-
-        <h2>
-          AI Awareness explains technology in a responsible public way.
-        </h2>
-
-        <p>
-          This section does not say TitanCore uses AI internally. It is public
-          business education. It explains what AI is, how digital tools are changing
-          business, and what people should understand before using automation,
-          chatbots, research tools, writing tools, or data tools.
-        </p>
-
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>What AI Means</h3>
-            <p>
-              AI can help people summarize information, write drafts, review data,
-              answer questions, organize tasks, and understand patterns.
+              Regional markets, commodities, currency movement, banking, elections,
+              trade, and growth signals.
             </p>
           </div>
 
-          <div class="guide-card">
-            <h3>Business Use</h3>
+          <div class="watch-box">
+            <div class="label">Africa</div>
+            <h3>South Africa / Nigeria / Kenya</h3>
             <p>
-              Businesses may use AI tools for education, research, writing, planning,
-              customer support, organization, or decision preparation.
+              Country markets, banking, mining, energy, currency, technology,
+              infrastructure, and economic growth movement.
             </p>
           </div>
 
-          <div class="guide-card">
-            <h3>Human Review</h3>
+          <div class="watch-box">
+            <div class="label">Middle East</div>
+            <h3>UAE / Saudi / Qatar</h3>
             <p>
-              AI output should be reviewed carefully because tools can make mistakes,
-              miss context, or give information that needs verification.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Responsible Use</h3>
-            <p>
-              AI should be used with care, privacy awareness, compliance thinking,
-              accurate review, and professional judgment.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>AI awareness questions visitors should ask</h3>
-          <ul>
-            <li>What problem is the AI tool supposed to help with?</li>
-            <li>Is the information accurate and updated?</li>
-            <li>Does a human need to review the result?</li>
-            <li>Is private information being protected?</li>
-            <li>Could the tool create legal, financial, or reputation risk?</li>
-            <li>Is AI being used for education or for final decisions?</li>
-            <li>What should not be automated?</li>
-            <li>How can a business use AI responsibly?</li>
-          </ul>
-        </div>
-
-        <div class="btn-row">
-          
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="data">
-      <div class="content">
-        <div class="eyebrow">Data Thinking Guide</div>
-
-        <h2>
-          Data Thinking explains how numbers and patterns support decisions.
-        </h2>
-
-        <p>
-          Data Thinking is not only about spreadsheets. It is about understanding
-          what the numbers, reports, patterns, customer signals, performance results,
-          and warning signs are telling a business.
-        </p>
-
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Reports</h3>
-            <p>
-              Reports show what happened, what changed, what improved, what failed,
-              and what should be reviewed next.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Patterns</h3>
-            <p>
-              Patterns help a business see repeated behavior, repeated problems,
-              repeated customer needs, or repeated delays.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Signals</h3>
-            <p>
-              Signals are early signs that something is improving, weakening,
-              becoming risky, or creating opportunity.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Decisions</h3>
-            <p>
-              Better decisions come from combining numbers, facts, experience,
-              customer feedback, market movement, and professional judgment.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Data questions visitors should ask</h3>
-          <ul>
-            <li>What does the data actually show?</li>
-            <li>Is the information complete or missing something?</li>
-            <li>What pattern keeps repeating?</li>
-            <li>What number is improving?</li>
-            <li>What number is getting worse?</li>
-            <li>What customer behavior is changing?</li>
-            <li>What warning signs should be watched?</li>
-            <li>What decision should this information support?</li>
-          </ul>
-        </div>
-
-        <div class="btn-row">
-          
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="systems">
-      <div class="content">
-        <div class="eyebrow">Business Systems Guide</div>
-
-        <h2>
-          Business Systems explain how a company stays organized.
-        </h2>
-
-        <p>
-          A business system is the structure that keeps work from becoming confused.
-          Systems include forms, routing, approvals, follow-up, records, dashboards,
-          reporting, communication, client intake, and repeatable processes.
-        </p>
-
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Intake</h3>
-            <p>
-              Intake systems collect the right information at the beginning so the
-              company can understand the request and route it properly.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Routing</h3>
-            <p>
-              Routing sends requests, documents, messages, or tasks to the correct
-              department, company, or public page.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Follow-Up</h3>
-            <p>
-              Follow-up systems help a business avoid missed opportunities, delayed
-              responses, forgotten tasks, and weak customer communication.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Records</h3>
-            <p>
-              Records help a company preserve proof, history, reports, approvals,
-              decisions, communication, and important business activity.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>System questions visitors should ask</h3>
-          <ul>
-            <li>How does the company collect information?</li>
-            <li>Where does the information go?</li>
-            <li>Who reviews the request?</li>
-            <li>How is follow-up tracked?</li>
-            <li>Where are records stored?</li>
-            <li>How are approvals handled?</li>
-            <li>What happens if something is delayed?</li>
-            <li>How does the system help the company grow?</li>
-          </ul>
-        </div>
-
-        <div class="btn-row">
-         
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="market">
-      <div class="content">
-        <div class="eyebrow">Stock & Market Information Guide</div>
-
-        <h2>
-          Market information helps visitors understand economic movement.
-        </h2>
-
-        <p>
-          Stock and market information belongs on the Stock page. This Business
-          Intelligence page should only introduce the topic and guide people to the
-          correct area. The Stock page can go deeper into market watch, U.S. markets,
-          international markets, commodities, forex, crypto/coins, housing movement,
-          and future market alerts.
-        </p>
-
-        <div class="info-box">
-          <h3>What the Stock page can cover</h3>
-          <ul>
-            <li>Stock market education and market direction.</li>
-            <li>U.S. market and international market movement.</li>
-            <li>Indexes, sectors, and major company movement.</li>
-            <li>Commodities such as oil, gas, gold, and materials.</li>
-            <li>Forex and currency movement.</li>
-            <li>Crypto/coins as high-risk digital asset education.</li>
-            <li>Housing market movement and mortgage pressure.</li>
-            <li>Major market alerts and daily market watch.</li>
-          </ul>
-        </div>
-
-        <div class="btn-row">
-          
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="economic">
-      <div class="content">
-        <div class="eyebrow">Economic Signals Guide</div>
-
-        <h2>
-          Economic indicators show pressure, confidence, and timing.
-        </h2>
-
-        <p>
-          Economic signals are not the same thing as the Stock page. Economic
-          Signals explain broad business conditions: inflation, interest rates,
-          jobs reports, lending, banking movement, consumer spending, housing
-          signals, and business confidence.
-        </p>
-
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Inflation</h3>
-            <p>
-              Inflation affects prices, supplies, labor costs, fuel, rent, insurance,
-              customer budgets, and business margins.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Interest Rates</h3>
-            <p>
-              Interest rates affect loans, mortgages, business funding, credit
-              cards, investor behavior, and customer spending.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Jobs Reports</h3>
-            <p>
-              Jobs data can show whether the economy is strong, weak, hiring,
-              slowing, or changing direction.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Business Confidence</h3>
-            <p>
-              Confidence affects hiring, expansion, lending, investing, pricing,
-              inventory, and long-term planning.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Economic questions visitors should ask</h3>
-          <ul>
-            <li>Are prices rising or stabilizing?</li>
-            <li>Are interest rates helping or hurting growth?</li>
-            <li>Is hiring strong or slowing?</li>
-            <li>Are banks lending more carefully?</li>
-            <li>Are customers spending or pulling back?</li>
-            <li>Is housing helping or hurting the economy?</li>
-            <li>Is business confidence improving or weakening?</li>
-            <li>What does this mean for timing, risk, and planning?</li>
-          </ul>
-        </div>
-
-        <div class="btn-row">
-          
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark daily-bg" data-bg-group="process">
-      <div class="content">
-        <div class="eyebrow">How Visitors Should Use This Page</div>
-
-        <h2>
-          Business Intelligence works like a decision guide.
-        </h2>
-
-        <p>
-          Visitors should not use this page as one simple article. They should use
-          it as a business thinking map. Each section helps them slow down, review
-          the right information, and decide what page they need next.
-        </p>
-
-        <div class="process-grid">
-          <div class="process-card">
-            <div class="process-number">Step One</div>
-            <h3>Identify the decision</h3>
-            <p>
-              Decide what move is being considered: opening a business, entering a
-              market, launching a service, investing money, or building a system.
-            </p>
-          </div>
-
-          <div class="process-card">
-            <div class="process-number">Step Two</div>
-            <h3>Choose the information area</h3>
-            <p>
-              Select research, strategy, operations, AI awareness, data thinking,
-              systems, stock information, or economic signals.
-            </p>
-          </div>
-
-          <div class="process-card">
-            <div class="process-number">Step Three</div>
-            <h3>Review before moving</h3>
-            <p>
-              Read the questions, understand the risks, check the market, and use
-              the dedicated page before making a major decision.
+              Energy markets, sovereign investment, banking, real estate, trade,
+              global capital, and regional business movement.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="future">
+    <section class="section dark daily-bg" data-bg-group="indexes" id="indexes">
       <div class="content">
-        <div class="eyebrow">Future Live Intelligence System</div>
+        <div class="eyebrow">Major Indexes</div>
 
         <h2>
-          Later, TitanCore can turn this into a live intelligence engine.
+          Indexes show broad market direction.
         </h2>
 
         <p>
-          The current version is a strong public structure. The next phase can
-          connect the page to live research, business news, market data, economic
-          indicators, AI summaries, and database storage so the website updates
-          with fresh information automatically.
+          Market indexes help visitors understand whether a broad group of stocks
+          is rising, falling, or reacting to major economic news.
         </p>
 
         <div class="info-box">
-          <h3>Future connection plan</h3>
+          <h3>Indexes to include in the live version</h3>
           <ul>
-            <li>Use a search API for business research results.</li>
-            <li>Use market APIs for stock, index, commodity, forex, crypto, and housing signals.</li>
-            <li>Use news APIs for global business news and major market events.</li>
-            <li>Use AI summaries to turn complex information into simple public language.</li>
-            <li>Use Supabase to store daily briefs, alerts, archive records, and page content.</li>
-            <li>Use Netlify Functions to refresh data on a schedule.</li>
-            <li>Use the dashboard later to review, approve, and manage public updates.</li>
+            <li>U.S. indexes such as broad market, technology, and industrial indexes.</li>
+            <li>European indexes from major markets.</li>
+            <li>Asian indexes from Japan, China, India, and other key markets.</li>
+            <li>Regional indexes for country-level market direction.</li>
+            <li>Sector indexes for technology, energy, banking, healthcare, and real estate.</li>
+            <li>Daily change, percentage movement, major drivers, and AI summary.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="crypto" id="crypto">
+      <div class="content">
+        <div class="eyebrow">Crypto / Coins</div>
+
+        <h2>
+          Crypto and coins need their own market education area.
+        </h2>
+
+        <p>
+          Crypto can move fast and carry high risk. This page can include Bitcoin,
+          Ethereum, stablecoins, major altcoins, blockchain market news, crypto
+          regulation, exchange news, and digital asset risk education.
+        </p>
+
+        <div class="watch-grid">
+          <div class="watch-box">
+            <div class="label">Big Coin</div>
+            <h3>Bitcoin</h3>
+            <p>
+              Price movement, market dominance, risk sentiment, institutional news,
+              regulation, and broad crypto direction.
+            </p>
+          </div>
+
+          <div class="watch-box">
+            <div class="label">Major Coin</div>
+            <h3>Ethereum</h3>
+            <p>
+              Smart contracts, network activity, developer ecosystem, staking,
+              regulation, and market movement.
+            </p>
+          </div>
+
+          <div class="watch-box">
+            <div class="label">Other Coins</div>
+            <h3>Altcoins</h3>
+            <p>
+              Major altcoins, high-volatility coins, sector themes, exchange
+              movement, and crypto risk alerts.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <h3>Crypto warning language</h3>
+          <ul>
+            <li>Crypto prices can move quickly and may be highly volatile.</li>
+            <li>Visitors should understand risk before making any decision.</li>
+            <li>Wallets, exchanges, passwords, and scams create serious security concerns.</li>
+            <li>Crypto information should be educational and not treated as investment advice.</li>
+            <li>The live version should show price, daily change, market cap, volume, and major news alerts.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="commodities" id="commodities">
+      <div class="content">
+        <div class="eyebrow">Commodities</div>
+
+        <h2>
+          Commodities can affect business costs and economic pressure.
+        </h2>
+
+        <p>
+          Commodities are important because oil, gas, gold, silver, metals, food,
+          and materials can affect inflation, transportation, construction, repairs,
+          consumer prices, and business margins.
+        </p>
+
+        <div class="watch-grid">
+          <div class="watch-box">
+            <div class="label">Energy</div>
+            <h3>Oil / Gas</h3>
+            <p>
+              Fuel, transportation, shipping, travel, utilities, inflation, and
+              business cost pressure.
+            </p>
+          </div>
+
+          <div class="watch-box">
+            <div class="label">Metals</div>
+            <h3>Gold / Silver</h3>
+            <p>
+              Inflation fear, investor risk, currency movement, industrial demand,
+              and market uncertainty.
+            </p>
+          </div>
+
+          <div class="watch-box">
+            <div class="label">Materials</div>
+            <h3>Lumber / Copper</h3>
+            <p>
+              Construction, housing, manufacturing, infrastructure, repairs, and
+              economic growth signals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="forex" id="forex">
+      <div class="content">
+        <div class="eyebrow">Forex / Currency</div>
+
+        <h2>
+          Currency movement affects global trade and purchasing power.
+        </h2>
+
+        <p>
+          Forex information helps visitors understand how currency movement can
+          affect imports, exports, travel, international investing, supply chains,
+          and country-level market strength.
+        </p>
+
+        <div class="info-box">
+          <h3>Currency areas to include</h3>
+          <ul>
+            <li>U.S. dollar strength or weakness.</li>
+            <li>Euro, pound, yen, Canadian dollar, Mexican peso, and major global currencies.</li>
+            <li>Currency movement connected to interest rates and inflation.</li>
+            <li>Currency movement connected to global trade and commodity pricing.</li>
+            <li>Exchange-rate education for business owners and international market watchers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="housing" id="housing">
+      <div class="content">
+        <div class="eyebrow">Housing Market</div>
+
+        <h2>
+          Housing movement affects families, banks, investors, and businesses.
+        </h2>
+
+        <p>
+          Housing market information belongs on this page because real estate
+          connects to mortgages, rent, construction, contractors, insurance, tax,
+          banks, consumer confidence, and local business spending.
+        </p>
+
+        <div class="watch-grid">
+          <div class="watch-box">
+            <div class="label">Rates</div>
+            <h3>Mortgage Rates</h3>
+            <p>
+              Mortgage-rate changes can affect affordability, buyers, sellers,
+              refinances, and home demand.
+            </p>
+          </div>
+
+          <div class="watch-box">
+            <div class="label">Prices</div>
+            <h3>Home Values</h3>
+            <p>
+              Price movement can affect equity, confidence, taxes, affordability,
+              and investor behavior.
+            </p>
+          </div>
+
+          <div class="watch-box">
+            <div class="label">Supply</div>
+            <h3>Inventory</h3>
+            <p>
+              Housing inventory can affect buyer power, seller pressure, rent
+              movement, and local market strength.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="alerts" id="alerts">
+      <div class="content">
+        <div class="eyebrow">Market News & Alerts</div>
+
+        <h2>
+          Major announcements should be easy to see.
+        </h2>
+
+        <p>
+          When major market news happens, TitanCore should be able to show a clear
+          public summary. This includes stock selloffs, rallies, banking stress,
+          interest-rate decisions, inflation reports, major earnings, housing
+          changes, oil spikes, and global business events.
+        </p>
+
+        <div class="info-box">
+          <h3>Major alerts to show later</h3>
+          <ul>
+            <li>Stock market sharply down or sharply up.</li>
+            <li>Major company earnings or announcement.</li>
+            <li>Interest-rate announcement or central bank decision.</li>
+            <li>Inflation report or jobs report surprise.</li>
+            <li>Housing market decline or mortgage-rate shock.</li>
+            <li>Banking news affecting lending or confidence.</li>
+            <li>Oil, gold, or commodity price spike.</li>
+            <li>Crypto market crash, rally, regulation, or exchange alert.</li>
+            <li>Global event affecting markets, supply chains, or business confidence.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="connection">
+      <div class="content">
+        <div class="eyebrow">Live Connection Plan</div>
+
+        <h2>
+          This page needs APIs to become fully live.
+        </h2>
+
+        <p>
+          The page design is the first step. To show live stock prices, crypto
+          prices, commodities, forex, global markets, and alerts, TitanCore will
+          need a data connection behind the page.
+        </p>
+
+        <div class="info-box">
+          <h3>Best future setup</h3>
+          <ul>
+            <li><strong>Market Data API:</strong> brings live prices, daily changes, and market movement.</li>
+            <li><strong>News API:</strong> brings business news and major announcements.</li>
+            <li><strong>OpenAI / AI Summary:</strong> turns market movement into simple public language.</li>
+            <li><strong>Supabase:</strong> stores daily briefings, alerts, snapshots, and archives.</li>
+            <li><strong>Netlify Functions or Replit Backend:</strong> protects API keys and connects the data safely.</li>
+            <li><strong>Dashboard Review:</strong> later allows private review and approval of public updates.</li>
           </ul>
         </div>
 
         <p>
-          This makes Business Intelligence the public knowledge center, while the
-          dashboard becomes the private control room behind the website.
+          This is why the static page can look complete now, but the real automatic
+          daily updates come later when the API and backend are connected.
         </p>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="disclaimer">
+      <div class="content">
+        <div class="eyebrow">Public Information Notice</div>
+
+        <h2>
+          Market information is education, not financial advice.
+        </h2>
+
+        <p>
+          TitanCore can provide public market education, news summaries, business
+          signals, and market awareness. The page should not tell visitors what to
+          buy, sell, hold, or trade.
+        </p>
+
+        <div class="info-box">
+          <h3>Public notice language</h3>
+          <ul>
+            <li>This page is for public business education and market awareness.</li>
+            <li>Market prices can change quickly.</li>
+            <li>Visitors should verify information before making decisions.</li>
+            <li>Stock, crypto, forex, and commodity markets carry risk.</li>
+            <li>Nothing on this page should be treated as investment, legal, tax, or financial advice.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -1425,63 +1167,82 @@
       }
     }
 
+    function runMarketSearch(){
+      const input = document.getElementById("marketQuery");
+      const query = input.value.trim();
+
+      if(!query){
+        alert("Please type a stock, coin, country, commodity, or market topic first.");
+        return;
+      }
+
+      const url = "https://www.google.com/search?q=" + encodeURIComponent(query + " market price news");
+      window.open(url, "_blank");
+    }
+
+    function handleSearchKey(event){
+      if(event.key === "Enter"){
+        runMarketSearch();
+      }
+    }
+
     const backgroundSets = {
       hero: [
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
-      ],
-      purpose: [
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
-      ],
-      daily: [
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
-      ],
-      map: [
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
-      ],
-      research: [
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
-      ],
-      strategy: [
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
-      ],
-      operations: [
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
-      ],
-      ai: [
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
-      ],
-      data: [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
       ],
-      systems: [
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      daily: [
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85"
       ],
-      market: [
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1642543348745-03b1219733d9?auto=format&fit=crop&w=1600&q=85"
+      map: [
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
       ],
-      economic: [
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85",
+      search: [
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
       ],
-      process: [
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      us: [
+        "https://images.unsplash.com/photo-1642543348745-03b1219733d9?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
       ],
-      future: [
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
+      international: [
+        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      ],
+      indexes: [
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85"
+      ],
+      crypto: [
+        "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1600&q=85"
+      ],
+      commodities: [
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85"
+      ],
+      forex: [
+        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ],
+      housing: [
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ],
+      alerts: [
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1600&q=85"
+      ],
+      connection: [
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      disclaimer: [
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
       ],
       contact: [
         "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
@@ -1491,28 +1252,28 @@
 
     const dailyItems = [
       {
-        title:"Research before spending serious money.",
-        text:"Today’s business intelligence focus is research: demand, customer need, competition, pricing, risk, and timing should be reviewed before making a major business move."
+        title:"Watch interest rates because they affect lending and housing.",
+        text:"Today’s market focus is interest-rate pressure. Rates can affect mortgages, business loans, credit cards, investor behavior, and customer spending."
       },
       {
-        title:"Strategy should come before action.",
-        text:"Today’s business intelligence focus is strategy: decide what to focus on, what to avoid, how to position the business, and how to build long-term value."
+        title:"Watch inflation because it can change business costs.",
+        text:"Today’s market focus is inflation. Rising costs can affect supplies, fuel, labor, rent, insurance, pricing, and customer budgets."
       },
       {
-        title:"Operations keep a company from becoming confused.",
-        text:"Today’s business intelligence focus is operations: workflow, follow-up, reporting, service quality, and accountability help a business stay disciplined."
+        title:"Watch stocks because confidence can change quickly.",
+        text:"Today’s market focus is stock movement. A major selloff or rally can affect investor confidence, business sentiment, and financial planning."
       },
       {
-        title:"Data helps leaders see what is really happening.",
-        text:"Today’s business intelligence focus is data thinking: numbers, reports, patterns, customer signals, and warning signs can support better decisions."
+        title:"Watch crypto carefully because coin movement can be volatile.",
+        text:"Today’s market focus is crypto/coins. Digital assets can move quickly and should be reviewed with strong risk awareness."
       },
       {
-        title:"Systems help businesses grow without losing control.",
-        text:"Today’s business intelligence focus is systems: intake, routing, forms, approvals, records, and repeatable processes help keep work organized."
+        title:"Watch housing because it connects to banks, families, and local businesses.",
+        text:"Today’s market focus is housing. Mortgage rates, prices, rent, and inventory can affect consumer confidence and real estate activity."
       },
       {
-        title:"Economic signals affect business timing.",
-        text:"Today’s business intelligence focus is economic signals: inflation, rates, housing, jobs, lending, and consumer spending can affect when and how a business should move."
+        title:"Watch commodities because energy and materials affect the economy.",
+        text:"Today’s market focus is commodities. Oil, gas, gold, metals, and materials can affect inflation, transportation, construction, and business costs."
       }
     ];
 
