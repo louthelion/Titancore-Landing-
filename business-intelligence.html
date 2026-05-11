@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -18,7 +18,10 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       background:#000;
@@ -26,7 +29,10 @@
       font-family:Arial, Helvetica, sans-serif;
     }
 
-    a{color:inherit;text-decoration:none}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
     .page{
       max-width:1180px;
@@ -35,6 +41,7 @@
       border-left:1px solid var(--line);
       border-right:1px solid var(--line);
       min-height:100vh;
+      overflow:hidden;
     }
 
     .topbar{
@@ -75,7 +82,9 @@
       text-overflow:ellipsis;
     }
 
-    .brand span{color:var(--gold)}
+    .brand span{
+      color:var(--gold);
+    }
 
     .menu-btn{
       width:76px;
@@ -100,7 +109,9 @@
       padding:22px 42px 26px;
     }
 
-    .menu.active{display:block}
+    .menu.active{
+      display:block;
+    }
 
     .menu a{
       display:block;
@@ -131,25 +142,25 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.42)),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.52));
+        linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.52)),
+        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.62));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg,rgba(0,0,0,.60),rgba(6,75,56,.75)),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.42));
+        linear-gradient(90deg,rgba(0,0,0,.58),rgba(6,75,56,.82)),
+        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));
     }
 
     .section.dark::before{
       background:
-        linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.58)),
-        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.64));
+        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.70)),
+        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.72));
     }
 
     .hero{
-      min-height:760px;
+      min-height:820px;
       display:flex;
       align-items:center;
     }
@@ -157,14 +168,14 @@
     .content{
       position:relative;
       z-index:1;
-      padding:62px 42px;
+      padding:64px 42px;
       max-width:1080px;
     }
 
     .hero .content{
-      max-width:980px;
-      padding-top:82px;
-      padding-bottom:82px;
+      max-width:1020px;
+      padding-top:84px;
+      padding-bottom:84px;
     }
 
     .eyebrow{
@@ -177,7 +188,9 @@
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
-    h1,h2,h3{
+    h1,
+    h2,
+    h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
       line-height:1.06;
@@ -187,7 +200,19 @@
     h1{
       font-size:clamp(48px,6vw,92px);
       margin-bottom:34px;
-      max-width:980px;
+      max-width:1020px;
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,76px);
+      margin-bottom:34px;
+      max-width:1020px;
+    }
+
+    h3{
+      color:var(--gold2);
+      font-size:clamp(36px,4.8vw,64px);
+      margin-bottom:26px;
     }
 
     h1 span,
@@ -196,30 +221,13 @@
       color:var(--gold2);
     }
 
-    h2{
-      font-size:clamp(40px,5vw,76px);
-      margin-bottom:34px;
-      max-width:1000px;
-    }
-
-    h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:22px;
-    }
-
     p{
       color:#f2ece1;
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:1000px;
+      max-width:1020px;
       text-shadow:0 2px 12px rgba(0,0,0,.82);
-    }
-
-    strong{
-      color:var(--gold2);
-      font-weight:900;
     }
 
     .btn-row{
@@ -249,34 +257,24 @@
       color:#000;
     }
 
-    .info-box{
+    .box{
       border:2px solid var(--gold);
       background:rgba(0,0,0,.50);
       padding:44px 48px;
       margin-top:38px;
       max-width:1060px;
-      backdrop-filter:blur(1px);
       box-shadow:0 16px 40px rgba(0,0,0,.35);
+      backdrop-filter:blur(1px);
     }
 
-    .info-box h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:22px;
-    }
-
-    .info-box p{
-      margin-bottom:22px;
-    }
-
-    .info-box ul{
+    .box ul{
       list-style:none;
       display:grid;
       gap:18px;
       margin-top:20px;
     }
 
-    .info-box li{
+    .box li{
       color:#f7f1e6;
       font-size:22px;
       line-height:1.6;
@@ -285,7 +283,7 @@
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
-    .info-box li::before{
+    .box li::before{
       content:"›";
       position:absolute;
       left:0;
@@ -294,123 +292,97 @@
       font-weight:900;
     }
 
-    .open-grid{
+    .intel-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:28px;
-      margin-top:44px;
-      max-width:1080px;
+      grid-template-columns:1fr;
+      gap:34px;
+      margin-top:42px;
+      max-width:1060px;
     }
 
-    .open-card{
+    .intel-card{
       display:block;
-      min-height:470px;
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:44px 46px;
+      background:rgba(0,0,0,.50);
+      padding:44px 48px;
+      color:#f7f1e6;
+      text-decoration:none;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
       backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.34);
       transition:.25s ease;
     }
 
-    .open-card:hover{
+    .intel-card:hover{
+      background:rgba(6,75,56,.82);
       transform:translateY(-3px);
-      background:rgba(6,75,56,.76);
     }
 
-    .open-card h3{
+    .intel-card h3{
+      font-family:Georgia, "Times New Roman", serif;
       color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:26px;
+      font-size:clamp(38px,5vw,68px);
+      line-height:1.06;
+      font-weight:400;
+      margin:0 0 28px;
+      text-shadow:0 3px 16px rgba(0,0,0,.88);
     }
 
-    .open-card p{
-      font-size:21px;
-      line-height:1.62;
-      margin-bottom:0;
+    .intel-card p{
+      color:#f7f1e6;
+      font-size:22px;
+      line-height:1.72;
+      margin:0;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     .card-line{
       height:1px;
       background:rgba(215,179,93,.65);
-      margin:34px 0 26px;
+      margin:36px 0 28px;
     }
 
-    .open-card strong{
+    .intel-card strong{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
+      gap:22px;
       color:#fff;
       text-transform:uppercase;
       letter-spacing:5px;
       font-size:17px;
+      font-weight:900;
     }
 
-    .open-card strong span{
+    .intel-card strong span{
       color:var(--gold2);
-      font-size:48px;
+      font-size:46px;
       line-height:0;
     }
 
-    .guide-grid{
+    .two-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:24px;
+      gap:26px;
       margin-top:38px;
-      max-width:1080px;
+      max-width:1060px;
     }
 
-    .guide-card{
+    .mini-card{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.48);
-      padding:36px;
-      box-shadow:0 16px 40px rgba(0,0,0,.34);
+      background:rgba(0,0,0,.50);
+      padding:34px;
+      min-height:260px;
+      box-shadow:0 16px 40px rgba(0,0,0,.30);
     }
 
-    .guide-card h3{
+    .mini-card h3{
       font-size:clamp(30px,4vw,48px);
-      color:var(--gold2);
       margin-bottom:18px;
     }
 
-    .guide-card p{
+    .mini-card p{
       font-size:20px;
       line-height:1.6;
-      margin-bottom:0;
-    }
-
-    .process-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-      margin-top:40px;
-      max-width:1080px;
-    }
-
-    .process-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.48);
-      padding:34px;
-      min-height:280px;
-    }
-
-    .process-number{
-      color:var(--gold2);
-      letter-spacing:4px;
-      text-transform:uppercase;
-      font-weight:900;
-      font-size:13px;
-      margin-bottom:16px;
-    }
-
-    .process-card h3{
-      font-size:clamp(28px,3.8vw,44px);
-      margin-bottom:18px;
-    }
-
-    .process-card p{
-      font-size:19px;
-      line-height:1.58;
       margin-bottom:0;
     }
 
@@ -418,36 +390,16 @@
       border:2px solid var(--gold);
       background:rgba(0,0,0,.50);
       padding:44px 48px;
-      margin-top:34px;
+      margin-top:38px;
       max-width:1060px;
       box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-
-    .daily-date{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:14px;
-      font-weight:900;
-      margin-bottom:18px;
-    }
-
-    .daily-card h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:22px;
-    }
-
-    .daily-card p{
-      font-size:22px;
-      line-height:1.62;
-      margin-bottom:0;
+      backdrop-filter:blur(1px);
     }
 
     .contact-clean{
       position:relative;
       z-index:1;
-      padding:62px 42px;
+      padding:76px 42px 88px;
       max-width:980px;
     }
 
@@ -460,15 +412,8 @@
       border-bottom:1px solid var(--line);
     }
 
-    @media(max-width:1000px){
-      .process-grid{
-        grid-template-columns:1fr;
-      }
-    }
-
     @media(max-width:900px){
-      .open-grid,
-      .guide-grid{
+      .two-grid{
         grid-template-columns:1fr;
       }
     }
@@ -485,8 +430,13 @@
         height:62px;
       }
 
-      .logo{font-size:27px}
-      .menu-btn{font-size:30px}
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
 
       .brand{
         font-size:16px;
@@ -511,9 +461,17 @@
         padding:48px 28px;
       }
 
-      h1{font-size:42px}
-      h2{font-size:40px}
-      h3{font-size:38px}
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      h3{
+        font-size:40px;
+      }
 
       p{
         font-size:21px;
@@ -530,52 +488,31 @@
         width:100%;
       }
 
-      .info-box,
-      .open-card,
-      .guide-card,
-      .process-card,
-      .daily-card{
+      .box,
+      .daily-card,
+      .intel-card,
+      .mini-card{
         padding:34px 32px;
       }
 
-      .open-card{
-        min-height:auto;
-      }
-
-      .open-card h3,
-      .info-box h3,
-      .daily-card h3{
-        font-size:38px;
-      }
-
-      .open-card p,
-      .info-box li,
-      .guide-card p,
-      .process-card p,
-      .daily-card p{
+      .box li,
+      .intel-card p{
         font-size:21px;
+        line-height:1.68;
+      }
+
+      .intel-card h3{
+        font-size:42px;
+      }
+
+      .intel-card strong{
+        font-size:15px;
+        letter-spacing:4px;
       }
 
       .simple-footer{
         font-size:16px;
       }
-    }
-
-    @media(max-width:420px){
-      .brand{
-        font-size:15px;
-        letter-spacing:.8px;
-      }
-
-      .logo,
-      .menu-btn{
-        width:58px;
-        height:58px;
-      }
-
-      .logo{font-size:25px}
-      h1{font-size:40px}
-      h2{font-size:36px}
     }
   </style>
 </head>
@@ -606,66 +543,62 @@
         <div class="eyebrow">Business Intelligence</div>
 
         <h1>
-          A public knowledge center for business
-          <span>research, strategy, and decisions.</span>
+          A public business guide for research, strategy, operations,
+          technology awareness, data, systems, markets, and
+          <span>economic signals.</span>
         </h1>
 
         <p>
-          Business Intelligence gives visitors a professional place to understand
-          how business information should be reviewed before making important
-          decisions. It explains research, strategy, operations, AI awareness,
-          data thinking, systems, market education, and economic signals.
+          Business Intelligence is the place where TitanCore visitors can learn how
+          to think before making business decisions. This page explains what to
+          research, what to compare, what data to review, what systems to build,
+          and what market signals to watch.
         </p>
 
         <p>
-          This page is different from the Company page and the Institution page.
-          The Company page explains TitanCore’s operating companies. The Institution
-          page explains investor, bank, and financial institution pathways.
-          Business Intelligence explains knowledge, research, market awareness,
-          and decision support.
+          The homepage should stay clean and professional. Business Intelligence is
+          the larger education hub where deeper topics belong. Visitors can read the
+          overview first, then open each full intelligence page for more specific
+          information.
         </p>
 
         <div class="btn-row">
-          <a href="#open-areas" class="btn">Explore Intelligence ›</a>
           <a href="index.html" class="btn">Back Home ›</a>
-        </div>
-      </div>
+           </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="purpose">
+    <section class="section green daily-bg" data-bg-group="overview">
       <div class="content">
-        <div class="eyebrow">Purpose</div>
+        <div class="eyebrow">Business Intelligence Overview</div>
 
         <h2>
-          Business Intelligence helps people understand what to check before they move.
+          Business Intelligence helps people understand what should be checked before action.
         </h2>
 
         <p>
-          Many people want to start a business, invest money, enter a market,
-          launch a service, build a system, or make a major business decision.
-          The problem is that people often move too fast without understanding
-          demand, competition, cost, risk, customer behavior, timing, or market
-          pressure.
+          A business decision should not be made only from excitement, emotion, or
+          pressure. A serious decision should be supported by research, customer
+          understanding, competitive review, operational planning, data, systems,
+          risk review, market movement, and economic awareness.
         </p>
 
         <p>
-          TitanCore Business Intelligence is designed to guide visitors through
-          the thinking process. It gives them a structured way to ask better
-          questions before they spend money, open a business, enter a market, or
-          make a major move.
+          This page does not replace professional advice. It gives public education
+          so visitors can understand the major areas they should review before they
+          start, grow, finance, invest, partner, or move into a market.
         </p>
 
-        <div class="info-box">
-          <h3>What this page helps visitors understand</h3>
+        <div class="box">
+          <h3>What Business Intelligence covers</h3>
           <ul>
-            <li>What business research means and why it matters.</li>
-            <li>How to think about strategy before making a move.</li>
-            <li>How operations and systems help a business stay organized.</li>
-            <li>How AI and digital tools are changing business education.</li>
-            <li>How data, reports, and patterns can support better decisions.</li>
-            <li>How stock, market, and economic movement can affect confidence.</li>
-            <li>How to separate business education from sales pressure.</li>
-            <li>How to understand risk before committing serious money.</li>
+            <li>Research before spending serious money.</li>
+            <li>Strategy before entering or expanding a market.</li>
+            <li>Operations before serving customers at scale.</li>
+            <li>AI awareness and digital tool education.</li>
+            <li>Data thinking for reports, numbers, patterns, and warning signs.</li>
+            <li>Business systems for forms, routing, follow-up, approvals, and repeatable work.</li>
+            <li>Stock and market intelligence for public market awareness.</li>
+            <li>Economic signals for inflation, rates, jobs, housing, banking, lending, and confidence.</li>
           </ul>
         </div>
       </div>
@@ -676,725 +609,560 @@
         <div class="eyebrow">Daily Intelligence Focus</div>
 
         <h2>
-          This page can rotate business education daily.
+          A daily public focus makes the page feel active.
         </h2>
 
         <p>
-          This section changes automatically with JavaScript. Later, it can connect
-          to live search, market APIs, news APIs, AI summaries, Supabase storage,
-          and Netlify Functions so TitanCore can update public business information
-          every day.
+          This section changes automatically by date. It gives visitors a simple
+          business intelligence theme for the day: research, strategy, risk, data,
+          operations, systems, market awareness, or economic signals.
         </p>
 
         <div class="daily-card">
-          <div class="daily-date" id="dailyDate">Loading date...</div>
-          <h3 id="dailyTitle">Loading business intelligence focus...</h3>
-          <p id="dailyText">Loading daily business intelligence note...</p>
+          <div class="eyebrow" id="dailyDate">Loading date...</div>
+          <h3 id="dailyTitle">Loading intelligence focus...</h3>
+          <p id="dailyText">Loading daily note...</p>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="map" id="open-areas">
+    <section class="section green daily-bg" data-bg-group="pillars">
       <div class="content">
-        <div class="eyebrow">Open Intelligence Areas</div>
+        <div class="eyebrow">Core Intelligence Pillars</div>
 
         <h2>
-          Choose the business knowledge area you need.
+          The main pillars of business intelligence.
         </h2>
 
         <p>
-          Each area below opens its own full page. This keeps Business Intelligence
-          organized while still giving visitors a strong guideline on this main
-          page.
+          Business Intelligence becomes valuable when it is organized into clear
+          pillars. Each pillar helps visitors understand a different part of
+          business thinking.
         </p>
 
-        <div class="open-grid">
+        <div class="two-grid">
+          <div class="mini-card">
+            <h3>Research</h3>
+            <p>
+              Research helps people understand demand, customers, competitors,
+              pricing, location, timing, regulations, and opportunity before they
+              spend money.
+            </p>
+          </div>
 
-          <a href="research-intelligence.html" class="open-card">
+          <div class="mini-card">
+            <h3>Strategy</h3>
+            <p>
+              Strategy turns information into direction. It helps a company decide
+              what to build, who to serve, what to avoid, and how to grow.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Operations</h3>
+            <p>
+              Operations keeps the business moving. It includes workflows, service
+              quality, process discipline, staffing, tracking, and improvement.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Data</h3>
+            <p>
+              Data helps people review numbers, reports, patterns, customer signals,
+              market movement, performance, and warning signs.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Systems</h3>
+            <p>
+              Systems reduce confusion. They help organize forms, routing, approvals,
+              communication, records, follow-up, and repeatable work.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <h3>Market Awareness</h3>
+            <p>
+              Market awareness helps visitors watch stocks, crypto, commodities,
+              housing, interest rates, business news, and global movement.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="map" id="open-pages">
+      <div class="content">
+        <div class="eyebrow">Open Business Intelligence Pages</div>
+
+        <h2>
+          Each box opens a full Business Intelligence page.
+        </h2>
+
+        <p>
+          These cards are the main doors. Each one must connect to the exact file
+          name shown in the code. This keeps the page organized and stops the “Not
+          Found” problem.
+        </p>
+
+        <div class="intel-grid">
+
+          <a href="search-intelligence.html" class="intel-card">
             <h3>Research Intelligence</h3>
             <p>
-              Learn how to research a market, understand customers, compare
-              competitors, review opportunity, study demand, and identify risk
-              before starting or growing a business.
+              Research Intelligence helps visitors understand what to check before
+              opening a business, entering a market, comparing competitors, studying
+              customers, reviewing risk, or spending serious money.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN RESEARCH <span>›</span></strong>
+            <strong>Open Research <span>›</span></strong>
           </a>
 
-          <a href="strategy-intelligence.html" class="open-card">
+          <a href="strategy-intelligence.html" class="intel-card">
             <h3>Strategy Intelligence</h3>
             <p>
-              Learn how strategy turns information into direction, helps a company
-              choose priorities, avoid weak moves, plan growth, and build long-term
-              business value.
+              Strategy Intelligence turns information into direction. It helps a
+              business decide what to focus on, what to avoid, what to build, what
+              market to serve, and how to create long-term value.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN STRATEGY <span>›</span></strong>
+            <strong>Open Strategy <span>›</span></strong>
           </a>
 
-          <a href="operations-intelligence.html" class="open-card">
+          <a href="operations-intelligence.html" class="intel-card">
             <h3>Operations Intelligence</h3>
             <p>
-              Understand how businesses organize workflows, improve systems, track
-              performance, manage service quality, reduce confusion, and operate
-              with better discipline.
+              Operations Intelligence helps businesses organize workflows, improve
+              systems, track performance, manage service quality, reduce confusion,
+              and operate with better discipline.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN OPERATIONS <span>›</span></strong>
+            <strong>Open Operations <span>›</span></strong>
           </a>
 
-          <a href="ai-awareness.html" class="open-card">
+          <a href="ai-awareness-intelligence.html" class="intel-card">
             <h3>AI Awareness</h3>
             <p>
-              Learn what AI is, how AI tools can support business education, what
-              business owners should understand, and how automation should be
-              reviewed responsibly.
+              AI Awareness explains what AI is, how digital tools can support
+              business education, what business owners should understand, and how
+              to think about automation responsibly.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN AI AWARENESS <span>›</span></strong>
+            <strong>Open AI Awareness <span>›</span></strong>
           </a>
 
-          <a href="data-thinking.html" class="open-card">
+          <a href="data-thinking-intelligence.html" class="intel-card">
             <h3>Data Thinking</h3>
             <p>
-              Learn how reports, numbers, patterns, customer signals, business
-              performance, market movement, and warning signs can support better
-              decisions.
+              Data Thinking explains how reports, numbers, patterns, customer
+              signals, business performance, market movement, and warning signs can
+              support better decisions.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN DATA THINKING <span>›</span></strong>
+            <strong>Open Data Thinking <span>›</span></strong>
           </a>
 
-          <a href="business-systems.html" class="open-card">
+          <a href="business-systems-intelligence.html" class="intel-card">
             <h3>Business Systems</h3>
             <p>
-              Understand how organized workflows, routing, forms, follow-up,
-              reviews, approvals, records, and repeatable processes help a company
-              become stronger.
+              Business Systems explains how organized workflows, routing, forms,
+              follow-up, reviews, approvals, records, and repeatable processes help
+              a company become stronger.
             </p>
             <div class="card-line"></div>
-            <strong>OPEN SYSTEMS <span>›</span></strong>
+            <strong>Open Systems <span>›</span></strong>
           </a>
 
           <a href="stock-and-market-intelligence.html" class="intel-card">
-  <h3>Stock &amp; Market Information</h3>
-  <p>
-    Use the Stock page for market watch, stock education, U.S. markets,
-    international markets, commodities, forex, crypto/coins, housing movement,
-    market news, and future live market alerts.
-  </p>
-  <div class="card-line"></div>
-  <strong>Open Stock Page <span>›</span></strong>
-</a>
+            <h3>Stock &amp; Market Intelligence</h3>
+            <p>
+              Stock and Market Intelligence covers market watch, stock education,
+              U.S. markets, international markets, commodities, forex, crypto/coins,
+              housing movement, market news, and future live market alerts.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Stock Page <span>›</span></strong>
+          </a>
 
-<a href="economic-signals-intelligence.html" class="intel-card">
-  <h3>Economic Indicators &amp; Business Signals</h3>
-  <p>
-    Review inflation, interest rates, jobs reports, housing signals, consumer
-    spending, banking movement, lending conditions, and business confidence
-    before making major business decisions.
-  </p>
-  <div class="card-line"></div>
-  <strong>Open Economic Signals <span>›</span></strong>
-</a>
+          <a href="economic-signals-intelligence.html" class="intel-card">
+            <h3>Economic Signals Intelligence</h3>
+            <p>
+              Economic Signals Intelligence reviews inflation, interest rates, jobs
+              reports, housing signals, consumer spending, banking movement, lending
+              conditions, and business confidence.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Economic Signals <span>›</span></strong>
+          </a>
 
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="research">
+    <section class="section green daily-bg" data-bg-group="research">
       <div class="content">
-        <div class="eyebrow">Research Intelligence Guide</div>
+        <div class="eyebrow">Research Intelligence Preview</div>
 
         <h2>
-          Research Intelligence explains what must be checked before starting or growing.
+          Research helps people understand a market before they enter it.
         </h2>
 
         <p>
-          Research is the first step before a serious business move. It helps a
-          visitor understand whether an idea has demand, whether customers need it,
-          whether competitors already control the space, and whether the timing
-          makes sense.
+          Research is the first layer of Business Intelligence. Before a person
+          opens a company, launches a service, buys equipment, signs a lease, spends
+          money, or enters a market, they should understand the environment.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Market Research</h3>
-            <p>
-              Study demand, pricing, location, industry trends, business timing,
-              customer behavior, and the overall market environment.
-            </p>
-          </div>
+        <p>
+          Strong research asks clear questions: Who needs this service? What problem
+          is being solved? Who already provides it? What do competitors charge? What
+          do customers complain about? Is the market growing or weakening? What can
+          a new company do better?
+        </p>
 
-          <div class="guide-card">
-            <h3>Customer Research</h3>
-            <p>
-              Understand who the customer is, what problem they need solved, how
-              often they need the service, and what makes them trust a company.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Competitor Research</h3>
-            <p>
-              Review who is already in the market, what they offer, what they
-              charge, how customers respond, and where a new company can do better.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Opportunity Search</h3>
-            <p>
-              Look for gaps, new needs, underserved customers, local demand,
-              business trends, weak service areas, and growth openings.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Research questions visitors should ask</h3>
+        <div class="box">
+          <h3>Research questions</h3>
           <ul>
-            <li>How many people need this service or product?</li>
-            <li>Who is already providing it?</li>
+            <li>How many people need the service?</li>
+            <li>Who is the target customer?</li>
+            <li>What problem does the customer need solved?</li>
+            <li>Who are the main competitors?</li>
+            <li>What do competitors charge?</li>
             <li>What do customers complain about?</li>
-            <li>Is the market getting stronger or weaker?</li>
+            <li>What is missing in the market?</li>
             <li>What makes this business different?</li>
-            <li>What risks should be reviewed before spending money?</li>
-            <li>What problem does the business solve?</li>
-            <li>What proof shows the business idea has a real market?</li>
           </ul>
-        </div>
-
-        <div class="btn-row">
-          <a href="research-intelligence.html" class="btn">Open Research ›</a>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="strategy">
+    <section class="section dark daily-bg" data-bg-group="strategy">
       <div class="content">
-        <div class="eyebrow">Strategy Intelligence Guide</div>
+        <div class="eyebrow">Strategy Intelligence Preview</div>
 
         <h2>
           Strategy turns information into direction.
         </h2>
 
         <p>
-          Strategy is how a business chooses what to focus on, what to avoid, what
-          to build first, what to delay, how to compete, and how to create long-term
-          value. Strategy helps a company move with discipline instead of guessing.
+          Research gives information. Strategy decides what to do with that
+          information. A company without strategy can be busy but still confused.
+          Strategy helps the company choose a direction and stay disciplined.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Direction</h3>
-            <p>
-              Direction explains where the business is going, what the company is
-              trying to become, and what decisions support that goal.
-            </p>
-          </div>
+        <p>
+          Strategy should help answer what to offer, who to serve, what to avoid,
+          how to price, what to build first, what to delay, and how the company can
+          create long-term value instead of short-term noise.
+        </p>
 
-          <div class="guide-card">
-            <h3>Positioning</h3>
-            <p>
-              Positioning explains how the business wants to be seen by customers,
-              partners, lenders, investors, and the public market.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Priorities</h3>
-            <p>
-              Priorities help a business decide what matters first, what can wait,
-              and what should not distract the company.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Growth Plan</h3>
-            <p>
-              A growth plan explains how the business can expand without becoming
-              disorganized, overextended, or financially weak.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Strategy questions visitors should ask</h3>
+        <div class="box">
+          <h3>Strategy should define</h3>
           <ul>
-            <li>What is the main goal of the business?</li>
-            <li>Who is the business trying to serve?</li>
-            <li>What makes the business different from competitors?</li>
-            <li>What should be built first?</li>
-            <li>What should the business avoid?</li>
-            <li>What could create long-term value?</li>
-            <li>What could weaken the company if done too early?</li>
-            <li>How will the business know if the strategy is working?</li>
+            <li>The target customer.</li>
+            <li>The main offer.</li>
+            <li>The value promise.</li>
+            <li>The pricing direction.</li>
+            <li>The market position.</li>
+            <li>The risk to avoid.</li>
+            <li>The growth path.</li>
+            <li>The long-term goal.</li>
           </ul>
-        </div>
-
-        <div class="btn-row">
-          <a href="strategy-intelligence.html" class="btn">Open Strategy ›</a>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="operations">
+    <section class="section green daily-bg" data-bg-group="operations">
       <div class="content">
-        <div class="eyebrow">Operations Intelligence Guide</div>
+        <div class="eyebrow">Operations Intelligence Preview</div>
 
         <h2>
-          Operations Intelligence explains how work gets done.
+          Operations is the system that keeps a business moving.
         </h2>
 
         <p>
-          A company can have a strong idea but still fail if the operation is weak.
-          Operations Intelligence explains workflow, follow-up, service quality,
-          reporting, accountability, performance tracking, and the daily structure
-          that keeps a company moving.
+          Operations is how a company receives work, processes work, routes work,
+          checks quality, follows up, records activity, and completes service.
+          Without operations, a business can look good outside but fail inside.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Workflow</h3>
-            <p>
-              Workflow explains how tasks move from start to finish without being
-              lost, delayed, duplicated, or handled by the wrong person.
-            </p>
-          </div>
+        <p>
+          Good operations reduce confusion. They help employees know what to do,
+          managers know what to review, customers know what to expect, and leaders
+          know where the business is strong or weak.
+        </p>
 
-          <div class="guide-card">
-            <h3>Service Quality</h3>
-            <p>
-              Service quality explains whether customers are being handled properly,
-              whether promises are being kept, and whether issues are being fixed.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Reporting</h3>
-            <p>
-              Reporting helps leaders understand what happened, what is pending,
-              what is delayed, and what needs attention.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Performance</h3>
-            <p>
-              Performance review helps a business track productivity, response
-              time, customer outcomes, financial results, and operational risk.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Operations questions visitors should ask</h3>
+        <div class="box">
+          <h3>Operations should organize</h3>
           <ul>
-            <li>How does work move through the company?</li>
-            <li>Who handles each step?</li>
-            <li>How are requests tracked?</li>
-            <li>How does the business follow up?</li>
-            <li>How does management know what is delayed?</li>
-            <li>How are customer issues handled?</li>
-            <li>How are errors corrected?</li>
-            <li>What systems keep the operation organized?</li>
+            <li>Customer intake.</li>
+            <li>Work routing.</li>
+            <li>Service steps.</li>
+            <li>Quality review.</li>
+            <li>Follow-up.</li>
+            <li>Reports.</li>
+            <li>Approvals.</li>
+            <li>Performance tracking.</li>
           </ul>
-        </div>
-
-        <div class="btn-row">
-          <a href="operations-intelligence.html" class="btn">Open Operations ›</a>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="ai">
+    <section class="section dark daily-bg" data-bg-group="ai">
       <div class="content">
-        <div class="eyebrow">AI Awareness Guide</div>
+        <div class="eyebrow">AI Awareness Preview</div>
 
         <h2>
-          AI Awareness explains technology in a responsible public way.
+          AI Awareness helps visitors understand digital tools responsibly.
         </h2>
 
         <p>
-          This section does not say TitanCore uses AI internally. It is public
-          business education. It explains what AI is, how digital tools are changing
-          business, and what people should understand before using automation,
-          chatbots, research tools, writing tools, or data tools.
+          AI is changing how people research, write, organize, compare, plan, and
+          understand information. Public AI education helps business owners and
+          professionals understand what AI can do and what still requires human
+          judgment.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>What AI Means</h3>
-            <p>
-              AI can help people summarize information, write drafts, review data,
-              answer questions, organize tasks, and understand patterns.
-            </p>
-          </div>
+        <p>
+          AI should not be explained as magic. It should be explained as software
+          that can process information, summarize patterns, assist with writing,
+          support research, organize ideas, and help people think more clearly.
+        </p>
 
-          <div class="guide-card">
-            <h3>Business Use</h3>
-            <p>
-              Businesses may use AI tools for education, research, writing, planning,
-              customer support, organization, or decision preparation.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Human Review</h3>
-            <p>
-              AI output should be reviewed carefully because tools can make mistakes,
-              miss context, or give information that needs verification.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Responsible Use</h3>
-            <p>
-              AI should be used with care, privacy awareness, compliance thinking,
-              accurate review, and professional judgment.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>AI awareness questions visitors should ask</h3>
+        <div class="box">
+          <h3>AI awareness should explain</h3>
           <ul>
-            <li>What problem is the AI tool supposed to help with?</li>
-            <li>Is the information accurate and updated?</li>
-            <li>Does a human need to review the result?</li>
-            <li>Is private information being protected?</li>
-            <li>Could the tool create legal, financial, or reputation risk?</li>
-            <li>Is AI being used for education or for final decisions?</li>
-            <li>What should not be automated?</li>
-            <li>How can a business use AI responsibly?</li>
+            <li>What AI is.</li>
+            <li>What AI can help with.</li>
+            <li>What AI should not decide alone.</li>
+            <li>Why human review still matters.</li>
+            <li>How AI can support research.</li>
+            <li>How AI can support writing.</li>
+            <li>How AI can support organization.</li>
+            <li>How to use AI responsibly.</li>
           </ul>
-        </div>
-
-        <div class="btn-row">
-          <a href="ai-awareness.html" class="btn">Open AI Awareness ›</a>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="data">
+    <section class="section green daily-bg" data-bg-group="data">
       <div class="content">
-        <div class="eyebrow">Data Thinking Guide</div>
+        <div class="eyebrow">Data Thinking Preview</div>
 
         <h2>
-          Data Thinking explains how numbers and patterns support decisions.
+          Data Thinking means using information to support better decisions.
         </h2>
 
         <p>
-          Data Thinking is not only about spreadsheets. It is about understanding
-          what the numbers, reports, patterns, customer signals, performance results,
-          and warning signs are telling a business.
+          Data Thinking is not only numbers. It includes reports, customer signals,
+          market movement, phone calls, email inquiries, service patterns, sales
+          activity, complaints, timing, and warning signs.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Reports</h3>
-            <p>
-              Reports show what happened, what changed, what improved, what failed,
-              and what should be reviewed next.
-            </p>
-          </div>
+        <p>
+          When a company reviews data properly, it can see what is working, what is
+          failing, what customers need, where demand is growing, and where the
+          business should slow down or improve.
+        </p>
 
-          <div class="guide-card">
-            <h3>Patterns</h3>
-            <p>
-              Patterns help a business see repeated behavior, repeated problems,
-              repeated customer needs, or repeated delays.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Signals</h3>
-            <p>
-              Signals are early signs that something is improving, weakening,
-              becoming risky, or creating opportunity.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Decisions</h3>
-            <p>
-              Better decisions come from combining numbers, facts, experience,
-              customer feedback, market movement, and professional judgment.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Data questions visitors should ask</h3>
+        <div class="box">
+          <h3>Data Thinking should review</h3>
           <ul>
-            <li>What does the data actually show?</li>
-            <li>Is the information complete or missing something?</li>
-            <li>What pattern keeps repeating?</li>
-            <li>What number is improving?</li>
-            <li>What number is getting worse?</li>
-            <li>What customer behavior is changing?</li>
-            <li>What warning signs should be watched?</li>
-            <li>What decision should this information support?</li>
+            <li>Customer inquiries.</li>
+            <li>Sales activity.</li>
+            <li>Lead quality.</li>
+            <li>Service completion.</li>
+            <li>Response time.</li>
+            <li>Customer complaints.</li>
+            <li>Market signals.</li>
+            <li>Financial performance.</li>
           </ul>
-        </div>
-
-        <div class="btn-row">
-          <a href="data-thinking.html" class="btn">Open Data Thinking ›</a>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="systems">
+    <section class="section dark daily-bg" data-bg-group="systems">
       <div class="content">
-        <div class="eyebrow">Business Systems Guide</div>
+        <div class="eyebrow">Business Systems Preview</div>
 
         <h2>
-          Business Systems explain how a company stays organized.
+          Business Systems help a company work the same way every time.
         </h2>
 
         <p>
-          A business system is the structure that keeps work from becoming confused.
-          Systems include forms, routing, approvals, follow-up, records, dashboards,
-          reporting, communication, client intake, and repeatable processes.
+          A business system is the structure behind the work. It can include forms,
+          intake, routing, approvals, reports, records, calendars, follow-up,
+          customer communication, and internal review.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Intake</h3>
-            <p>
-              Intake systems collect the right information at the beginning so the
-              company can understand the request and route it properly.
-            </p>
-          </div>
+        <p>
+          Systems help a business avoid confusion. When the system is clear, the
+          company does not depend only on memory or last-minute decisions. The work
+          has a path.
+        </p>
 
-          <div class="guide-card">
-            <h3>Routing</h3>
-            <p>
-              Routing sends requests, documents, messages, or tasks to the correct
-              department, company, or public page.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Follow-Up</h3>
-            <p>
-              Follow-up systems help a business avoid missed opportunities, delayed
-              responses, forgotten tasks, and weak customer communication.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Records</h3>
-            <p>
-              Records help a company preserve proof, history, reports, approvals,
-              decisions, communication, and important business activity.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>System questions visitors should ask</h3>
+        <div class="box">
+          <h3>Business systems should include</h3>
           <ul>
-            <li>How does the company collect information?</li>
-            <li>Where does the information go?</li>
-            <li>Who reviews the request?</li>
-            <li>How is follow-up tracked?</li>
-            <li>Where are records stored?</li>
-            <li>How are approvals handled?</li>
-            <li>What happens if something is delayed?</li>
-            <li>How does the system help the company grow?</li>
+            <li>Clear intake forms.</li>
+            <li>Proper routing.</li>
+            <li>Assigned responsibility.</li>
+            <li>Review steps.</li>
+            <li>Approval steps.</li>
+            <li>Follow-up rules.</li>
+            <li>Saved records.</li>
+            <li>Performance reporting.</li>
           </ul>
-        </div>
-
-        <div class="btn-row">
-          <a href="business-systems.html" class="btn">Open Systems ›</a>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="market">
+    <section class="section green daily-bg" data-bg-group="market">
       <div class="content">
-        <div class="eyebrow">Stock & Market Information Guide</div>
+        <div class="eyebrow">Stock & Market Intelligence Preview</div>
 
         <h2>
-          Market information helps visitors understand economic movement.
+          Market awareness helps visitors understand business movement.
         </h2>
 
         <p>
-          Stock and market information belongs on the Stock page. This Business
-          Intelligence page should only introduce the topic and guide people to the
-          correct area. The Stock page can go deeper into market watch, U.S. markets,
-          international markets, commodities, forex, crypto/coins, housing movement,
-          and future market alerts.
+          Stock and Market Intelligence is a major part of Business Intelligence
+          because stocks, crypto, commodities, forex, housing, interest rates, and
+          global movement can affect business confidence.
         </p>
 
-        <div class="info-box">
-          <h3>What the Stock page can cover</h3>
+        <p>
+          This page should later become one of the biggest public pages because it
+          can include U.S. markets, international markets, major companies, indexes,
+          crypto/coins, housing movement, commodities, forex, market news, and major
+          alerts.
+        </p>
+
+        <div class="box">
+          <h3>Market areas to watch</h3>
           <ul>
-            <li>Stock market education and market direction.</li>
-            <li>U.S. market and international market movement.</li>
-            <li>Indexes, sectors, and major company movement.</li>
-            <li>Commodities such as oil, gas, gold, and materials.</li>
+            <li>United States stock market.</li>
+            <li>International stock markets.</li>
+            <li>Stocks up and stocks down.</li>
+            <li>Crypto and major coins.</li>
+            <li>Commodities such as oil, gold, gas, and metals.</li>
             <li>Forex and currency movement.</li>
-            <li>Crypto/coins as high-risk digital asset education.</li>
-            <li>Housing market movement and mortgage pressure.</li>
-            <li>Major market alerts and daily market watch.</li>
+            <li>Housing market movement.</li>
+            <li>Major business and market news.</li>
           </ul>
-        </div>
-
-        <div class="btn-row">
-          <a href="stock.html" class="btn">Open Stock Page ›</a>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="economic">
+    <section class="section dark daily-bg" data-bg-group="economic">
       <div class="content">
-        <div class="eyebrow">Economic Signals Guide</div>
+        <div class="eyebrow">Economic Signals Preview</div>
 
         <h2>
-          Economic indicators show pressure, confidence, and timing.
+          Economic signals help visitors understand pressure before making major decisions.
         </h2>
 
         <p>
-          Economic signals are not the same thing as the Stock page. Economic
-          Signals explain broad business conditions: inflation, interest rates,
-          jobs reports, lending, banking movement, consumer spending, housing
-          signals, and business confidence.
+          Economic Signals Intelligence explains how inflation, interest rates, jobs
+          reports, housing signals, consumer spending, banking movement, lending
+          conditions, and confidence can affect business decisions.
         </p>
 
-        <div class="guide-grid">
-          <div class="guide-card">
-            <h3>Inflation</h3>
-            <p>
-              Inflation affects prices, supplies, labor costs, fuel, rent, insurance,
-              customer budgets, and business margins.
-            </p>
-          </div>
+        <p>
+          Economic signals matter because they affect customers, banks, real estate,
+          lenders, investors, employers, and business owners. When these signals
+          change, the cost of money, the cost of living, and the strength of demand
+          can change with them.
+        </p>
 
-          <div class="guide-card">
-            <h3>Interest Rates</h3>
-            <p>
-              Interest rates affect loans, mortgages, business funding, credit
-              cards, investor behavior, and customer spending.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Jobs Reports</h3>
-            <p>
-              Jobs data can show whether the economy is strong, weak, hiring,
-              slowing, or changing direction.
-            </p>
-          </div>
-
-          <div class="guide-card">
-            <h3>Business Confidence</h3>
-            <p>
-              Confidence affects hiring, expansion, lending, investing, pricing,
-              inventory, and long-term planning.
-            </p>
-          </div>
-        </div>
-
-        <div class="info-box">
-          <h3>Economic questions visitors should ask</h3>
+        <div class="box">
+          <h3>Economic signals to review</h3>
           <ul>
-            <li>Are prices rising or stabilizing?</li>
-            <li>Are interest rates helping or hurting growth?</li>
-            <li>Is hiring strong or slowing?</li>
-            <li>Are banks lending more carefully?</li>
-            <li>Are customers spending or pulling back?</li>
-            <li>Is housing helping or hurting the economy?</li>
-            <li>Is business confidence improving or weakening?</li>
-            <li>What does this mean for timing, risk, and planning?</li>
+            <li>Inflation.</li>
+            <li>Interest rates.</li>
+            <li>Jobs reports.</li>
+            <li>Housing signals.</li>
+            <li>Consumer spending.</li>
+            <li>Banking movement.</li>
+            <li>Lending conditions.</li>
+            <li>Business confidence.</li>
           </ul>
         </div>
-
-        <div class="btn-row">
-          <a href="economic-signals.html" class="btn">Open Economic Signals ›</a>
-        </div>
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="process">
+    <section class="section green daily-bg" data-bg-group="questions">
       <div class="content">
-        <div class="eyebrow">How Visitors Should Use This Page</div>
+        <div class="eyebrow">Business Intelligence Questions</div>
 
         <h2>
-          Business Intelligence works like a decision guide.
+          Questions visitors should ask before making a business move.
         </h2>
 
         <p>
-          Visitors should not use this page as one simple article. They should use
-          it as a business thinking map. Each section helps them slow down, review
-          the right information, and decide what page they need next.
+          Business Intelligence becomes useful when it helps people ask better
+          questions. A person should not just ask, “Can I start this?” They should
+          ask what the market says, what the customer needs, what the risk is, and
+          what system is needed to deliver.
         </p>
 
-        <div class="process-grid">
-          <div class="process-card">
-            <div class="process-number">Step One</div>
-            <h3>Identify the decision</h3>
-            <p>
-              Decide what move is being considered: opening a business, entering a
-              market, launching a service, investing money, or building a system.
-            </p>
-          </div>
-
-          <div class="process-card">
-            <div class="process-number">Step Two</div>
-            <h3>Choose the information area</h3>
-            <p>
-              Select research, strategy, operations, AI awareness, data thinking,
-              systems, stock information, or economic signals.
-            </p>
-          </div>
-
-          <div class="process-card">
-            <div class="process-number">Step Three</div>
-            <h3>Review before moving</h3>
-            <p>
-              Read the questions, understand the risks, check the market, and use
-              the dedicated page before making a major decision.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="future">
-      <div class="content">
-        <div class="eyebrow">Future Live Intelligence System</div>
-
-        <h2>
-          Later, TitanCore can turn this into a live intelligence engine.
-        </h2>
-
-        <p>
-          The current version is a strong public structure. The next phase can
-          connect the page to live research, business news, market data, economic
-          indicators, AI summaries, and database storage so the website updates
-          with fresh information automatically.
-        </p>
-
-        <div class="info-box">
-          <h3>Future connection plan</h3>
+        <div class="box">
+          <h3>Decision questions</h3>
           <ul>
-            <li>Use a search API for business research results.</li>
-            <li>Use market APIs for stock, index, commodity, forex, crypto, and housing signals.</li>
-            <li>Use news APIs for global business news and major market events.</li>
-            <li>Use AI summaries to turn complex information into simple public language.</li>
-            <li>Use Supabase to store daily briefs, alerts, archive records, and page content.</li>
-            <li>Use Netlify Functions to refresh data on a schedule.</li>
-            <li>Use the dashboard later to review, approve, and manage public updates.</li>
+            <li>Who needs this product or service?</li>
+            <li>How often do they need it?</li>
+            <li>What problem are they trying to solve?</li>
+            <li>Who already provides this service?</li>
+            <li>What do competitors charge?</li>
+            <li>What makes customers trust a company?</li>
+            <li>What makes customers walk away?</li>
+            <li>What risks should be reviewed before spending money?</li>
+            <li>What system is needed to manage the work?</li>
+            <li>What data should be tracked from the beginning?</li>
+            <li>What economic signals could affect the decision?</li>
+            <li>What market movement could change the opportunity?</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="future">
+      <div class="content">
+        <div class="eyebrow">Future Live Intelligence</div>
+
+        <h2>
+          This page can later become a living public intelligence hub.
+        </h2>
 
         <p>
-          This makes Business Intelligence the public knowledge center, while the
-          dashboard becomes the private control room behind the website.
+          For now, this page gives visitors a strong public explanation of Business
+          Intelligence and connects them to full topic pages. Later, it can show
+          daily business learning, market summaries, economic signals, major public
+          updates, and rotating educational content.
         </p>
+
+        <p>
+          The public page should stay clean and useful. It should not expose private
+          internal systems, private company workflows, passwords, keys, dashboards,
+          or internal operations. Public visitors should only see public education,
+          market awareness, business learning, and TitanCore contact direction.
+        </p>
+
+        <div class="box">
+          <h3>Future public features</h3>
+          <ul>
+            <li>Daily business intelligence focus.</li>
+            <li>Daily market awareness note.</li>
+            <li>Economic signal summaries.</li>
+            <li>Business education updates.</li>
+            <li>Market and stock category pages.</li>
+            <li>Country-level global business summaries.</li>
+            <li>News and media connection.</li>
+            <li>Contact routing to the proper public area.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -1423,71 +1191,76 @@
 
   <script>
     function toggleMenu(){
-      const menu = document.getElementById("menu");
-      if(menu){
-        menu.classList.toggle("active");
-      }
+      document.getElementById("menu").classList.toggle("active");
     }
 
     const backgroundSets = {
-      hero: [
+      hero:[
         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
       ],
-      purpose: [
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+      overview:[
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
       ],
-      daily: [
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85",
+      daily:[
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
       ],
-      map: [
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
+      pillars:[
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
       ],
-      research: [
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      map:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
+      ],
+      research:[
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
       ],
-      strategy: [
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      strategy:[
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
       ],
-      operations: [
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      operations:[
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
       ],
-      ai: [
+      ai:[
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
       ],
-      data: [
+      data:[
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
       ],
-      systems: [
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      systems:[
+        "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
       ],
-      market: [
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1642543348745-03b1219733d9?auto=format&fit=crop&w=1600&q=85"
+      market:[
+        "https://images.unsplash.com/photo-1642543348745-03b1219733d9?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
       ],
-      economic: [
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
+      economic:[
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1565514158740-064f34bd6cfd?auto=format&fit=crop&w=1600&q=85"
       ],
-      process: [
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      questions:[
+        "https://images.unsplash.com/photo-1554224154-26032fced8bd?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
       ],
-      future: [
+      future:[
         "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85"
       ],
-      contact: [
+      contact:[
         "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
       ]
@@ -1496,27 +1269,27 @@
     const dailyItems = [
       {
         title:"Research before spending serious money.",
-        text:"Today’s business intelligence focus is research: demand, customer need, competition, pricing, risk, and timing should be reviewed before making a major business move."
+        text:"Today’s business intelligence focus is research. Check demand, customers, competitors, cost, timing, regulation, and risk before making a major move."
       },
       {
-        title:"Strategy should come before action.",
-        text:"Today’s business intelligence focus is strategy: decide what to focus on, what to avoid, how to position the business, and how to build long-term value."
+        title:"Turn information into strategy.",
+        text:"Today’s business intelligence focus is strategy. Good strategy helps a company decide what to focus on, what to avoid, and how to build long-term value."
       },
       {
-        title:"Operations keep a company from becoming confused.",
-        text:"Today’s business intelligence focus is operations: workflow, follow-up, reporting, service quality, and accountability help a business stay disciplined."
+        title:"Use operations to reduce confusion.",
+        text:"Today’s business intelligence focus is operations. Strong workflows help a business organize work, track progress, improve service, and manage decisions."
       },
       {
-        title:"Data helps leaders see what is really happening.",
-        text:"Today’s business intelligence focus is data thinking: numbers, reports, patterns, customer signals, and warning signs can support better decisions."
+        title:"Use data thinking before making decisions.",
+        text:"Today’s business intelligence focus is data. Numbers, reports, patterns, market movement, customer signals, and performance data can reveal what needs attention."
       },
       {
-        title:"Systems help businesses grow without losing control.",
-        text:"Today’s business intelligence focus is systems: intake, routing, forms, approvals, records, and repeatable processes help keep work organized."
+        title:"Build systems before growth becomes messy.",
+        text:"Today’s business intelligence focus is systems. Forms, routing, approvals, records, and follow-up help a company stay organized."
       },
       {
-        title:"Economic signals affect business timing.",
-        text:"Today’s business intelligence focus is economic signals: inflation, rates, housing, jobs, lending, and consumer spending can affect when and how a business should move."
+        title:"Watch market and economic signals.",
+        text:"Today’s business intelligence focus is market awareness. Stocks, crypto, commodities, housing, rates, jobs, and inflation can affect business confidence."
       }
     ];
 
