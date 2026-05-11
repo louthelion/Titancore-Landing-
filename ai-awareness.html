@@ -88,7 +88,10 @@
       flex-shrink:0;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .menu{
       display:none;
@@ -109,7 +112,10 @@
       font-size:18px;
     }
 
-    .menu a:hover{color:var(--gold2);padding-left:8px}
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
 
     .section{
       position:relative;
@@ -125,19 +131,25 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.74), rgba(0,0,0,.38)),
-        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.52));
+        linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.48)),
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.58));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.56), rgba(6,75,56,.66)),
-        linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.40));
+        linear-gradient(90deg,rgba(0,0,0,.58),rgba(6,75,56,.76)),
+        linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.44));
+    }
+
+    .section.dark::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.90),rgba(0,0,0,.62)),
+        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.66));
     }
 
     .hero{
-      min-height:720px;
+      min-height:760px;
       display:flex;
       align-items:center;
     }
@@ -145,14 +157,14 @@
     .content{
       position:relative;
       z-index:1;
-      padding:58px 42px;
-      max-width:1060px;
+      padding:62px 42px;
+      max-width:1080px;
     }
 
     .hero .content{
-      max-width:950px;
-      padding-top:78px;
-      padding-bottom:78px;
+      max-width:980px;
+      padding-top:82px;
+      padding-bottom:82px;
     }
 
     .eyebrow{
@@ -162,32 +174,26 @@
       font-size:15px;
       font-weight:900;
       margin-bottom:22px;
-      text-shadow:0 2px 12px rgba(0,0,0,.75);
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     h1,h2,h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
-      color:var(--white);
       line-height:1.06;
       text-shadow:0 3px 16px rgba(0,0,0,.88);
     }
 
     h1{
-      font-size:clamp(48px,6vw,90px);
+      font-size:clamp(48px,6vw,92px);
       margin-bottom:34px;
-      max-width:950px;
-    }
-
-    h1 span,
-    h2 span{
-      color:var(--gold2);
+      max-width:980px;
     }
 
     h2{
-      font-size:clamp(40px,5vw,74px);
+      font-size:clamp(40px,5vw,76px);
       margin-bottom:34px;
-      max-width:980px;
+      max-width:1000px;
     }
 
     h3{
@@ -196,16 +202,25 @@
       margin-bottom:22px;
     }
 
+    h1 span,
+    h2 span,
+    h3 span{
+      color:var(--gold2);
+    }
+
     p{
       color:#f2ece1;
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:980px;
+      max-width:1000px;
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
-    strong{color:var(--gold2);font-weight:900}
+    strong{
+      color:var(--gold2);
+      font-weight:900;
+    }
 
     .btn-row{
       display:flex;
@@ -219,7 +234,6 @@
       display:inline-flex;
       justify-content:center;
       align-items:center;
-      gap:14px;
       padding:22px 32px;
       border:2px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
@@ -227,20 +241,28 @@
       text-transform:uppercase;
       font-weight:900;
       letter-spacing:4px;
-      cursor:pointer;
       box-shadow:0 16px 35px rgba(0,0,0,.35);
     }
 
-    .btn:hover{background:var(--gold);color:#000}
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .info-box{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:42px 46px;
-      max-width:1040px;
-      margin-top:34px;
+      background:rgba(0,0,0,.50);
+      padding:44px 48px;
+      margin-top:38px;
+      max-width:1060px;
       backdrop-filter:blur(1px);
       box-shadow:0 16px 40px rgba(0,0,0,.35);
+    }
+
+    .info-box h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4.5vw,58px);
+      margin-bottom:22px;
     }
 
     .info-box ul{
@@ -254,8 +276,9 @@
       color:#f7f1e6;
       font-size:22px;
       line-height:1.6;
-      padding-left:28px;
+      padding-left:30px;
       position:relative;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     .info-box li::before{
@@ -267,61 +290,73 @@
       font-weight:900;
     }
 
-    .card-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:28px;
-      margin-top:44px;
-      max-width:1040px;
-    }
-
-    .info-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:44px 46px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.34);
-    }
-
-    .info-card h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:22px;
-    }
-
-    .info-card p{
-      color:#f7f1e6;
-      font-size:22px;
-      line-height:1.62;
-      margin-bottom:0;
-    }
-
-    .mini-grid{
+    .guide-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
       margin-top:38px;
-      max-width:1040px;
+      max-width:1080px;
     }
 
-    .mini-card{
+    .guide-card{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.45);
-      padding:34px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.30);
+      background:rgba(0,0,0,.48);
+      padding:38px;
+      box-shadow:0 16px 40px rgba(0,0,0,.34);
     }
 
-    .mini-card h3{
-      font-size:clamp(30px,4vw,48px);
+    .guide-card h3{
+      font-size:clamp(32px,4vw,52px);
       color:var(--gold2);
       margin-bottom:18px;
     }
 
-    .mini-card p{
-      font-size:20px;
+    .guide-card p{
+      font-size:21px;
+      line-height:1.62;
+      margin-bottom:0;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:40px;
+      max-width:1080px;
+    }
+
+    .process-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.48);
+      padding:34px;
+      min-height:280px;
+    }
+
+    .process-number{
+      color:var(--gold2);
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-weight:900;
+      font-size:13px;
+      margin-bottom:16px;
+    }
+
+    .process-card h3{
+      font-size:clamp(28px,3.8vw,44px);
+      margin-bottom:18px;
+    }
+
+    .process-card p{
+      font-size:19px;
       line-height:1.58;
       margin-bottom:0;
+    }
+
+    .contact-clean{
+      position:relative;
+      z-index:1;
+      padding:76px 42px 88px;
+      max-width:980px;
     }
 
     .simple-footer{
@@ -333,12 +368,19 @@
       border-bottom:1px solid var(--line);
     }
 
-    @media(max-width:800px){
-      .mini-grid{grid-template-columns:1fr}
+    @media(max-width:1000px){
+      .process-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:900px){
+      .guide-grid{grid-template-columns:1fr}
     }
 
     @media(max-width:600px){
-      .topbar{padding:12px 14px;gap:10px}
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
 
       .logo,
       .menu-btn{
@@ -354,16 +396,21 @@
         letter-spacing:1px;
       }
 
-      .menu{padding:22px 30px 26px}
+      .menu{
+        padding:22px 30px 26px;
+      }
 
       .menu a{
         font-size:15px;
         letter-spacing:2.5px;
       }
 
-      .hero{min-height:720px}
+      .hero{min-height:760px}
 
-      .content{padding:48px 28px}
+      .content,
+      .contact-clean{
+        padding:48px 28px;
+      }
 
       h1{font-size:42px}
       h2{font-size:40px}
@@ -380,23 +427,30 @@
       }
 
       .btn-row,
-      .btn{width:100%}
+      .btn{
+        width:100%;
+      }
 
       .info-box,
-      .info-card,
-      .mini-card{
+      .guide-card,
+      .process-card{
         padding:34px 32px;
       }
 
-      .info-card h3{font-size:38px}
-
-      .info-card p,
-      .info-box li{
-        font-size:21px;
-        line-height:1.62;
+      .info-box h3,
+      .guide-card h3{
+        font-size:38px;
       }
 
-      .simple-footer{font-size:16px}
+      .info-box li,
+      .guide-card p,
+      .process-card p{
+        font-size:21px;
+      }
+
+      .simple-footer{
+        font-size:16px;
+      }
     }
 
     @media(max-width:420px){
@@ -412,7 +466,6 @@
       }
 
       .logo{font-size:25px}
-
       h1{font-size:40px}
       h2{font-size:36px}
     }
@@ -429,6 +482,7 @@
     </header>
 
     <nav class="menu" id="menu">
+      <a href="index.html">Home</a>
       <a href="titancore-structure.html">TitanCore Structure</a>
       <a href="operating-model.html">Operating Model</a>
       <a href="governance.html">Governance</a>
@@ -436,6 +490,7 @@
       <a href="institution.html">Institution</a>
       <a href="business-intelligence.html">Business Intelligence</a>
       <a href="news-media.html">News &amp; Media</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <section class="section hero daily-bg" data-bg-group="hero">
@@ -448,20 +503,19 @@
         </h1>
 
         <p>
-          AI Awareness is a public education page that explains what artificial
-          intelligence is, how AI tools can support business learning, and what
-          business owners should understand before relying on digital tools.
+          AI Awareness is a public education page for visitors who want to understand
+          how artificial intelligence is changing work, research, communication,
+          customer service, operations, planning, and business education.
         </p>
 
         <p>
-          This page is not about private internal systems. It is a public business
-          education page for visitors who want to understand how AI is changing
-          work, research, communication, customer service, operations, and planning.
+          This page explains AI in a simple, responsible, professional way. It is
+          not a page about TitanCore internal tools. It is a business education page
+          for people who want to understand AI before they depend on it.
         </p>
 
         <div class="btn-row">
-          <a href="business-intelligence.html" class="btn">Back to Intelligence ›</a>
-          <a href="contact.html" class="btn">Get In Touch ›</a>
+          <a href="index.html" class="btn">Back Home ›</a>
         </div>
       </div>
     </section>
@@ -475,357 +529,341 @@
         </h2>
 
         <p>
-          Artificial intelligence can help people analyze information, summarize
-          content, answer questions, draft text, classify data, compare options,
-          organize ideas, and support decision-making. AI is powerful, but it still
-          needs human judgment, clear instructions, and careful review.
+          Artificial intelligence can help people review information, summarize
+          text, answer questions, organize ideas, create drafts, compare options,
+          identify patterns, and support planning.
+        </p>
+
+        <p>
+          AI does not replace judgment. It should be treated as a tool that helps
+          people think, research, organize, and prepare information. Important
+          decisions still need human review, professional judgment, and fact-checking.
         </p>
 
         <div class="info-box">
           <h3>Simple AI explanation</h3>
           <ul>
-            <li>AI can read, summarize, and organize large amounts of information.</li>
-            <li>AI can help draft emails, reports, plans, notes, and customer responses.</li>
-            <li>AI can help compare business ideas, markets, competitors, and options.</li>
-            <li>AI can help explain complicated topics in simple language.</li>
-            <li>AI can make mistakes and should not be trusted without review.</li>
-            <li>AI works better when the person gives clear instructions and checks the answer.</li>
+            <li>AI can read and summarize information.</li>
+            <li>AI can help write drafts and organize ideas.</li>
+            <li>AI can compare options and explain topics.</li>
+            <li>AI can help prepare research questions.</li>
+            <li>AI can help identify patterns in information.</li>
+            <li>AI can make mistakes and needs human review.</li>
+            <li>AI should not be trusted blindly for legal, medical, financial, or compliance decisions.</li>
+            <li>AI works best when people give it clear instructions and review the result.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="business-use">
+    <section class="section dark daily-bg" data-bg-group="business">
       <div class="content">
-        <div class="eyebrow">Business Use</div>
+        <div class="eyebrow">AI In Business</div>
 
         <h2>
-          AI can support business learning and organization.
+          AI can support business education, research, and planning.
         </h2>
 
         <p>
-          A business owner can use AI to learn faster, prepare better questions,
-          organize ideas, improve writing, review information, and understand
-          business options. AI should support the decision process, not replace
-          responsibility.
+          In business, AI can help people think through ideas before they spend
+          money, start a project, contact customers, write proposals, research
+          competitors, review market conditions, or organize a plan.
         </p>
 
-        <div class="card-grid">
-          <div class="info-card">
+        <p>
+          The value of AI is not only speed. The value is structure. AI can help
+          turn scattered ideas into a cleaner outline, a better checklist, a clearer
+          explanation, or a stronger first draft.
+        </p>
+
+        <div class="guide-grid">
+          <div class="guide-card">
             <h3>Research Support</h3>
             <p>
-              AI can help organize research questions, summarize public information,
-              compare markets, explain customer needs, and prepare a business owner
-              to study a topic more clearly.
+              AI can help create research questions, explain a topic, compare ideas,
+              and summarize public information.
             </p>
           </div>
 
-          <div class="info-card">
+          <div class="guide-card">
             <h3>Writing Support</h3>
             <p>
-              AI can help draft business emails, website text, reports, outlines,
-              proposals, summaries, customer messages, and internal notes in a more
-              professional format.
+              AI can help draft emails, outlines, business descriptions, reports,
+              summaries, public education content, and professional messages.
             </p>
           </div>
 
-          <div class="info-card">
+          <div class="guide-card">
             <h3>Planning Support</h3>
             <p>
-              AI can help turn a rough idea into a plan, organize steps, identify
-              missing information, list risks, compare options, and prepare next
-              actions.
+              AI can help organize steps, create checklists, explain risks, and
+              break large business ideas into smaller actions.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Customer Support Education</h3>
+          <div class="guide-card">
+            <h3>Learning Support</h3>
             <p>
-              AI can help explain common customer questions, prepare response
-              templates, create FAQ content, and improve how a business communicates
-              with visitors.
+              AI can explain business topics in simple language so visitors can
+              understand what they are reading before making decisions.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="tools">
+    <section class="section green daily-bg" data-bg-group="uses">
       <div class="content">
-        <div class="eyebrow">AI Tool Categories</div>
+        <div class="eyebrow">Business Use Cases</div>
 
         <h2>
-          Different AI tools support different business needs.
+          AI can help with many business tasks when used carefully.
         </h2>
 
         <p>
-          Visitors should understand that AI is not one single thing. Different
-          tools can support writing, research, images, customer service, data,
-          documents, coding, automation, and business planning.
-        </p>
-
-        <div class="mini-grid">
-          <div class="mini-card">
-            <h3>Writing AI</h3>
-            <p>
-              Helps create emails, reports, web content, summaries, outlines,
-              proposals, scripts, and professional messages.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Research AI</h3>
-            <p>
-              Helps organize questions, summarize information, compare topics, and
-              explain public research in simpler language.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Data AI</h3>
-            <p>
-              Helps review numbers, patterns, tables, reports, business signals,
-              and performance information.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Design AI</h3>
-            <p>
-              Helps create visual concepts, images, layouts, mockups, brand ideas,
-              and presentation-style content.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Automation AI</h3>
-            <p>
-              Helps connect tasks, forms, messages, records, alerts, and workflows
-              when connected to the right systems.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Coding AI</h3>
-            <p>
-              Helps draft website code, build app ideas, explain technical steps,
-              and create structured digital tools.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="questions">
-      <div class="content">
-        <div class="eyebrow">AI Questions</div>
-
-        <h2>
-          Business owners should ask the right questions before using AI.
-        </h2>
-
-        <p>
-          AI can help, but only when the business understands what problem it is
-          trying to solve. Before using AI, a visitor should know the goal, the
-          information needed, the risk, and the review process.
+          A business owner, professional, student, investor, or employee may use AI
+          to learn faster and organize work better. But AI should be used with
+          caution, because the answer may need verification.
         </p>
 
         <div class="info-box">
-          <h3>Questions to ask before using AI</h3>
+          <h3>Common AI business uses</h3>
           <ul>
-            <li>What business problem am I trying to solve?</li>
-            <li>What information do I need the AI to review or organize?</li>
-            <li>What should the final answer look like?</li>
-            <li>What part of the answer must be checked by a human?</li>
-            <li>Is this information private, sensitive, legal, financial, or medical?</li>
-            <li>Could the AI answer be outdated or wrong?</li>
-            <li>What source or evidence should support the final answer?</li>
-            <li>How will I use this output responsibly?</li>
+            <li>Explaining business concepts in simple language.</li>
+            <li>Drafting professional emails and letters.</li>
+            <li>Creating outlines for business plans.</li>
+            <li>Summarizing long documents or notes.</li>
+            <li>Preparing questions before meeting a professional.</li>
+            <li>Researching competitors and market ideas.</li>
+            <li>Organizing customer service scripts.</li>
+            <li>Creating checklists, workflows, and step-by-step guides.</li>
+            <li>Helping compare options before choosing a direction.</li>
+            <li>Turning rough ideas into cleaner business language.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="responsible">
-      <div class="content">
-        <div class="eyebrow">Responsible AI Use</div>
-
-        <h2>
-          AI should be reviewed before business action is taken.
-        </h2>
-
-        <p>
-          AI can sound confident even when it is wrong. A business should not copy
-          AI answers blindly, especially when the topic involves money, law,
-          contracts, compliance, tax, medical issues, licensing, investment, or
-          customer obligations.
-        </p>
-
-        <div class="card-grid">
-          <div class="info-card">
-            <h3>Check Accuracy</h3>
-            <p>
-              Important answers should be verified. The person using AI should check
-              facts, names, dates, numbers, rules, and any information that could
-              change over time.
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>Protect Privacy</h3>
-            <p>
-              Sensitive customer information, passwords, account numbers, private
-              business records, or personal documents should be handled carefully
-              and not placed into tools without understanding privacy controls.
-            </p>
-          </div>
-
-          <div class="info-card">
-            <h3>Use Human Judgment</h3>
-            <p>
-              AI can support thinking, but a human still needs to make the final
-              judgment, especially when the decision affects customers, money,
-              compliance, or reputation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="business-areas">
-      <div class="content">
-        <div class="eyebrow">AI Business Areas</div>
-
-        <h2>
-          AI can support many public business education topics.
-        </h2>
-
-        <p>
-          AI awareness helps visitors understand how technology can support many
-          business areas. The goal is to teach general awareness so visitors can
-          become smarter about tools, systems, and decision-making.
-        </p>
-
-        <div class="mini-grid">
-          <div class="mini-card">
-            <h3>Marketing</h3>
-            <p>
-              AI can help draft posts, create content ideas, organize campaigns,
-              write captions, and explain customer messaging.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Sales</h3>
-            <p>
-              AI can help organize leads, draft follow-ups, explain offers, prepare
-              scripts, and improve customer communication.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Operations</h3>
-            <p>
-              AI can help create checklists, summarize work, organize workflows,
-              and explain process improvements.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Finance Education</h3>
-            <p>
-              AI can help explain basic finance ideas, budget structure, cash flow
-              concepts, and business planning questions.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Customer Service</h3>
-            <p>
-              AI can help prepare FAQs, response templates, call notes, service
-              explanations, and follow-up messages.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Research</h3>
-            <p>
-              AI can help summarize markets, compare competitors, list risks, and
-              prepare research questions before a business move.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="limits">
+    <section class="section daily-bg" data-bg-group="limits">
       <div class="content">
         <div class="eyebrow">AI Limits</div>
 
         <h2>
-          AI is helpful, but it is not perfect.
+          AI can help, but it should not make final decisions by itself.
         </h2>
 
         <p>
-          Visitors should understand the limits of AI. It can produce useful
-          information, but it can also misunderstand instructions, give outdated
-          answers, create false details, or miss important context.
+          AI can sound confident even when it is wrong. It may miss local rules,
+          recent changes, legal details, financial risks, licensing requirements,
+          or special circumstances. That is why AI should support review, not
+          replace review.
+        </p>
+
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>Accuracy Risk</h3>
+            <p>
+              AI may give outdated, incomplete, or incorrect information. Important
+              facts should be checked with reliable sources.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Legal Risk</h3>
+            <p>
+              AI should not replace a licensed attorney, official rule source, or
+              compliance professional when legal accuracy matters.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Financial Risk</h3>
+            <p>
+              AI should not replace a licensed financial, tax, lending, or insurance
+              professional when money decisions are high risk.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Privacy Risk</h3>
+            <p>
+              People should be careful before placing private, customer, employee,
+              health, banking, tax, or confidential business information into tools.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="human">
+      <div class="content">
+        <div class="eyebrow">Human Review</div>
+
+        <h2>
+          Human judgment is still required.
+        </h2>
+
+        <p>
+          AI can help prepare information, but a person must still decide whether
+          the answer makes sense. Human review protects accuracy, ethics, customer
+          trust, professional standards, and business reputation.
         </p>
 
         <div class="info-box">
-          <h3>Important AI limits</h3>
+          <h3>Human review should check</h3>
           <ul>
-            <li>AI can make mistakes and still sound confident.</li>
-            <li>AI may not know current prices, laws, rules, or breaking news unless connected to current sources.</li>
-            <li>AI may misunderstand the business goal if the question is unclear.</li>
-            <li>AI can create generic answers if it does not receive enough details.</li>
-            <li>AI should not replace licensed legal, tax, medical, insurance, or financial professionals.</li>
-            <li>AI output should be edited before being used publicly.</li>
+            <li>Is the answer accurate?</li>
+            <li>Is the answer current?</li>
+            <li>Is the answer safe to use?</li>
+            <li>Is the answer professional?</li>
+            <li>Does the answer fit the real situation?</li>
+            <li>Does the answer need a licensed professional?</li>
+            <li>Does the answer protect private information?</li>
+            <li>Could the answer create legal, financial, or reputation risk?</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="prompting">
+    <section class="section dark daily-bg" data-bg-group="responsible">
       <div class="content">
-        <div class="eyebrow">Better AI Questions</div>
+        <div class="eyebrow">Responsible AI Use</div>
 
         <h2>
-          Better instructions create better AI answers.
+          Responsible AI use means using technology with discipline.
         </h2>
 
         <p>
-          AI performs better when the person gives the tool a role, context,
-          audience, goal, format, and rules. A weak question usually gives a weak
-          answer. A clear question creates a stronger result.
+          A business should not use AI just because it is popular. A business should
+          understand the purpose, the risk, the information source, the review
+          process, and the human responsibility behind the result.
+        </p>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-number">Step One</div>
+            <h3>Define the task</h3>
+            <p>
+              Be clear about what the AI is supposed to help with: writing,
+              research, summary, planning, comparison, or education.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Two</div>
+            <h3>Check the output</h3>
+            <p>
+              Review the answer for mistakes, missing details, weak assumptions,
+              outdated information, or unclear language.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Three</div>
+            <h3>Use judgment</h3>
+            <p>
+              Decide whether the answer should be used, changed, verified, rejected,
+              or sent to a professional for review.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="businessowners">
+      <div class="content">
+        <div class="eyebrow">Business Owner Awareness</div>
+
+        <h2>
+          Business owners should understand what AI can and cannot do.
+        </h2>
+
+        <p>
+          AI can help a business move faster, but speed without control can create
+          mistakes. Business owners should understand how AI fits into the company,
+          what information should be protected, what tasks can be supported, and
+          what decisions require human authority.
         </p>
 
         <div class="info-box">
-          <h3>Good AI instruction formula</h3>
+          <h3>Business owners should ask</h3>
           <ul>
-            <li><strong>Role:</strong> Tell the AI what kind of helper it should act like.</li>
-            <li><strong>Context:</strong> Explain the business, customer, situation, and goal.</li>
-            <li><strong>Task:</strong> Say exactly what you want created or reviewed.</li>
-            <li><strong>Format:</strong> Ask for bullets, email, table, outline, checklist, or page content.</li>
-            <li><strong>Tone:</strong> Ask for professional, simple, direct, formal, or customer-friendly language.</li>
-            <li><strong>Review:</strong> Ask the AI to check for missing details, risks, and next steps.</li>
+            <li>What problem is AI helping solve?</li>
+            <li>What information is being entered into the tool?</li>
+            <li>Who checks the answer before it is used?</li>
+            <li>What should never be automated?</li>
+            <li>What customer information needs protection?</li>
+            <li>What errors could hurt the company?</li>
+            <li>What tasks can AI assist with safely?</li>
+            <li>What tasks require human approval?</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="education">
+      <div class="content">
+        <div class="eyebrow">Public Education</div>
+
+        <h2>
+          AI education helps visitors understand the technology before trusting it.
+        </h2>
+
+        <p>
+          Visitors may hear about AI everywhere, but they may not understand what
+          it really means. This page gives a professional explanation without
+          making promises, without exaggerating, and without saying AI should
+          replace people.
+        </p>
+
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>What AI Is</h3>
+            <p>
+              A tool that processes information and produces text, summaries,
+              answers, ideas, or patterns based on instructions.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>What AI Is Not</h3>
+            <p>
+              AI is not automatically correct, not a licensed professional, and
+              not a replacement for responsible decision-making.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>How To Use It</h3>
+            <p>
+              Use AI for support, drafts, ideas, learning, checklists, summaries,
+              and planning preparation.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>How To Review It</h3>
+            <p>
+              Check facts, confirm sources, protect private information, and use
+              human judgment before relying on the result.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section green daily-bg" data-bg-group="future">
       <div class="content">
-        <div class="eyebrow">Future AI Education</div>
+        <div class="eyebrow">Future AI Education System</div>
 
         <h2>
-          Later this page can update with new AI education.
+          Later, this page can become a live AI education area.
         </h2>
 
         <p>
-          AI changes quickly. In a future phase, this page can connect to approved
-          educational updates, public AI news summaries, tool category explanations,
-          business use cases, and archived learning notes.
+          In a future version, this page can connect to daily technology news,
+          business AI education, research summaries, examples, public guides, and
+          archived learning notes.
         </p>
 
         <p>
@@ -833,9 +871,21 @@
           awareness, safe use, responsible review, business use cases, and the
           importance of human judgment.
         </p>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="contact">
+      <div class="contact-clean">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence
+          questions, or TitanCore-related information, contact TitanCore Holdings.
+        </p>
 
         <div class="btn-row">
-          <a href="business-intelligence.html" class="btn">Back to Intelligence ›</a>
           <a href="contact.html" class="btn">Get In Touch ›</a>
         </div>
       </div>
@@ -859,43 +909,47 @@
       hero: [
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
       ],
       definition: [
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85"
-      ],
-      "business-use": [
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
-      ],
-      tools: [
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1600&q=85"
-      ],
-      questions: [
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
-      ],
-      responsible: [
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85"
-      ],
-      "business-areas": [
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
-      ],
-      limits: [
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
-      ],
-      prompting: [
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85"
       ],
+      business: [
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ],
+      uses: [
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
+      ],
+      limits: [
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
+      ],
+      human: [
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      responsible: [
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      businessowners: [
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      education: [
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ],
       future: [
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      contact: [
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
       ]
     };
 
@@ -903,7 +957,7 @@
       const sections = document.querySelectorAll(".daily-bg");
       const day = new Date().getDate();
 
-      sections.forEach(function(section, index){
+      sections.forEach(function(section,index){
         const group = section.dataset.bgGroup || "hero";
         const images = backgroundSets[group] || backgroundSets.hero;
         const selected = images[(day + index) % images.length];
