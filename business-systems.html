@@ -88,7 +88,10 @@
       flex-shrink:0;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .menu{
       display:none;
@@ -109,7 +112,10 @@
       font-size:18px;
     }
 
-    .menu a:hover{color:var(--gold2);padding-left:8px}
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
 
     .section{
       position:relative;
@@ -125,19 +131,25 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.74), rgba(0,0,0,.38)),
-        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.52));
+        linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.48)),
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.58));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.58), rgba(6,75,56,.66)),
-        linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.40));
+        linear-gradient(90deg,rgba(0,0,0,.58),rgba(6,75,56,.76)),
+        linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.44));
+    }
+
+    .section.dark::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.90),rgba(0,0,0,.62)),
+        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.66));
     }
 
     .hero{
-      min-height:720px;
+      min-height:760px;
       display:flex;
       align-items:center;
     }
@@ -145,14 +157,14 @@
     .content{
       position:relative;
       z-index:1;
-      padding:58px 42px;
-      max-width:1060px;
+      padding:62px 42px;
+      max-width:1080px;
     }
 
     .hero .content{
-      max-width:950px;
-      padding-top:78px;
-      padding-bottom:78px;
+      max-width:980px;
+      padding-top:82px;
+      padding-bottom:82px;
     }
 
     .eyebrow{
@@ -162,32 +174,26 @@
       font-size:15px;
       font-weight:900;
       margin-bottom:22px;
-      text-shadow:0 2px 12px rgba(0,0,0,.75);
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     h1,h2,h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
-      color:var(--white);
       line-height:1.06;
       text-shadow:0 3px 16px rgba(0,0,0,.88);
     }
 
     h1{
-      font-size:clamp(48px,6vw,90px);
+      font-size:clamp(48px,6vw,92px);
       margin-bottom:34px;
-      max-width:950px;
-    }
-
-    h1 span,
-    h2 span{
-      color:var(--gold2);
+      max-width:980px;
     }
 
     h2{
-      font-size:clamp(40px,5vw,74px);
+      font-size:clamp(40px,5vw,76px);
       margin-bottom:34px;
-      max-width:980px;
+      max-width:1000px;
     }
 
     h3{
@@ -196,16 +202,20 @@
       margin-bottom:22px;
     }
 
+    h1 span,
+    h2 span,
+    h3 span{
+      color:var(--gold2);
+    }
+
     p{
       color:#f2ece1;
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:980px;
+      max-width:1000px;
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
-
-    strong{color:var(--gold2);font-weight:900}
 
     .btn-row{
       display:flex;
@@ -219,7 +229,6 @@
       display:inline-flex;
       justify-content:center;
       align-items:center;
-      gap:14px;
       padding:22px 32px;
       border:2px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
@@ -227,18 +236,20 @@
       text-transform:uppercase;
       font-weight:900;
       letter-spacing:4px;
-      cursor:pointer;
       box-shadow:0 16px 35px rgba(0,0,0,.35);
     }
 
-    .btn:hover{background:var(--gold);color:#000}
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .info-box{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:42px 46px;
-      max-width:1040px;
-      margin-top:34px;
+      background:rgba(0,0,0,.50);
+      padding:44px 48px;
+      margin-top:38px;
+      max-width:1060px;
       backdrop-filter:blur(1px);
       box-shadow:0 16px 40px rgba(0,0,0,.35);
     }
@@ -254,8 +265,9 @@
       color:#f7f1e6;
       font-size:22px;
       line-height:1.6;
-      padding-left:28px;
+      padding-left:30px;
       position:relative;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     .info-box li::before{
@@ -267,61 +279,32 @@
       font-weight:900;
     }
 
-    .card-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:28px;
-      margin-top:44px;
-      max-width:1040px;
-    }
-
-    .info-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:44px 46px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.34);
-    }
-
-    .info-card h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:22px;
-    }
-
-    .info-card p{
-      color:#f7f1e6;
-      font-size:22px;
-      line-height:1.62;
-      margin-bottom:0;
-    }
-
-    .mini-grid{
+    .guide-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
       margin-top:38px;
-      max-width:1040px;
+      max-width:1080px;
     }
 
-    .mini-card{
+    .guide-card{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.45);
-      padding:34px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.30);
+      background:rgba(0,0,0,.48);
+      padding:38px;
+      box-shadow:0 16px 40px rgba(0,0,0,.34);
     }
 
-    .mini-card h3{
-      font-size:clamp(30px,4vw,48px);
-      color:var(--gold2);
-      margin-bottom:18px;
-    }
-
-    .mini-card p{
-      font-size:20px;
-      line-height:1.58;
+    .guide-card p{
+      font-size:21px;
+      line-height:1.62;
       margin-bottom:0;
+    }
+
+    .contact-clean{
+      position:relative;
+      z-index:1;
+      padding:76px 42px 88px;
+      max-width:980px;
     }
 
     .simple-footer{
@@ -333,12 +316,15 @@
       border-bottom:1px solid var(--line);
     }
 
-    @media(max-width:800px){
-      .mini-grid{grid-template-columns:1fr}
+    @media(max-width:900px){
+      .guide-grid{grid-template-columns:1fr}
     }
 
     @media(max-width:600px){
-      .topbar{padding:12px 14px;gap:10px}
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
 
       .logo,
       .menu-btn{
@@ -354,16 +340,21 @@
         letter-spacing:1px;
       }
 
-      .menu{padding:22px 30px 26px}
+      .menu{
+        padding:22px 30px 26px;
+      }
 
       .menu a{
         font-size:15px;
         letter-spacing:2.5px;
       }
 
-      .hero{min-height:720px}
+      .hero{min-height:760px}
 
-      .content{padding:48px 28px}
+      .content,
+      .contact-clean{
+        padding:48px 28px;
+      }
 
       h1{font-size:42px}
       h2{font-size:40px}
@@ -380,23 +371,23 @@
       }
 
       .btn-row,
-      .btn{width:100%}
+      .btn{
+        width:100%;
+      }
 
       .info-box,
-      .info-card,
-      .mini-card{
+      .guide-card{
         padding:34px 32px;
       }
 
-      .info-card h3{font-size:38px}
-
-      .info-card p,
-      .info-box li{
+      .info-box li,
+      .guide-card p{
         font-size:21px;
-        line-height:1.62;
       }
 
-      .simple-footer{font-size:16px}
+      .simple-footer{
+        font-size:16px;
+      }
     }
 
     @media(max-width:420px){
@@ -412,7 +403,6 @@
       }
 
       .logo{font-size:25px}
-
       h1{font-size:40px}
       h2{font-size:36px}
     }
@@ -429,6 +419,7 @@
     </header>
 
     <nav class="menu" id="menu">
+      <a href="index.html">Home</a>
       <a href="titancore-structure.html">TitanCore Structure</a>
       <a href="operating-model.html">Operating Model</a>
       <a href="governance.html">Governance</a>
@@ -436,6 +427,7 @@
       <a href="institution.html">Institution</a>
       <a href="business-intelligence.html">Business Intelligence</a>
       <a href="news-media.html">News &amp; Media</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <section class="section hero daily-bg" data-bg-group="hero">
@@ -443,272 +435,235 @@
         <div class="eyebrow">Business Systems</div>
 
         <h1>
-          Build systems before the business becomes
-          <span>hard to control.</span>
+          Systems help a business stay
+          <span>organized and repeatable.</span>
         </h1>
 
         <p>
-          Business Systems explain how a company organizes work, information,
-          people, forms, communication, follow-up, approvals, reporting, and daily
-          activity into a repeatable structure.
+          Business Systems explains how workflows, forms, routing, records,
+          follow-up, reviews, approvals, reporting, and daily structure help a
+          company operate with less confusion.
         </p>
 
         <p>
-          A business system helps the company avoid confusion. Instead of every task
-          being handled differently, the business creates a clear way to receive
-          work, route work, review work, complete work, and improve the process.
+          A business system is not just software. It is the organized way a company
+          receives work, handles information, sends work to the right place, checks
+          progress, keeps records, and improves over time.
         </p>
 
         <div class="btn-row">
-          <a href="business-intelligence.html" class="btn">Back to Intelligence ›</a>
-          <a href="contact.html" class="btn">Get In Touch ›</a>
+          <a href="index.html" class="btn">Back Home ›</a>
         </div>
       </div>
     </section>
 
     <section class="section green daily-bg" data-bg-group="definition">
       <div class="content">
-        <div class="eyebrow">System Definition</div>
+        <div class="eyebrow">Systems Definition</div>
 
         <h2>
-          A system is a repeatable way to get work done.
+          A business system is a repeatable way to handle work.
         </h2>
 
         <p>
-          A business system can be simple or advanced. It can be a checklist, a
-          form, a dashboard, a calendar, a report, an email route, a customer record,
-          an approval process, or an automated workflow.
+          Strong systems help the company avoid guessing. When a request comes in,
+          the company should know where it goes, who reviews it, what happens next,
+          and how the result is tracked.
         </p>
 
         <div class="info-box">
-          <h3>Business Systems help answer</h3>
+          <h3>Business systems should organize</h3>
           <ul>
-            <li>How does the business collect information?</li>
-            <li>Where does the information go after it is submitted?</li>
-            <li>Who reviews the request?</li>
-            <li>What steps must happen before the work is complete?</li>
-            <li>How does the company follow up with customers?</li>
-            <li>How does leadership know the status of work?</li>
-            <li>How are mistakes corrected?</li>
-            <li>How does the business repeat the process without confusion?</li>
+            <li>Customer and visitor requests.</li>
+            <li>Forms and intake information.</li>
+            <li>Email and communication routing.</li>
+            <li>Approvals and review steps.</li>
+            <li>Documents and records.</li>
+            <li>Follow-up and pending items.</li>
+            <li>Reports and performance tracking.</li>
+            <li>Management visibility.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="foundation">
+    <section class="section dark daily-bg" data-bg-group="core">
       <div class="content">
-        <div class="eyebrow">System Foundation</div>
+        <div class="eyebrow">Core System Areas</div>
 
         <h2>
-          Strong systems give the business order.
+          A serious business needs clear systems in every important area.
         </h2>
 
-        <p>
-          Without systems, a business depends too much on memory, guessing, and
-          individual habits. With systems, the company can see what is happening,
-          what is missing, what is late, and what needs attention.
-        </p>
-
-        <div class="card-grid">
-          <div class="info-card">
+        <div class="guide-grid">
+          <div class="guide-card">
             <h3>Intake System</h3>
             <p>
-              An intake system collects customer details, service requests, contact
-              information, documents, questions, and the reason the person is
-              contacting the company.
+              Collects the right information from visitors, customers, companies,
+              partners, or internal departments before work begins.
             </p>
           </div>
 
-          <div class="info-card">
+          <div class="guide-card">
             <h3>Routing System</h3>
             <p>
-              A routing system sends the request to the right page, person,
-              department, company, email, dashboard, or workflow so the next step is
-              clear.
+              Sends information to the right department, company, person, page,
+              inbox, or dashboard so it does not get lost.
             </p>
           </div>
 
-          <div class="info-card">
+          <div class="guide-card">
             <h3>Review System</h3>
             <p>
-              A review system checks whether the information is complete, correct,
-              ready for action, or needs to be returned for more details.
+              Checks whether the information is complete, accurate, professional,
+              and ready for the next step.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Follow-Up System</h3>
+          <div class="guide-card">
+            <h3>Record System</h3>
             <p>
-              A follow-up system makes sure customers, partners, and internal teams
-              receive updates instead of being forgotten.
+              Keeps proof of requests, documents, decisions, approvals, follow-up,
+              reports, and completed work.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="types">
+    <section class="section green daily-bg" data-bg-group="workflow">
       <div class="content">
-        <div class="eyebrow">System Types</div>
+        <div class="eyebrow">Workflow Systems</div>
 
         <h2>
-          Every important business area needs a system.
+          Workflow systems help work move without confusion.
         </h2>
 
         <p>
-          Systems do not have to be complicated. The important part is that the
-          business knows the purpose of the system and uses it consistently.
-        </p>
-
-        <div class="mini-grid">
-          <div class="mini-card">
-            <h3>Customer System</h3>
-            <p>
-              Tracks customer questions, contact history, needs, appointments,
-              follow-ups, and service status.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Sales System</h3>
-            <p>
-              Tracks leads, offers, proposals, calls, appointments, closing steps,
-              and customer movement.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Operations System</h3>
-            <p>
-              Tracks tasks, workflows, service delivery, routing, deadlines, status,
-              and daily work movement.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Document System</h3>
-            <p>
-              Organizes files, forms, contracts, reports, approvals, templates, and
-              records.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Finance System</h3>
-            <p>
-              Tracks income, expenses, invoices, budgets, cash flow, taxes,
-              payments, and financial review.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Reporting System</h3>
-            <p>
-              Summarizes important activity so leadership can review results,
-              problems, risks, and next steps.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="workflow">
-      <div class="content">
-        <div class="eyebrow">Workflow System</div>
-
-        <h2>
-          A workflow system turns activity into a clear path.
-        </h2>
-
-        <p>
-          A workflow shows how work moves from the beginning to the end. The
-          business should know each step, who owns it, what information is needed,
-          and what happens if something is missing.
+          A workflow system explains the path. It shows where the work starts,
+          where it goes next, who is responsible, what must be checked, and when
+          the work is complete.
         </p>
 
         <div class="info-box">
-          <h3>Basic workflow path</h3>
+          <h3>A workflow system should show</h3>
           <ul>
-            <li>Request received.</li>
-            <li>Information checked.</li>
-            <li>Request routed to the correct area.</li>
-            <li>Documents or details collected.</li>
-            <li>Work reviewed.</li>
-            <li>Corrections handled if needed.</li>
-            <li>Approval or next-step decision made.</li>
-            <li>Customer or internal team updated.</li>
-            <li>Work completed and recorded.</li>
+            <li>Where the request starts.</li>
+            <li>Who receives the first information.</li>
+            <li>Who reviews the request.</li>
+            <li>What information is missing.</li>
+            <li>Who owns the next step.</li>
+            <li>How long the work has been pending.</li>
+            <li>How the work is approved.</li>
+            <li>How the work is closed.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="forms">
+    <section class="section daily-bg" data-bg-group="forms">
       <div class="content">
-        <div class="eyebrow">Forms & Intake</div>
+        <div class="eyebrow">Form Systems</div>
 
         <h2>
-          Forms should collect the right information without crowding the page.
+          Forms help the business collect information the right way.
         </h2>
 
         <p>
-          Public pages should stay clean and professional. When a visitor needs to
-          submit information, the website can move them to the right form, bridge
-          page, company page, or request page.
+          A clean form system prevents missing information. Instead of asking the
+          same questions over and over, the form collects the details needed to
+          understand the request.
         </p>
 
-        <div class="card-grid">
-          <div class="info-card">
-            <h3>Public Website Form</h3>
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>Public Forms</h3>
             <p>
-              A general contact form can collect basic questions and route visitors
-              to TitanCore’s public contact process.
+              Public forms help visitors contact the company, request information,
+              or choose the correct public path.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Company Form</h3>
+          <div class="guide-card">
+            <h3>Company Forms</h3>
             <p>
-              A company-specific form should belong on that company’s own page or
-              site, not crowd the TitanCore overview page.
+              Company forms belong on the company pages or company websites where
+              the real service request begins.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Bridge Page</h3>
+          <div class="guide-card">
+            <h3>Internal Forms</h3>
             <p>
-              A bridge page helps visitors move from information to the correct
-              action without placing every form on the main page.
+              Internal forms help departments send reports, approvals, issues,
+              updates, and completed work to leadership.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Routing Forms</h3>
+            <p>
+              Routing forms help send information to the correct dashboard, inbox,
+              department, or responsible review point.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="communication">
+    <section class="section green daily-bg" data-bg-group="records">
       <div class="content">
-        <div class="eyebrow">Communication System</div>
+        <div class="eyebrow">Record Systems</div>
 
         <h2>
-          Communication needs routing and follow-up.
+          Records protect the business from confusion and lost information.
         </h2>
 
         <p>
-          A communication system helps the business know where questions come from,
-          who should respond, what answer is needed, and whether the visitor or
-          customer received the next step.
+          A business should not depend only on memory, text messages, or scattered
+          notes. A record system keeps information organized so leadership can see
+          what happened and what still needs attention.
         </p>
 
         <div class="info-box">
-          <h3>Communication system needs</h3>
+          <h3>Records should include</h3>
           <ul>
-            <li>A public contact path for general questions.</li>
-            <li>Separate company paths for company-specific service requests.</li>
-            <li>Email routing for public, internal, investor, bank, and institutional communication.</li>
-            <li>Call routing for visitors who need phone support.</li>
-            <li>Follow-up reminders so people are not forgotten.</li>
-            <li>Records so the business can see what happened.</li>
+            <li>Submitted forms.</li>
+            <li>Client or visitor requests.</li>
+            <li>Internal reports.</li>
+            <li>Approval history.</li>
+            <li>Important emails.</li>
+            <li>Follow-up notes.</li>
+            <li>Completed work.</li>
+            <li>Pending issues.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="approval">
+      <div class="content">
+        <div class="eyebrow">Approval Systems</div>
+
+        <h2>
+          Approval systems make sure important work is reviewed before it moves forward.
+        </h2>
+
+        <p>
+          Approvals help protect quality, standards, reputation, and decision-making.
+          A business should know who has authority to review, who can approve, who
+          needs to be notified, and where the approval record is stored.
+        </p>
+
+        <div class="info-box">
+          <h3>An approval system should answer</h3>
+          <ul>
+            <li>Who must review this?</li>
+            <li>Who has authority to approve?</li>
+            <li>What information must be included?</li>
+            <li>What happens if something is missing?</li>
+            <li>How is the approval recorded?</li>
+            <li>Who receives the completed package?</li>
           </ul>
         </div>
       </div>
@@ -719,129 +674,89 @@
         <div class="eyebrow">Dashboard Systems</div>
 
         <h2>
-          Dashboards help leadership see the work.
+          Dashboards help leadership see the business clearly.
         </h2>
 
         <p>
-          A dashboard is useful when it shows status, tasks, reports, approvals,
-          activity, alerts, and routing. The dashboard should not only look good; it
-          should help the business know what needs attention.
+          A dashboard system gives leadership a place to see company activity,
+          department progress, reports, issues, approvals, pending items, and
+          important updates.
         </p>
-
-        <div class="mini-grid">
-          <div class="mini-card">
-            <h3>Status</h3>
-            <p>
-              Shows whether work is new, in review, waiting, approved, returned,
-              completed, or blocked.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Reports</h3>
-            <p>
-              Shows weekly activity, company updates, department reports, and
-              summary information.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Approvals</h3>
-            <p>
-              Shows what requires review, what is ready for approval, and what
-              needs correction.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Alerts</h3>
-            <p>
-              Shows urgent issues, missing information, late tasks, and important
-              business warnings.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="automation">
-      <div class="content">
-        <div class="eyebrow">Automation Support</div>
-
-        <h2>
-          Automation should support the system, not replace judgment.
-        </h2>
 
         <p>
-          Automation can help with routing, reminders, confirmations, summaries,
-          records, and status updates. But the business still needs rules, review,
-          and responsibility.
+          The public website can educate visitors. The private dashboard can manage
+          the real internal work behind the company.
         </p>
 
-        <div class="info-box">
-          <h3>Automation can help with</h3>
-          <ul>
-            <li>Form submission routing.</li>
-            <li>Email notifications.</li>
-            <li>Dashboard records.</li>
-            <li>Daily or weekly summaries.</li>
-            <li>Customer follow-up reminders.</li>
-            <li>Task status updates.</li>
-            <li>Report collection.</li>
-            <li>Content refresh and public page updates.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>Central View</h3>
+            <p>
+              Shows broad leadership oversight and high-level activity across the
+              business network.
+            </p>
+          </div>
 
-    <section class="section green daily-bg" data-bg-group="questions">
-      <div class="content">
-        <div class="eyebrow">System Questions</div>
+          <div class="guide-card">
+            <h3>Company View</h3>
+            <p>
+              Shows activity, departments, forms, reports, and tasks inside a
+              specific company.
+            </p>
+          </div>
 
-        <h2>
-          A business should ask system questions before it grows.
-        </h2>
+          <div class="guide-card">
+            <h3>Department View</h3>
+            <p>
+              Shows work assigned to a department, including pending items,
+              completed items, and issue tracking.
+            </p>
+          </div>
 
-        <div class="info-box">
-          <h3>Questions to review</h3>
-          <ul>
-            <li>What work happens every day?</li>
-            <li>What information is collected first?</li>
-            <li>Where does the information go?</li>
-            <li>Who reviews it?</li>
-            <li>Who approves it?</li>
-            <li>Who follows up?</li>
-            <li>What happens when information is missing?</li>
-            <li>What happens when a customer complains?</li>
-            <li>What report shows progress?</li>
-            <li>What system needs to be built before the company grows?</li>
-          </ul>
+          <div class="guide-card">
+            <h3>Leadership View</h3>
+            <p>
+              Shows reports, approvals, activity, problems, and the information
+              leadership needs to make decisions.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section daily-bg" data-bg-group="future">
       <div class="content">
-        <div class="eyebrow">Future System Connection</div>
+        <div class="eyebrow">Future Business Systems</div>
 
         <h2>
-          Later this page can connect to live business systems.
+          Later, business systems can connect the website, forms, email, database, and dashboards.
         </h2>
 
         <p>
-          In the future, TitanCore public pages, company pages, forms, dashboards,
-          Supabase records, Netlify functions, and AI summaries can connect so
-          information moves from public website to organized review.
+          The next phase can connect Netlify forms, email routing, Supabase storage,
+          Replit backend tools, and private dashboards. That allows information
+          from the public website to move into the correct internal system.
         </p>
 
         <p>
-          For now, this page explains the public education side of Business Systems:
-          how structured processes help a business become organized, repeatable,
-          and ready for disciplined growth.
+          For now, this page gives visitors a clear public explanation of Business
+          Systems and why organized workflows are important for long-term growth.
+        </p>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="contact">
+      <div class="contact-clean">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence
+          questions, or TitanCore-related information, contact TitanCore Holdings.
         </p>
 
         <div class="btn-row">
-          <a href="business-intelligence.html" class="btn">Back to Intelligence ›</a>
           <a href="contact.html" class="btn">Get In Touch ›</a>
         </div>
       </div>
@@ -864,48 +779,43 @@
     const backgroundSets = {
       hero: [
         "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
       ],
       definition: [
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      core: [
         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85"
-      ],
-      foundation: [
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85"
-      ],
-      types: [
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
       ],
       workflow: [
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85"
+      ],
+      forms: [
         "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
       ],
-      forms: [
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85"
-      ],
-      communication: [
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
-      ],
-      dashboard: [
+      records: [
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
       ],
-      automation: [
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=85"
+      approval: [
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
       ],
-      questions: [
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+      dashboard: [
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85"
       ],
       future: [
-        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+      ],
+      contact: [
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
       ]
     };
 
@@ -913,7 +823,7 @@
       const sections = document.querySelectorAll(".daily-bg");
       const day = new Date().getDate();
 
-      sections.forEach(function(section, index){
+      sections.forEach(function(section,index){
         const group = section.dataset.bgGroup || "hero";
         const images = backgroundSets[group] || backgroundSets.hero;
         const selected = images[(day + index) % images.length];
