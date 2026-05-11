@@ -131,19 +131,25 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.74), rgba(0,0,0,.38)),
-        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.52));
+        linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.48)),
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.58));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.58), rgba(6,75,56,.66)),
-        linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.40));
+        linear-gradient(90deg,rgba(0,0,0,.58),rgba(6,75,56,.76)),
+        linear-gradient(180deg,rgba(0,0,0,.14),rgba(0,0,0,.44));
+    }
+
+    .section.dark::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.90),rgba(0,0,0,.62)),
+        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.66));
     }
 
     .hero{
-      min-height:720px;
+      min-height:760px;
       display:flex;
       align-items:center;
     }
@@ -151,14 +157,14 @@
     .content{
       position:relative;
       z-index:1;
-      padding:58px 42px;
-      max-width:1060px;
+      padding:62px 42px;
+      max-width:1080px;
     }
 
     .hero .content{
-      max-width:950px;
-      padding-top:78px;
-      padding-bottom:78px;
+      max-width:980px;
+      padding-top:82px;
+      padding-bottom:82px;
     }
 
     .eyebrow{
@@ -168,32 +174,26 @@
       font-size:15px;
       font-weight:900;
       margin-bottom:22px;
-      text-shadow:0 2px 12px rgba(0,0,0,.75);
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     h1,h2,h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
-      color:var(--white);
       line-height:1.06;
       text-shadow:0 3px 16px rgba(0,0,0,.88);
     }
 
     h1{
-      font-size:clamp(48px,6vw,90px);
+      font-size:clamp(48px,6vw,92px);
       margin-bottom:34px;
-      max-width:950px;
-    }
-
-    h1 span,
-    h2 span{
-      color:var(--gold2);
+      max-width:980px;
     }
 
     h2{
-      font-size:clamp(40px,5vw,74px);
+      font-size:clamp(40px,5vw,76px);
       margin-bottom:34px;
-      max-width:980px;
+      max-width:1000px;
     }
 
     h3{
@@ -202,12 +202,18 @@
       margin-bottom:22px;
     }
 
+    h1 span,
+    h2 span,
+    h3 span{
+      color:var(--gold2);
+    }
+
     p{
       color:#f2ece1;
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:980px;
+      max-width:1000px;
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
@@ -228,7 +234,6 @@
       display:inline-flex;
       justify-content:center;
       align-items:center;
-      gap:14px;
       padding:22px 32px;
       border:2px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
@@ -236,7 +241,6 @@
       text-transform:uppercase;
       font-weight:900;
       letter-spacing:4px;
-      cursor:pointer;
       box-shadow:0 16px 35px rgba(0,0,0,.35);
     }
 
@@ -247,12 +251,18 @@
 
     .info-box{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:42px 46px;
-      max-width:1040px;
-      margin-top:34px;
+      background:rgba(0,0,0,.50);
+      padding:44px 48px;
+      margin-top:38px;
+      max-width:1060px;
       backdrop-filter:blur(1px);
       box-shadow:0 16px 40px rgba(0,0,0,.35);
+    }
+
+    .info-box h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4.5vw,58px);
+      margin-bottom:22px;
     }
 
     .info-box ul{
@@ -266,8 +276,9 @@
       color:#f7f1e6;
       font-size:22px;
       line-height:1.6;
-      padding-left:28px;
+      padding-left:30px;
       position:relative;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     .info-box li::before{
@@ -279,61 +290,73 @@
       font-weight:900;
     }
 
-    .card-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:28px;
-      margin-top:44px;
-      max-width:1040px;
-    }
-
-    .info-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:44px 46px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.34);
-    }
-
-    .info-card h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.5vw,58px);
-      margin-bottom:22px;
-    }
-
-    .info-card p{
-      color:#f7f1e6;
-      font-size:22px;
-      line-height:1.62;
-      margin-bottom:0;
-    }
-
-    .mini-grid{
+    .guide-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:24px;
       margin-top:38px;
-      max-width:1040px;
+      max-width:1080px;
     }
 
-    .mini-card{
+    .guide-card{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.45);
-      padding:34px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.30);
+      background:rgba(0,0,0,.48);
+      padding:38px;
+      box-shadow:0 16px 40px rgba(0,0,0,.34);
     }
 
-    .mini-card h3{
-      font-size:clamp(30px,4vw,48px);
+    .guide-card h3{
+      font-size:clamp(32px,4vw,52px);
       color:var(--gold2);
       margin-bottom:18px;
     }
 
-    .mini-card p{
-      font-size:20px;
+    .guide-card p{
+      font-size:21px;
+      line-height:1.62;
+      margin-bottom:0;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:40px;
+      max-width:1080px;
+    }
+
+    .process-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.48);
+      padding:34px;
+      min-height:280px;
+    }
+
+    .process-number{
+      color:var(--gold2);
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-weight:900;
+      font-size:13px;
+      margin-bottom:16px;
+    }
+
+    .process-card h3{
+      font-size:clamp(28px,3.8vw,44px);
+      margin-bottom:18px;
+    }
+
+    .process-card p{
+      font-size:19px;
       line-height:1.58;
       margin-bottom:0;
+    }
+
+    .contact-clean{
+      position:relative;
+      z-index:1;
+      padding:76px 42px 88px;
+      max-width:980px;
     }
 
     .simple-footer{
@@ -345,8 +368,12 @@
       border-bottom:1px solid var(--line);
     }
 
-    @media(max-width:800px){
-      .mini-grid{grid-template-columns:1fr}
+    @media(max-width:1000px){
+      .process-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:900px){
+      .guide-grid{grid-template-columns:1fr}
     }
 
     @media(max-width:600px){
@@ -378,11 +405,10 @@
         letter-spacing:2.5px;
       }
 
-      .hero{
-        min-height:720px;
-      }
+      .hero{min-height:760px}
 
-      .content{
+      .content,
+      .contact-clean{
         padding:48px 28px;
       }
 
@@ -406,20 +432,25 @@
       }
 
       .info-box,
-      .info-card,
-      .mini-card{
+      .guide-card,
+      .process-card{
         padding:34px 32px;
       }
 
-      .info-card h3{font-size:38px}
-
-      .info-card p,
-      .info-box li{
-        font-size:21px;
-        line-height:1.62;
+      .info-box h3,
+      .guide-card h3{
+        font-size:38px;
       }
 
-      .simple-footer{font-size:16px}
+      .info-box li,
+      .guide-card p,
+      .process-card p{
+        font-size:21px;
+      }
+
+      .simple-footer{
+        font-size:16px;
+      }
     }
 
     @media(max-width:420px){
@@ -435,7 +466,6 @@
       }
 
       .logo{font-size:25px}
-
       h1{font-size:40px}
       h2{font-size:36px}
     }
@@ -452,6 +482,7 @@
     </header>
 
     <nav class="menu" id="menu">
+      <a href="index.html">Home</a>
       <a href="titancore-structure.html">TitanCore Structure</a>
       <a href="operating-model.html">Operating Model</a>
       <a href="governance.html">Governance</a>
@@ -459,6 +490,7 @@
       <a href="institution.html">Institution</a>
       <a href="business-intelligence.html">Business Intelligence</a>
       <a href="news-media.html">News &amp; Media</a>
+      <a href="contact.html">Contact</a>
     </nav>
 
     <section class="section hero daily-bg" data-bg-group="hero">
@@ -466,25 +498,25 @@
         <div class="eyebrow">Data Thinking</div>
 
         <h1>
-          Use numbers, patterns, and signals to make
-          <span>better decisions.</span>
+          Use information before making
+          <span>business decisions.</span>
         </h1>
 
         <p>
-          Data Thinking explains how business owners, leaders, investors, and
-          professionals can use information to understand performance, customers,
-          markets, risk, opportunity, and direction.
+          Data Thinking helps visitors understand how numbers, reports, customer
+          behavior, market movement, phone calls, email inquiries, service activity,
+          and daily business signals can support better decisions.
         </p>
 
         <p>
-          Data is not only a spreadsheet. Data can be numbers, customer feedback,
-          complaints, reviews, sales activity, website behavior, market movement,
-          phone calls, email inquiries, reports, and daily business signals.
+          This page explains how a business can look at information before choosing
+          a direction. Data Thinking is not only about charts. It is about knowing
+          what to watch, what questions to ask, and what the information may be
+          telling the business.
         </p>
 
         <div class="btn-row">
-          <a href="business-intelligence.html" class="btn">Back to Intelligence ›</a>
-          <a href="contact.html" class="btn">Get In Touch ›</a>
+          <a href="index.html" class="btn">Back Home ›</a>
         </div>
       </div>
     </section>
@@ -494,248 +526,167 @@
         <div class="eyebrow">Data Definition</div>
 
         <h2>
-          Data Thinking means using information before making a move.
+          Data Thinking means using information to understand what is happening.
         </h2>
 
         <p>
-          A business should not depend only on feelings. Good decisions need signs,
-          proof, patterns, and review. Data Thinking helps people ask what the
-          information is showing and what should be done next.
+          Every business creates information. A visitor clicks a page. A customer
+          asks a question. A phone call comes in. A form is submitted. A service is
+          requested. A market changes. A report shows a pattern. Data Thinking helps
+          people notice those signals and use them responsibly.
+        </p>
+
+        <p>
+          Good data does not make the decision by itself. It helps people ask better
+          questions, avoid guessing, compare choices, and understand whether a
+          business direction makes sense.
         </p>
 
         <div class="info-box">
-          <h3>Data Thinking helps answer</h3>
+          <h3>Data Thinking should answer</h3>
           <ul>
-            <li>What is working?</li>
-            <li>What is not working?</li>
+            <li>What information do we have?</li>
+            <li>Where did the information come from?</li>
+            <li>Is the information complete or incomplete?</li>
+            <li>What pattern keeps showing up?</li>
+            <li>What changed from before?</li>
             <li>What is improving?</li>
-            <li>What is getting worse?</li>
-            <li>What are customers asking for?</li>
-            <li>What are customers complaining about?</li>
-            <li>Where is money being made or lost?</li>
-            <li>What pattern keeps repeating?</li>
-            <li>What should be watched before a decision is made?</li>
+            <li>What is getting weaker?</li>
+            <li>What should be checked before making a decision?</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="sources">
+    <section class="section dark daily-bg" data-bg-group="signals">
       <div class="content">
-        <div class="eyebrow">Business Data Sources</div>
+        <div class="eyebrow">Business Signals</div>
 
         <h2>
-          Useful business data can come from many places.
+          Business signals show what people are doing, asking, needing, or avoiding.
         </h2>
 
         <p>
-          A business should learn to recognize information from different sources.
-          Some data is financial, some is operational, some is customer-related,
-          and some comes from outside the business.
+          Data Thinking helps a business pay attention to signals. A signal can be
+          a question from a customer, a repeated complaint, a sudden increase in
+          interest, a slow response time, a market change, or a pattern in form
+          submissions.
         </p>
 
-        <div class="card-grid">
-          <div class="info-card">
-            <h3>Customer Data</h3>
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>Customer Signals</h3>
             <p>
-              Customer data includes questions, complaints, reviews, repeat
-              purchases, service requests, missed calls, inquiries, and feedback.
-              This shows what customers need and what they do not like.
+              Questions, complaints, requests, objections, repeat needs, and buying
+              behavior can show what customers care about.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Sales Data</h3>
+          <div class="guide-card">
+            <h3>Market Signals</h3>
             <p>
-              Sales data shows how many people buy, what they buy, when they buy,
-              what offer works best, and whether the business is growing or slowing.
+              Prices, demand, industry changes, housing movement, business trends,
+              and competitor activity can show market direction.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Operations Data</h3>
+          <div class="guide-card">
+            <h3>Website Signals</h3>
             <p>
-              Operations data shows how fast work moves, where delays happen, how
-              many tasks are completed, and where the process becomes confusing.
+              Page visits, form submissions, button clicks, search topics, and
+              abandoned pages can show what visitors are trying to understand.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Market Data</h3>
+          <div class="guide-card">
+            <h3>Operations Signals</h3>
             <p>
-              Market data includes pricing, demand, competitors, industry trends,
-              stock movement, housing movement, economic news, and global business
-              changes.
+              Delays, repeated mistakes, slow follow-up, missing information, and
+              unfinished work can show where systems need improvement.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="metrics">
+    <section class="section green daily-bg" data-bg-group="numbers">
       <div class="content">
-        <div class="eyebrow">Important Numbers</div>
+        <div class="eyebrow">Numbers & Reports</div>
 
         <h2>
-          A business needs numbers it can understand.
+          Numbers become useful when they are connected to a real question.
         </h2>
 
         <p>
-          A company does not need to track everything at once. The first step is to
-          track the numbers that show whether the business is healthy, weak,
-          growing, or at risk.
+          A number by itself does not always explain the business. The key is to
+          connect the number to a question. Is traffic increasing? Are customers
+          asking for the same service? Are people leaving before they contact the
+          company? Are costs rising? Are response times improving?
         </p>
 
-        <div class="mini-grid">
-          <div class="mini-card">
-            <h3>Revenue</h3>
-            <p>
-              Revenue shows how much money is coming in from sales, services,
-              customers, or business activity.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Cost</h3>
-            <p>
-              Cost shows how much money is being spent to operate, deliver service,
-              advertise, hire, buy supplies, or maintain systems.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Profit</h3>
-            <p>
-              Profit shows what remains after costs. A business can look busy and
-              still be weak if profit is not protected.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Leads</h3>
-            <p>
-              Leads show how many people are interested. Lead quality matters as
-              much as lead quantity.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Conversion</h3>
-            <p>
-              Conversion shows how many interested people become customers, clients,
-              subscribers, buyers, or appointments.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Retention</h3>
-            <p>
-              Retention shows whether customers return, continue, renew, refer
-              others, or stay connected to the business.
-            </p>
-          </div>
+        <div class="info-box">
+          <h3>Important numbers to review</h3>
+          <ul>
+            <li>How many people visited a page?</li>
+            <li>How many people clicked a button?</li>
+            <li>How many people submitted a form?</li>
+            <li>How many calls came in?</li>
+            <li>How many inquiries became real opportunities?</li>
+            <li>How long did follow-up take?</li>
+            <li>How many requests stayed unfinished?</li>
+            <li>How many repeated questions or problems appeared?</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section class="section daily-bg" data-bg-group="patterns">
       <div class="content">
-        <div class="eyebrow">Pattern Recognition</div>
+        <div class="eyebrow">Pattern Awareness</div>
 
         <h2>
-          Patterns often tell the truth before people say it clearly.
+          Patterns help a business see what keeps repeating.
         </h2>
 
         <p>
-          Data Thinking helps people look for repeated signs. One complaint may be
-          small. Ten similar complaints may show a real problem. One slow week may
-          be normal. Several slow weeks may show a market change.
+          A strong business does not ignore repeated information. If visitors keep
+          asking the same question, the website may need clearer content. If people
+          keep leaving a form, the form may be too long. If one service gets more
+          interest, the company may need to explain it better.
         </p>
 
-        <div class="info-box">
-          <h3>Patterns to watch</h3>
-          <ul>
-            <li>Customers ask the same question repeatedly.</li>
-            <li>Customers stop responding after a certain step.</li>
-            <li>Sales increase during certain weeks, months, or events.</li>
-            <li>Costs rise faster than revenue.</li>
-            <li>Competitors start offering the same service cheaper.</li>
-            <li>Website visitors click but do not contact the business.</li>
-            <li>Employees repeat the same mistake or delay.</li>
-            <li>Market news affects customer confidence.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="reports">
-      <div class="content">
-        <div class="eyebrow">Reports</div>
-
-        <h2>
-          Reports should make the business easier to understand.
-        </h2>
-
-        <p>
-          A report should not only collect numbers. A good report explains what
-          changed, why it matters, what risk appears, what opportunity appears, and
-          what decision may be needed.
-        </p>
-
-        <div class="card-grid">
-          <div class="info-card">
-            <h3>Daily Notes</h3>
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>Repeated Questions</h3>
             <p>
-              Daily notes can track calls, messages, issues, customer questions,
-              service problems, urgent tasks, and important events.
+              Repeated questions show where visitors need clearer education,
+              better page structure, or a stronger explanation.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Weekly Reports</h3>
+          <div class="guide-card">
+            <h3>Repeated Delays</h3>
             <p>
-              Weekly reports can summarize leads, sales, expenses, projects,
-              customer feedback, completed tasks, problems, and next steps.
+              Repeated delays show where the workflow, routing, staffing, or
+              follow-up process may need improvement.
             </p>
           </div>
 
-          <div class="info-card">
-            <h3>Monthly Reviews</h3>
+          <div class="guide-card">
+            <h3>Repeated Interest</h3>
             <p>
-              Monthly reviews can show business direction, growth, risk, financial
-              health, department performance, and long-term planning needs.
+              Repeated interest can show demand, opportunity, or a service area
+              that deserves more public explanation.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section daily-bg" data-bg-group="risk">
-      <div class="content">
-        <div class="eyebrow">Warning Signs</div>
-
-        <h2>
-          Data can warn a business before the problem becomes serious.
-        </h2>
-
-        <p>
-          A business should pay attention to warning signs early. Data Thinking
-          helps leaders see risk before it becomes expensive, public, or difficult
-          to repair.
-        </p>
-
-        <div class="info-box">
-          <h3>Common warning signs</h3>
-          <ul>
-            <li>More complaints than usual.</li>
-            <li>Customers ask for refunds or stop responding.</li>
-            <li>Sales drop while advertising costs rise.</li>
-            <li>Tasks are completed late repeatedly.</li>
-            <li>Cash flow becomes tight.</li>
-            <li>Important documents or follow-ups are missed.</li>
-            <li>Competitors move faster or become more visible.</li>
-            <li>Market news begins to affect customer decisions.</li>
-          </ul>
+          <div class="guide-card">
+            <h3>Repeated Problems</h3>
+            <p>
+              Repeated problems should be documented, reviewed, corrected, and
+              watched so they do not keep damaging the business.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -745,99 +696,185 @@
         <div class="eyebrow">Decision Support</div>
 
         <h2>
-          Data should support action, not just sit in a file.
+          Data Thinking supports decisions, but it does not replace judgment.
         </h2>
 
         <p>
-          Data becomes useful when it helps someone make a better decision. The
-          goal is not to collect information forever. The goal is to understand what
-          the business should do next.
+          Data helps people see direction, but leadership still has to decide what
+          the information means. A business should not act only because one number
+          looks good or bad. It should compare the information, check the source,
+          review the risk, and understand the bigger picture.
         </p>
 
-        <div class="mini-grid">
-          <div class="mini-card">
-            <h3>Continue</h3>
-            <p>
-              If the numbers, feedback, and results are strong, the business may
-              continue the same direction with discipline.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Improve</h3>
-            <p>
-              If the idea is good but the results are weak, the business may improve
-              the offer, process, message, or follow-up.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Pause</h3>
-            <p>
-              If risk is rising or information is missing, the business may pause
-              before spending more money or expanding.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Stop</h3>
-            <p>
-              If the data shows weak demand, poor margins, high risk, or low trust,
-              the business may need to stop or change direction.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="questions">
-      <div class="content">
-        <div class="eyebrow">Data Questions</div>
-
-        <h2>
-          Good questions turn data into understanding.
-        </h2>
-
         <div class="info-box">
-          <h3>Questions to ask when reviewing data</h3>
+          <h3>Before using data, ask</h3>
           <ul>
-            <li>What changed compared to last week or last month?</li>
-            <li>What number matters most right now?</li>
-            <li>What customer behavior keeps repeating?</li>
-            <li>What part of the process creates delays?</li>
-            <li>What cost is increasing too fast?</li>
-            <li>What service or product is getting the most attention?</li>
-            <li>What is causing customers to leave?</li>
-            <li>What is causing customers to trust the business?</li>
-            <li>What decision can be made from this information?</li>
-            <li>What information is still missing?</li>
+            <li>Is the information recent?</li>
+            <li>Is the information reliable?</li>
+            <li>Is the sample too small?</li>
+            <li>Is the pattern real or temporary?</li>
+            <li>Could something else explain the result?</li>
+            <li>What risk comes with acting too fast?</li>
+            <li>What risk comes with waiting too long?</li>
+            <li>Who should review this before action is taken?</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="future">
+    <section class="section dark daily-bg" data-bg-group="process">
+      <div class="content">
+        <div class="eyebrow">Data Thinking Process</div>
+
+        <h2>
+          A clean data process keeps information useful.
+        </h2>
+
+        <p>
+          Data Thinking works best when the company has a simple process for
+          collecting, reviewing, comparing, and using information.
+        </p>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="process-number">Step One</div>
+            <h3>Collect</h3>
+            <p>
+              Gather information from forms, calls, emails, website activity,
+              reports, customer questions, and business activity.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Two</div>
+            <h3>Organize</h3>
+            <p>
+              Put the information into the right category so it can be reviewed
+              without confusion.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Three</div>
+            <h3>Compare</h3>
+            <p>
+              Compare information over time to see what changed, what repeated,
+              and what needs attention.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Four</div>
+            <h3>Question</h3>
+            <p>
+              Ask what the information means and whether it is strong enough to
+              support a decision.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Five</div>
+            <h3>Review</h3>
+            <p>
+              Have the information reviewed before using it for major decisions,
+              strategy, spending, or public direction.
+            </p>
+          </div>
+
+          <div class="process-card">
+            <div class="process-number">Step Six</div>
+            <h3>Act</h3>
+            <p>
+              Use the information to improve the page, workflow, service, offer,
+              follow-up, or business plan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="examples">
+      <div class="content">
+        <div class="eyebrow">Data Examples</div>
+
+        <h2>
+          Data Thinking can help different parts of a business.
+        </h2>
+
+        <p>
+          Data can support public pages, business intelligence, customer service,
+          marketing, operations, strategy, and leadership review.
+        </p>
+
+        <div class="guide-grid">
+          <div class="guide-card">
+            <h3>Website Content</h3>
+            <p>
+              If visitors keep clicking a topic, the website may need a deeper
+              page for that topic.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Customer Questions</h3>
+            <p>
+              If visitors keep asking the same question, the company may need to
+              explain that subject more clearly.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Service Demand</h3>
+            <p>
+              If one service keeps receiving attention, the business may need to
+              improve that service path.
+            </p>
+          </div>
+
+          <div class="guide-card">
+            <h3>Operations Problems</h3>
+            <p>
+              If the same delay keeps happening, the business may need a better
+              process, better routing, or better follow-up.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="future">
       <div class="content">
         <div class="eyebrow">Future Data Intelligence</div>
 
         <h2>
-          Later this page can connect to live dashboards and reports.
+          Later, this page can connect to live data and dashboard tools.
         </h2>
 
         <p>
-          In a future phase, this page can connect to live dashboards, business
-          forms, customer records, reports, market feeds, AI summaries, and Supabase
-          storage. That would allow TitanCore pages to show current business
-          learning, daily signals, and organized data education.
+          In a future version, TitanCore can connect public pages, forms, visitor
+          activity, search activity, market updates, business learning, daily
+          signals, and organized data education.
         </p>
 
         <p>
           For now, this page gives visitors a strong public explanation of Data
           Thinking and how information can support smarter business decisions.
         </p>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="contact">
+      <div class="contact-clean">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence
+          questions, or TitanCore-related information, contact TitanCore Holdings.
+        </p>
 
         <div class="btn-row">
-          <a href="business-intelligence.html" class="btn">Back to Intelligence ›</a>
           <a href="contact.html" class="btn">Get In Touch ›</a>
         </div>
       </div>
@@ -861,43 +898,43 @@
       hero: [
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
       ],
       definition: [
         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
       ],
-      sources: [
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
+      signals: [
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
       ],
-      metrics: [
+      numbers: [
         "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
       ],
       patterns: [
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
-      ],
-      reports: [
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85"
-      ],
-      risk: [
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
       ],
       decisions: [
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
       ],
-      questions: [
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85"
+      process: [
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85"
+      ],
+      examples: [
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
       ],
       future: [
         "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      contact: [
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
       ]
     };
 
@@ -905,7 +942,7 @@
       const sections = document.querySelectorAll(".daily-bg");
       const day = new Date().getDate();
 
-      sections.forEach(function(section, index){
+      sections.forEach(function(section,index){
         const group = section.dataset.bgGroup || "hero";
         const images = backgroundSets[group] || backgroundSets.hero;
         const selected = images[(day + index) % images.length];
