@@ -1,0 +1,936 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Systems Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+      overflow:hidden;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;height:76px;
+      border:3px solid var(--gold);
+      display:grid;place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:var(--white);
+      font-size:36px;
+      cursor:pointer;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{color:var(--gold2);padding-left:8px}
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.52)),
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.62));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.62),rgba(6,75,56,.82)),
+        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));
+    }
+
+    .section.dark::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.70)),
+        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.72));
+    }
+
+    .hero{
+      min-height:820px;
+      display:flex;
+      align-items:center;
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:64px 42px;
+      max-width:1080px;
+    }
+
+    .hero .content{
+      padding-top:84px;
+      padding-bottom:84px;
+      max-width:1040px;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:6px;
+      font-size:15px;
+      font-weight:900;
+      margin-bottom:22px;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      line-height:1.06;
+      text-shadow:0 3px 16px rgba(0,0,0,.88);
+    }
+
+    h1{
+      font-size:clamp(48px,6vw,92px);
+      margin-bottom:34px;
+      max-width:1040px;
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,76px);
+      margin-bottom:34px;
+      max-width:1040px;
+    }
+
+    h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4.8vw,60px);
+      margin-bottom:24px;
+    }
+
+    h1 span,h2 span,h3 span{color:var(--gold2)}
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:1040px;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
+    }
+
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      margin-top:38px;
+    }
+
+    .btn{
+      min-width:250px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      padding:22px 32px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:4px;
+      box-shadow:0 16px 35px rgba(0,0,0,.35);
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .box,.daily-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:44px 48px;
+      margin-top:38px;
+      max-width:1060px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      backdrop-filter:blur(1px);
+    }
+
+    .box ul{
+      list-style:none;
+      display:grid;
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .box li{
+      color:#f7f1e6;
+      font-size:22px;
+      line-height:1.6;
+      padding-left:30px;
+      position:relative;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
+    }
+
+    .box li::before{
+      content:"›";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--gold2);
+      font-weight:900;
+    }
+
+    .systems-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      margin-top:42px;
+      max-width:1060px;
+    }
+
+    .systems-card{
+      display:block;
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:40px;
+      min-height:320px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      transition:.25s ease;
+    }
+
+    .systems-card:hover{
+      background:rgba(6,75,56,.82);
+      transform:translateY(-3px);
+    }
+
+    .systems-card h3{
+      font-size:clamp(32px,4.5vw,56px);
+      margin-bottom:20px;
+    }
+
+    .systems-card p{
+      font-size:21px;
+      line-height:1.62;
+      margin:0;
+    }
+
+    .card-line{
+      height:1px;
+      background:rgba(215,179,93,.65);
+      margin:34px 0 26px;
+    }
+
+    .systems-card strong{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .systems-card strong span{
+      color:var(--gold2);
+      font-size:42px;
+      line-height:0;
+    }
+
+    .three-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:38px;
+      max-width:1060px;
+    }
+
+    .small-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:30px;
+      min-height:240px;
+      box-shadow:0 16px 40px rgba(0,0,0,.30);
+    }
+
+    .small-box .label{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .small-box h3{
+      font-size:clamp(28px,3.6vw,42px);
+      margin-bottom:16px;
+    }
+
+    .small-box p{
+      font-size:19px;
+      line-height:1.58;
+      margin-bottom:0;
+    }
+
+    .contact-clean{
+      position:relative;
+      z-index:1;
+      padding:76px 42px 88px;
+      max-width:980px;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+      border-bottom:1px solid var(--line);
+    }
+
+    @media(max-width:1000px){
+      .three-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:900px){
+      .systems-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .hero{min-height:760px}
+      .content,.contact-clean{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      h3{font-size:38px}
+      p{font-size:21px;line-height:1.68}
+      .eyebrow{font-size:13px;letter-spacing:5px}
+      .btn-row,.btn{width:100%}
+      .box,.daily-card,.systems-card,.small-box{padding:34px 32px}
+      .box li,.systems-card p{font-size:21px;line-height:1.68}
+      .systems-card strong{font-size:15px;letter-spacing:4px}
+      .simple-footer{font-size:16px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="#systems-map">Systems Areas</a>
+      <a href="#forms">Forms &amp; Intake</a>
+      <a href="#routing">Routing &amp; Follow-Up</a>
+      <a href="#approvals">Reviews &amp; Approvals</a>
+      <a href="#records">Records &amp; Archives</a>
+      <a href="#dashboard">Reports &amp; Dashboards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="hero">
+      <div class="content">
+        <div class="eyebrow">Business Systems Intelligence</div>
+
+        <h1>
+          A public guide for forms, routing, follow-up, approvals,
+          records, dashboards, and <span>repeatable business systems.</span>
+        </h1>
+
+        <p>
+          Business Systems Intelligence helps visitors understand how a company
+          becomes more organized. A business system is the structure behind the
+          work: intake, routing, communication, review, approval, records, reporting,
+          and follow-up.
+        </p>
+
+        <p>
+          A strong business system reduces confusion. It helps work move the same
+          way every time so the company does not depend only on memory, scattered
+          messages, or last-minute decisions.
+        </p>
+
+        <div class="btn-row">
+          <a href="index.html" class="btn">Back Home ›</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="daily">
+      <div class="content">
+        <div class="eyebrow">Daily Systems Focus</div>
+
+        <h2>Today’s business systems focus.</h2>
+
+        <p>
+          This section changes automatically by date. It gives visitors one simple
+          systems idea to think about each day.
+        </p>
+
+        <div class="daily-card">
+          <div class="eyebrow" id="dailyDate">Loading date...</div>
+          <h3 id="dailyTitle">Loading systems focus...</h3>
+          <p id="dailyText">Loading systems note...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="map" id="systems-map">
+      <div class="content">
+        <div class="eyebrow">Business Systems Map</div>
+
+        <h2>Choose the system area you want to understand.</h2>
+
+        <p>
+          Business systems should be easy to follow. Visitors should understand how
+          work enters, how it is routed, how it is reviewed, where records are saved,
+          and how leaders see what is happening.
+        </p>
+
+        <div class="systems-grid">
+
+          <a href="#forms" class="systems-card">
+            <h3>Forms &amp; Intake</h3>
+            <p>
+              Understand how forms, calls, emails, and public inquiries collect the
+              right information before work begins.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Forms <span>›</span></strong>
+          </a>
+
+          <a href="#routing" class="systems-card">
+            <h3>Routing &amp; Follow-Up</h3>
+            <p>
+              Learn how requests should be directed to the right page, inbox,
+              department, team, dashboard, or next step.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Routing <span>›</span></strong>
+          </a>
+
+          <a href="#approvals" class="systems-card">
+            <h3>Reviews &amp; Approvals</h3>
+            <p>
+              Review how important work should be checked, corrected, approved, and
+              completed before being treated as final.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Approvals <span>›</span></strong>
+          </a>
+
+          <a href="#records" class="systems-card">
+            <h3>Records &amp; Archives</h3>
+            <p>
+              Understand why documents, notes, messages, reports, and decisions
+              should be saved in an organized way.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Records <span>›</span></strong>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="foundation">
+      <div class="content">
+        <div class="eyebrow">Systems Foundation</div>
+
+        <h2>Business systems make work repeatable.</h2>
+
+        <p>
+          A business system is not only software. It is the full path the work
+          follows. A good system tells people what to collect, where to send it, who
+          reviews it, how to follow up, where to save it, and what report should
+          show the result.
+        </p>
+
+        <div class="box">
+          <h3>A business system should answer</h3>
+          <ul>
+            <li>What information must be collected first?</li>
+            <li>Where does the request go?</li>
+            <li>Who is responsible for the next step?</li>
+            <li>What review is required?</li>
+            <li>What approval is required?</li>
+            <li>How is the customer updated?</li>
+            <li>Where are records saved?</li>
+            <li>What report shows the status?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="forms" id="forms">
+      <div class="content">
+        <div class="eyebrow">Forms &amp; Intake</div>
+
+        <h2>Forms and intake collect the information a business needs.</h2>
+
+        <p>
+          Intake is the first part of the system. If the business does not collect
+          the right information at the beginning, the rest of the process becomes
+          slower and more confusing.
+        </p>
+
+        <div class="three-grid">
+          <div class="small-box">
+            <div class="label">Basic Info</div>
+            <h3>Who</h3>
+            <p>Collect the person, business, contact information, and reason for the request.</p>
+          </div>
+
+          <div class="small-box">
+            <div class="label">Request</div>
+            <h3>What</h3>
+            <p>Identify the service, question, issue, document, or business need being submitted.</p>
+          </div>
+
+          <div class="small-box">
+            <div class="label">Direction</div>
+            <h3>Next</h3>
+            <p>Send the request to the right page, inbox, department, workflow, or follow-up path.</p>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>Intake should collect</h3>
+          <ul>
+            <li>Name and contact information.</li>
+            <li>Business or organization name if needed.</li>
+            <li>Type of request or topic.</li>
+            <li>Urgency or timeline.</li>
+            <li>Location or service area if needed.</li>
+            <li>Documents or notes if needed.</li>
+            <li>Preferred response method.</li>
+            <li>Consent or confirmation where appropriate.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="routing" id="routing">
+      <div class="content">
+        <div class="eyebrow">Routing &amp; Follow-Up</div>
+
+        <h2>Routing makes sure the request goes to the right place.</h2>
+
+        <p>
+          Routing is how a business prevents messages from sitting in the wrong
+          place. A request should not be lost because it went to the wrong inbox,
+          wrong department, wrong person, or wrong page.
+        </p>
+
+        <div class="box">
+          <h3>Routing should define</h3>
+          <ul>
+            <li>Which request goes to public contact.</li>
+            <li>Which request goes to a company page.</li>
+            <li>Which request goes to institution or investor information.</li>
+            <li>Which request needs a form.</li>
+            <li>Which request needs a document review.</li>
+            <li>Which request needs follow-up.</li>
+            <li>Who is responsible for responding.</li>
+            <li>What happens if the request is incomplete.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>Follow-up should prevent</h3>
+          <ul>
+            <li>Customers waiting too long.</li>
+            <li>Requests being forgotten.</li>
+            <li>Duplicate work.</li>
+            <li>Important messages being missed.</li>
+            <li>Incomplete information blocking progress.</li>
+            <li>No record of what happened.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="approvals" id="approvals">
+      <div class="content">
+        <div class="eyebrow">Reviews &amp; Approvals</div>
+
+        <h2>Important work should be reviewed before it is final.</h2>
+
+        <p>
+          Reviews and approvals protect the company from mistakes. They help confirm
+          that information is complete, the right steps were followed, and the final
+          work is ready before it is sent, filed, published, or completed.
+        </p>
+
+        <div class="box">
+          <h3>Review and approval steps should check</h3>
+          <ul>
+            <li>Is the information complete?</li>
+            <li>Is the request assigned correctly?</li>
+            <li>Was the correct process followed?</li>
+            <li>Is anything missing or unclear?</li>
+            <li>Does the work meet the company standard?</li>
+            <li>Does a manager or reviewer need to approve it?</li>
+            <li>Was the final result documented?</li>
+            <li>Was the customer or stakeholder updated?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="records" id="records">
+      <div class="content">
+        <div class="eyebrow">Records &amp; Archives</div>
+
+        <h2>Records keep the company from losing important information.</h2>
+
+        <p>
+          A business needs organized records so people can understand what happened,
+          when it happened, who handled it, what decision was made, and what needs
+          to happen next.
+        </p>
+
+        <div class="box">
+          <h3>Records should include</h3>
+          <ul>
+            <li>Submitted forms.</li>
+            <li>Customer or professional inquiries.</li>
+            <li>Emails and important messages.</li>
+            <li>Documents and attachments.</li>
+            <li>Approval notes.</li>
+            <li>Reports and summaries.</li>
+            <li>Follow-up records.</li>
+            <li>Final decisions or completion notes.</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>Good archives help with</h3>
+          <ul>
+            <li>Finding old information.</li>
+            <li>Reviewing past decisions.</li>
+            <li>Reducing repeated questions.</li>
+            <li>Supporting accountability.</li>
+            <li>Preparing reports.</li>
+            <li>Protecting the company from confusion.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="dashboard" id="dashboard">
+      <div class="content">
+        <div class="eyebrow">Reports &amp; Dashboards</div>
+
+        <h2>Dashboards help leadership see the system.</h2>
+
+        <p>
+          Reports and dashboards should show what is coming in, what is being worked
+          on, what is delayed, what is complete, and what needs leadership attention.
+        </p>
+
+        <div class="three-grid">
+          <div class="small-box">
+            <div class="label">Incoming</div>
+            <h3>New</h3>
+            <p>Show new forms, new messages, new requests, new leads, and new tasks.</p>
+          </div>
+
+          <div class="small-box">
+            <div class="label">Progress</div>
+            <h3>Open</h3>
+            <p>Show pending work, assigned work, follow-up needed, delayed items, and review status.</p>
+          </div>
+
+          <div class="small-box">
+            <div class="label">Closed</div>
+            <h3>Done</h3>
+            <p>Show completed work, closed requests, saved records, and final reports.</p>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>A dashboard should show</h3>
+          <ul>
+            <li>New activity.</li>
+            <li>Pending work.</li>
+            <li>Delayed work.</li>
+            <li>Follow-up needed.</li>
+            <li>Approvals needed.</li>
+            <li>Completed work.</li>
+            <li>Reports and summaries.</li>
+            <li>Leadership attention items.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="automation">
+      <div class="content">
+        <div class="eyebrow">Automation Readiness</div>
+
+        <h2>A business should organize the system before adding automation.</h2>
+
+        <p>
+          Automation works better when the process is already clear. Before a
+          company automates, it should know what information is needed, where it
+          goes, who reviews it, what conditions matter, and what result should happen.
+        </p>
+
+        <div class="box">
+          <h3>Before automation, check</h3>
+          <ul>
+            <li>Is the intake form clear?</li>
+            <li>Are categories defined?</li>
+            <li>Is routing clear?</li>
+            <li>Are review steps clear?</li>
+            <li>Are approval rules clear?</li>
+            <li>Are records saved properly?</li>
+            <li>Are reports needed?</li>
+            <li>Is a human review needed before final action?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="future">
+      <div class="content">
+        <div class="eyebrow">Future Business Systems Tools</div>
+
+        <h2>This page can later become a live systems guide.</h2>
+
+        <p>
+          In the future, this page can include public workflow examples, form
+          templates, routing diagrams, approval checklists, archive guides, dashboard
+          education, and business systems readiness questions.
+        </p>
+
+        <div class="box">
+          <h3>Future public features</h3>
+          <ul>
+            <li>Daily systems topic.</li>
+            <li>Form and intake guide.</li>
+            <li>Routing checklist.</li>
+            <li>Follow-up checklist.</li>
+            <li>Approval process guide.</li>
+            <li>Recordkeeping guide.</li>
+            <li>Dashboard readiness questions.</li>
+            <li>Links back to Business Intelligence.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="contact" id="contact">
+      <div class="contact-clean">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence
+          questions, or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <div class="btn-row">
+          <a href="contact.html" class="btn">Get In Touch ›</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
+    }
+
+    const backgroundSets = {
+      hero:[
+        "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+      ],
+      daily:[
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85"
+      ],
+      map:[
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
+      ],
+      foundation:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      forms:[
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
+      ],
+      routing:[
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85"
+      ],
+      approvals:[
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85"
+      ],
+      records:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ],
+      dashboard:[
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85"
+      ],
+      automation:[
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85"
+      ],
+      future:[
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      ],
+      contact:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const systemsItems = [
+      {
+        title:"A form should collect the right information from the beginning.",
+        text:"Today’s systems focus is intake. Strong intake prevents confusion, missing details, and unnecessary follow-up."
+      },
+      {
+        title:"Routing should send the request to the right place.",
+        text:"Today’s systems focus is routing. A clear route prevents messages from sitting in the wrong inbox or workflow."
+      },
+      {
+        title:"Reviews protect the company before work becomes final.",
+        text:"Today’s systems focus is review. Important work should be checked before it is approved, sent, published, or closed."
+      },
+      {
+        title:"Records help the business remember what happened.",
+        text:"Today’s systems focus is archives. Saved records make it easier to review past work, decisions, and follow-up."
+      },
+      {
+        title:"Dashboards help leaders see the system.",
+        text:"Today’s systems focus is reporting. A useful dashboard shows new work, pending work, delays, approvals, and completed work."
+      }
+    ];
+
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
+
+      sections.forEach(function(section,index){
+        const group = section.dataset.bgGroup || "hero";
+        const images = backgroundSets[group] || backgroundSets.hero;
+        const selected = images[(day + index) % images.length];
+        section.style.backgroundImage = "url('" + selected + "')";
+      });
+    }
+
+    function applyDailySystems(){
+      const today = new Date();
+      const selected = systemsItems[today.getDate() % systemsItems.length];
+
+      document.getElementById("dailyDate").textContent =
+        today.toLocaleDateString("en-US", {
+          weekday:"long",
+          year:"numeric",
+          month:"long",
+          day:"numeric"
+        });
+
+      document.getElementById("dailyTitle").textContent = selected.title;
+      document.getElementById("dailyText").textContent = selected.text;
+    }
+
+    applyDailyBackgrounds();
+    applyDailySystems();
+  </script>
+</body>
+</html>
