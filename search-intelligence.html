@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+      overflow:hidden;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;height:76px;
+      border:3px solid var(--gold);
+      display:grid;place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:var(--white);
+      font-size:36px;
+      cursor:pointer;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{color:var(--gold2);padding-left:8px}
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.52)),
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.62));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.62),rgba(6,75,56,.82)),
+        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));
+    }
+
+    .section.dark::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.70)),
+        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.72));
+    }
+
+    .hero{
+      min-height:820px;
+      display:flex;
+      align-items:center;
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:64px 42px;
+      max-width:1080px;
+    }
+
+    .hero .content{
+      padding-top:84px;
+      padding-bottom:84px;
+      max-width:1040px;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:6px;
+      font-size:15px;
+      font-weight:900;
+      margin-bottom:22px;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      line-height:1.06;
+      text-shadow:0 3px 16px rgba(0,0,0,.88);
+    }
+
+    h1{
+      font-size:clamp(48px,6vw,92px);
+      margin-bottom:34px;
+      max-width:1040px;
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,76px);
+      margin-bottom:34px;
+      max-width:1040px;
+    }
+
+    h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4.8vw,60px);
+      margin-bottom:24px;
+    }
+
+    h1 span,h2 span,h3 span{color:var(--gold2)}
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:1040px;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
+    }
+
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      margin-top:38px;
+    }
+
+    .btn{
+      min-width:250px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      padding:22px 32px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:4px;
+      box-shadow:0 16px 35px rgba(0,0,0,.35);
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .box,.daily-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:44px 48px;
+      margin-top:38px;
+      max-width:1060px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      backdrop-filter:blur(1px);
+    }
+
+    .box ul{
+      list-style:none;
+      display:grid;
+      gap:18px;
+      margin-top:20px;
+    }
+
+    .box li{
+      color:#f7f1e6;
+      font-size:22px;
+      line-height:1.6;
+      padding-left:30px;
+      position:relative;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
+    }
+
+    .box li::before{
+      content:"›";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--gold2);
+      font-weight:900;
+    }
+
+    .research-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      margin-top:42px;
+      max-width:1060px;
+    }
+
+    .research-card{
+      display:block;
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:40px;
+      min-height:320px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      transition:.25s ease;
+    }
+
+    .research-card:hover{
+      background:rgba(6,75,56,.82);
+      transform:translateY(-3px);
+    }
+
+    .research-card h3{
+      font-size:clamp(32px,4.5vw,56px);
+      margin-bottom:20px;
+    }
+
+    .research-card p{
+      font-size:21px;
+      line-height:1.62;
+      margin:0;
+    }
+
+    .card-line{
+      height:1px;
+      background:rgba(215,179,93,.65);
+      margin:34px 0 26px;
+    }
+
+    .research-card strong{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .research-card strong span{
+      color:var(--gold2);
+      font-size:42px;
+      line-height:0;
+    }
+
+    .three-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:38px;
+      max-width:1060px;
+    }
+
+    .small-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:30px;
+      min-height:240px;
+      box-shadow:0 16px 40px rgba(0,0,0,.30);
+    }
+
+    .small-box .label{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .small-box h3{
+      font-size:clamp(28px,3.6vw,42px);
+      margin-bottom:16px;
+    }
+
+    .small-box p{
+      font-size:19px;
+      line-height:1.58;
+      margin-bottom:0;
+    }
+
+    .contact-clean{
+      position:relative;
+      z-index:1;
+      padding:76px 42px 88px;
+      max-width:980px;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+      border-bottom:1px solid var(--line);
+    }
+
+    @media(max-width:1000px){
+      .three-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:900px){
+      .research-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .hero{min-height:760px}
+      .content,.contact-clean{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      h3{font-size:38px}
+      p{font-size:21px;line-height:1.68}
+      .eyebrow{font-size:13px;letter-spacing:5px}
+      .btn-row,.btn{width:100%}
+      .box,.daily-card,.research-card,.small-box{padding:34px 32px}
+      .box li,.research-card p{font-size:21px;line-height:1.68}
+      .research-card strong{font-size:15px;letter-spacing:4px}
+      .simple-footer{font-size:16px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="#research-map">Research Areas</a>
+      <a href="#market-research">Market Research</a>
+      <a href="#customer-research">Customer Research</a>
+      <a href="#competitor-research">Competitor Research</a>
+      <a href="#risk-research">Risk Research</a>
+      <a href="#decision-checklist">Decision Checklist</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="hero">
+      <div class="content">
+        <div class="eyebrow">Research Intelligence</div>
+
+        <h1>
+          A public guide for researching a business, market, customer,
+          competitor, and <span>risk before action.</span>
+        </h1>
+
+        <p>
+          Research Intelligence helps visitors understand what should be checked
+          before opening a business, entering a market, spending serious money,
+          signing a lease, buying equipment, hiring help, or launching a service.
+        </p>
+
+        <p>
+          Research does not mean guessing. It means asking the right questions,
+          comparing the right information, and slowing down long enough to avoid
+          expensive mistakes.
+        </p>
+
+        <div class="btn-row">
+          <a href="index.html" class="btn">Back Home ›</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="daily">
+      <div class="content">
+        <div class="eyebrow">Daily Research Focus</div>
+
+        <h2>Today’s research focus.</h2>
+
+        <p>
+          This section changes automatically by date. It gives visitors one simple
+          research idea to think about each day.
+        </p>
+
+        <div class="daily-card">
+          <div class="eyebrow" id="dailyDate">Loading date...</div>
+          <h3 id="dailyTitle">Loading research focus...</h3>
+          <p id="dailyText">Loading research note...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="map" id="research-map">
+      <div class="content">
+        <div class="eyebrow">Research Intelligence Map</div>
+
+        <h2>Choose the research area you want to understand.</h2>
+
+        <p>
+          Research should not be one general question. It should be organized by
+          market, customer, competitor, risk, cost, timing, and decision readiness.
+        </p>
+
+        <div class="research-grid">
+
+          <a href="#market-research" class="research-card">
+            <h3>Market Research</h3>
+            <p>
+              Review demand, location, timing, market size, pricing pressure,
+              industry movement, and whether the opportunity is strong enough.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Market <span>›</span></strong>
+          </a>
+
+          <a href="#customer-research" class="research-card">
+            <h3>Customer Research</h3>
+            <p>
+              Study who the customer is, what problem they have, how often they need
+              help, what they can afford, and what makes them trust a company.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Customer <span>›</span></strong>
+          </a>
+
+          <a href="#competitor-research" class="research-card">
+            <h3>Competitor Research</h3>
+            <p>
+              Compare who already serves the market, what they charge, what they do
+              well, where they are weak, and what customers complain about.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Competitors <span>›</span></strong>
+          </a>
+
+          <a href="#risk-research" class="research-card">
+            <h3>Risk Research</h3>
+            <p>
+              Review licensing, legal issues, insurance, costs, customer complaints,
+              market weakness, funding pressure, and operational risk.
+            </p>
+            <div class="card-line"></div>
+            <strong>Open Risk <span>›</span></strong>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="market" id="market-research">
+      <div class="content">
+        <div class="eyebrow">Market Research</div>
+
+        <h2>Market research helps visitors understand if the opportunity is real.</h2>
+
+        <p>
+          A market can look attractive from the outside, but the real question is
+          whether enough people need the service, whether they are already being
+          served, whether prices can support the business, and whether timing is
+          right.
+        </p>
+
+        <div class="box">
+          <h3>Market research questions</h3>
+          <ul>
+            <li>Is the market growing, stable, or weakening?</li>
+            <li>How many people need this service?</li>
+            <li>Is there enough demand to support another business?</li>
+            <li>What is the average price customers already pay?</li>
+            <li>Is the market seasonal or steady all year?</li>
+            <li>Are customers actively searching for this service?</li>
+            <li>Is the market local, regional, national, or online?</li>
+            <li>What economic signals could affect demand?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="customer" id="customer-research">
+      <div class="content">
+        <div class="eyebrow">Customer Research</div>
+
+        <h2>Customer research helps visitors understand who they are trying to serve.</h2>
+
+        <p>
+          A business should not try to serve everybody. It should understand the
+          exact customer, the problem that customer has, what the customer values,
+          and what makes the customer choose one company over another.
+        </p>
+
+        <div class="three-grid">
+          <div class="small-box">
+            <div class="label">Customer Type</div>
+            <h3>Who</h3>
+            <p>Identify whether the customer is a family, business owner, investor, contractor, professional, institution, or local consumer.</p>
+          </div>
+
+          <div class="small-box">
+            <div class="label">Customer Problem</div>
+            <h3>Need</h3>
+            <p>Study what problem they need solved and why the problem matters enough for them to pay.</p>
+          </div>
+
+          <div class="small-box">
+            <div class="label">Customer Trust</div>
+            <h3>Decision</h3>
+            <p>Understand what makes the customer trust, delay, compare, ask questions, or walk away.</p>
+          </div>
+        </div>
+
+        <div class="box">
+          <h3>Customer research questions</h3>
+          <ul>
+            <li>Who is the best customer for this offer?</li>
+            <li>What problem do they need solved?</li>
+            <li>How urgent is the problem?</li>
+            <li>What do they already use or buy?</li>
+            <li>What makes them trust a company?</li>
+            <li>What makes them refuse or delay?</li>
+            <li>How much can they afford?</li>
+            <li>What would make them choose this company instead of another?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="competitor" id="competitor-research">
+      <div class="content">
+        <div class="eyebrow">Competitor Research</div>
+
+        <h2>Competitor research helps visitors see what already exists.</h2>
+
+        <p>
+          Competitors are not only enemies. They are information. They show what
+          customers already buy, what prices are normal, what promises are common,
+          what customers complain about, and where a new business may have room to
+          be better.
+        </p>
+
+        <div class="box">
+          <h3>Competitor research should compare</h3>
+          <ul>
+            <li>Who the strongest competitors are.</li>
+            <li>What they offer.</li>
+            <li>What they charge.</li>
+            <li>How they present themselves online.</li>
+            <li>What customers praise them for.</li>
+            <li>What customers complain about.</li>
+            <li>What services they do not provide well.</li>
+            <li>Where a new company can be clearer, faster, more reliable, or more professional.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="risk" id="risk-research">
+      <div class="content">
+        <div class="eyebrow">Risk Research</div>
+
+        <h2>Risk research helps visitors avoid expensive mistakes.</h2>
+
+        <p>
+          Every business idea has risk. Risk can come from money, licensing,
+          insurance, competition, customer demand, timing, bad contracts, weak
+          operations, poor follow-up, or underestimating the true cost.
+        </p>
+
+        <div class="box">
+          <h3>Risk areas to review</h3>
+          <ul>
+            <li>Startup cost and monthly expenses.</li>
+            <li>Licensing, permits, and registration.</li>
+            <li>Insurance and liability.</li>
+            <li>Contracts, leases, and payment terms.</li>
+            <li>Customer acquisition cost.</li>
+            <li>Competition and pricing pressure.</li>
+            <li>Operational complexity.</li>
+            <li>Economic or market conditions that can reduce demand.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="checklist" id="decision-checklist">
+      <div class="content">
+        <div class="eyebrow">Decision Checklist</div>
+
+        <h2>Good research should lead to a better decision.</h2>
+
+        <p>
+          Research is useful only when it helps someone decide what to do next. A
+          visitor should leave the research process with a clearer understanding of
+          the opportunity, the customer, the risk, the cost, and the first smart
+          step.
+        </p>
+
+        <div class="box">
+          <h3>Before action, visitors should know</h3>
+          <ul>
+            <li>Who the customer is.</li>
+            <li>What problem the customer needs solved.</li>
+            <li>How the market is moving.</li>
+            <li>Who the competitors are.</li>
+            <li>What the normal price range is.</li>
+            <li>What risks must be controlled.</li>
+            <li>What systems are needed to serve customers.</li>
+            <li>Whether the business idea is ready, needs more work, or should wait.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="future">
+      <div class="content">
+        <div class="eyebrow">Future Research Tools</div>
+
+        <h2>This page can later become a live research guide.</h2>
+
+        <p>
+          In the future, this page can include daily research prompts, business
+          topic summaries, competitor research checklists, market search tools,
+          customer profile templates, and public business education updates.
+        </p>
+
+        <div class="box">
+          <h3>Future public features</h3>
+          <ul>
+            <li>Daily research topic.</li>
+            <li>Market research checklist.</li>
+            <li>Competitor comparison guide.</li>
+            <li>Customer profile guide.</li>
+            <li>Risk review guide.</li>
+            <li>Business readiness questions.</li>
+            <li>Public education articles.</li>
+            <li>Links back to Business Intelligence.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="contact" id="contact">
+      <div class="contact-clean">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence
+          questions, or TitanCore-related information, contact TitanCore Holdings.
+          Phone: (800) 827-9016.
+        </p>
+
+        <div class="btn-row">
+          <a href="contact.html" class="btn">Get In Touch ›</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById("menu").classList.toggle("active");
+    }
+
+    const backgroundSets = {
+      hero:[
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
+      ],
+      daily:[
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85"
+      ],
+      map:[
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+      ],
+      market:[
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+      ],
+      customer:[
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      competitor:[
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
+      ],
+      risk:[
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
+      ],
+      checklist:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      future:[
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      ],
+      contact:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const researchItems = [
+      {
+        title:"Study the customer before building the offer.",
+        text:"Today’s research focus is the customer. Identify who they are, what problem they need solved, and what makes them trust a company."
+      },
+      {
+        title:"Compare competitors before choosing a price.",
+        text:"Today’s research focus is competitors. Review what they offer, what they charge, and what customers complain about."
+      },
+      {
+        title:"Check demand before spending money.",
+        text:"Today’s research focus is demand. A business idea needs enough people with a real problem and enough willingness to pay."
+      },
+      {
+        title:"Review risk before signing anything.",
+        text:"Today’s research focus is risk. Review cost, contracts, insurance, licensing, market pressure, and operational complexity."
+      },
+      {
+        title:"Use research to decide the next move.",
+        text:"Today’s research focus is decision-making. Research should help decide whether to start, wait, adjust, or stop."
+      }
+    ];
+
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
+
+      sections.forEach(function(section,index){
+        const group = section.dataset.bgGroup || "hero";
+        const images = backgroundSets[group] || backgroundSets.hero;
+        const selected = images[(day + index) % images.length];
+        section.style.backgroundImage = "url('" + selected + "')";
+      });
+    }
+
+    function applyDailyResearch(){
+      const today = new Date();
+      const selected = researchItems[today.getDate() % researchItems.length];
+
+      document.getElementById("dailyDate").textContent =
+        today.toLocaleDateString("en-US", {
+          weekday:"long",
+          year:"numeric",
+          month:"long",
+          day:"numeric"
+        });
+
+      document.getElementById("dailyTitle").textContent = selected.title;
+      document.getElementById("dailyText").textContent = selected.text;
+    }
+
+    applyDailyBackgrounds();
+    applyDailyResearch();
+  </script>
+</body>
+</html>
