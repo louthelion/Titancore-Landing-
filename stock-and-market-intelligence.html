@@ -3,1005 +3,1485 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stock and Market Intelligence | TitanCore Holdings</title>
+  <title>Stock & Market Intelligence | TitanCore Holdings</title>
 
   <style>
     :root{
-      --black:#020202;
-      --green:#064b38;
-      --green2:#0b684f;
-      --gold:#d7b35d;
-      --gold2:#f0d07a;
-      --white:#f7f1e6;
-      --soft:#d8d0c4;
-      --line:rgba(215,179,93,.78);
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
-    a{color:inherit;text-decoration:none}
-
-    .page{
-      max-width:1180px;
-      margin:0 auto;
+    body{
+      margin:0;
       background:#000;
-      border-left:1px solid var(--line);
-      border-right:1px solid var(--line);
-      min-height:100vh;
-      overflow:hidden;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
     }
 
-    .topbar{
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
       position:sticky;
       top:0;
-      z-index:100;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:12px;
-      padding:14px 24px;
-      background:linear-gradient(180deg,#050505,#010101);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
     }
 
-    .logo{
-      width:76px;
-      height:76px;
-      border:3px solid var(--gold);
-      display:grid;
-      place-items:center;
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:32px;
-      font-weight:700;
-      color:var(--gold2);
-      background:#030303;
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
     }
 
     .brand{
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:clamp(18px,3.5vw,46px);
-      letter-spacing:clamp(1px,.55vw,5px);
-      text-transform:uppercase;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    .brand span{color:var(--gold)}
-
     .menu-btn{
-      width:76px;
-      height:76px;
-      border:3px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:var(--white);
-      font-size:36px;
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:700px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
       cursor:pointer;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
-
-    .menu{
-      display:none;
-      background:#080808;
-      border-bottom:1px solid var(--line);
-      padding:22px 42px 26px;
+    .menu-links{
+      display:grid;
+      gap:8px;
     }
 
-    .menu.active{display:block}
-
-    .menu a{
+    .menu-links a{
       display:block;
-      padding:17px 0;
-      border-bottom:1px solid rgba(215,179,93,.25);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      color:var(--soft);
-      font-size:18px;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
     }
 
-    .menu a:hover{color:var(--gold2);padding-left:8px}
+    .menu-links a:hover{color:var(--gold-soft)}
 
-    .section{
-      position:relative;
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-
-    .section::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.52)),
-        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.62));
-      z-index:0;
-    }
-
-    .section.green::before{
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.62),rgba(6,75,56,.82)),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));
-    }
-
-    .section.dark::before{
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.70)),
-        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.72));
-    }
+    .section{padding:28px 0}
 
     .hero{
-      min-height:820px;
+      padding:34px 0 26px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .hero-copy,
+    .hero-media{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:560px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-copy{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(8,70,56,.45)),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80") center/cover;
+      padding:54px;
       display:flex;
-      align-items:center;
-    }
-
-    .content{
-      position:relative;
-      z-index:1;
-      padding:64px 42px;
-      max-width:1080px;
-    }
-
-    .hero .content{
-      padding-top:84px;
-      padding-bottom:84px;
-      max-width:1040px;
+      flex-direction:column;
+      justify-content:flex-end;
     }
 
     .eyebrow{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:6px;
-      font-size:15px;
+      color:var(--gold-soft);
       font-weight:900;
-      margin-bottom:22px;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
     }
 
-    h1,h2,h3{
-      font-family:Georgia,"Times New Roman",serif;
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
       font-weight:400;
-      line-height:1.06;
-      text-shadow:0 3px 16px rgba(0,0,0,.88);
+      font-family:Georgia, "Times New Roman", serif;
     }
 
     h1{
-      font-size:clamp(48px,6vw,92px);
-      margin-bottom:34px;
-      max-width:1040px;
+      font-size:4.6rem;
+      color:#fff;
+      max-width:900px;
     }
 
-    h2{
-      font-size:clamp(40px,5vw,76px);
-      margin-bottom:34px;
-      max-width:1040px;
-    }
-
-    h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.8vw,60px);
-      margin-bottom:24px;
-    }
-
-    h1 span,h2 span,h3 span{color:var(--gold2)}
+    h1 span,
+    h2 span,
+    h3 span{color:var(--gold-soft)}
 
     p{
-      color:#f2ece1;
-      font-size:22px;
-      line-height:1.72;
-      margin-bottom:26px;
-      max-width:1040px;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.17rem;
+    }
+
+    .hero-copy p{
+      font-size:1.28rem;
+      max-width:870px;
+      margin-bottom:28px;
     }
 
     .btn-row{
       display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      margin-top:38px;
-    }
-
-    .btn{
-      min-width:250px;
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      padding:22px 32px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:#fff;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:4px;
-      box-shadow:0 16px 35px rgba(0,0,0,.35);
-    }
-
-    .btn:hover{background:var(--gold);color:#000}
-
-    .box,.daily-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:44px 48px;
-      margin-top:38px;
-      max-width:1060px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-      backdrop-filter:blur(1px);
-    }
-
-    .box ul{
-      list-style:none;
-      display:grid;
       gap:18px;
-      margin-top:20px;
+      flex-wrap:wrap;
     }
 
-    .box li{
-      color:#f7f1e6;
-      font-size:22px;
-      line-height:1.6;
-      padding-left:30px;
-      position:relative;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
-    }
-
-    .box li::before{
-      content:"›";
-      position:absolute;
-      left:0;
-      top:0;
-      color:var(--gold2);
-      font-weight:900;
-    }
-
-    .market-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:28px;
-      margin-top:42px;
-      max-width:1060px;
-    }
-
-    .market-card{
-      display:block;
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:40px;
-      min-height:320px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
       transition:.25s ease;
     }
 
-    .market-card:hover{
-      background:rgba(6,75,56,.82);
-      transform:translateY(-3px);
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
     }
 
-    .market-card h3{
-      font-size:clamp(32px,4.5vw,56px);
-      margin-bottom:20px;
-    }
-
-    .market-card p{
-      font-size:21px;
-      line-height:1.62;
-      margin:0;
-    }
-
-    .card-line{
-      height:1px;
-      background:rgba(215,179,93,.65);
-      margin:34px 0 26px;
-    }
-
-    .market-card strong{
+    .hero-media{
+      background:#06110f;
       display:flex;
-      justify-content:space-between;
-      align-items:center;
-      color:#fff;
+      flex-direction:column;
+    }
+
+    .media-top{
+      flex:1;
+      min-height:335px;
+      background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1400&q=80") center/cover;
+      position:relative;
+    }
+
+    .media-badge{
+      position:absolute;
+      top:18px;
+      right:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid var(--border);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.86rem;
+      font-weight:800;
+      letter-spacing:2px;
       text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:16px;
-      font-weight:900;
     }
 
-    .market-card strong span{
-      color:var(--gold2);
-      font-size:42px;
-      line-height:0;
-    }
-
-    .three-grid{
+    .media-bottom{
+      padding:24px;
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-      margin-top:38px;
-      max-width:1060px;
+      gap:18px;
+      background:rgba(0,0,0,.9);
     }
 
-    .small-box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:30px;
-      min-height:240px;
-      box-shadow:0 16px 40px rgba(0,0,0,.30);
+    .mini-panel{
+      border:1px solid rgba(216,180,90,.55);
+      padding:18px 20px;
+      background:rgba(21,122,99,.16);
     }
 
-    .small-box .label{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:13px;
-      font-weight:900;
+    .mini-panel h4{
+      color:var(--gold-soft);
+      font-size:1.35rem;
+      margin-bottom:10px;
+    }
+
+    .mini-panel p{
+      margin:0;
+      color:#ededed;
+      font-size:1rem;
+    }
+
+    .section-heading{
+      margin-bottom:22px;
+    }
+
+    .section-heading h2{
+      font-size:3.45rem;
+      color:#fff;
       margin-bottom:14px;
     }
 
-    .small-box h3{
-      font-size:clamp(28px,3.6vw,42px);
+    .section-heading p{
+      margin:0;
+      max-width:1040px;
+      color:#f1f1f1;
+      font-size:1.16rem;
+    }
+
+    .media-strip{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:url("https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.52), rgba(0,0,0,.52)),
+        url("https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.68);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.7rem;
+      color:#fff;
+      margin-bottom:12px;
+    }
+
+    .video-copy p{
+      margin:0 0 18px;
+      font-size:1.1rem;
+      max-width:760px;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:26px;
+    }
+
+    .info-card{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      min-height:400px;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80") center/cover;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .info-card.c2{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c3{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c4{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c5{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c6{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c7{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c8{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .card-content{
+      padding:34px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      background:rgba(0,0,0,.24);
+    }
+
+    .card-content h3{
+      color:var(--gold-soft);
+      font-size:3rem;
       margin-bottom:16px;
     }
 
-    .small-box p{
-      font-size:19px;
-      line-height:1.58;
-      margin-bottom:0;
+    .card-content p{
+      max-width:94%;
+      font-size:1.13rem;
+      margin-bottom:24px;
     }
 
-    .search-box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:38px;
-      margin-top:38px;
-      max-width:1060px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
+    .card-line{
+      width:100%;
+      height:1px;
+      background:rgba(216,180,90,.72);
+      margin:auto 0 24px;
     }
 
-    .search-box label{
-      display:block;
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:14px;
+    .card-link{
       font-weight:900;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      font-size:1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color:#fff;
+    }
+
+    .card-link span:last-child{
+      color:var(--gold-soft);
+      font-size:2.2rem;
+      line-height:1;
+    }
+
+    .detail-section{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.48)),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1500&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
+    }
+
+    .detail-section.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.48)),
+        url("https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .detail-inner{
+      padding:42px;
+      background:rgba(0,0,0,.28);
+    }
+
+    .detail-inner h2{
+      color:#fff;
+      font-size:3.2rem;
+      margin-bottom:16px;
+    }
+
+    .detail-inner p{
+      max-width:1030px;
+      font-size:1.14rem;
+    }
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.42);
+      padding:16px 18px;
+      color:#f2f2f2;
+      font-size:1rem;
+    }
+
+    .market-table{
+      display:grid;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .market-row{
+      display:grid;
+      grid-template-columns:1fr 1.4fr;
+      gap:14px;
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.42);
+      padding:16px 18px;
+    }
+
+    .market-row strong{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.25rem;
+      font-weight:400;
+    }
+
+    .market-row span{
+      color:#f2f2f2;
+      font-size:1rem;
+    }
+
+    .plain-media-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+    }
+
+    .plain-media{
+      min-height:310px;
+      border:2px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      position:relative;
+      background:#07100f center/cover no-repeat;
+    }
+
+    .plain-media.m1{
+      background-image:url("https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .plain-media.m2{
+      background-image:url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .plain-media.m3{
+      background-image:url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .plain-caption{
+      position:absolute;
+      left:16px;
+      bottom:16px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.88rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1516321310764-8d4f1d7c7e43?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.30);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{
+      font-size:3.3rem;
+      color:#fff;
+    }
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .news-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .news-card{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.46);
+      padding:20px;
+    }
+
+    .news-card h3{
+      color:var(--gold-soft);
+      font-size:1.7rem;
+      margin-bottom:10px;
+    }
+
+    .news-card p{
+      font-size:1rem;
+      margin:0;
+    }
+
+    .contact-section{
+      padding:24px 0 40px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:54px;
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
       margin-bottom:18px;
     }
 
-    .search-box input{
-      width:100%;
-      min-height:70px;
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.68);
-      color:var(--white);
-      font-size:22px;
-      padding:18px 22px;
-      margin-bottom:22px;
-      outline:none;
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
     }
 
-    .search-box input::placeholder{color:rgba(247,241,230,.62)}
-
-    .search-box button{
-      width:100%;
-      min-height:70px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:#fff;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:5px;
-      font-size:16px;
-      cursor:pointer;
-    }
-
-    .search-box button:hover{background:var(--gold);color:#000}
-
-    .contact-clean{
-      position:relative;
-      z-index:1;
-      padding:76px 42px 88px;
-      max-width:980px;
-    }
-
-    .simple-footer{
-      padding:24px;
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
       text-align:center;
-      color:var(--gold);
-      font-size:18px;
-      background:#010101;
-      border-bottom:1px solid var(--line);
+      color:var(--gold-soft);
+      font-size:1rem;
     }
 
-    @media(max-width:1000px){
-      .three-grid{grid-template-columns:1fr}
+    @media (max-width:1100px){
+      .hero-grid,
+      .media-strip,
+      .card-grid,
+      .bullet-grid,
+      .plain-media-grid,
+      .news-grid{
+        grid-template-columns:1fr;
+      }
+
+      .market-row{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
     }
 
-    @media(max-width:900px){
-      .market-grid{grid-template-columns:1fr}
-    }
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
 
-    @media(max-width:600px){
-      .topbar{padding:12px 14px;gap:10px}
-      .logo,.menu-btn{width:62px;height:62px}
-      .logo{font-size:27px}
-      .menu-btn{font-size:30px}
-      .brand{font-size:16px;letter-spacing:1px}
-      .menu{padding:22px 30px 26px}
-      .menu a{font-size:15px;letter-spacing:2.5px}
-      .hero{min-height:760px}
-      .content,.contact-clean{padding:48px 28px}
-      h1{font-size:42px}
-      h2{font-size:40px}
-      h3{font-size:38px}
-      p{font-size:21px;line-height:1.68}
-      .eyebrow{font-size:13px;letter-spacing:5px}
-      .btn-row,.btn{width:100%}
-      .box,.daily-card,.market-card,.small-box,.search-box{padding:34px 32px}
-      .box li,.market-card p{font-size:21px;line-height:1.68}
-      .market-card strong{font-size:15px;letter-spacing:4px}
-      .simple-footer{font-size:16px}
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-copy,
+      .hero-media,
+      .image-block,
+      .video-block,
+      .info-card,
+      .detail-section,
+      .plain-media,
+      .daily-panel,
+      .contact-box{
+        border-radius:24px;
+      }
+
+      .hero-copy{
+        padding:30px;
+        min-height:500px;
+      }
+
+      h1{font-size:2.85rem}
+
+      .section-heading h2,
+      .detail-inner h2,
+      .daily-inside h2{
+        font-size:2.5rem;
+      }
+
+      .card-content h3,
+      .video-copy h3{
+        font-size:2.35rem;
+      }
+
+      .contact-inner h2{font-size:2.8rem}
+
+      .hero-copy p,
+      .section-heading p,
+      .contact-inner p{
+        font-size:1.06rem;
+      }
+
+      .hero-copy,
+      .card-content,
+      .detail-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      .cta-btn{width:100%}
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
+  <div class="site-shell">
 
-    <header class="topbar">
-      <a href="index.html" class="logo">TH</a>
-      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
-      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
     </header>
 
-    <nav class="menu" id="menu">
-      <a href="index.html">Home</a>
-      <a href="business-intelligence.html">Business Intelligence</a>
-      <a href="#market-map">Market Areas</a>
-      <a href="#local-stock">Local / U.S. Stock</a>
-      <a href="#global-stock">Global Stock</a>
-      <a href="#stock-movers">Stocks Up / Down</a>
-      <a href="#crypto">Crypto / Coins</a>
-      <a href="#commodities">Commodities</a>
-      <a href="#housing">Housing Market</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <section class="section hero daily-bg" data-bg-group="hero">
-      <div class="content">
-        <div class="eyebrow">Stock and Market Intelligence</div>
-
-        <h1>
-          A public market-intelligence page for stocks, coins, commodities,
-          housing, and <span>global business movement.</span>
-        </h1>
-
-        <p>
-          Stock and Market Intelligence helps visitors understand local and global
-          stock movement, United States markets, international markets, public
-          companies, indexes, crypto and coins, commodities, forex, housing signals,
-          economic pressure, and major market alerts.
-        </p>
-
-        <p>
-          This page is built for public education and market awareness. It helps
-          visitors understand what to watch, what questions to ask, and why market
-          movement can affect business confidence.
-        </p>
-
-        <div class="btn-row">
-          <a href="index.html" class="btn">Back Home ›</a>
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
         </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="economic-signals-intelligence.html">Economic Signals Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="global-news.html">Global News</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
-    </section>
+    </div>
 
-    <section class="section green daily-bg" data-bg-group="watch">
-      <div class="content">
-        <div class="eyebrow">TitanCore Market Watch</div>
-
-        <h2>Daily market focus, major movement, and business signals.</h2>
-
-        <p>
-          This section gives visitors a daily market-awareness focus. Later, this
-          page can show updated market movement, stock direction, major alerts,
-          crypto movement, housing signals, and simple public explanations.
-        </p>
-
-        <div class="daily-card">
-          <div class="eyebrow" id="dailyDate">Loading date...</div>
-          <h3 id="dailyTitle">Loading market focus...</h3>
-          <p id="dailyText">Loading market note...</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark daily-bg" data-bg-group="map" id="market-map">
-      <div class="content">
-        <div class="eyebrow">Market Intelligence Map</div>
-
-        <h2>Choose the market area you want to review.</h2>
-
-        <p>
-          This page is organized like a market-intelligence hub. Visitors can review
-          the market areas that matter most to business owners, investors,
-          institutions, banks, families, and professionals.
-        </p>
-
-        <div class="market-grid">
-
-          <a href="#local-stock" class="market-card">
-            <h3>Local / U.S. Stock Market</h3>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Stock &amp; Market Intelligence</div>
+            <h1>Understand markets before <span>watching the numbers move.</span></h1>
             <p>
-              Review United States stocks, major companies, sectors, indexes,
-              earnings, market direction, and daily movement.
+              Stock &amp; Market Intelligence is a public education page for understanding stocks,
+              indexes, global markets, sectors, commodities, currencies, crypto and digital assets,
+              market news, and the major signals that can affect business confidence.
             </p>
-            <div class="card-line"></div>
-            <strong>Open Local Stock <span>›</span></strong>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+
+          <div class="hero-media">
+            <div class="media-top" id="heroMediaRotator">
+              <div class="media-badge">Daily Market Media</div>
+            </div>
+
+            <div class="media-bottom">
+              <div class="mini-panel">
+                <h4>Today’s Market Focus</h4>
+                <p id="todayFocus">
+                  Watch broad market direction before focusing on one company.
+                </p>
+              </div>
+
+              <div class="mini-panel">
+                <h4>Video Space</h4>
+                <p>
+                  This area can later hold a rotating market video, stock education clip,
+                  global market briefing, or daily business market segment.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Market Intelligence Overview</div>
+          <h2>This page is for market education, not financial advice.</h2>
+          <p>
+            The goal is to help visitors understand how market information is organized.
+            Markets include more than one stock price. Visitors should understand indexes,
+            companies, sectors, global exchanges, commodities, currencies, digital assets,
+            investor confidence, interest rates, inflation, news, and economic signals.
+            Live prices can be added later through a proper market data connection.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-strip">
+          <div class="image-block">
+            <div class="overlay-label">Plain Market Image</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Market video area.</h3>
+              <p>
+                This space is ready for future video. It can show a daily market briefing,
+                business news segment, stock education lesson, crypto market explanation,
+                or global market update.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Market Intelligence Areas</div>
+          <h2>Clickable stock and market topics.</h2>
+          <p>
+            Each topic below helps visitors understand one major area of the market.
+            This keeps the page organized while still making the stock and market page feel large,
+            useful, and educational.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <a href="#us-markets" class="info-card">
+            <div class="card-content">
+              <h3>U.S. Stock Market</h3>
+              <p>
+                Understand U.S. stocks, major indexes, market direction, company movement,
+                investor confidence, and public market education.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review U.S. Market</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="#global-stock" class="market-card">
-            <h3>Global Stock Markets</h3>
-            <p>
-              Review international markets by country and region including Europe,
-              Asia, Canada, Latin America, Africa, and global exchanges.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Global Stock <span>›</span></strong>
+          <a href="#global-markets" class="info-card c2">
+            <div class="card-content">
+              <h3>Global Markets</h3>
+              <p>
+                Review international markets, regional exchanges, country-level business movement,
+                and global investor confidence.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Global Markets</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="#stock-movers" class="market-card">
-            <h3>Stocks Up / Stocks Down</h3>
-            <p>
-              Review gainers, losers, volume leaders, market movers, and the reasons
-              stocks may move sharply.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Stock Movers <span>›</span></strong>
+          <a href="#indexes" class="info-card c3">
+            <div class="card-content">
+              <h3>Indexes</h3>
+              <p>
+                Learn how indexes help people see broad market direction instead of only looking
+                at one company at a time.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Indexes</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="#crypto" class="market-card">
-            <h3>Crypto / Coins</h3>
-            <p>
-              Review Bitcoin, Ethereum, major coins, altcoins, crypto volatility,
-              regulation, exchange news, and digital asset risk.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Coins <span>›</span></strong>
+          <a href="#sectors" class="info-card c4">
+            <div class="card-content">
+              <h3>Sectors &amp; Industries</h3>
+              <p>
+                Understand how technology, banking, healthcare, energy, real estate,
+                consumer, and industrial sectors can move differently.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Sectors</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="#commodities" class="market-card">
-            <h3>Commodities</h3>
-            <p>
-              Review oil, gold, silver, gas, metals, agriculture, energy movement,
-              inflation pressure, and business cost movement.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Commodities <span>›</span></strong>
+          <a href="#commodities" class="info-card c5">
+            <div class="card-content">
+              <h3>Commodities</h3>
+              <p>
+                Review oil, gold, silver, agriculture, energy, materials, and how commodity movement
+                can affect businesses and consumers.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Commodities</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="#housing" class="market-card">
-            <h3>Housing Market</h3>
-            <p>
-              Review mortgage rates, rent pressure, home prices, inventory,
-              construction, banking, and real estate business signals.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Housing <span>›</span></strong>
+          <a href="#crypto" class="info-card c6">
+            <div class="card-content">
+              <h3>Crypto &amp; Coins</h3>
+              <p>
+                Understand digital asset basics, crypto volatility, market sentiment,
+                token categories, and risk awareness.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Crypto</span><span>›</span></div>
+            </div>
           </a>
 
+          <a href="#currencies" class="info-card c7">
+            <div class="card-content">
+              <h3>Currency &amp; Forex</h3>
+              <p>
+                Review currency movement, exchange rates, global trade pressure,
+                central banks, and international business impact.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Currency</span><span>›</span></div>
+            </div>
+          </a>
+
+          <a href="#market-news" class="info-card c8">
+            <div class="card-content">
+              <h3>Market News Watch</h3>
+              <p>
+                Understand how earnings, rates, inflation, jobs reports, geopolitical news,
+                and company announcements can move markets.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review News Watch</span><span>›</span></div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="search">
-      <div class="content">
-        <div class="eyebrow">Market Search</div>
+    <section class="section" id="us-markets">
+      <div class="wrap">
+        <div class="detail-section">
+          <div class="detail-inner">
+            <div class="eyebrow">U.S. Stock Market</div>
+            <h2>The U.S. market is watched closely because it affects global confidence.</h2>
+            <p>
+              The U.S. stock market includes public companies across many industries. Visitors should
+              understand that market movement can be influenced by interest rates, earnings, inflation,
+              jobs reports, banking conditions, investor sentiment, and large company announcements.
+            </p>
 
-        <h2>Search a stock, country, coin, commodity, or market topic.</h2>
-
-        <p>
-          Visitors can use this search area to research public market topics. This
-          version opens a public web search. Later, this area can become more
-          advanced and show information directly inside the TitanCore website.
-        </p>
-
-        <div class="search-box">
-          <label for="marketQuery">Type a market search</label>
-          <input id="marketQuery" type="text" placeholder="Example: Apple stock, Bitcoin, gold price, Japan stock market, housing market" onkeydown="handleSearchKey(event)" />
-          <button type="button" onclick="runMarketSearch()">Search Market ›</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="local" id="local-stock">
-      <div class="content">
-        <div class="eyebrow">Local / United States Stock Market</div>
-
-        <h2>Local stock intelligence starts with the United States market.</h2>
-
-        <p>
-          The U.S. market section helps visitors understand major public companies,
-          technology stocks, banks, energy, healthcare, retail, real estate,
-          industrial companies, and earnings movement.
-        </p>
-
-        <div class="three-grid">
-          <div class="small-box">
-            <div class="label">U.S. Stocks</div>
-            <h3>Large Companies</h3>
-            <p>Major public companies can influence market confidence, retirement accounts, business sentiment, and news headlines.</p>
-          </div>
-
-          <div class="small-box">
-            <div class="label">Sectors</div>
-            <h3>Business Areas</h3>
-            <p>Technology, finance, healthcare, energy, real estate, retail, and industrial sectors can move differently.</p>
-          </div>
-
-          <div class="small-box">
-            <div class="label">Earnings</div>
-            <h3>Company Reports</h3>
-            <p>Earnings can explain revenue, profit, guidance, demand, risk, growth, and investor reaction.</p>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>What visitors should watch in U.S. stocks</h3>
-          <ul>
-            <li>Major company earnings and revenue changes.</li>
-            <li>Stock price up or down movement.</li>
-            <li>Technology, banking, energy, healthcare, retail, and real estate sectors.</li>
-            <li>Interest-rate decisions that affect investor confidence.</li>
-            <li>Company announcements, lawsuits, leadership changes, layoffs, and mergers.</li>
-            <li>Market reaction to inflation, jobs, housing, and global news.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="global" id="global-stock">
-      <div class="content">
-        <div class="eyebrow">Global Stock Markets</div>
-
-        <h2>Global stock intelligence by country and region.</h2>
-
-        <p>
-          Global markets help visitors understand how business movement in other
-          countries can affect trade, currency, commodities, supply chains, banks,
-          investors, and confidence.
-        </p>
-
-        <div class="box">
-          <h3>Global areas to watch</h3>
-          <ul>
-            <li>North America: United States, Canada, and Mexico.</li>
-            <li>Europe: United Kingdom, Germany, France, Italy, and European markets.</li>
-            <li>Asia: Japan, China, India, South Korea, technology, and manufacturing markets.</li>
-            <li>Latin America: Brazil, Mexico, Chile, Colombia, and regional currency movement.</li>
-            <li>Africa: South Africa, Nigeria, Kenya, mining, banking, and infrastructure signals.</li>
-            <li>Middle East: energy, sovereign investment, real estate, trade, and banking movement.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark daily-bg" data-bg-group="movers" id="stock-movers">
-      <div class="content">
-        <div class="eyebrow">Stocks Up / Stocks Down</div>
-
-        <h2>Stock movers help visitors understand what changed today.</h2>
-
-        <p>
-          A stock can move up or down because of company news, earnings, interest
-          rates, market fear, investor confidence, lawsuits, mergers, layoffs,
-          product launches, or global events.
-        </p>
-
-        <div class="box">
-          <h3>Stock movement questions</h3>
-          <ul>
-            <li>Why is the stock up today?</li>
-            <li>Why is the stock down today?</li>
-            <li>Is the move connected to company news?</li>
-            <li>Is the move connected to the whole market?</li>
-            <li>Is the move connected to earnings?</li>
-            <li>Is the move connected to interest rates or inflation?</li>
-            <li>Is this a short-term move or a larger trend?</li>
-            <li>What information should be checked before making a decision?</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="crypto" id="crypto">
-      <div class="content">
-        <div class="eyebrow">Crypto / Coins</div>
-
-        <h2>Crypto and coins need their own market intelligence area.</h2>
-
-        <p>
-          Crypto can move fast and carry high risk. This section helps visitors
-          understand Bitcoin, Ethereum, major coins, altcoins, volatility,
-          regulation, exchange news, and digital asset risk.
-        </p>
-
-        <div class="three-grid">
-          <div class="small-box">
-            <div class="label">Big Coin</div>
-            <h3>Bitcoin</h3>
-            <p>Bitcoin movement can show crypto confidence, risk appetite, institutional interest, and broad digital asset direction.</p>
-          </div>
-
-          <div class="small-box">
-            <div class="label">Major Coin</div>
-            <h3>Ethereum</h3>
-            <p>Ethereum connects to smart contracts, applications, network activity, staking, development, and digital infrastructure.</p>
-          </div>
-
-          <div class="small-box">
-            <div class="label">Other Coins</div>
-            <h3>Altcoins</h3>
-            <p>Altcoins can be volatile. Visitors should review risk, project strength, news, liquidity, and market behavior carefully.</p>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Crypto risk awareness</h3>
-          <ul>
-            <li>Crypto prices can move quickly.</li>
-            <li>Coins can rise or fall sharply in a short time.</li>
-            <li>Exchange news can affect confidence.</li>
-            <li>Scams, wallets, passwords, and security are serious concerns.</li>
-            <li>Regulation can change market direction.</li>
-            <li>Crypto information should be treated as education, not advice.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="commodities" id="commodities">
-      <div class="content">
-        <div class="eyebrow">Commodities</div>
-
-        <h2>Commodities can affect business costs and economic pressure.</h2>
-
-        <p>
-          Commodities matter because oil, gas, gold, silver, metals, food, and
-          materials can affect inflation, transportation, construction, repairs,
-          consumer prices, and business margins.
-        </p>
-
-        <div class="three-grid">
-          <div class="small-box">
-            <div class="label">Energy</div>
-            <h3>Oil / Gas</h3>
-            <p>Fuel costs affect transportation, shipping, travel, utilities, inflation, and business expenses.</p>
-          </div>
-
-          <div class="small-box">
-            <div class="label">Metals</div>
-            <h3>Gold / Silver</h3>
-            <p>Gold and silver can show inflation concern, investor risk behavior, currency movement, and uncertainty.</p>
-          </div>
-
-          <div class="small-box">
-            <div class="label">Materials</div>
-            <h3>Lumber / Copper</h3>
-            <p>Materials can affect housing, construction, manufacturing, infrastructure, repairs, and growth signals.</p>
+            <div class="bullet-grid">
+              <div class="bullet">Major company earnings can affect market direction.</div>
+              <div class="bullet">Interest rates can affect stock valuations and borrowing confidence.</div>
+              <div class="bullet">Inflation can affect costs, margins, and consumer spending.</div>
+              <div class="bullet">Jobs reports can affect investor expectations.</div>
+              <div class="bullet">Banking and lending conditions can affect business activity.</div>
+              <div class="bullet">Technology and large-cap companies can influence broad indexes.</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="housing" id="housing">
-      <div class="content">
-        <div class="eyebrow">Housing Market</div>
+    <section class="section" id="global-markets">
+      <div class="wrap">
+        <div class="detail-section alt">
+          <div class="detail-inner">
+            <div class="eyebrow">Global Markets</div>
+            <h2>Global markets show how different countries and regions are moving.</h2>
+            <p>
+              A serious market page should look beyond one country. Global markets can include North America,
+              Europe, Asia, Latin America, Africa, and the Middle East. Each region may react differently to
+              trade, currency movement, energy prices, policy decisions, and economic growth.
+            </p>
 
-        <h2>Housing movement affects families, banks, investors, and businesses.</h2>
-
-        <p>
-          Housing market information belongs inside market intelligence because
-          real estate connects to mortgages, rent, construction, contractors,
-          insurance, tax, banking, consumer confidence, and local business spending.
-        </p>
-
-        <div class="box">
-          <h3>Housing signals to review</h3>
-          <ul>
-            <li>Mortgage rate movement.</li>
-            <li>Home price movement.</li>
-            <li>Inventory levels.</li>
-            <li>Rent pressure.</li>
-            <li>Buyer demand.</li>
-            <li>Seller pressure.</li>
-            <li>Construction and contractor movement.</li>
-            <li>Local real estate confidence.</li>
-          </ul>
+            <div class="market-table">
+              <div class="market-row">
+                <strong>North America</strong>
+                <span>U.S. and Canadian markets, large public companies, interest-rate sensitivity, banking and consumer movement.</span>
+              </div>
+              <div class="market-row">
+                <strong>Europe</strong>
+                <span>Regional indexes, banking, energy pressure, manufacturing, inflation, and trade conditions.</span>
+              </div>
+              <div class="market-row">
+                <strong>Asia-Pacific</strong>
+                <span>Technology, manufacturing, exports, currency movement, growth expectations, and investor sentiment.</span>
+              </div>
+              <div class="market-row">
+                <strong>Latin America</strong>
+                <span>Commodities, currency movement, energy, banking, inflation, and regional business confidence.</span>
+              </div>
+              <div class="market-row">
+                <strong>Africa & Middle East</strong>
+                <span>Energy, infrastructure, natural resources, finance, logistics, and emerging market movement.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="notice">
-      <div class="content">
-        <div class="eyebrow">Public Information Notice</div>
-
-        <h2>Market intelligence is education, not financial advice.</h2>
-
-        <p>
-          TitanCore can provide public market education, business signals, and
-          market awareness. This page should not tell visitors what to buy, sell,
-          hold, or trade.
-        </p>
-
-        <div class="box">
-          <h3>Public notice language</h3>
-          <ul>
-            <li>This page is for public business education and market awareness.</li>
-            <li>Market prices can change quickly.</li>
-            <li>Visitors should verify information before making decisions.</li>
-            <li>Stock, crypto, forex, and commodity markets carry risk.</li>
-            <li>Nothing on this page should be treated as investment, legal, tax, or financial advice.</li>
-          </ul>
+    <section class="section">
+      <div class="wrap">
+        <div class="plain-media-grid">
+          <div class="plain-media m1">
+            <div class="plain-caption">Global Market Board</div>
+          </div>
+          <div class="plain-media m2">
+            <div class="plain-caption">Stock Review</div>
+          </div>
+          <div class="plain-media m3">
+            <div class="plain-caption">Business Market Desk</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="contact" id="contact">
-      <div class="contact-clean">
-        <div class="eyebrow">Contact TitanCore</div>
+    <section class="section" id="indexes">
+      <div class="wrap">
+        <div class="detail-section">
+          <div class="detail-inner">
+            <div class="eyebrow">Indexes</div>
+            <h2>Indexes help visitors understand broad market direction.</h2>
+            <p>
+              An index is a group of stocks used to measure a market or part of a market.
+              Visitors should understand that an index does not show every business equally.
+              Some indexes are affected more by large companies, certain sectors, or market leadership.
+            </p>
 
-        <h2>Contact us today</h2>
-
-        <p>
-          For general questions, professional inquiries, business intelligence
-          questions, or TitanCore-related information, contact TitanCore Holdings.
-        </p>
-
-        <div class="btn-row">
-          <a href="contact.html" class="btn">Get In Touch ›</a>
+            <div class="bullet-grid">
+              <div class="bullet">Broad indexes show general market direction.</div>
+              <div class="bullet">Technology-heavy indexes may move differently from industrial indexes.</div>
+              <div class="bullet">Small-cap indexes can show smaller company confidence.</div>
+              <div class="bullet">International indexes help compare country or regional movement.</div>
+              <div class="bullet">Sector indexes show whether one part of the economy is stronger or weaker.</div>
+              <div class="bullet">Index movement should be compared with news, rates, and economic signals.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <footer class="simple-footer">
+    <section class="section" id="sectors">
+      <div class="wrap">
+        <div class="detail-section alt">
+          <div class="detail-inner">
+            <div class="eyebrow">Sectors &amp; Industries</div>
+            <h2>Different sectors react to different business conditions.</h2>
+            <p>
+              Market education should explain sectors because not all stocks move for the same reason.
+              Banking may react to rates, energy may react to oil prices, retail may react to consumers,
+              technology may react to growth expectations, and real estate may react to borrowing costs.
+            </p>
+
+            <div class="market-table">
+              <div class="market-row">
+                <strong>Technology</strong>
+                <span>Growth expectations, innovation, earnings, interest rates, hardware, software, cloud, chips, and AI-related themes.</span>
+              </div>
+              <div class="market-row">
+                <strong>Banking & Finance</strong>
+                <span>Rates, lending, credit quality, consumer debt, deposits, commercial loans, and financial confidence.</span>
+              </div>
+              <div class="market-row">
+                <strong>Energy</strong>
+                <span>Oil, gas, global supply, demand, transportation, geopolitics, and production movement.</span>
+              </div>
+              <div class="market-row">
+                <strong>Healthcare</strong>
+                <span>Medical services, pharmaceuticals, insurance, innovation, regulation, and demographic demand.</span>
+              </div>
+              <div class="market-row">
+                <strong>Real Estate</strong>
+                <span>Mortgage rates, rent, property values, construction, credit access, and housing demand.</span>
+              </div>
+              <div class="market-row">
+                <strong>Consumer</strong>
+                <span>Retail, spending power, inflation pressure, jobs, wages, confidence, and household budgets.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="commodities">
+      <div class="wrap">
+        <div class="detail-section">
+          <div class="detail-inner">
+            <div class="eyebrow">Commodities</div>
+            <h2>Commodities can affect prices, businesses, and consumers.</h2>
+            <p>
+              Commodities include energy, metals, agriculture, and raw materials. Commodity movement can affect
+              transportation, food costs, construction, manufacturing, inflation, currency strength, and business margins.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">Oil and gas can affect fuel, transportation, and energy costs.</div>
+              <div class="bullet">Gold and silver are often watched during uncertainty and inflation concerns.</div>
+              <div class="bullet">Agriculture affects food costs and supply chains.</div>
+              <div class="bullet">Industrial metals can affect construction and manufacturing.</div>
+              <div class="bullet">Commodity prices can affect inflation expectations.</div>
+              <div class="bullet">Weather, geopolitics, supply, and demand can all affect commodities.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="crypto">
+      <div class="wrap">
+        <div class="detail-section alt">
+          <div class="detail-inner">
+            <div class="eyebrow">Crypto &amp; Digital Assets</div>
+            <h2>Crypto and coins require extra risk awareness.</h2>
+            <p>
+              Digital assets can move quickly and can be highly volatile. Visitors should understand the difference
+              between education and speculation. A public business page can explain categories, risk, sentiment,
+              blockchain basics, and why people should be careful before making financial decisions.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">Crypto prices can move quickly and sharply.</div>
+              <div class="bullet">Major coins may behave differently from smaller tokens.</div>
+              <div class="bullet">Regulation, security, platform risk, and custody matter.</div>
+              <div class="bullet">Market sentiment can change fast.</div>
+              <div class="bullet">Education should come before buying or trading.</div>
+              <div class="bullet">Visitors should understand risk before acting.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="currencies">
+      <div class="wrap">
+        <div class="detail-section">
+          <div class="detail-inner">
+            <div class="eyebrow">Currency &amp; Forex</div>
+            <h2>Currency movement can affect global business.</h2>
+            <p>
+              Currency movement affects travel, imports, exports, international payments, foreign investment,
+              commodities, and business confidence. Exchange rates can be influenced by interest rates, inflation,
+              trade, central banks, economic growth, and country risk.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">A stronger currency can affect imports and exports.</div>
+              <div class="bullet">A weaker currency can affect purchasing power and inflation.</div>
+              <div class="bullet">Central bank decisions can influence currency movement.</div>
+              <div class="bullet">Global trade conditions can affect exchange rates.</div>
+              <div class="bullet">Commodity prices may connect with currency movement.</div>
+              <div class="bullet">International businesses should watch currency risk.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="market-news">
+      <div class="wrap">
+        <div class="detail-section alt">
+          <div class="detail-inner">
+            <div class="eyebrow">Market News Watch</div>
+            <h2>Market news matters because expectations move prices.</h2>
+            <p>
+              Markets often move before all the facts are fully understood because investors react to expectations.
+              This page can later connect to live headlines. For now, the area below rotates educational news themes
+              so the page still feels alive and ready for daily updates.
+            </p>
+
+            <div class="news-grid">
+              <div class="news-card">
+                <h3 id="newsTitle1">Earnings Watch</h3>
+                <p id="newsText1">Company earnings can affect stock prices, sector confidence, and investor expectations.</p>
+              </div>
+              <div class="news-card">
+                <h3 id="newsTitle2">Rates Watch</h3>
+                <p id="newsText2">Interest-rate expectations can influence borrowing costs, valuations, and market confidence.</p>
+              </div>
+              <div class="news-card">
+                <h3 id="newsTitle3">Global Watch</h3>
+                <p id="newsText3">International headlines can affect energy, currencies, trade, and regional markets.</p>
+              </div>
+            </div>
+
+            <div class="bullet-grid">
+              <div class="bullet">Earnings reports and company guidance.</div>
+              <div class="bullet">Interest rates and central bank decisions.</div>
+              <div class="bullet">Inflation and jobs reports.</div>
+              <div class="bullet">Energy and commodity news.</div>
+              <div class="bullet">Banking and lending conditions.</div>
+              <div class="bullet">Major global business and policy announcements.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Market Focus</div>
+            <h2 id="dailyTitle">Watch broad market direction before focusing on one company.</h2>
+            <p id="dailyText">
+              Today’s market focus is broad direction. Visitors should compare indexes,
+              sectors, rates, economic signals, and news before judging one stock alone.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Review broad indexes.</div>
+              <div class="daily-item" id="daily2">Review sector movement.</div>
+              <div class="daily-item" id="daily3">Review rates and inflation signals.</div>
+              <div class="daily-item" id="daily4">Review major news and company announcements.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, business intelligence questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
       © 2025 TitanCore Holdings. All rights reserved.
     </footer>
 
-  </main>
+  </div>
 
   <script>
-    function toggleMenu(){
-      document.getElementById("menu").classList.toggle("active");
-    }
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
 
-    function runMarketSearch(){
-      const input = document.getElementById("marketQuery");
-      const query = input.value.trim();
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel) menuPanel.classList.remove('open');
+    });
 
-      if(!query){
-        alert("Please type a stock, coin, country, commodity, or market topic first.");
-        return;
-      }
+    const heroMediaRotator = document.getElementById('heroMediaRotator');
 
-      const url = "https://www.google.com/search?q=" + encodeURIComponent(query + " market price news");
-      window.open(url, "_blank");
-    }
+    const heroImages = [
+      'https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1400&q=80'
+    ];
 
-    function handleSearchKey(event){
-      if(event.key === "Enter"){
-        runMarketSearch();
-      }
-    }
+    const dayIndex = new Date().getDate() % heroImages.length;
+    heroMediaRotator.style.background =
+      `linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)), url("${heroImages[dayIndex]}") center/cover`;
 
-    const backgroundSets = {
-      hero:[
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
-      ],
-      watch:[
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
-      ],
-      map:[
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
-      ],
-      search:[
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
-      ],
-      local:[
-        "https://images.unsplash.com/photo-1642543348745-03b1219733d9?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
-      ],
-      global:[
-        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
-      ],
-      movers:[
-        "https://images.unsplash.com/photo-1554224154-26032fced8bd?auto=format&fit=crop&w=1600&q=85"
-      ],
-      crypto:[
-        "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1600&q=85"
-      ],
-      commodities:[
-        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85"
-      ],
-      housing:[
-        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
-      ],
-      notice:[
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
-      ],
-      contact:[
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
-      ]
-    };
-
-    const dailyItems = [
+    const dailySet = [
       {
-        title:"Watch interest rates because they affect lending and housing.",
-        text:"Today’s market focus is interest-rate pressure. Rates can affect mortgages, business loans, credit cards, investor behavior, customer spending, and housing confidence."
+        focus:'Watch broad market direction before focusing on one company.',
+        title:'Watch broad market direction before focusing on one company.',
+        text:'Today’s market focus is broad direction. Visitors should compare indexes, sectors, rates, economic signals, and news before judging one stock alone.',
+        a:'Review broad indexes.',
+        b:'Review sector movement.',
+        c:'Review rates and inflation signals.',
+        d:'Review major news and company announcements.',
+        n1:'Earnings Watch',
+        t1:'Company earnings can affect stock prices, sector confidence, and investor expectations.',
+        n2:'Rates Watch',
+        t2:'Interest-rate expectations can influence borrowing costs, valuations, and market confidence.',
+        n3:'Global Watch',
+        t3:'International headlines can affect energy, currencies, trade, and regional markets.'
       },
       {
-        title:"Watch inflation because it can change business costs.",
-        text:"Today’s market focus is inflation. Rising costs can affect supplies, fuel, labor, rent, insurance, pricing, and customer budgets."
+        focus:'Compare sectors because not every part of the market moves the same way.',
+        title:'Sectors can tell a clearer story than one headline.',
+        text:'Today’s market focus is sector movement. Technology, banking, energy, real estate, healthcare, and consumer stocks can react to different signals.',
+        a:'Review technology and growth expectations.',
+        b:'Review banking and lending pressure.',
+        c:'Review energy and commodity movement.',
+        d:'Review consumer spending and retail confidence.',
+        n1:'Sector Watch',
+        t1:'Sector strength can show where investors are confident or cautious.',
+        n2:'Consumer Watch',
+        t2:'Retail and consumer movement can show pressure from inflation, wages, and household budgets.',
+        n3:'Banking Watch',
+        t3:'Financial-sector movement can reflect credit conditions, rates, and lending confidence.'
       },
       {
-        title:"Watch local and global stocks because confidence can change quickly.",
-        text:"Today’s market focus is stock movement. A major selloff or rally can affect investor confidence, business sentiment, public companies, and financial planning."
+        focus:'Commodities can affect businesses even when they do not trade stocks.',
+        title:'Commodity movement can change business costs.',
+        text:'Today’s market focus is commodities. Oil, metals, agriculture, and energy can affect transportation, construction, manufacturing, and inflation.',
+        a:'Review oil and fuel pressure.',
+        b:'Review gold and uncertainty signals.',
+        c:'Review agriculture and food cost pressure.',
+        d:'Review industrial metals and production costs.',
+        n1:'Energy Watch',
+        t1:'Energy movement can affect transportation, utilities, manufacturing, and consumer prices.',
+        n2:'Metal Watch',
+        t2:'Metals can signal inflation pressure, construction demand, and industrial activity.',
+        n3:'Supply Watch',
+        t3:'Commodity movement can reflect supply, demand, weather, and geopolitical pressure.'
       },
       {
-        title:"Watch crypto carefully because coin movement can be volatile.",
-        text:"Today’s market focus is crypto and coins. Digital assets can move quickly and should be reviewed with strong risk awareness."
-      },
-      {
-        title:"Watch housing because it connects to banks, families, and local businesses.",
-        text:"Today’s market focus is housing. Mortgage rates, home prices, rent, and inventory can affect consumer confidence and real estate activity."
-      },
-      {
-        title:"Watch commodities because energy and materials affect the economy.",
-        text:"Today’s market focus is commodities. Oil, gas, gold, metals, and materials can affect inflation, transportation, construction, and business costs."
+        focus:'Crypto and coins require risk awareness before excitement.',
+        title:'Digital asset education should come before action.',
+        text:'Today’s market focus is crypto risk awareness. Digital assets can move quickly, and visitors should understand volatility, security, regulation, and speculation.',
+        a:'Review volatility risk.',
+        b:'Review platform and custody risk.',
+        c:'Review regulation and security.',
+        d:'Review whether the asset has clear purpose.',
+        n1:'Crypto Watch',
+        t1:'Digital assets can move quickly and require extra caution.',
+        n2:'Risk Watch',
+        t2:'Security, custody, regulation, and platform reliability matter in digital asset markets.',
+        n3:'Sentiment Watch',
+        t3:'Crypto sentiment can shift fast because news, policy, liquidity, and speculation can affect demand.'
       }
     ];
 
-    function applyDailyBackgrounds(){
-      const sections = document.querySelectorAll(".daily-bg");
-      const day = new Date().getDate();
+    const focusIndex = new Date().getDate() % dailySet.length;
+    const item = dailySet[focusIndex];
 
-      sections.forEach(function(section,index){
-        const group = section.dataset.bgGroup || "hero";
-        const images = backgroundSets[group] || backgroundSets.hero;
-        const selected = images[(day + index) % images.length];
-        section.style.backgroundImage = "url('" + selected + "')";
-      });
-    }
+    document.getElementById('todayFocus').textContent = item.focus;
+    document.getElementById('dailyTitle').textContent = item.title;
+    document.getElementById('dailyText').textContent = item.text;
+    document.getElementById('daily1').textContent = item.a;
+    document.getElementById('daily2').textContent = item.b;
+    document.getElementById('daily3').textContent = item.c;
+    document.getElementById('daily4').textContent = item.d;
 
-    function applyDailyBrief(){
-      const today = new Date();
-      const selected = dailyItems[today.getDate() % dailyItems.length];
+    document.getElementById('newsTitle1').textContent = item.n1;
+    document.getElementById('newsText1').textContent = item.t1;
+    document.getElementById('newsTitle2').textContent = item.n2;
+    document.getElementById('newsText2').textContent = item.t2;
+    document.getElementById('newsTitle3').textContent = item.n3;
+    document.getElementById('newsText3').textContent = item.t3;
 
-      document.getElementById("dailyDate").textContent =
-        today.toLocaleDateString("en-US", {
-          weekday:"long",
-          year:"numeric",
-          month:"long",
-          day:"numeric"
-        });
-
-      document.getElementById("dailyTitle").textContent = selected.title;
-      document.getElementById("dailyText").textContent = selected.text;
-    }
-
-    applyDailyBackgrounds();
-    applyDailyBrief();
+    const dailyDate = document.getElementById('dailyDate');
+    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
   </script>
 </body>
 </html>
