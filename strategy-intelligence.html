@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,888 +7,1262 @@
 
   <style>
     :root{
-      --black:#020202;
-      --green:#064b38;
-      --green2:#0b684f;
-      --gold:#d7b35d;
-      --gold2:#f0d07a;
-      --white:#f7f1e6;
-      --soft:#d8d0c4;
-      --line:rgba(215,179,93,.78);
+      --bg:#050505;
+      --panel:#0d0d0d;
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --green-dark:#0b3f34;
+      --white:#f5f5f5;
+      --muted:#d8d8d8;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
-    a{color:inherit;text-decoration:none}
-
-    .page{
-      max-width:1180px;
-      margin:0 auto;
+    body{
+      margin:0;
       background:#000;
-      border-left:1px solid var(--line);
-      border-right:1px solid var(--line);
-      min-height:100vh;
-      overflow:hidden;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
     }
 
-    .topbar{
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
       position:sticky;
       top:0;
-      z-index:100;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:12px;
-      padding:14px 24px;
-      background:linear-gradient(180deg,#050505,#010101);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
     }
 
-    .logo{
-      width:76px;height:76px;
-      border:3px solid var(--gold);
-      display:grid;place-items:center;
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:32px;font-weight:700;
-      color:var(--gold2);
-      background:#030303;
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
     }
 
     .brand{
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:clamp(18px,3.5vw,46px);
-      letter-spacing:clamp(1px,.55vw,5px);
-      text-transform:uppercase;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    .brand span{color:var(--gold)}
-
     .menu-btn{
-      width:76px;height:76px;
-      border:3px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:var(--white);
-      font-size:36px;
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:700px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
       cursor:pointer;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
-
-    .menu{
-      display:none;
-      background:#080808;
-      border-bottom:1px solid var(--line);
-      padding:22px 42px 26px;
+    .menu-links{
+      display:grid;
+      gap:8px;
     }
 
-    .menu.active{display:block}
-
-    .menu a{
+    .menu-links a{
       display:block;
-      padding:17px 0;
-      border-bottom:1px solid rgba(215,179,93,.25);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      color:var(--soft);
-      font-size:18px;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
     }
 
-    .menu a:hover{color:var(--gold2);padding-left:8px}
+    .menu-links a:hover{color:var(--gold-soft)}
 
-    .section{
-      position:relative;
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-
-    .section::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.52)),
-        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.62));
-      z-index:0;
-    }
-
-    .section.green::before{
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.62),rgba(6,75,56,.82)),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));
-    }
-
-    .section.dark::before{
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.70)),
-        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.72));
-    }
+    .section{padding:28px 0}
 
     .hero{
-      min-height:820px;
+      padding:34px 0 26px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .hero-copy,
+    .hero-media{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:540px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-copy{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.80), rgba(8,70,56,.50)),
+        url("https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=80") center/cover;
+      padding:54px;
       display:flex;
-      align-items:center;
-    }
-
-    .content{
-      position:relative;
-      z-index:1;
-      padding:64px 42px;
-      max-width:1080px;
-    }
-
-    .hero .content{
-      padding-top:84px;
-      padding-bottom:84px;
-      max-width:1040px;
+      flex-direction:column;
+      justify-content:flex-end;
     }
 
     .eyebrow{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:6px;
-      font-size:15px;
+      color:var(--gold-soft);
       font-weight:900;
-      margin-bottom:22px;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
     }
 
-    h1,h2,h3{
-      font-family:Georgia,"Times New Roman",serif;
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
       font-weight:400;
-      line-height:1.06;
-      text-shadow:0 3px 16px rgba(0,0,0,.88);
+      font-family:Georgia, "Times New Roman", serif;
     }
 
     h1{
-      font-size:clamp(48px,6vw,92px);
-      margin-bottom:34px;
-      max-width:1040px;
+      font-size:4.6rem;
+      color:#fff;
+      max-width:850px;
     }
 
-    h2{
-      font-size:clamp(40px,5vw,76px);
-      margin-bottom:34px;
-      max-width:1040px;
-    }
-
-    h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4.8vw,60px);
-      margin-bottom:24px;
-    }
-
-    h1 span,h2 span,h3 span{color:var(--gold2)}
+    h1 span,
+    h2 span,
+    h3 span{color:var(--gold-soft)}
 
     p{
-      color:#f2ece1;
-      font-size:22px;
-      line-height:1.72;
-      margin-bottom:26px;
-      max-width:1040px;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.17rem;
+    }
+
+    .hero-copy p{
+      font-size:1.28rem;
+      max-width:850px;
+      margin-bottom:28px;
     }
 
     .btn-row{
       display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      margin-top:38px;
-    }
-
-    .btn{
-      min-width:250px;
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      padding:22px 32px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:#fff;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:4px;
-      box-shadow:0 16px 35px rgba(0,0,0,.35);
-    }
-
-    .btn:hover{background:var(--gold);color:#000}
-
-    .box,.daily-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:44px 48px;
-      margin-top:38px;
-      max-width:1060px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-      backdrop-filter:blur(1px);
-    }
-
-    .box ul{
-      list-style:none;
-      display:grid;
       gap:18px;
-      margin-top:20px;
+      flex-wrap:wrap;
     }
 
-    .box li{
-      color:#f7f1e6;
-      font-size:22px;
-      line-height:1.6;
-      padding-left:30px;
-      position:relative;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
-    }
-
-    .box li::before{
-      content:"›";
-      position:absolute;
-      left:0;
-      top:0;
-      color:var(--gold2);
-      font-weight:900;
-    }
-
-    .strategy-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:28px;
-      margin-top:42px;
-      max-width:1060px;
-    }
-
-    .strategy-card{
-      display:block;
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:40px;
-      min-height:320px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
       transition:.25s ease;
     }
 
-    .strategy-card:hover{
-      background:rgba(6,75,56,.82);
-      transform:translateY(-3px);
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
     }
 
-    .strategy-card h3{
-      font-size:clamp(32px,4.5vw,56px);
-      margin-bottom:20px;
-    }
-
-    .strategy-card p{
-      font-size:21px;
-      line-height:1.62;
-      margin:0;
-    }
-
-    .card-line{
-      height:1px;
-      background:rgba(215,179,93,.65);
-      margin:34px 0 26px;
-    }
-
-    .strategy-card strong{
+    .hero-media{
+      background:#06110f;
       display:flex;
-      justify-content:space-between;
-      align-items:center;
-      color:#fff;
+      flex-direction:column;
+    }
+
+    .media-top{
+      flex:1;
+      min-height:320px;
+      background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=80") center/cover;
+      position:relative;
+    }
+
+    .media-badge{
+      position:absolute;
+      top:18px;
+      right:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid var(--border);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.86rem;
+      font-weight:800;
+      letter-spacing:2px;
       text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:16px;
-      font-weight:900;
     }
 
-    .strategy-card strong span{
-      color:var(--gold2);
-      font-size:42px;
-      line-height:0;
-    }
-
-    .three-grid{
+    .media-bottom{
+      padding:24px;
       display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-      margin-top:38px;
-      max-width:1060px;
+      gap:18px;
+      background:rgba(0,0,0,.9);
     }
 
-    .small-box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:30px;
-      min-height:240px;
-      box-shadow:0 16px 40px rgba(0,0,0,.30);
+    .mini-panel{
+      border:1px solid rgba(216,180,90,.55);
+      padding:18px 20px;
+      background:rgba(21,122,99,.16);
     }
 
-    .small-box .label{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:13px;
-      font-weight:900;
+    .mini-panel h4{
+      color:var(--gold-soft);
+      font-size:1.35rem;
+      margin-bottom:10px;
+    }
+
+    .mini-panel p{
+      margin:0;
+      color:#ededed;
+      font-size:1rem;
+    }
+
+    .section-heading{
+      margin-bottom:22px;
+    }
+
+    .section-heading h2{
+      font-size:3.45rem;
+      color:#fff;
       margin-bottom:14px;
     }
 
-    .small-box h3{
-      font-size:clamp(28px,3.6vw,42px);
+    .section-heading p{
+      margin:0;
+      max-width:980px;
+      color:#f1f1f1;
+      font-size:1.16rem;
+    }
+
+    .media-strip{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:430px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.50), rgba(0,0,0,.50)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.68);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.7rem;
+      color:#fff;
+      margin-bottom:12px;
+    }
+
+    .video-copy p{
+      margin:0 0 18px;
+      font-size:1.1rem;
+      max-width:760px;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:26px;
+    }
+
+    .info-card{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      min-height:390px;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80") center/cover;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .info-card.c2{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c3{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c4{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c5{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .info-card.c6{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
+        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .card-content{
+      padding:34px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      background:rgba(0,0,0,.24);
+    }
+
+    .card-content h3{
+      color:var(--gold-soft);
+      font-size:3rem;
       margin-bottom:16px;
     }
 
-    .small-box p{
-      font-size:19px;
-      line-height:1.58;
-      margin-bottom:0;
+    .card-content p{
+      max-width:92%;
+      font-size:1.13rem;
+      margin-bottom:24px;
     }
 
-    .contact-clean{
-      position:relative;
-      z-index:1;
-      padding:76px 42px 88px;
+    .card-line{
+      width:100%;
+      height:1px;
+      background:rgba(216,180,90,.72);
+      margin:auto 0 24px;
+    }
+
+    .card-link{
+      font-weight:900;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      font-size:1rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      color:#fff;
+    }
+
+    .card-link span:last-child{
+      color:var(--gold-soft);
+      font-size:2.2rem;
+      line-height:1;
+    }
+
+    .detail-section{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.48)),
+        url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1500&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
+    }
+
+    .detail-section.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.48)),
+        url("https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .detail-inner{
+      padding:42px;
+      background:rgba(0,0,0,.28);
+    }
+
+    .detail-inner h2{
+      color:#fff;
+      font-size:3.2rem;
+      margin-bottom:16px;
+    }
+
+    .detail-inner p{
       max-width:980px;
+      font-size:1.14rem;
     }
 
-    .simple-footer{
-      padding:24px;
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.42);
+      padding:16px 18px;
+      color:#f2f2f2;
+      font-size:1rem;
+    }
+
+    .plain-media-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+    }
+
+    .plain-media{
+      min-height:300px;
+      border:2px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      position:relative;
+      background:#07100f center/cover no-repeat;
+    }
+
+    .plain-media.m1{
+      background-image:url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .plain-media.m2{
+      background-image:url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .plain-media.m3{
+      background-image:url("https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .plain-caption{
+      position:absolute;
+      left:16px;
+      bottom:16px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.88rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1516321310764-8d4f1d7c7e43?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.30);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{
+      font-size:3.3rem;
+      color:#fff;
+    }
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{
+      padding:24px 0 40px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:54px;
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
       text-align:center;
-      color:var(--gold);
-      font-size:18px;
-      background:#010101;
-      border-bottom:1px solid var(--line);
+      color:var(--gold-soft);
+      font-size:1rem;
     }
 
-    @media(max-width:1000px){
-      .three-grid{grid-template-columns:1fr}
+    @media (max-width:1100px){
+      .hero-grid,
+      .media-strip,
+      .card-grid,
+      .bullet-grid,
+      .plain-media-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
     }
 
-    @media(max-width:900px){
-      .strategy-grid{grid-template-columns:1fr}
-    }
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
 
-    @media(max-width:600px){
-      .topbar{padding:12px 14px;gap:10px}
-      .logo,.menu-btn{width:62px;height:62px}
-      .logo{font-size:27px}
-      .menu-btn{font-size:30px}
-      .brand{font-size:16px;letter-spacing:1px}
-      .menu{padding:22px 30px 26px}
-      .menu a{font-size:15px;letter-spacing:2.5px}
-      .hero{min-height:760px}
-      .content,.contact-clean{padding:48px 28px}
-      h1{font-size:42px}
-      h2{font-size:40px}
-      h3{font-size:38px}
-      p{font-size:21px;line-height:1.68}
-      .eyebrow{font-size:13px;letter-spacing:5px}
-      .btn-row,.btn{width:100%}
-      .box,.daily-card,.strategy-card,.small-box{padding:34px 32px}
-      .box li,.strategy-card p{font-size:21px;line-height:1.68}
-      .strategy-card strong{font-size:15px;letter-spacing:4px}
-      .simple-footer{font-size:16px}
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-copy,
+      .hero-media,
+      .image-block,
+      .video-block,
+      .info-card,
+      .detail-section,
+      .plain-media,
+      .daily-panel,
+      .contact-box{
+        border-radius:24px;
+      }
+
+      .hero-copy{
+        padding:30px;
+        min-height:500px;
+      }
+
+      h1{font-size:2.85rem}
+
+      .section-heading h2,
+      .detail-inner h2,
+      .daily-inside h2{
+        font-size:2.5rem;
+      }
+
+      .card-content h3,
+      .video-copy h3{
+        font-size:2.35rem;
+      }
+
+      .contact-inner h2{font-size:2.8rem}
+
+      .hero-copy p,
+      .section-heading p,
+      .contact-inner p{
+        font-size:1.06rem;
+      }
+
+      .hero-copy,
+      .card-content,
+      .detail-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      .cta-btn{width:100%}
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
+  <div class="site-shell">
 
-    <header class="topbar">
-      <a href="index.html" class="logo">TH</a>
-      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
-      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
     </header>
 
-    <nav class="menu" id="menu">
-      <a href="index.html">Home</a>
-      <a href="business-intelligence.html">Business Intelligence</a>
-      <a href="#strategy-map">Strategy Areas</a>
-      <a href="#positioning">Market Positioning</a>
-      <a href="#offer">Offer Strategy</a>
-      <a href="#pricing">Pricing Strategy</a>
-      <a href="#growth">Growth Path</a>
-      <a href="#risk">Risk Strategy</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <section class="section hero daily-bg" data-bg-group="hero">
-      <div class="content">
-        <div class="eyebrow">Strategy Intelligence</div>
-
-        <h1>
-          A public guide for turning research into direction,
-          positioning, offers, pricing, growth, and <span>decision discipline.</span>
-        </h1>
-
-        <p>
-          Strategy Intelligence helps visitors understand how a business turns
-          research into a clear plan. Strategy is not only an idea. It is the
-          direction that tells a business who to serve, what to offer, what to avoid,
-          how to compete, and how to grow.
-        </p>
-
-        <p>
-          A business without strategy can stay busy but still move in the wrong
-          direction. Strategy helps reduce confusion and gives the company a stronger
-          path before money, time, and effort are spent.
-        </p>
-
-        <div class="btn-row">
-          <a href="index.html" class="btn">Back Home ›</a>
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
         </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="stock-and-market-intelligence.html">Stock &amp; Market Intelligence</a>
+          <a href="economic-signals-intelligence.html">Economic Signals Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
-    </section>
+    </div>
 
-    <section class="section green daily-bg" data-bg-group="daily">
-      <div class="content">
-        <div class="eyebrow">Daily Strategy Focus</div>
-
-        <h2>Today’s strategy focus.</h2>
-
-        <p>
-          This section changes automatically by date. It gives visitors one simple
-          strategic idea to think about each day.
-        </p>
-
-        <div class="daily-card">
-          <div class="eyebrow" id="dailyDate">Loading date...</div>
-          <h3 id="dailyTitle">Loading strategy focus...</h3>
-          <p id="dailyText">Loading strategy note...</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark daily-bg" data-bg-group="map" id="strategy-map">
-      <div class="content">
-        <div class="eyebrow">Strategy Intelligence Map</div>
-
-        <h2>Choose the strategy area you want to understand.</h2>
-
-        <p>
-          Strategy should be organized. A strong strategy looks at position, offer,
-          pricing, customer value, growth, risk, timing, and what the business should
-          not do.
-        </p>
-
-        <div class="strategy-grid">
-
-          <a href="#positioning" class="strategy-card">
-            <h3>Market Positioning</h3>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Strategy Intelligence</div>
+            <h1>Direction before <span>business movement.</span></h1>
             <p>
-              Define where the business fits in the market, who it serves, what it
-              stands for, and why customers should notice it.
+              Strategy Intelligence helps visitors understand how to turn research into
+              direction. It explains how businesses choose a position, build an offer,
+              set priorities, protect focus, and plan growth before taking action.
             </p>
-            <div class="card-line"></div>
-            <strong>Open Positioning <span>›</span></strong>
-          </a>
 
-          <a href="#offer" class="strategy-card">
-            <h3>Offer Strategy</h3>
-            <p>
-              Shape what the business offers, what problem it solves, what value it
-              creates, and how customers understand the service.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Offer <span>›</span></strong>
-          </a>
-
-          <a href="#pricing" class="strategy-card">
-            <h3>Pricing Strategy</h3>
-            <p>
-              Review how pricing supports value, cost, customer trust, competition,
-              profitability, and long-term sustainability.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Pricing <span>›</span></strong>
-          </a>
-
-          <a href="#growth" class="strategy-card">
-            <h3>Growth Path</h3>
-            <p>
-              Build a growth path that starts simple, proves demand, protects cash,
-              improves systems, and expands with discipline.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Growth <span>›</span></strong>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="foundation">
-      <div class="content">
-        <div class="eyebrow">Strategic Foundation</div>
-
-        <h2>Strategy starts with clear direction.</h2>
-
-        <p>
-          A business can have good ideas, good people, and good energy, but still
-          struggle if it does not have a clear strategic foundation. Strategy should
-          tell the company what to focus on, what not to chase, and how decisions
-          should be made.
-        </p>
-
-        <div class="box">
-          <h3>Strategy should answer</h3>
-          <ul>
-            <li>Who is the business serving?</li>
-            <li>What problem is the business solving?</li>
-            <li>Why should the customer trust this company?</li>
-            <li>What offer should be built first?</li>
-            <li>What should the business avoid?</li>
-            <li>How should the business price and explain value?</li>
-            <li>What system must exist before growth?</li>
-            <li>What risk should be controlled before expansion?</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="positioning" id="positioning">
-      <div class="content">
-        <div class="eyebrow">Market Positioning</div>
-
-        <h2>Market positioning explains how the business wants to be seen.</h2>
-
-        <p>
-          Positioning is how a business separates itself from the crowd. It helps a
-          customer understand what the business does, who it is for, and why it is
-          different from other options.
-        </p>
-
-        <div class="three-grid">
-          <div class="small-box">
-            <div class="label">Customer</div>
-            <h3>Who</h3>
-            <p>Define the best customer instead of trying to serve everybody at the same time.</p>
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
           </div>
 
-          <div class="small-box">
-            <div class="label">Problem</div>
-            <h3>Need</h3>
-            <p>Explain the customer problem clearly so the offer connects to a real need.</p>
+          <div class="hero-media">
+            <div class="media-top" id="heroMediaRotator">
+              <div class="media-badge">Daily Image Rotation</div>
+            </div>
+
+            <div class="media-bottom">
+              <div class="mini-panel">
+                <h4>Today’s Strategy Focus</h4>
+                <p id="todayFocus">
+                  Choose one clear direction before trying to move everywhere.
+                </p>
+              </div>
+
+              <div class="mini-panel">
+                <h4>Video Space</h4>
+                <p>
+                  This area can later hold a rotating strategy lesson, planning video,
+                  leadership clip, or business direction briefing.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Strategy Intelligence Overview</div>
+          <h2>Strategy turns information into direction.</h2>
+          <p>
+            A business can have ideas, effort, and opportunity, but without strategy,
+            it can still move in the wrong direction. Strategy Intelligence helps visitors
+            understand how to choose what matters, what to avoid, how to compete, how to
+            explain value, and how to grow with discipline.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-strip">
+          <div class="image-block">
+            <div class="overlay-label">Plain Strategy Image</div>
           </div>
 
-          <div class="small-box">
-            <div class="label">Difference</div>
-            <h3>Why</h3>
-            <p>Show what makes the business clearer, stronger, faster, safer, or more reliable.</p>
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Strategy video area.</h3>
+              <p>
+                This space is ready for future video. It can show a daily strategy lesson,
+                business planning clip, offer-building guide, or positioning education.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="box">
-          <h3>Positioning questions</h3>
-          <ul>
-            <li>What type of customer should the business serve first?</li>
-            <li>What problem does the business solve better than others?</li>
-            <li>What should customers remember about the business?</li>
-            <li>What should the company be known for?</li>
-            <li>What should the company avoid being known for?</li>
-            <li>How does the company look compared to competitors?</li>
-            <li>Is the message simple enough for customers to understand quickly?</li>
-            <li>Does the position support long-term growth?</li>
-          </ul>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Strategy Areas</div>
+          <h2>Clickable strategy topics.</h2>
+          <p>
+            These sections help visitors understand the main parts of business strategy:
+            positioning, offer strategy, pricing, growth, risk control, and decision discipline.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <a href="#positioning" class="info-card">
+            <div class="card-content">
+              <h3>Market Positioning</h3>
+              <p>
+                Define where the business fits, who it serves, what makes it different,
+                and why customers should pay attention.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Positioning</span><span>›</span></div>
+            </div>
+          </a>
+
+          <a href="#offer-strategy" class="info-card c2">
+            <div class="card-content">
+              <h3>Offer Strategy</h3>
+              <p>
+                Shape what the business offers, what problem it solves, what value it creates,
+                and how customers understand the service.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Offer</span><span>›</span></div>
+            </div>
+          </a>
+
+          <a href="#pricing-strategy" class="info-card c3">
+            <div class="card-content">
+              <h3>Pricing Strategy</h3>
+              <p>
+                Review how price supports value, cost, customer trust, profitability,
+                competition, and long-term sustainability.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Pricing</span><span>›</span></div>
+            </div>
+          </a>
+
+          <a href="#growth-path" class="info-card c4">
+            <div class="card-content">
+              <h3>Growth Path</h3>
+              <p>
+                Build a growth path that starts simple, proves demand, improves systems,
+                protects cash, and expands with discipline.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Growth</span><span>›</span></div>
+            </div>
+          </a>
+
+          <a href="#risk-strategy" class="info-card c5">
+            <div class="card-content">
+              <h3>Risk Strategy</h3>
+              <p>
+                Decide what to avoid, what to test first, where money can be wasted,
+                and what must be controlled before expansion.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Risk</span><span>›</span></div>
+            </div>
+          </a>
+
+          <a href="#decision-discipline" class="info-card c6">
+            <div class="card-content">
+              <h3>Decision Discipline</h3>
+              <p>
+                Use clear questions, priorities, review points, and timing checks before
+                making major business decisions.
+              </p>
+              <div class="card-line"></div>
+              <div class="card-link"><span>Review Decisions</span><span>›</span></div>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="offer" id="offer">
-      <div class="content">
-        <div class="eyebrow">Offer Strategy</div>
+    <section class="section" id="positioning">
+      <div class="wrap">
+        <div class="detail-section">
+          <div class="detail-inner">
+            <div class="eyebrow">Market Positioning</div>
+            <h2>Positioning explains how the business wants to be seen.</h2>
+            <p>
+              Market positioning helps a business stand apart from the crowd. It tells the
+              customer what the company does, who it serves, what problem it solves, and why
+              the business is different from other options.
+            </p>
 
-        <h2>The offer should solve a clear customer problem.</h2>
-
-        <p>
-          An offer is more than a product or service. It is the promise made to the
-          customer. A strong offer explains what the customer gets, why it matters,
-          what steps are included, and what value the business delivers.
-        </p>
-
-        <div class="box">
-          <h3>Offer strategy should define</h3>
-          <ul>
-            <li>The main customer problem.</li>
-            <li>The service or product being offered.</li>
-            <li>The result the customer wants.</li>
-            <li>The steps included in the service.</li>
-            <li>The level of support the customer receives.</li>
-            <li>The difference between basic, standard, and premium options.</li>
-            <li>The limits of the offer.</li>
-            <li>The reason the offer is worth paying for.</li>
-          </ul>
+            <div class="bullet-grid">
+              <div class="bullet">Who is the best customer?</div>
+              <div class="bullet">What problem does the business solve?</div>
+              <div class="bullet">What should the company be known for?</div>
+              <div class="bullet">What makes the company different?</div>
+              <div class="bullet">Is the message easy to understand?</div>
+              <div class="bullet">Does the position support long-term growth?</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="pricing" id="pricing">
-      <div class="content">
-        <div class="eyebrow">Pricing Strategy</div>
+    <section class="section" id="offer-strategy">
+      <div class="wrap">
+        <div class="detail-section alt">
+          <div class="detail-inner">
+            <div class="eyebrow">Offer Strategy</div>
+            <h2>The offer should solve a clear customer problem.</h2>
+            <p>
+              An offer is more than a product or service. It is the promise made to the
+              customer. A strong offer explains what the customer gets, why it matters,
+              what steps are included, and what value the business delivers.
+            </p>
 
-        <h2>Pricing should protect the business and make sense to the customer.</h2>
-
-        <p>
-          Pricing is not just picking a number. Pricing must consider cost, time,
-          materials, labor, market comparison, customer value, profitability, risk,
-          and whether the business can keep delivering the service.
-        </p>
-
-        <div class="box">
-          <h3>Pricing questions</h3>
-          <ul>
-            <li>What does it cost to deliver the service?</li>
-            <li>How much time does the work require?</li>
-            <li>What do competitors charge?</li>
-            <li>What value does the customer receive?</li>
-            <li>Is the price too low to survive?</li>
-            <li>Is the price too high for the target customer?</li>
-            <li>Should the offer have different tiers?</li>
-            <li>Does the price support long-term operations?</li>
-          </ul>
+            <div class="bullet-grid">
+              <div class="bullet">What is the main customer problem?</div>
+              <div class="bullet">What result does the customer want?</div>
+              <div class="bullet">What steps are included?</div>
+              <div class="bullet">What support does the customer receive?</div>
+              <div class="bullet">What is not included?</div>
+              <div class="bullet">Why is the offer worth paying for?</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="growth" id="growth">
-      <div class="content">
-        <div class="eyebrow">Growth Path</div>
-
-        <h2>Growth should happen with discipline, not confusion.</h2>
-
-        <p>
-          A business should not grow only because it wants to look big. Growth should
-          come after the offer is clear, the customer is known, the pricing works,
-          the system is stable, and the company can handle more demand.
-        </p>
-
-        <div class="box">
-          <h3>Growth path stages</h3>
-          <ul>
-            <li>Test the offer with a small group of real customers.</li>
-            <li>Improve the offer based on feedback.</li>
-            <li>Confirm pricing and delivery cost.</li>
-            <li>Build a simple operating system.</li>
-            <li>Track customer inquiries and results.</li>
-            <li>Improve follow-up and customer communication.</li>
-            <li>Increase marketing only after the system can handle demand.</li>
-            <li>Expand carefully, with reports and review.</li>
-          </ul>
+    <section class="section">
+      <div class="wrap">
+        <div class="plain-media-grid">
+          <div class="plain-media m1">
+            <div class="plain-caption">Leadership Planning</div>
+          </div>
+          <div class="plain-media m2">
+            <div class="plain-caption">Strategic Direction</div>
+          </div>
+          <div class="plain-media m3">
+            <div class="plain-caption">Decision Review</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="risk" id="risk">
-      <div class="content">
-        <div class="eyebrow">Risk Strategy</div>
+    <section class="section" id="pricing-strategy">
+      <div class="wrap">
+        <div class="detail-section">
+          <div class="detail-inner">
+            <div class="eyebrow">Pricing Strategy</div>
+            <h2>Pricing should protect the business and make sense to the customer.</h2>
+            <p>
+              Pricing is not only choosing a number. Price must consider time, cost, service value,
+              customer trust, competitor comparison, profit, risk, and whether the business can
+              keep delivering the same quality over time.
+            </p>
 
-        <h2>Strategy should also decide what not to do.</h2>
-
-        <p>
-          A strong strategy protects the business from bad decisions. Sometimes the
-          smartest move is to wait, simplify, test first, reduce cost, improve the
-          offer, or avoid a market that is not ready.
-        </p>
-
-        <div class="box">
-          <h3>Risks strategy should control</h3>
-          <ul>
-            <li>Spending too much before demand is proven.</li>
-            <li>Serving too many customer types at once.</li>
-            <li>Offering too many services too early.</li>
-            <li>Pricing too low and hurting the business.</li>
-            <li>Growing before systems are ready.</li>
-            <li>Ignoring customer complaints or weak follow-up.</li>
-            <li>Entering a market without researching competitors.</li>
-            <li>Making decisions without reviewing numbers and risk.</li>
-          </ul>
+            <div class="bullet-grid">
+              <div class="bullet">What does it cost to deliver the service?</div>
+              <div class="bullet">What do competitors charge?</div>
+              <div class="bullet">What value does the customer receive?</div>
+              <div class="bullet">Is the price too low to survive?</div>
+              <div class="bullet">Should there be different tiers?</div>
+              <div class="bullet">Does the price support long-term operations?</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="checklist">
-      <div class="content">
-        <div class="eyebrow">Strategy Checklist</div>
+    <section class="section" id="growth-path">
+      <div class="wrap">
+        <div class="detail-section alt">
+          <div class="detail-inner">
+            <div class="eyebrow">Growth Path</div>
+            <h2>Growth should happen with discipline, not confusion.</h2>
+            <p>
+              Growth can make a weak business weaker if the system is not ready. Strategy helps
+              a business grow carefully: test the offer, confirm demand, improve pricing, build
+              systems, and expand only when the operation can handle more pressure.
+            </p>
 
-        <h2>A clear strategy should guide the next decision.</h2>
-
-        <p>
-          Visitors should leave the strategy process with a better understanding of
-          the customer, the offer, the price, the position, the risk, and the next
-          step.
-        </p>
-
-        <div class="box">
-          <h3>Before moving forward, visitors should know</h3>
-          <ul>
-            <li>Who the business is built to serve.</li>
-            <li>What problem the business solves.</li>
-            <li>What offer should be launched first.</li>
-            <li>What price range supports the business.</li>
-            <li>What makes the business different.</li>
-            <li>What systems are needed before growth.</li>
-            <li>What risks should be controlled first.</li>
-            <li>What step should happen next.</li>
-          </ul>
+            <div class="bullet-grid">
+              <div class="bullet">Test the offer with real customers.</div>
+              <div class="bullet">Improve the offer based on feedback.</div>
+              <div class="bullet">Confirm pricing and delivery cost.</div>
+              <div class="bullet">Build a simple operating system.</div>
+              <div class="bullet">Track customer inquiries and results.</div>
+              <div class="bullet">Expand only when the business is ready.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="future">
-      <div class="content">
-        <div class="eyebrow">Future Strategy Tools</div>
+    <section class="section" id="risk-strategy">
+      <div class="wrap">
+        <div class="detail-section">
+          <div class="detail-inner">
+            <div class="eyebrow">Risk Strategy</div>
+            <h2>Strategy also decides what not to do.</h2>
+            <p>
+              A strong strategy protects the business from bad moves. Sometimes the smartest move
+              is to wait, simplify, reduce cost, improve the offer, test first, or avoid a market
+              that is not ready.
+            </p>
 
-        <h2>This page can later become a live strategy guide.</h2>
-
-        <p>
-          In the future, this page can include strategy prompts, business model
-          worksheets, offer-building guides, pricing checklists, growth-readiness
-          questions, and public education updates.
-        </p>
-
-        <div class="box">
-          <h3>Future public features</h3>
-          <ul>
-            <li>Daily strategy topic.</li>
-            <li>Positioning checklist.</li>
-            <li>Offer strategy guide.</li>
-            <li>Pricing review guide.</li>
-            <li>Growth readiness checklist.</li>
-            <li>Risk strategy questions.</li>
-            <li>Business model education.</li>
-            <li>Links back to Business Intelligence.</li>
-          </ul>
+            <div class="bullet-grid">
+              <div class="bullet">Do not spend too much before demand is proven.</div>
+              <div class="bullet">Do not serve too many customer types at once.</div>
+              <div class="bullet">Do not offer too many services too early.</div>
+              <div class="bullet">Do not price too low and damage the business.</div>
+              <div class="bullet">Do not grow before systems are ready.</div>
+              <div class="bullet">Do not ignore customer complaints or weak follow-up.</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="contact" id="contact">
-      <div class="contact-clean">
-        <div class="eyebrow">Contact TitanCore</div>
+    <section class="section" id="decision-discipline">
+      <div class="wrap">
+        <div class="detail-section alt">
+          <div class="detail-inner">
+            <div class="eyebrow">Decision Discipline</div>
+            <h2>Good strategy should guide the next decision.</h2>
+            <p>
+              Decision discipline means the business does not chase every idea at the same time.
+              It reviews the facts, compares risk, checks timing, and chooses the next move with
+              a clear reason.
+            </p>
 
-        <h2>Contact us today</h2>
-
-        <p>
-          For general questions, professional inquiries, business intelligence
-          questions, or TitanCore-related information, contact TitanCore Holdings.
-          Phone: (800) 827-9016.
-        </p>
-
-        <div class="btn-row">
-          <a href="contact.html" class="btn">Get In Touch ›</a>
+            <div class="bullet-grid">
+              <div class="bullet">What decision are we trying to make?</div>
+              <div class="bullet">What information supports the decision?</div>
+              <div class="bullet">What risk is still unclear?</div>
+              <div class="bullet">What is the first step?</div>
+              <div class="bullet">What should wait?</div>
+              <div class="bullet">What result should be reviewed later?</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <footer class="simple-footer">
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Strategy Focus</div>
+            <h2 id="dailyTitle">Choose one clear direction before trying to move everywhere.</h2>
+            <p id="dailyText">
+              Today’s strategy focus is direction. A business becomes stronger when it knows
+              who it serves, what it offers, what it avoids, and what next step matters most.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Define the main customer.</div>
+              <div class="daily-item" id="daily2">Define the main offer.</div>
+              <div class="daily-item" id="daily3">Define what to avoid.</div>
+              <div class="daily-item" id="daily4">Define the next move.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, business intelligence questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
       © 2025 TitanCore Holdings. All rights reserved.
     </footer>
 
-  </main>
+  </div>
 
   <script>
-    function toggleMenu(){
-      document.getElementById("menu").classList.toggle("active");
-    }
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
 
-    const backgroundSets = {
-      hero:[
-        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
-      ],
-      daily:[
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85"
-      ],
-      map:[
-        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
-      ],
-      foundation:[
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
-      ],
-      positioning:[
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
-      ],
-      offer:[
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
-      ],
-      pricing:[
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
-      ],
-      growth:[
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85"
-      ],
-      risk:[
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
-      ],
-      checklist:[
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
-      ],
-      future:[
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
-      ],
-      contact:[
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
-      ]
-    };
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel) menuPanel.classList.remove('open');
+    });
 
-    const strategyItems = [
+    const heroMediaRotator = document.getElementById('heroMediaRotator');
+
+    const heroImages = [
+      'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80',
+      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80'
+    ];
+
+    const dayIndex = new Date().getDate() % heroImages.length;
+    heroMediaRotator.style.background =
+      `linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)), url("${heroImages[dayIndex]}") center/cover`;
+
+    const dailySet = [
       {
-        title:"Choose one customer before trying to serve everyone.",
-        text:"Today’s strategy focus is customer clarity. A business becomes stronger when it knows exactly who it is serving first."
+        focus:'Choose one clear direction before trying to move everywhere.',
+        title:'Choose one clear direction before trying to move everywhere.',
+        text:'Today’s strategy focus is direction. A business becomes stronger when it knows who it serves, what it offers, what it avoids, and what next step matters most.',
+        a:'Define the main customer.',
+        b:'Define the main offer.',
+        c:'Define what to avoid.',
+        d:'Define the next move.'
       },
       {
-        title:"Build one strong offer before adding too many services.",
-        text:"Today’s strategy focus is offer discipline. A clear offer is easier to explain, sell, deliver, and improve."
+        focus:'Build one strong offer before adding too many services.',
+        title:'Build one strong offer before adding too many services.',
+        text:'Today’s strategy focus is offer discipline. A clear offer is easier to explain, sell, deliver, and improve.',
+        a:'Name the customer problem.',
+        b:'Name the result.',
+        c:'Name the steps.',
+        d:'Name the limit of the offer.'
       },
       {
-        title:"Set pricing that protects the business.",
-        text:"Today’s strategy focus is pricing. A price should respect cost, time, value, risk, and long-term sustainability."
+        focus:'Set pricing that protects the business.',
+        title:'Set pricing that protects the business.',
+        text:'Today’s strategy focus is pricing. A price should respect cost, time, value, customer trust, risk, and long-term sustainability.',
+        a:'Review cost.',
+        b:'Review competitor price.',
+        c:'Review customer value.',
+        d:'Review long-term profit.'
       },
       {
-        title:"Grow only after the system can handle demand.",
-        text:"Today’s strategy focus is disciplined growth. Growth becomes dangerous when operations are not ready."
-      },
-      {
-        title:"Strategy also means knowing what to avoid.",
-        text:"Today’s strategy focus is risk control. A smart business does not chase every opportunity."
+        focus:'Grow only after the system can handle demand.',
+        title:'Grow only after the system can handle demand.',
+        text:'Today’s strategy focus is disciplined growth. Growth becomes dangerous when operations, pricing, and customer follow-up are not ready.',
+        a:'Test demand.',
+        b:'Improve workflow.',
+        c:'Track results.',
+        d:'Expand carefully.'
       }
     ];
 
-    function applyDailyBackgrounds(){
-      const sections = document.querySelectorAll(".daily-bg");
-      const day = new Date().getDate();
+    const focusIndex = new Date().getDate() % dailySet.length;
 
-      sections.forEach(function(section,index){
-        const group = section.dataset.bgGroup || "hero";
-        const images = backgroundSets[group] || backgroundSets.hero;
-        const selected = images[(day + index) % images.length];
-        section.style.backgroundImage = "url('" + selected + "')";
-      });
-    }
+    document.getElementById('todayFocus').textContent = dailySet[focusIndex].focus;
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
 
-    function applyDailyStrategy(){
-      const today = new Date();
-      const selected = strategyItems[today.getDate() % strategyItems.length];
-
-      document.getElementById("dailyDate").textContent =
-        today.toLocaleDateString("en-US", {
-          weekday:"long",
-          year:"numeric",
-          month:"long",
-          day:"numeric"
-        });
-
-      document.getElementById("dailyTitle").textContent = selected.title;
-      document.getElementById("dailyText").textContent = selected.text;
-    }
-
-    applyDailyBackgrounds();
-    applyDailyStrategy();
+    const dailyDate = document.getElementById('dailyDate');
+    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
   </script>
 </body>
 </html>
