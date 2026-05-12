@@ -4,1224 +4,1238 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Business Intelligence | TitanCore Holdings</title>
-
   <style>
     :root{
-      --black:#020202;
-      --green:#064b38;
-      --green2:#0b684f;
-      --gold:#d7b35d;
-      --gold2:#f0d07a;
-      --white:#f7f1e6;
-      --soft:#d8d0c4;
-      --line:rgba(215,179,93,.78);
+      --bg:#050505;
+      --panel:#0d0d0d;
+      --panel-2:rgba(10, 10, 10, 0.72);
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --green-soft:#1f8d73;
+      --white:#f5f5f5;
+      --muted:#d8d8d8;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+      --radius:28px;
+      --max:1200px;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
+      margin:0;
       background:#000;
       color:var(--white);
       font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
     }
 
-    a{color:inherit;text-decoration:none}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
 
-    .page{
-      max-width:1180px;
-      margin:0 auto;
-      background:#000;
-      border-left:1px solid var(--line);
-      border-right:1px solid var(--line);
+    .site-shell{
+      background:
+        linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
       min-height:100vh;
-      overflow:hidden;
     }
 
-    .topbar{
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+    .header{
       position:sticky;
       top:0;
-      z-index:100;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:12px;
-      padding:14px 24px;
-      background:linear-gradient(180deg,#050505,#010101);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
     }
 
-    .logo{
-      width:76px;
-      height:76px;
-      border:3px solid var(--gold);
-      display:grid;
-      place-items:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
-      font-weight:700;
-      color:var(--gold2);
-      background:#030303;
-      flex-shrink:0;
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 0;
+      gap:18px;
     }
 
     .brand{
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(18px,3.5vw,46px);
-      letter-spacing:clamp(1px,.55vw,5px);
-      text-transform:uppercase;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
     }
 
-    .brand span{color:var(--gold)}
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+    }
 
     .menu-btn{
-      width:76px;
-      height:76px;
-      border:3px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:var(--white);
-      font-size:36px;
+      width:126px;
+      height:126px;
+      max-width:96px;
+      max-height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       cursor:pointer;
+      transition:.25s ease;
       flex-shrink:0;
     }
 
     .menu-btn:hover{
-      background:var(--gold);
-      color:#000;
+      background:#0f8c6d;
+      transform:translateY(-2px);
     }
 
-    .menu{
-      display:none;
-      background:#080808;
-      border-bottom:1px solid var(--line);
-      padding:22px 42px 26px;
-    }
-
-    .menu.active{display:block}
-
-    .menu a{
-      display:block;
-      padding:17px 0;
-      border-bottom:1px solid rgba(215,179,93,.25);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      color:var(--soft);
-      font-size:18px;
-    }
-
-    .menu a:hover{
-      color:var(--gold2);
-      padding-left:8px;
-    }
-
-    .section{
-      position:relative;
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-
-    .section::before{
-      content:"";
-      position:absolute;
+    /* MOBILE PANEL */
+    .menu-panel{
+      position:fixed;
       inset:0;
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.52)),
-        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.62));
-      z-index:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
     }
 
-    .section.green::before{
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.60),rgba(6,75,56,.82)),
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:700px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
     }
 
-    .section.dark::before{
-      background:
-        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.70)),
-        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.72));
-    }
-
-    .hero{
-      min-height:820px;
+    .menu-top{
       display:flex;
       align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
     }
 
-    .content{
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    /* HERO */
+    .hero{
+      padding:34px 0 26px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.18fr .82fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .hero-copy,
+    .hero-media{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
       position:relative;
-      z-index:1;
-      padding:64px 42px;
-      max-width:1080px;
+      min-height:530px;
+      box-shadow:var(--shadow);
     }
 
-    .hero .content{
-      padding-top:84px;
-      padding-bottom:84px;
-      max-width:1040px;
+    .hero-copy{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.76), rgba(8,40,32,.52)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80") center/cover;
+      padding:54px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
     }
 
     .eyebrow{
-      color:var(--gold2);
+      color:var(--gold-soft);
+      font-weight:800;
+      letter-spacing:8px;
       text-transform:uppercase;
-      letter-spacing:6px;
-      font-size:15px;
-      font-weight:900;
-      margin-bottom:22px;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
+      font-size:1rem;
+      margin-bottom:18px;
     }
 
-    h1,h2,h3{
-      font-family:Georgia, "Times New Roman", serif;
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
       font-weight:400;
-      line-height:1.06;
-      text-shadow:0 3px 16px rgba(0,0,0,.88);
+      font-family:Georgia, "Times New Roman", serif;
     }
 
     h1{
-      font-size:clamp(48px,6vw,92px);
-      margin-bottom:34px;
-      max-width:1040px;
+      font-size:4.6rem;
+      color:#fff;
+      max-width:780px;
     }
 
-    h2{
-      font-size:clamp(40px,5vw,76px);
-      margin-bottom:34px;
-      max-width:1040px;
-    }
+    .hero-copy h1 span{color:var(--gold-soft)}
 
-    h3{
-      color:var(--gold2);
-      font-size:clamp(36px,4.8vw,64px);
-      margin-bottom:24px;
-    }
-
-    h1 span,
-    h2 span,
-    h3 span{
-      color:var(--gold2);
-    }
-
-    p{
-      color:#f2ece1;
-      font-size:22px;
-      line-height:1.72;
-      margin-bottom:26px;
-      max-width:1040px;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
+    .hero-copy p{
+      font-size:1.28rem;
+      max-width:800px;
+      margin:0 0 28px;
+      color:#f0f0f0;
     }
 
     .btn-row{
       display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      margin-top:38px;
-    }
-
-    .btn{
-      min-width:250px;
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      padding:22px 32px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:#fff;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:4px;
-      box-shadow:0 16px 35px rgba(0,0,0,.35);
-    }
-
-    .btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
-
-    .box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:44px 48px;
-      margin-top:38px;
-      max-width:1060px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-      backdrop-filter:blur(1px);
-    }
-
-    .box ul{
-      list-style:none;
-      display:grid;
       gap:18px;
-      margin-top:20px;
+      flex-wrap:wrap;
     }
 
-    .box li{
-      color:#f7f1e6;
-      font-size:22px;
-      line-height:1.6;
-      padding-left:30px;
-      position:relative;
-      text-shadow:0 2px 12px rgba(0,0,0,.82);
-    }
-
-    .box li::before{
-      content:"›";
-      position:absolute;
-      left:0;
-      top:0;
-      color:var(--gold2);
-      font-weight:900;
-    }
-
-    .daily-card{
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:44px 48px;
-      margin-top:38px;
-      max-width:1060px;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-      backdrop-filter:blur(1px);
-    }
-
-    .two-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:26px;
-      margin-top:38px;
-      max-width:1060px;
-    }
-
-    .mini-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:34px;
-      min-height:260px;
-      box-shadow:0 16px 40px rgba(0,0,0,.30);
-    }
-
-    .mini-card h3{
-      font-size:clamp(30px,4vw,48px);
-      margin-bottom:18px;
-    }
-
-    .mini-card p{
-      font-size:20px;
-      line-height:1.6;
-      margin-bottom:0;
-    }
-
-    .intel-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:34px;
-      margin-top:42px;
-      max-width:1060px;
-    }
-
-    .intel-card{
-      display:block;
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:44px 48px;
-      color:#f7f1e6;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-      backdrop-filter:blur(1px);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:800;
+      letter-spacing:5px;
+      text-transform:uppercase;
       transition:.25s ease;
     }
 
-    .intel-card:hover{
-      background:rgba(6,75,56,.82);
-      transform:translateY(-3px);
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
     }
 
-    .intel-card h3{
-      color:var(--gold2);
-      font-size:clamp(38px,5vw,68px);
-      margin:0 0 28px;
+    .hero-media{
+      background:#06110f;
+      display:flex;
+      flex-direction:column;
     }
 
-    .intel-card p{
-      font-size:22px;
-      line-height:1.72;
+    .media-top{
+      flex:1;
+      min-height:310px;
+      background:
+        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)),
+        url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80") center/cover;
+      position:relative;
+    }
+
+    .live-badge{
+      position:absolute;
+      top:18px;
+      right:18px;
+      background:rgba(0,0,0,.7);
+      border:1px solid var(--border);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.88rem;
+      font-weight:700;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .media-bottom{
+      padding:24px;
+      display:grid;
+      gap:18px;
+      background:rgba(0,0,0,.9);
+    }
+
+    .mini-panel{
+      border:1px solid rgba(216,180,90,.55);
+      padding:18px 20px;
+      background:rgba(21, 122, 99, 0.16);
+    }
+
+    .mini-panel h4{
+      color:var(--gold-soft);
+      font-size:1.35rem;
+      margin-bottom:10px;
+    }
+
+    .mini-panel p{
       margin:0;
+      color:#ededed;
+      font-size:1rem;
     }
 
-    .card-line{
+    /* OVERVIEW SECTION */
+    .section{
+      padding:26px 0;
+    }
+
+    .section-heading{
+      margin-bottom:22px;
+    }
+
+    .section-heading .eyebrow{margin-bottom:14px}
+    .section-heading h2{
+      font-size:3.45rem;
+      color:#fff;
+      margin-bottom:14px;
+    }
+    .section-heading p{
+      margin:0;
+      max-width:980px;
+      color:#f1f1f1;
+      font-size:1.16rem;
+    }
+
+    /* FEATURE GRID */
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:26px;
+    }
+
+    .feature-card{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.82), rgba(12,78,63,.48)),
+        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80") center/cover;
+      box-shadow:var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height:425px;
+    }
+
+    .feature-card.alt-1{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(17,94,78,.45)),
+        url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-card.alt-2{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(14,86,69,.45)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-card.alt-3{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(14,86,69,.45)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-card.alt-4{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(14,86,69,.45)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-card.alt-5{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(14,86,69,.45)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-card.alt-6{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(14,86,69,.45)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-card.alt-7{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(14,86,69,.45)),
+        url("https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-card.alt-8{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.84), rgba(14,86,69,.45)),
+        url("https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1200&q=80") center/cover;
+    }
+
+    .feature-content{
+      padding:34px 34px 28px;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+      background:rgba(0,0,0,.28);
+    }
+
+    .feature-content h3{
+      color:var(--gold-soft);
+      font-size:3.1rem;
+      margin-bottom:16px;
+    }
+
+    .feature-content p{
+      margin:0 0 26px;
+      font-size:1.14rem;
+      color:#f4f4f4;
+      max-width:90%;
+    }
+
+    .feature-line{
+      width:100%;
       height:1px;
-      background:rgba(215,179,93,.65);
-      margin:36px 0 28px;
+      background:rgba(216,180,90,.7);
+      margin-top:auto;
+      margin-bottom:24px;
     }
 
-    .intel-card strong{
+    .feature-link{
+      font-weight:900;
+      letter-spacing:6px;
+      text-transform:uppercase;
+      font-size:1rem;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+      gap:12px;
       color:#fff;
-      text-transform:uppercase;
-      letter-spacing:5px;
-      font-size:17px;
-      font-weight:900;
     }
 
-    .intel-card strong span{
-      color:var(--gold2);
-      font-size:46px;
-      line-height:0;
+    .feature-link span:last-child{
+      color:var(--gold-soft);
+      font-size:2.2rem;
+      line-height:1;
     }
 
-    .contact-clean{
+    /* IMAGE STRIP */
+    .media-strip{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+      margin-top:8px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:420px;
       position:relative;
-      z-index:1;
-      padding:76px 42px 88px;
-      max-width:980px;
+      background:#08100f;
     }
 
-    .simple-footer{
-      padding:24px;
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.48)),
+        url("https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.68);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:800;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.75) 40%, rgba(0,0,0,.92) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.7rem;
+      color:#fff;
+      margin-bottom:12px;
+    }
+
+    .video-copy p{
+      margin:0 0 18px;
+      font-size:1.1rem;
+      color:#f2f2f2;
+      max-width:700px;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:800;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    /* DAILY INTELLIGENCE */
+    .daily-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:26px;
+      align-items:start;
+    }
+
+    .daily-panel,
+    .bullet-panel{
+      border:2px solid var(--border);
+      border-radius:30px;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(16,92,74,.35)),
+        url("https://images.unsplash.com/photo-1516321310764-8d4f1d7c7e43?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .daily-panel .inside,
+    .bullet-panel .inside{
+      padding:34px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .focus-title{
+      color:#fff;
+      font-size:3rem;
+      margin-bottom:16px;
+    }
+
+    .daily-panel p{
+      font-size:1.16rem;
+      color:#f3f3f3;
+      margin:0 0 14px;
+    }
+
+    .focus-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .focus-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .bullet-panel h3{
+      font-size:2.8rem;
+      color:var(--gold-soft);
+      margin-bottom:16px;
+    }
+
+    .bullet-panel ul{
+      margin:0;
+      padding-left:20px;
+    }
+
+    .bullet-panel li{
+      margin:0 0 14px;
+      font-size:1.08rem;
+      color:#f1f1f1;
+    }
+
+    /* PLAIN IMAGE AREA */
+    .plain-media-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+      margin-top:6px;
+    }
+
+    .plain-media{
+      min-height:280px;
+      border:2px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      position:relative;
+      background:#07100f center/cover no-repeat;
+    }
+
+    .plain-media.m1{
+      background-image:url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80");
+    }
+    .plain-media.m2{
+      background-image:url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80");
+    }
+    .plain-media.m3{
+      background-image:url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80");
+    }
+
+    .plain-caption{
+      position:absolute;
+      left:16px;
+      bottom:16px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.88rem;
+      font-weight:800;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    /* WHY BUSINESS INTELLIGENCE */
+    .info-columns{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+
+    .info-card{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(14,87,69,.35));
+      box-shadow:var(--shadow);
+    }
+
+    .info-card .inside{padding:30px}
+    .info-card h3{
+      color:var(--gold-soft);
+      font-size:2.3rem;
+      margin-bottom:14px;
+    }
+    .info-card p{
+      margin:0;
+      color:#f0f0f0;
+      font-size:1.08rem;
+    }
+
+    /* CONTACT */
+    .contact-section{
+      margin-top:12px;
+      padding:24px 0 40px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:54px;
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:800;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      margin:0 0 26px;
+      max-width:840px;
+      font-size:1.24rem;
+      color:#f2f2f2;
+    }
+
+    /* FOOTER */
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
       text-align:center;
-      color:var(--gold);
-      font-size:18px;
-      background:#010101;
-      border-bottom:1px solid var(--line);
+      color:var(--gold-soft);
+      font-size:1rem;
     }
 
-    @media(max-width:900px){
-      .two-grid{grid-template-columns:1fr}
+    /* RESPONSIVE */
+    @media (max-width: 1100px){
+      h1{font-size:3.8rem}
+      .hero-grid,
+      .daily-grid,
+      .media-strip,
+      .feature-grid,
+      .info-columns{
+        grid-template-columns:1fr;
+      }
+      .plain-media-grid{
+        grid-template-columns:1fr;
+      }
     }
 
-    @media(max-width:600px){
-      .topbar{padding:12px 14px;gap:10px}
-      .logo,.menu-btn{width:62px;height:62px}
-      .logo{font-size:27px}
-      .menu-btn{font-size:30px}
-      .brand{font-size:16px;letter-spacing:1px}
-      .menu{padding:22px 30px 26px}
-      .menu a{font-size:15px;letter-spacing:2.5px}
-      .hero{min-height:760px}
-      .content,.contact-clean{padding:48px 28px}
-      h1{font-size:42px}
-      h2{font-size:40px}
-      h3{font-size:40px}
-      p{font-size:21px;line-height:1.68}
-      .eyebrow{font-size:13px;letter-spacing:5px}
-      .btn-row,.btn{width:100%}
-      .box,.daily-card,.intel-card,.mini-card{padding:34px 32px}
-      .box li,.intel-card p{font-size:21px;line-height:1.68}
-      .intel-card h3{font-size:42px}
-      .intel-card strong{font-size:15px;letter-spacing:4px}
-      .simple-footer{font-size:16px}
+    @media (max-width: 760px){
+      .header-inner{padding:14px 0}
+      .brand-mark{
+        width:72px;height:72px;border-width:4px;font-size:2.2rem;
+      }
+      .brand-text{font-size:1.22rem}
+      .menu-btn{
+        width:72px;height:72px;max-width:72px;max-height:72px;border-width:4px;font-size:2rem;
+      }
+
+      .hero-copy,.hero-media,.feature-card,.image-block,.video-block,.daily-panel,.bullet-panel,.contact-box,.info-card,.plain-media{
+        border-radius:24px;
+      }
+
+      .hero-copy{padding:30px;min-height:480px}
+      .hero-media{min-height:auto}
+      h1{font-size:2.85rem}
+      .section-heading h2{font-size:2.5rem}
+      .feature-content h3{font-size:2.4rem}
+      .contact-inner h2{font-size:2.8rem}
+      .contact-inner{padding:32px 26px}
+      .hero-copy p,.section-heading p,.contact-inner p{font-size:1.06rem}
+      .feature-content p,.daily-panel p,.info-card p{font-size:1rem}
+      .hero-copy,.feature-content,.daily-panel .inside,.bullet-panel .inside,.video-copy{padding:26px}
     }
   </style>
 </head>
-
 <body>
-  <main class="page">
+  <div class="site-shell">
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
 
-    <header class="topbar">
-      <a href="index.html" class="logo">TH</a>
-      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
-      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
     </header>
 
-    <nav class="menu" id="menu">
-      <a href="index.html">Home</a>
-      <a href="titancore-structure.html">TitanCore Structure</a>
-      <a href="operating-model.html">Operating Model</a>
-      <a href="governance.html">Governance</a>
-      <a href="companies.html">Company</a>
-      <a href="institution.html">Institution</a>
-      <a href="business-intelligence.html">Business Intelligence</a>
-      <a href="news-media.html">News &amp; Media</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-    <section class="section hero daily-bg" data-bg-group="hero">
-      <div class="content">
-        <div class="eyebrow">Business Intelligence</div>
-
-        <h1>
-          A public business guide for research, strategy, operations,
-          data, systems, markets, and <span>economic signals.</span>
-        </h1>
-
-        <p>
-          Business Intelligence is the place where TitanCore visitors can learn how
-          to think before making business decisions. This page explains what to
-          research, what to compare, what data to review, what systems to build,
-          and what market signals to watch.
-        </p>
-
-        <p>
-          This is the main hub page. Each box below opens a separate full page with
-          more detailed information for that intelligence area.
-        </p>
-
-        <div class="btn-row">
-          <a href="index.html" class="btn">Back Home ›</a>
+    <!-- MENU PANEL -->
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
         </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="company.html">Company</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="investor.html">Investor</a>
+          <a href="banks.html">Banks</a>
+          <a href="institution-financial.html">Institution Financial</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="global-news.html">Global News</a>
+          <a href="contact.html">Contact</a>
+          <a href="dashboard-login.html">Dashboard Login</a>
+          <a href="central-login.html">Central Login</a>
+        </nav>
       </div>
-    </section>
+    </div>
 
-    <section class="section green daily-bg" data-bg-group="overview">
-      <div class="content">
-        <div class="eyebrow">Business Intelligence Overview</div>
-
-        <h2>
-          Business Intelligence helps people understand what should be checked before action.
-        </h2>
-
-        <p>
-          A business decision should not be made only from excitement, emotion, or
-          pressure. A serious decision should be supported by research, customer
-          understanding, competitive review, operational planning, data, systems,
-          risk review, market movement, and economic awareness.
-        </p>
-
-        <p>
-          The purpose of this page is to keep the homepage clean while giving deeper
-          business education its own place. Visitors can read this overview, then
-          open the full page that matches what they need to understand.
-        </p>
-
-        <div class="box">
-          <h3>What Business Intelligence covers</h3>
-          <ul>
-            <li>Research before spending serious money.</li>
-            <li>Strategy before entering or expanding a market.</li>
-            <li>Operations before serving customers at scale.</li>
-            <li>AI awareness and digital tool education.</li>
-            <li>Data thinking for reports, numbers, patterns, and warning signs.</li>
-            <li>Business systems for forms, routing, follow-up, approvals, and repeatable work.</li>
-            <li>Stock and market intelligence for public market awareness.</li>
-            <li>Economic signals for inflation, rates, jobs, housing, banking, lending, and confidence.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark daily-bg" data-bg-group="daily">
-      <div class="content">
-        <div class="eyebrow">Daily Intelligence Focus</div>
-
-        <h2>
-          A daily public focus makes the page feel active.
-        </h2>
-
-        <p>
-          This section changes automatically by date. It gives visitors a simple
-          business intelligence theme for the day: research, strategy, risk, data,
-          operations, systems, market awareness, or economic signals.
-        </p>
-
-        <div class="daily-card">
-          <div class="eyebrow" id="dailyDate">Loading date...</div>
-          <h3 id="dailyTitle">Loading intelligence focus...</h3>
-          <p id="dailyText">Loading daily note...</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="pillars">
-      <div class="content">
-        <div class="eyebrow">Core Intelligence Pillars</div>
-
-        <h2>
-          The main pillars of business intelligence.
-        </h2>
-
-        <p>
-          Business Intelligence becomes valuable when it is organized into clear
-          pillars. Each pillar helps visitors understand a different part of
-          business thinking.
-        </p>
-
-        <div class="two-grid">
-          <div class="mini-card">
-            <h3>Research</h3>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Business Intelligence</div>
+            <h1>Business knowledge for <span>people who want to think before they move.</span></h1>
             <p>
-              Research helps people understand demand, customers, competitors,
-              pricing, location, timing, regulations, and opportunity before they
-              spend money.
+              TitanCore Business Intelligence is a public learning and information area built for visitors
+              who want to understand markets, customers, business systems, operations, strategy, data,
+              stocks, economic signals, and practical business decision-making before they take action.
             </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
           </div>
 
-          <div class="mini-card">
-            <h3>Strategy</h3>
-            <p>
-              Strategy turns information into direction. It helps a company decide
-              what to build, who to serve, what to avoid, and how to grow.
-            </p>
-          </div>
+          <div class="hero-media">
+            <div class="media-top" id="heroMediaRotator">
+              <div class="live-badge">Daily Media Rotation</div>
+            </div>
 
-          <div class="mini-card">
-            <h3>Operations</h3>
-            <p>
-              Operations keeps the business moving. It includes workflows, service
-              quality, process discipline, tracking, and improvement.
-            </p>
-          </div>
+            <div class="media-bottom">
+              <div class="mini-panel">
+                <h4>Today’s Business Focus</h4>
+                <p id="todayFocus">Review demand, customer behavior, and market timing before making a major move.</p>
+              </div>
 
-          <div class="mini-card">
-            <h3>Data</h3>
-            <p>
-              Data helps people review numbers, reports, patterns, customer signals,
-              market movement, performance, and warning signs.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Systems</h3>
-            <p>
-              Systems reduce confusion. They help organize forms, routing, approvals,
-              communication, records, follow-up, and repeatable work.
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Market Awareness</h3>
-            <p>
-              Market awareness helps visitors watch stocks, crypto, commodities,
-              housing, interest rates, business news, and global movement.
-            </p>
+              <div class="mini-panel">
+                <h4>Video Space</h4>
+                <p>
+                  This area can later hold a rotating business video, news clip, market briefing,
+                  or TitanCore educational media segment.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="map">
-      <div class="content">
-        <div class="eyebrow">Open Business Intelligence Pages</div>
+    <!-- INTRO -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Business Intelligence Overview</div>
+          <h2>What this page is for.</h2>
+          <p>
+            This page is designed as a central public business learning page. Instead of only giving short
+            descriptions, it gives visitors a broader place to explore important business subjects. A visitor
+            can move from research and strategy into operations, AI awareness, data thinking, business systems,
+            stock and market intelligence, and economic signals. The goal is to make business information easier
+            to understand, easier to explore, and more useful for decision-making.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <h2>
-          Select a full intelligence page.
-        </h2>
+    <!-- PLAIN IMAGE + VIDEO AREA -->
+    <section class="section">
+      <div class="wrap">
+        <div class="media-strip">
+          <div class="image-block">
+            <div class="overlay-label">Plain Image Area</div>
+          </div>
 
-        <p>
-          Each box opens a separate full page. The file names in these links must
-          match the files you upload to Netlify.
-        </p>
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Media can rotate here every day.</h3>
+              <p>
+                This section is built so TitanCore can later show a rotating business video,
+                market update clip, global business segment, or educational feature without changing the structure of the page.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="intel-grid">
+    <!-- MAIN INTELLIGENCE CARDS -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Explore Intelligence</div>
+          <h2>Main intelligence areas.</h2>
+          <p>
+            Each section below opens a dedicated page so visitors can continue reading a full explanation
+            instead of staying trapped inside one short summary card.
+          </p>
+        </div>
 
-          <a href="search-intelligence.html" class="intel-card">
-            <h3>Research Intelligence</h3>
-            <p>
-              Research Intelligence helps visitors understand what to check before
-              opening a business, entering a market, comparing competitors, studying
-              customers, reviewing risk, or spending serious money.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Research Intelligence <span>›</span></strong>
+        <div class="feature-grid">
+          <a href="search-intelligence.html" class="feature-card">
+            <div class="feature-content">
+              <h3>Search Intelligence</h3>
+              <p>
+                Search Intelligence helps visitors understand how to look for business information, where to search,
+                how to compare sources, and how to organize research before making decisions.
+              </p>
+              <div class="feature-line"></div>
+              <div class="feature-link"><span>Open Search Intelligence</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="strategy-intelligence.html" class="intel-card">
-            <h3>Strategy Intelligence</h3>
-            <p>
-              Strategy Intelligence turns information into direction. It helps a
-              business decide what to focus on, what to avoid, what to build, what
-              market to serve, and how to create long-term value.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Strategy Intelligence <span>›</span></strong>
+          <a href="strategy-intelligence.html" class="feature-card alt-1">
+            <div class="feature-content">
+              <h3>Strategy Intelligence</h3>
+              <p>
+                Strategy Intelligence explains how businesses choose direction, decide what to focus on,
+                understand priorities, and build stronger long-term decision-making discipline.
+              </p>
+              <div class="feature-line"></div>
+              <div class="feature-link"><span>Open Strategy Intelligence</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="operations-intelligence.html" class="intel-card">
-            <h3>Operations Intelligence</h3>
-            <p>
-              Operations Intelligence helps businesses organize workflows, improve
-              systems, track performance, manage service quality, reduce confusion,
-              and operate with better discipline.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Operations Intelligence <span>›</span></strong>
+          <a href="operations-intelligence.html" class="feature-card alt-2">
+            <div class="feature-content">
+              <h3>Operations Intelligence</h3>
+              <p>
+                Operations Intelligence helps businesses improve workflow, service quality, internal order,
+                repeatable systems, execution discipline, and day-to-day business performance.
+              </p>
+              <div class="feature-line"></div>
+              <div class="feature-link"><span>Open Operations Intelligence</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="ai-awareness-intelligence.html" class="intel-card">
-            <h3>AI Awareness Intelligence</h3>
-            <p>
-              AI Awareness Intelligence explains what AI is, how digital tools can
-              support business education, what business owners should understand,
-              and how to think about automation responsibly.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open AI Awareness <span>›</span></strong>
+          <a href="ai-awareness-intelligence.html" class="feature-card alt-3">
+            <div class="feature-content">
+              <h3>AI Awareness Intelligence</h3>
+              <p>
+                AI Awareness Intelligence gives visitors a public understanding of what AI is,
+                how it can support work, how to use it responsibly, and what human judgment still matters most.
+              </p>
+              <div class="feature-line"></div>
+              <div class="feature-link"><span>Open AI Awareness</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="data-thinking-intelligence.html" class="intel-card">
-            <h3>Data Thinking Intelligence</h3>
-            <p>
-              Data Thinking Intelligence explains how reports, numbers, patterns,
-              customer signals, business performance, market movement, and warning
-              signs can support better decisions.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Data Thinking <span>›</span></strong>
+          <a href="data-thinking-intelligence.html" class="feature-card alt-4">
+            <div class="feature-content">
+              <h3>Data Thinking Intelligence</h3>
+              <p>
+                Data Thinking Intelligence shows how reports, patterns, signals, trends, and measurable information
+                can support smarter business decisions.
+              </p>
+              <div class="feature-line"></div>
+              <div class="feature-link"><span>Open Data Thinking</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="business-systems-intelligence.html" class="intel-card">
-            <h3>Business Systems Intelligence</h3>
-            <p>
-              Business Systems Intelligence explains how organized workflows,
-              routing, forms, follow-up, reviews, approvals, records, and repeatable
-              processes help a company become stronger.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Business Systems <span>›</span></strong>
+          <a href="business-systems-intelligence.html" class="feature-card alt-5">
+            <div class="feature-content">
+              <h3>Business Systems Intelligence</h3>
+              <p>
+                Business Systems Intelligence explains how routing, forms, follow-up, reviews, approvals,
+                and repeatable systems help businesses grow stronger and operate more clearly.
+              </p>
+              <div class="feature-line"></div>
+              <div class="feature-link"><span>Open Business Systems</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="stock-and-market-intelligence.html" class="intel-card">
-            <h3>Stock &amp; Market Intelligence</h3>
-            <p>
-              Stock and Market Intelligence covers market watch, stock education,
-              U.S. markets, international markets, commodities, forex, crypto/coins,
-              housing movement, market news, and future live market alerts.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Stock &amp; Market <span>›</span></strong>
+          <a href="stock-and-market-intelligence.html" class="feature-card alt-6">
+            <div class="feature-content">
+              <h3>Stock &amp; Market Intelligence</h3>
+              <p>
+                Stock &amp; Market Intelligence covers stock education, U.S. and international markets,
+                commodities, forex, crypto/coins, business market movement, market news, and future live market watch areas.
+              </p>
+              <div class="feature-line"></div>
+              <div class="feature-link"><span>Open Stock &amp; Market Intelligence</span><span>›</span></div>
+            </div>
           </a>
 
-          <a href="economic-signals-intelligence.html" class="intel-card">
-            <h3>Economic Signals Intelligence</h3>
-            <p>
-              Economic Signals Intelligence reviews inflation, interest rates, jobs
-              reports, housing signals, consumer spending, banking movement, lending
-              conditions, and business confidence.
-            </p>
-            <div class="card-line"></div>
-            <strong>Open Economic Signals <span>›</span></strong>
+          <a href="economic-signals-intelligence.html" class="feature-card alt-7">
+            <div class="feature-content">
+              <h3>Economic Signals Intelligence</h3>
+              <p>
+                Economic Signals Intelligence helps visitors review inflation, interest rates, jobs, housing,
+                consumer strength, lending conditions, and larger business confidence signals.
+              </p>
+              <div class="feature-line"></div>
+              <div class="feature-link"><span>Open Economic Signals</span><span>›</span></div>
+            </div>
           </a>
-
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="research">
-      <div class="content">
-        <div class="eyebrow">Research Preview</div>
+    <!-- DAILY INTELLIGENCE -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Daily Intelligence Area</div>
+          <h2>Daily focus, major topics, and rotating information.</h2>
+          <p>
+            This area is designed so TitanCore can later rotate information automatically. For now it serves as
+            structured public information. Later it can rotate images, video areas, topic highlights, market notes,
+            and major business subjects each day.
+          </p>
+        </div>
 
-        <h2>
-          Research helps people understand a market before they enter it.
-        </h2>
+        <div class="daily-grid">
+          <div class="daily-panel">
+            <div class="inside">
+              <div class="daily-date" id="dailyDate">Today’s Focus</div>
+              <h3 class="focus-title" id="focusTitle">Study demand before building the offer.</h3>
+              <p id="focusBody">
+                Good business intelligence starts by asking whether people really need the service,
+                how often they need it, whether the market is already crowded, and what makes one offer
+                stronger than another.
+              </p>
 
-        <p>
-          Research is the first layer of Business Intelligence. Before a person
-          opens a company, launches a service, buys equipment, signs a lease, spends
-          money, or enters a market, they should understand the environment.
-        </p>
+              <div class="focus-list">
+                <div class="focus-item" id="focus1">Demand: How many people need this?</div>
+                <div class="focus-item" id="focus2">Customer: Who is the real buyer?</div>
+                <div class="focus-item" id="focus3">Competition: Who already serves the market?</div>
+                <div class="focus-item" id="focus4">Timing: Is now the right moment?</div>
+              </div>
+            </div>
+          </div>
 
-        <p>
-          Strong research asks clear questions: Who needs this service? What problem
-          is being solved? Who already provides it? What do competitors charge? What
-          do customers complain about? Is the market growing or weakening?
-        </p>
-
-        <div class="box">
-          <h3>Research questions</h3>
-          <ul>
-            <li>How many people need the service?</li>
-            <li>Who is the target customer?</li>
-            <li>What problem does the customer need solved?</li>
-            <li>Who are the main competitors?</li>
-            <li>What do competitors charge?</li>
-            <li>What do customers complain about?</li>
-            <li>What is missing in the market?</li>
-            <li>What makes this business different?</li>
-          </ul>
+          <div class="bullet-panel">
+            <div class="inside">
+              <h3>What visitors can use this page for.</h3>
+              <ul>
+                <li>Understand basic business concepts in plain language.</li>
+                <li>Move into deeper public pages for research, strategy, systems, and operations.</li>
+                <li>Review stock and market education areas before exploring market-focused sections.</li>
+                <li>Follow future rotating video, image, and business topic areas.</li>
+                <li>Use TitanCore as a public business information and learning hub.</li>
+                <li>Explore business subjects without needing to start an application or service request.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="strategy">
-      <div class="content">
-        <div class="eyebrow">Strategy Preview</div>
+    <!-- PLAIN PICTURES -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Image Areas</div>
+          <h2>Plain image spaces for the website.</h2>
+          <p>
+            These are example plain picture sections with no heavy text over the whole image. They help
+            the page breathe visually and can later rotate with daily business-related media.
+          </p>
+        </div>
 
-        <h2>
-          Strategy turns information into direction.
-        </h2>
-
-        <p>
-          Research gives information. Strategy decides what to do with that
-          information. A company without strategy can be busy but still confused.
-          Strategy helps the company choose a direction and stay disciplined.
-        </p>
-
-        <p>
-          Strategy should help answer what to offer, who to serve, what to avoid,
-          how to price, what to build first, what to delay, and how the company can
-          create long-term value.
-        </p>
-
-        <div class="box">
-          <h3>Strategy should define</h3>
-          <ul>
-            <li>The target customer.</li>
-            <li>The main offer.</li>
-            <li>The value promise.</li>
-            <li>The pricing direction.</li>
-            <li>The market position.</li>
-            <li>The risk to avoid.</li>
-            <li>The growth path.</li>
-            <li>The long-term goal.</li>
-          </ul>
+        <div class="plain-media-grid">
+          <div class="plain-media m1">
+            <div class="plain-caption">Business Environment</div>
+          </div>
+          <div class="plain-media m2">
+            <div class="plain-caption">Market Perspective</div>
+          </div>
+          <div class="plain-media m3">
+            <div class="plain-caption">Work & Leadership</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="operations">
-      <div class="content">
-        <div class="eyebrow">Operations Preview</div>
+    <!-- WHY BI -->
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div class="eyebrow">Why It Matters</div>
+          <h2>Why business intelligence is important.</h2>
+          <p>
+            Business intelligence is not only about numbers. It is about understanding the environment, seeing signals,
+            reducing confusion, improving choices, and helping people think more clearly before they spend money,
+            enter a market, build an offer, grow a company, or change direction.
+          </p>
+        </div>
 
-        <h2>
-          Operations is the system that keeps a business moving.
-        </h2>
+        <div class="info-columns">
+          <div class="info-card">
+            <div class="inside">
+              <h3>Clarity</h3>
+              <p>
+                It helps people move from confusion to understanding by turning scattered information
+                into organized public knowledge.
+              </p>
+            </div>
+          </div>
 
-        <p>
-          Operations is how a company receives work, processes work, routes work,
-          checks quality, follows up, records activity, and completes service.
-          Without operations, a business can look good outside but fail inside.
-        </p>
+          <div class="info-card">
+            <div class="inside">
+              <h3>Decision Support</h3>
+              <p>
+                It supports better choices by helping visitors compare signals, trends, timing,
+                research, and market conditions before acting.
+              </p>
+            </div>
+          </div>
 
-        <p>
-          Good operations reduce confusion. They help employees know what to do,
-          managers know what to review, customers know what to expect, and leaders
-          know where the business is strong or weak.
-        </p>
-
-        <div class="box">
-          <h3>Operations should organize</h3>
-          <ul>
-            <li>Customer intake.</li>
-            <li>Work routing.</li>
-            <li>Service steps.</li>
-            <li>Quality review.</li>
-            <li>Follow-up.</li>
-            <li>Reports.</li>
-            <li>Approvals.</li>
-            <li>Performance tracking.</li>
-          </ul>
+          <div class="info-card">
+            <div class="inside">
+              <h3>Preparation</h3>
+              <p>
+                It prepares people to think in a more organized way about customers, systems,
+                strategy, operations, markets, and business direction.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="ai">
-      <div class="content">
-        <div class="eyebrow">AI Awareness Preview</div>
-
-        <h2>
-          AI Awareness helps visitors understand digital tools responsibly.
-        </h2>
-
-        <p>
-          AI is changing how people research, write, organize, compare, plan, and
-          understand information. Public AI education helps business owners and
-          professionals understand what AI can do and what still requires human
-          judgment.
-        </p>
-
-        <p>
-          AI should not be explained as magic. It should be explained as software
-          that can process information, summarize patterns, assist with writing,
-          support research, organize ideas, and help people think more clearly.
-        </p>
-
-        <div class="box">
-          <h3>AI awareness should explain</h3>
-          <ul>
-            <li>What AI is.</li>
-            <li>What AI can help with.</li>
-            <li>What AI should not decide alone.</li>
-            <li>Why human review still matters.</li>
-            <li>How AI can support research.</li>
-            <li>How AI can support writing.</li>
-            <li>How AI can support organization.</li>
-            <li>How to use AI responsibly.</li>
-          </ul>
+    <!-- CONTACT ENDING -->
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, business intelligence questions, or TitanCore-related
+              information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="data">
-      <div class="content">
-        <div class="eyebrow">Data Thinking Preview</div>
-
-        <h2>
-          Data Thinking means using information to support better decisions.
-        </h2>
-
-        <p>
-          Data Thinking is not only numbers. It includes reports, customer signals,
-          market movement, phone calls, email inquiries, service patterns, sales
-          activity, complaints, timing, and warning signs.
-        </p>
-
-        <p>
-          When a company reviews data properly, it can see what is working, what is
-          failing, what customers need, where demand is growing, and where the
-          business should slow down or improve.
-        </p>
-
-        <div class="box">
-          <h3>Data Thinking should review</h3>
-          <ul>
-            <li>Customer inquiries.</li>
-            <li>Sales activity.</li>
-            <li>Lead quality.</li>
-            <li>Service completion.</li>
-            <li>Response time.</li>
-            <li>Customer complaints.</li>
-            <li>Market signals.</li>
-            <li>Financial performance.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark daily-bg" data-bg-group="systems">
-      <div class="content">
-        <div class="eyebrow">Business Systems Preview</div>
-
-        <h2>
-          Business Systems help a company work the same way every time.
-        </h2>
-
-        <p>
-          A business system is the structure behind the work. It can include forms,
-          intake, routing, approvals, reports, records, calendars, follow-up,
-          customer communication, and internal review.
-        </p>
-
-        <p>
-          Systems help a business avoid confusion. When the system is clear, the
-          company does not depend only on memory or last-minute decisions. The work
-          has a path.
-        </p>
-
-        <div class="box">
-          <h3>Business systems should include</h3>
-          <ul>
-            <li>Clear intake forms.</li>
-            <li>Proper routing.</li>
-            <li>Assigned responsibility.</li>
-            <li>Review steps.</li>
-            <li>Approval steps.</li>
-            <li>Follow-up rules.</li>
-            <li>Saved records.</li>
-            <li>Performance reporting.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="market">
-      <div class="content">
-        <div class="eyebrow">Stock &amp; Market Preview</div>
-
-        <h2>
-          Market awareness helps visitors understand business movement.
-        </h2>
-
-        <p>
-          Stock and Market Intelligence is a major part of Business Intelligence
-          because stocks, crypto, commodities, forex, housing, interest rates, and
-          global movement can affect business confidence.
-        </p>
-
-        <p>
-          This page should later become one of the biggest public pages because it
-          can include U.S. markets, international markets, major companies, indexes,
-          crypto/coins, housing movement, commodities, forex, market news, and major
-          alerts.
-        </p>
-
-        <div class="box">
-          <h3>Market areas to watch</h3>
-          <ul>
-            <li>United States stock market.</li>
-            <li>International stock markets.</li>
-            <li>Stocks up and stocks down.</li>
-            <li>Crypto and major coins.</li>
-            <li>Commodities such as oil, gold, gas, and metals.</li>
-            <li>Forex and currency movement.</li>
-            <li>Housing market movement.</li>
-            <li>Major business and market news.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark daily-bg" data-bg-group="economic">
-      <div class="content">
-        <div class="eyebrow">Economic Signals Preview</div>
-
-        <h2>
-          Economic signals help visitors understand pressure before making major decisions.
-        </h2>
-
-        <p>
-          Economic Signals Intelligence explains how inflation, interest rates, jobs
-          reports, housing signals, consumer spending, banking movement, lending
-          conditions, and confidence can affect business decisions.
-        </p>
-
-        <p>
-          Economic signals matter because they affect customers, banks, real estate,
-          lenders, investors, employers, and business owners. When these signals
-          change, the cost of money, the cost of living, and the strength of demand
-          can change with them.
-        </p>
-
-        <div class="box">
-          <h3>Economic signals to review</h3>
-          <ul>
-            <li>Inflation.</li>
-            <li>Interest rates.</li>
-            <li>Jobs reports.</li>
-            <li>Housing signals.</li>
-            <li>Consumer spending.</li>
-            <li>Banking movement.</li>
-            <li>Lending conditions.</li>
-            <li>Business confidence.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="questions">
-      <div class="content">
-        <div class="eyebrow">Business Intelligence Questions</div>
-
-        <h2>
-          Questions visitors should ask before making a business move.
-        </h2>
-
-        <p>
-          Business Intelligence becomes useful when it helps people ask better
-          questions. A person should not just ask, “Can I start this?” They should
-          ask what the market says, what the customer needs, what the risk is, and
-          what system is needed to deliver.
-        </p>
-
-        <div class="box">
-          <h3>Decision questions</h3>
-          <ul>
-            <li>Who needs this product or service?</li>
-            <li>How often do they need it?</li>
-            <li>What problem are they trying to solve?</li>
-            <li>Who already provides this service?</li>
-            <li>What do competitors charge?</li>
-            <li>What makes customers trust a company?</li>
-            <li>What makes customers walk away?</li>
-            <li>What risks should be reviewed before spending money?</li>
-            <li>What system is needed to manage the work?</li>
-            <li>What data should be tracked from the beginning?</li>
-            <li>What economic signals could affect the decision?</li>
-            <li>What market movement could change the opportunity?</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark daily-bg" data-bg-group="future">
-      <div class="content">
-        <div class="eyebrow">Future Live Intelligence</div>
-
-        <h2>
-          This page can later become a living public intelligence hub.
-        </h2>
-
-        <p>
-          For now, this page gives visitors a strong public explanation of Business
-          Intelligence and connects them to full topic pages. Later, it can show
-          daily business learning, market summaries, economic signals, public
-          updates, and rotating educational content.
-        </p>
-
-        <p>
-          The public page should stay clean and useful. It should not expose private
-          internal systems, private company workflows, dashboards, passwords, keys,
-          or private operations.
-        </p>
-
-        <div class="box">
-          <h3>Future public features</h3>
-          <ul>
-            <li>Daily business intelligence focus.</li>
-            <li>Daily market awareness note.</li>
-            <li>Economic signal summaries.</li>
-            <li>Business education updates.</li>
-            <li>Market and stock category pages.</li>
-            <li>Country-level global business summaries.</li>
-            <li>News and media connection.</li>
-            <li>Contact routing to the proper public area.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section daily-bg" data-bg-group="contact">
-      <div class="contact-clean">
-        <div class="eyebrow">Contact TitanCore</div>
-
-        <h2>Contact us today</h2>
-
-        <p>
-          For general questions, professional inquiries, business intelligence
-          questions, or TitanCore-related information, contact TitanCore Holdings.
-        </p>
-
-        <div class="btn-row">
-          <a href="contact.html" class="btn">Get In Touch ›</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="simple-footer">
+    <!-- FOOTER -->
+    <footer>
       © 2025 TitanCore Holdings. All rights reserved.
     </footer>
-
-  </main>
+  </div>
 
   <script>
-    function toggleMenu(){
-      document.getElementById("menu").classList.toggle("active");
-    }
+    // MENU
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
 
-    const backgroundSets = {
-      hero:[
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
-      ],
-      overview:[
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
-      ],
-      daily:[
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
-      ],
-      pillars:[
-        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
-      ],
-      map:[
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85"
-      ],
-      research:[
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
-      ],
-      strategy:[
-        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
-      ],
-      operations:[
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
-      ],
-      ai:[
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85"
-      ],
-      data:[
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
-      ],
-      systems:[
-        "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
-      ],
-      market:[
-        "https://images.unsplash.com/photo-1642543348745-03b1219733d9?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
-      ],
-      economic:[
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1565514158740-064f34bd6cfd?auto=format&fit=crop&w=1600&q=85"
-      ],
-      questions:[
-        "https://images.unsplash.com/photo-1554224154-26032fced8bd?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
-      ],
-      future:[
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85"
-      ],
-      contact:[
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
-      ]
-    };
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if (e.target === menuPanel) menuPanel.classList.remove('open');
+    });
 
-    const dailyItems = [
+    // DAILY ROTATING HERO IMAGE
+    const heroMediaRotator = document.getElementById('heroMediaRotator');
+    const heroImages = [
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80'
+    ];
+
+    const dayIndex = new Date().getDate() % heroImages.length;
+    heroMediaRotator.style.background =
+      `linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)), url("${heroImages[dayIndex]}") center/cover`;
+
+    // TODAY'S FOCUS
+    const focusSet = [
       {
-        title:"Research before spending serious money.",
-        text:"Today’s business intelligence focus is research. Check demand, customers, competitors, cost, timing, regulation, and risk before making a major move."
+        focus:'Review demand, customer behavior, and market timing before making a major move.',
+        title:'Study demand before building the offer.',
+        body:'Good business intelligence starts by asking whether people really need the service, how often they need it, whether the market is already crowded, and what makes one offer stronger than another.',
+        a:'Demand: How many people need this?',
+        b:'Customer: Who is the real buyer?',
+        c:'Competition: Who already serves the market?',
+        d:'Timing: Is now the right moment?'
       },
       {
-        title:"Turn information into strategy.",
-        text:"Today’s business intelligence focus is strategy. Good strategy helps a company decide what to focus on, what to avoid, and how to build long-term value."
+        focus:'Compare competitors, pricing, positioning, and service quality.',
+        title:'Study competitors before entering the market.',
+        body:'Strong business intelligence helps visitors compare what other companies are doing, what customers say about them, and where opportunity may still exist.',
+        a:'Positioning: How do they present themselves?',
+        b:'Pricing: What are they charging?',
+        c:'Customer response: What do people praise or complain about?',
+        d:'Opportunity: What can a new company do better?'
       },
       {
-        title:"Use operations to reduce confusion.",
-        text:"Today’s business intelligence focus is operations. Strong workflows help a business organize work, track progress, improve service, and manage decisions."
+        focus:'Review systems, workflow, and operations discipline.',
+        title:'A strong system keeps a business moving.',
+        body:'Good operations and business systems can reduce confusion, improve service, speed up follow-up, and make a company easier to manage.',
+        a:'Workflow: How does work move?',
+        b:'Routing: Who receives what and when?',
+        c:'Quality: How is performance checked?',
+        d:'Improvement: What is slowing the business down?'
       },
       {
-        title:"Use data thinking before making decisions.",
-        text:"Today’s business intelligence focus is data. Numbers, reports, patterns, market movement, customer signals, and performance data can reveal what needs attention."
-      },
-      {
-        title:"Build systems before growth becomes messy.",
-        text:"Today’s business intelligence focus is systems. Forms, routing, approvals, records, and follow-up help a company stay organized."
-      },
-      {
-        title:"Watch market and economic signals.",
-        text:"Today’s business intelligence focus is market awareness. Stocks, crypto, commodities, housing, rates, jobs, and inflation can affect business confidence."
+        focus:'Use data, trends, and signals to support better decisions.',
+        title:'Data should support thinking, not replace thinking.',
+        body:'Reports, patterns, numbers, customer signals, and market movement should help people think more clearly and make more disciplined decisions.',
+        a:'Reports: What do the numbers show?',
+        b:'Patterns: Is something repeating?',
+        c:'Movement: Is the trend improving or weakening?',
+        d:'Action: What decision does this information support?'
       }
     ];
 
-    function applyDailyBackgrounds(){
-      const sections = document.querySelectorAll(".daily-bg");
-      const day = new Date().getDate();
+    const focusIndex = new Date().getDate() % focusSet.length;
+    document.getElementById('todayFocus').textContent = focusSet[focusIndex].focus;
+    document.getElementById('focusTitle').textContent = focusSet[focusIndex].title;
+    document.getElementById('focusBody').textContent = focusSet[focusIndex].body;
+    document.getElementById('focus1').textContent = focusSet[focusIndex].a;
+    document.getElementById('focus2').textContent = focusSet[focusIndex].b;
+    document.getElementById('focus3').textContent = focusSet[focusIndex].c;
+    document.getElementById('focus4').textContent = focusSet[focusIndex].d;
 
-      sections.forEach(function(section,index){
-        const group = section.dataset.bgGroup || "hero";
-        const images = backgroundSets[group] || backgroundSets.hero;
-        const selected = images[(day + index) % images.length];
-        section.style.backgroundImage = "url('" + selected + "')";
-      });
-    }
-
-    function applyDailyBrief(){
-      const today = new Date();
-      const selected = dailyItems[today.getDate() % dailyItems.length];
-
-      document.getElementById("dailyDate").textContent =
-        today.toLocaleDateString("en-US", {
-          weekday:"long",
-          year:"numeric",
-          month:"long",
-          day:"numeric"
-        });
-
-      document.getElementById("dailyTitle").textContent = selected.title;
-      document.getElementById("dailyText").textContent = selected.text;
-    }
-
-    applyDailyBackgrounds();
-    applyDailyBrief();
+    // DATE LABEL
+    const dailyDate = document.getElementById('dailyDate');
+    const now = new Date();
+    const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+    dailyDate.textContent = now.toLocaleDateString('en-US', options);
   </script>
 </body>
 </html>
