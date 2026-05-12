@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strategy | TitanCore Holdings</title>
+  <title>Strategy Intelligence | TitanCore Holdings</title>
 
   <style>
     :root{
@@ -19,13 +19,7 @@
 
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-
-    body{
-      background:#000;
-      color:var(--white);
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
     a{color:inherit;text-decoration:none}
 
     .page{
@@ -35,6 +29,7 @@
       border-left:1px solid var(--line);
       border-right:1px solid var(--line);
       min-height:100vh;
+      overflow:hidden;
     }
 
     .topbar{
@@ -52,21 +47,17 @@
     }
 
     .logo{
-      width:76px;
-      height:76px;
+      width:76px;height:76px;
       border:3px solid var(--gold);
-      display:grid;
-      place-items:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
-      font-weight:700;
+      display:grid;place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;font-weight:700;
       color:var(--gold2);
       background:#030303;
-      flex-shrink:0;
     }
 
     .brand{
-      font-family:Georgia, "Times New Roman", serif;
+      font-family:Georgia,"Times New Roman",serif;
       font-size:clamp(18px,3.5vw,46px);
       letter-spacing:clamp(1px,.55vw,5px);
       text-transform:uppercase;
@@ -78,20 +69,15 @@
     .brand span{color:var(--gold)}
 
     .menu-btn{
-      width:76px;
-      height:76px;
+      width:76px;height:76px;
       border:3px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
       color:var(--white);
       font-size:36px;
       cursor:pointer;
-      flex-shrink:0;
     }
 
-    .menu-btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
+    .menu-btn:hover{background:var(--gold);color:#000}
 
     .menu{
       display:none;
@@ -112,10 +98,7 @@
       font-size:18px;
     }
 
-    .menu a:hover{
-      color:var(--gold2);
-      padding-left:8px;
-    }
+    .menu a:hover{color:var(--gold2);padding-left:8px}
 
     .section{
       position:relative;
@@ -131,19 +114,25 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.38)),
-        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.50));
+        linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.52)),
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.62));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.58), rgba(6,75,56,.64)),
-        linear-gradient(180deg, rgba(0,0,0,.16), rgba(0,0,0,.44));
+        linear-gradient(90deg,rgba(0,0,0,.62),rgba(6,75,56,.82)),
+        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));
+    }
+
+    .section.dark::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.70)),
+        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.72));
     }
 
     .hero{
-      min-height:720px;
+      min-height:820px;
       display:flex;
       align-items:center;
     }
@@ -151,14 +140,14 @@
     .content{
       position:relative;
       z-index:1;
-      padding:58px 42px;
-      max-width:1040px;
+      padding:64px 42px;
+      max-width:1080px;
     }
 
     .hero .content{
-      max-width:940px;
-      padding-top:74px;
-      padding-bottom:74px;
+      padding-top:84px;
+      padding-bottom:84px;
+      max-width:1040px;
     }
 
     .eyebrow{
@@ -168,52 +157,43 @@
       font-size:15px;
       font-weight:900;
       margin-bottom:22px;
-      text-shadow:0 2px 12px rgba(0,0,0,.75);
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
     h1,h2,h3{
-      font-family:Georgia, "Times New Roman", serif;
+      font-family:Georgia,"Times New Roman",serif;
       font-weight:400;
-      color:var(--white);
       line-height:1.06;
       text-shadow:0 3px 16px rgba(0,0,0,.88);
     }
 
     h1{
-      font-size:clamp(48px,6vw,86px);
+      font-size:clamp(48px,6vw,92px);
       margin-bottom:34px;
-      max-width:930px;
-    }
-
-    h1 span,
-    h2 span{
-      color:var(--gold2);
+      max-width:1040px;
     }
 
     h2{
-      font-size:clamp(40px,5vw,72px);
+      font-size:clamp(40px,5vw,76px);
       margin-bottom:34px;
-      max-width:960px;
+      max-width:1040px;
     }
 
     h3{
       color:var(--gold2);
-      font-size:clamp(36px,5vw,60px);
-      margin-bottom:22px;
+      font-size:clamp(34px,4.8vw,60px);
+      margin-bottom:24px;
     }
+
+    h1 span,h2 span,h3 span{color:var(--gold2)}
 
     p{
       color:#f2ece1;
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:960px;
+      max-width:1040px;
       text-shadow:0 2px 12px rgba(0,0,0,.82);
-    }
-
-    strong{
-      color:var(--gold2);
-      font-weight:900;
     }
 
     .btn-row{
@@ -228,7 +208,6 @@
       display:inline-flex;
       justify-content:center;
       align-items:center;
-      gap:14px;
       padding:22px 32px;
       border:2px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
@@ -236,41 +215,38 @@
       text-transform:uppercase;
       font-weight:900;
       letter-spacing:4px;
-      cursor:pointer;
       box-shadow:0 16px 35px rgba(0,0,0,.35);
     }
 
-    .btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
+    .btn:hover{background:var(--gold);color:#000}
 
-    .info-box{
+    .box,.daily-card{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:42px 46px;
-      max-width:1000px;
-      margin-top:34px;
-      backdrop-filter:blur(1px);
+      background:rgba(0,0,0,.50);
+      padding:44px 48px;
+      margin-top:38px;
+      max-width:1060px;
       box-shadow:0 16px 40px rgba(0,0,0,.35);
+      backdrop-filter:blur(1px);
     }
 
-    .info-box ul{
+    .box ul{
       list-style:none;
       display:grid;
       gap:18px;
       margin-top:20px;
     }
 
-    .info-box li{
+    .box li{
       color:#f7f1e6;
       font-size:22px;
       line-height:1.6;
-      padding-left:28px;
+      padding-left:30px;
       position:relative;
+      text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
-    .info-box li::before{
+    .box li::before{
       content:"›";
       position:absolute;
       left:0;
@@ -281,104 +257,102 @@
 
     .strategy-grid{
       display:grid;
-      grid-template-columns:1fr;
+      grid-template-columns:1fr 1fr;
       gap:28px;
-      margin-top:44px;
-      max-width:1020px;
+      margin-top:42px;
+      max-width:1060px;
     }
 
     .strategy-card{
+      display:block;
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:46px 48px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.34);
+      background:rgba(0,0,0,.50);
+      padding:40px;
+      min-height:320px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      transition:.25s ease;
+    }
+
+    .strategy-card:hover{
+      background:rgba(6,75,56,.82);
+      transform:translateY(-3px);
     }
 
     .strategy-card h3{
-      color:var(--gold2);
+      font-size:clamp(32px,4.5vw,56px);
+      margin-bottom:20px;
     }
 
     .strategy-card p{
+      font-size:21px;
+      line-height:1.62;
+      margin:0;
+    }
+
+    .card-line{
+      height:1px;
+      background:rgba(215,179,93,.65);
+      margin:34px 0 26px;
+    }
+
+    .strategy-card strong{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .strategy-card strong span{
+      color:var(--gold2);
+      font-size:42px;
+      line-height:0;
+    }
+
+    .three-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:38px;
+      max-width:1060px;
+    }
+
+    .small-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:30px;
+      min-height:240px;
+      box-shadow:0 16px 40px rgba(0,0,0,.30);
+    }
+
+    .small-box .label{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .small-box h3{
+      font-size:clamp(28px,3.6vw,42px);
+      margin-bottom:16px;
+    }
+
+    .small-box p{
+      font-size:19px;
+      line-height:1.58;
       margin-bottom:0;
     }
 
-    .search-box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:42px 46px;
-      max-width:960px;
-      margin-top:34px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-
-    .search-box label{
-      display:block;
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:5px;
-      font-size:15px;
-      font-weight:900;
-      margin-bottom:26px;
-      line-height:1.5;
-    }
-
-    .search-input{
-      width:100%;
-      min-height:78px;
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.68);
-      color:var(--white);
-      font-size:24px;
-      font-weight:700;
-      padding:20px 24px;
-      outline:none;
-      margin-bottom:30px;
-    }
-
-    .search-input::placeholder{
-      color:rgba(247,241,230,.62);
-    }
-
-    .search-input:focus{
-      border-color:var(--gold2);
-      box-shadow:0 0 0 3px rgba(215,179,93,.18);
-    }
-
-    .search-button{
-      width:100%;
-      min-height:78px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:#fff;
-      text-transform:uppercase;
-      font-weight:900;
-      letter-spacing:7px;
-      font-size:18px;
-      cursor:pointer;
-      margin-bottom:30px;
-    }
-
-    .search-button:hover{
-      background:var(--gold);
-      color:#000;
-    }
-
-    .contact-box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.46);
-      padding:36px;
-      max-width:900px;
-      margin-top:34px;
-      backdrop-filter:blur(1px);
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-
-    .contact-box p{
-      margin-bottom:14px;
-      overflow-wrap:anywhere;
-      word-break:break-word;
+    .contact-clean{
+      position:relative;
+      z-index:1;
+      padding:76px 42px 88px;
+      max-width:980px;
     }
 
     .simple-footer{
@@ -390,109 +364,34 @@
       border-bottom:1px solid var(--line);
     }
 
+    @media(max-width:1000px){
+      .three-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:900px){
+      .strategy-grid{grid-template-columns:1fr}
+    }
+
     @media(max-width:600px){
-      .topbar{
-        padding:12px 14px;
-        gap:10px;
-      }
-
-      .logo,
-      .menu-btn{
-        width:62px;
-        height:62px;
-      }
-
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
       .logo{font-size:27px}
       .menu-btn{font-size:30px}
-
-      .brand{
-        font-size:16px;
-        letter-spacing:1px;
-      }
-
-      .menu{
-        padding:22px 30px 26px;
-      }
-
-      .menu a{
-        font-size:15px;
-        letter-spacing:2.5px;
-      }
-
-      .hero{
-        min-height:720px;
-      }
-
-      .content{
-        padding:48px 28px;
-      }
-
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .hero{min-height:760px}
+      .content,.contact-clean{padding:48px 28px}
       h1{font-size:42px}
       h2{font-size:40px}
       h3{font-size:38px}
-
-      p{
-        font-size:21px;
-        line-height:1.68;
-      }
-
-      .eyebrow{
-        font-size:13px;
-        letter-spacing:5px;
-      }
-
-      .btn-row,
-      .btn{
-        width:100%;
-      }
-
-      .info-box,
-      .strategy-card,
-      .search-box,
-      .contact-box{
-        padding:34px 32px;
-      }
-
-      .info-box li{
-        font-size:21px;
-        line-height:1.62;
-      }
-
-      .search-box label{
-        font-size:13px;
-        letter-spacing:4px;
-      }
-
-      .search-input{
-        font-size:20px;
-      }
-
-      .search-button{
-        font-size:15px;
-        letter-spacing:5px;
-      }
-
-      .simple-footer{
-        font-size:16px;
-      }
-    }
-
-    @media(max-width:420px){
-      .brand{
-        font-size:15px;
-        letter-spacing:.8px;
-      }
-
-      .logo,
-      .menu-btn{
-        width:58px;
-        height:58px;
-      }
-
-      .logo{font-size:25px}
-
-      h1{font-size:40px}
-      h2{font-size:36px}
+      p{font-size:21px;line-height:1.68}
+      .eyebrow{font-size:13px;letter-spacing:5px}
+      .btn-row,.btn{width:100%}
+      .box,.daily-card,.strategy-card,.small-box{padding:34px 32px}
+      .box li,.strategy-card p{font-size:21px;line-height:1.68}
+      .strategy-card strong{font-size:15px;letter-spacing:4px}
+      .simple-footer{font-size:16px}
     }
   </style>
 </head>
@@ -507,250 +406,382 @@
     </header>
 
     <nav class="menu" id="menu">
-      <a href="titancore-structure.html">TitanCore Structure</a>
-      <a href="operating-model.html">Operating Model</a>
-      <a href="governance.html">Governance</a>
-      <a href="companies.html">Company</a>
-      <a href="institution.html">Institution</a>
+      <a href="index.html">Home</a>
       <a href="business-intelligence.html">Business Intelligence</a>
-      <a href="news-media.html">News &amp; Media</a>
+      <a href="#strategy-map">Strategy Areas</a>
+      <a href="#positioning">Market Positioning</a>
+      <a href="#offer">Offer Strategy</a>
+      <a href="#pricing">Pricing Strategy</a>
+      <a href="#growth">Growth Path</a>
+      <a href="#risk">Risk Strategy</a>
+      <a href="#contact">Contact</a>
     </nav>
 
     <section class="section hero daily-bg" data-bg-group="hero">
       <div class="content">
-        <div class="eyebrow">Strategy</div>
+        <div class="eyebrow">Strategy Intelligence</div>
 
         <h1>
-          Turn information
-          <span>into direction.</span>
+          A public guide for turning research into direction,
+          positioning, offers, pricing, growth, and <span>decision discipline.</span>
         </h1>
 
         <p>
-          Strategy helps a company decide what to focus on, what to avoid, how to
-          compete, how to grow, and how to build long-term value.
+          Strategy Intelligence helps visitors understand how a business turns
+          research into a clear plan. Strategy is not only an idea. It is the
+          direction that tells a business who to serve, what to offer, what to avoid,
+          how to compete, and how to grow.
         </p>
 
         <p>
-          A good strategy is not only an idea. It is a clear direction built from
-          research, customer understanding, market conditions, money planning,
-          risk review, and disciplined execution.
+          A business without strategy can stay busy but still move in the wrong
+          direction. Strategy helps reduce confusion and gives the company a stronger
+          path before money, time, and effort are spent.
         </p>
 
         <div class="btn-row">
           <a href="index.html" class="btn">Back Home ›</a>
-      </div>
-    </section>
-
-    <section class="section green daily-bg" data-bg-group="overview">
-      <div class="content">
-        <div class="eyebrow">Strategy Overview</div>
-
-        <h2>
-          What should a business strategy answer?
-        </h2>
-
-        <p>
-          Strategy gives a business direction before action. It helps leaders make
-          choices instead of chasing every idea, every customer, every market, or
-          every opportunity at the same time.
-        </p>
-
-        <div class="info-box">
-          <h3>Core strategy questions</h3>
-          <ul>
-            <li>What is the business trying to become?</li>
-            <li>Who is the customer?</li>
-            <li>What problem does the business solve?</li>
-            <li>What makes the business different?</li>
-            <li>What should the business focus on first?</li>
-            <li>What should the business avoid?</li>
-            <li>How will the business make money?</li>
-            <li>How will the business grow without losing control?</li>
-          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="details">
+    <section class="section green daily-bg" data-bg-group="daily">
       <div class="content">
-        <div class="eyebrow">Strategy Areas</div>
+        <div class="eyebrow">Daily Strategy Focus</div>
 
-        <h2>
-          The main areas every business strategy should include.
-        </h2>
+        <h2>Today’s strategy focus.</h2>
+
+        <p>
+          This section changes automatically by date. It gives visitors one simple
+          strategic idea to think about each day.
+        </p>
+
+        <div class="daily-card">
+          <div class="eyebrow" id="dailyDate">Loading date...</div>
+          <h3 id="dailyTitle">Loading strategy focus...</h3>
+          <p id="dailyText">Loading strategy note...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="map" id="strategy-map">
+      <div class="content">
+        <div class="eyebrow">Strategy Intelligence Map</div>
+
+        <h2>Choose the strategy area you want to understand.</h2>
+
+        <p>
+          Strategy should be organized. A strong strategy looks at position, offer,
+          pricing, customer value, growth, risk, timing, and what the business should
+          not do.
+        </p>
 
         <div class="strategy-grid">
 
-          <div class="strategy-card">
-            <h3>Business Purpose</h3>
+          <a href="#positioning" class="strategy-card">
+            <h3>Market Positioning</h3>
             <p>
-              Purpose explains why the business exists. It should be clear enough
-              that customers, employees, partners, and leadership understand what
-              the company is trying to solve and why the company matters.
+              Define where the business fits in the market, who it serves, what it
+              stands for, and why customers should notice it.
             </p>
-          </div>
+            <div class="card-line"></div>
+            <strong>Open Positioning <span>›</span></strong>
+          </a>
 
-          <div class="strategy-card">
-            <h3>Customer Focus</h3>
-            <p>
-              Customer focus identifies who the business serves. A company should
-              know the customer’s problem, what they value, what they fear, what
-              they expect, and why they would choose this company instead of another.
-            </p>
-          </div>
-
-          <div class="strategy-card">
-            <h3>Market Position</h3>
-            <p>
-              Market position explains how the business wants to be seen. The
-              company may compete through trust, speed, price, quality, service,
-              convenience, specialization, or a stronger system.
-            </p>
-          </div>
-
-          <div class="strategy-card">
+          <a href="#offer" class="strategy-card">
             <h3>Offer Strategy</h3>
             <p>
-              Offer strategy defines what the company provides. It should explain
-              the main service, the value, the price level, the customer promise,
-              and the next step a customer should take.
+              Shape what the business offers, what problem it solves, what value it
+              creates, and how customers understand the service.
             </p>
-          </div>
+            <div class="card-line"></div>
+            <strong>Open Offer <span>›</span></strong>
+          </a>
 
-          <div class="strategy-card">
-            <h3>Money Plan</h3>
+          <a href="#pricing" class="strategy-card">
+            <h3>Pricing Strategy</h3>
             <p>
-              A strategy needs a money plan. The company should understand revenue,
-              expenses, profit margin, pricing, cash flow, sales volume, and what
-              must happen for the business to stay strong.
+              Review how pricing supports value, cost, customer trust, competition,
+              profitability, and long-term sustainability.
             </p>
-          </div>
+            <div class="card-line"></div>
+            <strong>Open Pricing <span>›</span></strong>
+          </a>
 
-          <div class="strategy-card">
-            <h3>Risk Control</h3>
+          <a href="#growth" class="strategy-card">
+            <h3>Growth Path</h3>
             <p>
-              Risk control helps the business avoid mistakes. It reviews weak
-              demand, bad timing, too much spending, legal issues, poor service,
-              weak systems, and competition before the company moves too fast.
+              Build a growth path that starts simple, proves demand, protects cash,
+              improves systems, and expands with discipline.
             </p>
-          </div>
-
-          <div class="strategy-card">
-            <h3>Growth Plan</h3>
-            <p>
-              Growth strategy explains how the business can expand. Growth should
-              be organized, controlled, and supported by systems so the company
-              does not grow faster than it can manage.
-            </p>
-          </div>
-
-          <div class="strategy-card">
-            <h3>Execution Discipline</h3>
-            <p>
-              Execution discipline turns strategy into action. It includes weekly
-              priorities, performance tracking, follow-up, review, accountability,
-              and adjustment when the market changes.
-            </p>
-          </div>
+            <div class="card-line"></div>
+            <strong>Open Growth <span>›</span></strong>
+          </a>
 
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="guide">
+    <section class="section green daily-bg" data-bg-group="foundation">
       <div class="content">
-        <div class="eyebrow">Strategy Guide</div>
+        <div class="eyebrow">Strategic Foundation</div>
 
-        <h2>
-          A simple way to think about strategy.
-        </h2>
+        <h2>Strategy starts with clear direction.</h2>
 
-        <div class="info-box">
-          <h3>Strategy should create direction</h3>
+        <p>
+          A business can have good ideas, good people, and good energy, but still
+          struggle if it does not have a clear strategic foundation. Strategy should
+          tell the company what to focus on, what not to chase, and how decisions
+          should be made.
+        </p>
+
+        <div class="box">
+          <h3>Strategy should answer</h3>
           <ul>
-            <li>Start with the customer problem.</li>
-            <li>Study the market before spending serious money.</li>
-            <li>Decide what the business will be known for.</li>
-            <li>Build the offer around real customer needs.</li>
-            <li>Know the cost, price, profit, and cash flow.</li>
-            <li>Know what makes the company different from competitors.</li>
-            <li>Create a system to deliver the service consistently.</li>
-            <li>Review results and adjust before problems become large.</li>
+            <li>Who is the business serving?</li>
+            <li>What problem is the business solving?</li>
+            <li>Why should the customer trust this company?</li>
+            <li>What offer should be built first?</li>
+            <li>What should the business avoid?</li>
+            <li>How should the business price and explain value?</li>
+            <li>What system must exist before growth?</li>
+            <li>What risk should be controlled before expansion?</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="search" id="strategy-search">
+    <section class="section daily-bg" data-bg-group="positioning" id="positioning">
       <div class="content">
-        <div class="eyebrow">Strategy Search</div>
+        <div class="eyebrow">Market Positioning</div>
 
-        <h2>
-          Search business strategy topics.
-        </h2>
+        <h2>Market positioning explains how the business wants to be seen.</h2>
 
         <p>
-          Visitors can use this search box to research business strategy,
-          customer strategy, pricing strategy, market entry, growth planning,
-          competitive advantage, and risk control.
+          Positioning is how a business separates itself from the crowd. It helps a
+          customer understand what the business does, who it is for, and why it is
+          different from other options.
         </p>
 
-        <div class="search-box">
-          <label for="strategyQuery">Type a business strategy question</label>
+        <div class="three-grid">
+          <div class="small-box">
+            <div class="label">Customer</div>
+            <h3>Who</h3>
+            <p>Define the best customer instead of trying to serve everybody at the same time.</p>
+          </div>
 
-          <input
-            id="strategyQuery"
-            class="search-input"
-            type="text"
-            placeholder="Example: strategy for starting a small business"
-            onkeydown="handleSearchKey(event)"
-          />
+          <div class="small-box">
+            <div class="label">Problem</div>
+            <h3>Need</h3>
+            <p>Explain the customer problem clearly so the offer connects to a real need.</p>
+          </div>
 
-          <button class="search-button" type="button" onclick="runStrategySearch()">
-            Search ›
-          </button>
+          <div class="small-box">
+            <div class="label">Difference</div>
+            <h3>Why</h3>
+            <p>Show what makes the business clearer, stronger, faster, safer, or more reliable.</p>
+          </div>
+        </div>
 
-          <p>
-            This current version opens a public web search. Later, TitanCore can
-            connect this to live search, AI summaries, market APIs, business news,
-            and Supabase so results can appear directly inside the website.
-          </p>
+        <div class="box">
+          <h3>Positioning questions</h3>
+          <ul>
+            <li>What type of customer should the business serve first?</li>
+            <li>What problem does the business solve better than others?</li>
+            <li>What should customers remember about the business?</li>
+            <li>What should the company be known for?</li>
+            <li>What should the company avoid being known for?</li>
+            <li>How does the company look compared to competitors?</li>
+            <li>Is the message simple enough for customers to understand quickly?</li>
+            <li>Does the position support long-term growth?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="offer" id="offer">
+      <div class="content">
+        <div class="eyebrow">Offer Strategy</div>
+
+        <h2>The offer should solve a clear customer problem.</h2>
+
+        <p>
+          An offer is more than a product or service. It is the promise made to the
+          customer. A strong offer explains what the customer gets, why it matters,
+          what steps are included, and what value the business delivers.
+        </p>
+
+        <div class="box">
+          <h3>Offer strategy should define</h3>
+          <ul>
+            <li>The main customer problem.</li>
+            <li>The service or product being offered.</li>
+            <li>The result the customer wants.</li>
+            <li>The steps included in the service.</li>
+            <li>The level of support the customer receives.</li>
+            <li>The difference between basic, standard, and premium options.</li>
+            <li>The limits of the offer.</li>
+            <li>The reason the offer is worth paying for.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="pricing" id="pricing">
+      <div class="content">
+        <div class="eyebrow">Pricing Strategy</div>
+
+        <h2>Pricing should protect the business and make sense to the customer.</h2>
+
+        <p>
+          Pricing is not just picking a number. Pricing must consider cost, time,
+          materials, labor, market comparison, customer value, profitability, risk,
+          and whether the business can keep delivering the service.
+        </p>
+
+        <div class="box">
+          <h3>Pricing questions</h3>
+          <ul>
+            <li>What does it cost to deliver the service?</li>
+            <li>How much time does the work require?</li>
+            <li>What do competitors charge?</li>
+            <li>What value does the customer receive?</li>
+            <li>Is the price too low to survive?</li>
+            <li>Is the price too high for the target customer?</li>
+            <li>Should the offer have different tiers?</li>
+            <li>Does the price support long-term operations?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="growth" id="growth">
+      <div class="content">
+        <div class="eyebrow">Growth Path</div>
+
+        <h2>Growth should happen with discipline, not confusion.</h2>
+
+        <p>
+          A business should not grow only because it wants to look big. Growth should
+          come after the offer is clear, the customer is known, the pricing works,
+          the system is stable, and the company can handle more demand.
+        </p>
+
+        <div class="box">
+          <h3>Growth path stages</h3>
+          <ul>
+            <li>Test the offer with a small group of real customers.</li>
+            <li>Improve the offer based on feedback.</li>
+            <li>Confirm pricing and delivery cost.</li>
+            <li>Build a simple operating system.</li>
+            <li>Track customer inquiries and results.</li>
+            <li>Improve follow-up and customer communication.</li>
+            <li>Increase marketing only after the system can handle demand.</li>
+            <li>Expand carefully, with reports and review.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="risk" id="risk">
+      <div class="content">
+        <div class="eyebrow">Risk Strategy</div>
+
+        <h2>Strategy should also decide what not to do.</h2>
+
+        <p>
+          A strong strategy protects the business from bad decisions. Sometimes the
+          smartest move is to wait, simplify, test first, reduce cost, improve the
+          offer, or avoid a market that is not ready.
+        </p>
+
+        <div class="box">
+          <h3>Risks strategy should control</h3>
+          <ul>
+            <li>Spending too much before demand is proven.</li>
+            <li>Serving too many customer types at once.</li>
+            <li>Offering too many services too early.</li>
+            <li>Pricing too low and hurting the business.</li>
+            <li>Growing before systems are ready.</li>
+            <li>Ignoring customer complaints or weak follow-up.</li>
+            <li>Entering a market without researching competitors.</li>
+            <li>Making decisions without reviewing numbers and risk.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark daily-bg" data-bg-group="checklist">
+      <div class="content">
+        <div class="eyebrow">Strategy Checklist</div>
+
+        <h2>A clear strategy should guide the next decision.</h2>
+
+        <p>
+          Visitors should leave the strategy process with a better understanding of
+          the customer, the offer, the price, the position, the risk, and the next
+          step.
+        </p>
+
+        <div class="box">
+          <h3>Before moving forward, visitors should know</h3>
+          <ul>
+            <li>Who the business is built to serve.</li>
+            <li>What problem the business solves.</li>
+            <li>What offer should be launched first.</li>
+            <li>What price range supports the business.</li>
+            <li>What makes the business different.</li>
+            <li>What systems are needed before growth.</li>
+            <li>What risks should be controlled first.</li>
+            <li>What step should happen next.</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section class="section green daily-bg" data-bg-group="future">
       <div class="content">
-        <div class="eyebrow">Future Live Strategy Intelligence</div>
+        <div class="eyebrow">Future Strategy Tools</div>
 
-        <h2>
-          Later this page can update with live strategy intelligence.
-        </h2>
+        <h2>This page can later become a live strategy guide.</h2>
 
         <p>
-          The next phase can connect search data, business news, market research,
-          AI summaries, and TitanCore storage. That is how this page can become a
-          daily strategy intelligence area instead of only static text.
+          In the future, this page can include strategy prompts, business model
+          worksheets, offer-building guides, pricing checklists, growth-readiness
+          questions, and public education updates.
         </p>
 
-        <div class="btn-row">
-          
+        <div class="box">
+          <h3>Future public features</h3>
+          <ul>
+            <li>Daily strategy topic.</li>
+            <li>Positioning checklist.</li>
+            <li>Offer strategy guide.</li>
+            <li>Pricing review guide.</li>
+            <li>Growth readiness checklist.</li>
+            <li>Risk strategy questions.</li>
+            <li>Business model education.</li>
+            <li>Links back to Business Intelligence.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section green daily-bg" data-bg-group="contact">
-      <div class="content">
+    <section class="section daily-bg" data-bg-group="contact" id="contact">
+      <div class="contact-clean">
         <div class="eyebrow">Contact TitanCore</div>
 
         <h2>Contact us today</h2>
 
         <p>
-          For general questions, professional inquiries, strategy questions,
-          or TitanCore-related information, contact TitanCore Holdings.
+          For general questions, professional inquiries, business intelligence
+          questions, or TitanCore-related information, contact TitanCore Holdings.
+          Phone: (800) 827-9016.
         </p>
 
+        <div class="btn-row">
           <a href="contact.html" class="btn">Get In Touch ›</a>
+        </div>
       </div>
     </section>
 
@@ -762,69 +793,77 @@
 
   <script>
     function toggleMenu(){
-      const menu = document.getElementById("menu");
-      if(menu){
-        menu.classList.toggle("active");
-      }
-    }
-
-    function runStrategySearch(){
-      const input = document.getElementById("strategyQuery");
-      const query = input.value.trim();
-
-      if(!query){
-        alert("Please type a business strategy question first.");
-        return;
-      }
-
-      const finalQuery = "business strategy " + query;
-      const url = "https://www.google.com/search?q=" + encodeURIComponent(finalQuery);
-      window.open(url, "_blank");
-    }
-
-    function handleSearchKey(event){
-      if(event.key === "Enter"){
-        runStrategySearch();
-      }
+      document.getElementById("menu").classList.toggle("active");
     }
 
     const backgroundSets = {
-      hero: [
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85"
+      hero:[
+        "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
       ],
-      overview: [
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      daily:[
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85"
       ],
-      details: [
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
-      ],
-      guide: [
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
+      map:[
         "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
       ],
-      search: [
-        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85"
+      foundation:[
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
       ],
-      future: [
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
+      positioning:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
       ],
-      contact: [
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+      offer:[
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      pricing:[
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85"
+      ],
+      growth:[
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85"
+      ],
+      risk:[
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85"
+      ],
+      checklist:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ],
+      future:[
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      ],
+      contact:[
         "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
       ]
     };
+
+    const strategyItems = [
+      {
+        title:"Choose one customer before trying to serve everyone.",
+        text:"Today’s strategy focus is customer clarity. A business becomes stronger when it knows exactly who it is serving first."
+      },
+      {
+        title:"Build one strong offer before adding too many services.",
+        text:"Today’s strategy focus is offer discipline. A clear offer is easier to explain, sell, deliver, and improve."
+      },
+      {
+        title:"Set pricing that protects the business.",
+        text:"Today’s strategy focus is pricing. A price should respect cost, time, value, risk, and long-term sustainability."
+      },
+      {
+        title:"Grow only after the system can handle demand.",
+        text:"Today’s strategy focus is disciplined growth. Growth becomes dangerous when operations are not ready."
+      },
+      {
+        title:"Strategy also means knowing what to avoid.",
+        text:"Today’s strategy focus is risk control. A smart business does not chase every opportunity."
+      }
+    ];
 
     function applyDailyBackgrounds(){
       const sections = document.querySelectorAll(".daily-bg");
       const day = new Date().getDate();
 
-      sections.forEach(function(section, index){
+      sections.forEach(function(section,index){
         const group = section.dataset.bgGroup || "hero";
         const images = backgroundSets[group] || backgroundSets.hero;
         const selected = images[(day + index) % images.length];
@@ -832,7 +871,24 @@
       });
     }
 
+    function applyDailyStrategy(){
+      const today = new Date();
+      const selected = strategyItems[today.getDate() % strategyItems.length];
+
+      document.getElementById("dailyDate").textContent =
+        today.toLocaleDateString("en-US", {
+          weekday:"long",
+          year:"numeric",
+          month:"long",
+          day:"numeric"
+        });
+
+      document.getElementById("dailyTitle").textContent = selected.title;
+      document.getElementById("dailyText").textContent = selected.text;
+    }
+
     applyDailyBackgrounds();
+    applyDailyStrategy();
   </script>
 </body>
 </html>
