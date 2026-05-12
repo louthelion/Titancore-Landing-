@@ -29,6 +29,7 @@
       border-left:1px solid var(--line);
       border-right:1px solid var(--line);
       min-height:100vh;
+      overflow:hidden;
     }
 
     .topbar{
@@ -56,7 +57,6 @@
       font-weight:700;
       color:var(--gold2);
       background:#030303;
-      flex-shrink:0;
     }
 
     .brand{
@@ -79,7 +79,6 @@
       color:var(--white);
       font-size:36px;
       cursor:pointer;
-      flex-shrink:0;
     }
 
     .menu-btn:hover{background:var(--gold);color:#000}
@@ -103,10 +102,7 @@
       font-size:18px;
     }
 
-    .menu a:hover{
-      color:var(--gold2);
-      padding-left:8px;
-    }
+    .menu a:hover{color:var(--gold2);padding-left:8px}
 
     .section{
       position:relative;
@@ -123,24 +119,24 @@
       inset:0;
       background:
         linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.52)),
-        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.62));
+        linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.62));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg,rgba(0,0,0,.58),rgba(6,75,56,.82)),
+        linear-gradient(90deg,rgba(0,0,0,.62),rgba(6,75,56,.82)),
         linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.48));
     }
 
     .section.dark::before{
       background:
-        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.68)),
-        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.72));
+        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.70)),
+        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.72));
     }
 
     .hero{
-      min-height:780px;
+      min-height:820px;
       display:flex;
       align-items:center;
     }
@@ -148,14 +144,14 @@
     .content{
       position:relative;
       z-index:1;
-      padding:62px 42px;
+      padding:64px 42px;
       max-width:1080px;
     }
 
     .hero .content{
-      max-width:1000px;
-      padding-top:82px;
-      padding-bottom:82px;
+      padding-top:84px;
+      padding-bottom:84px;
+      max-width:1040px;
     }
 
     .eyebrow{
@@ -175,9 +171,23 @@
       text-shadow:0 3px 16px rgba(0,0,0,.88);
     }
 
-    h1{font-size:clamp(48px,6vw,92px);margin-bottom:34px}
-    h2{font-size:clamp(40px,5vw,76px);margin-bottom:34px}
-    h3{font-size:clamp(34px,4.5vw,58px);color:var(--gold2);margin-bottom:22px}
+    h1{
+      font-size:clamp(48px,6vw,92px);
+      margin-bottom:34px;
+      max-width:1040px;
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,76px);
+      margin-bottom:34px;
+      max-width:1040px;
+    }
+
+    h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4.8vw,60px);
+      margin-bottom:24px;
+    }
 
     h1 span,h2 span,h3 span{color:var(--gold2)}
 
@@ -186,7 +196,7 @@
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:1000px;
+      max-width:1040px;
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
@@ -214,63 +224,24 @@
 
     .btn:hover{background:var(--gold);color:#000}
 
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:26px;
-      margin-top:40px;
-      max-width:1080px;
-    }
-
-    .card,.info-box,.daily-card{
+    .box,.daily-card{
       border:2px solid var(--gold);
       background:rgba(0,0,0,.50);
-      padding:40px;
+      padding:44px 48px;
+      margin-top:38px;
+      max-width:1060px;
       box-shadow:0 16px 40px rgba(0,0,0,.35);
       backdrop-filter:blur(1px);
     }
 
-    .card{
-      display:block;
-      min-height:320px;
-      transition:.25s ease;
-    }
-
-    .card:hover{
-      background:rgba(6,75,56,.82);
-      transform:translateY(-3px);
-    }
-
-    .card p{font-size:21px;line-height:1.62;margin-bottom:0}
-
-    .line{
-      height:1px;
-      background:rgba(215,179,93,.65);
-      margin:30px 0 24px;
-    }
-
-    .card strong{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      color:#fff;
-      text-transform:uppercase;
-      letter-spacing:4px;
-      font-size:16px;
-    }
-
-    .card strong span{color:var(--gold2);font-size:42px;line-height:0}
-
-    .info-box{margin-top:36px;max-width:1060px}
-
-    .info-box ul{
+    .box ul{
       list-style:none;
       display:grid;
       gap:18px;
       margin-top:20px;
     }
 
-    .info-box li{
+    .box li{
       color:#f7f1e6;
       font-size:22px;
       line-height:1.6;
@@ -279,7 +250,7 @@
       text-shadow:0 2px 12px rgba(0,0,0,.82);
     }
 
-    .info-box li::before{
+    .box li::before{
       content:"›";
       position:absolute;
       left:0;
@@ -288,18 +259,77 @@
       font-weight:900;
     }
 
-    .small-grid{
+    .signal-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      margin-top:42px;
+      max-width:1060px;
+    }
+
+    .signal-card{
+      display:block;
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:40px;
+      min-height:320px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      transition:.25s ease;
+    }
+
+    .signal-card:hover{
+      background:rgba(6,75,56,.82);
+      transform:translateY(-3px);
+    }
+
+    .signal-card h3{
+      font-size:clamp(32px,4.5vw,56px);
+      margin-bottom:20px;
+    }
+
+    .signal-card p{
+      font-size:21px;
+      line-height:1.62;
+      margin:0;
+    }
+
+    .card-line{
+      height:1px;
+      background:rgba(215,179,93,.65);
+      margin:34px 0 26px;
+    }
+
+    .signal-card strong{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:16px;
+      font-weight:900;
+    }
+
+    .signal-card strong span{
+      color:var(--gold2);
+      font-size:42px;
+      line-height:0;
+    }
+
+    .three-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:22px;
-      margin-top:36px;
+      margin-top:38px;
+      max-width:1060px;
     }
 
     .small-box{
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.48);
+      background:rgba(0,0,0,.50);
       padding:30px;
-      min-height:235px;
+      min-height:240px;
+      box-shadow:0 16px 40px rgba(0,0,0,.30);
     }
 
     .small-box .label{
@@ -311,8 +341,16 @@
       margin-bottom:14px;
     }
 
-    .small-box h3{font-size:clamp(28px,3.5vw,42px)}
-    .small-box p{font-size:19px;line-height:1.58;margin-bottom:0}
+    .small-box h3{
+      font-size:clamp(28px,3.6vw,42px);
+      margin-bottom:16px;
+    }
+
+    .small-box p{
+      font-size:19px;
+      line-height:1.58;
+      margin-bottom:0;
+    }
 
     .contact-clean{
       position:relative;
@@ -330,8 +368,13 @@
       border-bottom:1px solid var(--line);
     }
 
-    @media(max-width:1000px){.small-grid{grid-template-columns:1fr}}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+    @media(max-width:1000px){
+      .three-grid{grid-template-columns:1fr}
+    }
+
+    @media(max-width:900px){
+      .signal-grid{grid-template-columns:1fr}
+    }
 
     @media(max-width:600px){
       .topbar{padding:12px 14px;gap:10px}
@@ -349,8 +392,9 @@
       p{font-size:21px;line-height:1.68}
       .eyebrow{font-size:13px;letter-spacing:5px}
       .btn-row,.btn{width:100%}
-      .card,.info-box,.daily-card,.small-box{padding:34px 32px}
-      .info-box li,.card p{font-size:21px}
+      .box,.daily-card,.signal-card,.small-box{padding:34px 32px}
+      .box li,.signal-card p{font-size:21px;line-height:1.68}
+      .signal-card strong{font-size:15px;letter-spacing:4px}
       .simple-footer{font-size:16px}
     }
   </style>
@@ -367,14 +411,15 @@
 
     <nav class="menu" id="menu">
       <a href="index.html">Home</a>
-      <a href="titancore-structure.html">TitanCore Structure</a>
-      <a href="operating-model.html">Operating Model</a>
-      <a href="governance.html">Governance</a>
-      <a href="companies.html">Company</a>
-      <a href="institution.html">Institution</a>
       <a href="business-intelligence.html">Business Intelligence</a>
-      <a href="news-media.html">News & Media</a>
-      <a href="contact.html">Contact</a>
+      <a href="#signal-map">Signal Areas</a>
+      <a href="#inflation">Inflation</a>
+      <a href="#rates">Interest Rates</a>
+      <a href="#jobs">Jobs Reports</a>
+      <a href="#housing">Housing Signals</a>
+      <a href="#spending">Consumer Spending</a>
+      <a href="#banking">Banking &amp; Lending</a>
+      <a href="#contact">Contact</a>
     </nav>
 
     <section class="section hero daily-bg" data-bg-group="hero">
@@ -382,13 +427,13 @@
         <div class="eyebrow">Economic Signals Intelligence</div>
 
         <h1>
-          Understand the economic signals that affect business, lending,
-          markets, and <span>customer confidence.</span>
+          A public guide to the economic signals that affect business,
+          lending, markets, and <span>customer confidence.</span>
         </h1>
 
         <p>
-          Economic Signals Intelligence helps visitors understand the numbers,
-          reports, and business conditions that can affect decisions. This includes
+          Economic Signals Intelligence helps visitors understand the reports,
+          numbers, and conditions that can affect business decisions. This includes
           inflation, interest rates, jobs reports, housing movement, consumer
           spending, banking movement, lending conditions, and confidence.
         </p>
@@ -411,6 +456,11 @@
 
         <h2>Today’s business signal.</h2>
 
+        <p>
+          This section changes automatically by date. It gives visitors one simple
+          economic signal to think about each day.
+        </p>
+
         <div class="daily-card">
           <div class="eyebrow" id="dailyDate">Loading date...</div>
           <h3 id="dailyTitle">Loading signal...</h3>
@@ -419,54 +469,80 @@
       </div>
     </section>
 
-    <section class="section dark daily-bg" data-bg-group="nav">
+    <section class="section dark daily-bg" data-bg-group="map" id="signal-map">
       <div class="content">
         <div class="eyebrow">Signal Intelligence Map</div>
 
         <h2>Choose the economic signal you want to understand.</h2>
 
-        <div class="grid">
-          <a href="#inflation" class="card">
+        <p>
+          These areas help visitors understand the economy from a business point of
+          view. One report alone does not tell the full story. Serious decisions
+          should compare multiple signals together.
+        </p>
+
+        <div class="signal-grid">
+
+          <a href="#inflation" class="signal-card">
             <h3>Inflation</h3>
-            <p>Inflation shows how prices are moving. It affects groceries, fuel, rent, insurance, labor, materials, and customer buying power.</p>
-            <div class="line"></div>
+            <p>
+              Inflation shows how prices are moving. It affects groceries, fuel,
+              rent, insurance, labor, materials, and customer buying power.
+            </p>
+            <div class="card-line"></div>
             <strong>Open Inflation <span>›</span></strong>
           </a>
 
-          <a href="#rates" class="card">
+          <a href="#rates" class="signal-card">
             <h3>Interest Rates</h3>
-            <p>Interest rates affect loans, credit cards, mortgages, business funding, investor behavior, and housing confidence.</p>
-            <div class="line"></div>
+            <p>
+              Interest rates affect loans, credit cards, mortgages, business
+              funding, investor behavior, and housing confidence.
+            </p>
+            <div class="card-line"></div>
             <strong>Open Rates <span>›</span></strong>
           </a>
 
-          <a href="#jobs" class="card">
+          <a href="#jobs" class="signal-card">
             <h3>Jobs Reports</h3>
-            <p>Jobs reports show hiring strength, wage pressure, unemployment, consumer confidence, and the health of the economy.</p>
-            <div class="line"></div>
+            <p>
+              Jobs reports show hiring strength, wage pressure, unemployment,
+              customer confidence, and the health of the economy.
+            </p>
+            <div class="card-line"></div>
             <strong>Open Jobs <span>›</span></strong>
           </a>
 
-          <a href="#housing" class="card">
+          <a href="#housing" class="signal-card">
             <h3>Housing Signals</h3>
-            <p>Housing signals affect families, banks, real estate, contractors, insurance, local spending, and lending conditions.</p>
-            <div class="line"></div>
+            <p>
+              Housing signals affect families, banks, real estate, contractors,
+              insurance, local spending, and lending conditions.
+            </p>
+            <div class="card-line"></div>
             <strong>Open Housing <span>›</span></strong>
           </a>
 
-          <a href="#spending" class="card">
+          <a href="#spending" class="signal-card">
             <h3>Consumer Spending</h3>
-            <p>Consumer spending shows whether families are confident, pressured, cautious, or still buying products and services.</p>
-            <div class="line"></div>
+            <p>
+              Consumer spending shows whether families are confident, pressured,
+              cautious, or still buying products and services.
+            </p>
+            <div class="card-line"></div>
             <strong>Open Spending <span>›</span></strong>
           </a>
 
-          <a href="#banking" class="card">
-            <h3>Banking & Lending</h3>
-            <p>Banking movement and lending conditions affect credit access, business funding, mortgages, approvals, and confidence.</p>
-            <div class="line"></div>
+          <a href="#banking" class="signal-card">
+            <h3>Banking &amp; Lending</h3>
+            <p>
+              Banking movement and lending conditions affect credit access,
+              business funding, mortgages, approvals, and financial confidence.
+            </p>
+            <div class="card-line"></div>
             <strong>Open Banking <span>›</span></strong>
           </a>
+
         </div>
       </div>
     </section>
@@ -483,7 +559,7 @@
           lenders may become more cautious.
         </p>
 
-        <div class="info-box">
+        <div class="box">
           <h3>Inflation can affect</h3>
           <ul>
             <li>Food and grocery prices.</li>
@@ -511,7 +587,7 @@
           investor confidence, and expansion plans.
         </p>
 
-        <div class="info-box">
+        <div class="box">
           <h3>Rates can affect</h3>
           <ul>
             <li>Mortgage payments.</li>
@@ -538,7 +614,7 @@
           laying off, paying higher wages, or dealing with labor pressure.
         </p>
 
-        <div class="info-box">
+        <div class="box">
           <h3>Jobs data can show</h3>
           <ul>
             <li>Hiring strength.</li>
@@ -566,7 +642,7 @@
           many connected industries can feel the pressure.
         </p>
 
-        <div class="small-grid">
+        <div class="three-grid">
           <div class="small-box">
             <div class="label">Rates</div>
             <h3>Mortgage Rates</h3>
@@ -600,7 +676,7 @@
           on pricing.
         </p>
 
-        <div class="info-box">
+        <div class="box">
           <h3>Spending signals can show</h3>
           <ul>
             <li>Customer confidence.</li>
@@ -618,7 +694,7 @@
 
     <section class="section daily-bg" data-bg-group="banking" id="banking">
       <div class="content">
-        <div class="eyebrow">Banking & Lending Intelligence</div>
+        <div class="eyebrow">Banking &amp; Lending Intelligence</div>
 
         <h2>Lending conditions can determine how much business activity moves forward.</h2>
 
@@ -628,7 +704,7 @@
           expansion, investment, or major projects.
         </p>
 
-        <div class="info-box">
+        <div class="box">
           <h3>Banking and lending signals include</h3>
           <ul>
             <li>Loan approval conditions.</li>
@@ -656,7 +732,7 @@
           reaction before drawing conclusions.
         </p>
 
-        <div class="info-box">
+        <div class="box">
           <h3>Questions visitors should ask</h3>
           <ul>
             <li>Are prices rising or cooling?</li>
@@ -684,7 +760,7 @@
           summaries, lending conditions, and public-friendly business explanations.
         </p>
 
-        <div class="info-box">
+        <div class="box">
           <h3>Future public features</h3>
           <ul>
             <li>Daily economic signal summary.</li>
@@ -700,7 +776,7 @@
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="contact">
+    <section class="section daily-bg" data-bg-group="contact" id="contact">
       <div class="contact-clean">
         <div class="eyebrow">Contact TitanCore</div>
 
@@ -709,6 +785,7 @@
         <p>
           For general questions, professional inquiries, business intelligence
           questions, or TitanCore-related information, contact TitanCore Holdings.
+          Phone: (800) 827-9016.
         </p>
 
         <div class="btn-row">
@@ -736,14 +813,15 @@
       daily:[
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85"
       ],
-      nav:[
+      map:[
         "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
       ],
       inflation:[
         "https://images.unsplash.com/photo-1554224154-26032fced8bd?auto=format&fit=crop&w=1600&q=85"
       ],
       rates:[
-        "https://images.unsplash.com/photo-1565514158740-064f34bd6cfd?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1565514158740-064f34bd6cfd?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
       ],
       jobs:[
         "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
@@ -784,6 +862,10 @@
       {
         title:"Watch housing because it connects to banks, families, and local businesses.",
         text:"Housing movement can affect mortgage demand, home prices, rent, contractors, insurance, banks, and local spending."
+      },
+      {
+        title:"Watch banking and lending because credit controls business movement.",
+        text:"When lending becomes tighter, businesses, buyers, homeowners, and investors may delay major decisions."
       }
     ];
 
