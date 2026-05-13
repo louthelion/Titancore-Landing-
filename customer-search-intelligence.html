@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Customer Search Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial, Helvetica, sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:var(--white);
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{color:var(--gold2);padding-left:8px}
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.18)),
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.22));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.34), rgba(6,75,56,.38)),
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
+    }
+
+    .hero{
+      min-height:660px;
+      display:flex;
+      align-items:center;
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1000px;
+    }
+
+    .hero .content{
+      max-width:900px;
+      padding-top:74px;
+      padding-bottom:74px;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:900px;
+    }
+
+    h1 span{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:950px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:960px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      cursor:pointer;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:980px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      padding:44px 46px;
+      overflow:hidden;
+      min-height:310px;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.30);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4vw,54px);
+      margin-bottom:22px;
+    }
+
+    .info-card p{
+      margin-bottom:0;
+    }
+
+    .plain-media-section{
+      background:#000;
+      border-bottom:1px solid var(--line);
+      padding:0;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-wrap{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:26px;
+      max-width:1060px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      box-shadow:0 18px 40px rgba(0,0,0,.42);
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.42)),
+        linear-gradient(90deg, rgba(0,0,0,.18), rgba(6,75,56,.14));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .video-copy h2{
+      font-size:clamp(34px,4vw,58px);
+      color:var(--gold2);
+      margin-bottom:18px;
+    }
+
+    .video-copy p{
+      font-size:21px;
+      line-height:1.62;
+      margin-bottom:0;
+    }
+
+    .playlist{
+      border:2px solid var(--gold);
+      background:#080808;
+      padding:30px;
+      box-shadow:0 18px 40px rgba(0,0,0,.42);
+    }
+
+    .playlist h3{
+      color:var(--gold2);
+      font-size:clamp(30px,3vw,46px);
+      margin-bottom:22px;
+    }
+
+    .playlist-item{
+      border:1px solid rgba(215,179,93,.45);
+      background:rgba(6,75,56,.20);
+      padding:18px;
+      margin-bottom:16px;
+    }
+
+    .playlist-item strong{
+      display:block;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .playlist-item span{
+      display:block;
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+      border-bottom:1px solid var(--line);
+    }
+
+    @media(max-width:900px){
+      .video-wrap{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .hero{min-height:640px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px;line-height:1.68}
+      .eyebrow{font-size:13px;letter-spacing:5px}
+      .btn{width:100%;margin-top:34px}
+      .info-card{padding:34px 32px;min-height:340px}
+      .info-card h3{font-size:38px}
+      .plain-picture{min-height:320px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy,.playlist{padding:28px}
+      .video-copy p,.playlist-item span{font-size:18px}
+      .simple-footer{font-size:16px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="customer">
+      <div class="content">
+        <div class="eyebrow">Customer Search Intelligence</div>
+
+        <h1>
+          Understand the customer before<br>
+          <span>building the offer.</span>
+        </h1>
+
+        <p>
+          Customer Search Intelligence helps visitors understand who the customer is,
+          what they need, what problem they want solved, what they are willing to pay for,
+          and how a business should communicate with them.
+        </p>
+
+        <a href="business-intelligence.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureOne"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="customer">
+      <div class="content">
+        <div class="eyebrow">Customer Search Definition</div>
+
+        <h2>
+          Customer search means learning who the business is really serving.
+        </h2>
+
+        <p>
+          A business can have a good service, but if it does not understand the customer,
+          the offer can still fail. Customer search helps a business understand the person,
+          family, company, institution, or group that has the problem.
+        </p>
+
+        <p>
+          This page helps visitors think through customer need, pain points, buying power,
+          trust, communication, decision timing, and the reason a customer chooses one company
+          over another.
+        </p>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="customer">
+      <div class="content">
+        <div class="eyebrow">What To Understand</div>
+
+        <h2>
+          A strong customer review should explain the person behind the purchase.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card" id="cardOne">
+            <h3>Customer Type</h3>
+            <p>
+              Identify whether the customer is an individual, family, small business,
+              investor, institution, professional, contractor, organization, or another
+              group with a specific need.
+            </p>
+          </div>
+
+          <div class="info-card" id="cardTwo">
+            <h3>Customer Need</h3>
+            <p>
+              The customer need is the reason they are looking for help. A business should
+              understand whether the customer wants speed, trust, price, education, guidance,
+              safety, funding, service, convenience, or long-term support.
+            </p>
+          </div>
+
+          <div class="info-card" id="cardThree">
+            <h3>Problem To Solve</h3>
+            <p>
+              Customers often buy because they have a problem. The problem may be confusion,
+              lack of time, lack of information, financial pressure, operational difficulty,
+              risk, paperwork, or a decision they do not want to make alone.
+            </p>
+          </div>
+
+          <div class="info-card" id="cardFour">
+            <h3>Willingness To Pay</h3>
+            <p>
+              A business must understand what customers are willing to pay and why.
+              Some customers pay for speed. Some pay for trust. Some pay for quality,
+              certainty, privacy, convenience, or professional support.
+            </p>
+          </div>
+
+          <div class="info-card" id="cardFive">
+            <h3>Trust Signals</h3>
+            <p>
+              Trust signals help customers feel safe. Clear information, professional language,
+              clean design, reliable contact options, proof of process, and transparent next steps
+              all help build confidence.
+            </p>
+          </div>
+
+          <div class="info-card" id="cardSix">
+            <h3>Communication</h3>
+            <p>
+              Customer search also means learning how people want to be spoken to. The right message
+              should be clear, respectful, simple, professional, and focused on the customer’s real problem.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-wrap">
+        <div class="video-main" id="dailyVideoPanel">
+          <div class="video-copy">
+            <div class="eyebrow">Video Playlist Area</div>
+            <h2 id="videoTitle">Customer search video space.</h2>
+            <p id="videoText">
+              This area is ready for future videos explaining customer research,
+              customer needs, messaging, buying behavior, and service trust.
+            </p>
+          </div>
+        </div>
+
+        <aside class="playlist">
+          <h3>Daily Playlist</h3>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleOne">Customer Need</strong>
+            <span id="playlistTextOne">Future video space for understanding what customers are really looking for.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleTwo">Customer Trust</strong>
+            <span id="playlistTextTwo">Future video space for trust signals, professional presentation, and customer confidence.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleThree">Customer Message</strong>
+            <span id="playlistTextThree">Future video space for explaining how to speak clearly to the right customer.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="finance">
+      <div class="content">
+        <div class="eyebrow">Customer Search Checklist</div>
+
+        <h2>
+          Before selling, the customer should be understood.
+        </h2>
+
+        <p>
+          A visitor should ask: Who exactly is the customer? What problem do they have?
+          What are they afraid of? What do they need explained? What will make them trust
+          the business? What are they willing to pay for? What message will make the offer clear?
+        </p>
+
+        <p>
+          Customer Search Intelligence is valuable because it helps a business stop speaking
+          to everybody and start speaking to the right customer with the right information.
+        </p>
+      </div>
+    </section>
+
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureTwo"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      customer: [
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ],
+      finance: [
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate: [
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
+
+      sections.forEach(function(section, index){
+        const group = section.dataset.bgGroup || "customer";
+        const images = backgroundSets[group] || backgroundSets.customer;
+        section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+      });
+    }
+
+    function applyDailyMedia(){
+      const day = new Date().getDate();
+
+      document.getElementById("plainPictureOne").style.backgroundImage =
+        "url('" + plainPictures[day % plainPictures.length] + "')";
+
+      document.getElementById("plainPictureTwo").style.backgroundImage =
+        "url('" + plainPictures[(day + 2) % plainPictures.length] + "')";
+
+      document.getElementById("dailyVideoPanel").style.backgroundImage =
+        "url('" + videoPictures[day % videoPictures.length] + "')";
+
+      const cards = ["cardOne","cardTwo","cardThree","cardFour","cardFive","cardSix"];
+      cards.forEach(function(id, index){
+        document.getElementById(id).style.backgroundImage =
+          "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+      });
+    }
+
+    applyDailyBackgrounds();
+    applyDailyMedia();
+  </script>
+</body>
+</html>
