@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>TitanCore Overview | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:var(--white);
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{
+      display:block;
+    }
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.84), rgba(0,0,0,.58)),
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.55));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.74), rgba(6,75,56,.70)),
+        linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.36));
+    }
+
+    .hero{
+      min-height:660px;
+      display:flex;
+      align-items:center;
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:980px;
+    }
+
+    .hero .content{
+      max-width:890px;
+      padding-top:74px;
+      padding-bottom:74px;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:900px;
+    }
+
+    h1 span{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:950px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:940px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      cursor:pointer;
+      margin-top:34px;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:960px;
+    }
+
+    .focus-card{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.60);
+      padding:44px 46px;
+      backdrop-filter:blur(2px);
+    }
+
+    .focus-card h3{
+      color:var(--gold2);
+      font-size:clamp(34px,4vw,54px);
+      margin-bottom:22px;
+    }
+
+    .focus-card p{
+      color:#f7f1e6;
+      font-size:22px;
+      line-height:1.62;
+      margin-bottom:0;
+    }
+
+    .plain-media-section{
+      background:#000;
+      border-bottom:1px solid var(--line);
+      padding:0;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .picture-under-text{
+      margin-top:42px;
+      min-height:360px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      box-shadow:0 18px 40px rgba(0,0,0,.42);
+    }
+
+    .picture-under-text.short{
+      min-height:320px;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-wrap{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:26px;
+      max-width:1060px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      box-shadow:0 18px 40px rgba(0,0,0,.42);
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.68);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.16), rgba(0,0,0,.84)),
+        linear-gradient(90deg, rgba(0,0,0,.40), rgba(6,75,56,.28));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .video-copy h2{
+      font-size:clamp(34px,4vw,58px);
+      color:var(--gold2);
+      margin-bottom:18px;
+    }
+
+    .video-copy p{
+      font-size:21px;
+      line-height:1.62;
+      margin-bottom:0;
+    }
+
+    .playlist{
+      border:2px solid var(--gold);
+      background:#080808;
+      padding:30px;
+      box-shadow:0 18px 40px rgba(0,0,0,.42);
+    }
+
+    .playlist h3{
+      color:var(--gold2);
+      font-size:clamp(30px,3vw,46px);
+      margin-bottom:22px;
+    }
+
+    .playlist-item{
+      border:1px solid rgba(215,179,93,.45);
+      background:rgba(6,75,56,.20);
+      padding:18px;
+      margin-bottom:16px;
+    }
+
+    .playlist-item strong{
+      display:block;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .playlist-item span{
+      display:block;
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+      border-bottom:1px solid var(--line);
+    }
+
+    @media(max-width:900px){
+      .video-wrap{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .hero{
+        min-height:640px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .eyebrow{
+        font-size:13px;
+        letter-spacing:5px;
+      }
+
+      .btn{
+        width:100%;
+        margin-top:34px;
+      }
+
+      .focus-card{
+        padding:34px 32px;
+      }
+
+      .focus-card h3{
+        font-size:38px;
+      }
+
+      .focus-card p{
+        font-size:21px;
+        line-height:1.62;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .picture-under-text{
+        min-height:300px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy,
+      .playlist{
+        padding:28px;
+      }
+
+      .video-copy p,
+      .playlist-item span{
+        font-size:18px;
+      }
+
+      .simple-footer{
+        font-size:16px;
+      }
+    }
+
+    @media(max-width:420px){
+      .brand{
+        font-size:15px;
+        letter-spacing:.8px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:58px;
+        height:58px;
+      }
+
+      .logo{
+        font-size:25px;
+      }
+
+      h1{
+        font-size:40px;
+      }
+
+      h2{
+        font-size:36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">TitanCore Overview</div>
+
+        <h1>
+          Learn what TitanCore is<br>
+          <span>before entering the deeper structure.</span>
+        </h1>
+
+        <p>
+          This page explains TitanCore Holdings as a public business platform:
+          what it represents, why it exists, what visitors can learn, and how the
+          website is organized for professional business information.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureOne"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Public Purpose</div>
+
+        <h2>
+          TitanCore gives visitors a clean place to understand business direction.
+        </h2>
+
+        <p>
+          TitanCore Holdings is presented as a serious public-facing business
+          information platform. The homepage introduces the company. This overview
+          page gives visitors a deeper explanation before they move into specific
+          areas like structure, operating model, governance, company, institution,
+          business intelligence, and news media.
+        </p>
+
+        <p>
+          The purpose is to help visitors understand the brand, the direction, and
+          the information pathway without crowding the homepage with every detail.
+        </p>
+
+        <div class="picture-under-text" id="purposePictureUnderText"></div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-wrap">
+        <div class="video-main" id="dailyVideoPanel">
+          <div class="video-copy">
+            <div class="eyebrow">Video Playlist Area</div>
+            <h2 id="videoTitle">TitanCore overview media space.</h2>
+            <p id="videoText">
+              This area is ready for future TitanCore overview videos, company
+              introductions, business education, and public information briefings.
+            </p>
+          </div>
+        </div>
+
+        <aside class="playlist">
+          <h3>Daily Playlist</h3>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleOne">TitanCore Overview</strong>
+            <span id="playlistTextOne">Future video space for explaining TitanCore Holdings to public visitors.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleTwo">Business Direction</strong>
+            <span id="playlistTextTwo">Future video space for strategy, structure, and long-term business growth.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleThree">Public Information</strong>
+            <span id="playlistTextThree">Future video space for business learning, company information, and media updates.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">What Visitors Can Learn</div>
+
+        <h2>
+          The website separates general learning from deeper company structure.
+        </h2>
+
+        <p>
+          The Learn More page is not the same as the TitanCore Structure page.
+          This page gives a public overview of TitanCore’s purpose. The Structure
+          page explains how TitanCore is organized.
+        </p>
+
+        <div class="card-grid">
+          <div class="focus-card">
+            <h3>Overview</h3>
+            <p>
+              This page explains TitanCore’s public identity, purpose, and business
+              information direction.
+            </p>
+          </div>
+
+          <div class="focus-card">
+            <h3>Structure</h3>
+            <p>
+              TitanCore Structure is a separate page that explains how the company
+              is organized.
+            </p>
+          </div>
+
+          <div class="focus-card">
+            <h3>Pathway</h3>
+            <p>
+              Visitors can move from the overview into company, institution,
+              business intelligence, or news media pages.
+            </p>
+          </div>
+        </div>
+
+        <div class="picture-under-text short" id="learningPictureUnderText"></div>
+      </div>
+    </section>
+
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureTwo"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="finance">
+      <div class="content">
+        <div class="eyebrow">Business Information Hub</div>
+
+        <h2>
+          TitanCore is built to guide visitors toward useful business information.
+        </h2>
+
+        <p>
+          Visitors can use the public pages to understand business structure,
+          operating ideas, governance, companies, institutions, market education,
+          business intelligence, and media updates.
+        </p>
+
+        <p>
+          The site is meant to feel professional, serious, visual, and educational.
+          It should use pictures, video spaces, and daily-changing media areas so
+          the public pages do not feel frozen.
+        </p>
+
+        <div class="picture-under-text short" id="hubPictureUnderText"></div>
+      </div>
+    </section>
+
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureThree"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence
+          questions, or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      corporate: [
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+      ],
+      finance: [
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const videoData = [
+      {
+        title:"TitanCore overview media space.",
+        text:"This area is ready for future TitanCore overview videos, company introductions, business education, and public information briefings.",
+        one:"TitanCore Overview",
+        oneText:"Future video space for explaining TitanCore Holdings to public visitors.",
+        two:"Business Direction",
+        twoText:"Future video space for strategy, structure, and long-term business growth.",
+        three:"Public Information",
+        threeText:"Future video space for business learning, company information, and media updates."
+      },
+      {
+        title:"Public business education video space.",
+        text:"This area can later show educational videos about business structure, company planning, markets, and public information.",
+        one:"Business Learning",
+        oneText:"Future video space for simple business education and public guidance.",
+        two:"Company Overview",
+        twoText:"Future video space for explaining TitanCore’s public company direction.",
+        three:"Media Updates",
+        threeText:"Future video space for public business media and announcements."
+      },
+      {
+        title:"Company direction video space.",
+        text:"This area can later introduce TitanCore’s purpose, public pathway, and deeper information pages.",
+        one:"Purpose",
+        oneText:"Future video about why TitanCore exists.",
+        two:"Pathway",
+        twoText:"Future video about how visitors move through the website.",
+        three:"Information Hub",
+        threeText:"Future video about business intelligence and public learning."
+      }
+    ];
+
+    function applyDailyBackgrounds(){
+      const sections = document.querySelectorAll(".daily-bg");
+      const day = new Date().getDate();
+
+      sections.forEach(function(section, index){
+        const group = section.dataset.bgGroup || "corporate";
+        const images = backgroundSets[group] || backgroundSets.corporate;
+        const selected = images[(day + index) % images.length];
+
+        section.style.backgroundImage = "url('" + selected + "')";
+      });
+    }
+
+    function applyDailyMedia(){
+      const day = new Date().getDate();
+
+      document.getElementById("plainPictureOne").style.backgroundImage =
+        "url('" + plainPictures[day % plainPictures.length] + "')";
+
+      document.getElementById("purposePictureUnderText").style.backgroundImage =
+        "url('" + plainPictures[(day + 1) % plainPictures.length] + "')";
+
+      document.getElementById("dailyVideoPanel").style.backgroundImage =
+        "url('" + videoPictures[day % videoPictures.length] + "')";
+
+      document.getElementById("learningPictureUnderText").style.backgroundImage =
+        "url('" + plainPictures[(day + 2) % plainPictures.length] + "')";
+
+      document.getElementById("plainPictureTwo").style.backgroundImage =
+        "url('" + plainPictures[(day + 3) % plainPictures.length] + "')";
+
+      document.getElementById("hubPictureUnderText").style.backgroundImage =
+        "url('" + plainPictures[(day + 4) % plainPictures.length] + "')";
+
+      document.getElementById("plainPictureThree").style.backgroundImage =
+        "url('" + plainPictures[(day + 5) % plainPictures.length] + "')";
+
+      const selectedVideo = videoData[day % videoData.length];
+
+      document.getElementById("videoTitle").textContent = selectedVideo.title;
+      document.getElementById("videoText").textContent = selectedVideo.text;
+
+      document.getElementById("playlistTitleOne").textContent = selectedVideo.one;
+      document.getElementById("playlistTextOne").textContent = selectedVideo.oneText;
+
+      document.getElementById("playlistTitleTwo").textContent = selectedVideo.two;
+      document.getElementById("playlistTextTwo").textContent = selectedVideo.twoText;
+
+      document.getElementById("playlistTitleThree").textContent = selectedVideo.three;
+      document.getElementById("playlistTextThree").textContent = selectedVideo.threeText;
+    }
+
+    applyDailyBackgrounds();
+    applyDailyMedia();
+  </script>
+</body>
+</html>
