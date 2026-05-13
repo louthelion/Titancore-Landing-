@@ -8,7 +8,6 @@
 
   <style>
     :root{
-      --black:#020202;
       --green:#064b38;
       --green2:#0b684f;
       --gold:#d7b35d;
@@ -57,7 +56,6 @@
       font-weight:700;
       color:var(--gold2);
       background:#030303;
-      flex-shrink:0;
     }
 
     .brand{
@@ -80,7 +78,6 @@
       color:var(--white);
       font-size:36px;
       cursor:pointer;
-      flex-shrink:0;
     }
 
     .menu-btn:hover{background:var(--gold);color:#000}
@@ -120,19 +117,19 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.18)),
+        linear-gradient(90deg, rgba(0,0,0,.40), rgba(0,0,0,.16)),
         linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.22));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.34), rgba(6,75,56,.38)),
-        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
+        linear-gradient(90deg, rgba(0,0,0,.34), rgba(6,75,56,.36)),
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.16));
     }
 
     .hero{
-      min-height:660px;
+      min-height:680px;
       display:flex;
       align-items:center;
     }
@@ -141,11 +138,11 @@
       position:relative;
       z-index:1;
       padding:58px 42px;
-      max-width:1000px;
+      max-width:1030px;
     }
 
     .hero .content{
-      max-width:900px;
+      max-width:940px;
       padding-top:74px;
       padding-bottom:74px;
     }
@@ -169,7 +166,7 @@
     h1{
       font-size:clamp(46px,6vw,86px);
       margin-bottom:30px;
-      max-width:900px;
+      max-width:940px;
     }
 
     h1 span{color:var(--gold2)}
@@ -177,7 +174,13 @@
     h2{
       font-size:clamp(40px,5vw,72px);
       margin-bottom:36px;
-      max-width:950px;
+      max-width:980px;
+    }
+
+    h3{
+      color:var(--gold2);
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
     }
 
     p{
@@ -185,7 +188,7 @@
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:960px;
+      max-width:980px;
     }
 
     .btn{
@@ -208,12 +211,26 @@
 
     .btn:hover{background:var(--gold);color:#000}
 
-    .info-grid{
+    .plain-media-section{
+      background:#000;
+      border-bottom:1px solid var(--line);
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .card-grid{
       display:grid;
       grid-template-columns:1fr;
       gap:24px;
       margin-top:40px;
-      max-width:980px;
+      max-width:1000px;
     }
 
     .info-card{
@@ -223,8 +240,8 @@
       background-position:center;
       background-repeat:no-repeat;
       padding:44px 46px;
+      min-height:320px;
       overflow:hidden;
-      min-height:310px;
     }
 
     .info-card::before{
@@ -236,34 +253,59 @@
     }
 
     .info-card h3,
-    .info-card p{
+    .info-card p,
+    .info-card ul{
       position:relative;
       z-index:1;
     }
 
-    .info-card h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4vw,54px);
-      margin-bottom:22px;
-    }
-
     .info-card p{
-      margin-bottom:0;
+      margin-bottom:18px;
     }
 
-    .plain-media-section{
-      background:#000;
-      border-bottom:1px solid var(--line);
-      padding:0;
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
     }
 
-    .plain-picture{
-      min-height:430px;
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      border-top:1px solid rgba(215,179,93,.35);
-      border-bottom:1px solid rgba(215,179,93,.35);
+    .info-card li{
+      color:#f7f1e6;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .checklist{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .check-item{
+      position:relative;
+      z-index:1;
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.48);
+      padding:22px;
+    }
+
+    .check-item strong{
+      display:block;
+      color:var(--gold2);
+      font-size:21px;
+      font-family:Georgia, "Times New Roman", serif;
+      margin-bottom:10px;
+    }
+
+    .check-item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.55;
     }
 
     .video-section{
@@ -388,6 +430,7 @@
 
     @media(max-width:900px){
       .video-wrap{grid-template-columns:1fr}
+      .checklist{grid-template-columns:1fr}
     }
 
     @media(max-width:600px){
@@ -405,13 +448,11 @@
       p{font-size:21px;line-height:1.68}
       .eyebrow{font-size:13px;letter-spacing:5px}
       .btn{width:100%;margin-top:34px}
-      .info-card{padding:34px 32px;min-height:340px}
-      .info-card h3{font-size:38px}
+      .info-card{padding:34px 32px;min-height:360px}
       .plain-picture{min-height:320px}
       .video-section{padding:42px 28px}
       .video-main{min-height:430px}
       .video-copy,.playlist{padding:28px}
-      .video-copy p,.playlist-item span{font-size:18px}
       .simple-footer{font-size:16px}
     }
   </style>
@@ -441,17 +482,22 @@
         <div class="eyebrow">Market Search Intelligence</div>
 
         <h1>
-          Study the market before<br>
-          <span>building the plan.</span>
+          Search the market before<br>
+          <span>you build the business.</span>
         </h1>
 
         <p>
-          Market Search Intelligence helps visitors understand demand, pricing, location,
-          competitors, industry trends, timing, risk, and business environment before making
-          a major business move.
+          Market Search Intelligence is a deeper business education page that explains how to study demand,
+          pricing, competition, customer behavior, timing, location, industry movement, risk, and opportunity
+          before spending money or launching a new direction.
         </p>
 
-        <a href="business-intelligence.html" class="btn">Back Home ›</a>
+        <p>
+          The purpose is simple: do not move only because the idea feels good. Search the market first,
+          understand the signals, then decide with more discipline.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
       </div>
     </section>
 
@@ -464,81 +510,121 @@
         <div class="eyebrow">Market Search Definition</div>
 
         <h2>
-          Market search means checking if the opportunity is real.
+          Market search means proving the opportunity before trusting the idea.
         </h2>
 
         <p>
-          A business idea can sound strong, but the market decides whether people need it,
-          whether they will pay for it, and whether the timing is right. Market search helps
-          a person look beyond excitement and study the facts before spending money or time.
+          A business idea can sound powerful, but the market decides if the idea has real demand.
+          Market search studies whether people need the offer, whether they are already looking for it,
+          whether they are willing to pay, and whether the timing is strong enough to move forward.
         </p>
 
         <p>
-          This page is built to teach visitors how to review demand, pricing, competition,
-          location, customer behavior, industry movement, and risk before taking action.
+          This page is meant to feel like a serious guide. It gives visitors a deeper explanation than the
+          small card inside Search Intelligence. The card introduces Market Search. This page teaches what
+          Market Search really means and how a visitor should think about it.
         </p>
+
+        <div class="checklist">
+          <div class="check-item"><strong>What is the market?</strong><span>The group of customers, locations, industries, companies, and buying activity around a product, service, or idea.</span></div>
+          <div class="check-item"><strong>What is the search?</strong><span>The process of checking demand, competition, pricing, risk, timing, and proof before making a move.</span></div>
+          <div class="check-item"><strong>Why does it matter?</strong><span>Because strong research can prevent wasted money, weak launches, poor pricing, and moving into a crowded market too late.</span></div>
+          <div class="check-item"><strong>What is the result?</strong><span>A clearer picture of whether the business idea should move forward, change, wait, or be tested smaller first.</span></div>
+        </div>
       </div>
     </section>
 
     <section class="section green daily-bg" data-bg-group="market">
       <div class="content">
-        <div class="eyebrow">What To Review</div>
+        <div class="eyebrow">Market Search Core Areas</div>
 
         <h2>
-          A strong market review should answer practical questions.
+          A serious market search studies more than one signal.
         </h2>
 
-        <div class="info-grid">
+        <div class="card-grid">
           <div class="info-card" id="cardOne">
-            <h3>Demand</h3>
+            <h3>Demand Search</h3>
             <p>
-              Demand means people actually need or want the product, service, or information.
-              A market may look attractive, but if people are not actively searching, asking,
-              complaining, buying, or showing interest, the opportunity may be weak.
+              Demand search asks whether people truly need the offer. A market can look exciting, but if
+              customers are not searching, asking questions, comparing options, complaining about problems,
+              or paying for a solution, the opportunity may be weak.
             </p>
+            <ul>
+              <li>Look for search activity, customer questions, reviews, complaints, and repeated needs.</li>
+              <li>Check whether the need is urgent, optional, seasonal, local, or long-term.</li>
+              <li>Ask whether demand is growing, flat, or already declining.</li>
+            </ul>
           </div>
 
           <div class="info-card" id="cardTwo">
-            <h3>Pricing</h3>
+            <h3>Customer Behavior</h3>
             <p>
-              Pricing helps visitors understand what customers are willing to pay, what competitors
-              charge, how much the service costs to deliver, and whether the business can still make
-              profit after expenses.
+              A market is not only numbers. It is people making decisions. Customer behavior explains what
+              customers compare, what they fear, what they trust, what price they expect, and what makes them
+              choose one company over another.
             </p>
+            <ul>
+              <li>Study what customers read before buying.</li>
+              <li>Review what makes customers hesitate.</li>
+              <li>Check what customers say in reviews, comments, calls, and public questions.</li>
+            </ul>
           </div>
 
           <div class="info-card" id="cardThree">
-            <h3>Competition</h3>
+            <h3>Competitor Search</h3>
             <p>
-              Competition shows who already serves the market. A strong review should ask who is
-              leading, what they offer, how they price, what customers like, and where their service
-              leaves gaps.
+              Competitor search shows who is already serving the market. The goal is not to copy them.
+              The goal is to understand customer expectations, service gaps, price levels, weak points,
+              and what a new offer must do better.
             </p>
+            <ul>
+              <li>Identify the strongest competitors and their offers.</li>
+              <li>Compare price, speed, trust, service, reviews, and presentation.</li>
+              <li>Look for gaps where customers are still not satisfied.</li>
+            </ul>
           </div>
 
           <div class="info-card" id="cardFour">
-            <h3>Location</h3>
+            <h3>Pricing Search</h3>
             <p>
-              Location matters for physical businesses, local service companies, real estate,
-              logistics, event work, retail, healthcare, and anything connected to customer access
-              or delivery.
+              Pricing search helps visitors understand what the market accepts. A price should not be guessed.
+              It should be compared against customer value, competitor prices, service cost, delivery cost,
+              profit margin, and perceived trust.
             </p>
+            <ul>
+              <li>Check competitor prices and package levels.</li>
+              <li>Separate low-price customers from premium customers.</li>
+              <li>Ask whether the offer can stay profitable after all costs.</li>
+            </ul>
           </div>
 
           <div class="info-card" id="cardFive">
-            <h3>Timing</h3>
+            <h3>Location Search</h3>
             <p>
-              Timing asks whether this is the right moment to move. Interest rates, inflation,
-              customer confidence, local demand, seasonality, and major news can all affect timing.
+              Location matters for local service, real estate, healthcare, logistics, contractors, events,
+              retail, transportation, and any business connected to customer access. A strong market in one
+              place may be weak in another.
             </p>
+            <ul>
+              <li>Review population, traffic, local spending, and nearby competition.</li>
+              <li>Check whether customers prefer online, phone, in-person, or delivery service.</li>
+              <li>Study whether the location has enough need to support the business.</li>
+            </ul>
           </div>
 
           <div class="info-card" id="cardSix">
-            <h3>Risk</h3>
+            <h3>Timing Search</h3>
             <p>
-              Market risk includes weak demand, strong competition, high costs, poor timing,
-              unclear customer need, regulatory pressure, and spending before the market is understood.
+              Timing search asks whether now is the right moment. Even a good idea can struggle if the timing
+              is wrong. Rates, inflation, seasons, customer confidence, regulations, and major news can change
+              the market quickly.
             </p>
+            <ul>
+              <li>Review economic pressure and customer confidence.</li>
+              <li>Check seasonality and buying cycles.</li>
+              <li>Ask whether it is better to launch now, test small, or wait.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -551,8 +637,8 @@
             <div class="eyebrow">Video Playlist Area</div>
             <h2 id="videoTitle">Market search video space.</h2>
             <p id="videoText">
-              This area is ready for future videos explaining market research, competition,
-              pricing, demand, location, and business timing.
+              This area is ready for future market search videos, demand reviews,
+              competitor explanations, pricing education, customer behavior lessons, and market timing briefings.
             </p>
           </div>
         </div>
@@ -561,46 +647,125 @@
           <h3>Daily Playlist</h3>
 
           <div class="playlist-item">
-            <strong id="playlistTitleOne">Market Demand</strong>
-            <span id="playlistTextOne">Future video space for explaining how to check if people really need the offer.</span>
+            <strong id="playlistTitleOne">Demand Review</strong>
+            <span id="playlistTextOne">Future video space for checking whether people truly need the offer.</span>
           </div>
 
           <div class="playlist-item">
             <strong id="playlistTitleTwo">Competitor Review</strong>
-            <span id="playlistTextTwo">Future video space for studying existing companies and market gaps.</span>
+            <span id="playlistTextTwo">Future video space for studying current providers, pricing, trust, and service gaps.</span>
           </div>
 
           <div class="playlist-item">
-            <strong id="playlistTitleThree">Business Timing</strong>
-            <span id="playlistTextThree">Future video space for timing, risk, and market readiness.</span>
+            <strong id="playlistTitleThree">Market Timing</strong>
+            <span id="playlistTextThree">Future video space for reviewing whether it is the right time to move.</span>
           </div>
         </aside>
       </div>
     </section>
 
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureTwo"></div>
+    </section>
+
     <section class="section daily-bg" data-bg-group="finance">
       <div class="content">
-        <div class="eyebrow">Market Search Checklist</div>
+        <div class="eyebrow">Market Proof</div>
 
         <h2>
-          Before moving forward, the market should be checked from several angles.
+          A market search should look for proof, not only opinions.
         </h2>
 
         <p>
-          A visitor should ask: Who needs this? Where are they located? How much are they
-          willing to pay? Who already offers it? What problem is still not solved? What
-          makes the timing strong or weak? What evidence proves the market is real?
+          Opinions are not enough. A serious market search should look for signs that the opportunity is real.
+          Proof can come from customer questions, search volume, competitor activity, repeated complaints,
+          public reviews, pricing patterns, local demand, industry growth, and actual buying behavior.
         </p>
 
+        <div class="checklist">
+          <div class="check-item"><strong>Search proof</strong><span>Are people searching online for the service, problem, product, location, or solution?</span></div>
+          <div class="check-item"><strong>Customer proof</strong><span>Are customers asking the same questions, leaving reviews, or complaining about the same problems?</span></div>
+          <div class="check-item"><strong>Competitor proof</strong><span>Are competitors already making money, expanding, advertising, or improving their services?</span></div>
+          <div class="check-item"><strong>Pricing proof</strong><span>Can the market support a price that covers cost, labor, delivery, marketing, and profit?</span></div>
+          <div class="check-item"><strong>Location proof</strong><span>Does the area have enough population, demand, spending strength, and access?</span></div>
+          <div class="check-item"><strong>Timing proof</strong><span>Are current conditions helping the opportunity or making it harder?</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Market Risk Review</div>
+
+        <h2>
+          The market search must also look for warning signs.
+        </h2>
+
         <p>
-          Market Search Intelligence is valuable because it helps turn a business idea into
-          a serious review instead of only a feeling.
+          Market search is not only about finding opportunity. It must also protect the visitor from weak moves.
+          A warning sign does not always mean the idea is bad, but it may mean the business should adjust the offer,
+          lower the risk, test smaller, change the price, choose a better customer, or wait for better timing.
         </p>
+
+        <div class="card-grid">
+          <div class="info-card" id="cardSeven">
+            <h3>Weak Demand</h3>
+            <p>
+              Weak demand appears when few people are searching, asking, paying, reviewing, or showing urgency.
+              A business should not assume people will buy just because the idea sounds useful.
+            </p>
+          </div>
+
+          <div class="info-card" id="cardEight">
+            <h3>Crowded Market</h3>
+            <p>
+              A crowded market can still have opportunity, but the business must know how it will be different:
+              better trust, better speed, better education, better price, better service, or better customer focus.
+            </p>
+          </div>
+
+          <div class="info-card" id="cardNine">
+            <h3>High Cost</h3>
+            <p>
+              High startup cost, marketing cost, labor cost, insurance cost, inventory cost, or delivery cost can
+              weaken an idea even when customers exist.
+            </p>
+          </div>
+
+          <div class="info-card" id="cardTen">
+            <h3>Unclear Customer</h3>
+            <p>
+              If the business cannot clearly explain who the customer is, what problem they have, and why they will
+              pay, the market search is not finished.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="plain-media-section">
-      <div class="plain-picture" id="plainPictureTwo"></div>
+      <div class="plain-picture" id="plainPictureThree"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Market Search Questions</div>
+
+        <h2>
+          Questions a visitor should answer before moving forward.
+        </h2>
+
+        <div class="checklist">
+          <div class="check-item"><strong>Who needs this?</strong><span>Identify the specific person, family, business, investor, institution, or customer group.</span></div>
+          <div class="check-item"><strong>Why do they need it?</strong><span>Explain the problem, urgency, pain point, desire, or benefit.</span></div>
+          <div class="check-item"><strong>Who already serves them?</strong><span>List competitors, alternatives, substitutes, and informal solutions.</span></div>
+          <div class="check-item"><strong>What do they pay now?</strong><span>Review current prices, packages, fees, monthly plans, and service levels.</span></div>
+          <div class="check-item"><strong>What is missing?</strong><span>Find the gap: speed, trust, education, convenience, quality, price, or better follow-up.</span></div>
+          <div class="check-item"><strong>What proof exists?</strong><span>Use real signals before moving forward, not only personal belief.</span></div>
+          <div class="check-item"><strong>What can go wrong?</strong><span>Review cost, competition, demand, regulation, timing, and customer trust risk.</span></div>
+          <div class="check-item"><strong>What should be tested first?</strong><span>Start with a smaller test before building the full version.</span></div>
+        </div>
+      </div>
     </section>
 
     <section class="section green daily-bg" data-bg-group="corporate">
@@ -627,17 +792,15 @@
   <script>
     function toggleMenu(){
       const menu = document.getElementById("menu");
-      if(menu){
-        menu.classList.toggle("active");
-      }
+      if(menu){ menu.classList.toggle("active"); }
     }
 
     const backgroundSets = {
       market: [
         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
       ],
       finance: [
         "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
@@ -655,7 +818,8 @@
       "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85"
     ];
 
     const videoPictures = [
@@ -670,7 +834,44 @@
       "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85"
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoData = [
+      {
+        title:"Market search video space.",
+        text:"This area is ready for future market search videos, demand reviews, competitor explanations, pricing education, customer behavior lessons, and market timing briefings.",
+        one:"Demand Review",
+        oneText:"Future video space for checking whether people truly need the offer.",
+        two:"Competitor Review",
+        twoText:"Future video space for studying current providers, pricing, trust, and service gaps.",
+        three:"Market Timing",
+        threeText:"Future video space for reviewing whether it is the right time to move."
+      },
+      {
+        title:"Market proof video space.",
+        text:"This area can later show how to look for proof before launching or spending money.",
+        one:"Search Proof",
+        oneText:"Future video space for online search signs and public demand.",
+        two:"Customer Proof",
+        twoText:"Future video space for reviews, questions, complaints, and customer behavior.",
+        three:"Pricing Proof",
+        threeText:"Future video space for checking price levels and profit strength."
+      },
+      {
+        title:"Risk and opportunity video space.",
+        text:"This area can later show how to compare opportunity with risk before moving forward.",
+        one:"Risk Review",
+        oneText:"Future video space for warning signs, high costs, and crowded markets.",
+        two:"Opportunity Gaps",
+        twoText:"Future video space for finding underserved customers and weak competition.",
+        three:"Small Test",
+        threeText:"Future video space for testing before launching a bigger business move."
+      }
     ];
 
     function applyDailyBackgrounds(){
@@ -693,14 +894,32 @@
       document.getElementById("plainPictureTwo").style.backgroundImage =
         "url('" + plainPictures[(day + 2) % plainPictures.length] + "')";
 
+      document.getElementById("plainPictureThree").style.backgroundImage =
+        "url('" + plainPictures[(day + 4) % plainPictures.length] + "')";
+
       document.getElementById("dailyVideoPanel").style.backgroundImage =
         "url('" + videoPictures[day % videoPictures.length] + "')";
 
-      const cards = ["cardOne","cardTwo","cardThree","cardFour","cardFive","cardSix"];
+      const cards = [
+        "cardOne","cardTwo","cardThree","cardFour","cardFive",
+        "cardSix","cardSeven","cardEight","cardNine","cardTen"
+      ];
+
       cards.forEach(function(id, index){
         document.getElementById(id).style.backgroundImage =
           "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
       });
+
+      const selectedVideo = videoData[day % videoData.length];
+
+      document.getElementById("videoTitle").textContent = selectedVideo.title;
+      document.getElementById("videoText").textContent = selectedVideo.text;
+      document.getElementById("playlistTitleOne").textContent = selectedVideo.one;
+      document.getElementById("playlistTextOne").textContent = selectedVideo.oneText;
+      document.getElementById("playlistTitleTwo").textContent = selectedVideo.two;
+      document.getElementById("playlistTextTwo").textContent = selectedVideo.twoText;
+      document.getElementById("playlistTitleThree").textContent = selectedVideo.three;
+      document.getElementById("playlistTextThree").textContent = selectedVideo.threeText;
     }
 
     applyDailyBackgrounds();
