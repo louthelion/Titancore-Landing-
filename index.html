@@ -1,8 +1,9 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>TitanCore Holdings</title>
 
   <style>
@@ -141,20 +142,21 @@
       overflow:hidden;
     }
 
+    /* LIGHTER OVERLAY SO THE PICTURES SHOW */
     .section::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.90), rgba(0,0,0,.68)),
-        linear-gradient(180deg, rgba(0,0,0,.26), rgba(0,0,0,.62));
+        linear-gradient(90deg, rgba(0,0,0,.34), rgba(0,0,0,.14)),
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.80), rgba(6,75,56,.78)),
-        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.42));
+        linear-gradient(90deg, rgba(0,0,0,.30), rgba(6,75,56,.32)),
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.14));
     }
 
     .hero{
@@ -250,10 +252,29 @@
     }
 
     .focus-card{
+      position:relative;
       border:2px solid var(--gold);
-      background:rgba(0,0,0,.68);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
       padding:44px 46px;
-      backdrop-filter:blur(2px);
+      overflow:hidden;
+      min-height:300px;
+    }
+
+    /* LIGHTER CARD OVERLAY SO CARD PICTURES SHOW */
+    .focus-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.24);
+      z-index:0;
+    }
+
+    .focus-card h3,
+    .focus-card p{
+      position:relative;
+      z-index:1;
     }
 
     .focus-card h3{
@@ -269,6 +290,147 @@
       margin-bottom:0;
     }
 
+    .focus-card:nth-child(1){
+      background-image:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85");
+    }
+
+    .focus-card:nth-child(2){
+      background-image:url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85");
+    }
+
+    .focus-card:nth-child(3){
+      background-image:url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85");
+    }
+
+    /* PLAIN PICTURE AREAS */
+    .plain-media-section{
+      background:#000;
+      border-bottom:1px solid var(--line);
+      padding:0;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    /* VIDEO PLAYLIST AREA */
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-wrap{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:26px;
+      max-width:1060px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      box-shadow:0 18px 40px rgba(0,0,0,.42);
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    /* LIGHTER VIDEO OVERLAY SO VIDEO IMAGE SHOWS */
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.42)),
+        linear-gradient(90deg, rgba(0,0,0,.18), rgba(6,75,56,.14));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .video-copy h2{
+      font-size:clamp(34px,4vw,58px);
+      color:var(--gold2);
+      margin-bottom:18px;
+    }
+
+    .video-copy p{
+      font-size:21px;
+      line-height:1.62;
+      margin-bottom:0;
+    }
+
+    .playlist{
+      border:2px solid var(--gold);
+      background:#080808;
+      padding:30px;
+      box-shadow:0 18px 40px rgba(0,0,0,.42);
+    }
+
+    .playlist h3{
+      color:var(--gold2);
+      font-size:clamp(30px,3vw,46px);
+      margin-bottom:22px;
+    }
+
+    .playlist-item{
+      border:1px solid rgba(215,179,93,.45);
+      background:rgba(6,75,56,.20);
+      padding:18px;
+      margin-bottom:16px;
+    }
+
+    .playlist-item strong{
+      display:block;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .playlist-item span{
+      display:block;
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
     .simple-footer{
       padding:24px;
       text-align:center;
@@ -276,6 +438,12 @@
       font-size:18px;
       background:#010101;
       border-bottom:1px solid var(--line);
+    }
+
+    @media(max-width:900px){
+      .video-wrap{
+        grid-template-columns:1fr;
+      }
     }
 
     @media(max-width:600px){
@@ -345,6 +513,7 @@
 
       .focus-card{
         padding:34px 32px;
+        min-height:360px;
       }
 
       .focus-card h3{
@@ -354,6 +523,28 @@
       .focus-card p{
         font-size:21px;
         line-height:1.62;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy,
+      .playlist{
+        padding:28px;
+      }
+
+      .video-copy p,
+      .playlist-item span{
+        font-size:18px;
       }
 
       .simple-footer{
@@ -419,8 +610,12 @@
           and support a disciplined business structure for long-term growth.
         </p>
 
-        <a href="titancore-structure.html" class="btn">Learn More ›</a>
+        <a href="titancore-overview.html" class="btn">Learn More ›</a>
       </div>
+    </section>
+
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureOne"></div>
     </section>
 
     <section class="section daily-bg" data-bg-group="corporate">
@@ -465,6 +660,40 @@
       </div>
     </section>
 
+    <section class="video-section">
+      <div class="video-wrap">
+        <div class="video-main" id="dailyVideoPanel">
+          <div class="video-copy">
+            <div class="eyebrow">Video Playlist Area</div>
+            <h2 id="videoTitle">Business media space.</h2>
+            <p id="videoText">
+              This area is ready for future TitanCore video, business education,
+              market media, company updates, and public information briefings.
+            </p>
+          </div>
+        </div>
+
+        <aside class="playlist">
+          <h3>Daily Playlist</h3>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleOne">Business Intelligence</strong>
+            <span id="playlistTextOne">Future video space for business learning and public information.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleTwo">Market Direction</strong>
+            <span id="playlistTextTwo">Future video space for market, economy, and business movement.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong id="playlistTitleThree">TitanCore Media</strong>
+            <span id="playlistTextThree">Future video space for company overview and public updates.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
     <section class="section daily-bg" data-bg-group="finance">
       <div class="content">
         <div class="eyebrow">Professional Presentation</div>
@@ -486,6 +715,10 @@
       </div>
     </section>
 
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureTwo"></div>
+    </section>
+
     <section class="section green daily-bg" data-bg-group="corporate">
       <div class="content">
         <div class="eyebrow">Public Pathway</div>
@@ -505,6 +738,10 @@
           their own public areas with more detailed information and next-step links.
         </p>
       </div>
+    </section>
+
+    <section class="plain-media-section">
+      <div class="plain-picture" id="plainPictureThree"></div>
     </section>
 
     <section class="section green daily-bg" data-bg-group="corporate">
@@ -549,6 +786,65 @@
       ]
     };
 
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const videoData = [
+      {
+        title:"Business media space.",
+        text:"This area is ready for future TitanCore video, business education, market media, company updates, and public information briefings.",
+        one:"Business Intelligence",
+        oneText:"Future video space for business learning and public information.",
+        two:"Market Direction",
+        twoText:"Future video space for market, economy, and business movement.",
+        three:"TitanCore Media",
+        threeText:"Future video space for company overview and public updates."
+      },
+      {
+        title:"Market and economy video space.",
+        text:"This area can later show market education, economic signals, public business news, and daily market briefings.",
+        one:"Market Watch",
+        oneText:"Future video for stocks, sectors, global markets, and business confidence.",
+        two:"Economic Signals",
+        twoText:"Future video for inflation, rates, jobs, lending, housing, and consumer strength.",
+        three:"Business Timing",
+        threeText:"Future video for when to move, pause, research, or review."
+      },
+      {
+        title:"Company structure video space.",
+        text:"This area can later explain TitanCore overview, structure, operating model, governance, and company direction.",
+        one:"TitanCore Overview",
+        oneText:"Future video introducing TitanCore Holdings to public visitors.",
+        two:"Structure",
+        twoText:"Future video explaining how TitanCore is organized.",
+        three:"Governance",
+        threeText:"Future video explaining oversight, standards, and professional direction."
+      },
+      {
+        title:"News and media playlist space.",
+        text:"This area can later rotate business news, company updates, global business topics, and educational media clips.",
+        one:"Business News",
+        oneText:"Future video for daily business headlines and major information.",
+        two:"Global Business",
+        twoText:"Future video for country-level and international business topics.",
+        three:"Public Updates",
+        threeText:"Future video for TitanCore public announcements and media features."
+      }
+    ];
+
     function applyDailyBackgrounds(){
       const sections = document.querySelectorAll(".daily-bg");
       const day = new Date().getDate();
@@ -562,7 +858,38 @@
       });
     }
 
+    function applyDailyMedia(){
+      const day = new Date().getDate();
+
+      document.getElementById("plainPictureOne").style.backgroundImage =
+        "url('" + plainPictures[day % plainPictures.length] + "')";
+
+      document.getElementById("dailyVideoPanel").style.backgroundImage =
+        "url('" + videoPictures[day % videoPictures.length] + "')";
+
+      document.getElementById("plainPictureTwo").style.backgroundImage =
+        "url('" + plainPictures[(day + 3) % plainPictures.length] + "')";
+
+      document.getElementById("plainPictureThree").style.backgroundImage =
+        "url('" + plainPictures[(day + 5) % plainPictures.length] + "')";
+
+      const selectedVideo = videoData[day % videoData.length];
+
+      document.getElementById("videoTitle").textContent = selectedVideo.title;
+      document.getElementById("videoText").textContent = selectedVideo.text;
+
+      document.getElementById("playlistTitleOne").textContent = selectedVideo.one;
+      document.getElementById("playlistTextOne").textContent = selectedVideo.oneText;
+
+      document.getElementById("playlistTitleTwo").textContent = selectedVideo.two;
+      document.getElementById("playlistTextTwo").textContent = selectedVideo.twoText;
+
+      document.getElementById("playlistTitleThree").textContent = selectedVideo.three;
+      document.getElementById("playlistTextThree").textContent = selectedVideo.threeText;
+    }
+
     applyDailyBackgrounds();
+    applyDailyMedia();
   </script>
 </body>
 </html>
