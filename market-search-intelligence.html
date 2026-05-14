@@ -18,9 +18,19 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
+
     html{scroll-behavior:smooth}
-    body{background:#000;color:var(--white);font-family:Arial, Helvetica, sans-serif}
-    a{color:inherit;text-decoration:none}
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
     .page{
       max-width:1180px;
@@ -56,6 +66,7 @@
       font-weight:700;
       color:var(--gold2);
       background:#030303;
+      flex-shrink:0;
     }
 
     .brand{
@@ -68,7 +79,9 @@
       text-overflow:ellipsis;
     }
 
-    .brand span{color:var(--gold)}
+    .brand span{
+      color:var(--gold);
+    }
 
     .menu-btn{
       width:76px;
@@ -78,9 +91,13 @@
       color:var(--white);
       font-size:36px;
       cursor:pointer;
+      flex-shrink:0;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .menu{
       display:none;
@@ -89,7 +106,9 @@
       padding:22px 42px 26px;
     }
 
-    .menu.active{display:block}
+    .menu.active{
+      display:block;
+    }
 
     .menu a{
       display:block;
@@ -101,7 +120,10 @@
       font-size:18px;
     }
 
-    .menu a:hover{color:var(--gold2);padding-left:8px}
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
 
     .section{
       position:relative;
@@ -117,15 +139,15 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.40), rgba(0,0,0,.16)),
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.22));
+        linear-gradient(90deg, rgba(0,0,0,.40), rgba(0,0,0,.18)),
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.24));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.34), rgba(6,75,56,.36)),
-        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.16));
+        linear-gradient(90deg, rgba(0,0,0,.34), rgba(6,75,56,.38)),
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
     }
 
     .hero{
@@ -142,7 +164,7 @@
     }
 
     .hero .content{
-      max-width:940px;
+      max-width:960px;
       padding-top:74px;
       padding-bottom:74px;
     }
@@ -166,10 +188,12 @@
     h1{
       font-size:clamp(46px,6vw,86px);
       margin-bottom:30px;
-      max-width:940px;
+      max-width:960px;
     }
 
-    h1 span{color:var(--gold2)}
+    h1 span{
+      color:var(--gold2);
+    }
 
     h2{
       font-size:clamp(40px,5vw,72px);
@@ -188,7 +212,7 @@
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:980px;
+      max-width:990px;
     }
 
     .btn{
@@ -209,7 +233,10 @@
       margin-top:34px;
     }
 
-    .btn:hover{background:var(--gold);color:#000}
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .plain-media-section{
       background:#000;
@@ -240,7 +267,7 @@
       background-position:center;
       background-repeat:no-repeat;
       padding:44px 46px;
-      min-height:320px;
+      min-height:330px;
       overflow:hidden;
     }
 
@@ -487,17 +514,17 @@
         </h1>
 
         <p>
-          Market Search Intelligence is a deeper business education page that explains how to study demand,
-          pricing, competition, customer behavior, timing, location, industry movement, risk, and opportunity
-          before spending money or launching a new direction.
+          Market Search Intelligence is the deeper page connected from Search Intelligence.
+          This page explains what visitors need to know before they trust a business idea,
+          enter a market, price a service, choose a location, or spend money on a new direction.
         </p>
 
         <p>
-          The purpose is simple: do not move only because the idea feels good. Search the market first,
-          understand the signals, then decide with more discipline.
+          Market Search is not just looking around. It is a disciplined review of demand,
+          customers, competition, pricing, location, timing, risk, and proof.
         </p>
 
-        <a href="index.html" class="btn">Back Home ›</a>
+        <a href="search-intelligence.html" class="btn">Back to Search Intelligence ›</a>
       </div>
     </section>
 
@@ -514,22 +541,22 @@
         </h2>
 
         <p>
-          A business idea can sound powerful, but the market decides if the idea has real demand.
-          Market search studies whether people need the offer, whether they are already looking for it,
-          whether they are willing to pay, and whether the timing is strong enough to move forward.
+          A business idea can sound strong, but the market decides if the idea is real.
+          Market Search Intelligence helps visitors ask the right questions before moving:
+          Who needs this? How many people need it? What do they pay now? Who already serves them?
+          What is missing? What can go wrong?
         </p>
 
         <p>
-          This page is meant to feel like a serious guide. It gives visitors a deeper explanation than the
-          small card inside Search Intelligence. The card introduces Market Search. This page teaches what
-          Market Search really means and how a visitor should think about it.
+          This page gives the deeper explanation after someone clicks the Market Search card inside
+          Search Intelligence. The card gives the short version. This page gives the full meaning.
         </p>
 
         <div class="checklist">
-          <div class="check-item"><strong>What is the market?</strong><span>The group of customers, locations, industries, companies, and buying activity around a product, service, or idea.</span></div>
-          <div class="check-item"><strong>What is the search?</strong><span>The process of checking demand, competition, pricing, risk, timing, and proof before making a move.</span></div>
-          <div class="check-item"><strong>Why does it matter?</strong><span>Because strong research can prevent wasted money, weak launches, poor pricing, and moving into a crowded market too late.</span></div>
-          <div class="check-item"><strong>What is the result?</strong><span>A clearer picture of whether the business idea should move forward, change, wait, or be tested smaller first.</span></div>
+          <div class="check-item"><strong>What is the market?</strong><span>The group of customers, locations, industries, competitors, and buying activity around a product, service, or business idea.</span></div>
+          <div class="check-item"><strong>What is the search?</strong><span>The process of reviewing demand, pricing, customer behavior, competition, timing, and risk before making a move.</span></div>
+          <div class="check-item"><strong>Why does it matter?</strong><span>Because many businesses fail when they move before understanding the market, customer, cost, and competition.</span></div>
+          <div class="check-item"><strong>What should it produce?</strong><span>A clearer decision: move forward, adjust the offer, test smaller, change the customer, wait, or stop.</span></div>
         </div>
       </div>
     </section>
@@ -539,91 +566,87 @@
         <div class="eyebrow">Market Search Core Areas</div>
 
         <h2>
-          A serious market search studies more than one signal.
+          A real market search studies many business signals.
         </h2>
 
         <div class="card-grid">
           <div class="info-card" id="cardOne">
             <h3>Demand Search</h3>
             <p>
-              Demand search asks whether people truly need the offer. A market can look exciting, but if
-              customers are not searching, asking questions, comparing options, complaining about problems,
-              or paying for a solution, the opportunity may be weak.
+              Demand Search asks whether people truly need the offer. A market can look attractive,
+              but if customers are not searching, asking questions, buying, complaining, or showing urgency,
+              the opportunity may be weak.
             </p>
             <ul>
-              <li>Look for search activity, customer questions, reviews, complaints, and repeated needs.</li>
-              <li>Check whether the need is urgent, optional, seasonal, local, or long-term.</li>
-              <li>Ask whether demand is growing, flat, or already declining.</li>
+              <li>Check whether people are actively looking for this service or product.</li>
+              <li>Review repeated questions, pain points, public complaints, and buying behavior.</li>
+              <li>Look for signs that demand is growing, stable, seasonal, or declining.</li>
             </ul>
           </div>
 
           <div class="info-card" id="cardTwo">
             <h3>Customer Behavior</h3>
             <p>
-              A market is not only numbers. It is people making decisions. Customer behavior explains what
-              customers compare, what they fear, what they trust, what price they expect, and what makes them
-              choose one company over another.
+              A market is made of people making decisions. Customer behavior shows what people compare,
+              what they trust, what they fear, what price they expect, and what makes them choose one company
+              over another.
             </p>
             <ul>
-              <li>Study what customers read before buying.</li>
-              <li>Review what makes customers hesitate.</li>
-              <li>Check what customers say in reviews, comments, calls, and public questions.</li>
+              <li>Study what customers ask before buying.</li>
+              <li>Review what makes them hesitate or walk away.</li>
+              <li>Look at reviews, comments, phone questions, and common objections.</li>
             </ul>
           </div>
 
           <div class="info-card" id="cardThree">
             <h3>Competitor Search</h3>
             <p>
-              Competitor search shows who is already serving the market. The goal is not to copy them.
-              The goal is to understand customer expectations, service gaps, price levels, weak points,
-              and what a new offer must do better.
+              Competitor Search shows who already serves the market. The goal is not to copy them.
+              The goal is to understand what the market already expects and where better service may be possible.
             </p>
             <ul>
-              <li>Identify the strongest competitors and their offers.</li>
-              <li>Compare price, speed, trust, service, reviews, and presentation.</li>
-              <li>Look for gaps where customers are still not satisfied.</li>
+              <li>Identify the main competitors and what they offer.</li>
+              <li>Compare price, speed, trust, reviews, and presentation.</li>
+              <li>Find gaps where customers are still not satisfied.</li>
             </ul>
           </div>
 
           <div class="info-card" id="cardFour">
             <h3>Pricing Search</h3>
             <p>
-              Pricing search helps visitors understand what the market accepts. A price should not be guessed.
-              It should be compared against customer value, competitor prices, service cost, delivery cost,
-              profit margin, and perceived trust.
+              Pricing should not be guessed. Pricing Search compares customer value, competitor prices,
+              delivery cost, marketing cost, labor cost, and profit margin.
             </p>
             <ul>
-              <li>Check competitor prices and package levels.</li>
-              <li>Separate low-price customers from premium customers.</li>
-              <li>Ask whether the offer can stay profitable after all costs.</li>
+              <li>Review low, middle, and premium price levels.</li>
+              <li>Ask what customers are willing to pay and why.</li>
+              <li>Check if the business can still make profit after real expenses.</li>
             </ul>
           </div>
 
           <div class="info-card" id="cardFive">
             <h3>Location Search</h3>
             <p>
-              Location matters for local service, real estate, healthcare, logistics, contractors, events,
-              retail, transportation, and any business connected to customer access. A strong market in one
-              place may be weak in another.
+              Location matters for local services, real estate, healthcare, logistics, contractors, events,
+              retail, transportation, and any business connected to customer access.
             </p>
             <ul>
-              <li>Review population, traffic, local spending, and nearby competition.</li>
-              <li>Check whether customers prefer online, phone, in-person, or delivery service.</li>
-              <li>Study whether the location has enough need to support the business.</li>
+              <li>Review local population, spending power, traffic, and customer access.</li>
+              <li>Compare online demand versus in-person demand.</li>
+              <li>Ask whether the location can support the business long-term.</li>
             </ul>
           </div>
 
           <div class="info-card" id="cardSix">
             <h3>Timing Search</h3>
             <p>
-              Timing search asks whether now is the right moment. Even a good idea can struggle if the timing
-              is wrong. Rates, inflation, seasons, customer confidence, regulations, and major news can change
-              the market quickly.
+              Timing Search asks whether now is the right moment. Even a good idea can struggle if the timing
+              is wrong because of rates, inflation, seasonality, customer confidence, or major market changes.
             </p>
             <ul>
               <li>Review economic pressure and customer confidence.</li>
               <li>Check seasonality and buying cycles.</li>
-              <li>Ask whether it is better to launch now, test small, or wait.</li>
+              <li>Decide whether to launch now, test smaller, or wait.</li>
             </ul>
           </div>
         </div>
@@ -637,8 +660,8 @@
             <div class="eyebrow">Video Playlist Area</div>
             <h2 id="videoTitle">Market search video space.</h2>
             <p id="videoText">
-              This area is ready for future market search videos, demand reviews,
-              competitor explanations, pricing education, customer behavior lessons, and market timing briefings.
+              This area is ready for future videos about market demand, pricing, customer behavior,
+              competitor review, risk, and business timing.
             </p>
           </div>
         </div>
@@ -653,7 +676,7 @@
 
           <div class="playlist-item">
             <strong id="playlistTitleTwo">Competitor Review</strong>
-            <span id="playlistTextTwo">Future video space for studying current providers, pricing, trust, and service gaps.</span>
+            <span id="playlistTextTwo">Future video space for studying competitors, pricing, trust, and service gaps.</span>
           </div>
 
           <div class="playlist-item">
@@ -678,14 +701,14 @@
 
         <p>
           Opinions are not enough. A serious market search should look for signs that the opportunity is real.
-          Proof can come from customer questions, search volume, competitor activity, repeated complaints,
-          public reviews, pricing patterns, local demand, industry growth, and actual buying behavior.
+          Proof can come from customer questions, search demand, competitor activity, repeated complaints,
+          public reviews, pricing patterns, local need, and actual buying behavior.
         </p>
 
         <div class="checklist">
           <div class="check-item"><strong>Search proof</strong><span>Are people searching online for the service, problem, product, location, or solution?</span></div>
           <div class="check-item"><strong>Customer proof</strong><span>Are customers asking the same questions, leaving reviews, or complaining about the same problems?</span></div>
-          <div class="check-item"><strong>Competitor proof</strong><span>Are competitors already making money, expanding, advertising, or improving their services?</span></div>
+          <div class="check-item"><strong>Competitor proof</strong><span>Are competitors making money, advertising, expanding, or improving their services?</span></div>
           <div class="check-item"><strong>Pricing proof</strong><span>Can the market support a price that covers cost, labor, delivery, marketing, and profit?</span></div>
           <div class="check-item"><strong>Location proof</strong><span>Does the area have enough population, demand, spending strength, and access?</span></div>
           <div class="check-item"><strong>Timing proof</strong><span>Are current conditions helping the opportunity or making it harder?</span></div>
@@ -695,16 +718,16 @@
 
     <section class="section green daily-bg" data-bg-group="market">
       <div class="content">
-        <div class="eyebrow">Market Risk Review</div>
+        <div class="eyebrow">Warning Signs</div>
 
         <h2>
-          The market search must also look for warning signs.
+          The market search must also look for risk.
         </h2>
 
         <p>
-          Market search is not only about finding opportunity. It must also protect the visitor from weak moves.
+          Market Search is not only about finding opportunity. It must also protect visitors from weak moves.
           A warning sign does not always mean the idea is bad, but it may mean the business should adjust the offer,
-          lower the risk, test smaller, change the price, choose a better customer, or wait for better timing.
+          change the customer, test smaller, or wait for better timing.
         </p>
 
         <div class="card-grid">
@@ -720,23 +743,23 @@
             <h3>Crowded Market</h3>
             <p>
               A crowded market can still have opportunity, but the business must know how it will be different:
-              better trust, better speed, better education, better price, better service, or better customer focus.
+              better trust, better speed, better education, better price, or better customer focus.
             </p>
           </div>
 
           <div class="info-card" id="cardNine">
             <h3>High Cost</h3>
             <p>
-              High startup cost, marketing cost, labor cost, insurance cost, inventory cost, or delivery cost can
-              weaken an idea even when customers exist.
+              High startup cost, marketing cost, labor cost, insurance cost, inventory cost, or delivery cost can weaken
+              an idea even when customers exist.
             </p>
           </div>
 
           <div class="info-card" id="cardTen">
             <h3>Unclear Customer</h3>
             <p>
-              If the business cannot clearly explain who the customer is, what problem they have, and why they will
-              pay, the market search is not finished.
+              If the business cannot clearly explain who the customer is, what problem they have, and why they will pay,
+              the market search is not finished.
             </p>
           </div>
         </div>
@@ -752,7 +775,7 @@
         <div class="eyebrow">Market Search Questions</div>
 
         <h2>
-          Questions a visitor should answer before moving forward.
+          Questions visitors should answer before moving forward.
         </h2>
 
         <div class="checklist">
@@ -760,7 +783,7 @@
           <div class="check-item"><strong>Why do they need it?</strong><span>Explain the problem, urgency, pain point, desire, or benefit.</span></div>
           <div class="check-item"><strong>Who already serves them?</strong><span>List competitors, alternatives, substitutes, and informal solutions.</span></div>
           <div class="check-item"><strong>What do they pay now?</strong><span>Review current prices, packages, fees, monthly plans, and service levels.</span></div>
-          <div class="check-item"><strong>What is missing?</strong><span>Find the gap: speed, trust, education, convenience, quality, price, or better follow-up.</span></div>
+          <div class="check-item"><strong>What is missing?</strong><span>Find the gap: speed, trust, education, convenience, quality, price, or follow-up.</span></div>
           <div class="check-item"><strong>What proof exists?</strong><span>Use real signals before moving forward, not only personal belief.</span></div>
           <div class="check-item"><strong>What can go wrong?</strong><span>Review cost, competition, demand, regulation, timing, and customer trust risk.</span></div>
           <div class="check-item"><strong>What should be tested first?</strong><span>Start with a smaller test before building the full version.</span></div>
@@ -792,7 +815,9 @@
   <script>
     function toggleMenu(){
       const menu = document.getElementById("menu");
-      if(menu){ menu.classList.toggle("active"); }
+      if(menu){
+        menu.classList.toggle("active");
+      }
     }
 
     const backgroundSets = {
@@ -914,10 +939,13 @@
 
       document.getElementById("videoTitle").textContent = selectedVideo.title;
       document.getElementById("videoText").textContent = selectedVideo.text;
+
       document.getElementById("playlistTitleOne").textContent = selectedVideo.one;
       document.getElementById("playlistTextOne").textContent = selectedVideo.oneText;
+
       document.getElementById("playlistTitleTwo").textContent = selectedVideo.two;
       document.getElementById("playlistTextTwo").textContent = selectedVideo.twoText;
+
       document.getElementById("playlistTitleThree").textContent = selectedVideo.three;
       document.getElementById("playlistTextThree").textContent = selectedVideo.threeText;
     }
