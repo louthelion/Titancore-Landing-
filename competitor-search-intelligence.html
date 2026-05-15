@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Competitor Search Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{
+      display:block;
+    }
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.46),rgba(0,0,0,.20)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.32));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.38),rgba(6,75,56,.46)),
+        linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.22));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,
+    h3{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .definition-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .definition-box p:last-child{
+      margin-bottom:0;
+    }
+
+    .checklist{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .check-item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .check-item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .check-item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.34);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow-strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .flow-step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .flow-step .num{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .flow-step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-wrap{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:26px;
+      max-width:1060px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .playlist{
+      border:2px solid var(--gold);
+      background:#080808;
+      padding:30px;
+    }
+
+    .playlist h3{
+      color:var(--gold2);
+      font-size:clamp(30px,3vw,46px);
+      margin-bottom:22px;
+    }
+
+    .playlist-item{
+      border:1px solid rgba(215,179,93,.45);
+      background:rgba(6,75,56,.20);
+      padding:18px;
+      margin-bottom:16px;
+    }
+
+    .playlist-item strong{
+      display:block;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .playlist-item span{
+      display:block;
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .checklist,
+      .flow-strip,
+      .video-wrap{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .definition-box,
+      .info-card{
+        padding:30px;
+      }
+
+      .check-item span,
+      .info-card li{
+        font-size:18px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy,
+      .playlist{
+        padding:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="competitor">
+      <div class="content">
+        <div class="eyebrow">Competitor Search Intelligence</div>
+
+        <h1>
+          Understand who already<br>
+          <span>serves the market.</span>
+        </h1>
+
+        <p>
+          Competitor Search Intelligence helps visitors study the companies, providers, platforms,
+          products, services, and alternatives already serving the same customer. Before a business enters
+          a market or improves an offer, it needs to understand what customers already see, compare, trust,
+          complain about, and pay for.
+        </p>
+
+        <p>
+          Competitor Search is not about copying another business. It is about learning what the market already expects,
+          where competitors are strong, where customers are still unhappy, and where a better offer may have room to grow.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="competitor">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Competitor search means studying the businesses customers already compare.
+        </h2>
+
+        <div class="definition-box">
+          <h3>What is Competitor Search?</h3>
+
+          <p>
+            Competitor Search is the process of identifying who already serves the same market,
+            what they offer, how they present themselves, how they price their services, how customers respond,
+            and what gaps still exist.
+          </p>
+
+          <p>
+            A competitor can be a direct business, a large company, a small local provider, an online platform,
+            a free alternative, a do-it-yourself option, or even the customer’s decision to do nothing.
+            A serious competitor search studies all of those possibilities.
+          </p>
+        </div>
+
+        <div class="definition-box">
+          <h3>Why does Competitor Search matter?</h3>
+
+          <p>
+            A market may look open, but customers may already have options. If a business does not understand
+            those options, it may enter the market with the wrong price, weak message, unclear value, or no real difference.
+          </p>
+
+          <p>
+            Competitor Search helps visitors understand what customers already expect, what they are used to paying,
+            what trust signals they recognize, what service problems they complain about, and what kind of offer
+            could stand out.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="competitor">
+      <div class="content">
+        <div class="eyebrow">Competitor Map</div>
+
+        <h2>
+          A strong competitor search starts by mapping the market.
+        </h2>
+
+        <p>
+          Competitor mapping means identifying all the options a customer may consider before choosing.
+          The goal is to understand the full field, not just the most obvious competitors.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Direct competitors</strong>
+            <span>Businesses offering the same or very similar product, service, or solution to the same customer.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Indirect competitors</strong>
+            <span>Businesses solving part of the same problem in a different way or serving a nearby customer need.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Large platforms</strong>
+            <span>Online marketplaces, national brands, apps, websites, or software tools customers may use instead.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Local providers</strong>
+            <span>Nearby businesses, professionals, contractors, consultants, or service providers that customers already know.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Free alternatives</strong>
+            <span>Free tools, free advice, do-it-yourself options, online guides, or public resources that may reduce willingness to pay.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>No-action option</strong>
+            <span>Sometimes the biggest competitor is the customer doing nothing, waiting, or delaying the decision.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="competitor">
+      <div class="content">
+        <div class="eyebrow">Offer Comparison</div>
+
+        <h2>
+          Compare what competitors actually offer.
+        </h2>
+
+        <p>
+          A competitor search should look deeper than the company name. It should study the offer, the package,
+          the promise, the process, the customer experience, the response time, the pricing, and the way the business
+          explains its value.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Service Comparison</h3>
+            <p>
+              Service comparison asks what the competitor provides and how complete the offer is.
+              Some competitors may offer simple service, while others may include education, follow-up,
+              convenience, support, or faster response.
+            </p>
+            <ul>
+              <li>What services or products are included?</li>
+              <li>What is missing from the offer?</li>
+              <li>How fast do they respond?</li>
+              <li>How clear is their process?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Presentation Comparison</h3>
+            <p>
+              Presentation comparison studies how competitors look to the public. This includes website design,
+              social media, customer language, branding, reviews, photos, videos, and how easy it is to understand the offer.
+            </p>
+            <ul>
+              <li>Does the competitor look professional?</li>
+              <li>Is the message clear or confusing?</li>
+              <li>Do they explain the customer problem?</li>
+              <li>Do they make the next step easy?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Trust Comparison</h3>
+            <p>
+              Trust comparison asks why customers believe one provider over another. A business can have a good offer,
+              but if competitors look more trustworthy, customers may choose them first.
+            </p>
+            <ul>
+              <li>Do they show proof or reviews?</li>
+              <li>Do they explain pricing clearly?</li>
+              <li>Do they show experience or credibility?</li>
+              <li>Do customers feel safe contacting them?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="competitor">
+      <div class="content">
+        <div class="eyebrow">Price & Position</div>
+
+        <h2>
+          Pricing shows how the market understands value.
+        </h2>
+
+        <p>
+          Competitor pricing helps visitors understand what customers are already used to paying.
+          It also shows whether the market is low-cost, premium, service-driven, speed-driven, or trust-driven.
+        </p>
+
+        <p>
+          The goal is not always to be cheaper. Sometimes a stronger offer can charge more if it provides better trust,
+          better results, faster service, better education, stronger follow-up, or a clearer customer experience.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Low-price competitors</strong>
+            <span>Study businesses that compete mainly on price and identify what customers give up when they choose low cost.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Middle-market competitors</strong>
+            <span>Review providers that offer standard service, average pricing, and common customer expectations.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Premium competitors</strong>
+            <span>Study businesses that charge more because of trust, quality, brand, experience, speed, or convenience.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Hidden costs</strong>
+            <span>Look for add-on fees, unclear pricing, extra steps, delays, or service gaps that customers may not expect.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Value difference</strong>
+            <span>Ask what makes one offer worth more than another: outcome, trust, time saved, support, or clarity.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Price confidence</strong>
+            <span>Use competitor pricing to decide whether the offer should be low-cost, balanced, premium, or specialized.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-wrap">
+        <div class="video-main" id="dailyVideoPanel">
+          <div class="video-copy">
+            <div class="eyebrow">Video Playlist Area</div>
+
+            <h2>
+              Competitor search video space.
+            </h2>
+
+            <p>
+              This area is ready for future videos about competitor mapping, price comparison,
+              customer reviews, service gaps, positioning, and how to identify a stronger market angle.
+            </p>
+          </div>
+        </div>
+
+        <aside class="playlist">
+          <h3>Daily Playlist</h3>
+
+          <div class="playlist-item">
+            <strong>Competitor Map</strong>
+            <span>Future video space for identifying direct, indirect, local, and online competitors.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong>Price Comparison</strong>
+            <span>Future video space for comparing low-cost, standard, and premium competitors.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong>Service Gap</strong>
+            <span>Future video space for finding what customers still need from the market.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="competitor">
+      <div class="content">
+        <div class="eyebrow">Reviews & Customer Complaints</div>
+
+        <h2>
+          Customer reviews reveal competitor weaknesses.
+        </h2>
+
+        <p>
+          Reviews, complaints, comments, and customer questions can show what the market still needs.
+          A competitor may be successful, but customers may still complain about slow response, confusing pricing,
+          weak communication, bad follow-up, poor service, or lack of transparency.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Positive reviews</strong>
+            <span>Study what customers already like. This shows what the market values and expects.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Negative reviews</strong>
+            <span>Study repeated complaints. Repeated complaints may reveal an opportunity for better service.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Customer language</strong>
+            <span>Pay attention to the words customers use to describe their needs, frustrations, and expectations.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Unanswered questions</strong>
+            <span>Look for questions competitors do not answer clearly on their websites, posts, forms, or service pages.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Service delays</strong>
+            <span>Slow response, poor communication, or lack of follow-up can be a strong opportunity area.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Trust problems</strong>
+            <span>Confusing pricing, weak proof, missing information, or unprofessional presentation can weaken a competitor.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="competitor">
+      <div class="content">
+        <div class="eyebrow">Positioning & Difference</div>
+
+        <h2>
+          A business needs a clear difference to stand out.
+        </h2>
+
+        <p>
+          Competitor Search should help a visitor answer one important question:
+          why would a customer choose this offer instead of another option?
+          The answer should be clear, useful, and connected to a real customer need.
+        </p>
+
+        <div class="flow-strip">
+          <div class="flow-step">
+            <div class="num">01</div>
+            <strong>Find</strong>
+            <span>Identify who already serves the customer and what options exist.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">02</div>
+            <strong>Compare</strong>
+            <span>Study price, service, trust, message, reviews, and customer experience.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">03</div>
+            <strong>Identify</strong>
+            <span>Find gaps where customers still need clearer, faster, or better help.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">04</div>
+            <strong>Position</strong>
+            <span>Build a stronger message around the difference that matters to the customer.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="competitor">
+      <div class="content">
+        <div class="eyebrow">Competitor Search Questions</div>
+
+        <h2>
+          Questions every competitor search should answer.
+        </h2>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Who are the main competitors?</strong>
+            <span>Identify direct competitors, indirect competitors, online alternatives, local providers, and free options.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What do they offer?</strong>
+            <span>Review the actual services, features, packages, guarantees, process, and customer support.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>How do they price?</strong>
+            <span>Compare low, middle, and premium pricing so the market range becomes clear.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What do customers like?</strong>
+            <span>Use positive reviews to understand what customers already value in the market.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What do customers complain about?</strong>
+            <span>Use repeated complaints to identify service gaps and possible opportunity.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Where can the offer stand out?</strong>
+            <span>Find a difference based on trust, speed, clarity, education, convenience, service quality, or follow-up.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      competitor:[
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "competitor";
+      const images = backgroundSets[group] || backgroundSets.competitor;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
