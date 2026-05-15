@@ -1220,5 +1220,46 @@
       videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
     }
   </script>
+ <script>
+  document.addEventListener("click", function(e){
+    const card = e.target.closest("a, .topic-button, .search-card, .card, .intelligence-card");
+
+    if(!card || !card.textContent){
+      return;
+    }
+
+    const text = card.textContent.toLowerCase();
+
+    if(text.includes("market search")){
+      e.preventDefault();
+      window.location.href = "market-search-intelligence.html";
+    }
+
+    if(text.includes("customer search")){
+      e.preventDefault();
+      window.location.href = "customer-search-intelligence.html";
+    }
+
+    if(text.includes("competitor search")){
+      e.preventDefault();
+      window.location.href = "competitor-search-intelligence.html";
+    }
+
+    if(text.includes("opportunity search")){
+      e.preventDefault();
+      window.location.href = "opportunity-search-intelligence.html";
+    }
+
+    if(text.includes("risk search")){
+      e.preventDefault();
+      window.location.href = "risk-search-intelligence.html";
+    }
+
+    if(text.includes("source checking")){
+      e.preventDefault();
+      window.location.href = "source-checking-intelligence.html";
+    }
+  }, true);
+</script>
 </body>
 </html>
