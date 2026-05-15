@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Risk Search Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{
+      display:block;
+    }
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.48),rgba(0,0,0,.22)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.40),rgba(6,75,56,.46)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.24));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,
+    h3{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .definition-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .definition-box p:last-child{
+      margin-bottom:0;
+    }
+
+    .checklist{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .check-item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .check-item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .check-item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.35);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow-strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .flow-step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .flow-step .num{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .flow-step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-wrap{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:26px;
+      max-width:1060px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .playlist{
+      border:2px solid var(--gold);
+      background:#080808;
+      padding:30px;
+    }
+
+    .playlist h3{
+      color:var(--gold2);
+      font-size:clamp(30px,3vw,46px);
+      margin-bottom:22px;
+    }
+
+    .playlist-item{
+      border:1px solid rgba(215,179,93,.45);
+      background:rgba(6,75,56,.20);
+      padding:18px;
+      margin-bottom:16px;
+    }
+
+    .playlist-item strong{
+      display:block;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .playlist-item span{
+      display:block;
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .checklist,
+      .flow-strip,
+      .video-wrap{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .definition-box,
+      .info-card{
+        padding:30px;
+      }
+
+      .check-item span,
+      .info-card li{
+        font-size:18px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy,
+      .playlist{
+        padding:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Risk Search Intelligence</div>
+
+        <h1>
+          Study what can go wrong<br>
+          <span>before spending money.</span>
+        </h1>
+
+        <p>
+          Risk Search Intelligence helps visitors study warning signs before they trust an idea,
+          enter a market, launch a service, target customers, or spend money on a business move.
+          A strong idea can still fail when demand is weak, cost is too high, timing is poor,
+          competition is strong, or the customer need is unclear.
+        </p>
+
+        <p>
+          This page explains how to identify business risk, compare warning signals, ask better questions,
+          and decide whether to move forward, adjust, test smaller, wait, or stop.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Risk search means finding weak points before the decision becomes expensive.
+        </h2>
+
+        <div class="definition-box">
+          <h3>What is Risk Search?</h3>
+
+          <p>
+            Risk Search is the process of reviewing what can go wrong before a business decision is made.
+            It looks at demand, cost, timing, competition, customer clarity, pricing pressure, legal requirements,
+            operational limits, and proof quality.
+          </p>
+
+          <p>
+            Risk Search does not mean the idea is bad. It means the visitor is learning where the idea is strong,
+            where it is weak, and where more information is needed before spending money or moving too fast.
+          </p>
+        </div>
+
+        <div class="definition-box">
+          <h3>Why does Risk Search matter?</h3>
+
+          <p>
+            Many business problems start because people act before they understand the risk.
+            They may believe customers will buy, but demand may be weak. They may think the price is good,
+            but costs may be too high. They may see an opportunity, but competitors may already control the trust.
+          </p>
+
+          <p>
+            Risk Search gives visitors a safer way to think. It helps them ask the hard questions early,
+            before the mistake becomes more expensive.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Risk Map</div>
+
+        <h2>
+          A serious risk search studies many different warning signs.
+        </h2>
+
+        <p>
+          Risk is not only one problem. A business can face market risk, customer risk, competitor risk,
+          pricing risk, timing risk, operating risk, source risk, and money risk. The visitor should study each area
+          before trusting the direction.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Market risk</strong>
+            <span>The market may not be strong enough, large enough, active enough, or ready for the offer.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Customer risk</strong>
+            <span>The customer may be unclear, hard to reach, unwilling to pay, or not urgent enough to act.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Competitor risk</strong>
+            <span>Competitors may already have stronger trust, lower pricing, better reviews, faster service, or better positioning.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Pricing risk</strong>
+            <span>The price may not cover real costs, marketing, labor, delivery, software, taxes, insurance, or follow-up.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Timing risk</strong>
+            <span>The market may be affected by seasonality, inflation, interest rates, customer confidence, or economic pressure.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Proof risk</strong>
+            <span>The idea may be based on opinion instead of real evidence, customer behavior, data, or verified information.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Demand & Customer Risk</div>
+
+        <h2>
+          Weak demand is one of the most dangerous business risks.
+        </h2>
+
+        <p>
+          Demand risk means people may not need the offer strongly enough, may not be searching for it,
+          may not trust it, or may not be ready to pay for it. A business can look good on paper and still fail
+          if customers do not feel enough reason to act.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Weak Demand</h3>
+            <p>
+              Weak demand appears when customers are not actively searching, asking questions,
+              complaining about the problem, or buying similar solutions.
+            </p>
+            <ul>
+              <li>Few people are searching for the service or product.</li>
+              <li>Customers do not show urgency or strong interest.</li>
+              <li>The problem may be real but not important enough to pay for.</li>
+              <li>The market may be too small or too slow.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Unclear Customer</h3>
+            <p>
+              Customer risk grows when the business cannot clearly explain who the offer is for.
+              If the customer is “everybody,” the message usually becomes weak.
+            </p>
+            <ul>
+              <li>The target customer is too broad.</li>
+              <li>The pain point is not clearly defined.</li>
+              <li>The offer does not match the customer’s actual need.</li>
+              <li>The customer may not understand the value.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Low Willingness to Pay</h3>
+            <p>
+              A customer may like an idea but still not pay for it. Willingness to pay depends on trust,
+              urgency, value, timing, and whether the solution feels worth the cost.
+            </p>
+            <ul>
+              <li>The customer may choose a cheaper option.</li>
+              <li>The customer may wait or do nothing.</li>
+              <li>The value may not feel clear enough.</li>
+              <li>The price may feel high compared to the problem.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Cost & Money Risk</div>
+
+        <h2>
+          A business can fail when the real cost is not understood.
+        </h2>
+
+        <p>
+          Cost risk happens when a person only sees the front price but does not calculate the full cost behind the offer.
+          A business may need marketing, software, insurance, labor, supplies, website cost, payment fees,
+          professional support, transportation, follow-up time, and taxes.
+        </p>
+
+        <p>
+          Risk Search helps visitors slow down and ask whether the business can still make sense after all real expenses
+          are included.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Startup cost</strong>
+            <span>Review what must be paid before the business or offer can operate properly.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Marketing cost</strong>
+            <span>Study how much it may cost to reach customers, educate them, and turn attention into action.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Operating cost</strong>
+            <span>Review ongoing costs like labor, software, tools, supplies, insurance, hosting, forms, and support.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Delivery cost</strong>
+            <span>Ask what it costs to actually deliver the service, complete the work, and support the customer.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Profit risk</strong>
+            <span>The business may bring money in but still not have enough profit after all costs are paid.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Cash flow risk</strong>
+            <span>Money may come in late while bills, payroll, tools, ads, and service costs must be paid earlier.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-wrap">
+        <div class="video-main" id="dailyVideoPanel">
+          <div class="video-copy">
+            <div class="eyebrow">Video Playlist Area</div>
+
+            <h2>
+              Risk search video space.
+            </h2>
+
+            <p>
+              This area is ready for future videos about market risk, cost risk, customer risk,
+              timing risk, competitor pressure, proof checking, and safer business decisions.
+            </p>
+          </div>
+        </div>
+
+        <aside class="playlist">
+          <h3>Daily Playlist</h3>
+
+          <div class="playlist-item">
+            <strong>Demand Risk</strong>
+            <span>Future video space for studying weak demand before launching an offer.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong>Cost Risk</strong>
+            <span>Future video space for reviewing real expenses before spending money.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong>Timing Risk</strong>
+            <span>Future video space for understanding when timing can hurt a business move.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Competition & Timing Risk</div>
+
+        <h2>
+          The market may be harder than it looks from the outside.
+        </h2>
+
+        <p>
+          A visitor may see an opportunity, but competitors may already have the customer’s trust.
+          The timing may also be weak because of economic pressure, seasonality, high interest rates,
+          local conditions, changing rules, or customer hesitation.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Competitor Pressure</h3>
+            <p>
+              Competitor pressure happens when other businesses already serve the customer with stronger trust,
+              lower prices, better reviews, more convenience, or more visible marketing.
+            </p>
+            <ul>
+              <li>Competitors may already rank higher online.</li>
+              <li>Customers may already know and trust them.</li>
+              <li>Competitors may offer cheaper or faster service.</li>
+              <li>The new offer may need a stronger difference to stand out.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Timing Pressure</h3>
+            <p>
+              Timing risk appears when the idea may be good, but the current moment is not strong.
+              The market may be slow, customers may be cautious, or expenses may be rising.
+            </p>
+            <ul>
+              <li>The season may be wrong for the offer.</li>
+              <li>Customers may be delaying spending.</li>
+              <li>Economic pressure may reduce demand.</li>
+              <li>The market may need more education before it is ready.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Positioning Risk</h3>
+            <p>
+              Positioning risk happens when customers cannot quickly understand why the offer is different,
+              better, safer, clearer, or more useful than what already exists.
+            </p>
+            <ul>
+              <li>The message may sound like every other competitor.</li>
+              <li>The value may not be clear enough.</li>
+              <li>The offer may not show proof or trust.</li>
+              <li>The customer may not see a strong reason to choose it.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Proof & Source Risk</div>
+
+        <h2>
+          Weak information creates weak decisions.
+        </h2>
+
+        <p>
+          Some business ideas are built from social media posts, old articles, guesses, or one person’s opinion.
+          Risk Search checks whether the information is current, credible, and strong enough to support a decision.
+        </p>
+
+        <p>
+          A visitor should compare multiple sources, check dates, separate fact from opinion, and look for evidence
+          that connects directly to the market, customer, location, timing, and offer being considered.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Old information</strong>
+            <span>Information may be outdated, especially in markets affected by prices, interest rates, laws, trends, or technology.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Weak source</strong>
+            <span>The source may be an opinion, promotion, copied post, or incomplete explanation instead of reliable information.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>One-source mistake</strong>
+            <span>A decision should not depend on only one article, one video, one post, or one person’s story.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Wrong location</strong>
+            <span>Information from another city, state, country, or customer group may not apply to the visitor’s situation.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Fact vs opinion</strong>
+            <span>Separate verified information from predictions, beliefs, sales language, or personal opinions.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Missing context</strong>
+            <span>Some information may be true but incomplete because it does not include cost, timing, competition, or customer behavior.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Risk Decision Flow</div>
+
+        <h2>
+          Risk search helps the visitor decide the next move.
+        </h2>
+
+        <p>
+          After reviewing the risk, the decision is not always “yes” or “no.” The answer may be to adjust the offer,
+          test smaller, wait for better timing, research more, change the customer, improve the price, or strengthen proof.
+        </p>
+
+        <div class="flow-strip">
+          <div class="flow-step">
+            <div class="num">01</div>
+            <strong>Identify</strong>
+            <span>Find the main risks: demand, cost, customer, timing, competition, or source quality.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">02</div>
+            <strong>Measure</strong>
+            <span>Decide how serious each risk is and whether it can be reduced.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">03</div>
+            <strong>Adjust</strong>
+            <span>Change the offer, message, price, target customer, timing, or testing plan.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">04</div>
+            <strong>Decide</strong>
+            <span>Move forward, test smaller, wait, research more, or stop before wasting money.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="risk">
+      <div class="content">
+        <div class="eyebrow">Risk Search Questions</div>
+
+        <h2>
+          Questions every risk search should answer.
+        </h2>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Is demand strong enough?</strong>
+            <span>Look for proof that customers are actively searching, asking, buying, or complaining about the problem.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Is the customer clear?</strong>
+            <span>Define who needs the offer, why they need it, and what would make them act.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Can the price work?</strong>
+            <span>Compare customer willingness to pay against the real cost of delivering the offer.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Are competitors stronger?</strong>
+            <span>Review whether competitors already have more trust, better pricing, better reviews, or stronger visibility.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Is the timing right?</strong>
+            <span>Study seasonality, economy, market movement, customer confidence, and current pressure.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Is the proof strong?</strong>
+            <span>Use current, credible, and relevant information before trusting the decision.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      risk:[
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "risk";
+      const images = backgroundSets[group] || backgroundSets.risk;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
