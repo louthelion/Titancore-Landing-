@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Source Checking Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{
+      display:block;
+    }
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.48),rgba(0,0,0,.22)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.40),rgba(6,75,56,.46)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.24));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,
+    h3{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .definition-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .definition-box p:last-child{
+      margin-bottom:0;
+    }
+
+    .checklist{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .check-item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .check-item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .check-item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.35);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow-strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .flow-step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .flow-step .num{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .flow-step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-wrap{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:26px;
+      max-width:1060px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .playlist{
+      border:2px solid var(--gold);
+      background:#080808;
+      padding:30px;
+    }
+
+    .playlist h3{
+      color:var(--gold2);
+      font-size:clamp(30px,3vw,46px);
+      margin-bottom:22px;
+    }
+
+    .playlist-item{
+      border:1px solid rgba(215,179,93,.45);
+      background:rgba(6,75,56,.20);
+      padding:18px;
+      margin-bottom:16px;
+    }
+
+    .playlist-item strong{
+      display:block;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .playlist-item span{
+      display:block;
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .checklist,
+      .flow-strip,
+      .video-wrap{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .definition-box,
+      .info-card{
+        padding:30px;
+      }
+
+      .check-item span,
+      .info-card li{
+        font-size:18px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy,
+      .playlist{
+        padding:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Source Checking Intelligence</div>
+
+        <h1>
+          Verify the information<br>
+          <span>before trusting it.</span>
+        </h1>
+
+        <p>
+          Source Checking Intelligence helps visitors review whether business information is current,
+          credible, complete, and useful before they use it to make a decision. A weak source can make a
+          business idea look stronger than it really is, or make a real opportunity look confusing.
+        </p>
+
+        <p>
+          This page explains how to check dates, compare sources, separate facts from opinions,
+          review credibility, confirm local relevance, and decide whether information is strong enough
+          to support a business move.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Source checking means testing the strength of information.
+        </h2>
+
+        <div class="definition-box">
+          <h3>What is Source Checking?</h3>
+
+          <p>
+            Source Checking is the process of reviewing where information came from,
+            when it was published, who created it, what evidence supports it, and whether it applies to the
+            decision being made.
+          </p>
+
+          <p>
+            Business information can come from articles, videos, social media, reports, government websites,
+            company pages, reviews, podcasts, databases, market tools, or personal opinions. Not all information
+            has the same value. Source Checking helps visitors decide which information deserves trust.
+          </p>
+        </div>
+
+        <div class="definition-box">
+          <h3>Why does Source Checking matter?</h3>
+
+          <p>
+            A business decision can fail when the information behind it is old, incomplete, biased, exaggerated,
+            or not connected to the actual market. A visitor may read one post and believe a market is strong,
+            but that post may be outdated, promotional, or based on a different location.
+          </p>
+
+          <p>
+            Source Checking helps visitors slow down and ask: Is this information current? Is it credible?
+            Is it fact or opinion? Does it apply to this customer, this market, this location, and this decision?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Source Quality Map</div>
+
+        <h2>
+          A strong source check studies more than one signal.
+        </h2>
+
+        <p>
+          Good research is not only about finding information. It is about knowing whether the information is strong enough.
+          Visitors should check the source, date, evidence, purpose, location, and connection to the decision.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Date check</strong>
+            <span>Review when the information was published or updated, especially for prices, laws, markets, finance, technology, and trends.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Credibility check</strong>
+            <span>Ask whether the source is official, experienced, professional, transparent, or connected to a real data source.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Evidence check</strong>
+            <span>Look for facts, numbers, examples, citations, reports, public records, or repeated signals that support the claim.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Purpose check</strong>
+            <span>Ask whether the source is trying to inform, sell, persuade, entertain, promote, or influence the reader.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Location check</strong>
+            <span>Confirm whether the information applies to the visitor’s city, state, country, customer group, or industry.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Decision check</strong>
+            <span>Ask whether the information actually helps the visitor make a clearer business decision.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Dates & Freshness</div>
+
+        <h2>
+          Old information can create bad business decisions.
+        </h2>
+
+        <p>
+          Some information becomes weak because the market changes. Prices change, rules change,
+          interest rates change, customer behavior changes, competitors change, and technology changes.
+          A visitor should not trust old information without checking whether it still applies.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Freshness Check</h3>
+            <p>
+              Freshness Check asks whether the information is recent enough for the decision.
+              Some topics stay useful for years, but other topics change quickly.
+            </p>
+            <ul>
+              <li>Check the publish date and update date.</li>
+              <li>Ask whether the market has changed since the information was posted.</li>
+              <li>Be careful with old pricing, old rules, old trends, and old statistics.</li>
+              <li>Use current sources when the decision depends on today’s conditions.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Market Change Check</h3>
+            <p>
+              A source can be accurate when published but weak later if the market changes.
+              The visitor should ask whether the information still reflects the current environment.
+            </p>
+            <ul>
+              <li>Has customer demand changed?</li>
+              <li>Have prices or costs changed?</li>
+              <li>Have competitors changed the market?</li>
+              <li>Have new laws, tools, or platforms changed the situation?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Decision Timing Check</h3>
+            <p>
+              Information should match the timing of the decision. A long-term education article may still help,
+              but a pricing, financing, legal, or market decision usually needs newer information.
+            </p>
+            <ul>
+              <li>Use recent information for current market movement.</li>
+              <li>Use official sources for rules and compliance topics.</li>
+              <li>Compare current sources before acting on financial information.</li>
+              <li>Do not use old information for fast-changing decisions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Fact vs Opinion</div>
+
+        <h2>
+          Strong research separates facts from opinions.
+        </h2>
+
+        <p>
+          A source may sound confident but still be based on opinion. A visitor must learn the difference between
+          verified facts, expert interpretation, promotional language, personal experience, prediction, and sales talk.
+        </p>
+
+        <p>
+          Source Checking does not mean ignoring opinions. Opinions can help explain how people think.
+          But opinions should not be treated as proof unless they are supported by facts, examples, data,
+          or repeated evidence.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Verified fact</strong>
+            <span>Information supported by official records, data, documents, direct evidence, or multiple credible sources.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Expert analysis</strong>
+            <span>Professional interpretation from someone with experience, but still something that should be compared with other sources.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Personal opinion</strong>
+            <span>One person’s belief, experience, or reaction. Useful for perspective, but not enough by itself.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Sales language</strong>
+            <span>Information designed to promote, persuade, or sell. It may be useful, but it should be checked carefully.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Prediction</strong>
+            <span>A future claim that may or may not happen. Predictions should be treated as possibilities, not guarantees.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Repeated signal</strong>
+            <span>When the same pattern appears across multiple credible sources, it becomes stronger than one isolated claim.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-wrap">
+        <div class="video-main" id="dailyVideoPanel">
+          <div class="video-copy">
+            <div class="eyebrow">Video Playlist Area</div>
+
+            <h2>
+              Source checking video space.
+            </h2>
+
+            <p>
+              This area is ready for future videos about checking source credibility,
+              comparing information, reviewing dates, spotting weak claims, and making stronger business decisions.
+            </p>
+          </div>
+        </div>
+
+        <aside class="playlist">
+          <h3>Daily Playlist</h3>
+
+          <div class="playlist-item">
+            <strong>Date Check</strong>
+            <span>Future video space for checking whether information is current enough to use.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong>Credibility Check</strong>
+            <span>Future video space for identifying strong sources and weak sources.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong>Fact vs Opinion</strong>
+            <span>Future video space for separating proof, opinion, prediction, and sales language.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Compare & Confirm</div>
+
+        <h2>
+          One source is usually not enough.
+        </h2>
+
+        <p>
+          A visitor should compare multiple sources before trusting an important business conclusion.
+          If several credible sources point in the same direction, the information becomes stronger.
+          If sources disagree, the visitor should slow down and understand why.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Multiple Source Review</h3>
+            <p>
+              Multiple Source Review means comparing information from different places before deciding.
+              This helps reduce the risk of trusting one weak article, post, video, or opinion.
+            </p>
+            <ul>
+              <li>Compare official sources with industry sources.</li>
+              <li>Compare company claims with customer reviews.</li>
+              <li>Compare local information with national information.</li>
+              <li>Compare recent data with older background information.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Agreement Check</h3>
+            <p>
+              Agreement Check asks whether different credible sources are saying the same thing.
+              If several strong sources agree, the information becomes more useful.
+            </p>
+            <ul>
+              <li>Look for repeated patterns.</li>
+              <li>Check whether numbers and claims match.</li>
+              <li>Be careful when only one source makes a big claim.</li>
+              <li>Study why sources may disagree.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Context Check</h3>
+            <p>
+              Context Check asks whether the information is being used correctly.
+              A statement can be true but still not apply to the visitor’s market, customer, location, or decision.
+            </p>
+            <ul>
+              <li>Does the source apply to the right location?</li>
+              <li>Does it apply to the right customer group?</li>
+              <li>Does it apply to the same business category?</li>
+              <li>Does it answer the actual decision question?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Local Relevance</div>
+
+        <h2>
+          Good information must match the situation.
+        </h2>
+
+        <p>
+          Source Checking is not only about whether something is true. It also asks whether the information fits the visitor’s situation.
+          Business information from another country, state, city, industry, or customer group may not apply.
+        </p>
+
+        <p>
+          A visitor should always ask: does this information match my market, my customer, my location, my timing,
+          and my decision? If not, the information may still be educational, but it may not be strong enough to guide action.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Location match</strong>
+            <span>Information should fit the city, state, country, or service area being studied.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Customer match</strong>
+            <span>Information should apply to the same customer type, income level, need, or behavior.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Industry match</strong>
+            <span>Information from one industry may not apply to another industry without careful comparison.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Timing match</strong>
+            <span>Information should fit the current moment, season, economy, and market conditions.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Decision match</strong>
+            <span>The source should answer the question the visitor is actually trying to solve.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Risk match</strong>
+            <span>The source should help identify risk, not hide it or make the decision look too easy.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Source Checking Flow</div>
+
+        <h2>
+          Source checking creates a stronger research path.
+        </h2>
+
+        <p>
+          The goal is to move from raw information to reliable understanding.
+          A visitor should collect information, check the source, compare it with other information,
+          and decide whether it is strong enough to use.
+        </p>
+
+        <div class="flow-strip">
+          <div class="flow-step">
+            <div class="num">01</div>
+            <strong>Collect</strong>
+            <span>Gather information from articles, reports, websites, reviews, official records, and business sources.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">02</div>
+            <strong>Check</strong>
+            <span>Review the date, credibility, purpose, evidence, and connection to the decision.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">03</div>
+            <strong>Compare</strong>
+            <span>Use multiple sources to confirm patterns, identify conflict, and avoid one-source mistakes.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">04</div>
+            <strong>Decide</strong>
+            <span>Use the strongest information to support a clearer and safer business decision.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="source">
+      <div class="content">
+        <div class="eyebrow">Source Checking Questions</div>
+
+        <h2>
+          Questions every source check should answer.
+        </h2>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Who created the information?</strong>
+            <span>Identify whether the source is official, professional, experienced, promotional, anonymous, or opinion-based.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>When was it published?</strong>
+            <span>Check the date and ask whether the information is still current enough for the decision.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What evidence supports it?</strong>
+            <span>Look for data, examples, records, citations, customer patterns, or repeated credible signals.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Is it fact or opinion?</strong>
+            <span>Separate verified information from belief, prediction, sales language, or personal experience.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Does it fit the location?</strong>
+            <span>Confirm whether the information applies to the same city, state, country, or market area.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Does it help the decision?</strong>
+            <span>Good information should make the business decision clearer, not just create more confusion.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      source:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "source";
+      const images = backgroundSets[group] || backgroundSets.source;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
