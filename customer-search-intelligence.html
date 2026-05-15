@@ -8,7 +8,6 @@
 
   <style>
     :root{
-      --black:#020202;
       --green:#064b38;
       --green2:#0b684f;
       --gold:#d7b35d;
@@ -18,10 +17,26 @@
       --line:rgba(215,179,93,.78);
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{background:#000;color:var(--white);font-family:Arial, Helvetica, sans-serif}
-    a{color:inherit;text-decoration:none}
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
     .page{
       max-width:1180px;
@@ -70,20 +85,25 @@
       text-overflow:ellipsis;
     }
 
-    .brand span{color:var(--gold)}
+    .brand span{
+      color:var(--gold);
+    }
 
     .menu-btn{
       width:76px;
       height:76px;
       border:3px solid var(--gold);
       background:linear-gradient(135deg,var(--green2),var(--green));
-      color:var(--white);
+      color:#fff;
       font-size:36px;
       cursor:pointer;
       flex-shrink:0;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .menu{
       display:none;
@@ -92,7 +112,9 @@
       padding:22px 42px 26px;
     }
 
-    .menu.active{display:block}
+    .menu.active{
+      display:block;
+    }
 
     .menu a{
       display:block;
@@ -104,7 +126,10 @@
       font-size:18px;
     }
 
-    .menu a:hover{color:var(--gold2);padding-left:8px}
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
 
     .section{
       position:relative;
@@ -120,34 +145,28 @@
       position:absolute;
       inset:0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.18)),
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.22));
+        linear-gradient(90deg,rgba(0,0,0,.45),rgba(0,0,0,.20)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.30));
       z-index:0;
     }
 
     .section.green::before{
       background:
-        linear-gradient(90deg, rgba(0,0,0,.34), rgba(6,75,56,.38)),
-        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.18));
-    }
-
-    .hero{
-      min-height:660px;
-      display:flex;
-      align-items:center;
+        linear-gradient(90deg,rgba(0,0,0,.38),rgba(6,75,56,.44)),
+        linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.22));
     }
 
     .content{
       position:relative;
       z-index:1;
       padding:58px 42px;
-      max-width:1000px;
+      max-width:1040px;
     }
 
-    .hero .content{
-      max-width:900px;
-      padding-top:74px;
-      padding-bottom:74px;
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
     }
 
     .eyebrow{
@@ -159,7 +178,9 @@
       margin-bottom:22px;
     }
 
-    h1,h2,h3{
+    h1,
+    h2,
+    h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
       color:var(--white);
@@ -169,15 +190,23 @@
     h1{
       font-size:clamp(46px,6vw,86px);
       margin-bottom:30px;
-      max-width:900px;
+      max-width:960px;
     }
 
-    h1 span{color:var(--gold2)}
+    h1 span,
+    h3{
+      color:var(--gold2);
+    }
 
     h2{
       font-size:clamp(40px,5vw,72px);
       margin-bottom:36px;
-      max-width:950px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
     }
 
     p{
@@ -185,7 +214,7 @@
       font-size:22px;
       line-height:1.72;
       margin-bottom:26px;
-      max-width:960px;
+      max-width:990px;
     }
 
     .btn{
@@ -202,59 +231,12 @@
       font-weight:900;
       letter-spacing:3px;
       width:fit-content;
-      cursor:pointer;
       margin-top:34px;
     }
 
-    .btn:hover{background:var(--gold);color:#000}
-
-    .info-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:24px;
-      margin-top:40px;
-      max-width:980px;
-    }
-
-    .info-card{
-      position:relative;
-      border:2px solid var(--gold);
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      padding:44px 46px;
-      overflow:hidden;
-      min-height:310px;
-    }
-
-    .info-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,.30);
-      z-index:0;
-    }
-
-    .info-card h3,
-    .info-card p{
-      position:relative;
-      z-index:1;
-    }
-
-    .info-card h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4vw,54px);
-      margin-bottom:22px;
-    }
-
-    .info-card p{
-      margin-bottom:0;
-    }
-
-    .plain-media-section{
-      background:#000;
-      border-bottom:1px solid var(--line);
-      padding:0;
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
     }
 
     .plain-picture{
@@ -264,6 +246,139 @@
       background-repeat:no-repeat;
       border-top:1px solid rgba(215,179,93,.35);
       border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .definition-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .definition-box p:last-child{
+      margin-bottom:0;
+    }
+
+    .checklist{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .check-item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .check-item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .check-item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.32);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow-strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .flow-step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .flow-step .num{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .flow-step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
     }
 
     .video-section{
@@ -284,11 +399,9 @@
       border:2px solid var(--gold);
       background-size:cover;
       background-position:center;
-      background-repeat:no-repeat;
       position:relative;
       display:flex;
       align-items:flex-end;
-      box-shadow:0 18px 40px rgba(0,0,0,.42);
       overflow:hidden;
     }
 
@@ -316,9 +429,7 @@
       content:"";
       position:absolute;
       inset:0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.42)),
-        linear-gradient(90deg, rgba(0,0,0,.18), rgba(6,75,56,.14));
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
       z-index:0;
     }
 
@@ -329,23 +440,10 @@
       width:100%;
     }
 
-    .video-copy h2{
-      font-size:clamp(34px,4vw,58px);
-      color:var(--gold2);
-      margin-bottom:18px;
-    }
-
-    .video-copy p{
-      font-size:21px;
-      line-height:1.62;
-      margin-bottom:0;
-    }
-
     .playlist{
       border:2px solid var(--gold);
       background:#080808;
       padding:30px;
-      box-shadow:0 18px 40px rgba(0,0,0,.42);
     }
 
     .playlist h3{
@@ -383,36 +481,97 @@
       color:var(--gold);
       font-size:18px;
       background:#010101;
-      border-bottom:1px solid var(--line);
     }
 
     @media(max-width:900px){
-      .video-wrap{grid-template-columns:1fr}
+      .checklist,
+      .flow-strip,
+      .video-wrap{
+        grid-template-columns:1fr;
+      }
     }
 
     @media(max-width:600px){
-      .topbar{padding:12px 14px;gap:10px}
-      .logo,.menu-btn{width:62px;height:62px}
-      .logo{font-size:27px}
-      .menu-btn{font-size:30px}
-      .brand{font-size:16px;letter-spacing:1px}
-      .menu{padding:22px 30px 26px}
-      .menu a{font-size:15px;letter-spacing:2.5px}
-      .hero{min-height:640px}
-      .content{padding:48px 28px}
-      h1{font-size:42px}
-      h2{font-size:40px}
-      p{font-size:21px;line-height:1.68}
-      .eyebrow{font-size:13px;letter-spacing:5px}
-      .btn{width:100%;margin-top:34px}
-      .info-card{padding:34px 32px;min-height:340px}
-      .info-card h3{font-size:38px}
-      .plain-picture{min-height:320px}
-      .video-section{padding:42px 28px}
-      .video-main{min-height:430px}
-      .video-copy,.playlist{padding:28px}
-      .video-copy p,.playlist-item span{font-size:18px}
-      .simple-footer{font-size:16px}
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .definition-box,
+      .info-card{
+        padding:30px;
+      }
+
+      .check-item span,
+      .info-card li{
+        font-size:18px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy,
+      .playlist{
+        padding:28px;
+      }
     }
   </style>
 </head>
@@ -441,106 +600,227 @@
         <div class="eyebrow">Customer Search Intelligence</div>
 
         <h1>
-          Understand the customer before<br>
-          <span>building the offer.</span>
+          Understand the customer<br>
+          <span>before the offer.</span>
         </h1>
 
         <p>
-          Customer Search Intelligence helps visitors understand who the customer is,
-          what they need, what problem they want solved, what they are willing to pay for,
-          and how a business should communicate with them.
+          Customer Search Intelligence helps visitors study the people, families, businesses,
+          investors, institutions, or groups behind a buying decision. Before a business builds an offer,
+          sets a price, writes a message, or spends money on marketing, it must understand who the customer is
+          and what problem the customer is trying to solve.
         </p>
 
-        <a href="business-intelligence.html" class="btn">Back Home ›</a>
+        <p>
+          This page explains how to identify customer needs, buying reasons, trust signals, decision fears,
+          willingness to pay, and the message that helps customers understand the value of an offer.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
       </div>
     </section>
 
-    <section class="plain-media-section">
-      <div class="plain-picture" id="plainPictureOne"></div>
+    <section>
+      <div class="plain-picture"></div>
     </section>
 
     <section class="section daily-bg" data-bg-group="customer">
       <div class="content">
-        <div class="eyebrow">Customer Search Definition</div>
+        <div class="eyebrow">Main Definition</div>
 
         <h2>
-          Customer search means learning who the business is really serving.
+          Customer search means understanding the person behind the purchase.
         </h2>
 
-        <p>
-          A business can have a good service, but if it does not understand the customer,
-          the offer can still fail. Customer search helps a business understand the person,
-          family, company, institution, or group that has the problem.
-        </p>
+        <div class="definition-box">
+          <h3>What is Customer Search?</h3>
 
-        <p>
-          This page helps visitors think through customer need, pain points, buying power,
-          trust, communication, decision timing, and the reason a customer chooses one company
-          over another.
-        </p>
+          <p>
+            Customer Search is the process of studying who the customer is, what they need,
+            what they are trying to fix, what they already tried, what they are afraid of,
+            what they trust, and what would make them take action.
+          </p>
+
+          <p>
+            A business can have a strong product or service, but if it does not understand the customer,
+            the offer can fail. The price may be wrong, the message may be confusing, the service may not match
+            the real need, or the customer may not feel enough trust to move forward.
+          </p>
+        </div>
+
+        <div class="definition-box">
+          <h3>Why does Customer Search matter?</h3>
+
+          <p>
+            People do not buy only because something exists. They buy because they feel a need,
+            see value, trust the provider, understand the benefit, and believe the solution is worth the cost.
+            Customer Search helps a visitor study those reasons before building a business plan.
+          </p>
+
+          <p>
+            The goal is to make the customer clear. Who are they? What do they care about?
+            What problem are they trying to solve? What words do they use? What proof do they need?
+            What would make them choose one company instead of another?
+          </p>
+        </div>
       </div>
     </section>
 
     <section class="section green daily-bg" data-bg-group="customer">
       <div class="content">
-        <div class="eyebrow">What To Understand</div>
+        <div class="eyebrow">Customer Profile</div>
 
         <h2>
-          A strong customer review should explain the person behind the purchase.
+          A strong customer search starts with a clear customer profile.
         </h2>
 
+        <p>
+          A customer profile is not just a name or a basic description. It explains the type of person or organization
+          the business wants to serve, the problem they face, the pressure they feel, and the reason they would pay
+          for help.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Customer type</strong>
+            <span>Identify whether the customer is an individual, family, small business, investor, institution, contractor, employee, or organization.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Customer situation</strong>
+            <span>Understand what is happening in their life or business that makes them look for help, information, or a solution.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Customer problem</strong>
+            <span>Define the exact problem they want solved, not just the general category of the service.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Customer pressure</strong>
+            <span>Ask whether the problem is urgent, expensive, emotional, confusing, time-sensitive, or connected to a bigger decision.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Customer expectation</strong>
+            <span>Study what the customer expects from a good provider: speed, clarity, trust, pricing, education, follow-up, or convenience.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Customer decision path</strong>
+            <span>Understand how the customer moves from research to comparison, trust, questions, price review, and final decision.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="customer">
+      <div class="content">
+        <div class="eyebrow">Need & Problem Review</div>
+
+        <h2>
+          Customers search for solutions when a need becomes clear.
+        </h2>
+
+        <p>
+          A business should not guess what customers need. It should study what customers ask,
+          what they complain about, what they compare, what they misunderstand, and what outcome they want.
+          This helps the business build a message that feels useful instead of confusing.
+        </p>
+
         <div class="info-grid">
-          <div class="info-card" id="cardOne">
-            <h3>Customer Type</h3>
+          <div class="info-card">
+            <h3>Need Search</h3>
             <p>
-              Identify whether the customer is an individual, family, small business,
-              investor, institution, professional, contractor, organization, or another
-              group with a specific need.
+              Need Search asks what the customer is trying to accomplish. The customer may need information,
+              funding, service, support, speed, protection, guidance, or a better way to solve a problem.
             </p>
+            <ul>
+              <li>Look for repeated customer questions.</li>
+              <li>Review what customers ask before they buy.</li>
+              <li>Study what they are missing from current options.</li>
+              <li>Ask what outcome they want after the problem is solved.</li>
+            </ul>
           </div>
 
-          <div class="info-card" id="cardTwo">
-            <h3>Customer Need</h3>
+          <div class="info-card">
+            <h3>Problem Search</h3>
             <p>
-              The customer need is the reason they are looking for help. A business should
-              understand whether the customer wants speed, trust, price, education, guidance,
-              safety, funding, service, convenience, or long-term support.
+              Problem Search identifies the pain point that makes the customer take action.
+              A customer may not care about the company’s offer until the problem becomes important enough.
             </p>
+            <ul>
+              <li>Find the real problem behind the request.</li>
+              <li>Ask what happens if the customer does nothing.</li>
+              <li>Look for emotional, financial, timing, or convenience pressure.</li>
+              <li>Connect the offer to the problem, not just the service name.</li>
+            </ul>
           </div>
 
-          <div class="info-card" id="cardThree">
-            <h3>Problem To Solve</h3>
+          <div class="info-card">
+            <h3>Question Search</h3>
             <p>
-              Customers often buy because they have a problem. The problem may be confusion,
-              lack of time, lack of information, financial pressure, operational difficulty,
-              risk, paperwork, or a decision they do not want to make alone.
+              The questions customers ask reveal what they do not understand yet.
+              Good customer search collects these questions and uses them to improve the message.
             </p>
+            <ul>
+              <li>What does the customer ask first?</li>
+              <li>What confuses them?</li>
+              <li>What proof do they request?</li>
+              <li>What information would help them feel ready?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="customer">
+      <div class="content">
+        <div class="eyebrow">Trust & Buying Confidence</div>
+
+        <h2>
+          Customers need trust before they choose.
+        </h2>
+
+        <p>
+          Trust is one of the biggest parts of Customer Search. Even when a customer needs the service,
+          they may not take action if the company looks unclear, unprofessional, expensive, risky,
+          or hard to understand.
+        </p>
+
+        <p>
+          A strong customer search asks what proof the customer needs before they feel comfortable.
+          That proof can come from clear explanation, professional presentation, reviews, transparent pricing,
+          strong follow-up, consistent information, or a simple path to the next step.
+        </p>
+
+        <div class="flow-strip">
+          <div class="flow-step">
+            <div class="num">01</div>
+            <strong>Notice</strong>
+            <span>The customer sees a problem or need and starts paying attention.</span>
           </div>
 
-          <div class="info-card" id="cardFour">
-            <h3>Willingness To Pay</h3>
-            <p>
-              A business must understand what customers are willing to pay and why.
-              Some customers pay for speed. Some pay for trust. Some pay for quality,
-              certainty, privacy, convenience, or professional support.
-            </p>
+          <div class="flow-step">
+            <div class="num">02</div>
+            <strong>Research</strong>
+            <span>The customer compares information, options, prices, reviews, and explanations.</span>
           </div>
 
-          <div class="info-card" id="cardFive">
-            <h3>Trust Signals</h3>
-            <p>
-              Trust signals help customers feel safe. Clear information, professional language,
-              clean design, reliable contact options, proof of process, and transparent next steps
-              all help build confidence.
-            </p>
+          <div class="flow-step">
+            <div class="num">03</div>
+            <strong>Trust</strong>
+            <span>The customer looks for proof that the company is safe, clear, and professional.</span>
           </div>
 
-          <div class="info-card" id="cardSix">
-            <h3>Communication</h3>
-            <p>
-              Customer search also means learning how people want to be spoken to. The right message
-              should be clear, respectful, simple, professional, and focused on the customer’s real problem.
-            </p>
+          <div class="flow-step">
+            <div class="num">04</div>
+            <strong>Decision</strong>
+            <span>The customer acts when the value feels clear and the risk feels lower.</span>
           </div>
         </div>
       </div>
@@ -551,10 +831,14 @@
         <div class="video-main" id="dailyVideoPanel">
           <div class="video-copy">
             <div class="eyebrow">Video Playlist Area</div>
-            <h2 id="videoTitle">Customer search video space.</h2>
-            <p id="videoText">
-              This area is ready for future videos explaining customer research,
-              customer needs, messaging, buying behavior, and service trust.
+
+            <h2>
+              Customer search video space.
+            </h2>
+
+            <p>
+              This area is ready for future videos about customer needs, trust signals,
+              buying behavior, customer questions, pricing confidence, and decision psychology.
             </p>
           </div>
         </div>
@@ -563,46 +847,119 @@
           <h3>Daily Playlist</h3>
 
           <div class="playlist-item">
-            <strong id="playlistTitleOne">Customer Need</strong>
-            <span id="playlistTextOne">Future video space for understanding what customers are really looking for.</span>
+            <strong>Customer Need</strong>
+            <span>Future video space for studying what customers really want solved.</span>
           </div>
 
           <div class="playlist-item">
-            <strong id="playlistTitleTwo">Customer Trust</strong>
-            <span id="playlistTextTwo">Future video space for trust signals, professional presentation, and customer confidence.</span>
+            <strong>Trust Signals</strong>
+            <span>Future video space for explaining what makes customers feel safe.</span>
           </div>
 
           <div class="playlist-item">
-            <strong id="playlistTitleThree">Customer Message</strong>
-            <span id="playlistTextThree">Future video space for explaining how to speak clearly to the right customer.</span>
+            <strong>Buying Decision</strong>
+            <span>Future video space for understanding why customers choose one offer over another.</span>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="finance">
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="customer">
       <div class="content">
-        <div class="eyebrow">Customer Search Checklist</div>
+        <div class="eyebrow">Willingness to Pay</div>
 
         <h2>
-          Before selling, the customer should be understood.
+          Customers pay when the value is clear.
         </h2>
 
         <p>
-          A visitor should ask: Who exactly is the customer? What problem do they have?
-          What are they afraid of? What do they need explained? What will make them trust
-          the business? What are they willing to pay for? What message will make the offer clear?
+          Willingness to pay is not only about price. It is about the value the customer believes they are receiving.
+          Customers may pay more when the service saves time, reduces stress, explains confusing information,
+          lowers risk, solves an urgent problem, or gives them a result they cannot easily get alone.
         </p>
 
-        <p>
-          Customer Search Intelligence is valuable because it helps a business stop speaking
-          to everybody and start speaking to the right customer with the right information.
-        </p>
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Value reason</strong>
+            <span>Understand why the customer believes the offer is worth paying for.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Price comfort</strong>
+            <span>Study what price range feels reasonable based on the customer’s need and expected result.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Comparison point</strong>
+            <span>Ask what the customer compares the price against: competitor prices, doing it alone, waiting, or doing nothing.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Risk reduction</strong>
+            <span>Customers are more likely to pay when the offer feels safe, clear, and trustworthy.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Urgency</strong>
+            <span>Urgent problems usually create stronger willingness to pay than optional or future problems.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Outcome clarity</strong>
+            <span>The customer must understand what they receive and what result the offer is designed to support.</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="plain-media-section">
-      <div class="plain-picture" id="plainPictureTwo"></div>
+    <section class="section green daily-bg" data-bg-group="customer">
+      <div class="content">
+        <div class="eyebrow">Customer Search Questions</div>
+
+        <h2>
+          Questions every customer search should answer.
+        </h2>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Who is the customer?</strong>
+            <span>Be specific. Do not say everybody. Identify the real person or group the offer is built for.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What problem do they have?</strong>
+            <span>Define the problem in the customer’s words, not only in the company’s words.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What are they already doing?</strong>
+            <span>Review current solutions, competitors, free options, old habits, and alternatives.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What makes them hesitate?</strong>
+            <span>Study fear, price concern, lack of trust, confusion, delay, or bad past experiences.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What proof do they need?</strong>
+            <span>Look for the information, examples, reviews, explanation, or guarantee that helps them trust the decision.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>What message will help?</strong>
+            <span>Create a message that speaks to the need, the problem, the outcome, and the trust gap.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
     </section>
 
     <section class="section green daily-bg" data-bg-group="corporate">
@@ -623,7 +980,6 @@
     <footer class="simple-footer">
       © 2025 TitanCore Holdings. All rights reserved.
     </footer>
-
   </main>
 
   <script>
@@ -635,78 +991,57 @@
     }
 
     const backgroundSets = {
-      customer: [
+      customer:[
         "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
-      ],
-      finance: [
-        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85"
-      ],
-      corporate: [
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
         "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+        "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
       ]
     };
 
     const plainPictures = [
       "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=85",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
     ];
 
     const videoPictures = [
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=85",
       "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
     ];
 
-    const cardPictures = [
-      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85"
-    ];
+    const day = new Date().getDate();
 
-    function applyDailyBackgrounds(){
-      const sections = document.querySelectorAll(".daily-bg");
-      const day = new Date().getDate();
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "customer";
+      const images = backgroundSets[group] || backgroundSets.customer;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
 
-      sections.forEach(function(section, index){
-        const group = section.dataset.bgGroup || "customer";
-        const images = backgroundSets[group] || backgroundSets.customer;
-        section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
-      });
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
     }
-
-    function applyDailyMedia(){
-      const day = new Date().getDate();
-
-      document.getElementById("plainPictureOne").style.backgroundImage =
-        "url('" + plainPictures[day % plainPictures.length] + "')";
-
-      document.getElementById("plainPictureTwo").style.backgroundImage =
-        "url('" + plainPictures[(day + 2) % plainPictures.length] + "')";
-
-      document.getElementById("dailyVideoPanel").style.backgroundImage =
-        "url('" + videoPictures[day % videoPictures.length] + "')";
-
-      const cards = ["cardOne","cardTwo","cardThree","cardFour","cardFive","cardSix"];
-      cards.forEach(function(id, index){
-        document.getElementById(id).style.backgroundImage =
-          "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
-      });
-    }
-
-    applyDailyBackgrounds();
-    applyDailyMedia();
   </script>
 </body>
 </html>
