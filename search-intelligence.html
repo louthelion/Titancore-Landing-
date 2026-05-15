@@ -1265,5 +1265,24 @@
       day:'numeric'
     });
   </script>
+  </script>
+
+<script>
+  document.addEventListener("click", function(e){
+    const card = e.target.closest("a, .search-card, .card, .topic-card, .intelligence-card");
+
+    if(
+      card &&
+      card.textContent &&
+      card.textContent.toLowerCase().includes("market search")
+    ){
+      e.preventDefault();
+      window.location.href = "market-search-intelligence.html";
+    }
+  }, true);
+</script>
+
+</body>
+</html>
 </body>
 </html>
