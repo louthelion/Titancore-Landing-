@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Opportunity Search Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:linear-gradient(180deg,#050505,#010101);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{
+      display:block;
+    }
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.46),rgba(0,0,0,.20)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.32));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.38),rgba(6,75,56,.46)),
+        linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.22));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,
+    h3{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .definition-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .definition-box p:last-child{
+      margin-bottom:0;
+    }
+
+    .checklist{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .check-item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .check-item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .check-item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.35);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow-strip{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .flow-step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .flow-step .num{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .flow-step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .flow-step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-wrap{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:26px;
+      max-width:1060px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .playlist{
+      border:2px solid var(--gold);
+      background:#080808;
+      padding:30px;
+    }
+
+    .playlist h3{
+      color:var(--gold2);
+      font-size:clamp(30px,3vw,46px);
+      margin-bottom:22px;
+    }
+
+    .playlist-item{
+      border:1px solid rgba(215,179,93,.45);
+      background:rgba(6,75,56,.20);
+      padding:18px;
+      margin-bottom:16px;
+    }
+
+    .playlist-item strong{
+      display:block;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .playlist-item span{
+      display:block;
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .checklist,
+      .flow-strip,
+      .video-wrap{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .definition-box,
+      .info-card{
+        padding:30px;
+      }
+
+      .check-item span,
+      .info-card li{
+        font-size:18px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy,
+      .playlist{
+        padding:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Opportunity Search Intelligence</div>
+
+        <h1>
+          Find the gap before<br>
+          <span>building the plan.</span>
+        </h1>
+
+        <p>
+          Opportunity Search Intelligence helps visitors study where a business may have room to grow,
+          enter, improve, or educate the market. A real opportunity is not just a good idea.
+          It is a gap between what customers need and what the current market is providing.
+        </p>
+
+        <p>
+          This page explains how to identify underserved customers, weak service, growing demand,
+          customer pain, better positioning, small test opportunities, and signals that a business idea
+          may deserve deeper review.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Opportunity search means finding where the market is not fully served.
+        </h2>
+
+        <div class="definition-box">
+          <h3>What is Opportunity Search?</h3>
+
+          <p>
+            Opportunity Search is the process of studying market gaps, customer problems, weak service,
+            underserved groups, changing demand, competitor weaknesses, and new ways to create value.
+            It helps visitors look beyond the surface of a business idea and ask whether real room exists.
+          </p>
+
+          <p>
+            An opportunity can appear when customers are unhappy, confused, waiting too long, paying too much,
+            receiving poor service, lacking education, or not being supported by current providers.
+          </p>
+        </div>
+
+        <div class="definition-box">
+          <h3>Why does Opportunity Search matter?</h3>
+
+          <p>
+            A business idea may look exciting, but excitement is not enough. Opportunity Search helps visitors test
+            whether the idea has signs of real demand, clear customer value, weak competition, timing support,
+            and a path to enter the market.
+          </p>
+
+          <p>
+            The goal is to avoid guessing. Visitors should be able to see why the opportunity may exist,
+            who it helps, what problem it solves, and what makes it different from current options.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Opportunity Map</div>
+
+        <h2>
+          A strong opportunity usually starts with a visible gap.
+        </h2>
+
+        <p>
+          Opportunity gaps can show up in many ways. Sometimes customers need faster service.
+          Sometimes the market is confusing. Sometimes the price is too high. Sometimes competitors do not explain
+          the service well. Sometimes a group of customers is being ignored.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Customer pain</strong>
+            <span>Look for repeated problems, frustration, delays, confusion, poor service, or unmet needs.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Underserved group</strong>
+            <span>Find customers that the current market does not serve clearly, respectfully, quickly, or completely.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Weak service</strong>
+            <span>Study where competitors are slow, unclear, hard to reach, inconsistent, or not following up.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Confusing market</strong>
+            <span>An opportunity may exist when customers cannot easily understand pricing, process, terms, or next steps.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Growing demand</strong>
+            <span>Review signs that demand is increasing because of economy, technology, housing, finance, health, or lifestyle changes.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Better positioning</strong>
+            <span>Ask whether a business can explain the offer better, build more trust, or make the decision easier.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Customer Pain & Market Gaps</div>
+
+        <h2>
+          The best opportunities often come from repeated customer problems.
+        </h2>
+
+        <p>
+          Customer pain is one of the strongest signs of opportunity. If customers keep asking the same questions,
+          complaining about the same problems, or struggling with the same process, the market may have space
+          for clearer service, better education, faster support, or stronger trust.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Pain Point Search</h3>
+            <p>
+              Pain Point Search looks for problems customers keep experiencing. The pain may be financial,
+              emotional, time-related, service-related, confusing, or connected to trust.
+            </p>
+            <ul>
+              <li>What problem keeps coming up?</li>
+              <li>What are customers tired of dealing with?</li>
+              <li>What do they complain about in reviews?</li>
+              <li>What would make the experience easier?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Service Gap Search</h3>
+            <p>
+              Service Gap Search studies where current providers are not doing enough.
+              The opportunity may not be a brand-new idea. It may be better service in a market that already exists.
+            </p>
+            <ul>
+              <li>Are competitors slow to respond?</li>
+              <li>Is pricing unclear?</li>
+              <li>Is customer education weak?</li>
+              <li>Is follow-up missing?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Education Gap Search</h3>
+            <p>
+              Many markets are confusing. A business may create opportunity by explaining the process better,
+              helping customers understand choices, and making the next step less stressful.
+            </p>
+            <ul>
+              <li>What do customers misunderstand?</li>
+              <li>What questions do they ask first?</li>
+              <li>What terms or steps confuse them?</li>
+              <li>Can better education create trust?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Demand & Growth Signals</div>
+
+        <h2>
+          Opportunity needs signs that demand can grow.
+        </h2>
+
+        <p>
+          A gap is stronger when people are actively searching, asking questions, spending money,
+          or showing repeated interest. Opportunity Search studies whether the market has demand now,
+          demand growing in the future, or a small niche that is being ignored.
+        </p>
+
+        <p>
+          The goal is to find signals before building too much. A visitor should look for movement:
+          customer conversations, search behavior, public complaints, competitor activity, local need,
+          changing trends, or new rules creating demand.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Search activity</strong>
+            <span>People are looking online, asking questions, comparing options, or trying to understand a problem.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Repeated questions</strong>
+            <span>The same questions appear in customer conversations, reviews, forums, comments, or service calls.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Spending behavior</strong>
+            <span>Customers already spend money on related solutions, tools, services, or alternatives.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Market movement</strong>
+            <span>New trends, technology, economy, lifestyle changes, or policies may create new demand.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Local need</strong>
+            <span>A service may be common in one area but missing, weak, or poorly explained in another area.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Niche demand</strong>
+            <span>A smaller customer group may be valuable if it has clear pain, trust needs, and willingness to pay.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-wrap">
+        <div class="video-main" id="dailyVideoPanel">
+          <div class="video-copy">
+            <div class="eyebrow">Video Playlist Area</div>
+
+            <h2>
+              Opportunity search video space.
+            </h2>
+
+            <p>
+              This area is ready for future videos about market gaps, customer pain,
+              underserved groups, demand signals, business testing, and how to identify opportunity before spending money.
+            </p>
+          </div>
+        </div>
+
+        <aside class="playlist">
+          <h3>Daily Playlist</h3>
+
+          <div class="playlist-item">
+            <strong>Market Gaps</strong>
+            <span>Future video space for finding where customers are not fully served.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong>Customer Pain</strong>
+            <span>Future video space for studying repeated problems and unmet needs.</span>
+          </div>
+
+          <div class="playlist-item">
+            <strong>Small Test</strong>
+            <span>Future video space for testing opportunity before building too much.</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Competitor Weakness</div>
+
+        <h2>
+          Competitor weakness can reveal opportunity.
+        </h2>
+
+        <p>
+          A competitor can be successful and still leave customers unhappy. Opportunity Search studies competitor
+          weaknesses so visitors can identify where better service, clearer communication, stronger trust,
+          or faster follow-up may create a stronger offer.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Review Weakness</h3>
+            <p>
+              Customer reviews can show where competitors are failing. Repeated complaints are useful because
+              they reveal problems that customers care about.
+            </p>
+            <ul>
+              <li>Slow communication</li>
+              <li>Unclear pricing</li>
+              <li>Bad follow-up</li>
+              <li>Confusing service process</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Presentation Weakness</h3>
+            <p>
+              Some businesses offer good service but present it poorly. If customers cannot understand the offer,
+              they may hesitate or choose another provider.
+            </p>
+            <ul>
+              <li>Website is unclear</li>
+              <li>Message is too generic</li>
+              <li>Process is not explained</li>
+              <li>Trust signals are missing</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Support Weakness</h3>
+            <p>
+              Customers often value support as much as the service itself. Poor follow-up can create room
+              for a better-positioned business.
+            </p>
+            <ul>
+              <li>No clear next step</li>
+              <li>Slow response time</li>
+              <li>No education before purchase</li>
+              <li>No after-service communication</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Small Testing</div>
+
+        <h2>
+          A strong opportunity should be tested before going big.
+        </h2>
+
+        <p>
+          Opportunity Search should not only identify a possible gap. It should also help visitors think about
+          a smaller test. A small test can show whether customers respond before the business spends too much money,
+          builds too much system, or commits to the wrong direction.
+        </p>
+
+        <p>
+          Testing can include a simple landing page, a short offer, a customer conversation, a survey,
+          a small ad test, a service pilot, or a limited version of the offer.
+        </p>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>Landing page test</strong>
+            <span>Create a simple page explaining the offer and see if people click, contact, or ask questions.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Message test</strong>
+            <span>Test different wording to see which customer problem or benefit gets the strongest response.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Conversation test</strong>
+            <span>Talk to real customers and ask what they need, what they fear, and what they would pay for.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Small service test</strong>
+            <span>Offer a limited version before building the full business model or spending too much.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Price test</strong>
+            <span>Check whether customers see enough value to pay the expected price.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Response test</strong>
+            <span>Measure whether people act, ask questions, request help, sign up, call, or submit a form.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Opportunity Decision Flow</div>
+
+        <h2>
+          Opportunity search helps the visitor decide the next step.
+        </h2>
+
+        <p>
+          After finding a possible opportunity, the visitor should decide whether to research more,
+          test smaller, adjust the idea, focus on a niche, improve the message, or move forward carefully.
+        </p>
+
+        <div class="flow-strip">
+          <div class="flow-step">
+            <div class="num">01</div>
+            <strong>Find</strong>
+            <span>Identify the customer pain, market gap, weak service, or underserved group.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">02</div>
+            <strong>Validate</strong>
+            <span>Look for demand signals, customer questions, search activity, and repeated problems.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">03</div>
+            <strong>Test</strong>
+            <span>Use a smaller offer, message, page, or conversation before building too much.</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="num">04</div>
+            <strong>Decide</strong>
+            <span>Move forward, adjust, narrow the customer, improve the offer, or stop.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="opportunity">
+      <div class="content">
+        <div class="eyebrow">Opportunity Search Questions</div>
+
+        <h2>
+          Questions every opportunity search should answer.
+        </h2>
+
+        <div class="checklist">
+          <div class="check-item">
+            <strong>What gap exists?</strong>
+            <span>Identify what the current market does not explain, provide, support, or solve well enough.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Who feels the problem?</strong>
+            <span>Define the specific customer group affected by the gap or weak service.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Is the problem urgent?</strong>
+            <span>Ask whether the customer needs help now, later, seasonally, or only if the problem grows.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Are customers willing to pay?</strong>
+            <span>Review whether customers already spend money on related solutions or show buying interest.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Can the offer be different?</strong>
+            <span>Find a real difference through trust, speed, clarity, education, follow-up, price, or convenience.</span>
+          </div>
+
+          <div class="check-item">
+            <strong>Can it be tested smaller?</strong>
+            <span>Before building fully, test the idea with a smaller offer, landing page, message, or pilot.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      opportunity:[
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "opportunity";
+      const images = backgroundSets[group] || backgroundSets.opportunity;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
