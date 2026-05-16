@@ -99,18 +99,37 @@
       font-size:36px;
       cursor:pointer;
       flex-shrink:0;
+      transition:background .2s ease, color .2s ease, transform .2s ease;
     }
 
-    .menu-btn:hover{
+    .menu-btn:hover,
+    .menu-btn[aria-expanded="true"]{
       background:var(--gold);
       color:#000;
     }
 
+    .menu-btn:active{
+      transform:scale(.97);
+    }
+
+    .logo:focus-visible,
+    .brand:focus-visible,
+    .menu-btn:focus-visible,
+    .menu a:focus-visible,
+    .btn:focus-visible{
+      outline:3px solid var(--gold2);
+      outline-offset:4px;
+    }
+
     .menu{
+      position:sticky;
+      top:105px;
+      z-index:90;
       display:none;
       background:#080808;
       border-bottom:1px solid var(--line);
       padding:22px 42px 26px;
+      box-shadow:0 18px 32px rgba(0,0,0,.48);
     }
 
     .menu.active{
@@ -125,9 +144,11 @@
       letter-spacing:4px;
       color:var(--soft);
       font-size:18px;
+      transition:color .2s ease, padding-left .2s ease;
     }
 
-    .menu a:hover{
+    .menu a:hover,
+    .menu a:focus-visible{
       color:var(--gold2);
       padding-left:8px;
     }
@@ -238,9 +259,18 @@
       margin-top:34px;
     }
 
-    .btn:hover{
+    .btn{
+      transition:background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible{
       background:var(--gold);
       color:#000;
+    }
+
+    .btn:active{
+      transform:translateY(1px);
     }
 
     .card-grid{
@@ -472,7 +502,8 @@
       }
 
       .menu{
-        padding:22px 30px 26px;
+        top:87px;
+        padding:20px 24px 24px;
       }
 
       .menu a{
@@ -481,24 +512,24 @@
       }
 
       .hero{
-        min-height:640px;
+        min-height:560px;
       }
 
       .content{
-        padding:48px 28px;
+        padding:42px 24px;
       }
 
       h1{
-        font-size:42px;
+        font-size:clamp(36px,11vw,42px);
       }
 
       h2{
-        font-size:40px;
+        font-size:clamp(32px,10vw,40px);
       }
 
       p{
-        font-size:21px;
-        line-height:1.68;
+        font-size:19px;
+        line-height:1.62;
       }
 
       .eyebrow{
@@ -508,38 +539,41 @@
 
       .btn{
         width:100%;
-        margin-top:34px;
+        min-width:0;
+        padding:18px 20px;
+        margin-top:30px;
+        text-align:center;
       }
 
       .focus-card{
-        padding:34px 32px;
-        min-height:360px;
+        padding:30px 24px;
+        min-height:300px;
       }
 
       .focus-card h3{
-        font-size:38px;
+        font-size:clamp(32px,10vw,38px);
       }
 
       .focus-card p{
-        font-size:21px;
-        line-height:1.62;
+        font-size:19px;
+        line-height:1.58;
       }
 
       .plain-picture{
-        min-height:320px;
+        min-height:260px;
       }
 
       .video-section{
-        padding:42px 28px;
+        padding:36px 24px;
       }
 
       .video-main{
-        min-height:430px;
+        min-height:360px;
       }
 
       .video-copy,
       .playlist{
-        padding:28px;
+        padding:24px;
       }
 
       .video-copy p,
@@ -553,27 +587,40 @@
     }
 
     @media(max-width:420px){
+      .topbar{
+        grid-template-columns:auto minmax(0,1fr) auto;
+        gap:8px;
+      }
+
       .brand{
-        font-size:15px;
-        letter-spacing:.8px;
+        font-size:14px;
+        letter-spacing:.6px;
       }
 
       .logo,
       .menu-btn{
-        width:58px;
-        height:58px;
+        width:54px;
+        height:54px;
       }
 
       .logo{
-        font-size:25px;
+        font-size:23px;
       }
 
-      h1{
-        font-size:40px;
+      .menu-btn{
+        font-size:28px;
       }
 
-      h2{
-        font-size:36px;
+      .menu{
+        top:79px;
+      }
+
+      .content{
+        padding:38px 20px;
+      }
+
+      .eyebrow{
+        letter-spacing:3px;
       }
     }
   </style>
@@ -585,7 +632,7 @@
     <header class="topbar">
       <a href="index.html" class="logo">TH</a>
       <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
-      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+      <button class="menu-btn" type="button" id="menuButton" aria-label="Open menu" aria-controls="menu" aria-expanded="false">☰</button>
     </header>
 
     <nav class="menu" id="menu">
@@ -757,18 +804,60 @@
     </section>
 
     <footer class="simple-footer">
-      © 2025 TitanCore Holdings. All rights reserved.
+      © 2026 TitanCore Holdings. All rights reserved.
     </footer>
 
   </main>
 
   <script>
-    function toggleMenu(){
-      const menu = document.getElementById("menu");
-      if(menu){
-        menu.classList.toggle("active");
+    const menu = document.getElementById("menu");
+    const menuButton = document.getElementById("menuButton");
+
+    function setMenuState(isOpen){
+      if(!menu || !menuButton){
+        return;
       }
+
+      menu.classList.toggle("active", isOpen);
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     }
+
+    function toggleMenu(){
+      if(!menu || !menuButton){
+        return;
+      }
+
+      setMenuState(!menu.classList.contains("active"));
+    }
+
+    if(menuButton){
+      menuButton.addEventListener("click", toggleMenu);
+    }
+
+    if(menu){
+      menu.querySelectorAll("a").forEach(function(link){
+        link.addEventListener("click", function(){
+          setMenuState(false);
+        });
+      });
+    }
+
+    document.addEventListener("click", function(event){
+      if(!menu || !menuButton || !menu.classList.contains("active")){
+        return;
+      }
+
+      if(!menu.contains(event.target) && !menuButton.contains(event.target)){
+        setMenuState(false);
+      }
+    });
+
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape"){
+        setMenuState(false);
+      }
+    });
 
     const backgroundSets = {
       corporate: [
@@ -861,31 +950,35 @@
     function applyDailyMedia(){
       const day = new Date().getDate();
 
-      document.getElementById("plainPictureOne").style.backgroundImage =
-        "url('" + plainPictures[day % plainPictures.length] + "')";
-
-      document.getElementById("dailyVideoPanel").style.backgroundImage =
-        "url('" + videoPictures[day % videoPictures.length] + "')";
-
-      document.getElementById("plainPictureTwo").style.backgroundImage =
-        "url('" + plainPictures[(day + 3) % plainPictures.length] + "')";
-
-      document.getElementById("plainPictureThree").style.backgroundImage =
-        "url('" + plainPictures[(day + 5) % plainPictures.length] + "')";
+      setBackgroundImage("plainPictureOne", plainPictures[day % plainPictures.length]);
+      setBackgroundImage("dailyVideoPanel", videoPictures[day % videoPictures.length]);
+      setBackgroundImage("plainPictureTwo", plainPictures[(day + 3) % plainPictures.length]);
+      setBackgroundImage("plainPictureThree", plainPictures[(day + 5) % plainPictures.length]);
 
       const selectedVideo = videoData[day % videoData.length];
 
-      document.getElementById("videoTitle").textContent = selectedVideo.title;
-      document.getElementById("videoText").textContent = selectedVideo.text;
+      setText("videoTitle", selectedVideo.title);
+      setText("videoText", selectedVideo.text);
+      setText("playlistTitleOne", selectedVideo.one);
+      setText("playlistTextOne", selectedVideo.oneText);
+      setText("playlistTitleTwo", selectedVideo.two);
+      setText("playlistTextTwo", selectedVideo.twoText);
+      setText("playlistTitleThree", selectedVideo.three);
+      setText("playlistTextThree", selectedVideo.threeText);
+    }
 
-      document.getElementById("playlistTitleOne").textContent = selectedVideo.one;
-      document.getElementById("playlistTextOne").textContent = selectedVideo.oneText;
+    function setBackgroundImage(id, imageUrl){
+      const element = document.getElementById(id);
+      if(element){
+        element.style.backgroundImage = "url('" + imageUrl + "')";
+      }
+    }
 
-      document.getElementById("playlistTitleTwo").textContent = selectedVideo.two;
-      document.getElementById("playlistTextTwo").textContent = selectedVideo.twoText;
-
-      document.getElementById("playlistTitleThree").textContent = selectedVideo.three;
-      document.getElementById("playlistTextThree").textContent = selectedVideo.threeText;
+    function setText(id, value){
+      const element = document.getElementById(id);
+      if(element){
+        element.textContent = value;
+      }
     }
 
     applyDailyBackgrounds();
