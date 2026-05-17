@@ -1484,51 +1484,86 @@
     })();
   </script>
   <script>
-  document.addEventListener("click", function(e){
-    const card = e.target.closest("a, .ai-card, .topic-card, .intelligence-card, .card");
+  document.addEventListener("DOMContentLoaded", function () {
 
-    if(!card || !card.textContent){
-      return;
+    function cleanText(text){
+      return (text || "")
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/[^a-z0-9]+/g, "");
     }
 
-    const text = card.textContent.toLowerCase();
+    function getAiPage(text){
+      const t = cleanText(text);
 
-    if(text.includes("what ai is") || text.includes("ai basics")){
-      e.preventDefault();
-      window.location.href = "what-ai-is.html";
-      return;
+      if(t.includes("whataiis") || t.includes("aibasics") || t.includes("reviewaibasics")){
+        return "what-ai-is.html";
+      }
+
+      if(t.includes("businesssupport") || t.includes("reviewsupport")){
+        return "business-support.html";
+      }
+
+      if(t.includes("researchandwriting") || t.includes("researchwriting") || t.includes("reviewwriting")){
+        return "research-writing.html";
+      }
+
+      if(t.includes("humanreview") || t.includes("humanjudgment") || t.includes("reviewhumanjudgment")){
+        return "human-review.html";
+      }
+
+      if(t.includes("riskawareness") || t.includes("airisks") || t.includes("reviewairisks")){
+        return "risk-awareness.html";
+      }
+
+      if(t.includes("responsibleuse") || t.includes("reviewresponsibleuse")){
+        return "responsible-use.html";
+      }
+
+      return "";
     }
 
-    if(text.includes("business support") || text.includes("review support")){
-      e.preventDefault();
-      window.location.href = "business-support.html";
-      return;
-    }
+    document.addEventListener("click", function(e){
+      let el = e.target;
 
-    if(text.includes("research") || text.includes("writing") || text.includes("review writing")){
-      e.preventDefault();
-      window.location.href = "research-writing.html";
-      return;
-    }
+      while(el && el !== document.body){
+        const text = el.innerText || el.textContent || "";
 
-    if(text.includes("human review") || text.includes("human judgment")){
-      e.preventDefault();
-      window.location.href = "human-review.html";
-      return;
-    }
+        if(text.length > 0 && text.length < 1200){
+          const page = getAiPage(text);
 
-    if(text.includes("risk awareness") || text.includes("ai risks") || text.includes("review ai risks")){
-      e.preventDefault();
-      window.location.href = "risk-awareness.html";
-      return;
-    }
+          if(page){
+            e.preventDefault();
+            e.stopPropagation();
+            if(e.stopImmediatePropagation){
+              e.stopImmediatePropagation();
+            }
+            window.location.href = page;
+            return false;
+          }
+        }
 
-    if(text.includes("responsible use") || text.includes("review responsible use")){
-      e.preventDefault();
-      window.location.href = "responsible-use.html";
-      return;
-    }
-  }, true);
+        el = el.parentElement;
+      }
+    }, true);
+
+    document.querySelectorAll("a, button, div, article").forEach(function(el){
+      const text = el.innerText || el.textContent || "";
+
+      if(text.length > 0 && text.length < 1200){
+        const page = getAiPage(text);
+
+        if(page){
+          el.style.cursor = "pointer";
+
+          if(el.tagName.toLowerCase() === "a"){
+            el.setAttribute("href", page);
+          }
+        }
+      }
+    });
+
+  });
 </script>
 </body>
 </html>
