@@ -3,772 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Business Systems Intelligence | TitanCore Holdings</title>
+
+  <title>Business System Intelligence | TitanCore Holdings</title>
 
   <style>
     :root{
-      --gold:#d8b45a;
-      --gold-soft:#e2c878;
-      --green:#167a63;
-      --white:#f5f5f5;
-      --border:rgba(216,180,90,.9);
-      --shadow:0 18px 40px rgba(0,0,0,.38);
-      --max:1200px;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
     }
 
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{
-      margin:0;
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
       background:#000;
-      color:var(--white);
-      font-family:Arial, Helvetica, sans-serif;
-      line-height:1.65;
-    }
-
-    a{text-decoration:none;color:inherit}
-
-    .site-shell{
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
       min-height:100vh;
-      background:
-        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
-        url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
     }
 
-    .wrap{
-      width:min(var(--max), calc(100% - 28px));
-      margin:0 auto;
-    }
-
-    .header{
-      position:sticky;
-      top:0;
-      z-index:999;
-      background:#000;
-      border-bottom:2px solid var(--border);
-    }
-
-    .header-inner{
-      width:min(var(--max), calc(100% - 28px));
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      padding:18px 0;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      min-width:0;
-    }
-
-    .brand-mark{
-      width:96px;
-      height:96px;
-      border:6px solid var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--gold-soft);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:2.9rem;
-      font-weight:700;
-      background:#020202;
-      flex-shrink:0;
-    }
-
-    .brand-text{
-      color:var(--gold-soft);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:2rem;
-      letter-spacing:.5px;
-      line-height:1.05;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .menu-btn{
-      width:96px;
-      height:96px;
-      border:6px solid var(--gold);
-      background:var(--green);
-      color:#fff;
-      font-size:3rem;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      transition:.25s ease;
-      flex-shrink:0;
-    }
-
-    .menu-btn:hover{
-      background:#0f8c6d;
-      transform:translateY(-2px);
-    }
-
-    .menu-panel{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.72);
-      display:none;
-      z-index:1200;
-      padding:18px;
-    }
-
-    .menu-panel.open{display:block}
-
-    .menu-card{
-      background:#111;
-      border:2px solid var(--border);
-      max-width:700px;
-      width:100%;
-      margin:16px auto 0;
-      padding:26px 26px 18px;
-      box-shadow:var(--shadow);
-    }
-
-    .menu-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:18px;
-    }
-
-    .menu-title{
-      color:var(--gold-soft);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:2rem;
-      margin:0;
-    }
-
-    .close-btn{
-      background:none;
-      border:none;
-      color:#fff;
-      font-size:2.2rem;
-      cursor:pointer;
-    }
-
-    .menu-links{
-      display:grid;
-      gap:8px;
-    }
-
-    .menu-links a{
-      display:block;
-      padding:15px 8px;
-      border-bottom:1px solid rgba(216,180,90,.35);
-      font-size:1.1rem;
-      color:#eee;
-    }
-
-    .menu-links a:hover{color:var(--gold-soft)}
-
-    .section{padding:28px 0}
-
-    .hero{
-      padding:34px 0 26px;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:28px;
-      align-items:stretch;
-    }
-
-    .hero-copy,
-    .hero-media{
-      border:2px solid var(--border);
-      border-radius:34px;
-      overflow:hidden;
-      min-height:540px;
-      box-shadow:var(--shadow);
-    }
-
-    .hero-copy{
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.82), rgba(8,70,56,.48)),
-        url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1400&q=80") center/cover;
-      padding:54px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-    }
-
-    .eyebrow{
-      color:var(--gold-soft);
-      font-weight:900;
-      letter-spacing:8px;
-      text-transform:uppercase;
-      font-size:1rem;
-      margin-bottom:18px;
-    }
-
-    h1,h2,h3,h4{
-      margin:0 0 18px;
-      line-height:1.05;
-      font-weight:400;
-      font-family:Georgia, "Times New Roman", serif;
-    }
-
-    h1{
-      font-size:4.6rem;
-      color:#fff;
-      max-width:850px;
-    }
-
-    h1 span,
-    h2 span,
-    h3 span{color:var(--gold-soft)}
-
-    p{
-      margin:0 0 24px;
-      color:#f1f1f1;
-      font-size:1.17rem;
-    }
-
-    .hero-copy p{
-      font-size:1.28rem;
-      max-width:850px;
-      margin-bottom:28px;
-    }
-
-    .btn-row{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .cta-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      background:var(--green);
-      border:2px solid var(--gold);
-      color:#fff;
-      padding:20px 28px;
-      min-height:68px;
-      font-weight:900;
-      letter-spacing:5px;
-      text-transform:uppercase;
-      transition:.25s ease;
-    }
-
-    .cta-btn:hover{
-      background:#0f8c6d;
-      transform:translateY(-2px);
-    }
-
-    .hero-media{
-      background:#06110f;
-      display:flex;
-      flex-direction:column;
-    }
-
-    .media-top{
-      flex:1;
-      min-height:320px;
-      background:
-        linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)),
-        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=80") center/cover;
-      position:relative;
-    }
-
-    .media-badge{
-      position:absolute;
-      top:18px;
-      right:18px;
-      background:rgba(0,0,0,.72);
-      border:1px solid var(--border);
-      color:var(--gold-soft);
-      padding:10px 14px;
-      font-size:.86rem;
-      font-weight:800;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-
-    .media-bottom{
-      padding:24px;
-      display:grid;
-      gap:18px;
-      background:rgba(0,0,0,.9);
-    }
-
-    .mini-panel{
-      border:1px solid rgba(216,180,90,.55);
-      padding:18px 20px;
-      background:rgba(21,122,99,.16);
-    }
-
-    .mini-panel h4{
-      color:var(--gold-soft);
-      font-size:1.35rem;
-      margin-bottom:10px;
-    }
-
-    .mini-panel p{
-      margin:0;
-      color:#ededed;
-      font-size:1rem;
-    }
-
-    .section-heading{
-      margin-bottom:22px;
-    }
-
-    .section-heading h2{
-      font-size:3.45rem;
-      color:#fff;
-      margin-bottom:14px;
-    }
-
-    .section-heading p{
-      margin:0;
-      max-width:980px;
-      color:#f1f1f1;
-      font-size:1.16rem;
-    }
-
-    .media-strip{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:26px;
-    }
-
-    .image-block,
-    .video-block{
-      border:2px solid var(--border);
-      border-radius:30px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      min-height:430px;
-      position:relative;
-      background:#08100f;
-    }
-
-    .image-block{
-      background:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80") center/cover;
-    }
-
-    .video-block{
-      background:
-        linear-gradient(rgba(0,0,0,.50), rgba(0,0,0,.50)),
-        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80") center/cover;
-      display:flex;
-      align-items:flex-end;
-    }
-
-    .overlay-label{
-      position:absolute;
-      top:18px;
-      left:18px;
-      background:rgba(0,0,0,.68);
-      border:1px solid rgba(216,180,90,.85);
-      color:var(--gold-soft);
-      padding:10px 14px;
-      font-size:.84rem;
-      font-weight:900;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-
-    .video-copy{
-      width:100%;
-      padding:34px;
-      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
-    }
-
-    .video-copy h3{
-      font-size:2.7rem;
-      color:#fff;
-      margin-bottom:12px;
-    }
-
-    .video-copy p{
-      margin:0 0 18px;
-      font-size:1.1rem;
-      max-width:760px;
-    }
-
-    .play-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      border:1px solid var(--border);
-      padding:12px 16px;
-      color:var(--gold-soft);
-      background:rgba(0,0,0,.38);
-      font-weight:900;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-size:.92rem;
-    }
-
-    .card-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:26px;
-    }
-
-    .info-card{
-      border:2px solid var(--border);
-      border-radius:30px;
-      overflow:hidden;
-      min-height:390px;
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
-        url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80") center/cover;
-      box-shadow:var(--shadow);
-      display:flex;
-      flex-direction:column;
-    }
-
-    .info-card.c2{
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
-        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80") center/cover;
-    }
-
-    .info-card.c3{
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
-        url("https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1200&q=80") center/cover;
-    }
-
-    .info-card.c4{
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
-        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=80") center/cover;
-    }
-
-    .info-card.c5{
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
-        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80") center/cover;
-    }
-
-    .info-card.c6{
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.45)),
-        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80") center/cover;
-    }
-
-    .card-content{
-      padding:34px;
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      background:rgba(0,0,0,.24);
-    }
-
-    .card-content h3{
-      color:var(--gold-soft);
-      font-size:3rem;
-      margin-bottom:16px;
-    }
-
-    .card-content p{
-      max-width:92%;
-      font-size:1.13rem;
-      margin-bottom:24px;
-    }
-
-    .card-line{
-      width:100%;
-      height:1px;
-      background:rgba(216,180,90,.72);
-      margin:auto 0 24px;
-    }
-
-    .card-link{
-      font-weight:900;
-      letter-spacing:6px;
-      text-transform:uppercase;
-      font-size:1rem;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      color:#fff;
-    }
-
-    .card-link span:last-child{
-      color:var(--gold-soft);
-      font-size:2.2rem;
-      line-height:1;
-    }
-
-    .detail-section{
-      border:2px solid var(--border);
-      border-radius:32px;
-      overflow:hidden;
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.48)),
-        url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1500&q=80") center/cover;
-      box-shadow:var(--shadow);
-      margin-bottom:26px;
-    }
-
-    .detail-section.alt{
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.48)),
-        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=80") center/cover;
-    }
-
-    .detail-inner{
-      padding:42px;
-      background:rgba(0,0,0,.28);
-    }
-
-    .detail-inner h2{
-      color:#fff;
-      font-size:3.2rem;
-      margin-bottom:16px;
-    }
-
-    .detail-inner p{
-      max-width:980px;
-      font-size:1.14rem;
-    }
-
-    .bullet-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:16px;
-      margin-top:22px;
-    }
-
-    .bullet{
-      border:1px solid rgba(216,180,90,.55);
-      background:rgba(0,0,0,.42);
-      padding:16px 18px;
-      color:#f2f2f2;
-      font-size:1rem;
-    }
-
-    .plain-media-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:20px;
-    }
-
-    .plain-media{
-      min-height:300px;
-      border:2px solid var(--border);
-      border-radius:26px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      position:relative;
-      background:#07100f center/cover no-repeat;
-    }
-
-    .plain-media.m1{
-      background-image:url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80");
-    }
-
-    .plain-media.m2{
-      background-image:url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80");
-    }
-
-    .plain-media.m3{
-      background-image:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80");
-    }
-
-    .plain-caption{
-      position:absolute;
-      left:16px;
-      bottom:16px;
-      background:rgba(0,0,0,.72);
-      border:1px solid rgba(216,180,90,.85);
-      color:var(--gold-soft);
-      padding:10px 14px;
-      font-size:.88rem;
-      font-weight:900;
-      letter-spacing:2px;
-      text-transform:uppercase;
-    }
-
-    .daily-panel{
-      border:2px solid var(--border);
-      border-radius:32px;
-      overflow:hidden;
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
-        url("https://images.unsplash.com/photo-1516321310764-8d4f1d7c7e43?auto=format&fit=crop&w=1400&q=80") center/cover;
-      box-shadow:var(--shadow);
-    }
-
-    .daily-inside{
-      padding:42px;
-      background:rgba(0,0,0,.30);
-    }
-
-    .daily-date{
-      color:var(--gold-soft);
-      font-weight:900;
-      letter-spacing:5px;
-      text-transform:uppercase;
-      margin-bottom:12px;
-      font-size:1rem;
-    }
-
-    .daily-inside h2{
-      font-size:3.3rem;
-      color:#fff;
-    }
-
-    .daily-list{
-      display:grid;
-      gap:12px;
-      margin-top:20px;
-    }
-
-    .daily-item{
-      border:1px solid rgba(216,180,90,.55);
-      background:rgba(20,122,99,.12);
-      padding:14px 16px;
-      color:#f1f1f1;
-      font-size:1rem;
-    }
-
-    .contact-section{
-      padding:24px 0 40px;
-    }
-
-    .contact-box{
-      border:2px solid var(--border);
-      border-radius:34px;
-      overflow:hidden;
-      background:
-        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
-        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
-      box-shadow:var(--shadow);
-    }
-
-    .contact-inner{
-      padding:54px;
-    }
-
-    .contact-tag{
-      color:var(--gold-soft);
-      font-size:1rem;
-      font-weight:900;
-      letter-spacing:8px;
-      text-transform:uppercase;
-      margin-bottom:16px;
-    }
-
-    .contact-inner h2{
-      font-size:4rem;
-      color:#fff;
-      margin-bottom:18px;
-    }
-
-    .contact-inner p{
-      max-width:840px;
-      font-size:1.24rem;
-      margin-bottom:26px;
-    }
-
-    footer{
-      background:#000;
-      border-top:2px solid var(--border);
-      padding:24px 0;
-      text-align:center;
-      color:var(--gold-soft);
-      font-size:1rem;
-    }
-
-    @media (max-width:1100px){
-      .hero-grid,
-      .media-strip,
-      .card-grid,
-      .bullet-grid,
-      .plain-media-grid{
-        grid-template-columns:1fr;
-      }
-
-      h1{font-size:3.8rem}
-    }
-
-    @media (max-width:760px){
-      .header-inner{padding:14px 0}
-
-      .brand-mark{
-        width:72px;
-        height:72px;
-        border-width:4px;
-        font-size:2.2rem;
-      }
-
-      .brand-text{font-size:1.22rem}
-
-      .menu-btn{
-        width:72px;
-        height:72px;
-        border-width:4px;
-        font-size:2rem;
-      }
-
-      .hero-copy,
-      .hero-media,
-      .image-block,
-      .video-block,
-      .info-card,
-      .detail-section,
-      .plain-media,
-      .daily-panel,
-      .contact-box{
-        border-radius:24px;
-      }
-
-      .hero-copy{
-        padding:30px;
-        min-height:500px;
-      }
-
-      h1{font-size:2.85rem}
-
-      .section-heading h2,
-      .detail-inner h2,
-      .daily-inside h2{
-        font-size:2.5rem;
-      }
-
-      .card-content h3,
-      .video-copy h3{
-        font-size:2.35rem;
-      }
-
-      .contact-inner h2{font-size:2.8rem}
-
-      .hero-copy p,
-      .section-heading p,
-      .contact-inner p{
-        font-size:1.06rem;
-      }
-
-      .hero-copy,
-      .card-content,
-      .detail-inner,
-      .daily-inside,
-      .video-copy,
-      .contact-inner{
-        padding:26px;
-      }
-
-      .cta-btn{width:100%}
-    }
-
-
-    /* Shared TitanCore header/menu from index.html */
     .topbar{
       position:sticky;
       top:0;
@@ -777,705 +39,742 @@
       grid-template-columns:auto 1fr auto;
       align-items:center;
       gap:12px;
-      max-width:1180px;
-      margin:0 auto;
       padding:14px 24px;
-      background:linear-gradient(180deg,#050505,#010101);
-      border:1px solid rgba(215,179,93,.78);
-      color:#f7f1e6;
-      font-family:Arial, Helvetica, sans-serif;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
     }
 
-    .topbar .logo{
+    .logo{
       width:76px;
       height:76px;
-      border:3px solid #d7b35d;
+      border:3px solid var(--gold);
       display:grid;
       place-items:center;
-      font-family:Georgia, "Times New Roman", serif;
+      font-family:Georgia,"Times New Roman",serif;
       font-size:32px;
       font-weight:700;
-      color:#f0d07a;
+      color:var(--gold2);
       background:#030303;
       flex-shrink:0;
-      text-decoration:none;
     }
 
-    .topbar .brand{
-      min-width:0;
-      font-family:Georgia, "Times New Roman", serif;
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
       font-size:clamp(18px,3.5vw,46px);
-      font-weight:400;
-      line-height:1.06;
       letter-spacing:clamp(1px,.55vw,5px);
       text-transform:uppercase;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
-      color:#f7f1e6;
-      text-decoration:none;
     }
 
-    .topbar .brand span{
-      color:#d7b35d;
-    }
+    .brand span{color:var(--gold)}
 
-    .topbar .menu-btn{
+    .menu-btn{
       width:76px;
       height:76px;
-      border:3px solid #d7b35d;
-      background:linear-gradient(135deg,#0b684f,#064b38);
-      color:#f7f1e6;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
       font-size:36px;
       cursor:pointer;
       flex-shrink:0;
-      transition:background .2s ease, color .2s ease, transform .2s ease;
-      appearance:none;
-      border-radius:0;
-      padding:0;
-      line-height:1;
     }
 
-    .topbar .menu-btn:hover,
-    .topbar .menu-btn[aria-expanded="true"]{
-      background:#d7b35d;
-      color:#000;
-    }
+    .menu-btn:hover{background:var(--gold);color:#000}
 
-    .topbar .menu-btn:active{
-      transform:scale(.97);
-    }
-
-    .topbar .logo:focus-visible,
-    .topbar .brand:focus-visible,
-    .topbar .menu-btn:focus-visible,
-    nav.menu a:focus-visible{
-      outline:3px solid #f0d07a;
-      outline-offset:4px;
-    }
-
-    nav.menu{
-      position:sticky;
-      top:105px;
-      z-index:90;
+    .menu{
       display:none;
-      max-width:1180px;
-      margin:0 auto;
       background:#080808;
-      border-right:1px solid rgba(215,179,93,.78);
-      border-bottom:1px solid rgba(215,179,93,.78);
-      border-left:1px solid rgba(215,179,93,.78);
+      border-bottom:1px solid var(--line);
       padding:22px 42px 26px;
-      box-shadow:0 18px 32px rgba(0,0,0,.48);
-      font-family:Arial, Helvetica, sans-serif;
     }
 
-    nav.menu.active{
-      display:block;
-    }
+    .menu.active{display:block}
 
-    nav.menu a{
+    .menu a{
       display:block;
       padding:17px 0;
       border-bottom:1px solid rgba(215,179,93,.25);
       text-transform:uppercase;
       letter-spacing:4px;
-      color:#d8d0c4;
+      color:var(--soft);
       font-size:18px;
-      text-decoration:none;
-      transition:color .2s ease, padding-left .2s ease;
     }
 
-    nav.menu a:hover,
-    nav.menu a:focus-visible{
-      color:#f0d07a;
-      padding-left:8px;
+    .menu a:hover{color:var(--gold2);padding-left:8px}
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.56),rgba(0,0,0,.28)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.40));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.48),rgba(6,75,56,.54)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.32));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1060px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:980px;
+    }
+
+    h1 span,h3{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1040px;
+    }
+
+    h3{
+      font-size:clamp(30px,3.7vw,52px);
+      margin-bottom:18px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:1000px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:36px;
+    }
+
+    .topic-card{
+      position:relative;
+      min-height:340px;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      overflow:hidden;
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:34px;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    .topic-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.76)),
+        linear-gradient(90deg,rgba(0,0,0,.46),rgba(6,75,56,.28));
+      z-index:0;
+    }
+
+    .topic-card h3,
+    .topic-card p,
+    .card-action{
+      position:relative;
+      z-index:1;
+    }
+
+    .topic-card h3{
+      font-size:clamp(30px,4vw,48px);
+    }
+
+    .topic-card p{
+      font-size:19px;
+      line-height:1.58;
+      margin-bottom:22px;
+    }
+
+    .card-action{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      border-top:1px solid rgba(215,179,93,.55);
+      padding-top:18px;
+      color:var(--gold2);
+      font-weight:900;
+      letter-spacing:2.5px;
+      text-transform:uppercase;
+      font-size:15px;
+    }
+
+    .topic-card:hover{
+      transform:translateY(-3px);
+      border-color:var(--gold2);
+    }
+
+    .topic-card:hover .card-action{
+      color:#fff;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.52));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .card-grid,.split{grid-template-columns:1fr}
     }
 
     @media(max-width:600px){
-      .topbar{
-        padding:12px 14px;
-        gap:10px;
-      }
-
-      .topbar .logo,
-      .topbar .menu-btn{
-        width:62px;
-        height:62px;
-      }
-
-      .topbar .logo{
-        font-size:27px;
-      }
-
-      .topbar .menu-btn{
-        font-size:30px;
-      }
-
-      .topbar .brand{
-        font-size:16px;
-        letter-spacing:1px;
-      }
-
-      nav.menu{
-        top:87px;
-        padding:20px 24px 24px;
-      }
-
-      nav.menu a{
-        font-size:15px;
-        letter-spacing:2.5px;
-      }
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px;line-height:1.68}
+      .btn{width:100%}
+      .plain-picture{min-height:320px}
+      .box,.topic-card{padding:30px}
+      .topic-card{min-height:340px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy{padding:28px}
     }
-
-    @media(max-width:420px){
-      .topbar{
-        grid-template-columns:auto minmax(0,1fr) auto;
-        gap:8px;
-      }
-
-      .topbar .brand{
-        font-size:14px;
-        letter-spacing:.6px;
-      }
-
-      .topbar .logo,
-      .topbar .menu-btn{
-        width:54px;
-        height:54px;
-      }
-
-      .topbar .logo{
-        font-size:23px;
-      }
-
-      .topbar .menu-btn{
-        font-size:28px;
-      }
-
-      nav.menu{
-        top:79px;
-      }
-    }
-
   </style>
 </head>
 
 <body>
-  <div class="site-shell">
+  <main class="page">
 
     <header class="topbar">
-    <a href="index.html" class="logo">TH</a>
-    <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
-    <button class="menu-btn" type="button" id="menuButton" aria-label="Open menu" aria-controls="menu" aria-expanded="false">☰</button>
-  </header>
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
 
-  <nav class="menu" id="menu">
-    <a href="titancore-structure.html">TitanCore Structure</a>
-    <a href="operating-model.html">Operating Model</a>
-    <a href="governance.html">Governance</a>
-    <a href="companies.html">Company</a>
-    <a href="institution.html">Institution</a>
-    <a href="business-intelligence.html">Business Intelligence</a>
-    <a href="news-media.html">News &amp; Media</a>
-  </nav>
-<section class="hero">
-      <div class="wrap">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <div class="eyebrow">Business Systems Intelligence</div>
-            <h1>Systems make business work <span>repeatable.</span></h1>
-            <p>
-              Business Systems Intelligence helps visitors understand how forms, routing, follow-up,
-              reviews, approvals, records, dashboards, and repeatable processes help a company stay organized
-              instead of depending only on memory, scattered messages, or last-minute decisions.
-            </p>
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="operation-intelligence.html">Operation Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="business-system-intelligence.html">Business System Intelligence</a>
+      <a href="ai-intelligence.html">AI Intelligence</a>
+      <a href="data-intelligence.html">Data Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
 
-            <div class="btn-row">
-              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
-            </div>
-          </div>
+    <section class="section hero daily-bg" data-bg-group="system">
+      <div class="content">
+        <div class="eyebrow">Business System Intelligence</div>
 
-          <div class="hero-media">
-            <div class="media-top" id="heroMediaRotator">
-              <div class="media-badge">Daily Image Rotation</div>
-            </div>
+        <h1>
+          Build the full internal system<br>
+          <span>that keeps the business controlled.</span>
+        </h1>
 
-            <div class="media-bottom">
-              <div class="mini-panel">
-                <h4>Today’s Systems Focus</h4>
-                <p id="todayFocus">
-                  A form should collect the right information from the beginning.
-                </p>
-              </div>
+        <p>
+          Business System Intelligence explains how the company’s internal control system connects requests,
+          routing, departments, approvals, workflow, dashboards, documents, contracts, calendars, follow-up,
+          permissions, compliance, and leadership visibility.
+        </p>
 
-              <div class="mini-panel">
-                <h4>Video Space</h4>
-                <p>
-                  This area can later hold a rotating systems lesson, workflow diagram video,
-                  form-routing example, or dashboard education clip.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <p>
+          This page is different from Data Intelligence. Data Intelligence studies numbers and signals.
+          Business System Intelligence studies the structure and control system that moves work through the company.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="section-heading">
-          <div class="eyebrow">Business Systems Overview</div>
-          <h2>A system is the structure behind the work.</h2>
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="system">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Business System Intelligence is the internal control map for how business work moves.
+        </h2>
+
+        <div class="box">
+          <h3>What this page is for</h3>
+
           <p>
-            A business system is not only software. It is the full path the work follows.
-            A good system tells people what to collect, where to send it, who reviews it,
-            how to follow up, where to save it, and what report should show the result.
+            This page is the control hub for business systems. It explains how work enters the company,
+            how it is routed, who reviews it, where it is stored, how approvals happen, how departments stay connected,
+            and how leadership sees what needs action.
+          </p>
+
+          <p>
+            The corrected system title is <strong>System Reports &amp; Controls</strong>. The Data Intelligence page keeps
+            <strong>Reports &amp; Dashboards</strong>. This prevents the two sections from having the same card title.
           </p>
         </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="media-strip">
-          <div class="image-block">
-            <div class="overlay-label">Plain Systems Image</div>
+        <div class="split">
+          <div class="item">
+            <strong>Business System Intelligence</strong>
+            <span>Focuses on internal systems, ownership, access, routing, approvals, controls, dashboard connections, and workflow movement.</span>
           </div>
 
-          <div class="video-block">
-            <div class="overlay-label">Future Video Area</div>
-            <div class="video-copy">
-              <h3>Business systems video area.</h3>
-              <p>
-                This space is ready for future video. It can show form setup, routing examples,
-                approval education, records organization, or public business systems lessons.
-              </p>
-              <div class="play-pill">Video placeholder • Daily change ready</div>
-            </div>
+          <div class="item">
+            <strong>Data Intelligence</strong>
+            <span>Focuses on numbers, reports, dashboards, warning signs, market signals, customer signals, business numbers, and decision review.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="section-heading">
-          <div class="eyebrow">Systems Areas</div>
-          <h2>Clickable systems topics.</h2>
-          <p>
-            These areas explain the major parts of business systems: forms, intake,
-            routing, follow-up, approvals, records, dashboards, and automation readiness.
-          </p>
-        </div>
+    <section class="section green daily-bg" data-bg-group="system">
+      <div class="content">
+        <div class="eyebrow">System Control Areas</div>
+
+        <h2>
+          Choose a business system area to review deeper.
+        </h2>
+
+        <p>
+          These cards represent the full internal business system. Each card opens its own detailed page.
+        </p>
 
         <div class="card-grid">
-          <a href="#forms-intake" class="info-card">
-            <div class="card-content">
-              <h3>Forms &amp; Intake</h3>
-              <p>
-                Understand how forms, calls, emails, and public inquiries collect the right information
-                before work begins.
-              </p>
-              <div class="card-line"></div>
-              <div class="card-link"><span>Review Forms</span><span>›</span></div>
-            </div>
+
+          <a href="system-reports-controls.html" class="topic-card" data-page="system-reports-controls.html">
+            <h3>System Reports &amp; Controls</h3>
+            <p>Review how internal systems track work, route requests, monitor approvals, organize departments, and show what needs action.</p>
+            <div class="card-action"><span>Review Systems</span><span>›</span></div>
           </a>
 
-          <a href="#routing-followup" class="info-card c2">
-            <div class="card-content">
-              <h3>Routing &amp; Follow-Up</h3>
-              <p>
-                Learn how requests should be directed to the right page, inbox, department,
-                team, dashboard, or next step.
-              </p>
-              <div class="card-line"></div>
-              <div class="card-link"><span>Review Routing</span><span>›</span></div>
-            </div>
+          <a href="request-routing-system.html" class="topic-card" data-page="request-routing-system.html">
+            <h3>Request Routing System</h3>
+            <p>Understand how forms, calls, emails, messages, and customer requests move to the correct company, department, and review path.</p>
+            <div class="card-action"><span>Review Routing</span><span>›</span></div>
           </a>
 
-          <a href="#reviews-approvals" class="info-card c3">
-            <div class="card-content">
-              <h3>Reviews &amp; Approvals</h3>
-              <p>
-                Review how important work should be checked, corrected, approved,
-                and completed before being treated as final.
-              </p>
-              <div class="card-line"></div>
-              <div class="card-link"><span>Review Approvals</span><span>›</span></div>
-            </div>
+          <a href="department-control-system.html" class="topic-card" data-page="department-control-system.html">
+            <h3>Department Control System</h3>
+            <p>Review how departments are organized, how responsibility is assigned, and how work stays visible between teams and leadership.</p>
+            <div class="card-action"><span>Review Departments</span><span>›</span></div>
           </a>
 
-          <a href="#records-archives" class="info-card c4">
-            <div class="card-content">
-              <h3>Records &amp; Archives</h3>
-              <p>
-                Understand why documents, notes, messages, reports, and decisions
-                should be saved in an organized way.
-              </p>
-              <div class="card-line"></div>
-              <div class="card-link"><span>Review Records</span><span>›</span></div>
-            </div>
+          <a href="approval-monitoring-system.html" class="topic-card" data-page="approval-monitoring-system.html">
+            <h3>Approval Monitoring System</h3>
+            <p>Review how approvals are requested, tracked, returned, corrected, signed, escalated, and saved before work moves forward.</p>
+            <div class="card-action"><span>Review Approvals</span><span>›</span></div>
           </a>
 
-          <<a href="system-reports-controls.html" class="topic-card">
-  <h2>System Reports &amp; Controls</h2>
-  <p>
-    Review how internal systems track work, route requests,
-    monitor approvals, organize departments, and show what needs action.
-  </p>
-  <div class="card-line"></div>
-  <div class="card-action">
-    <span>REVIEW SYSTEMS</span>
-    <span>›</span>
-  </div>
-</a>
-          <a href="#automation-readiness" class="info-card c6">
-            <div class="card-content">
-              <h3>Automation Readiness</h3>
-              <p>
-                Review why a business should organize the process before adding automation,
-                routing rules, dashboards, or advanced tools.
-              </p>
-              <div class="card-line"></div>
-              <div class="card-link"><span>Review Readiness</span><span>›</span></div>
-            </div>
+          <a href="workflow-system-control.html" class="topic-card" data-page="workflow-system-control.html">
+            <h3>Workflow System Control</h3>
+            <p>Understand how work moves from intake to assignment, progress, quality review, approval, completion, reporting, and archive.</p>
+            <div class="card-action"><span>Review Workflow</span><span>›</span></div>
           </a>
+
+          <a href="performance-control-system.html" class="topic-card" data-page="performance-control-system.html">
+            <h3>Performance Control System</h3>
+            <p>Review how the business watches speed, output, delays, completed work, open items, department performance, and improvement.</p>
+            <div class="card-action"><span>Review Performance</span><span>›</span></div>
+          </a>
+
+          <a href="email-routing-system.html" class="topic-card" data-page="email-routing-system.html">
+            <h3>Email Routing System</h3>
+            <p>Review how public emails, internal emails, company messages, department updates, and leadership communications are sorted and routed.</p>
+            <div class="card-action"><span>Review Email</span><span>›</span></div>
+          </a>
+
+          <a href="call-routing-system.html" class="topic-card" data-page="call-routing-system.html">
+            <h3>Call Routing System</h3>
+            <p>Review how incoming calls are organized by company, purpose, service need, urgency, contact type, and follow-up requirement.</p>
+            <div class="card-action"><span>Review Calls</span><span>›</span></div>
+          </a>
+
+          <a href="document-archive-system.html" class="topic-card" data-page="document-archive-system.html">
+            <h3>Document Archive System</h3>
+            <p>Review how files, forms, contracts, approvals, reports, notes, and final records are saved, labeled, organized, and retrieved.</p>
+            <div class="card-action"><span>Review Archive</span><span>›</span></div>
+          </a>
+
+          <a href="contract-review-system.html" class="topic-card" data-page="contract-review-system.html">
+            <h3>Contract Review System</h3>
+            <p>Review how contracts are received, checked, corrected, approved, signed, stored, and connected to the right company record.</p>
+            <div class="card-action"><span>Review Contracts</span><span>›</span></div>
+          </a>
+
+          <a href="dashboard-access-permissions.html" class="topic-card" data-page="dashboard-access-permissions.html">
+            <h3>Dashboard Access &amp; Permissions</h3>
+            <p>Review how dashboard access is controlled by role, leadership level, company assignment, department responsibility, and visibility rules.</p>
+            <div class="card-action"><span>Review Access</span><span>›</span></div>
+          </a>
+
+          <a href="company-dashboard-connection.html" class="topic-card" data-page="company-dashboard-connection.html">
+            <h3>Company Dashboard Connection</h3>
+            <p>Review how company dashboards connect to the central system, report activity, send approvals, and receive leadership direction.</p>
+            <div class="card-action"><span>Review Company</span><span>›</span></div>
+          </a>
+
+          <a href="department-dashboard-connection.html" class="topic-card" data-page="department-dashboard-connection.html">
+            <h3>Department Dashboard Connection</h3>
+            <p>Review how department dashboards show assigned work, open tasks, employee activity, reports, delays, and review needs.</p>
+            <div class="card-action"><span>Review Department</span><span>›</span></div>
+          </a>
+
+          <a href="customer-follow-up-system.html" class="topic-card" data-page="customer-follow-up-system.html">
+            <h3>Customer Follow-Up System</h3>
+            <p>Review how customer requests, calls, messages, applications, complaints, and service needs stay active until resolved.</p>
+            <div class="card-action"><span>Review Follow-Up</span><span>›</span></div>
+          </a>
+
+          <a href="finance-tax-control.html" class="topic-card" data-page="finance-tax-control.html">
+            <h3>Finance &amp; Tax Control</h3>
+            <p>Review how financial records, payments, expenses, reports, tax needs, and business obligations are organized and controlled.</p>
+            <div class="card-action"><span>Review Finance</span><span>›</span></div>
+          </a>
+
+          <a href="compliance-risk-control.html" class="topic-card" data-page="compliance-risk-control.html">
+            <h3>Compliance &amp; Risk Control</h3>
+            <p>Review how the business watches policy, risk, approvals, sensitive items, customer promises, documents, and protected information.</p>
+            <div class="card-action"><span>Review Risk</span><span>›</span></div>
+          </a>
+
+          <a href="meeting-report-calendar.html" class="topic-card" data-page="meeting-report-calendar.html">
+            <h3>Meeting &amp; Report Calendar</h3>
+            <p>Review how meetings, weekly reports, leadership reviews, company updates, and recurring deadlines are organized.</p>
+            <div class="card-action"><span>Review Calendar</span><span>›</span></div>
+          </a>
+
+          <a href="audit-trail-activity-logs.html" class="topic-card" data-page="audit-trail-activity-logs.html">
+            <h3>Audit Trail &amp; Activity Logs</h3>
+            <p>Review how the system records actions, changes, approvals, updates, responsibility, timestamps, and completion history.</p>
+            <div class="card-action"><span>Review Logs</span><span>›</span></div>
+          </a>
+
         </div>
       </div>
     </section>
 
-    <section class="section" id="forms-intake">
-      <div class="wrap">
-        <div class="detail-section">
-          <div class="detail-inner">
-            <div class="eyebrow">Forms &amp; Intake</div>
-            <h2>Forms and intake collect the information a business needs.</h2>
-            <p>
-              Intake is the first part of the system. If the business does not collect the right
-              information at the beginning, the rest of the process becomes slower, weaker, and more confusing.
-            </p>
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
 
-            <div class="bullet-grid">
-              <div class="bullet">Name and contact information.</div>
-              <div class="bullet">Business or organization name if needed.</div>
-              <div class="bullet">Type of request or topic.</div>
-              <div class="bullet">Urgency, timeline, or location.</div>
-              <div class="bullet">Documents, notes, or supporting information.</div>
-              <div class="bullet">Preferred response method and next step.</div>
-            </div>
-          </div>
+          <h2>
+            Business system video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about request routing, dashboard connections,
+            department controls, approval monitoring, contract review, document archive,
+            call routing, email routing, access permissions, and system reports.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="routing-followup">
-      <div class="wrap">
-        <div class="detail-section alt">
-          <div class="detail-inner">
-            <div class="eyebrow">Routing &amp; Follow-Up</div>
-            <h2>Routing makes sure the request goes to the right place.</h2>
-            <p>
-              Routing prevents messages from sitting in the wrong place. A request should not be lost
-              because it went to the wrong inbox, wrong department, wrong person, or wrong page.
-            </p>
-
-            <div class="bullet-grid">
-              <div class="bullet">Which request goes to public contact?</div>
-              <div class="bullet">Which request goes to a company page?</div>
-              <div class="bullet">Which request needs a form?</div>
-              <div class="bullet">Which request needs document review?</div>
-              <div class="bullet">Who is responsible for responding?</div>
-              <div class="bullet">What happens if the request is incomplete?</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section>
+      <div class="plain-picture"></div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="plain-media-grid">
-          <div class="plain-media m1">
-            <div class="plain-caption">System Planning</div>
+    <section class="section daily-bg" data-bg-group="system">
+      <div class="content">
+        <div class="eyebrow">System Control Map</div>
+
+        <h2>
+          A complete system should show entry, routing, review, approval, storage, and reporting.
+        </h2>
+
+        <div class="split">
+          <div class="item">
+            <strong>Entry points</strong>
+            <span>Forms, calls, emails, messages, applications, service requests, contracts, reports, and leadership tasks.</span>
           </div>
-          <div class="plain-media m2">
-            <div class="plain-caption">Routing Review</div>
+
+          <div class="item">
+            <strong>Routing points</strong>
+            <span>Company routing, department routing, email routing, call routing, document routing, and approval routing.</span>
           </div>
-          <div class="plain-media m3">
-            <div class="plain-caption">Records & Dashboard</div>
+
+          <div class="item">
+            <strong>Control points</strong>
+            <span>Dashboard permissions, department ownership, approval monitoring, quality checks, compliance review, and audit logs.</span>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section" id="reviews-approvals">
-      <div class="wrap">
-        <div class="detail-section">
-          <div class="detail-inner">
-            <div class="eyebrow">Reviews &amp; Approvals</div>
-            <h2>Important work should be reviewed before it is final.</h2>
-            <p>
-              Reviews and approvals protect the company from mistakes. They confirm that information is complete,
-              the right steps were followed, and the final work is ready before it is sent, filed, published, or completed.
-            </p>
-
-            <div class="bullet-grid">
-              <div class="bullet">Is the information complete?</div>
-              <div class="bullet">Is the request assigned correctly?</div>
-              <div class="bullet">Was the correct process followed?</div>
-              <div class="bullet">Is anything missing or unclear?</div>
-              <div class="bullet">Does a reviewer need to approve it?</div>
-              <div class="bullet">Was the final result documented?</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="records-archives">
-      <div class="wrap">
-        <div class="detail-section alt">
-          <div class="detail-inner">
-            <div class="eyebrow">Records &amp; Archives</div>
-            <h2>Records keep the company from losing important information.</h2>
-            <p>
-              A business needs organized records so people can understand what happened,
-              when it happened, who handled it, what decision was made, and what needs to happen next.
-            </p>
-
-            <div class="bullet-grid">
-              <div class="bullet">Submitted forms and inquiries.</div>
-              <div class="bullet">Emails and important messages.</div>
-              <div class="bullet">Documents and attachments.</div>
-              <div class="bullet">Approval notes and review comments.</div>
-              <div class="bullet">Reports and summaries.</div>
-              <div class="bullet">Final decisions or completion notes.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="reports-dashboards">
-      <div class="wrap">
-        <div class="detail-section">
-          <div class="detail-inner">
-            <div class="eyebrow">Reports &amp; Dashboards</div>
-            <h2>Dashboards help leadership see the system.</h2>
-            <p>
-              Reports and dashboards should show what is coming in, what is being worked on,
-              what is delayed, what is complete, and what needs leadership attention.
-            </p>
-
-            <div class="bullet-grid">
-              <div class="bullet">New activity and new requests.</div>
-              <div class="bullet">Pending work and assigned work.</div>
-              <div class="bullet">Delayed work and follow-up needed.</div>
-              <div class="bullet">Approvals needed.</div>
-              <div class="bullet">Completed work and saved records.</div>
-              <div class="bullet">Leadership attention items.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="automation-readiness">
-      <div class="wrap">
-        <div class="detail-section alt">
-          <div class="detail-inner">
-            <div class="eyebrow">Automation Readiness</div>
-            <h2>A business should organize the system before adding automation.</h2>
-            <p>
-              Automation works better when the process is already clear. Before a company automates,
-              it should know what information is needed, where it goes, who reviews it, what conditions matter,
-              and what result should happen.
-            </p>
-
-            <div class="bullet-grid">
-              <div class="bullet">Is the intake form clear?</div>
-              <div class="bullet">Are categories defined?</div>
-              <div class="bullet">Is routing clear?</div>
-              <div class="bullet">Are review steps clear?</div>
-              <div class="bullet">Are approval rules clear?</div>
-              <div class="bullet">Are records and reports needed?</div>
-            </div>
+          <div class="item">
+            <strong>Visibility points</strong>
+            <span>System reports, control panels, leadership dashboards, meeting calendars, activity logs, and follow-up tracking.</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <div class="daily-panel">
-          <div class="daily-inside">
-            <div class="daily-date" id="dailyDate">Today’s Systems Focus</div>
-            <h2 id="dailyTitle">A form should collect the right information from the beginning.</h2>
-            <p id="dailyText">
-              Today’s systems focus is intake. Strong intake prevents confusion, missing details,
-              and unnecessary follow-up.
-            </p>
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
 
-            <div class="daily-list">
-              <div class="daily-item" id="daily1">Collect the correct contact information.</div>
-              <div class="daily-item" id="daily2">Collect the reason for the request.</div>
-              <div class="daily-item" id="daily3">Route the request to the right place.</div>
-              <div class="daily-item" id="daily4">Record the next step.</div>
-            </div>
-          </div>
-        </div>
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
       </div>
     </section>
 
-    <section class="contact-section">
-      <div class="wrap">
-        <div class="contact-box">
-          <div class="contact-inner">
-            <div class="contact-tag">Contact TitanCore</div>
-            <h2>Contact us today</h2>
-            <p>
-              For general questions, professional inquiries, business intelligence questions,
-              or TitanCore-related information, contact TitanCore Holdings.
-            </p>
-            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
+    <footer class="simple-footer">
       © 2025 TitanCore Holdings. All rights reserved.
     </footer>
 
-  </div>
+  </main>
 
   <script>
-    // Header menu behavior is provided by the shared TitanCore menu script below.
-
-
-    const heroMediaRotator = document.getElementById('heroMediaRotator');
-
-    const heroImages = [
-      'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80'
-    ];
-
-    const dayIndex = new Date().getDate() % heroImages.length;
-    heroMediaRotator.style.background =
-      `linear-gradient(rgba(0,0,0,.18), rgba(0,0,0,.18)), url("${heroImages[dayIndex]}") center/cover`;
-
-    const dailySet = [
-      {
-        focus:'A form should collect the right information from the beginning.',
-        title:'A form should collect the right information from the beginning.',
-        text:'Today’s systems focus is intake. Strong intake prevents confusion, missing details, and unnecessary follow-up.',
-        a:'Collect the correct contact information.',
-        b:'Collect the reason for the request.',
-        c:'Route the request to the right place.',
-        d:'Record the next step.'
-      },
-      {
-        focus:'Routing should send the request to the right place.',
-        title:'Routing should send the request to the right place.',
-        text:'Today’s systems focus is routing. A clear route prevents messages from sitting in the wrong inbox or workflow.',
-        a:'Define the request type.',
-        b:'Choose the correct destination.',
-        c:'Assign responsibility.',
-        d:'Confirm follow-up.'
-      },
-      {
-        focus:'Reviews protect the company before work becomes final.',
-        title:'Reviews protect the company before work becomes final.',
-        text:'Today’s systems focus is review. Important work should be checked before it is approved, sent, published, or closed.',
-        a:'Check completeness.',
-        b:'Check accuracy.',
-        c:'Check approval status.',
-        d:'Save the record.'
-      },
-      {
-        focus:'Dashboards help leaders see the system.',
-        title:'Dashboards help leaders see the system.',
-        text:'Today’s systems focus is reporting. A useful dashboard shows new work, pending work, delays, approvals, and completed work.',
-        a:'Review new work.',
-        b:'Review pending work.',
-        c:'Review approvals needed.',
-        d:'Review completed work.'
-      }
-    ];
-
-    const focusIndex = new Date().getDate() % dailySet.length;
-
-    document.getElementById('todayFocus').textContent = dailySet[focusIndex].focus;
-    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
-    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
-    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
-    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
-    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
-    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
-
-    const dailyDate = document.getElementById('dailyDate');
-    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
-      weekday:'long',
-      year:'numeric',
-      month:'long',
-      day:'numeric'
-    });
-  </script>
-
-  <script>
-    (function(){
+    function toggleMenu(){
       const menu = document.getElementById("menu");
-      const menuButton = document.getElementById("menuButton");
-
-      function setMenuState(isOpen){
-        if(!menu || !menuButton){
-          return;
-        }
-
-        menu.classList.toggle("active", isOpen);
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-      }
-
-      function toggleMenu(){
-        if(!menu || !menuButton){
-          return;
-        }
-
-        setMenuState(!menu.classList.contains("active"));
-      }
-
-      if(menuButton){
-        menuButton.addEventListener("click", toggleMenu);
-      }
-
       if(menu){
-        menu.querySelectorAll("a").forEach(function(link){
-          link.addEventListener("click", function(){
-            setMenuState(false);
-          });
-        });
+        menu.classList.toggle("active");
       }
+    }
 
-      document.addEventListener("click", function(event){
-        if(!menu || !menuButton || !menu.classList.contains("active")){
-          return;
-        }
+    const backgroundSets = {
+      system:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
 
-        if(!menu.contains(event.target) && !menuButton.contains(event.target)){
-          setMenuState(false);
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "system";
+      const images = backgroundSets[group] || backgroundSets.system;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".topic-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+
+    document.querySelectorAll(".topic-card").forEach(function(card){
+      card.addEventListener("click", function(e){
+        const page = card.getAttribute("data-page") || card.getAttribute("href");
+
+        if(page){
+          e.preventDefault();
+          window.location.href = page;
         }
       });
-
-      document.addEventListener("keydown", function(event){
-        if(event.key === "Escape"){
-          setMenuState(false);
-        }
-      });
-    })();
+    });
   </script>
 </body>
 </html>
