@@ -1483,5 +1483,52 @@
       });
     })();
   </script>
+  <script>
+  document.addEventListener("click", function(e){
+    const card = e.target.closest("a, .ai-card, .topic-card, .intelligence-card, .card");
+
+    if(!card || !card.textContent){
+      return;
+    }
+
+    const text = card.textContent.toLowerCase();
+
+    if(text.includes("what ai is") || text.includes("ai basics")){
+      e.preventDefault();
+      window.location.href = "what-ai-is.html";
+      return;
+    }
+
+    if(text.includes("business support") || text.includes("review support")){
+      e.preventDefault();
+      window.location.href = "business-support.html";
+      return;
+    }
+
+    if(text.includes("research") || text.includes("writing") || text.includes("review writing")){
+      e.preventDefault();
+      window.location.href = "research-writing.html";
+      return;
+    }
+
+    if(text.includes("human review") || text.includes("human judgment")){
+      e.preventDefault();
+      window.location.href = "human-review.html";
+      return;
+    }
+
+    if(text.includes("risk awareness") || text.includes("ai risks") || text.includes("review ai risks")){
+      e.preventDefault();
+      window.location.href = "risk-awareness.html";
+      return;
+    }
+
+    if(text.includes("responsible use") || text.includes("review responsible use")){
+      e.preventDefault();
+      window.location.href = "responsible-use.html";
+      return;
+    }
+  }, true);
+</script>
 </body>
 </html>
