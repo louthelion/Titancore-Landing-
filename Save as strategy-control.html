@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strategy & Control Intelligence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --black:#020202;
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{color:var(--gold2);padding-left:8px}
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.26)),linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.35));
+      z-index:0;
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,h3{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:34px;
+      max-width:1000px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .definition-box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .card-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:34px;
+      margin-top:42px;
+      max-width:1040px;
+    }
+
+    .strategy-card{
+      position:relative;
+      display:block;
+      border:3px solid var(--gold);
+      border-radius:34px;
+      min-height:520px;
+      padding:54px 58px;
+      background-size:cover;
+      background-position:center;
+      overflow:hidden;
+    }
+
+    .strategy-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.42);
+      z-index:0;
+    }
+
+    .strategy-card h3,
+    .strategy-card p,
+    .strategy-card .card-link{
+      position:relative;
+      z-index:1;
+    }
+
+    .strategy-card h3{
+      font-size:clamp(44px,6vw,76px);
+      margin-bottom:28px;
+      color:var(--gold2);
+    }
+
+    .strategy-card p{
+      font-size:25px;
+      line-height:1.62;
+      max-width:780px;
+    }
+
+    .card-link{
+      margin-top:48px;
+      padding-top:28px;
+      border-top:1px solid rgba(215,179,93,.75);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      text-transform:uppercase;
+      letter-spacing:8px;
+      font-weight:900;
+      color:#fff;
+    }
+
+    .card-link span:last-child{
+      color:var(--gold2);
+      font-size:52px;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.60);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.52));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px}
+      .btn{width:100%}
+      .plain-picture{min-height:320px}
+      .definition-box{padding:30px}
+      .strategy-card{min-height:470px;padding:38px 34px}
+      .strategy-card h3{font-size:42px}
+      .strategy-card p{font-size:21px}
+      .card-link{letter-spacing:5px;font-size:15px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy{padding:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="strategy-control.html">Strategy &amp; Control</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="strategy">
+      <div class="content">
+        <div class="eyebrow">Strategy & Control Intelligence</div>
+        <h1>Turn business information<br><span>into controlled action.</span></h1>
+        <p>
+          Strategy & Control Intelligence is the next step after Search Intelligence.
+          Search Intelligence helps visitors understand the market, customer, competitor, opportunity,
+          risk, and source quality. Strategy & Control helps visitors decide what to do with that information.
+        </p>
+        <p>
+          This page organizes the business decision into positioning, offer strategy, pricing, growth path,
+          risk strategy, and decision discipline.
+        </p>
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section><div class="plain-picture"></div></section>
+
+    <section class="section daily-bg" data-bg-group="strategy">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+        <h2>Strategy & Control means choosing direction with discipline.</h2>
+
+        <div class="definition-box">
+          <h3>What does this page do?</h3>
+          <p>
+            This page helps visitors move from research to decision-making. After a person studies the market,
+            customer, competitor, opportunity, risk, and information quality, they still need to decide how the business
+            should position itself, what it should offer, how it should price, how it should grow, what it should avoid,
+            and how decisions should be controlled.
+          </p>
+          <p>
+            The goal is to make business education useful. Visitors can click each strategy area and learn how to think
+            before making major moves.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="strategy">
+      <div class="content">
+        <div class="eyebrow">Strategy Areas</div>
+        <h2>Choose the strategy area you want to understand.</h2>
+        <p>Each card opens a full page with deeper information, picture sections, video space, checklists, and business guidance.</p>
+
+        <div class="card-grid">
+          <a class="strategy-card" href="market-positioning-strategy.html">
+            <h3>Market Positioning</h3>
+            <p>Define where the business fits, who it serves, what makes it different, and why customers should pay attention.</p>
+            <div class="card-link"><span>Review Positioning</span><span>›</span></div>
+          </a>
+
+          <a class="strategy-card" href="offer-strategy.html">
+            <h3>Offer Strategy</h3>
+            <p>Shape what the business offers, what problem it solves, what value it creates, and how customers understand the service.</p>
+            <div class="card-link"><span>Review Offer</span><span>›</span></div>
+          </a>
+
+          <a class="strategy-card" href="pricing-strategy.html">
+            <h3>Pricing Strategy</h3>
+            <p>Review how price supports value, cost, customer trust, profitability, competition, and long-term sustainability.</p>
+            <div class="card-link"><span>Review Pricing</span><span>›</span></div>
+          </a>
+
+          <a class="strategy-card" href="growth-path-strategy.html">
+            <h3>Growth Path</h3>
+            <p>Build a growth path that starts simple, proves demand, improves systems, protects cash, and expands with discipline.</p>
+            <div class="card-link"><span>Review Growth</span><span>›</span></div>
+          </a>
+
+          <a class="strategy-card" href="risk-strategy.html">
+            <h3>Risk Strategy</h3>
+            <p>Decide what to avoid, what to test first, where money can be wasted, and what must be controlled before expansion.</p>
+            <div class="card-link"><span>Review Risk</span><span>›</span></div>
+          </a>
+
+          <a class="strategy-card" href="decision-discipline.html">
+            <h3>Decision Discipline</h3>
+            <p>Use clear questions, priorities, review points, and timing checks before making major business decisions.</p>
+            <div class="card-link"><span>Review Decisions</span><span>›</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+          <h2>Strategy & control video space.</h2>
+          <p>
+            This area is ready for future videos about positioning, offers, pricing, growth,
+            risk control, and decision discipline.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section><div class="plain-picture"></div></section>
+
+    <section class="section daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+        <h2>Contact us today</h2>
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">© 2025 TitanCore Holdings. All rights reserved.</footer>
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){menu.classList.toggle("active");}
+    }
+
+    const backgroundSets = {
+      strategy:[
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "strategy";
+      const images = backgroundSets[group] || backgroundSets.strategy;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".strategy-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[index % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
