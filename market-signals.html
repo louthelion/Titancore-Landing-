@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Market Signals | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.55),rgba(0,0,0,.28)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.38));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.46),rgba(6,75,56,.52)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.28));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,h3{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.40);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .step .num{
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .grid,.flow{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px;line-height:1.68}
+      .btn{width:100%}
+      .plain-picture{min-height:320px}
+      .box,.info-card{padding:30px}
+      .item span,.info-card li{font-size:18px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy{padding:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="operation-intelligence.html">Operation Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="ai-intelligence.html">AI Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Market Signals</div>
+
+        <h1>
+          Market signals help leaders read<br>
+          <span>what the market is saying.</span>
+        </h1>
+
+        <p>
+          Market Signals help a business review competitors, pricing changes,
+          demand shifts, economic pressure, customer spending, and business movement.
+        </p>
+
+        <p>
+          These signals help leaders understand whether the market is getting stronger,
+          weaker, more expensive, more competitive, or more open for opportunity.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Market Signals are outside signs that show how the business environment is moving.
+        </h2>
+
+        <div class="box">
+          <h3>What Market Signals Mean</h3>
+
+          <p>
+            Market Signals are clues from the outside business environment.
+            They come from customer behavior, competitor activity, price movement,
+            demand changes, economic pressure, industry trends, and spending patterns.
+          </p>
+
+          <p>
+            A business uses market signals to understand whether it should grow, wait,
+            adjust pricing, improve service, change marketing, test a new offer, or protect cash.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Why Market Signals Matter</h3>
+
+          <p>
+            A business can make poor decisions when it ignores the market.
+            If competitors lower prices, customers spend less, demand slows, or costs rise,
+            the business needs to know early.
+          </p>
+
+          <p>
+            Market signals help the business move with awareness instead of guessing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Signal Categories</div>
+
+        <h2>
+          The market should be reviewed through demand, price, competition, and spending.
+        </h2>
+
+        <p>
+          Market signals are most useful when they are separated into clear categories.
+          Each signal shows a different part of the market picture.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Competitor movement</strong>
+            <span>Review who is entering, expanding, lowering prices, raising prices, changing services, or advertising heavily.</span>
+          </div>
+
+          <div class="item">
+            <strong>Pricing changes</strong>
+            <span>Study whether prices are rising, dropping, becoming unstable, or creating pressure on customer decisions.</span>
+          </div>
+
+          <div class="item">
+            <strong>Demand shifts</strong>
+            <span>Watch whether customers are asking for more, asking for less, delaying decisions, or changing what they need.</span>
+          </div>
+
+          <div class="item">
+            <strong>Economic pressure</strong>
+            <span>Review inflation, interest rates, income pressure, credit access, business costs, and customer spending ability.</span>
+          </div>
+
+          <div class="item">
+            <strong>Customer spending</strong>
+            <span>Study whether customers are spending confidently, comparing more, negotiating harder, or waiting longer.</span>
+          </div>
+
+          <div class="item">
+            <strong>Business movement</strong>
+            <span>Watch industry activity, new opportunities, supplier changes, local growth, closures, and market openings.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Market Signal Review</div>
+
+        <h2>
+          A business should review market signals before changing direction.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Demand Review</h3>
+
+            <p>
+              Demand review checks whether customers still need the service, product, or offer.
+              It also checks whether demand is growing, slowing, seasonal, or changing.
+            </p>
+
+            <ul>
+              <li>Are more people asking for this?</li>
+              <li>Are fewer people responding?</li>
+              <li>Is demand seasonal or temporary?</li>
+              <li>Is customer need changing?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Pricing Review</h3>
+
+            <p>
+              Pricing review checks whether the current price still makes sense.
+              The business should compare customer willingness, competitor pricing,
+              cost changes, and profit margin.
+            </p>
+
+            <ul>
+              <li>Are customers accepting the price?</li>
+              <li>Are competitors changing prices?</li>
+              <li>Are costs rising?</li>
+              <li>Does the price protect profit?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Competitor Review</h3>
+
+            <p>
+              Competitor review checks who is already serving the market and how they are moving.
+              This helps the business avoid being surprised by better offers or lower prices.
+            </p>
+
+            <ul>
+              <li>Who is gaining attention?</li>
+              <li>Who is advertising more?</li>
+              <li>Who is changing their offer?</li>
+              <li>Where are competitors weak?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Positive and Negative Signals</div>
+
+        <h2>
+          Market signals can show opportunity or danger.
+        </h2>
+
+        <p>
+          A signal is not always bad. Some signals show that the business should prepare for growth.
+          Other signals show that the business should slow down, protect cash, or adjust the offer.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Positive demand signal</strong>
+            <span>More customers are asking questions, requesting service, comparing options, or showing buying interest.</span>
+          </div>
+
+          <div class="item">
+            <strong>Negative demand signal</strong>
+            <span>Customers are delaying, disappearing, asking for discounts, or no longer completing the decision.</span>
+          </div>
+
+          <div class="item">
+            <strong>Positive competition signal</strong>
+            <span>Competitors are weak, slow, overpriced, poorly reviewed, or leaving gaps in the market.</span>
+          </div>
+
+          <div class="item">
+            <strong>Negative competition signal</strong>
+            <span>Competitors are becoming faster, cheaper, louder, more trusted, or more visible.</span>
+          </div>
+
+          <div class="item">
+            <strong>Positive pricing signal</strong>
+            <span>Customers understand the value and the price still supports profit and long-term sustainability.</span>
+          </div>
+
+          <div class="item">
+            <strong>Negative pricing signal</strong>
+            <span>Costs rise, margins shrink, customers resist the price, or competitors make the offer look weak.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+
+          <h2>
+            Market signals video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about market signals,
+            demand shifts, competitor review, pricing movement, customer spending,
+            economic pressure, and business opportunity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Market Signal Types</div>
+
+        <h2>
+          Different signals require different business responses.
+        </h2>
+
+        <p>
+          A business should not react the same way to every market signal.
+          Some signals need research. Some need testing. Some need pricing review.
+          Some need better service or stronger follow-up.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Customer Behavior Signals</h3>
+
+            <p>
+              Customer behavior shows what people are actually doing.
+              This can be stronger than opinions because it reflects real movement.
+            </p>
+
+            <ul>
+              <li>More or fewer inquiries.</li>
+              <li>More price questions.</li>
+              <li>Longer buying decisions.</li>
+              <li>More comparison shopping.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Competitor Signals</h3>
+
+            <p>
+              Competitor movement can show where the market is going.
+              A business should watch how competitors position, price, advertise, and serve.
+            </p>
+
+            <ul>
+              <li>New competitors entering.</li>
+              <li>Existing competitors expanding.</li>
+              <li>New offers or discounts.</li>
+              <li>Customer reviews and complaints.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Economic Signals</h3>
+
+            <p>
+              Economic pressure affects customer confidence and business cost.
+              When the economy changes, the business may need to adjust carefully.
+            </p>
+
+            <ul>
+              <li>Higher costs.</li>
+              <li>Lower customer spending.</li>
+              <li>Credit or funding pressure.</li>
+              <li>More cautious buying behavior.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Market Signals Flow</div>
+
+        <h2>
+          A clean market signal flow observes, compares, tests, and adjusts.
+        </h2>
+
+        <div class="flow">
+          <div class="step">
+            <div class="num">01</div>
+            <strong>Observe</strong>
+            <span>Watch customers, competitors, pricing, demand, spending, and economic pressure.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <strong>Compare</strong>
+            <span>Compare current movement to past results, competitors, customer behavior, and market timing.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <strong>Test</strong>
+            <span>Test pricing, messaging, service improvements, follow-up, or new offers before making a major move.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">04</div>
+            <strong>Adjust</strong>
+            <span>Use the signal review to adjust strategy, pricing, marketing, service, or growth timing.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="market">
+      <div class="content">
+        <div class="eyebrow">Market Signal Questions</div>
+
+        <h2>
+          Questions to ask when reviewing market signals.
+        </h2>
+
+        <div class="grid">
+          <div class="item">
+            <strong>What is changing?</strong>
+            <span>Identify whether the change is in demand, price, competition, cost, customer behavior, or timing.</span>
+          </div>
+
+          <div class="item">
+            <strong>Who is moving?</strong>
+            <span>Review whether customers, competitors, lenders, suppliers, or industry leaders are changing behavior.</span>
+          </div>
+
+          <div class="item">
+            <strong>What does the customer want now?</strong>
+            <span>Check whether customers need something faster, cheaper, clearer, safer, or more valuable.</span>
+          </div>
+
+          <div class="item">
+            <strong>Is the price still strong?</strong>
+            <span>Review whether the price supports value, profit, trust, competition, and long-term sustainability.</span>
+          </div>
+
+          <div class="item">
+            <strong>What opportunity is opening?</strong>
+            <span>Look for gaps, weak competitors, underserved customers, new demand, or better timing.</span>
+          </div>
+
+          <div class="item">
+            <strong>What risk is growing?</strong>
+            <span>Watch rising costs, slower demand, stronger competition, customer hesitation, and weaker conversion.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      market:[
+        "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "market";
+      const images = backgroundSets[group] || backgroundSets.market;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
