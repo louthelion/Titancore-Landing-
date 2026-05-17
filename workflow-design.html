@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Workflow Design | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{
+      display:block;
+    }
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.24)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.42),rgba(6,75,56,.48)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.24));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,
+    h3{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.36);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .step .num{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .grid,
+      .flow{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .box,
+      .info-card{
+        padding:30px;
+      }
+
+      .item span,
+      .info-card li{
+        font-size:18px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy{
+        padding:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="workflow">
+      <div class="content">
+        <div class="eyebrow">Workflow Design</div>
+
+        <h1>
+          Build the path work follows<br>
+          <span>from request to completion.</span>
+        </h1>
+
+        <p>
+          Workflow Design explains how work moves from the first request to review,
+          assignment, progress tracking, completion, follow-up, reporting, and saved records.
+        </p>
+
+        <p>
+          A strong workflow prevents confusion. It helps the business know who received the work,
+          who is responsible, what is delayed, what is completed, what needs approval,
+          and what should happen next.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="workflow">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Workflow Design means creating a clear path for work to move.
+        </h2>
+
+        <div class="box">
+          <h3>What is Workflow Design?</h3>
+
+          <p>
+            Workflow Design is the structure that explains how a task, request, customer need,
+            form, report, document, approval, or project moves through a business from start to finish.
+          </p>
+
+          <p>
+            It defines each step, who is responsible, what information is needed,
+            what status should be used, what approval is required, and where the final record should be saved.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Why does Workflow Design matter?</h3>
+
+          <p>
+            Without workflow design, work can sit in the wrong place, get repeated,
+            get forgotten, or move forward without proper review. A good workflow makes the process visible,
+            trackable, and easier to manage.
+          </p>
+
+          <p>
+            Workflow Design helps leadership see the movement of work instead of guessing what happened.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="workflow">
+      <div class="content">
+        <div class="eyebrow">Workflow Core Steps</div>
+
+        <h2>
+          A workflow should show what happens before, during, and after the work.
+        </h2>
+
+        <p>
+          Every business process should have a beginning, middle, and end.
+          The workflow should not only show that work exists. It should show how work is received,
+          who owns it, what progress looks like, and when it is finished.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Request received</strong>
+            <span>The work begins when a form, call, email, message, report, document, or task enters the business.</span>
+          </div>
+
+          <div class="item">
+            <strong>Review started</strong>
+            <span>The request is checked for completeness, urgency, category, missing information, and correct route.</span>
+          </div>
+
+          <div class="item">
+            <strong>Assignment made</strong>
+            <span>The work is assigned to the right company, department, person, or review path.</span>
+          </div>
+
+          <div class="item">
+            <strong>Progress tracked</strong>
+            <span>The work moves through status updates so leadership can see what is happening.</span>
+          </div>
+
+          <div class="item">
+            <strong>Completion confirmed</strong>
+            <span>The work is checked before it is marked complete, sent out, archived, or moved to final approval.</span>
+          </div>
+
+          <div class="item">
+            <strong>Records saved</strong>
+            <span>Final notes, documents, reports, approvals, and results are saved for future reference.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="workflow">
+      <div class="content">
+        <div class="eyebrow">Workflow Review</div>
+
+        <h2>
+          Workflow should remove confusion about responsibility.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Work Ownership</h3>
+
+            <p>
+              Work Ownership means every task has someone responsible for moving it forward.
+              If nobody owns the task, the work can sit without action.
+            </p>
+
+            <ul>
+              <li>Who received the request?</li>
+              <li>Who is responsible for the next step?</li>
+              <li>Who approves the work?</li>
+              <li>Who closes or archives the record?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Status Movement</h3>
+
+            <p>
+              Status Movement helps the business see where the work is.
+              A task should not be hidden inside a message thread with no clear update.
+            </p>
+
+            <ul>
+              <li>New</li>
+              <li>Assigned</li>
+              <li>In progress</li>
+              <li>Waiting</li>
+              <li>Approved</li>
+              <li>Completed</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Approval Control</h3>
+
+            <p>
+              Some work cannot move forward without approval.
+              Approval Control prevents unfinished, risky, or incorrect work from reaching the wrong place.
+            </p>
+
+            <ul>
+              <li>Check if approval is required.</li>
+              <li>Send to the correct reviewer.</li>
+              <li>Track approval status.</li>
+              <li>Save the final approval record.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="workflow">
+      <div class="content">
+        <div class="eyebrow">Workflow Status System</div>
+
+        <h2>
+          Every workflow needs clear status labels.
+        </h2>
+
+        <p>
+          Status labels help the business see what is happening without asking everyone for updates.
+          They make work easier to review during reports, meetings, approvals, and follow-up.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>New</strong>
+            <span>The request has arrived but has not been reviewed yet.</span>
+          </div>
+
+          <div class="item">
+            <strong>Assigned</strong>
+            <span>The work has been sent to the correct company, department, or person.</span>
+          </div>
+
+          <div class="item">
+            <strong>In progress</strong>
+            <span>The assigned team or person is currently working on the task.</span>
+          </div>
+
+          <div class="item">
+            <strong>Waiting</strong>
+            <span>The work is waiting on information, approval, documents, response, or correction.</span>
+          </div>
+
+          <div class="item">
+            <strong>Under review</strong>
+            <span>The work is being checked before approval, delivery, completion, or filing.</span>
+          </div>
+
+          <div class="item">
+            <strong>Completed</strong>
+            <span>The work is finished, saved, and ready for reporting or archive.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+
+          <h2>
+            Workflow design video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about request flow, assignment,
+            progress tracking, approval checkpoints, follow-up, reporting, and saved records.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="workflow">
+      <div class="content">
+        <div class="eyebrow">Workflow Types</div>
+
+        <h2>
+          Different work types need different workflow paths.
+        </h2>
+
+        <p>
+          A business may have many kinds of work: customer requests, applications, reports,
+          approvals, complaints, projects, vendor messages, internal tasks, and leadership reviews.
+          Each type should have a path.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Customer Workflow</h3>
+
+            <p>
+              Customer workflow tracks how a customer request moves from first contact
+              to response, service, follow-up, and completion.
+            </p>
+
+            <ul>
+              <li>Receive customer request.</li>
+              <li>Review customer need.</li>
+              <li>Assign the correct department.</li>
+              <li>Track response and follow-up.</li>
+              <li>Close the customer record properly.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Approval Workflow</h3>
+
+            <p>
+              Approval workflow controls work that cannot move forward until it is reviewed
+              by leadership, management, or an authorized reviewer.
+            </p>
+
+            <ul>
+              <li>Submit work for review.</li>
+              <li>Check accuracy and completeness.</li>
+              <li>Send back for correction if needed.</li>
+              <li>Approve and save the final record.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Report Workflow</h3>
+
+            <p>
+              Report workflow makes sure updates are collected, reviewed, summarized,
+              and sent to the right leadership level on schedule.
+            </p>
+
+            <ul>
+              <li>Collect department updates.</li>
+              <li>Summarize company status.</li>
+              <li>Identify delays and problems.</li>
+              <li>Send report to the proper review level.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="workflow">
+      <div class="content">
+        <div class="eyebrow">Workflow Flow</div>
+
+        <h2>
+          A clean workflow makes every step visible.
+        </h2>
+
+        <div class="flow">
+          <div class="step">
+            <div class="num">01</div>
+            <strong>Receive</strong>
+            <span>Capture the request, task, report, message, document, or approval item.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <strong>Assign</strong>
+            <span>Send the work to the correct company, department, person, or review path.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <strong>Track</strong>
+            <span>Monitor progress, delays, waiting items, approvals, and corrections.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">04</div>
+            <strong>Close</strong>
+            <span>Confirm completion, save records, report results, and prepare follow-up.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="workflow">
+      <div class="content">
+        <div class="eyebrow">Workflow Design Questions</div>
+
+        <h2>
+          Questions every workflow should answer.
+        </h2>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Where does work begin?</strong>
+            <span>Identify the first place the task, request, form, report, or document enters the business.</span>
+          </div>
+
+          <div class="item">
+            <strong>Who owns the next step?</strong>
+            <span>Make sure responsibility is assigned clearly so the work does not sit.</span>
+          </div>
+
+          <div class="item">
+            <strong>What status should be used?</strong>
+            <span>Use clear status labels so leadership can see where the work stands.</span>
+          </div>
+
+          <div class="item">
+            <strong>What needs approval?</strong>
+            <span>Identify which steps require review before the work can move forward.</span>
+          </div>
+
+          <div class="item">
+            <strong>What happens if delayed?</strong>
+            <span>Define when work should be escalated, corrected, reassigned, or followed up.</span>
+          </div>
+
+          <div class="item">
+            <strong>Where is the record saved?</strong>
+            <span>Save final reports, notes, approvals, customer records, documents, and outcomes.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      workflow:[
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "workflow";
+      const images = backgroundSets[group] || backgroundSets.workflow;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
