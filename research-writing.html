@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Research & Writing | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.26)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.36));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.44),rgba(6,75,56,.50)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.26));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,h3{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.38);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .step .num{
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .grid,.flow{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px;line-height:1.68}
+      .btn{width:100%}
+      .plain-picture{min-height:320px}
+      .box,.info-card{padding:30px}
+      .item span,.info-card li{font-size:18px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy{padding:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="operation-intelligence.html">Operation Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="ai-intelligence.html">AI Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">AI Intelligence</div>
+
+        <h1>
+          Research and writing support<br>
+          <span>helps turn information into clear understanding.</span>
+        </h1>
+
+        <p>
+          AI can help summarize information, organize notes, draft outlines,
+          compare options, explain complex topics, and prepare writing for review.
+        </p>
+
+        <p>
+          Research and writing support should be used carefully. AI can help organize the first draft,
+          but people should still review facts, check sources, protect private information,
+          and decide what is accurate enough to use.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Research & Writing means using AI to help collect, organize, explain, and prepare information.
+        </h2>
+
+        <div class="box">
+          <h3>What Research Support Means</h3>
+
+          <p>
+            Research support means using AI to help understand a topic, organize questions,
+            compare ideas, summarize information, and identify what still needs to be checked.
+          </p>
+
+          <p>
+            AI can help create a starting point, but research should not stop with an AI answer.
+            Important information should be checked with current, reliable sources before being used.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>What Writing Support Means</h3>
+
+          <p>
+            Writing support means using AI to help draft, rewrite, simplify, organize,
+            or polish text. It can help create outlines, business explanations, summaries,
+            page content, educational material, email drafts, and report language.
+          </p>
+
+          <p>
+            The final writing should still be reviewed by a person for accuracy,
+            tone, brand fit, privacy, clarity, and professional quality.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Research Areas</div>
+
+        <h2>
+          AI can help organize research before deeper checking begins.
+        </h2>
+
+        <p>
+          AI can help a person understand what to look for, what questions to ask,
+          and how to organize information. It can also help compare ideas and prepare a research checklist.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Topic understanding</strong>
+            <span>Ask AI to explain a topic in simple language before reviewing deeper sources.</span>
+          </div>
+
+          <div class="item">
+            <strong>Research questions</strong>
+            <span>Use AI to create questions that should be answered before making a decision.</span>
+          </div>
+
+          <div class="item">
+            <strong>Note organization</strong>
+            <span>Turn scattered notes into categories, sections, outlines, or action points.</span>
+          </div>
+
+          <div class="item">
+            <strong>Option comparison</strong>
+            <span>Compare possible choices, strengths, weaknesses, risks, and next steps.</span>
+          </div>
+
+          <div class="item">
+            <strong>Source checklist</strong>
+            <span>List what sources should be checked before trusting important information.</span>
+          </div>
+
+          <div class="item">
+            <strong>Fact review</strong>
+            <span>Identify dates, numbers, rules, prices, laws, or claims that should be verified.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Writing Areas</div>
+
+        <h2>
+          AI can help prepare writing, but people should control the final message.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Drafting</h3>
+
+            <p>
+              AI can help start a draft when a person knows what they want to say
+              but needs help organizing the wording.
+            </p>
+
+            <ul>
+              <li>Draft emails and messages.</li>
+              <li>Create page content.</li>
+              <li>Prepare report language.</li>
+              <li>Build educational explanations.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Rewriting</h3>
+
+            <p>
+              AI can help rewrite text so it sounds clearer, more professional,
+              more respectful, or easier to understand.
+            </p>
+
+            <ul>
+              <li>Simplify complicated writing.</li>
+              <li>Make wording more professional.</li>
+              <li>Improve structure and flow.</li>
+              <li>Remove unclear or repeated wording.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Outlining</h3>
+
+            <p>
+              AI can help turn ideas into a clean structure before the final writing begins.
+              This is useful for pages, reports, articles, presentations, and business notes.
+            </p>
+
+            <ul>
+              <li>Create section headings.</li>
+              <li>Organize main points.</li>
+              <li>Build step-by-step content.</li>
+              <li>Prepare a writing plan.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Safe Research Rules</div>
+
+        <h2>
+          Research support needs source checking before important use.
+        </h2>
+
+        <p>
+          AI can give helpful explanations, but some answers may be incomplete, outdated,
+          or wrong. Anything that affects money, legal matters, tax, health, safety,
+          contracts, or risk should be verified.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Check current facts</strong>
+            <span>Verify information that may change, including prices, laws, rules, schedules, and policies.</span>
+          </div>
+
+          <div class="item">
+            <strong>Compare sources</strong>
+            <span>Do not rely on one answer when the decision is important.</span>
+          </div>
+
+          <div class="item">
+            <strong>Watch for missing context</strong>
+            <span>AI may not know all details of the situation unless the prompt gives enough background.</span>
+          </div>
+
+          <div class="item">
+            <strong>Review numbers</strong>
+            <span>Check calculations, dates, amounts, percentages, costs, and totals carefully.</span>
+          </div>
+
+          <div class="item">
+            <strong>Protect private information</strong>
+            <span>Remove passwords, account numbers, private records, and sensitive customer details.</span>
+          </div>
+
+          <div class="item">
+            <strong>Use human judgment</strong>
+            <span>People should decide what information is accurate, safe, useful, and appropriate.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+
+          <h2>
+            Research & writing video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about AI research support,
+            writing support, summaries, outlines, source checking, rewriting,
+            and responsible review.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Human Review</div>
+
+        <h2>
+          Human review turns AI output into safer, clearer, and more useful content.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Review for Accuracy</h3>
+
+            <p>
+              Before using research or writing, the person should check whether the answer is correct,
+              current, complete, and supported by reliable information.
+            </p>
+
+            <ul>
+              <li>Check facts and dates.</li>
+              <li>Check names and numbers.</li>
+              <li>Check rules and requirements.</li>
+              <li>Check anything that affects risk.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Review for Clarity</h3>
+
+            <p>
+              Writing should be easy to understand. A person should make sure the final message
+              is clear, organized, and helpful for the reader.
+            </p>
+
+            <ul>
+              <li>Remove confusing language.</li>
+              <li>Break long ideas into sections.</li>
+              <li>Use clear next steps.</li>
+              <li>Make the message match the audience.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Review for Privacy</h3>
+
+            <p>
+              Research notes and writing drafts may include sensitive information.
+              Private details should be removed or protected before anything is shared.
+            </p>
+
+            <ul>
+              <li>Remove private account details.</li>
+              <li>Protect customer information.</li>
+              <li>Avoid exposing confidential documents.</li>
+              <li>Check before publishing or sending.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Research & Writing Flow</div>
+
+        <h2>
+          A simple flow helps AI support stay organized and safe.
+        </h2>
+
+        <div class="flow">
+          <div class="step">
+            <div class="num">01</div>
+            <strong>Ask</strong>
+            <span>Give AI a clear topic, goal, audience, format, and limits.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <strong>Organize</strong>
+            <span>Use the answer to create notes, outlines, summaries, or draft sections.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <strong>Verify</strong>
+            <span>Check important facts, sources, numbers, and claims before relying on them.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">04</div>
+            <strong>Finalize</strong>
+            <span>Review the final writing for clarity, accuracy, tone, privacy, and purpose.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="research">
+      <div class="content">
+        <div class="eyebrow">Research & Writing Questions</div>
+
+        <h2>
+          Questions to ask before using AI research or writing.
+        </h2>
+
+        <div class="grid">
+          <div class="item">
+            <strong>What am I trying to understand?</strong>
+            <span>Define the topic clearly before asking AI to explain or organize it.</span>
+          </div>
+
+          <div class="item">
+            <strong>What sources should be checked?</strong>
+            <span>Identify reliable sources needed to confirm important information.</span>
+          </div>
+
+          <div class="item">
+            <strong>What facts may be outdated?</strong>
+            <span>Check information that can change over time.</span>
+          </div>
+
+          <div class="item">
+            <strong>Who is the writing for?</strong>
+            <span>Adjust the tone and structure for the correct audience.</span>
+          </div>
+
+          <div class="item">
+            <strong>What should be removed?</strong>
+            <span>Remove private details, sensitive information, or unnecessary wording.</span>
+          </div>
+
+          <div class="item">
+            <strong>Is it ready to use?</strong>
+            <span>Only use the final version after checking accuracy, clarity, privacy, and purpose.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      research:[
+        "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "research";
+      const images = backgroundSets[group] || backgroundSets.research;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
