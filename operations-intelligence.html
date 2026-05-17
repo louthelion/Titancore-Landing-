@@ -1487,5 +1487,98 @@
       });
     })();
   </script>
+  <script>
+  document.addEventListener("click", function(e){
+    const card = e.target.closest("a, .operation-card, .topic-card, .intelligence-card, .card");
+
+    if(!card || !card.textContent){
+      return;
+    }
+
+    const text = card.textContent.toLowerCase();
+
+    if(text.includes("intake") || text.includes("routing")){
+      e.preventDefault();
+      window.location.href = "intake-routing.html";
+      return;
+    }
+
+    if(text.includes("workflow")){
+      e.preventDefault();
+      window.location.href = "workflow-design.html";
+      return;
+    }
+
+    if(text.includes("quality")){
+      e.preventDefault();
+      window.location.href = "quality-control.html";
+      return;
+    }
+
+    if(text.includes("reporting") || text.includes("reports")){
+      e.preventDefault();
+      window.location.href = "reporting.html";
+      return;
+    }
+
+    if(text.includes("follow-up") || text.includes("follow up")){
+      e.preventDefault();
+      window.location.href = "follow-up.html";
+      return;
+    }
+
+    if(text.includes("improvement")){
+      e.preventDefault();
+      window.location.href = "improvement-cycle.html";
+      return;
+    }
+  }, true);
+</script><script>
+  document.addEventListener("click", function(e){
+    const card = e.target.closest("a, .operation-card, .topic-card, .intelligence-card, .card");
+
+    if(!card || !card.textContent){
+      return;
+    }
+
+    const text = card.textContent.toLowerCase();
+
+    if(text.includes("intake") || text.includes("routing")){
+      e.preventDefault();
+      window.location.href = "intake-routing.html";
+      return;
+    }
+
+    if(text.includes("workflow")){
+      e.preventDefault();
+      window.location.href = "workflow-design.html";
+      return;
+    }
+
+    if(text.includes("quality")){
+      e.preventDefault();
+      window.location.href = "quality-control.html";
+      return;
+    }
+
+    if(text.includes("reporting") || text.includes("reports")){
+      e.preventDefault();
+      window.location.href = "reporting.html";
+      return;
+    }
+
+    if(text.includes("follow-up") || text.includes("follow up")){
+      e.preventDefault();
+      window.location.href = "follow-up.html";
+      return;
+    }
+
+    if(text.includes("improvement")){
+      e.preventDefault();
+      window.location.href = "improvement-cycle.html";
+      return;
+    }
+  }, true);
+</script>
 </body>
 </html>
