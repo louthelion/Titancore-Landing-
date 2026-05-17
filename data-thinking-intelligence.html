@@ -1479,5 +1479,89 @@
       });
     })();
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    function cleanText(text){
+      return (text || "")
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/[^a-z0-9]+/g, "");
+    }
+
+    function getDataPage(text){
+      const t = cleanText(text);
+
+      if(t.includes("decisionreview") || t.includes("reviewdecisions")){
+        return "decision-review.html";
+      }
+
+      if(t.includes("warningsigns") || t.includes("reviewwarnings")){
+        return "warning-signs.html";
+      }
+
+      if(t.includes("reportsanddashboards") || t.includes("reportsdashboards") || t.includes("reviewreports")){
+        return "reports-dashboards.html";
+      }
+
+      if(t.includes("marketsignals") || t.includes("reviewmarket")){
+        return "market-signals.html";
+      }
+
+      if(t.includes("customersignals") || t.includes("reviewcustomers")){
+        return "customer-signals.html";
+      }
+
+      if(t.includes("businessnumbers") || t.includes("reviewnumbers")){
+        return "business-numbers.html";
+      }
+
+      return "";
+    }
+
+    document.addEventListener("click", function(e){
+      let el = e.target;
+
+      while(el && el !== document.body){
+        const text = el.innerText || el.textContent || "";
+
+        if(text.length > 0 && text.length < 1400){
+          const page = getDataPage(text);
+
+          if(page){
+            e.preventDefault();
+            e.stopPropagation();
+
+            if(e.stopImmediatePropagation){
+              e.stopImmediatePropagation();
+            }
+
+            window.location.href = page;
+            return false;
+          }
+        }
+
+        el = el.parentElement;
+      }
+    }, true);
+
+    document.querySelectorAll("a, button, div, article, section").forEach(function(el){
+      const text = el.innerText || el.textContent || "";
+
+      if(text.length > 0 && text.length < 1400){
+        const page = getDataPage(text);
+
+        if(page){
+          el.style.cursor = "pointer";
+
+          if(el.tagName.toLowerCase() === "a"){
+            el.setAttribute("href", page);
+          }
+        }
+      }
+    });
+
+  });
+</script>
 </body>
 </html>
