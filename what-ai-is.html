@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>What AI Is | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.26)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.36));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.44),rgba(6,75,56,.50)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.26));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,h3{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.38);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .step .num{
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .grid,.flow{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px;line-height:1.68}
+      .btn{width:100%}
+      .plain-picture{min-height:320px}
+      .box,.info-card{padding:30px}
+      .item span,.info-card li{font-size:18px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy{padding:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="operation-intelligence.html">Operation Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="ai-intelligence.html">AI Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="ai">
+      <div class="content">
+        <div class="eyebrow">AI Intelligence</div>
+
+        <h1>
+          Understand what AI is<br>
+          <span>before using it for business information.</span>
+        </h1>
+
+        <p>
+          Artificial intelligence, often called AI, is software that can respond to prompts,
+          organize information, summarize content, generate ideas, compare options,
+          and support certain tasks when used carefully.
+        </p>
+
+        <p>
+          AI can be useful for learning, planning, writing, research organization,
+          productivity, and business education. It should still be checked by people,
+          especially when information affects money, legal issues, tax questions,
+          health, risk, safety, contracts, or important decisions.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="ai">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          AI is a tool for working with information, not a replacement for judgment.
+        </h2>
+
+        <div class="box">
+          <h3>What AI Is</h3>
+
+          <p>
+            AI is a computer system designed to process information and produce responses.
+            Many AI tools can read a question, understand the request, and generate text,
+            summaries, explanations, outlines, lists, comparisons, or ideas based on patterns in data.
+          </p>
+
+          <p>
+            AI does not “know” things the same way a person knows them.
+            It produces answers based on training, context, instructions, and available information.
+            That is why AI answers should be reviewed, checked, and used with responsibility.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>What AI Can Help With</h3>
+
+          <p>
+            AI can help people organize thoughts, draft content, simplify complicated topics,
+            compare options, create checklists, plan steps, prepare summaries, and support general learning.
+          </p>
+
+          <p>
+            AI is most useful when the person using it gives clear instructions,
+            checks the result, and decides whether the answer makes sense.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="ai">
+      <div class="content">
+        <div class="eyebrow">AI Basics</div>
+
+        <h2>
+          AI works best when the question is clear and the answer is reviewed.
+        </h2>
+
+        <p>
+          A good AI result often depends on the quality of the prompt.
+          The user should explain the goal, the topic, the audience, the format,
+          the tone, and any important limits.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Prompt</strong>
+            <span>A prompt is the instruction, question, or task given to the AI tool.</span>
+          </div>
+
+          <div class="item">
+            <strong>Response</strong>
+            <span>The response is what the AI produces after reading the prompt.</span>
+          </div>
+
+          <div class="item">
+            <strong>Context</strong>
+            <span>Context gives AI more background so the answer can match the situation better.</span>
+          </div>
+
+          <div class="item">
+            <strong>Review</strong>
+            <span>Review means checking the answer before using it, sharing it, or making a decision from it.</span>
+          </div>
+
+          <div class="item">
+            <strong>Correction</strong>
+            <span>Correction means asking the AI to adjust, rewrite, simplify, expand, or fix the answer.</span>
+          </div>
+
+          <div class="item">
+            <strong>Verification</strong>
+            <span>Verification means checking important facts with trusted sources before relying on the answer.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="ai">
+      <div class="content">
+        <div class="eyebrow">What AI Can Do</div>
+
+        <h2>
+          AI can support many information tasks when used carefully.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Summarize Information</h3>
+
+            <p>
+              AI can help turn long information into shorter summaries.
+              This can help a person understand the main points before reading deeper.
+            </p>
+
+            <ul>
+              <li>Summarize long text.</li>
+              <li>Pull out key points.</li>
+              <li>Organize messy notes.</li>
+              <li>Create simple explanations.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Organize Ideas</h3>
+
+            <p>
+              AI can help turn rough ideas into outlines, plans, checklists,
+              categories, or step-by-step structures.
+            </p>
+
+            <ul>
+              <li>Create an outline.</li>
+              <li>Group information by topic.</li>
+              <li>Build a checklist.</li>
+              <li>Suggest next steps.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Support Writing</h3>
+
+            <p>
+              AI can help draft, rewrite, polish, simplify, or reformat text.
+              The final message should still be reviewed by a person.
+            </p>
+
+            <ul>
+              <li>Draft emails or messages.</li>
+              <li>Rewrite text professionally.</li>
+              <li>Simplify complicated wording.</li>
+              <li>Prepare business education content.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="ai">
+      <div class="content">
+        <div class="eyebrow">What AI Cannot Do Alone</div>
+
+        <h2>
+          AI should not be treated like final authority.
+        </h2>
+
+        <p>
+          AI can sound confident even when information is incomplete, old,
+          misunderstood, or wrong. The user must stay responsible for reviewing the answer.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>AI can be wrong</strong>
+            <span>Some answers may include mistakes, missing context, or incorrect details.</span>
+          </div>
+
+          <div class="item">
+            <strong>AI can be outdated</strong>
+            <span>Some topics change quickly, so current information should be checked.</span>
+          </div>
+
+          <div class="item">
+            <strong>AI may misunderstand</strong>
+            <span>If the prompt is unclear, the answer may go in the wrong direction.</span>
+          </div>
+
+          <div class="item">
+            <strong>AI does not replace experts</strong>
+            <span>Legal, tax, medical, financial, and safety decisions should be reviewed by qualified professionals.</span>
+          </div>
+
+          <div class="item">
+            <strong>AI should not receive private secrets</strong>
+            <span>Users should be careful with passwords, private records, sensitive personal data, and confidential files.</span>
+          </div>
+
+          <div class="item">
+            <strong>AI still needs human judgment</strong>
+            <span>People must decide what is useful, safe, accurate, and appropriate.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+
+          <h2>
+            AI basics video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about what AI is,
+            how prompts work, how to review AI answers, responsible use,
+            risk awareness, and business support.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="ai">
+      <div class="content">
+        <div class="eyebrow">Responsible AI Use</div>
+
+        <h2>
+          Responsible AI use means using AI as support, then checking the result.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Use AI for Drafting</h3>
+
+            <p>
+              AI can help create a first draft, but the final version should be reviewed for accuracy,
+              tone, clarity, and purpose.
+            </p>
+
+            <ul>
+              <li>Draft first.</li>
+              <li>Review carefully.</li>
+              <li>Correct errors.</li>
+              <li>Make the final decision yourself.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Use AI for Learning</h3>
+
+            <p>
+              AI can explain topics in simple language, but important information should be checked
+              with reliable sources or qualified professionals.
+            </p>
+
+            <ul>
+              <li>Ask for simple explanations.</li>
+              <li>Request examples.</li>
+              <li>Compare sources.</li>
+              <li>Verify important facts.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Use AI for Planning</h3>
+
+            <p>
+              AI can help organize a plan, but people should decide what is realistic,
+              legal, safe, affordable, and appropriate.
+            </p>
+
+            <ul>
+              <li>Create a step-by-step plan.</li>
+              <li>Review the risks.</li>
+              <li>Check the resources needed.</li>
+              <li>Adjust the plan before action.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="ai">
+      <div class="content">
+        <div class="eyebrow">AI Review Flow</div>
+
+        <h2>
+          A simple AI workflow helps people use answers safely.
+        </h2>
+
+        <div class="flow">
+          <div class="step">
+            <div class="num">01</div>
+            <strong>Ask</strong>
+            <span>Give the AI a clear prompt with the goal, topic, format, and limits.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <strong>Review</strong>
+            <span>Read the answer carefully and check whether it matches the request.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <strong>Verify</strong>
+            <span>Check important facts, dates, numbers, rules, and sensitive information.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">04</div>
+            <strong>Decide</strong>
+            <span>Use human judgment before sharing, publishing, spending money, or making decisions.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="ai">
+      <div class="content">
+        <div class="eyebrow">AI Basics Questions</div>
+
+        <h2>
+          Questions every AI user should ask before relying on an answer.
+        </h2>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Did I give enough context?</strong>
+            <span>Clear instructions usually produce better answers.</span>
+          </div>
+
+          <div class="item">
+            <strong>Could this information be outdated?</strong>
+            <span>Current facts, prices, laws, policies, and schedules should be checked.</span>
+          </div>
+
+          <div class="item">
+            <strong>Does this affect money or legal risk?</strong>
+            <span>High-risk decisions need extra review from qualified professionals.</span>
+          </div>
+
+          <div class="item">
+            <strong>Is private information protected?</strong>
+            <span>Passwords, account details, private records, and sensitive information should be handled carefully.</span>
+          </div>
+
+          <div class="item">
+            <strong>Does the answer make sense?</strong>
+            <span>The user should compare the answer with common sense, context, and known facts.</span>
+          </div>
+
+          <div class="item">
+            <strong>What should a person review?</strong>
+            <span>Final decisions, important facts, risks, and customer-facing content should be checked by people.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      ai:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "ai";
+      const images = backgroundSets[group] || backgroundSets.ai;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
