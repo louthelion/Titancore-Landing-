@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Improvement Cycle | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.24)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.42),rgba(6,75,56,.48)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.24));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,h3{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.36);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .step .num{
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .grid,.flow{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px;line-height:1.68}
+      .btn{width:100%}
+      .plain-picture{min-height:320px}
+      .box,.info-card{padding:30px}
+      .item span,.info-card li{font-size:18px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy{padding:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="improvement">
+      <div class="content">
+        <div class="eyebrow">Improvement Cycle</div>
+
+        <h1>
+          Use every delay and problem<br>
+          <span>to make the business better.</span>
+        </h1>
+
+        <p>
+          Improvement Cycle explains how a business studies delays, repeated problems,
+          weak steps, customer feedback, quality issues, workflow gaps, and reporting results
+          to improve every week.
+        </p>
+
+        <p>
+          A business should not only finish work. It should learn from the work.
+          The improvement cycle helps leadership see what keeps happening,
+          what needs correction, what can be simplified, and what should become stronger.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="improvement">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Improvement Cycle means reviewing the business, fixing weak points, and building better systems.
+        </h2>
+
+        <div class="box">
+          <h3>What is the Improvement Cycle?</h3>
+
+          <p>
+            The Improvement Cycle is the process of studying business activity after work happens.
+            It looks at delays, customer feedback, missed steps, quality issues, repeated mistakes,
+            open reports, team notes, and workflow problems so the business can improve.
+          </p>
+
+          <p>
+            The goal is not only to find mistakes. The goal is to learn, correct, standardize,
+            and build a stronger business process for the next week, next report, next customer,
+            and next decision.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Why does it matter?</h3>
+
+          <p>
+            Without improvement, the same problems keep coming back. Customers keep waiting,
+            employees repeat the same confusion, leaders keep asking the same questions,
+            and the business wastes time correcting the same issues again and again.
+          </p>
+
+          <p>
+            A clear improvement cycle turns problems into better systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="improvement">
+      <div class="content">
+        <div class="eyebrow">Improvement Areas</div>
+
+        <h2>
+          A business should improve the areas that create the most delays and confusion.
+        </h2>
+
+        <p>
+          Improvement should focus on the real weak points. The business should study where work slows down,
+          where information is missing, where customers ask the same questions, and where leadership keeps seeing the same problem.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Workflow delays</strong>
+            <span>Review where work slows down, waits too long, or gets stuck between departments.</span>
+          </div>
+
+          <div class="item">
+            <strong>Customer feedback</strong>
+            <span>Study what customers ask, complain about, misunderstand, or need more help with.</span>
+          </div>
+
+          <div class="item">
+            <strong>Repeated mistakes</strong>
+            <span>Track problems that happen more than once and create a correction plan.</span>
+          </div>
+
+          <div class="item">
+            <strong>Quality issues</strong>
+            <span>Review unfinished work, weak details, unclear messages, or missing approvals.</span>
+          </div>
+
+          <div class="item">
+            <strong>Reporting gaps</strong>
+            <span>Look for missing numbers, unclear updates, weak summaries, and leadership blind spots.</span>
+          </div>
+
+          <div class="item">
+            <strong>Follow-up failures</strong>
+            <span>Find requests, customers, approvals, or tasks that did not receive the right follow-up.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="improvement">
+      <div class="content">
+        <div class="eyebrow">Improvement Review</div>
+
+        <h2>
+          Every improvement starts by understanding what really happened.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Find the Pattern</h3>
+
+            <p>
+              A single issue may be small, but a repeated issue becomes a system problem.
+              The business should look for patterns in delays, mistakes, customer questions, and incomplete work.
+            </p>
+
+            <ul>
+              <li>What problem keeps repeating?</li>
+              <li>Where does the process slow down?</li>
+              <li>Which department sees the same issue?</li>
+              <li>What information is missing again and again?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Find the Cause</h3>
+
+            <p>
+              The business should not only ask what went wrong.
+              It should ask why it happened, where the gap started, and what system failed to prevent it.
+            </p>
+
+            <ul>
+              <li>Was the instruction unclear?</li>
+              <li>Was the wrong person assigned?</li>
+              <li>Was approval missing?</li>
+              <li>Was the customer not followed up?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Fix the Process</h3>
+
+            <p>
+              Improvement should create a better process, not only a one-time correction.
+              The business should update forms, checklists, routing, status labels, reporting, or approval rules.
+            </p>
+
+            <ul>
+              <li>Update the workflow.</li>
+              <li>Add missing review points.</li>
+              <li>Create clearer instructions.</li>
+              <li>Improve the next report or follow-up step.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="improvement">
+      <div class="content">
+        <div class="eyebrow">Improvement Tracking</div>
+
+        <h2>
+          Improvement needs tracking so the same problem does not return.
+        </h2>
+
+        <p>
+          After a problem is identified, the business should track what was changed,
+          who owns the correction, when it should be reviewed again, and whether the change actually worked.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Issue found</strong>
+            <span>Record the delay, mistake, complaint, weak step, or repeated problem.</span>
+          </div>
+
+          <div class="item">
+            <strong>Cause identified</strong>
+            <span>Explain why the issue happened and where the process failed.</span>
+          </div>
+
+          <div class="item">
+            <strong>Correction assigned</strong>
+            <span>Give responsibility to the right person, team, department, or leadership level.</span>
+          </div>
+
+          <div class="item">
+            <strong>Process updated</strong>
+            <span>Change the workflow, checklist, form, routing, report, or approval rule.</span>
+          </div>
+
+          <div class="item">
+            <strong>Result reviewed</strong>
+            <span>Check later to see whether the improvement solved the problem.</span>
+          </div>
+
+          <div class="item">
+            <strong>Standard saved</strong>
+            <span>Save the new process so the business can repeat the better way.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+
+          <h2>
+            Improvement cycle video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about problem review,
+            customer feedback, workflow improvement, weekly review,
+            quality control, reporting gaps, and continuous business improvement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="improvement">
+      <div class="content">
+        <div class="eyebrow">Improvement Cycle Types</div>
+
+        <h2>
+          Different problems need different improvement actions.
+        </h2>
+
+        <p>
+          Not every issue should be handled the same way.
+          Some problems need a better checklist. Some need better customer communication.
+          Some need leadership approval. Some need new routing, new reporting, or a stronger quality review.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Customer Improvement</h3>
+
+            <p>
+              Customer improvement studies what customers experience.
+              It reviews whether customers understand the process, receive follow-up,
+              get clear answers, and feel supported.
+            </p>
+
+            <ul>
+              <li>Review customer questions.</li>
+              <li>Track complaints or confusion.</li>
+              <li>Improve follow-up timing.</li>
+              <li>Make next steps easier to understand.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Workflow Improvement</h3>
+
+            <p>
+              Workflow improvement studies how work moves inside the business.
+              It improves assignment, routing, status tracking, approval, and completion.
+            </p>
+
+            <ul>
+              <li>Review where work gets stuck.</li>
+              <li>Improve assignment rules.</li>
+              <li>Clarify status labels.</li>
+              <li>Add review points before completion.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Leadership Improvement</h3>
+
+            <p>
+              Leadership improvement studies what leaders need to see earlier.
+              It improves reports, dashboards, approval visibility, and decision timing.
+            </p>
+
+            <ul>
+              <li>Improve weekly reporting.</li>
+              <li>Highlight delayed items sooner.</li>
+              <li>Show approval needs clearly.</li>
+              <li>Turn repeated issues into better decisions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="improvement">
+      <div class="content">
+        <div class="eyebrow">Improvement Flow</div>
+
+        <h2>
+          A strong improvement cycle reviews, corrects, tests, and standardizes.
+        </h2>
+
+        <div class="flow">
+          <div class="step">
+            <div class="num">01</div>
+            <strong>Review</strong>
+            <span>Study reports, delays, feedback, quality issues, and workflow gaps.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <strong>Correct</strong>
+            <span>Fix the weak point with clearer steps, better routing, stronger review, or better communication.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <strong>Test</strong>
+            <span>Watch the new process to see whether the issue improves or continues.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">04</div>
+            <strong>Standardize</strong>
+            <span>Save the better process so the business can use it again consistently.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="improvement">
+      <div class="content">
+        <div class="eyebrow">Improvement Questions</div>
+
+        <h2>
+          Questions every improvement cycle should answer.
+        </h2>
+
+        <div class="grid">
+          <div class="item">
+            <strong>What keeps happening?</strong>
+            <span>Find repeated delays, problems, mistakes, questions, or customer concerns.</span>
+          </div>
+
+          <div class="item">
+            <strong>Where does it start?</strong>
+            <span>Identify the first place the problem appears in the workflow.</span>
+          </div>
+
+          <div class="item">
+            <strong>Who is affected?</strong>
+            <span>Review whether the issue affects customers, employees, departments, leadership, or company results.</span>
+          </div>
+
+          <div class="item">
+            <strong>What needs to change?</strong>
+            <span>Decide whether to change the form, workflow, report, checklist, approval, or follow-up process.</span>
+          </div>
+
+          <div class="item">
+            <strong>Who owns the correction?</strong>
+            <span>Assign the improvement to the right person, department, or leadership level.</span>
+          </div>
+
+          <div class="item">
+            <strong>Did the fix work?</strong>
+            <span>Review the result later so the business knows whether the improvement solved the problem.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      improvement:[
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "improvement";
+      const images = backgroundSets[group] || backgroundSets.improvement;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
