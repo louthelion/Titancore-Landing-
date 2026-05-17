@@ -1453,5 +1453,53 @@
       });
     })();
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    function cleanText(text){
+      return (text || "")
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/[^a-z0-9]+/g, "");
+    }
+
+    function getBusinessSystemPage(text){
+      const t = cleanText(text);
+
+      if(t.includes("systemreportsandcontrols") || t.includes("reviewsystems")){
+        return "system-reports-controls.html";
+      }
+
+      return "";
+    }
+
+    document.addEventListener("click", function(e){
+      let el = e.target;
+
+      while(el && el !== document.body){
+        const text = el.innerText || el.textContent || "";
+
+        if(text.length > 0 && text.length < 1400){
+          const page = getBusinessSystemPage(text);
+
+          if(page){
+            e.preventDefault();
+            e.stopPropagation();
+
+            if(e.stopImmediatePropagation){
+              e.stopImmediatePropagation();
+            }
+
+            window.location.href = page;
+            return false;
+          }
+        }
+
+        el = el.parentElement;
+      }
+    }, true);
+
+  });
+</script>
 </body>
 </html>
