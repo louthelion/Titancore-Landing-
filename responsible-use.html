@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Responsible Use | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.25)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.36));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.44),rgba(6,75,56,.50)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.26));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,h3{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.38);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .step .num{
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .grid,.flow{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px;line-height:1.68}
+      .btn{width:100%}
+      .plain-picture{min-height:320px}
+      .box,.info-card{padding:30px}
+      .item span,.info-card li{font-size:18px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy{padding:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="operation-intelligence.html">Operation Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="ai-intelligence.html">AI Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="responsible">
+      <div class="content">
+        <div class="eyebrow">AI Intelligence</div>
+
+        <h1>
+          Responsible use means using AI<br>
+          <span>carefully, clearly, and with judgment.</span>
+        </h1>
+
+        <p>
+          Responsible Use explains basic rules for using AI carefully,
+          protecting information, verifying facts, reviewing risk,
+          and making better decisions.
+        </p>
+
+        <p>
+          AI can support learning, writing, planning, and organization,
+          but the person using it must still review the answer, protect privacy,
+          check important information, and decide what is safe to use.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="responsible">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Responsible AI use means treating AI as support, not final authority.
+        </h2>
+
+        <div class="box">
+          <h3>What Responsible Use Means</h3>
+
+          <p>
+            Responsible Use means using AI in a careful and controlled way.
+            It means giving clear instructions, reviewing the answer,
+            checking important facts, protecting private information,
+            and using human judgment before taking action.
+          </p>
+
+          <p>
+            AI can help people work faster and organize information better,
+            but it should not be trusted blindly. A responsible user understands
+            that AI answers can be incomplete, outdated, misunderstood, or wrong.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Why Responsible Use Matters</h3>
+
+          <p>
+            Responsible use protects people, customers, businesses, and decisions.
+            It helps prevent careless mistakes, privacy exposure, weak public messages,
+            wrong facts, unsafe advice, and poor business judgment.
+          </p>
+
+          <p>
+            The safest approach is simple: use AI for support, then review,
+            verify, correct, and decide carefully.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="responsible">
+      <div class="content">
+        <div class="eyebrow">Responsible Use Rules</div>
+
+        <h2>
+          A responsible AI user checks before trusting, sharing, or deciding.
+        </h2>
+
+        <p>
+          AI should be used with clear rules. These rules help people avoid mistakes,
+          protect sensitive information, and make better decisions.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Use clear prompts</strong>
+            <span>Explain the topic, goal, audience, format, tone, and limits before asking AI for help.</span>
+          </div>
+
+          <div class="item">
+            <strong>Review every answer</strong>
+            <span>Read the AI response carefully before using it, sharing it, or making a decision from it.</span>
+          </div>
+
+          <div class="item">
+            <strong>Verify important facts</strong>
+            <span>Check dates, numbers, prices, rules, laws, policies, names, and claims that matter.</span>
+          </div>
+
+          <div class="item">
+            <strong>Protect private information</strong>
+            <span>Do not expose passwords, private records, customer details, account numbers, or confidential files.</span>
+          </div>
+
+          <div class="item">
+            <strong>Use human judgment</strong>
+            <span>People should decide what is useful, safe, correct, respectful, and appropriate.</span>
+          </div>
+
+          <div class="item">
+            <strong>Ask experts when needed</strong>
+            <span>Legal, tax, health, financial, safety, and high-risk decisions should be reviewed by qualified professionals.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="responsible">
+      <div class="content">
+        <div class="eyebrow">Safe Use Review</div>
+
+        <h2>
+          Responsible use protects accuracy, privacy, and trust.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Accuracy Control</h3>
+
+            <p>
+              A responsible user checks whether the answer is correct before relying on it.
+              This matters most when facts can change or when the answer may affect a decision.
+            </p>
+
+            <ul>
+              <li>Check facts, names, and numbers.</li>
+              <li>Check dates, rules, and policies.</li>
+              <li>Check calculations and totals.</li>
+              <li>Check important claims before use.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Privacy Protection</h3>
+
+            <p>
+              Responsible use means being careful with private information.
+              People should avoid sharing sensitive details unless they know it is safe and necessary.
+            </p>
+
+            <ul>
+              <li>Protect passwords and logins.</li>
+              <li>Remove account numbers when possible.</li>
+              <li>Protect customer information.</li>
+              <li>Be careful with confidential records.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Decision Control</h3>
+
+            <p>
+              AI can help prepare options and organize thinking,
+              but the final decision should be made by a person using judgment.
+            </p>
+
+            <ul>
+              <li>Review the risk.</li>
+              <li>Compare options.</li>
+              <li>Ask a professional when needed.</li>
+              <li>Decide carefully before action.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="responsible">
+      <div class="content">
+        <div class="eyebrow">Do and Do Not</div>
+
+        <h2>
+          Responsible use means knowing what to do and what to avoid.
+        </h2>
+
+        <p>
+          AI can be helpful when it is used carefully. It becomes risky when people
+          copy answers without review or use AI for serious decisions without checking.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Do use AI for drafts</strong>
+            <span>Use AI to create first drafts, outlines, summaries, and checklists.</span>
+          </div>
+
+          <div class="item">
+            <strong>Do review the final version</strong>
+            <span>Check the wording, tone, facts, privacy, and purpose before using the result.</span>
+          </div>
+
+          <div class="item">
+            <strong>Do not trust blindly</strong>
+            <span>Do not assume an answer is correct just because it sounds confident.</span>
+          </div>
+
+          <div class="item">
+            <strong>Do not share secrets</strong>
+            <span>Do not place passwords, private customer details, or confidential records into AI tools carelessly.</span>
+          </div>
+
+          <div class="item">
+            <strong>Do check high-risk topics</strong>
+            <span>Money, legal, tax, health, safety, and contract questions need extra review.</span>
+          </div>
+
+          <div class="item">
+            <strong>Do not skip judgment</strong>
+            <span>People are responsible for deciding whether the final result should be used.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+
+          <h2>
+            Responsible use video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about safe AI use,
+            privacy protection, fact checking, human review, responsible writing,
+            and better decision-making.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="responsible">
+      <div class="content">
+        <div class="eyebrow">Responsible Use Types</div>
+
+        <h2>
+          Responsible use changes depending on the purpose.
+        </h2>
+
+        <p>
+          A simple draft, a public page, a customer message, a business plan,
+          or a high-risk decision should not all be reviewed the same way.
+          The review must match the use.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Responsible Writing</h3>
+
+            <p>
+              When AI helps with writing, the final text should be reviewed for clarity,
+              tone, accuracy, privacy, and whether the message fits the audience.
+            </p>
+
+            <ul>
+              <li>Check grammar and tone.</li>
+              <li>Remove confusing wording.</li>
+              <li>Confirm the message is accurate.</li>
+              <li>Protect private information.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Responsible Research</h3>
+
+            <p>
+              When AI helps with research, the answer should be treated as a starting point.
+              Important information should be checked with reliable sources.
+            </p>
+
+            <ul>
+              <li>Check current facts.</li>
+              <li>Compare trusted sources.</li>
+              <li>Look for missing context.</li>
+              <li>Verify numbers and claims.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Responsible Planning</h3>
+
+            <p>
+              When AI helps with planning, the plan should be checked for realism,
+              cost, timing, risk, resources, and legal or professional requirements.
+            </p>
+
+            <ul>
+              <li>Review the steps.</li>
+              <li>Check possible risks.</li>
+              <li>Confirm resources needed.</li>
+              <li>Make the final plan with judgment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="responsible">
+      <div class="content">
+        <div class="eyebrow">Responsible Use Flow</div>
+
+        <h2>
+          A clean responsible use flow asks, reviews, verifies, and decides.
+        </h2>
+
+        <div class="flow">
+          <div class="step">
+            <div class="num">01</div>
+            <strong>Ask</strong>
+            <span>Give a clear prompt with the goal, context, audience, format, and limits.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <strong>Review</strong>
+            <span>Read the answer carefully and check whether it matches the real need.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <strong>Verify</strong>
+            <span>Check important facts, sources, privacy, numbers, rules, and risk areas.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">04</div>
+            <strong>Decide</strong>
+            <span>Use human judgment before sharing, publishing, spending, signing, or taking action.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="responsible">
+      <div class="content">
+        <div class="eyebrow">Responsible Use Questions</div>
+
+        <h2>
+          Questions to ask before using AI-assisted information.
+        </h2>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Did I ask clearly?</strong>
+            <span>Check whether the prompt included the goal, context, format, and audience.</span>
+          </div>
+
+          <div class="item">
+            <strong>Did I review the answer?</strong>
+            <span>Read the answer carefully before copying, sending, publishing, or deciding.</span>
+          </div>
+
+          <div class="item">
+            <strong>What facts must be checked?</strong>
+            <span>Verify anything that involves numbers, dates, prices, rules, laws, or requirements.</span>
+          </div>
+
+          <div class="item">
+            <strong>Is private information protected?</strong>
+            <span>Remove passwords, account details, customer information, and sensitive records.</span>
+          </div>
+
+          <div class="item">
+            <strong>Is this high risk?</strong>
+            <span>Money, legal, tax, health, safety, contracts, and public promises need extra review.</span>
+          </div>
+
+          <div class="item">
+            <strong>Who makes the final decision?</strong>
+            <span>A person should make the final decision using judgment, review, and verification.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      responsible:[
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "responsible";
+      const images = backgroundSets[group] || backgroundSets.responsible;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
