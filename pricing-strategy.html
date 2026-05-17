@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Pricing Strategy | TitanCore Holdings</title>
+
+  <style>
+    :root{--green:#064b38;--green2:#0b684f;--gold:#d7b35d;--gold2:#f0d07a;--white:#f7f1e6;--soft:#d8d0c4;--line:rgba(215,179,93,.78)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .page{max-width:1180px;margin:0 auto;background:#000;border-left:1px solid var(--line);border-right:1px solid var(--line);min-height:100vh}
+    .topbar{position:sticky;top:0;z-index:100;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:14px 24px;background:#000;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .logo{width:76px;height:76px;border:3px solid var(--gold);display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;font-size:32px;font-weight:700;color:var(--gold2);background:#030303;flex-shrink:0}
+    .brand{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,3.5vw,46px);letter-spacing:clamp(1px,.55vw,5px);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand span{color:var(--gold)}
+    .menu-btn{width:76px;height:76px;border:3px solid var(--gold);background:linear-gradient(135deg,var(--green2),var(--green));color:#fff;font-size:36px;cursor:pointer;flex-shrink:0}
+    .menu-btn:hover{background:var(--gold);color:#000}
+    .menu{display:none;background:#080808;border-bottom:1px solid var(--line);padding:22px 42px 26px}
+    .menu.active{display:block}
+    .menu a{display:block;padding:17px 0;border-bottom:1px solid rgba(215,179,93,.25);text-transform:uppercase;letter-spacing:4px;color:var(--soft);font-size:18px}
+    .menu a:hover{color:var(--gold2);padding-left:8px}
+    .section{position:relative;background-size:cover;background-position:center;background-repeat:no-repeat;border-bottom:1px solid var(--line);overflow:hidden}
+    .section::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.23)),linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34));z-index:0}
+    .section.green::before{background:linear-gradient(90deg,rgba(0,0,0,.40),rgba(6,75,56,.46)),linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.24))}
+    .content{position:relative;z-index:1;padding:58px 42px;max-width:1040px}
+    .hero{min-height:720px;display:flex;align-items:center}
+    .eyebrow{color:var(--gold2);text-transform:uppercase;letter-spacing:5px;font-size:14px;font-weight:900;margin-bottom:22px}
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:var(--white);line-height:1.06}
+    h1{font-size:clamp(46px,6vw,86px);margin-bottom:30px;max-width:960px}
+    h1 span,h3{color:var(--gold2)}
+    h2{font-size:clamp(40px,5vw,72px);margin-bottom:36px;max-width:1000px}
+    h3{font-size:clamp(32px,4vw,54px);margin-bottom:20px}
+    p{color:#f2ece1;font-size:22px;line-height:1.72;margin-bottom:26px;max-width:990px}
+    .btn{min-width:210px;display:inline-flex;justify-content:center;align-items:center;gap:14px;padding:20px 30px;border:2px solid var(--gold);background:linear-gradient(135deg,var(--green2),var(--green));color:#fff;text-transform:uppercase;font-weight:900;letter-spacing:3px;width:fit-content;margin-top:34px}
+    .btn:hover{background:var(--gold);color:#000}
+    .plain-picture{min-height:430px;background-size:cover;background-position:center;background-repeat:no-repeat;border-top:1px solid rgba(215,179,93,.35);border-bottom:1px solid rgba(215,179,93,.35)}
+    .box{border:2px solid var(--gold);background:rgba(0,0,0,.58);padding:38px;margin-top:28px;position:relative;z-index:1}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;max-width:1000px}
+    .item{border:1px solid rgba(215,179,93,.55);background:rgba(0,0,0,.50);padding:24px;position:relative;z-index:1}
+    .item strong{display:block;color:var(--gold2);font-family:Georgia,"Times New Roman",serif;font-size:23px;margin-bottom:10px;line-height:1.2}
+    .item span{color:#f7f1e6;font-size:19px;line-height:1.58}
+    .info-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:40px;max-width:1000px}
+    .info-card{position:relative;border:2px solid var(--gold);border-radius:34px;background-size:cover;background-position:center;padding:44px 46px;min-height:330px;overflow:hidden}
+    .info-card::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.36);z-index:0}
+    .info-card h3,.info-card p,.info-card ul{position:relative;z-index:1}
+    .info-card ul{list-style:none;display:grid;gap:12px;margin-top:18px}
+    .info-card li{color:#fff;font-size:20px;line-height:1.55;border-left:4px solid var(--gold);padding-left:16px}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px;max-width:1040px;position:relative;z-index:1}
+    .step{border:1px solid rgba(215,179,93,.55);background:rgba(0,0,0,.58);padding:24px;min-height:180px}
+    .step .num{color:var(--gold2);font-family:Georgia,"Times New Roman",serif;font-size:34px;margin-bottom:12px}
+    .step strong{display:block;color:#fff;font-size:20px;margin-bottom:10px;text-transform:uppercase;letter-spacing:2px}
+    .step span{color:#f7f1e6;font-size:18px;line-height:1.5}
+    .video-section{background:#050505;border-bottom:1px solid var(--line);padding:48px 42px}
+    .video-main{min-height:470px;border:2px solid var(--gold);background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+    .video-main::before{content:"▶";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:86px;height:86px;border:2px solid var(--gold);border-radius:50%;background:rgba(0,0,0,.58);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:36px;padding-left:6px;z-index:1}
+    .video-main::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));z-index:0}
+    .video-copy{position:relative;z-index:2;padding:38px;width:100%}
+    .simple-footer{padding:24px;text-align:center;color:var(--gold);font-size:18px;background:#010101}
+    @media(max-width:900px){.grid,.flow{grid-template-columns:1fr}}
+    @media(max-width:600px){.topbar{padding:12px 14px;gap:10px}.logo,.menu-btn{width:62px;height:62px}.logo{font-size:27px}.menu-btn{font-size:30px}.brand{font-size:16px;letter-spacing:1px}.menu{padding:22px 30px 26px}.menu a{font-size:15px;letter-spacing:2.5px}.content{padding:48px 28px}h1{font-size:42px}h2{font-size:40px}p{font-size:21px;line-height:1.68}.btn{width:100%}.plain-picture{min-height:320px}.box,.info-card{padding:30px}.item span,.info-card li{font-size:18px}.video-section{padding:42px 28px}.video-main{min-height:430px}.video-copy{padding:28px}}
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="strategy-control.html">Strategy &amp; Control</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="pricing">
+      <div class="content">
+        <div class="eyebrow">Pricing Strategy</div>
+        <h1>Set price with value,<br><span>cost, trust, and profit.</span></h1>
+        <p>
+          Pricing Strategy explains how price should support the customer value, real cost,
+          competition, trust, profitability, and long-term sustainability of the business.
+        </p>
+        <p>
+          A price is not only a number. It tells customers how to understand the offer,
+          how much value they should expect, and whether the business can survive after all costs are paid.
+        </p>
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section><div class="plain-picture"></div></section>
+
+    <section class="section daily-bg" data-bg-group="pricing">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+        <h2>Pricing strategy means choosing a price that makes sense for both the customer and the business.</h2>
+
+        <div class="box">
+          <h3>What is Pricing Strategy?</h3>
+          <p>
+            Pricing Strategy is the process of deciding how much a business should charge and why.
+            It studies customer value, competitor pricing, cost, profit margin, demand, trust, positioning,
+            and long-term stability.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Why does it matter?</h3>
+          <p>
+            A business can sell at the wrong price in two ways. It can price too low and lose money,
+            or price too high without enough trust and value. A strong pricing strategy protects the customer decision
+            and the business operation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="pricing">
+      <div class="content">
+        <div class="eyebrow">Pricing Review</div>
+        <h2>Good pricing balances value, cost, profit, and competition.</h2>
+
+        <div class="grid">
+          <div class="item"><strong>Customer value</strong><span>Review what benefit the customer believes they are receiving.</span></div>
+          <div class="item"><strong>Real cost</strong><span>Include labor, tools, delivery, support, marketing, software, taxes, and overhead.</span></div>
+          <div class="item"><strong>Profit margin</strong><span>Make sure the business has enough money left after expenses.</span></div>
+          <div class="item"><strong>Competitor range</strong><span>Compare low, middle, and premium pricing in the market.</span></div>
+          <div class="item"><strong>Trust level</strong><span>Higher prices need stronger proof, presentation, explanation, and confidence.</span></div>
+          <div class="item"><strong>Sustainability</strong><span>The price must support the business long-term, not only make the first sale.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section><div class="plain-picture"></div></section>
+
+    <section class="section daily-bg" data-bg-group="pricing">
+      <div class="content">
+        <div class="eyebrow">Pricing Signals</div>
+        <h2>Price should support the position of the business.</h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Low Price Strategy</h3>
+            <p>
+              Low pricing can attract customers, but it can also weaken profit, reduce trust,
+              and make it harder to deliver quality.
+            </p>
+            <ul>
+              <li>Works when cost is controlled</li>
+              <li>Can attract price-sensitive customers</li>
+              <li>May require high volume</li>
+              <li>Can become dangerous without margin</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Balanced Price Strategy</h3>
+            <p>
+              Balanced pricing aims to show fair value while protecting profit.
+              This is often useful when the business wants trust and stability.
+            </p>
+            <ul>
+              <li>Matches market expectations</li>
+              <li>Supports customer confidence</li>
+              <li>Allows better service</li>
+              <li>Protects operating cost</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Premium Price Strategy</h3>
+            <p>
+              Premium pricing requires stronger positioning, proof, service, expertise,
+              convenience, or customer experience.
+            </p>
+            <ul>
+              <li>Needs strong trust</li>
+              <li>Needs clear difference</li>
+              <li>Must deliver real value</li>
+              <li>Must feel worth the higher price</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+          <h2>Pricing strategy video space.</h2>
+          <p>
+            This area is ready for future videos about price setting, value explanation,
+            cost control, competitor pricing, and profit protection.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="pricing">
+      <div class="content">
+        <div class="eyebrow">Pricing Flow</div>
+        <h2>Use a clear pricing flow before choosing the number.</h2>
+
+        <div class="flow">
+          <div class="step"><div class="num">01</div><strong>Value</strong><span>Understand what the customer receives.</span></div>
+          <div class="step"><div class="num">02</div><strong>Cost</strong><span>Calculate the real cost of delivery.</span></div>
+          <div class="step"><div class="num">03</div><strong>Market</strong><span>Compare competitor price ranges.</span></div>
+          <div class="step"><div class="num">04</div><strong>Margin</strong><span>Choose a price that protects profit.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="pricing">
+      <div class="content">
+        <div class="eyebrow">Pricing Questions</div>
+        <h2>Questions every pricing strategy should answer.</h2>
+
+        <div class="grid">
+          <div class="item"><strong>What does the customer value?</strong><span>Price should connect to the result customers want.</span></div>
+          <div class="item"><strong>What is the true cost?</strong><span>Include hidden and ongoing costs.</span></div>
+          <div class="item"><strong>What do competitors charge?</strong><span>Understand the market range before deciding.</span></div>
+          <div class="item"><strong>Can the business make profit?</strong><span>The price must protect sustainability.</span></div>
+          <div class="item"><strong>Does the price match the position?</strong><span>Premium positioning needs premium proof.</span></div>
+          <div class="item"><strong>Can customers understand the value?</strong><span>If value is unclear, the price will feel too high.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section><div class="plain-picture"></div></section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+        <h2>Contact us today</h2>
+        <p>For general questions, professional inquiries, business intelligence questions, or TitanCore-related information, contact TitanCore Holdings.</p>
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">© 2025 TitanCore Holdings. All rights reserved.</footer>
+  </main>
+
+  <script>
+    function toggleMenu(){const menu=document.getElementById("menu");if(menu){menu.classList.toggle("active");}}
+
+    const backgroundSets={
+      pricing:[
+        "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures=[
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures=[
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures=[
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day=new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group=section.dataset.bgGroup||"pricing";
+      const images=backgroundSets[group]||backgroundSets.pricing;
+      section.style.backgroundImage="url('"+images[(day+index)%images.length]+"')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage="url('"+plainPictures[(day+index)%plainPictures.length]+"')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage="url('"+cardPictures[(day+index)%cardPictures.length]+"')";
+    });
+
+    const videoPanel=document.getElementById("dailyVideoPanel");
+    if(videoPanel){videoPanel.style.backgroundImage="url('"+videoPictures[day%videoPictures.length]+"')";}
+  </script>
+</body>
+</html>
