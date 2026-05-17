@@ -1487,5 +1487,46 @@
       });
     })();
   </script>
+  <script>
+  document.addEventListener("click", function(e){
+    const card = e.target.closest("a, .strategy-card, .topic-button, .card, .intelligence-card");
+
+    if(!card || !card.textContent){
+      return;
+    }
+
+    const text = card.textContent.toLowerCase();
+
+    if(text.includes("market positioning")){
+      e.preventDefault();
+      window.location.href = "market-positioning-strategy.html";
+    }
+
+    if(text.includes("offer strategy")){
+      e.preventDefault();
+      window.location.href = "offer-strategy.html";
+    }
+
+    if(text.includes("pricing strategy")){
+      e.preventDefault();
+      window.location.href = "pricing-strategy.html";
+    }
+
+    if(text.includes("growth path")){
+      e.preventDefault();
+      window.location.href = "growth-path-strategy.html";
+    }
+
+    if(text.includes("risk strategy")){
+      e.preventDefault();
+      window.location.href = "risk-strategy.html";
+    }
+
+    if(text.includes("decision discipline")){
+      e.preventDefault();
+      window.location.href = "decision-discipline.html";
+    }
+  }, true);
+</script>
 </body>
 </html>
