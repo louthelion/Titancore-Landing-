@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Intake & Routing | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{
+      color:var(--gold);
+    }
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{
+      display:block;
+    }
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.24)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.42),rgba(6,75,56,.48)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.24));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,
+    h3{
+      color:var(--gold2);
+    }
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.36);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .step .num{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .grid,
+      .flow{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:600px){
+      .topbar{
+        padding:12px 14px;
+        gap:10px;
+      }
+
+      .logo,
+      .menu-btn{
+        width:62px;
+        height:62px;
+      }
+
+      .logo{
+        font-size:27px;
+      }
+
+      .menu-btn{
+        font-size:30px;
+      }
+
+      .brand{
+        font-size:16px;
+        letter-spacing:1px;
+      }
+
+      .menu{
+        padding:22px 30px 26px;
+      }
+
+      .menu a{
+        font-size:15px;
+        letter-spacing:2.5px;
+      }
+
+      .content{
+        padding:48px 28px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:40px;
+      }
+
+      p{
+        font-size:21px;
+        line-height:1.68;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .plain-picture{
+        min-height:320px;
+      }
+
+      .box,
+      .info-card{
+        padding:30px;
+      }
+
+      .item span,
+      .info-card li{
+        font-size:18px;
+      }
+
+      .video-section{
+        padding:42px 28px;
+      }
+
+      .video-main{
+        min-height:430px;
+      }
+
+      .video-copy{
+        padding:28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="intake">
+      <div class="content">
+        <div class="eyebrow">Intake & Routing</div>
+
+        <h1>
+          Capture every request<br>
+          <span>and send it to the right place.</span>
+        </h1>
+
+        <p>
+          Intake & Routing explains how customer requests, forms, calls, emails,
+          applications, messages, and inquiries should be captured, organized,
+          and sent to the right company, department, or review path.
+        </p>
+
+        <p>
+          A business can lose money and trust when requests are missed, delayed,
+          sent to the wrong person, or handled without a clear process.
+          Intake & Routing creates order from the first customer contact.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="intake">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Intake & Routing means controlling the first step of every request.
+        </h2>
+
+        <div class="box">
+          <h3>What is Intake?</h3>
+
+          <p>
+            Intake is the process of collecting information when a customer, partner,
+            vendor, employee, or business contact reaches out. Intake may come from a website form,
+            phone call, email, chat message, application, document upload, appointment request,
+            service question, or internal company request.
+          </p>
+
+          <p>
+            Good intake captures the right information the first time so the business can understand
+            what the person needs, where the request belongs, how urgent it is, and what should happen next.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>What is Routing?</h3>
+
+          <p>
+            Routing is the process of sending the request to the correct destination.
+            A request may need to go to sales, customer service, funding intake, underwriting,
+            real estate review, property management, care coordination, administration,
+            leadership approval, or another department.
+          </p>
+
+          <p>
+            Routing prevents confusion. It makes sure the right team sees the request,
+            the right information is attached, and the next step is not delayed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="intake">
+      <div class="content">
+        <div class="eyebrow">Intake Control Areas</div>
+
+        <h2>
+          A strong intake process collects the right information before work starts.
+        </h2>
+
+        <p>
+          The business should not begin work with missing information.
+          Every request should be captured in a clean, organized way so the team can understand
+          who the request is from, what is needed, how urgent it is, and where it should go.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Contact information</strong>
+            <span>Capture name, phone, email, company name, location, and preferred contact method.</span>
+          </div>
+
+          <div class="item">
+            <strong>Request type</strong>
+            <span>Identify whether the request is sales, service, support, funding, property, care, vendor, internal, or leadership-related.</span>
+          </div>
+
+          <div class="item">
+            <strong>Customer need</strong>
+            <span>Understand what the person is asking for, what problem they want solved, and what result they expect.</span>
+          </div>
+
+          <div class="item">
+            <strong>Urgency level</strong>
+            <span>Separate routine requests from urgent issues, approvals, complaints, deadlines, and time-sensitive needs.</span>
+          </div>
+
+          <div class="item">
+            <strong>Documents attached</strong>
+            <span>Track files, screenshots, applications, contracts, photos, statements, forms, or supporting records.</span>
+          </div>
+
+          <div class="item">
+            <strong>Next action</strong>
+            <span>Define whether the request needs follow-up, review, approval, scheduling, quote, research, or escalation.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="intake">
+      <div class="content">
+        <div class="eyebrow">Routing Review</div>
+
+        <h2>
+          Routing should move the request to the right path without delay.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Company Routing</h3>
+
+            <p>
+              Company Routing decides which company or business area should receive the request.
+              This matters when the public website or main contact channel receives different types of inquiries.
+            </p>
+
+            <ul>
+              <li>Identify which company the request belongs to.</li>
+              <li>Separate public questions from service requests.</li>
+              <li>Send company-specific work to the correct company page or team.</li>
+              <li>Keep holding-company information separate from company service work.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Department Routing</h3>
+
+            <p>
+              Department Routing sends the request to the department that can actually handle it.
+              A funding question, real estate question, HR issue, customer message, or vendor request should not all go to the same place.
+            </p>
+
+            <ul>
+              <li>Route requests by department responsibility.</li>
+              <li>Attach the intake information before sending.</li>
+              <li>Mark the status so leadership can see what happened.</li>
+              <li>Prevent requests from sitting in the wrong inbox.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Leadership Routing</h3>
+
+            <p>
+              Some requests need leadership review before action.
+              These may include approvals, contracts, complaints, exceptions, sensitive issues, payments, or major business decisions.
+            </p>
+
+            <ul>
+              <li>Identify requests that require approval.</li>
+              <li>Escalate urgent or sensitive items.</li>
+              <li>Keep records of who reviewed the request.</li>
+              <li>Make sure final decisions are not skipped.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="intake">
+      <div class="content">
+        <div class="eyebrow">Status Tracking</div>
+
+        <h2>
+          Every request needs a status so nothing gets lost.
+        </h2>
+
+        <p>
+          Intake and routing are not complete unless the business knows what happened after the request arrived.
+          A simple status system helps leadership see what is new, what is assigned, what is waiting,
+          what is delayed, and what has been completed.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>New</strong>
+            <span>The request arrived but has not been reviewed yet.</span>
+          </div>
+
+          <div class="item">
+            <strong>Assigned</strong>
+            <span>The request has been sent to the correct company, department, or person.</span>
+          </div>
+
+          <div class="item">
+            <strong>Waiting</strong>
+            <span>The business is waiting on customer information, documents, approval, or response.</span>
+          </div>
+
+          <div class="item">
+            <strong>In review</strong>
+            <span>The request is being checked, researched, priced, approved, or prepared.</span>
+          </div>
+
+          <div class="item">
+            <strong>Completed</strong>
+            <span>The request was handled and the next step was finished.</span>
+          </div>
+
+          <div class="item">
+            <strong>Escalated</strong>
+            <span>The request needs higher review because of urgency, risk, complaint, or leadership approval.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+
+          <h2>
+            Intake & routing video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about forms, calls, emails,
+            customer requests, routing rules, department assignment, status tracking,
+            and leadership escalation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="intake">
+      <div class="content">
+        <div class="eyebrow">Business Request Types</div>
+
+        <h2>
+          Different request types need different routing rules.
+        </h2>
+
+        <p>
+          A business should not treat every message the same way.
+          A general question may only need a simple response, but a contract, application, complaint,
+          vendor issue, funding request, or customer service problem needs a clear route.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Public Inquiry</h3>
+
+            <p>
+              Public inquiries include general questions from visitors, partners,
+              vendors, investors, community contacts, and people learning about the company.
+            </p>
+
+            <ul>
+              <li>Capture the reason for contact.</li>
+              <li>Send general questions to the proper contact path.</li>
+              <li>Do not mix public questions with private internal work.</li>
+              <li>Route company-specific requests to the correct company page.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Service Request</h3>
+
+            <p>
+              Service requests should go to the business area that can help the customer.
+              The intake should identify the service type, urgency, documents, and next step.
+            </p>
+
+            <ul>
+              <li>Funding request</li>
+              <li>Real estate request</li>
+              <li>Care coordination request</li>
+              <li>Auto or marine service request</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Internal Request</h3>
+
+            <p>
+              Internal requests may include employee questions, approval needs,
+              report submissions, document reviews, leadership messages, and company-to-company communication.
+            </p>
+
+            <ul>
+              <li>Route internal messages separately.</li>
+              <li>Attach reports or documents.</li>
+              <li>Send approval items to leadership review.</li>
+              <li>Track the status until completion.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="intake">
+      <div class="content">
+        <div class="eyebrow">Intake & Routing Flow</div>
+
+        <h2>
+          A clean routing flow protects the whole business.
+        </h2>
+
+        <div class="flow">
+          <div class="step">
+            <div class="num">01</div>
+            <strong>Capture</strong>
+            <span>Collect the request from form, call, email, message, application, or document upload.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <strong>Classify</strong>
+            <span>Identify the request type, urgency, company, department, documents, and next step.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <strong>Route</strong>
+            <span>Send the request to the correct company, department, person, or approval path.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">04</div>
+            <strong>Track</strong>
+            <span>Monitor the request status until it is completed, escalated, or closed.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="intake">
+      <div class="content">
+        <div class="eyebrow">Intake Questions</div>
+
+        <h2>
+          Questions every intake process should answer.
+        </h2>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Who sent the request?</strong>
+            <span>Capture the name, contact information, company name, and preferred communication method.</span>
+          </div>
+
+          <div class="item">
+            <strong>What do they need?</strong>
+            <span>Understand the request clearly before sending it to the wrong place.</span>
+          </div>
+
+          <div class="item">
+            <strong>Where does it belong?</strong>
+            <span>Choose the correct company, department, team, or approval route.</span>
+          </div>
+
+          <div class="item">
+            <strong>How urgent is it?</strong>
+            <span>Separate routine requests from urgent issues, deadlines, complaints, or leadership items.</span>
+          </div>
+
+          <div class="item">
+            <strong>What is missing?</strong>
+            <span>Check whether forms, documents, photos, applications, or details are incomplete.</span>
+          </div>
+
+          <div class="item">
+            <strong>Who follows up?</strong>
+            <span>Assign responsibility so the customer or internal sender is not left waiting.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      intake:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "intake";
+      const images = backgroundSets[group] || backgroundSets.intake;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
