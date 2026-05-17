@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Decision Review | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --green:#064b38;
+      --green2:#0b684f;
+      --gold:#d7b35d;
+      --gold2:#f0d07a;
+      --white:#f7f1e6;
+      --soft:#d8d0c4;
+      --line:rgba(215,179,93,.78);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#000;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}
+
+    .page{
+      max-width:1180px;
+      margin:0 auto;
+      background:#000;
+      border-left:1px solid var(--line);
+      border-right:1px solid var(--line);
+      min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:12px;
+      padding:14px 24px;
+      background:#000;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .logo{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--gold2);
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(18px,3.5vw,46px);
+      letter-spacing:clamp(1px,.55vw,5px);
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand span{color:var(--gold)}
+
+    .menu-btn{
+      width:76px;
+      height:76px;
+      border:3px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      font-size:36px;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{background:var(--gold);color:#000}
+
+    .menu{
+      display:none;
+      background:#080808;
+      border-bottom:1px solid var(--line);
+      padding:22px 42px 26px;
+    }
+
+    .menu.active{display:block}
+
+    .menu a{
+      display:block;
+      padding:17px 0;
+      border-bottom:1px solid rgba(215,179,93,.25);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      color:var(--soft);
+      font-size:18px;
+    }
+
+    .menu a:hover{
+      color:var(--gold2);
+      padding-left:8px;
+    }
+
+    .section{
+      position:relative;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+
+    .section::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.54),rgba(0,0,0,.26)),
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.38));
+      z-index:0;
+    }
+
+    .section.green::before{
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.46),rgba(6,75,56,.52)),
+        linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.28));
+    }
+
+    .content{
+      position:relative;
+      z-index:1;
+      padding:58px 42px;
+      max-width:1040px;
+    }
+
+    .hero{
+      min-height:720px;
+      display:flex;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:14px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      color:var(--white);
+      line-height:1.06;
+    }
+
+    h1{
+      font-size:clamp(46px,6vw,86px);
+      margin-bottom:30px;
+      max-width:960px;
+    }
+
+    h1 span,h3{color:var(--gold2)}
+
+    h2{
+      font-size:clamp(40px,5vw,72px);
+      margin-bottom:36px;
+      max-width:1000px;
+    }
+
+    h3{
+      font-size:clamp(32px,4vw,54px);
+      margin-bottom:20px;
+    }
+
+    p{
+      color:#f2ece1;
+      font-size:22px;
+      line-height:1.72;
+      margin-bottom:26px;
+      max-width:990px;
+    }
+
+    .btn{
+      min-width:210px;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      padding:20px 30px;
+      border:2px solid var(--gold);
+      background:linear-gradient(135deg,var(--green2),var(--green));
+      color:#fff;
+      text-transform:uppercase;
+      font-weight:900;
+      letter-spacing:3px;
+      width:fit-content;
+      margin-top:34px;
+    }
+
+    .btn:hover{background:var(--gold);color:#000}
+
+    .plain-picture{
+      min-height:430px;
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+      border-top:1px solid rgba(215,179,93,.35);
+      border-bottom:1px solid rgba(215,179,93,.35);
+    }
+
+    .box{
+      border:2px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:30px;
+      max-width:1000px;
+    }
+
+    .item{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.50);
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+
+    .item strong{
+      display:block;
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:23px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+
+    .item span{
+      color:#f7f1e6;
+      font-size:19px;
+      line-height:1.58;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      margin-top:40px;
+      max-width:1000px;
+    }
+
+    .info-card{
+      position:relative;
+      border:2px solid var(--gold);
+      border-radius:34px;
+      background-size:cover;
+      background-position:center;
+      padding:44px 46px;
+      min-height:330px;
+      overflow:hidden;
+    }
+
+    .info-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.40);
+      z-index:0;
+    }
+
+    .info-card h3,
+    .info-card p,
+    .info-card ul{
+      position:relative;
+      z-index:1;
+    }
+
+    .info-card ul{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .info-card li{
+      color:#fff;
+      font-size:20px;
+      line-height:1.55;
+      border-left:4px solid var(--gold);
+      padding-left:16px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:36px;
+      max-width:1040px;
+      position:relative;
+      z-index:1;
+    }
+
+    .step{
+      border:1px solid rgba(215,179,93,.55);
+      background:rgba(0,0,0,.58);
+      padding:24px;
+      min-height:180px;
+    }
+
+    .step .num{
+      color:var(--gold2);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      color:#fff;
+      font-size:20px;
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .step span{
+      color:#f7f1e6;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .video-section{
+      background:#050505;
+      border-bottom:1px solid var(--line);
+      padding:48px 42px;
+    }
+
+    .video-main{
+      min-height:470px;
+      border:2px solid var(--gold);
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+
+    .video-main::before{
+      content:"▶";
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:86px;
+      height:86px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background:rgba(0,0,0,.58);
+      color:var(--gold2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:36px;
+      padding-left:6px;
+      z-index:1;
+    }
+
+    .video-main::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48));
+      z-index:0;
+    }
+
+    .video-copy{
+      position:relative;
+      z-index:2;
+      padding:38px;
+      width:100%;
+    }
+
+    .simple-footer{
+      padding:24px;
+      text-align:center;
+      color:var(--gold);
+      font-size:18px;
+      background:#010101;
+    }
+
+    @media(max-width:900px){
+      .grid,.flow{grid-template-columns:1fr}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:12px 14px;gap:10px}
+      .logo,.menu-btn{width:62px;height:62px}
+      .logo{font-size:27px}
+      .menu-btn{font-size:30px}
+      .brand{font-size:16px;letter-spacing:1px}
+      .menu{padding:22px 30px 26px}
+      .menu a{font-size:15px;letter-spacing:2.5px}
+      .content{padding:48px 28px}
+      h1{font-size:42px}
+      h2{font-size:40px}
+      p{font-size:21px;line-height:1.68}
+      .btn{width:100%}
+      .plain-picture{min-height:320px}
+      .box,.info-card{padding:30px}
+      .item span,.info-card li{font-size:18px}
+      .video-section{padding:42px 28px}
+      .video-main{min-height:430px}
+      .video-copy{padding:28px}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <header class="topbar">
+      <a href="index.html" class="logo">TH</a>
+      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+    </header>
+
+    <nav class="menu" id="menu">
+      <a href="titancore-structure.html">TitanCore Structure</a>
+      <a href="operating-model.html">Operating Model</a>
+      <a href="governance.html">Governance</a>
+      <a href="companies.html">Company</a>
+      <a href="institution.html">Institution</a>
+      <a href="business-intelligence.html">Business Intelligence</a>
+      <a href="search-intelligence.html">Search Intelligence</a>
+      <a href="operation-intelligence.html">Operation Intelligence</a>
+      <a href="strategy-intelligence.html">Strategy Intelligence</a>
+      <a href="ai-intelligence.html">AI Intelligence</a>
+      <a href="news-media.html">News &amp; Media</a>
+    </nav>
+
+    <section class="section hero daily-bg" data-bg-group="decision">
+      <div class="content">
+        <div class="eyebrow">Decision Review</div>
+
+        <h1>
+          Use information to support action<br>
+          <span>before the business moves forward.</span>
+        </h1>
+
+        <p>
+          Decision Review helps a business use data, reports, customer feedback,
+          market information, timing, cost, risk, and available options before choosing the next step.
+        </p>
+
+        <p>
+          A strong decision review does not rush. It compares options, identifies missing information,
+          checks what should be tested next, and helps leadership decide what action makes the most sense.
+        </p>
+
+        <a href="index.html" class="btn">Back Home ›</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="decision">
+      <div class="content">
+        <div class="eyebrow">Main Definition</div>
+
+        <h2>
+          Decision Review means checking the facts before making a business move.
+        </h2>
+
+        <div class="box">
+          <h3>What Decision Review Means</h3>
+
+          <p>
+            Decision Review is the process of slowing down before action and asking whether the business has enough information to move forward.
+            It helps compare possible choices, review available data, identify missing details, and understand the risk behind each option.
+          </p>
+
+          <p>
+            Decision Review is not about delaying progress. It is about making sure progress is based on clear information,
+            practical timing, responsible judgment, and a better understanding of what could happen next.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Why Decision Review Matters</h3>
+
+          <p>
+            A business can lose money, time, trust, or opportunity when decisions are made too quickly.
+            Decision Review protects the business by helping leaders see what is known, what is unknown,
+            what needs testing, and what should be avoided.
+          </p>
+
+          <p>
+            Good decisions come from clear review, not guessing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="decision">
+      <div class="content">
+        <div class="eyebrow">Decision Review Areas</div>
+
+        <h2>
+          Every decision should be reviewed from more than one angle.
+        </h2>
+
+        <p>
+          A decision may look good from one side, but still have problems in cost, timing, risk,
+          customer need, competition, staffing, workflow, or long-term sustainability.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Data review</strong>
+            <span>Review reports, numbers, trends, customer feedback, sales activity, and past results.</span>
+          </div>
+
+          <div class="item">
+            <strong>Option comparison</strong>
+            <span>Compare different choices before deciding which one should move forward.</span>
+          </div>
+
+          <div class="item">
+            <strong>Missing information</strong>
+            <span>Identify what is still unknown before the business commits time, money, or resources.</span>
+          </div>
+
+          <div class="item">
+            <strong>Risk review</strong>
+            <span>Check what could go wrong, what could be delayed, and what may create loss or confusion.</span>
+          </div>
+
+          <div class="item">
+            <strong>Timing review</strong>
+            <span>Decide whether the business is moving too early, too late, or at the right moment.</span>
+          </div>
+
+          <div class="item">
+            <strong>Test review</strong>
+            <span>Decide what should be tested on a small scale before a bigger action is taken.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="decision">
+      <div class="content">
+        <div class="eyebrow">Decision Questions</div>
+
+        <h2>
+          A business should answer clear questions before choosing action.
+        </h2>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>What Do We Know?</h3>
+
+            <p>
+              The first step is to separate facts from assumptions.
+              The business should review what is confirmed, what has been measured,
+              and what has already happened.
+            </p>
+
+            <ul>
+              <li>What data supports this decision?</li>
+              <li>What customer activity has been seen?</li>
+              <li>What reports or results already exist?</li>
+              <li>What facts are confirmed?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>What Is Missing?</h3>
+
+            <p>
+              A decision can be weak if important information is missing.
+              The business should identify what still needs to be checked before moving forward.
+            </p>
+
+            <ul>
+              <li>What numbers are missing?</li>
+              <li>What customer information is incomplete?</li>
+              <li>What cost or timing is unclear?</li>
+              <li>What risk has not been reviewed?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>What Should Be Tested?</h3>
+
+            <p>
+              Testing can protect the business from moving too big too fast.
+              A small test can show whether demand, pricing, customer response, or workflow is strong enough.
+            </p>
+
+            <ul>
+              <li>Can this be tested on a small scale?</li>
+              <li>What result would prove the idea?</li>
+              <li>What result would stop the idea?</li>
+              <li>How long should the test run?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="decision">
+      <div class="content">
+        <div class="eyebrow">Decision Signals</div>
+
+        <h2>
+          Strong decisions usually show clear signals before action.
+        </h2>
+
+        <p>
+          The business should look for signs that the decision is ready.
+          If the signs are weak, the better move may be to test, wait, collect more information, or change direction.
+        </p>
+
+        <div class="grid">
+          <div class="item">
+            <strong>Customer signal</strong>
+            <span>Customers show interest, ask questions, return, request service, or respond positively.</span>
+          </div>
+
+          <div class="item">
+            <strong>Market signal</strong>
+            <span>The market shows demand, space, timing, or a gap the business can serve.</span>
+          </div>
+
+          <div class="item">
+            <strong>Cost signal</strong>
+            <span>The cost is understood and does not create unnecessary cash pressure.</span>
+          </div>
+
+          <div class="item">
+            <strong>Risk signal</strong>
+            <span>The risks have been reviewed and can be controlled, reduced, or accepted responsibly.</span>
+          </div>
+
+          <div class="item">
+            <strong>Workflow signal</strong>
+            <span>The business can handle the work without creating confusion, delays, or weak service.</span>
+          </div>
+
+          <div class="item">
+            <strong>Growth signal</strong>
+            <span>The decision can support long-term strength instead of only short-term movement.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="video-section">
+      <div class="video-main" id="dailyVideoPanel">
+        <div class="video-copy">
+          <div class="eyebrow">Video Playlist Area</div>
+
+          <h2>
+            Decision review video space.
+          </h2>
+
+          <p>
+            This area is ready for future videos about business decisions,
+            data review, option comparison, missing information, testing,
+            risk review, and responsible action.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="decision">
+      <div class="content">
+        <div class="eyebrow">Decision Review Types</div>
+
+        <h2>
+          Different decisions need different review.
+        </h2>
+
+        <p>
+          A pricing decision, service decision, hiring decision, marketing decision,
+          customer decision, or expansion decision should not all be reviewed the same way.
+          Each decision needs the right questions.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-card">
+            <h3>Business Action Review</h3>
+
+            <p>
+              This review checks whether the business should move forward with a new action,
+              new service, new process, new offer, or new direction.
+            </p>
+
+            <ul>
+              <li>What action is being considered?</li>
+              <li>What problem does it solve?</li>
+              <li>Who benefits from the action?</li>
+              <li>What result should be expected?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Financial Review</h3>
+
+            <p>
+              This review checks cost, cash pressure, expected return, pricing,
+              spending risk, and whether the business can afford the decision.
+            </p>
+
+            <ul>
+              <li>What will it cost?</li>
+              <li>How will it be paid for?</li>
+              <li>What return is expected?</li>
+              <li>What loss could happen?</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Customer Review</h3>
+
+            <p>
+              This review checks whether the decision supports customer trust,
+              customer need, customer experience, and long-term relationship strength.
+            </p>
+
+            <ul>
+              <li>Will customers understand it?</li>
+              <li>Will it solve a real need?</li>
+              <li>Will it improve service?</li>
+              <li>Will it protect trust?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="decision">
+      <div class="content">
+        <div class="eyebrow">Decision Review Flow</div>
+
+        <h2>
+          A clean decision flow reviews, compares, tests, and decides.
+        </h2>
+
+        <div class="flow">
+          <div class="step">
+            <div class="num">01</div>
+            <strong>Review</strong>
+            <span>Study the data, reports, customer feedback, timing, cost, and risk.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">02</div>
+            <strong>Compare</strong>
+            <span>Compare options and identify which choice has the strongest support.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">03</div>
+            <strong>Test</strong>
+            <span>Test the idea when the information is not strong enough for a full move.</span>
+          </div>
+
+          <div class="step">
+            <div class="num">04</div>
+            <strong>Decide</strong>
+            <span>Choose the next action with clear judgment, responsibility, and review.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section daily-bg" data-bg-group="decision">
+      <div class="content">
+        <div class="eyebrow">Final Review Questions</div>
+
+        <h2>
+          Questions to ask before making the decision.
+        </h2>
+
+        <div class="grid">
+          <div class="item">
+            <strong>What action are we choosing?</strong>
+            <span>Define the decision clearly before the business moves forward.</span>
+          </div>
+
+          <div class="item">
+            <strong>What data supports it?</strong>
+            <span>Use reports, numbers, feedback, trends, and real activity to support the choice.</span>
+          </div>
+
+          <div class="item">
+            <strong>What are the options?</strong>
+            <span>Compare different paths before committing to one.</span>
+          </div>
+
+          <div class="item">
+            <strong>What is missing?</strong>
+            <span>Identify the information that should be collected before action.</span>
+          </div>
+
+          <div class="item">
+            <strong>What should be tested first?</strong>
+            <span>Use a smaller test when the risk is too high or the information is incomplete.</span>
+          </div>
+
+          <div class="item">
+            <strong>What will we review after?</strong>
+            <span>Decide how the result will be measured after the action is taken.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="plain-picture"></div>
+    </section>
+
+    <section class="section green daily-bg" data-bg-group="corporate">
+      <div class="content">
+        <div class="eyebrow">Contact TitanCore</div>
+
+        <h2>Contact us today</h2>
+
+        <p>
+          For general questions, professional inquiries, business intelligence questions,
+          or TitanCore-related information, contact TitanCore Holdings.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch ›</a>
+      </div>
+    </section>
+
+    <footer class="simple-footer">
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </main>
+
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById("menu");
+      if(menu){
+        menu.classList.toggle("active");
+      }
+    }
+
+    const backgroundSets = {
+      decision:[
+        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
+      ],
+      corporate:[
+        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85"
+      ]
+    };
+
+    const plainPictures = [
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const cardPictures = [
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85",
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=85"
+    ];
+
+    const videoPictures = [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+      "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=85"
+    ];
+
+    const day = new Date().getDate();
+
+    document.querySelectorAll(".daily-bg").forEach(function(section,index){
+      const group = section.dataset.bgGroup || "decision";
+      const images = backgroundSets[group] || backgroundSets.decision;
+      section.style.backgroundImage = "url('" + images[(day + index) % images.length] + "')";
+    });
+
+    document.querySelectorAll(".plain-picture").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + plainPictures[(day + index) % plainPictures.length] + "')";
+    });
+
+    document.querySelectorAll(".info-card").forEach(function(el,index){
+      el.style.backgroundImage = "url('" + cardPictures[(day + index) % cardPictures.length] + "')";
+    });
+
+    const videoPanel = document.getElementById("dailyVideoPanel");
+    if(videoPanel){
+      videoPanel.style.backgroundImage = "url('" + videoPictures[day % videoPictures.length] + "')";
+    }
+  </script>
+</body>
+</html>
