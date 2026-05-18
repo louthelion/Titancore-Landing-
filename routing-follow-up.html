@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Routing & Follow-Up | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:32px 0}
+
+    .hero{padding:34px 0 26px}
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 48%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.45rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    h4{
+      color:var(--gold-soft);
+      font-size:1.45rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1500&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{max-width:1040px}
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+      margin-top:24px;
+    }
+
+    .step-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      padding:28px;
+      background:rgba(0,0,0,.62);
+      box-shadow:var(--shadow);
+      min-height:280px;
+    }
+
+    .step-number{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .step-card h3{
+      font-size:2rem;
+      margin-bottom:14px;
+    }
+
+    .step-card p{
+      font-size:1rem;
+      margin:0;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .question-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .question-card{
+      border:1px solid rgba(216,180,90,.62);
+      background:rgba(0,0,0,.48);
+      padding:22px;
+    }
+
+    .question-card h4{
+      margin-bottom:10px;
+    }
+
+    .question-card p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{font-size:3.1rem}
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{padding:24px 0 40px}
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{padding:54px}
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .steps-grid,
+      .bullet-grid,
+      .question-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
+    }
+
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box,
+      .step-card{
+        border-radius:24px;
+      }
+
+      .hero-box{min-height:620px}
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{font-size:3rem}
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{font-size:2rem}
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Routing &amp; Follow-Up</div>
+            <h1>Routing &amp; Follow-Up</h1>
+
+            <p>
+              Routing &amp; Follow-Up explain how requests should be directed to the right page,
+              inbox, department, team, company, system, reviewer, or next step after information enters the business.
+            </p>
+
+            <p>
+              A strong routing process prevents requests from getting lost. A strong follow-up process makes sure
+              the business responds, checks missing information, tracks open items, and keeps work moving until it is complete.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>Routing sends work to the right place. Follow-up makes sure it does not stop there.</h2>
+
+            <p>
+              Routing is the movement of a request after intake. Once a form, call, email, message, document,
+              or application enters the business, the system must decide where it belongs. It may go to a company,
+              department, inbox, dashboard, review path, approval path, records folder, or follow-up list.
+            </p>
+
+            <p>
+              Follow-up is the control that happens after routing. It checks whether the request was received,
+              whether someone owns the next step, whether information is missing, whether a response is needed,
+              and whether the work is still open, delayed, corrected, approved, or completed.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Routing creates direction</strong>
+                It makes sure the request moves to the right company, department, page, inbox, or reviewer.
+              </div>
+
+              <div class="bullet">
+                <strong>Follow-up creates movement</strong>
+                It keeps the request from sitting without a response, review, correction, or completion.
+              </div>
+
+              <div class="bullet">
+                <strong>Routing protects ownership</strong>
+                The business should know who is responsible for the next step.
+              </div>
+
+              <div class="bullet">
+                <strong>Follow-up protects trust</strong>
+                Customers, partners, and internal teams should not feel ignored after submitting information.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">Routing Image</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Routing and follow-up video space.</h3>
+              <p>
+                This future video area can explain request routing, department assignment,
+                follow-up reminders, missing information checks, approval movement, and open-item tracking.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Routing Destinations</div>
+            <h2>A request should not move randomly. It should move to the correct destination.</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Route 01</div>
+                <h3>Company Route</h3>
+                <p>
+                  Send the request to the correct company path, such as TitanCore, Vaultara, Family First, VitalPath, or RevMotion.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Route 02</div>
+                <h3>Department Route</h3>
+                <p>
+                  Send the request to the department responsible for reviewing, answering, processing, or completing it.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Route 03</div>
+                <h3>Inbox Route</h3>
+                <p>
+                  Send the request to the correct inbox, such as public contact, internal admin, leadership review, or support.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Route 04</div>
+                <h3>Dashboard Route</h3>
+                <p>
+                  Send the item to the proper dashboard queue so it can be tracked, assigned, reviewed, and reported.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Route 05</div>
+                <h3>Review Route</h3>
+                <p>
+                  Send the item to the person or role responsible for checking accuracy, completeness, quality, or risk.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Route 06</div>
+                <h3>Approval Route</h3>
+                <p>
+                  Send work that needs approval to the proper leadership, company, department, or final review path.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Route 07</div>
+                <h3>Record Route</h3>
+                <p>
+                  Send completed information to the correct archive, folder, record system, or history file.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Route 08</div>
+                <h3>Follow-Up Route</h3>
+                <p>
+                  Send open items to a follow-up list so the business knows what still needs response or correction.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Route 09</div>
+                <h3>Escalation Route</h3>
+                <p>
+                  Send urgent, delayed, risky, or unresolved items to higher review before they become bigger problems.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Follow-Up Types</div>
+            <h2>Follow-up keeps the request alive until the work is complete.</h2>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Customer follow-up</strong>
+                Respond to the person who submitted the request and ask for anything missing.
+              </div>
+
+              <div class="bullet">
+                <strong>Internal follow-up</strong>
+                Check whether the responsible company, department, or person has taken the next step.
+              </div>
+
+              <div class="bullet">
+                <strong>Document follow-up</strong>
+                Request missing forms, signatures, attachments, screenshots, contracts, IDs, or support files.
+              </div>
+
+              <div class="bullet">
+                <strong>Review follow-up</strong>
+                Check whether the item has been reviewed, corrected, approved, or returned.
+              </div>
+
+              <div class="bullet">
+                <strong>Approval follow-up</strong>
+                Track work waiting on leadership approval, final review, signature, or completion permission.
+              </div>
+
+              <div class="bullet">
+                <strong>Delay follow-up</strong>
+                Identify requests that have been waiting too long and need action or escalation.
+              </div>
+
+              <div class="bullet">
+                <strong>Completion follow-up</strong>
+                Confirm the work was actually completed, saved, and closed correctly.
+              </div>
+
+              <div class="bullet">
+                <strong>Record follow-up</strong>
+                Make sure final notes, documents, approvals, and history are saved in the right archive location.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Routing Workflow</div>
+            <h2>A routed request should follow a clear path from intake to completion.</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Step 01</div>
+                <h3>Receive</h3>
+                <p>
+                  The request enters the business through a form, call, email, message, document, application, or public inquiry.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 02</div>
+                <h3>Identify</h3>
+                <p>
+                  The system identifies the company, department, topic, urgency, request type, and required next step.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 03</div>
+                <h3>Assign</h3>
+                <p>
+                  The request is assigned to the proper company, department, inbox, person, queue, or review path.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 04</div>
+                <h3>Confirm</h3>
+                <p>
+                  The system confirms the request was received by the correct destination and not left without ownership.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 05</div>
+                <h3>Follow Up</h3>
+                <p>
+                  The system checks missing information, customer response, internal action, approval status, and open items.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 06</div>
+                <h3>Close</h3>
+                <p>
+                  The request is completed, recorded, saved, reported, and closed only after the correct action is finished.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Routing Rules</div>
+            <h2>Routing rules tell the system what should happen next.</h2>
+
+            <p>
+              A routing rule is a simple instruction that tells the business where a request belongs.
+              Good routing rules reduce confusion because the system does not have to guess. The request type,
+              company, topic, urgency, documents, customer need, or approval requirement can determine the route.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Request type rule</strong>
+                A funding request should not go to the same place as a real estate request, care request, or general contact message.
+              </div>
+
+              <div class="bullet">
+                <strong>Company rule</strong>
+                A request should be matched with the company responsible for that service or business area.
+              </div>
+
+              <div class="bullet">
+                <strong>Urgency rule</strong>
+                Urgent, time-sensitive, delayed, or high-risk requests should be handled differently from regular items.
+              </div>
+
+              <div class="bullet">
+                <strong>Document rule</strong>
+                Requests with missing documents should go to correction or follow-up before deeper review.
+              </div>
+
+              <div class="bullet">
+                <strong>Approval rule</strong>
+                Work that needs leadership review should move into an approval path before final completion.
+              </div>
+
+              <div class="bullet">
+                <strong>Record rule</strong>
+                Completed work should move into the correct archive and report history.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Common Problems</div>
+            <h2>Weak routing and weak follow-up cause requests to get lost.</h2>
+
+            <p>
+              When routing is weak, requests can sit in the wrong place, go to the wrong person,
+              wait too long, or never receive follow-up. When follow-up is weak, even a correctly routed request
+              can still become delayed, forgotten, incomplete, or unresolved.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Wrong destination</strong>
+                The request goes to the wrong inbox, company, page, department, person, or dashboard.
+              </div>
+
+              <div class="bullet">
+                <strong>No clear owner</strong>
+                Nobody knows who is responsible for responding, reviewing, correcting, or completing the request.
+              </div>
+
+              <div class="bullet">
+                <strong>Missing information</strong>
+                The request moves forward even though required fields or documents are missing.
+              </div>
+
+              <div class="bullet">
+                <strong>No response timeline</strong>
+                The business does not know when follow-up should happen or when a request is late.
+              </div>
+
+              <div class="bullet">
+                <strong>No escalation path</strong>
+                Delayed or urgent items do not move to higher attention when they need help.
+              </div>
+
+              <div class="bullet">
+                <strong>No completion check</strong>
+                The item is marked complete without confirming that the work was finished and saved.
+              </div>
+
+              <div class="bullet">
+                <strong>No record update</strong>
+                Follow-up happens, but the notes and final status are not saved in the record.
+              </div>
+
+              <div class="bullet">
+                <strong>No report visibility</strong>
+                Leadership cannot see what is open, delayed, waiting, or unresolved.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Questions To Ask</div>
+            <h2>Use these questions before routing or following up on a request.</h2>
+
+            <div class="question-grid">
+              <div class="question-card">
+                <h4>Where did the request come from?</h4>
+                <p>Identify whether it came from a form, call, email, message, document, application, or internal task.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What type of request is it?</h4>
+                <p>Separate contact, support, service, application, document, complaint, approval, and follow-up requests.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Which company owns it?</h4>
+                <p>Confirm whether the request belongs to TitanCore, Vaultara, Family First, VitalPath, RevMotion, or another path.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Which department should receive it?</h4>
+                <p>Route the request to the team responsible for reviewing, answering, processing, or completing the work.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Who owns the next step?</h4>
+                <p>Make sure a person, department, company, queue, or process path is responsible for moving it forward.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What information is missing?</h4>
+                <p>Check missing fields, documents, notes, contact details, signatures, or supporting information.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>When should follow-up happen?</h4>
+                <p>Set a response window, reminder, callback, review time, approval check, or escalation point.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>How will completion be confirmed?</h4>
+                <p>Confirm the work is complete, saved, recorded, and visible in the proper report or archive.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Routing & Follow-Up Focus</div>
+            <h2 id="dailyTitle">Send the request to the right place and confirm the next step.</h2>
+            <p id="dailyText">
+              Today’s routing focus is ownership. A request should not sit in the system without a clear destination and follow-up path.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Check the request type.</div>
+              <div class="daily-item" id="daily2">Check the correct company or department.</div>
+              <div class="daily-item" id="daily3">Check who owns the next step.</div>
+              <div class="daily-item" id="daily4">Check whether follow-up is scheduled or recorded.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, routing and follow-up questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel) menuPanel.classList.remove('open');
+    });
+
+    const dailySet = [
+      {
+        title:'Send the request to the right place and confirm the next step.',
+        text:'Today’s routing focus is ownership. A request should not sit in the system without a clear destination and follow-up path.',
+        a:'Check the request type.',
+        b:'Check the correct company or department.',
+        c:'Check who owns the next step.',
+        d:'Check whether follow-up is scheduled or recorded.'
+      },
+      {
+        title:'Follow up before the request becomes delayed.',
+        text:'Today’s follow-up focus is timing. The business should know when a request is waiting too long and what should happen next.',
+        a:'Review open requests.',
+        b:'Review items missing information.',
+        c:'Review unanswered messages.',
+        d:'Review delayed approvals.'
+      },
+      {
+        title:'Do not route incomplete information too far.',
+        text:'Today’s routing focus is correction. Missing information should be caught early before it creates delay in the wrong department.',
+        a:'Check missing contact details.',
+        b:'Check missing documents.',
+        c:'Check unclear request purpose.',
+        d:'Send correction request before final review.'
+      },
+      {
+        title:'Track every follow-up until the item is closed.',
+        text:'Today’s follow-up focus is completion. Follow-up should continue until the work is answered, corrected, approved, saved, or closed.',
+        a:'Confirm response was sent.',
+        b:'Confirm review was completed.',
+        c:'Confirm final records were saved.',
+        d:'Confirm the item is closed correctly.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    const dailyDate = document.getElementById('dailyDate');
+    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
