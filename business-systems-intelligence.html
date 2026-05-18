@@ -1256,5 +1256,61 @@
       day:'numeric'
     });
   </script>
+  <script>
+  /*
+    Business Systems Intelligence card connections
+    Paste before </body> inside business-system-intelligence.html
+  */
+
+  const businessSystemPageLinks = {
+    "forms & intake": "forms-intake.html",
+    "routing & follow-up": "routing-follow-up.html",
+    "reviews & approvals": "reviews-approvals.html",
+    "records & archives": "records-archives.html",
+    "reports & dashboards": "system-reports-controls.html",
+    "system reports & controls": "system-reports-controls.html",
+    "automation readiness": "automation-readiness.html"
+  };
+
+  document.querySelectorAll(".info-card").forEach((card) => {
+    const titleElement = card.querySelector("h3");
+    if (!titleElement) return;
+
+    const titleText = titleElement.textContent.trim().toLowerCase();
+    const pageLink = businessSystemPageLinks[titleText];
+
+    if (!pageLink) return;
+
+    /*
+      This fixes the old wrong dashboard wording
+      and turns it into System Reports & Controls.
+    */
+    if (titleText === "reports & dashboards") {
+      titleElement.innerHTML = "System Reports &amp; Controls";
+
+      const paragraph = card.querySelector("p");
+      if (paragraph) {
+        paragraph.textContent =
+          "Understand how internal systems help leadership track new work, pending work, delays, approvals, completed work, records, and attention items.";
+      }
+
+      const cardLinkText = card.querySelector(".card-link span:first-child");
+      if (cardLinkText) {
+        cardLinkText.textContent = "Review Systems";
+      }
+    }
+
+    /*
+      This forces the card to open the correct new page,
+      even if the old href still says #something.
+    */
+    card.setAttribute("href", pageLink);
+
+    card.addEventListener("click", function(event) {
+      event.preventDefault();
+      window.location.href = pageLink;
+    });
+  });
+</script>
 </body>
 </html>
