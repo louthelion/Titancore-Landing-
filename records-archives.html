@@ -1,1 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Records & Archives | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:32px 0}
+
+    .hero{padding:34px 0 26px}
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 48%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.45rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    h4{
+      color:var(--gold-soft);
+      font-size:1.45rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1500&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{max-width:1040px}
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+      margin-top:24px;
+    }
+
+    .step-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      padding:28px;
+      background:rgba(0,0,0,.62);
+      box-shadow:var(--shadow);
+      min-height:280px;
+    }
+
+    .step-number{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .step-card h3{
+      font-size:2rem;
+      margin-bottom:14px;
+    }
+
+    .step-card p{
+      font-size:1rem;
+      margin:0;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .question-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .question-card{
+      border:1px solid rgba(216,180,90,.62);
+      background:rgba(0,0,0,.48);
+      padding:22px;
+    }
+
+    .question-card h4{
+      margin-bottom:10px;
+    }
+
+    .question-card p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{font-size:3.1rem}
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{padding:24px 0 40px}
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{padding:54px}
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .steps-grid,
+      .bullet-grid,
+      .question-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
+    }
+
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box,
+      .step-card{
+        border-radius:24px;
+      }
+
+      .hero-box{min-height:620px}
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{font-size:3rem}
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{font-size:2rem}
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Records &amp; Archives</div>
+            <h1>Records &amp; Archives</h1>
+
+            <p>
+              Records &amp; Archives explain why documents, notes, messages, reports, approvals,
+              decisions, corrections, and final work should be saved in an organized way.
+            </p>
+
+            <p>
+              A business should not depend only on memory, text messages, scattered emails, or someone remembering
+              what happened. A strong records system helps the business know what was received, who handled it,
+              what changed, what was approved, what was completed, and where the proof is saved.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>Records show what happened. Archives protect the history.</h2>
+
+            <p>
+              A record is any saved proof of business activity. It can be a form, email, call note,
+              document, report, approval note, correction message, signed file, customer request,
+              invoice, meeting note, or completion summary.
+            </p>
+
+            <p>
+              An archive is the organized place where records are stored so they can be found later.
+              A strong archive helps the business review past decisions, prove what was completed,
+              understand who handled the work, avoid repeated mistakes, and protect important company information.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Records create proof</strong>
+                They show what was submitted, reviewed, corrected, approved, completed, or sent.
+              </div>
+
+              <div class="bullet">
+                <strong>Archives create order</strong>
+                They organize records so the business can find information without searching everywhere.
+              </div>
+
+              <div class="bullet">
+                <strong>Records protect decisions</strong>
+                They help explain why a decision was made and what information supported it.
+              </div>
+
+              <div class="bullet">
+                <strong>Archives protect continuity</strong>
+                They help the business keep moving even when people change, forget, or leave.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">Records Image</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Records and archives video space.</h3>
+              <p>
+                This future video area can explain document storage, approval records,
+                archive structure, file naming, retention habits, search review, and final proof.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">What Should Be Saved</div>
+            <h2>A business should save the information that explains the work.</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Record 01</div>
+                <h3>Intake Records</h3>
+                <p>
+                  Save submitted forms, contact details, request types, timestamps, call notes, emails, and original messages.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Record 02</div>
+                <h3>Work Records</h3>
+                <p>
+                  Save assignments, work notes, drafts, document versions, status updates, and task movement.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Record 03</div>
+                <h3>Review Records</h3>
+                <p>
+                  Save review notes, corrections, comments, missing information requests, and quality checks.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Record 04</div>
+                <h3>Approval Records</h3>
+                <p>
+                  Save who approved the work, what was approved, when it was approved, and what conditions applied.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Record 05</div>
+                <h3>Decision Records</h3>
+                <p>
+                  Save leadership decisions, final instructions, policy choices, risk notes, and reason for action.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Record 06</div>
+                <h3>Completion Records</h3>
+                <p>
+                  Save final documents, completion proof, delivery notes, closing notes, and final archive location.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Archive Structure</div>
+            <h2>Archives should be easy to search, review, and understand.</h2>
+
+            <p>
+              A business archive should not be a messy folder where everything is dropped without structure.
+              The archive should be organized by company, department, customer, request type, project,
+              date, approval status, or final record category.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Company folders</strong>
+                Separate records by company so TitanCore, Vaultara, Family First, VitalPath, and RevMotion do not mix together.
+              </div>
+
+              <div class="bullet">
+                <strong>Department folders</strong>
+                Separate records by department so the right team can find the right history.
+              </div>
+
+              <div class="bullet">
+                <strong>Request folders</strong>
+                Separate requests by type, such as contact, service, application, approval, report, or follow-up.
+              </div>
+
+              <div class="bullet">
+                <strong>Client or project folders</strong>
+                Keep all related documents, notes, messages, and approvals together.
+              </div>
+
+              <div class="bullet">
+                <strong>Date folders</strong>
+                Use dates so records can be searched by day, month, year, or reporting period.
+              </div>
+
+              <div class="bullet">
+                <strong>Final archive folders</strong>
+                Keep approved and completed items separate from drafts, corrections, and pending work.
+              </div>
+
+              <div class="bullet">
+                <strong>Approval history</strong>
+                Keep review notes, sign-off notes, and correction history connected to the final file.
+              </div>
+
+              <div class="bullet">
+                <strong>Search labels</strong>
+                Use clear names and categories so records can be found without guessing.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Records Life Cycle</div>
+            <h2>A record should follow the work from beginning to completion.</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Step 01</div>
+                <h3>Capture</h3>
+                <p>
+                  The record begins when a form, call, email, message, document, or request enters the business.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 02</div>
+                <h3>Classify</h3>
+                <p>
+                  The record is categorized by company, department, request type, customer, project, or urgency.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 03</div>
+                <h3>Route</h3>
+                <p>
+                  The record is sent to the correct person, page, department, company, or review path.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 04</div>
+                <h3>Review</h3>
+                <p>
+                  Notes, corrections, decisions, and approval checks are added as the work moves forward.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 05</div>
+                <h3>Complete</h3>
+                <p>
+                  The final result is saved with completion notes, approval proof, final documents, and closure status.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 06</div>
+                <h3>Archive</h3>
+                <p>
+                  The record is stored in the correct archive location so it can be found and reviewed later.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Why It Matters</div>
+            <h2>Strong records help the business protect itself.</h2>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>They prevent confusion</strong>
+                People can check the record instead of guessing what happened.
+              </div>
+
+              <div class="bullet">
+                <strong>They protect approvals</strong>
+                The business can prove who reviewed and approved important work.
+              </div>
+
+              <div class="bullet">
+                <strong>They support follow-up</strong>
+                The business can see what was promised, what is pending, and what still needs response.
+              </div>
+
+              <div class="bullet">
+                <strong>They reduce repeated mistakes</strong>
+                Past corrections help the business improve the process.
+              </div>
+
+              <div class="bullet">
+                <strong>They help leadership</strong>
+                Leaders can review history before making decisions.
+              </div>
+
+              <div class="bullet">
+                <strong>They support reporting</strong>
+                Reports become stronger when the record behind the report is organized.
+              </div>
+
+              <div class="bullet">
+                <strong>They protect customers</strong>
+                A saved history helps the business understand what the customer requested and what was done.
+              </div>
+
+              <div class="bullet">
+                <strong>They protect continuity</strong>
+                Work can continue even if someone is unavailable because the record explains the history.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Common Mistakes</div>
+            <h2>Weak records make the business harder to manage.</h2>
+
+            <p>
+              A business can lose time and trust when records are scattered, unnamed, incomplete,
+              or saved in the wrong place. The purpose of an archive is not only to store files.
+              The purpose is to make the business history easy to understand.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Saving files with unclear names</strong>
+                Names like “document final new 2” make records hard to search later.
+              </div>
+
+              <div class="bullet">
+                <strong>Saving only the final file</strong>
+                The business may also need review notes, corrections, approvals, and decision history.
+              </div>
+
+              <div class="bullet">
+                <strong>Mixing company records together</strong>
+                Different companies should not have important records mixed in one confusing place.
+              </div>
+
+              <div class="bullet">
+                <strong>Leaving records in email only</strong>
+                Important information can get lost if it only stays inside email threads.
+              </div>
+
+              <div class="bullet">
+                <strong>No approval proof</strong>
+                The business should know who approved work before it became final.
+              </div>
+
+              <div class="bullet">
+                <strong>No completion proof</strong>
+                Work should not be marked complete without a saved record of the final result.
+              </div>
+
+              <div class="bullet">
+                <strong>No correction history</strong>
+                If corrections are not saved, the business cannot learn from repeated problems.
+              </div>
+
+              <div class="bullet">
+                <strong>No archive discipline</strong>
+                Records should be saved consistently, not only when someone remembers.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Questions To Ask</div>
+            <h2>Use these questions when saving business records.</h2>
+
+            <div class="question-grid">
+              <div class="question-card">
+                <h4>What is this record about?</h4>
+                <p>Identify whether it is a form, request, approval, report, customer note, document, decision, or completion proof.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Which company does it belong to?</h4>
+                <p>Separate records by company so important information does not get mixed together.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Which department owns it?</h4>
+                <p>Know the department or workflow responsible for the record.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What date should be attached?</h4>
+                <p>Use dates to support reporting, review, follow-up, and archive search.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Was it reviewed?</h4>
+                <p>Save notes showing whether the record was checked, corrected, approved, or returned.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Was it approved?</h4>
+                <p>Record who approved it, when it was approved, and what approval level applied.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Is this the final version?</h4>
+                <p>Separate drafts, corrections, and final versions so people do not use the wrong file.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Where should it be archived?</h4>
+                <p>Save the record in the correct folder, category, company, department, and final location.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Records & Archives Focus</div>
+            <h2 id="dailyTitle">Save the record where it can be found again.</h2>
+            <p id="dailyText">
+              Today’s records focus is organization. A record is useful only when the business can find it, understand it, and trust it later.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Save the original request.</div>
+              <div class="daily-item" id="daily2">Save review notes and correction history.</div>
+              <div class="daily-item" id="daily3">Save approval proof and final decisions.</div>
+              <div class="daily-item" id="daily4">Save the final version in the correct archive location.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, records and archive questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel) menuPanel.classList.remove('open');
+    });
+
+    const dailySet = [
+      {
+        title:'Save the record where it can be found again.',
+        text:'Today’s records focus is organization. A record is useful only when the business can find it, understand it, and trust it later.',
+        a:'Save the original request.',
+        b:'Save review notes and correction history.',
+        c:'Save approval proof and final decisions.',
+        d:'Save the final version in the correct archive location.'
+      },
+      {
+        title:'Separate drafts, corrections, and final records.',
+        text:'Today’s records focus is version control. A business should know which file is a draft, which one was corrected, and which one is final.',
+        a:'Label drafts clearly.',
+        b:'Save correction history.',
+        c:'Mark final versions clearly.',
+        d:'Archive final documents separately.'
+      },
+      {
+        title:'Keep approval history connected to the record.',
+        text:'Today’s records focus is approval proof. The business should know who reviewed it, who approved it, what changed, and when it became final.',
+        a:'Save reviewer notes.',
+        b:'Save approval notes.',
+        c:'Save date and time history.',
+        d:'Save completion proof.'
+      },
+      {
+        title:'Use records to improve the business process.',
+        text:'Today’s records focus is learning. Past records help the business find repeated problems, weak steps, and better ways to work.',
+        a:'Review repeated corrections.',
+        b:'Review missing information patterns.',
+        c:'Review delayed work history.',
+        d:'Review customer follow-up records.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    const dailyDate = document.getElementById('dailyDate');
+    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
