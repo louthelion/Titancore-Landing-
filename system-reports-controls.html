@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>System Reports & Controls | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:32px 0}
+
+    .hero{padding:34px 0 26px}
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 48%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.45rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    h4{
+      color:var(--gold-soft);
+      font-size:1.45rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1500&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{max-width:1040px}
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+      margin-top:24px;
+    }
+
+    .step-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      padding:28px;
+      background:rgba(0,0,0,.62);
+      box-shadow:var(--shadow);
+      min-height:280px;
+    }
+
+    .step-number{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .step-card h3{
+      font-size:2rem;
+      margin-bottom:14px;
+    }
+
+    .step-card p{
+      font-size:1rem;
+      margin:0;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .question-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .question-card{
+      border:1px solid rgba(216,180,90,.62);
+      background:rgba(0,0,0,.48);
+      padding:22px;
+    }
+
+    .question-card h4{
+      margin-bottom:10px;
+    }
+
+    .question-card p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{font-size:3.1rem}
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{padding:24px 0 40px}
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{padding:54px}
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .steps-grid,
+      .bullet-grid,
+      .question-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
+    }
+
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box,
+      .step-card{
+        border-radius:24px;
+      }
+
+      .hero-box{min-height:620px}
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{font-size:3rem}
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{font-size:2rem}
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">System Reports &amp; Controls</div>
+            <h1>System Reports &amp; Controls</h1>
+
+            <p>
+              System Reports &amp; Controls explain how internal systems help leadership track new work,
+              pending work, delays, approvals, completed work, records, and attention items.
+            </p>
+
+            <p>
+              A strong system report does more than show numbers. It shows what is happening inside the business,
+              what needs action, what is waiting, what is late, what was approved, what was completed,
+              and what should be reviewed before the company loses control of the workflow.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>Reports show what is happening. Controls show what needs action.</h2>
+
+            <p>
+              A system report is a clear view of activity inside the business. It can show new requests,
+              open assignments, approval needs, follow-up items, delayed work, completed records, and final outcomes.
+            </p>
+
+            <p>
+              A system control is a rule, checkpoint, warning, or review point that helps the business respond
+              before work becomes lost, ignored, duplicated, delayed, incomplete, or completed incorrectly.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Reports create visibility</strong>
+                They help leadership see activity without searching through emails, forms, calls, notes, and scattered files.
+              </div>
+
+              <div class="bullet">
+                <strong>Controls create discipline</strong>
+                They tell the business when to review, correct, approve, escalate, close, or reopen work.
+              </div>
+
+              <div class="bullet">
+                <strong>Reports track movement</strong>
+                They show what entered the system, where it went, who owns it, and what is waiting.
+              </div>
+
+              <div class="bullet">
+                <strong>Controls protect the process</strong>
+                They reduce missed follow-up, wrong routing, weak approvals, incomplete records, and delayed action.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">System Report Image</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>System reports video space.</h3>
+              <p>
+                This future video area can explain leadership reports, dashboard views, control checks,
+                approval tracking, delay warnings, and how business work moves from request to completion.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Report Areas</div>
+            <h2>A useful report should make the business easier to understand.</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Report 01</div>
+                <h3>New Work</h3>
+                <p>
+                  Shows new forms, calls, emails, messages, applications, documents, or tasks that entered the system.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Report 02</div>
+                <h3>Pending Work</h3>
+                <p>
+                  Shows work that has started but is not finished, including assignments waiting on review or response.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Report 03</div>
+                <h3>Delayed Work</h3>
+                <p>
+                  Shows requests or tasks that are taking too long, missing information, or waiting on action.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Report 04</div>
+                <h3>Approval Items</h3>
+                <p>
+                  Shows work waiting for review, correction, approval, leadership decision, or final confirmation.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Report 05</div>
+                <h3>Completed Work</h3>
+                <p>
+                  Shows what was finished, when it was completed, who handled it, and where the final record is saved.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Report 06</div>
+                <h3>Attention Items</h3>
+                <p>
+                  Shows what needs leadership attention, correction, follow-up, escalation, or a decision before moving forward.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Control Areas</div>
+            <h2>Controls help the business know when something needs action.</h2>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Routing control</strong>
+                Confirms that each request goes to the correct company, department, page, inbox, or review path.
+              </div>
+
+              <div class="bullet">
+                <strong>Follow-up control</strong>
+                Confirms that requests are not left unanswered, ignored, forgotten, or waiting too long.
+              </div>
+
+              <div class="bullet">
+                <strong>Approval control</strong>
+                Confirms that important work is reviewed and approved before it is considered final.
+              </div>
+
+              <div class="bullet">
+                <strong>Record control</strong>
+                Confirms that final documents, messages, notes, decisions, and completion proof are saved.
+              </div>
+
+              <div class="bullet">
+                <strong>Delay control</strong>
+                Identifies tasks that are taking too long, waiting on someone, or missing required information.
+              </div>
+
+              <div class="bullet">
+                <strong>Correction control</strong>
+                Identifies work that must be fixed before it can be approved, filed, delivered, or closed.
+              </div>
+
+              <div class="bullet">
+                <strong>Leadership control</strong>
+                Shows what needs higher-level attention, decision-making, approval, or review.
+              </div>
+
+              <div class="bullet">
+                <strong>Completion control</strong>
+                Confirms that work is actually finished and not only marked complete too early.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Warning Signs</div>
+            <h2>System reports should make weak points visible early.</h2>
+
+            <p>
+              A report becomes powerful when it shows problems while they are still small.
+              Warning signs help leadership notice delay, confusion, repeated mistakes, missing records,
+              weak approvals, and unanswered requests before they damage the business.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Too many pending items</strong>
+                Work is entering the system faster than it is being reviewed or completed.
+              </div>
+
+              <div class="bullet">
+                <strong>Too many delays</strong>
+                Requests are getting stuck because ownership, routing, review, or approval is unclear.
+              </div>
+
+              <div class="bullet">
+                <strong>Missing records</strong>
+                Work is being completed without proof, notes, final documents, or saved decisions.
+              </div>
+
+              <div class="bullet">
+                <strong>Repeated corrections</strong>
+                The same mistake is happening again and again because the process has not been fixed.
+              </div>
+
+              <div class="bullet">
+                <strong>Unanswered follow-up</strong>
+                Customers, partners, or internal teams are waiting too long for response.
+              </div>
+
+              <div class="bullet">
+                <strong>Approval bottlenecks</strong>
+                Work is waiting too long because review or signature rules are not moving clearly.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Leadership Review</div>
+            <h2>Reports should help leadership make better decisions.</h2>
+
+            <p>
+              Leadership should not only see finished work. Leadership should also see the movement of the system:
+              what came in, what is open, what is late, what needs correction, what needs approval,
+              what was completed, and what should be watched closely.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Daily review</strong>
+                Look at new requests, urgent items, delayed items, and unanswered follow-up.
+              </div>
+
+              <div class="bullet">
+                <strong>Weekly review</strong>
+                Look at volume, completion, repeated problems, pending approvals, and department movement.
+              </div>
+
+              <div class="bullet">
+                <strong>Monthly review</strong>
+                Look at patterns, system weaknesses, customer signals, performance, risk, and improvement areas.
+              </div>
+
+              <div class="bullet">
+                <strong>Exception review</strong>
+                Look at anything outside the normal process: high risk, missed deadlines, missing records, or unresolved issues.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Questions To Ask</div>
+            <h2>Use these questions when reviewing system reports and controls.</h2>
+
+            <div class="question-grid">
+              <div class="question-card">
+                <h4>What came into the system?</h4>
+                <p>Review new forms, calls, emails, documents, applications, messages, and requests.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Where did it go?</h4>
+                <p>Confirm the request was routed to the correct place and not left in the wrong inbox or page.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Who owns it?</h4>
+                <p>Every item should have a person, department, company, or process path responsible for the next step.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What is waiting?</h4>
+                <p>Separate work waiting on documents, customer response, staff review, leadership approval, or correction.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What is late?</h4>
+                <p>Find anything that has passed the expected response time, review time, approval time, or completion time.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What was approved?</h4>
+                <p>Check what was reviewed, who approved it, when it was approved, and what record was saved.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What was completed?</h4>
+                <p>Confirm final completion, saved records, completion notes, and next-step closure.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What needs leadership attention?</h4>
+                <p>Identify risk, delay, repeated problems, missing information, approval issues, and unresolved items.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s System Reports Focus</div>
+            <h2 id="dailyTitle">Review what is new, pending, delayed, approved, and completed.</h2>
+            <p id="dailyText">
+              Today’s system focus is leadership visibility. A strong system report should show what needs attention without searching through scattered messages.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Review new work entering the system.</div>
+              <div class="daily-item" id="daily2">Review pending work and assigned owners.</div>
+              <div class="daily-item" id="daily3">Review delayed work and correction items.</div>
+              <div class="daily-item" id="daily4">Review completed work and saved records.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, system report questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel) menuPanel.classList.remove('open');
+    });
+
+    const dailySet = [
+      {
+        title:'Review what is new, pending, delayed, approved, and completed.',
+        text:'Today’s system focus is leadership visibility. A strong system report should show what needs attention without searching through scattered messages.',
+        a:'Review new work entering the system.',
+        b:'Review pending work and assigned owners.',
+        c:'Review delayed work and correction items.',
+        d:'Review completed work and saved records.'
+      },
+      {
+        title:'Check whether every open item has an owner.',
+        text:'Today’s system focus is ownership. Work should not sit in the system without a clear person, department, or process path responsible for the next step.',
+        a:'Check new items without owners.',
+        b:'Check pending items without follow-up.',
+        c:'Check delayed items without escalation.',
+        d:'Check completed items without saved records.'
+      },
+      {
+        title:'Use controls to prevent lost work.',
+        text:'Today’s system focus is control. A control helps catch missing information, delays, unclear routing, weak approvals, and incomplete records.',
+        a:'Review missing information.',
+        b:'Review wrong routing.',
+        c:'Review approvals waiting too long.',
+        d:'Review incomplete records.'
+      },
+      {
+        title:'Leadership should see attention items clearly.',
+        text:'Today’s system focus is attention. Reports should show what needs correction, review, approval, follow-up, or leadership decision.',
+        a:'Review correction items.',
+        b:'Review approval items.',
+        c:'Review escalation items.',
+        d:'Review unresolved items.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    const dailyDate = document.getElementById('dailyDate');
+    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
