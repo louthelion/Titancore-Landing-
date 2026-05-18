@@ -1258,58 +1258,69 @@
   </script>
   <script>
   /*
-    Business Systems Intelligence card connections
-    Paste before </body> inside business-system-intelligence.html
+    Business Systems Intelligence page links
+    Use this one only. Remove the old card-link Java first.
   */
 
-  const businessSystemPageLinks = {
-    "forms & intake": "forms-intake.html",
-    "routing & follow-up": "routing-follow-up.html",
-    "reviews & approvals": "reviews-approvals.html",
-    "records & archives": "records-archives.html",
-    "reports & dashboards": "system-reports-controls.html",
-    "system reports & controls": "system-reports-controls.html",
-    "automation readiness": "automation-readiness.html"
-  };
+  const pageMap = [
+    {
+      match: ["forms & intake", "forms", "review forms"],
+      url: "forms-intake.html"
+    },
+    {
+      match: ["routing & follow-up", "routing", "follow-up", "review routing"],
+      url: "routing-follow-up.html"
+    },
+    {
+      match: ["reviews & approvals", "reviews", "approvals", "review approvals"],
+      url: "reviews-approvals.html"
+    },
+    {
+      match: ["records & archives", "records", "archives", "review records"],
+      url: "records-archives.html"
+    },
+    {
+      match: ["system reports & controls", "reports & dashboards", "review systems", "review dashboards"],
+      url: "system-reports-controls.html"
+    },
+    {
+      match: ["automation readiness", "readiness", "review readiness"],
+      url: "automation-readiness.html"
+    }
+  ];
 
   document.querySelectorAll(".info-card").forEach((card) => {
-    const titleElement = card.querySelector("h3");
-    if (!titleElement) return;
+    const title = card.querySelector("h3")?.textContent.trim().toLowerCase() || "";
+    const buttonText = card.querySelector(".card-link")?.textContent.trim().toLowerCase() || "";
+    const allText = `${title} ${buttonText}`;
 
-    const titleText = titleElement.textContent.trim().toLowerCase();
-    const pageLink = businessSystemPageLinks[titleText];
+    const found = pageMap.find(item =>
+      item.match.some(word => allText.includes(word))
+    );
 
-    if (!pageLink) return;
+    if (!found) return;
 
-    /*
-      This fixes the old wrong dashboard wording
-      and turns it into System Reports & Controls.
-    */
-    if (titleText === "reports & dashboards") {
-      titleElement.innerHTML = "System Reports &amp; Controls";
+    card.setAttribute("href", found.url);
 
+    card.onclick = function(e) {
+      e.preventDefault();
+      window.location.assign(found.url);
+    };
+
+    if (found.url === "system-reports-controls.html") {
+      const titleElement = card.querySelector("h3");
       const paragraph = card.querySelector("p");
+      const buttonLabel = card.querySelector(".card-link span:first-child");
+
+      if (titleElement) titleElement.innerHTML = "System Reports &amp; Controls";
+
       if (paragraph) {
         paragraph.textContent =
           "Understand how internal systems help leadership track new work, pending work, delays, approvals, completed work, records, and attention items.";
       }
 
-      const cardLinkText = card.querySelector(".card-link span:first-child");
-      if (cardLinkText) {
-        cardLinkText.textContent = "Review Systems";
-      }
+      if (buttonLabel) buttonLabel.textContent = "Review Systems";
     }
-
-    /*
-      This forces the card to open the correct new page,
-      even if the old href still says #something.
-    */
-    card.setAttribute("href", pageLink);
-
-    card.addEventListener("click", function(event) {
-      event.preventDefault();
-      window.location.href = pageLink;
-    });
   });
 </script>
 </body>
