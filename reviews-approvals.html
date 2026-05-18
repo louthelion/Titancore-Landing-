@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Reviews & Approvals | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:32px 0}
+
+    .hero{padding:34px 0 26px}
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 48%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.45rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    h4{
+      color:var(--gold-soft);
+      font-size:1.45rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{max-width:1040px}
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+      margin-top:24px;
+    }
+
+    .step-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      padding:28px;
+      background:rgba(0,0,0,.62);
+      box-shadow:var(--shadow);
+      min-height:280px;
+    }
+
+    .step-number{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .step-card h3{
+      font-size:2rem;
+      margin-bottom:14px;
+    }
+
+    .step-card p{
+      font-size:1rem;
+      margin:0;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .question-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .question-card{
+      border:1px solid rgba(216,180,90,.62);
+      background:rgba(0,0,0,.48);
+      padding:22px;
+    }
+
+    .question-card h4{
+      margin-bottom:10px;
+    }
+
+    .question-card p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{font-size:3.1rem}
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{padding:24px 0 40px}
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{padding:54px}
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .steps-grid,
+      .bullet-grid,
+      .question-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
+    }
+
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box,
+      .step-card{
+        border-radius:24px;
+      }
+
+      .hero-box{min-height:620px}
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{font-size:3rem}
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{font-size:2rem}
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Reviews &amp; Approvals</div>
+            <h1>Reviews &amp; Approvals</h1>
+
+            <p>
+              Reviews &amp; Approvals explain how important business work should be checked, corrected,
+              approved, documented, and completed before it is treated as final.
+            </p>
+
+            <p>
+              A strong review process protects the business from mistakes, missing information,
+              weak decisions, rushed work, unclear responsibility, and final actions being taken
+              before the right people have reviewed the information.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>Review means checking the work. Approval means confirming it can move forward.</h2>
+
+            <p>
+              A review is the step where information is checked before a decision is made.
+              It looks for missing details, mistakes, unclear requests, weak documents,
+              wrong routing, incomplete records, or work that needs correction.
+            </p>
+
+            <p>
+              An approval is the confirmation that the work is ready to move to the next step.
+              Approval does not mean guessing. It means the required information has been reviewed,
+              the proper process was followed, and the work is ready to be accepted, filed, sent,
+              delivered, signed, completed, or closed.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Review checks quality</strong>
+                The work is examined for accuracy, completeness, clarity, and readiness.
+              </div>
+
+              <div class="bullet">
+                <strong>Approval confirms movement</strong>
+                The work is allowed to move forward after the proper review is complete.
+              </div>
+
+              <div class="bullet">
+                <strong>Correction protects the process</strong>
+                Work that is incomplete or wrong should be sent back for correction before final approval.
+              </div>
+
+              <div class="bullet">
+                <strong>Documentation protects the record</strong>
+                Notes, approvals, changes, and final decisions should be saved for future reference.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">Approval Review Image</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Reviews and approvals video space.</h3>
+              <p>
+                This future video area can explain review steps, approval movement,
+                correction rules, leadership sign-off, final records, and how work becomes complete.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Review Path</div>
+            <h2>Important work should pass through a clear review path.</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Step 01</div>
+                <h3>Receive Work</h3>
+                <p>
+                  The request, form, document, message, report, application, or task enters the system and is recorded.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 02</div>
+                <h3>Check Intake</h3>
+                <p>
+                  The first review confirms that the required information is present before the work moves forward.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 03</div>
+                <h3>Assign Review</h3>
+                <p>
+                  The work is routed to the person, department, company, or leadership path responsible for checking it.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 04</div>
+                <h3>Correct Issues</h3>
+                <p>
+                  If anything is missing, unclear, wrong, or incomplete, the work is returned for correction before approval.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 05</div>
+                <h3>Approve Movement</h3>
+                <p>
+                  Once the review is complete, approval confirms that the work can move to the next stage.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 06</div>
+                <h3>Save Record</h3>
+                <p>
+                  The final approval, notes, corrections, documents, and completion proof should be saved.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">What Should Be Reviewed</div>
+            <h2>The business should know exactly what needs review before approval.</h2>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Customer or client requests</strong>
+                Check whether the request is clear, complete, and routed to the correct place.
+              </div>
+
+              <div class="bullet">
+                <strong>Forms and applications</strong>
+                Check whether required fields, documents, dates, contact information, and notes are complete.
+              </div>
+
+              <div class="bullet">
+                <strong>Documents and reports</strong>
+                Check spelling, accuracy, formatting, missing information, supporting details, and final readiness.
+              </div>
+
+              <div class="bullet">
+                <strong>Financial or pricing decisions</strong>
+                Check numbers, assumptions, cost, risk, profit, timing, and approval requirements.
+              </div>
+
+              <div class="bullet">
+                <strong>Outgoing messages</strong>
+                Check tone, accuracy, recipient, attachments, and whether the message should be sent.
+              </div>
+
+              <div class="bullet">
+                <strong>Final deliverables</strong>
+                Check whether the work is complete, approved, saved, and ready before delivery.
+              </div>
+
+              <div class="bullet">
+                <strong>Corrections and returned work</strong>
+                Check whether the problem was actually fixed before the work moves forward again.
+              </div>
+
+              <div class="bullet">
+                <strong>Leadership attention items</strong>
+                Check anything that affects risk, money, reputation, timing, approval, or final decision-making.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Approval Types</div>
+            <h2>Not every approval is the same.</h2>
+
+            <p>
+              A business can have different approval levels depending on the type of work.
+              Some items only need a basic review. Some need department approval.
+              Some need company leadership approval. Some need final executive approval before anything is sent,
+              filed, signed, published, or completed.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Basic approval</strong>
+                Confirms the item is complete enough to move to the next step.
+              </div>
+
+              <div class="bullet">
+                <strong>Department approval</strong>
+                Confirms the responsible department reviewed the work and accepts it.
+              </div>
+
+              <div class="bullet">
+                <strong>Company approval</strong>
+                Confirms company-level leadership reviewed the work before final movement.
+              </div>
+
+              <div class="bullet">
+                <strong>Final approval</strong>
+                Confirms the work is ready for final action, delivery, filing, signature, or completion.
+              </div>
+
+              <div class="bullet">
+                <strong>Conditional approval</strong>
+                Allows work to move forward only if a correction, document, or condition is completed.
+              </div>
+
+              <div class="bullet">
+                <strong>Rejected approval</strong>
+                Stops the work because it is incomplete, incorrect, too risky, or not ready.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Correction Rules</div>
+            <h2>A good approval system must know when to send work back.</h2>
+
+            <p>
+              Sending work back for correction is not failure. It is part of quality control.
+              If something is missing, unclear, wrong, weak, or not ready, the system should return it
+              to the correct place before anyone approves it as final.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Missing information</strong>
+                Required details, documents, notes, names, dates, or fields are missing.
+              </div>
+
+              <div class="bullet">
+                <strong>Wrong routing</strong>
+                The item was sent to the wrong department, company, person, inbox, or review path.
+              </div>
+
+              <div class="bullet">
+                <strong>Weak documentation</strong>
+                The record does not explain what happened, who handled it, or what decision was made.
+              </div>
+
+              <div class="bullet">
+                <strong>Unclear decision</strong>
+                The next step is not clear enough to approve movement.
+              </div>
+
+              <div class="bullet">
+                <strong>Risk not reviewed</strong>
+                Money, legal, tax, timing, reputation, customer, or operational risk needs more review.
+              </div>
+
+              <div class="bullet">
+                <strong>Final proof missing</strong>
+                The work is being marked complete without proof, final document, note, or saved record.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Questions To Ask</div>
+            <h2>Use these questions before approving important work.</h2>
+
+            <div class="question-grid">
+              <div class="question-card">
+                <h4>Is the information complete?</h4>
+                <p>Check whether all required fields, documents, notes, names, dates, and details are included.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Is the work routed correctly?</h4>
+                <p>Confirm the right person, department, company, or review path received the item.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Was the correct process followed?</h4>
+                <p>Check whether the work followed the proper intake, review, correction, and approval steps.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Does anything need correction?</h4>
+                <p>Look for missing information, wrong details, weak documentation, unclear decisions, or risk.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Who approved it?</h4>
+                <p>Record the person, department, company, or leadership level that approved the work.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What was approved?</h4>
+                <p>Be clear about whether the approval is for review, correction, delivery, filing, signing, or final completion.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Where is the record saved?</h4>
+                <p>Save approval notes, documents, corrections, completion proof, and final decisions in the right place.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What happens next?</h4>
+                <p>Define the next step after approval so work does not stop after being reviewed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Reviews & Approvals Focus</div>
+            <h2 id="dailyTitle">Check the work before approving the next step.</h2>
+            <p id="dailyText">
+              Today’s approval focus is quality control. Important work should be reviewed before it is accepted, sent, filed, signed, or completed.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Check whether the information is complete.</div>
+              <div class="daily-item" id="daily2">Check whether the item was routed correctly.</div>
+              <div class="daily-item" id="daily3">Check whether corrections are needed.</div>
+              <div class="daily-item" id="daily4">Check whether the approval record is saved.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, review and approval questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel) menuPanel.classList.remove('open');
+    });
+
+    const dailySet = [
+      {
+        title:'Check the work before approving the next step.',
+        text:'Today’s approval focus is quality control. Important work should be reviewed before it is accepted, sent, filed, signed, or completed.',
+        a:'Check whether the information is complete.',
+        b:'Check whether the item was routed correctly.',
+        c:'Check whether corrections are needed.',
+        d:'Check whether the approval record is saved.'
+      },
+      {
+        title:'Approval should confirm readiness, not guess readiness.',
+        text:'Today’s approval focus is decision discipline. Approval should happen after the proper review path is complete.',
+        a:'Review the original request.',
+        b:'Review supporting documents.',
+        c:'Review correction notes.',
+        d:'Review final readiness.'
+      },
+      {
+        title:'Send weak work back before it becomes final.',
+        text:'Today’s approval focus is correction. Work that is incomplete, unclear, or risky should be returned for correction before final approval.',
+        a:'Identify missing information.',
+        b:'Identify wrong routing.',
+        c:'Identify unclear decisions.',
+        d:'Identify missing records.'
+      },
+      {
+        title:'Save approval records for future reference.',
+        text:'Today’s approval focus is documentation. The business should know who reviewed it, who approved it, what changed, and where the final record is saved.',
+        a:'Save approval notes.',
+        b:'Save correction history.',
+        c:'Save final documents.',
+        d:'Save completion proof.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    const dailyDate = document.getElementById('dailyDate');
+    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
