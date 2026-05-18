@@ -1,1 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Forms & Intake | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:32px 0}
+
+    .hero{padding:34px 0 26px}
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 48%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.45rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    h4{
+      color:var(--gold-soft);
+      font-size:1.45rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1500&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{max-width:1040px}
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+      margin-top:24px;
+    }
+
+    .step-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      padding:28px;
+      background:rgba(0,0,0,.62);
+      box-shadow:var(--shadow);
+      min-height:280px;
+    }
+
+    .step-number{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .step-card h3{
+      font-size:2rem;
+      margin-bottom:14px;
+    }
+
+    .step-card p{
+      font-size:1rem;
+      margin:0;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .question-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .question-card{
+      border:1px solid rgba(216,180,90,.62);
+      background:rgba(0,0,0,.48);
+      padding:22px;
+    }
+
+    .question-card h4{
+      margin-bottom:10px;
+    }
+
+    .question-card p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{font-size:3.1rem}
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{padding:24px 0 40px}
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{padding:54px}
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .steps-grid,
+      .bullet-grid,
+      .question-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
+    }
+
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box,
+      .step-card{
+        border-radius:24px;
+      }
+
+      .hero-box{min-height:620px}
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{font-size:3rem}
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{font-size:2rem}
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Forms &amp; Intake</div>
+            <h1>Forms &amp; Intake</h1>
+
+            <p>
+              Forms &amp; Intake explain how a business collects the right information before work begins.
+              Intake can come from public forms, phone calls, emails, messages, applications, service requests,
+              documents, or direct inquiries.
+            </p>
+
+            <p>
+              A strong intake process helps the business understand who is contacting the company, what they need,
+              what information is required, where the request should go, who should respond, and what the next step should be.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>Intake is the first checkpoint in the business system.</h2>
+
+            <p>
+              Intake is the moment information enters the business. If the company does not collect the right
+              information at the beginning, the rest of the workflow becomes slower, weaker, and more confusing.
+              Good intake prevents missing details, wrong routing, repeated questions, and poor follow-up.
+            </p>
+
+            <p>
+              A form is one intake tool, but intake is bigger than a form. Intake includes every way a request
+              enters the company: website forms, contact pages, phone calls, emails, text messages, referrals,
+              documents, applications, and public inquiries. The goal is to capture the right information and send it to the right place.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Forms collect structure</strong>
+                They ask the same important questions every time so the business does not start with missing information.
+              </div>
+
+              <div class="bullet">
+                <strong>Intake creates clarity</strong>
+                It tells the business who contacted the company, what they need, and what should happen next.
+              </div>
+
+              <div class="bullet">
+                <strong>Intake protects routing</strong>
+                A good intake process helps send the request to the correct company, department, or review path.
+              </div>
+
+              <div class="bullet">
+                <strong>Intake supports records</strong>
+                The first record should explain what was received, when it arrived, and what information came with it.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">Forms & Intake Image</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Forms and intake video space.</h3>
+              <p>
+                This future video area can explain intake forms, call intake, email sorting,
+                public inquiry capture, required fields, routing questions, and follow-up preparation.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">What Intake Should Collect</div>
+            <h2>A strong intake system collects enough information to begin correctly.</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Field 01</div>
+                <h3>Identity</h3>
+                <p>
+                  Collect the person’s name, business name if needed, phone number, email address, and best contact method.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Field 02</div>
+                <h3>Request Type</h3>
+                <p>
+                  Identify whether the request is general contact, service interest, application, document, complaint, support, or follow-up.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Field 03</div>
+                <h3>Company Direction</h3>
+                <p>
+                  Decide whether the request belongs to TitanCore, Vaultara, Family First, VitalPath, RevMotion, or another company path.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Field 04</div>
+                <h3>Need & Goal</h3>
+                <p>
+                  Ask what the person is trying to do, what problem they need solved, and what result they are looking for.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Field 05</div>
+                <h3>Timeline</h3>
+                <p>
+                  Capture urgency, preferred deadline, event date, project date, appointment window, or response expectation.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Field 06</div>
+                <h3>Documents</h3>
+                <p>
+                  Collect any files, screenshots, IDs, forms, contracts, invoices, property details, funding documents, or support material.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Field 07</div>
+                <h3>Consent & Permission</h3>
+                <p>
+                  Confirm permission to contact the person, review the information, and route the request to the proper company or team.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Field 08</div>
+                <h3>Next Step</h3>
+                <p>
+                  Define whether the next step is a callback, email reply, review, application, appointment, document request, or routing action.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Field 09</div>
+                <h3>Record Creation</h3>
+                <p>
+                  Save the original submission so the company has proof of what came in and when it was received.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Intake Channels</div>
+            <h2>Intake can come from many places, not only one form.</h2>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Website forms</strong>
+                Contact forms, service forms, company forms, request forms, application forms, and document upload forms.
+              </div>
+
+              <div class="bullet">
+                <strong>Phone calls</strong>
+                Call intake should capture caller name, reason for calling, company needed, urgency, and follow-up contact.
+              </div>
+
+              <div class="bullet">
+                <strong>Emails</strong>
+                Email intake should identify the sender, subject, request type, attachments, urgency, and routing destination.
+              </div>
+
+              <div class="bullet">
+                <strong>Messages</strong>
+                Texts, social media messages, chat messages, and direct messages should be summarized and recorded.
+              </div>
+
+              <div class="bullet">
+                <strong>Applications</strong>
+                Applications need required fields, supporting documents, signature status, review path, and completion status.
+              </div>
+
+              <div class="bullet">
+                <strong>Referrals</strong>
+                Referral intake should collect who referred the person, why they were referred, and what follow-up is needed.
+              </div>
+
+              <div class="bullet">
+                <strong>Documents</strong>
+                Documents received without context should be connected to the correct person, company, request, or project.
+              </div>
+
+              <div class="bullet">
+                <strong>Walk-in or verbal requests</strong>
+                Even verbal requests should be written into the system so the business does not depend on memory.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Intake Workflow</div>
+            <h2>A request should move through a clear intake path.</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Step 01</div>
+                <h3>Capture</h3>
+                <p>
+                  The business receives the request through a form, call, email, message, document, or direct inquiry.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 02</div>
+                <h3>Identify</h3>
+                <p>
+                  The business identifies who sent it, what they need, which company it belongs to, and what type of request it is.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 03</div>
+                <h3>Check Completeness</h3>
+                <p>
+                  The intake record is checked for missing contact details, missing documents, unclear request type, or weak information.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 04</div>
+                <h3>Route</h3>
+                <p>
+                  The request is sent to the correct page, inbox, company, department, review path, or follow-up list.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 05</div>
+                <h3>Assign</h3>
+                <p>
+                  A person, department, company, or process path becomes responsible for the next step.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 06</div>
+                <h3>Save Record</h3>
+                <p>
+                  The intake record is saved so the company can review what came in, when it came in, and what happened next.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Good Form Design</div>
+            <h2>A good form asks the right questions without confusing the visitor.</h2>
+
+            <p>
+              A form should be simple enough for a person to complete, but strong enough to help the business understand the request.
+              The form should not ask random questions. Every field should help identify, route, review, or respond to the request.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Use clear labels</strong>
+                People should understand what each field is asking without guessing.
+              </div>
+
+              <div class="bullet">
+                <strong>Separate request types</strong>
+                A funding request, real estate request, care request, auto request, and general contact request should not all ask the same questions.
+              </div>
+
+              <div class="bullet">
+                <strong>Mark required fields</strong>
+                Required details should be clear so the submission does not arrive incomplete.
+              </div>
+
+              <div class="bullet">
+                <strong>Use short instructions</strong>
+                Simple instructions reduce mistakes and help people submit better information.
+              </div>
+
+              <div class="bullet">
+                <strong>Allow supporting details</strong>
+                Notes, documents, screenshots, or extra explanation can help the business understand the full situation.
+              </div>
+
+              <div class="bullet">
+                <strong>Confirm the next step</strong>
+                After submission, the visitor should know what happens next and how the business may respond.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Common Mistakes</div>
+            <h2>Weak intake creates problems for the whole business system.</h2>
+
+            <p>
+              When intake is weak, the company spends more time asking follow-up questions, searching for missing details,
+              correcting wrong routing, and trying to understand what the person wanted. Good intake reduces confusion before it spreads.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Too few fields</strong>
+                The form does not collect enough information to understand or route the request.
+              </div>
+
+              <div class="bullet">
+                <strong>Too many random fields</strong>
+                The form asks too much without helping the business make a decision.
+              </div>
+
+              <div class="bullet">
+                <strong>No request category</strong>
+                The business cannot quickly tell what type of request was submitted.
+              </div>
+
+              <div class="bullet">
+                <strong>No routing path</strong>
+                The submission arrives, but nobody knows where it should go next.
+              </div>
+
+              <div class="bullet">
+                <strong>No ownership</strong>
+                Nobody is clearly responsible for reviewing or responding to the request.
+              </div>
+
+              <div class="bullet">
+                <strong>No record saving</strong>
+                The submission is not saved in a clear place for future review.
+              </div>
+
+              <div class="bullet">
+                <strong>No follow-up instruction</strong>
+                The visitor submits information but does not know what happens next.
+              </div>
+
+              <div class="bullet">
+                <strong>No correction path</strong>
+                If information is missing, there is no clear process to request the missing details.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Questions To Ask</div>
+            <h2>Use these questions before creating or reviewing an intake process.</h2>
+
+            <div class="question-grid">
+              <div class="question-card">
+                <h4>Who is submitting the request?</h4>
+                <p>Collect the person’s name, contact information, business name if needed, and best way to respond.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What type of request is it?</h4>
+                <p>Identify whether it is general contact, service interest, application, support, complaint, document, or follow-up.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Which company does it belong to?</h4>
+                <p>Route the request to the correct company or department instead of letting everything mix together.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What information is required?</h4>
+                <p>Know which fields, documents, notes, dates, and details are needed before work can begin.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What is missing?</h4>
+                <p>Have a clear correction path for incomplete requests, missing documents, or unclear information.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Who owns the next step?</h4>
+                <p>Every intake record should have a responsible company, department, person, or process path.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>Where is the record saved?</h4>
+                <p>Save the original request and any supporting information in the correct location.</p>
+              </div>
+
+              <div class="question-card">
+                <h4>What should happen next?</h4>
+                <p>Define whether the next step is review, reply, callback, document request, application, or routing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Forms & Intake Focus</div>
+            <h2 id="dailyTitle">Collect the right information before the work begins.</h2>
+            <p id="dailyText">
+              Today’s intake focus is completeness. A strong intake process helps the business start with clear information instead of chasing missing details later.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Check whether the form collects name and contact information.</div>
+              <div class="daily-item" id="daily2">Check whether the request type is clear.</div>
+              <div class="daily-item" id="daily3">Check whether the correct company or department is identified.</div>
+              <div class="daily-item" id="daily4">Check whether the original request is saved as a record.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, forms and intake questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel) menuPanel.classList.remove('open');
+    });
+
+    const dailySet = [
+      {
+        title:'Collect the right information before the work begins.',
+        text:'Today’s intake focus is completeness. A strong intake process helps the business start with clear information instead of chasing missing details later.',
+        a:'Check whether the form collects name and contact information.',
+        b:'Check whether the request type is clear.',
+        c:'Check whether the correct company or department is identified.',
+        d:'Check whether the original request is saved as a record.'
+      },
+      {
+        title:'Make every intake request easy to route.',
+        text:'Today’s intake focus is routing. The business should know where the request belongs before work begins.',
+        a:'Identify the request category.',
+        b:'Identify the correct company.',
+        c:'Identify the responsible department.',
+        d:'Identify the next step owner.'
+      },
+      {
+        title:'Do not let missing information enter the workflow.',
+        text:'Today’s intake focus is correction. Incomplete requests should be corrected before they create delays.',
+        a:'Check missing fields.',
+        b:'Check missing documents.',
+        c:'Check unclear request details.',
+        d:'Request correction before approval.'
+      },
+      {
+        title:'Save the first intake record clearly.',
+        text:'Today’s intake focus is records. The first record should explain what came in, when it arrived, and what should happen next.',
+        a:'Save the original submission.',
+        b:'Save uploaded documents.',
+        c:'Save notes and request category.',
+        d:'Save the routing destination.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    const dailyDate = document.getElementById('dailyDate');
+    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
