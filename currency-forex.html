@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Currency & Forex | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1800&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{
+      display:block;
+    }
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{
+      color:var(--gold-soft);
+    }
+
+    .section{
+      padding:32px 0;
+    }
+
+    .hero{
+      padding:34px 0 26px;
+    }
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1800&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.74) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.35rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .ticker-shell{
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      background:#050505;
+      padding:8px 0;
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1642790551116-18e150f248e8?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{
+      max-width:1040px;
+    }
+
+    .widget-box{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      background:#050505;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .widget-title{
+      padding:22px 26px;
+      border-bottom:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.88);
+    }
+
+    .widget-title h2{
+      font-size:2.6rem;
+      margin-bottom:8px;
+    }
+
+    .widget-title p{
+      margin:0;
+      font-size:1.05rem;
+      color:#ededed;
+    }
+
+    .widget-frame{
+      min-height:560px;
+      background:#000;
+    }
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1642790551116-18e150f248e8?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{
+      font-size:3.1rem;
+    }
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{
+      padding:24px 0 40px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:54px;
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .bullet-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:3.8rem;
+      }
+    }
+
+    @media (max-width:760px){
+      .header-inner{
+        padding:14px 0;
+      }
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{
+        font-size:1.22rem;
+      }
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .widget-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box{
+        border-radius:24px;
+      }
+
+      .hero-box{
+        min-height:620px;
+      }
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{
+        font-size:3rem;
+      }
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{
+        font-size:2rem;
+      }
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{
+        width:100%;
+      }
+
+      .widget-frame{
+        min-height:520px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="stock-market-intelligence.html">Market Intelligence</a>
+          <a href="currency-forex.html">Currency &amp; Forex</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Currency &amp; Forex</div>
+            <h1>Currency &amp; Forex</h1>
+
+            <p>
+              Review currency movement, exchange rates, global trade pressure,
+              central banks, dollar strength, and international business impact.
+            </p>
+
+            <p>
+              Currency movement matters because exchange rates can affect import costs,
+              export pricing, travel spending, international payments, global business contracts,
+              inflation pressure, and the cost of doing business across countries.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-shell">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "FX_IDC:EURUSD", "title": "EUR/USD" },
+            { "proName": "FX_IDC:GBPUSD", "title": "GBP/USD" },
+            { "proName": "FX_IDC:USDJPY", "title": "USD/JPY" },
+            { "proName": "FX_IDC:USDCAD", "title": "USD/CAD" },
+            { "proName": "FX_IDC:AUDUSD", "title": "AUD/USD" },
+            { "proName": "FX_IDC:USDCHF", "title": "USD/CHF" },
+            { "proName": "TVC:DXY", "title": "U.S. Dollar Index" },
+            { "proName": "TVC:GOLD", "title": "Gold" },
+            { "proName": "TVC:USOIL", "title": "Oil" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>Currency movement shows how money value changes between countries.</h2>
+
+            <p>
+              A currency pair compares one currency against another. For example, EUR/USD compares
+              the euro against the U.S. dollar. When exchange rates move, the cost of imports,
+              exports, travel, international payments, and foreign business activity can change.
+            </p>
+
+            <p>
+              Forex is the global foreign exchange market. This page is for business education and market observation.
+              It helps visitors understand currency signals, exchange pressure, and business impact.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Exchange Rates</strong>
+                Exchange rates show how much one currency is worth compared with another currency.
+              </div>
+
+              <div class="bullet">
+                <strong>Dollar Strength</strong>
+                A stronger dollar can affect imports, exports, commodities, foreign earnings, and international pricing.
+              </div>
+
+              <div class="bullet">
+                <strong>Central Banks</strong>
+                Interest rate decisions and policy messages can move currency values quickly.
+              </div>
+
+              <div class="bullet">
+                <strong>Global Trade</strong>
+                Imports, exports, tariffs, shipping pressure, and country risk can affect currency movement.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="widget-box">
+          <div class="widget-title">
+            <h2>Live Currency Market Overview</h2>
+            <p>
+              This live area tracks major currency pairs, dollar strength, gold, and oil movement.
+            </p>
+          </div>
+
+          <div class="widget-frame">
+            <div class="tradingview-widget-container" style="height:100%;width:100%;">
+              <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+              {
+                "colorTheme": "dark",
+                "dateRange": "12M",
+                "showChart": true,
+                "locale": "en",
+                "largeChartUrl": "",
+                "isTransparent": false,
+                "showSymbolLogo": true,
+                "showFloatingTooltip": false,
+                "width": "100%",
+                "height": "560",
+                "tabs": [
+                  {
+                    "title": "Major FX",
+                    "symbols": [
+                      { "s": "FX_IDC:EURUSD", "d": "EUR/USD" },
+                      { "s": "FX_IDC:GBPUSD", "d": "GBP/USD" },
+                      { "s": "FX_IDC:USDJPY", "d": "USD/JPY" },
+                      { "s": "FX_IDC:USDCAD", "d": "USD/CAD" },
+                      { "s": "FX_IDC:AUDUSD", "d": "AUD/USD" },
+                      { "s": "FX_IDC:USDCHF", "d": "USD/CHF" }
+                    ]
+                  },
+                  {
+                    "title": "Dollar & Commodities",
+                    "symbols": [
+                      { "s": "TVC:DXY", "d": "U.S. Dollar Index" },
+                      { "s": "TVC:GOLD", "d": "Gold" },
+                      { "s": "TVC:SILVER", "d": "Silver" },
+                      { "s": "TVC:USOIL", "d": "Oil" }
+                    ]
+                  },
+                  {
+                    "title": "Global Pairs",
+                    "symbols": [
+                      { "s": "FX_IDC:EURGBP", "d": "EUR/GBP" },
+                      { "s": "FX_IDC:EURJPY", "d": "EUR/JPY" },
+                      { "s": "FX_IDC:GBPJPY", "d": "GBP/JPY" },
+                      { "s": "FX_IDC:AUDJPY", "d": "AUD/JPY" },
+                      { "s": "FX_IDC:NZDUSD", "d": "NZD/USD" }
+                    ]
+                  }
+                ]
+              }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Currency Learning</div>
+            <h2>Currency &amp; Forex learning areas.</h2>
+
+            <p>
+              These are the main areas to understand when reviewing currency movement.
+              Everything stays on this page. No extra inside pages are required.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Major Currency Pairs</strong>
+                Major pairs are the most watched currency comparisons, such as EUR/USD,
+                GBP/USD, USD/JPY, USD/CAD, AUD/USD, and USD/CHF. These pairs help show
+                how the U.S. dollar is moving against major global currencies.
+              </div>
+
+              <div class="bullet">
+                <strong>Dollar Strength</strong>
+                Dollar strength can affect imports, exports, commodities, travel,
+                foreign earnings, international payments, and global business pricing.
+                A stronger dollar may help some buyers but pressure companies earning money overseas.
+              </div>
+
+              <div class="bullet">
+                <strong>Central Banks</strong>
+                Central banks influence currency values through interest rates,
+                inflation targets, policy statements, and economic outlooks. When central banks
+                change their tone, currencies can move quickly.
+              </div>
+
+              <div class="bullet">
+                <strong>Global Trade Pressure</strong>
+                Currency movement can be affected by imports, exports, tariffs,
+                shipping costs, supply chains, sanctions, country risk, and demand between countries.
+              </div>
+
+              <div class="bullet">
+                <strong>Business Impact</strong>
+                Exchange rates can change the cost of supplies, foreign payments,
+                contract value, travel spending, international sales, and profit margins.
+                A business working across countries should understand this pressure.
+              </div>
+
+              <div class="bullet">
+                <strong>Currency Risk</strong>
+                Currency risk happens when exchange rates change after a price, contract,
+                invoice, or payment plan is already set. This can affect planning, profit,
+                purchasing power, and international business decisions.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">Currency Image Zone</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Currency &amp; Forex video space.</h3>
+              <p>
+                This area can later hold currency education videos, dollar strength updates,
+                central bank explainers, exchange-rate lessons, and global trade pressure reviews.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Business Impact</div>
+            <h2>Exchange rates can affect real business decisions.</h2>
+
+            <p>
+              Currency changes can affect the cost of supplies, foreign payments, international travel,
+              overseas sales, contract value, profit margins, customer demand, and pricing decisions.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Imports</strong>
+                A currency change can make imported products, parts, materials, or supplies more expensive or less expensive.
+              </div>
+
+              <div class="bullet">
+                <strong>Exports</strong>
+                Currency strength can affect how competitive a business appears to foreign customers.
+              </div>
+
+              <div class="bullet">
+                <strong>International Payments</strong>
+                Exchange rates can change the final cost of paying vendors, contractors, or partners in another currency.
+              </div>
+
+              <div class="bullet">
+                <strong>Travel & Tourism</strong>
+                Currency movement can affect visitor spending, travel affordability, and international customer behavior.
+              </div>
+
+              <div class="bullet">
+                <strong>Foreign Revenue</strong>
+                Companies earning money overseas may see revenue change when converted back into their home currency.
+              </div>
+
+              <div class="bullet">
+                <strong>Pricing Strategy</strong>
+                A business may need to review prices when exchange rates change cost, demand, or profit expectations.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Currency Reading Rules</div>
+            <h2>Currency movement should be reviewed with context.</h2>
+
+            <p>
+              Currency movement can be fast, but the reason behind the movement matters.
+              A currency can move because of interest rates, inflation, jobs data, trade pressure,
+              political risk, central bank statements, commodity movement, or investor demand for safety.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Check the Pair</strong>
+                Currency movement always compares one currency against another.
+              </div>
+
+              <div class="bullet">
+                <strong>Check the Dollar</strong>
+                Dollar strength can affect commodities, imports, exports, foreign earnings, and global liquidity.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Central Banks</strong>
+                Rate decisions and policy language can change currency expectations quickly.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Inflation</strong>
+                Inflation changes purchasing power and can affect future interest rate expectations.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Global Risk</strong>
+                Political instability, wars, sanctions, and trade conflict can move currencies.
+              </div>
+
+              <div class="bullet">
+                <strong>Use Human Review</strong>
+                Forex, money, tax, legal, and international business decisions should be reviewed carefully before action.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Currency Focus</div>
+            <h2 id="dailyTitle">Review dollar strength, major pairs, and central bank signals.</h2>
+            <p id="dailyText">
+              Today’s currency focus is movement. Watch the dollar, major currency pairs, rates, inflation, and global business pressure.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Review EUR/USD, GBP/USD, USD/JPY, and USD/CAD.</div>
+              <div class="daily-item" id="daily2">Review U.S. dollar index movement.</div>
+              <div class="daily-item" id="daily3">Review central bank and interest rate signals.</div>
+              <div class="daily-item" id="daily4">Review global trade and international business pressure.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, currency questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel){
+        menuPanel.classList.remove('open');
+      }
+    });
+
+    const dailySet = [
+      {
+        title:'Review dollar strength, major pairs, and central bank signals.',
+        text:'Today’s currency focus is movement. Watch the dollar, major currency pairs, rates, inflation, and global business pressure.',
+        a:'Review EUR/USD, GBP/USD, USD/JPY, and USD/CAD.',
+        b:'Review U.S. dollar index movement.',
+        c:'Review central bank and interest rate signals.',
+        d:'Review global trade and international business pressure.'
+      },
+      {
+        title:'Connect currency movement to business costs.',
+        text:'Today’s currency focus is business impact. Exchange rates can affect imports, exports, travel, payments, and pricing.',
+        a:'Review import and supplier cost pressure.',
+        b:'Review international payment exposure.',
+        c:'Review travel and customer spending impact.',
+        d:'Review foreign revenue and pricing risk.'
+      },
+      {
+        title:'Watch central banks before judging currency direction.',
+        text:'Today’s currency focus is policy. Central bank rate decisions and inflation language can move currency expectations quickly.',
+        a:'Review Fed signals.',
+        b:'Review global central bank signals.',
+        c:'Review rate expectations.',
+        d:'Review inflation and yield pressure.'
+      },
+      {
+        title:'Separate currency noise from currency signals.',
+        text:'Today’s currency focus is discipline. A currency move needs context before business decisions are made.',
+        a:'Check the currency pair.',
+        b:'Check the market direction.',
+        c:'Check rates and inflation.',
+        d:'Check business impact before action.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    document.getElementById('dailyDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
