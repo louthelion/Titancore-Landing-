@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Crypto & Coins | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1621504450181-5d356f61d307?auto=format&fit=crop&w=1800&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:32px 0}
+
+    .hero{padding:34px 0 26px}
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1621504450181-5d356f61d307?auto=format&fit=crop&w=1800&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.74) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.35rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    h4{
+      color:var(--gold-soft);
+      font-size:1.45rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .ticker-shell{
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      background:#050505;
+      padding:8px 0;
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1642790551116-18e150f248e8?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{max-width:1040px}
+
+    .widget-box{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      background:#050505;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .widget-title{
+      padding:22px 26px;
+      border-bottom:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.88);
+    }
+
+    .widget-title h2{
+      font-size:2.6rem;
+      margin-bottom:8px;
+    }
+
+    .widget-title p{
+      margin:0;
+      font-size:1.05rem;
+      color:#ededed;
+    }
+
+    .widget-frame{
+      min-height:560px;
+      background:#000;
+    }
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1621504450181-5d356f61d307?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{font-size:3.1rem}
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{padding:24px 0 40px}
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{padding:54px}
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .bullet-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
+    }
+
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .widget-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box{
+        border-radius:24px;
+      }
+
+      .hero-box{min-height:620px}
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{font-size:3rem}
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{font-size:2rem}
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{width:100%}
+
+      .widget-frame{min-height:520px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="stock-market-intelligence.html">Market Intelligence</a>
+          <a href="crypto-coins.html">Crypto &amp; Coins</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Crypto &amp; Coins</div>
+            <h1>Crypto &amp; Coins</h1>
+
+            <p>
+              Understand digital asset basics, crypto volatility, market sentiment,
+              token categories, and risk awareness.
+            </p>
+
+            <p>
+              Crypto &amp; Coins helps visitors learn how digital assets move,
+              why crypto prices can change quickly, how different coin categories work,
+              and why careful review is important before any money decision.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-shell">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "COINBASE:BTCUSD", "title": "Bitcoin" },
+            { "proName": "COINBASE:ETHUSD", "title": "Ethereum" },
+            { "proName": "COINBASE:SOLUSD", "title": "Solana" },
+            { "proName": "COINBASE:XRPUSD", "title": "XRP" },
+            { "proName": "COINBASE:ADAUSD", "title": "Cardano" },
+            { "proName": "COINBASE:DOGEUSD", "title": "Dogecoin" },
+            { "proName": "CRYPTOCAP:TOTAL", "title": "Crypto Market" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>Crypto is a digital asset market built around coins, tokens, networks, and trust.</h2>
+
+            <p>
+              Crypto &amp; Coins refers to digital assets that trade on blockchain networks or crypto exchanges.
+              Some coins are used as network currency, some tokens are connected to projects, some assets track value,
+              and some move mostly because of market sentiment.
+            </p>
+
+            <p>
+              This page explains crypto as a business and market education topic.
+              It is not personal financial advice. Crypto can be highly volatile and should be reviewed carefully.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Digital Assets</strong>
+                Digital assets are online units of value. They may represent coins, tokens,
+                blockchain network activity, project access, payment use, or market speculation.
+              </div>
+
+              <div class="bullet">
+                <strong>Blockchain Networks</strong>
+                A blockchain is a digital record system that can track transactions across a network.
+                Different crypto projects use different networks, rules, fees, and security models.
+              </div>
+
+              <div class="bullet">
+                <strong>Crypto Volatility</strong>
+                Crypto prices can move very fast because of supply, demand, headlines,
+                exchange activity, social sentiment, regulation, and overall market confidence.
+              </div>
+
+              <div class="bullet">
+                <strong>Market Sentiment</strong>
+                Sentiment means how people feel about the market. Crypto can rise or fall quickly
+                when buyers become excited, fearful, uncertain, or overly confident.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="widget-box">
+          <div class="widget-title">
+            <h2>Live Crypto Market Overview</h2>
+            <p>
+              This live area tracks major crypto assets and overall crypto market movement.
+            </p>
+          </div>
+
+          <div class="widget-frame">
+            <div class="tradingview-widget-container" style="height:100%;width:100%;">
+              <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+              {
+                "colorTheme": "dark",
+                "dateRange": "12M",
+                "showChart": true,
+                "locale": "en",
+                "largeChartUrl": "",
+                "isTransparent": false,
+                "showSymbolLogo": true,
+                "showFloatingTooltip": false,
+                "width": "100%",
+                "height": "560",
+                "tabs": [
+                  {
+                    "title": "Major Crypto",
+                    "symbols": [
+                      { "s": "COINBASE:BTCUSD", "d": "Bitcoin" },
+                      { "s": "COINBASE:ETHUSD", "d": "Ethereum" },
+                      { "s": "COINBASE:SOLUSD", "d": "Solana" },
+                      { "s": "COINBASE:XRPUSD", "d": "XRP" },
+                      { "s": "COINBASE:ADAUSD", "d": "Cardano" },
+                      { "s": "COINBASE:DOGEUSD", "d": "Dogecoin" }
+                    ]
+                  },
+                  {
+                    "title": "Market Signals",
+                    "symbols": [
+                      { "s": "CRYPTOCAP:TOTAL", "d": "Total Crypto Market" },
+                      { "s": "CRYPTOCAP:TOTAL2", "d": "Altcoin Market" },
+                      { "s": "CRYPTOCAP:BTC.D", "d": "Bitcoin Dominance" },
+                      { "s": "COINBASE:BTCUSD", "d": "Bitcoin" },
+                      { "s": "COINBASE:ETHUSD", "d": "Ethereum" }
+                    ]
+                  }
+                ]
+              }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Crypto Learning</div>
+            <h2>Crypto &amp; Coins learning areas.</h2>
+
+            <p>
+              These are the main areas to understand when reviewing crypto and digital assets.
+              Everything stays on this page. No extra inside pages are required.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Bitcoin</strong>
+                Bitcoin is the most watched crypto asset and often acts as the main signal for the crypto market.
+                When Bitcoin moves strongly, many other digital assets may react.
+              </div>
+
+              <div class="bullet">
+                <strong>Ethereum</strong>
+                Ethereum is connected to smart contracts, decentralized applications, tokens, and network activity.
+                It is often watched for technology use and crypto ecosystem movement.
+              </div>
+
+              <div class="bullet">
+                <strong>Altcoins</strong>
+                Altcoins are crypto assets other than Bitcoin. They may move faster, carry more risk,
+                and depend heavily on project quality, liquidity, sentiment, and market cycles.
+              </div>
+
+              <div class="bullet">
+                <strong>Stablecoins</strong>
+                Stablecoins are designed to track a stable value, often the U.S. dollar.
+                They are used for transfers, exchange activity, trading liquidity, and digital payment movement.
+              </div>
+
+              <div class="bullet">
+                <strong>Meme Coins</strong>
+                Meme coins can move because of internet attention, community excitement, social media,
+                speculation, and momentum. They can rise fast and fall fast.
+              </div>
+
+              <div class="bullet">
+                <strong>Token Categories</strong>
+                Crypto tokens may be connected to payments, networks, gaming, finance, storage,
+                artificial intelligence themes, real-world assets, or other project categories.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">Crypto Image Zone</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Crypto &amp; Coins video space.</h3>
+              <p>
+                This area can later hold crypto education videos, Bitcoin updates,
+                blockchain lessons, digital asset explainers, wallet safety reminders,
+                and market-risk summaries.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Risk Awareness</div>
+            <h2>Crypto can move quickly and should be reviewed carefully.</h2>
+
+            <p>
+              Crypto markets can be affected by regulation, exchange activity, security problems,
+              technology updates, social media attention, large holders, investor fear, and general market pressure.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Price Risk</strong>
+                Crypto prices can rise or fall quickly. A price move can happen before a visitor fully understands the reason.
+              </div>
+
+              <div class="bullet">
+                <strong>Liquidity Risk</strong>
+                Some coins are easier to buy and sell than others. Weak liquidity can make price movement more dangerous.
+              </div>
+
+              <div class="bullet">
+                <strong>Security Risk</strong>
+                Wallets, passwords, seed phrases, exchanges, scams, and phishing attempts must be handled with care.
+              </div>
+
+              <div class="bullet">
+                <strong>Regulatory Risk</strong>
+                Government rules, lawsuits, exchange restrictions, and tax rules can affect crypto projects and users.
+              </div>
+
+              <div class="bullet">
+                <strong>Project Risk</strong>
+                Some crypto projects may not have strong teams, real use, reliable technology, or long-term support.
+              </div>
+
+              <div class="bullet">
+                <strong>Emotion Risk</strong>
+                Fear of missing out, panic selling, hype, social media pressure, and rumors can lead to bad decisions.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">How To Read Crypto</div>
+            <h2>Do not judge crypto from price alone.</h2>
+
+            <p>
+              A crypto asset should be reviewed by looking at the project, network activity, supply,
+              liquidity, market cycle, exchange availability, risk, security, and real use.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Check The Asset Type</strong>
+                Know whether it is a coin, token, stablecoin, meme coin, network asset, or project token.
+              </div>
+
+              <div class="bullet">
+                <strong>Check The Market Cycle</strong>
+                Crypto markets often move in cycles of excitement, correction, fear, recovery, and renewed interest.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Supply</strong>
+                Token supply, circulating supply, future unlocks, and new issuance can affect price pressure.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Real Use</strong>
+                Some assets have network use or payment use. Others move mostly because of speculation or attention.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Security</strong>
+                Digital asset safety depends on wallets, exchanges, passwords, seed phrases, and careful user behavior.
+              </div>
+
+              <div class="bullet">
+                <strong>Use Human Review</strong>
+                Crypto, money, tax, legal, and investment decisions should be reviewed carefully before action.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Crypto Focus</div>
+            <h2 id="dailyTitle">Review Bitcoin, Ethereum, volatility, and risk awareness.</h2>
+            <p id="dailyText">
+              Today’s crypto focus is discipline. Review major coins, sentiment, risk, and market movement before judging the asset.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Review Bitcoin and Ethereum movement.</div>
+              <div class="daily-item" id="daily2">Review crypto market sentiment and volatility.</div>
+              <div class="daily-item" id="daily3">Review token categories and project risk.</div>
+              <div class="daily-item" id="daily4">Review security, scams, and human decision risk.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, crypto education questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel){
+        menuPanel.classList.remove('open');
+      }
+    });
+
+    const dailySet = [
+      {
+        title:'Review Bitcoin, Ethereum, volatility, and risk awareness.',
+        text:'Today’s crypto focus is discipline. Review major coins, sentiment, risk, and market movement before judging the asset.',
+        a:'Review Bitcoin and Ethereum movement.',
+        b:'Review crypto market sentiment and volatility.',
+        c:'Review token categories and project risk.',
+        d:'Review security, scams, and human decision risk.'
+      },
+      {
+        title:'Separate crypto hype from crypto signals.',
+        text:'Today’s crypto focus is clarity. Not every fast-moving coin has strong value, real use, or long-term support.',
+        a:'Check the asset type.',
+        b:'Check project purpose and real use.',
+        c:'Check liquidity and supply.',
+        d:'Check risk before action.'
+      },
+      {
+        title:'Review volatility before trusting the move.',
+        text:'Today’s crypto focus is volatility. Crypto movement can be fast, emotional, and heavily affected by sentiment.',
+        a:'Review price movement.',
+        b:'Review trading volume.',
+        c:'Review Bitcoin dominance.',
+        d:'Review market-wide pressure.'
+      },
+      {
+        title:'Protect security before thinking about profit.',
+        text:'Today’s crypto focus is safety. Wallets, exchanges, passwords, seed phrases, and scams must be handled carefully.',
+        a:'Protect passwords and seed phrases.',
+        b:'Avoid suspicious links and messages.',
+        c:'Review exchange and wallet safety.',
+        d:'Use careful human review before action.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    document.getElementById('dailyDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
