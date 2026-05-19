@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Economic Confidence | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e9cf7a;
+      --green:#087457;
+      --green2:#0a8b68;
+      --white:#f7f7f7;
+      --border:rgba(216,180,90,.92);
+      --max:1200px;
+      --shadow:0 20px 50px rgba(0,0,0,.42);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#050505;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.62;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.26), rgba(0,0,0,.42)),
+        url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1900&q=85") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.8rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      display:flex;
+      gap:28px;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.85rem;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      text-transform:uppercase;
+    }
+
+    .brand-text span:last-child{color:#fff}
+
+    .menu-btn{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:2.8rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--green2);
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#101010;
+      border:2px solid var(--border);
+      max-width:760px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+      font-weight:400;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:34px 0}
+
+    .hero{
+      border-bottom:2px solid var(--border);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.54), rgba(0,0,0,.18), rgba(8,116,87,.18)),
+        url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1900&q=85") center/cover;
+    }
+
+    .hero-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      min-height:690px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:center;
+      padding:60px 0;
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:.98rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5.2rem;
+      color:var(--gold-soft);
+      max-width:760px;
+    }
+
+    h2{
+      font-size:3.35rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f4f4f4;
+      font-size:1.18rem;
+    }
+
+    .hero p{
+      font-size:1.28rem;
+      max-width:700px;
+    }
+
+    .hero-visual{
+      min-height:540px;
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.14)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1500&q=85") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .visual-caption{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.72) 100%);
+    }
+
+    .visual-caption strong{
+      display:block;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.35rem;
+      line-height:1.08;
+      margin-bottom:12px;
+    }
+
+    .visual-caption span{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      max-width:540px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .cta-btn:hover{
+      background:var(--green2);
+      transform:translateY(-2px);
+    }
+
+    .ticker-shell{
+      background:#050505;
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      padding:8px 0;
+    }
+
+    .live-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .live-card,
+    .live-widget{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.48), rgba(0,0,0,.14)),
+        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1500&q=85") center/cover;
+    }
+
+    .live-card-inner{
+      padding:42px;
+      min-height:430px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:rgba(0,0,0,.08);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      font-size:.95rem;
+    }
+
+    .live-widget{
+      background:#050505;
+    }
+
+    .widget-title{
+      padding:20px 24px;
+      border-bottom:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.82);
+    }
+
+    .widget-title h3{
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+
+    .widget-title p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .widget-frame{
+      min-height:430px;
+      background:#000;
+    }
+
+    .panel{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.52), rgba(0,0,0,.14)),
+        var(--bg) center/cover;
+      margin-bottom:28px;
+    }
+
+    .panel-inner{
+      padding:46px;
+      background:rgba(0,0,0,.06);
+    }
+
+    .section-heading{
+      text-align:center;
+      margin-bottom:26px;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:30px;
+    }
+
+    .section-heading::before,
+    .section-heading::after{
+      content:"";
+      height:2px;
+      background:rgba(216,180,90,.78);
+    }
+
+    .section-heading h2{
+      color:var(--gold-soft);
+      font-size:2rem;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:900;
+      margin:0;
+    }
+
+    .confidence-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:24px;
+    }
+
+    .confidence-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      min-height:500px;
+      display:flex;
+      flex-direction:column;
+      box-shadow:var(--shadow);
+      background:#080808;
+    }
+
+    .confidence-image{
+      min-height:200px;
+      background:center/cover no-repeat;
+    }
+
+    .confidence-body{
+      padding:30px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      background:linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.58));
+    }
+
+    .confidence-body h3{
+      font-size:2.1rem;
+      margin-bottom:16px;
+    }
+
+    .confidence-body p{
+      flex:1;
+      font-size:1.06rem;
+    }
+
+    .card-line{
+      height:1px;
+      background:rgba(216,180,90,.72);
+      margin:12px 0 22px;
+    }
+
+    .tag{
+      color:#fff;
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+
+    .detail-card{
+      border:1px solid rgba(216,180,90,.60);
+      background:rgba(0,0,0,.34);
+      padding:18px 20px;
+    }
+
+    .detail-card strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .detail-card span{
+      display:block;
+      color:#f2f2f2;
+      font-size:1rem;
+    }
+
+    .media-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .image-zone,
+    .video-zone{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      min-height:430px;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+
+    .image-zone{
+      background:
+        linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.12)),
+        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1500&q=85") center/cover;
+    }
+
+    .video-zone{
+      background:#000;
+    }
+
+    .video-panel{
+      position:absolute;
+      inset:0;
+      background:center/cover no-repeat;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .video-panel::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.10);
+    }
+
+    .video-bottom{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.80));
+    }
+
+    .play-badge{
+      width:96px;
+      height:96px;
+      border:4px solid #fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2.8rem;
+      padding-left:6px;
+      background:rgba(0,0,0,.45);
+      margin-bottom:18px;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      z-index:3;
+      background:rgba(0,0,0,.58);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .contact-section{
+      padding:24px 0 42px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.54), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1700&q=85") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:46px;
+      max-width:820px;
+      background:rgba(0,0,0,.08);
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:3.8rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      font-size:1.18rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media(max-width:1100px){
+      .hero-inner,
+      .live-grid,
+      .media-row{
+        grid-template-columns:1fr;
+      }
+
+      .confidence-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .detail-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:4rem}
+    }
+
+    @media(max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{
+        font-size:1.15rem;
+        gap:14px;
+      }
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-inner{
+        min-height:auto;
+        padding:36px 0;
+      }
+
+      .hero-visual{min-height:400px}
+
+      h1{font-size:3rem}
+      h2{font-size:2.55rem}
+      h3{font-size:2rem}
+
+      p,.hero p{font-size:1.05rem}
+
+      .section-heading{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .section-heading::before,
+      .section-heading::after{display:none}
+
+      .section-heading h2{
+        font-size:1.2rem;
+        line-height:1.5;
+      }
+
+      .confidence-grid{grid-template-columns:1fr}
+
+      .live-card-inner,
+      .confidence-body,
+      .panel-inner,
+      .video-bottom,
+      .contact-inner{
+        padding:26px;
+      }
+
+      .cta-btn{width:100%}
+
+      .contact-inner h2{font-size:2.6rem}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text"><span>TITANCORE</span><span>HOLDINGS</span></div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="stock-market-intelligence.html">Stock &amp; Market Intelligence</a>
+          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
+          <a href="economic-confidence.html">Economic Confidence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Economic Confidence Intelligence</div>
+          <h1>Economic Confidence</h1>
+          <p>
+            Economic confidence shows how businesses, consumers, banks, investors,
+            and leaders feel about the future.
+          </p>
+
+          <p>
+            Confidence can change decisions before the numbers fully show it. When people feel strong,
+            they spend, hire, invest, borrow, and expand. When confidence weakens, decisions slow down.
+          </p>
+
+          <div class="btn-row">
+            <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-caption">
+            <strong>Confidence moves before action.</strong>
+            <span>
+              Watch consumers, banks, businesses, investors, jobs, lending, and spending.
+              Confidence often changes before the market fully reacts.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-shell">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+            { "proName": "FOREXCOM:NSXUSD", "title": "Nasdaq" },
+            { "proName": "AMEX:XLY", "title": "Consumer Discretionary" },
+            { "proName": "AMEX:XLP", "title": "Consumer Staples" },
+            { "proName": "AMEX:XLF", "title": "Financials" },
+            { "proName": "TVC:US10Y", "title": "10Y Yield" },
+            { "proName": "CBOE:VIX", "title": "VIX" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="live-grid">
+          <div class="live-card">
+            <div class="live-card-inner">
+              <div class="daily-date" id="dailyDate">Today’s Confidence Focus</div>
+              <h2 id="focusTitle">Watch confidence because decisions change before numbers change.</h2>
+              <p id="focusText">
+                When confidence weakens, people may delay purchases, banks may tighten credit,
+                businesses may slow hiring, and investors may move toward safety.
+              </p>
+            </div>
+          </div>
+
+          <div class="live-widget">
+            <div class="widget-title">
+              <h3>Live Confidence Signals</h3>
+              <p>Broad market confidence, consumer sectors, financials, volatility, and rates.</p>
+            </div>
+
+            <div class="widget-frame">
+              <div class="tradingview-widget-container" style="height:100%;width:100%;">
+                <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                {
+                  "colorTheme": "dark",
+                  "dateRange": "12M",
+                  "showChart": true,
+                  "locale": "en",
+                  "largeChartUrl": "",
+                  "isTransparent": false,
+                  "showSymbolLogo": true,
+                  "showFloatingTooltip": false,
+                  "width": "100%",
+                  "height": "430",
+                  "tabs": [
+                    {
+                      "title": "Confidence",
+                      "symbols": [
+                        { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
+                        { "s": "FOREXCOM:NSXUSD", "d": "Nasdaq 100" },
+                        { "s": "FOREXCOM:DJI", "d": "Dow Jones" },
+                        { "s": "CBOE:VIX", "d": "Volatility" },
+                        { "s": "TVC:US10Y", "d": "U.S. 10Y Yield" }
+                      ]
+                    },
+                    {
+                      "title": "Consumer & Banks",
+                      "symbols": [
+                        { "s": "AMEX:XLY", "d": "Consumer Discretionary" },
+                        { "s": "AMEX:XLP", "d": "Consumer Staples" },
+                        { "s": "AMEX:XLF", "d": "Financial Sector" },
+                        { "s": "NYSE:JPM", "d": "JPMorgan Chase" },
+                        { "s": "NYSE:WMT", "d": "Walmart" }
+                      ]
+                    }
+                  ]
+                }
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel" style="--bg:url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1700&q=85');">
+          <div class="panel-inner">
+            <div class="eyebrow">Economic Confidence Definition</div>
+            <h2>Economic confidence is the feeling behind future decisions.</h2>
+            <p>
+              Confidence affects whether people spend money, save money, borrow money, invest money,
+              hire employees, expand businesses, buy homes, or delay major decisions.
+            </p>
+
+            <div class="detail-grid">
+              <div class="detail-card"><strong>Consumer Confidence</strong><span>Shows whether families feel secure enough to spend, borrow, travel, repair, move, or buy.</span></div>
+              <div class="detail-card"><strong>Business Confidence</strong><span>Shows whether companies feel strong enough to hire, expand, invest, or increase inventory.</span></div>
+              <div class="detail-card"><strong>Bank Confidence</strong><span>Shows whether lenders are comfortable approving loans and extending credit.</span></div>
+              <div class="detail-card"><strong>Investor Confidence</strong><span>Shows whether investors are taking risk or moving toward safer assets.</span></div>
+              <div class="detail-card"><strong>Housing Confidence</strong><span>Shows whether buyers and owners feel ready to move, buy, refinance, or renovate.</span></div>
+              <div class="detail-card"><strong>Labor Confidence</strong><span>Shows whether workers feel secure about jobs, wages, income, and future opportunity.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Confidence Areas</h2>
+        </div>
+
+        <div class="confidence-grid">
+          <div class="confidence-card">
+            <div class="confidence-image" style="background-image:url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="confidence-body">
+              <h3>Consumer Confidence</h3>
+              <p>When consumers feel confident, they are more likely to spend, travel, buy, borrow, repair, and make major decisions.</p>
+              <div class="card-line"></div>
+              <div class="tag">Consumer Signal</div>
+            </div>
+          </div>
+
+          <div class="confidence-card">
+            <div class="confidence-image" style="background-image:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="confidence-body">
+              <h3>Business Confidence</h3>
+              <p>When businesses feel confident, they may hire more, invest more, expand locations, increase inventory, and build new systems.</p>
+              <div class="card-line"></div>
+              <div class="tag">Business Signal</div>
+            </div>
+          </div>
+
+          <div class="confidence-card">
+            <div class="confidence-image" style="background-image:url('https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="confidence-body">
+              <h3>Bank Confidence</h3>
+              <p>Bank confidence affects lending, loan approvals, credit limits, mortgage standards, and business funding availability.</p>
+              <div class="card-line"></div>
+              <div class="tag">Lending Signal</div>
+            </div>
+          </div>
+
+          <div class="confidence-card">
+            <div class="confidence-image" style="background-image:url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="confidence-body">
+              <h3>Investor Confidence</h3>
+              <p>Investor confidence affects stocks, bonds, real estate, startups, business valuations, and risk appetite.</p>
+              <div class="card-line"></div>
+              <div class="tag">Investor Signal</div>
+            </div>
+          </div>
+
+          <div class="confidence-card">
+            <div class="confidence-image" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="confidence-body">
+              <h3>Housing Confidence</h3>
+              <p>Housing confidence affects buyers, sellers, mortgage demand, contractors, furniture, repairs, insurance, and local spending.</p>
+              <div class="card-line"></div>
+              <div class="tag">Housing Signal</div>
+            </div>
+          </div>
+
+          <div class="confidence-card">
+            <div class="confidence-image" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="confidence-body">
+              <h3>Labor Confidence</h3>
+              <p>Worker confidence affects spending, job changes, wage expectations, hiring demand, and family financial decisions.</p>
+              <div class="card-line"></div>
+              <div class="tag">Labor Signal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-row">
+          <div class="image-zone">
+            <div class="overlay-label">Economic Confidence Image Zone</div>
+          </div>
+
+          <div class="video-zone">
+            <div class="overlay-label">Live Video Area</div>
+            <div class="video-panel" id="videoPanel">
+              <div class="video-bottom">
+                <div class="play-badge">▶</div>
+                <h3 id="videoTitle">Economic Confidence Video Brief</h3>
+                <p id="videoText">
+                  This live video space rotates daily for consumer, business, bank, investor, housing, and labor confidence education.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel" style="--bg:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1700&q=85');">
+          <div class="panel-inner">
+            <div class="eyebrow">Confidence Warning Signs</div>
+            <h2>Confidence can weaken before the numbers show it.</h2>
+            <p>
+              Leaders should watch for confidence changes because customers, banks, businesses,
+              and investors may slow down before official reports fully show the shift.
+            </p>
+
+            <div class="detail-grid">
+              <div class="detail-card"><strong>Customers delay purchases</strong><span>People may wait longer before buying, applying, moving, or signing.</span></div>
+              <div class="detail-card"><strong>Businesses delay expansion</strong><span>Companies may pause hiring, equipment purchases, new locations, or marketing.</span></div>
+              <div class="detail-card"><strong>Banks tighten credit</strong><span>Lenders may raise standards and approve fewer applications.</span></div>
+              <div class="detail-card"><strong>Investors move to safety</strong><span>Markets may become defensive when confidence weakens.</span></div>
+              <div class="detail-card"><strong>Housing slows</strong><span>Buyers may delay because of rates, payments, insurance, or uncertainty.</span></div>
+              <div class="detail-card"><strong>Workers become cautious</strong><span>People may avoid job changes, reduce spending, or worry about income.</span></div>
+              <div class="detail-card"><strong>Leads respond slower</strong><span>Customers may ask questions but take longer to act.</span></div>
+              <div class="detail-card"><strong>Businesses protect cash</strong><span>Companies may reduce risk and hold more cash when confidence drops.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, economic confidence questions,
+              or TitanCore-related information, contact TitanCore Holdings through the contact page.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel){
+        menuPanel.classList.remove('open');
+      }
+    });
+
+    const confidenceSet = [
+      {
+        title:'Watch confidence because decisions change before numbers change.',
+        text:'When confidence weakens, people may delay purchases, banks may tighten credit, businesses may slow hiring, and investors may move toward safety.',
+        videoTitle:'Consumer Confidence Video Brief',
+        videoText:'Review how family confidence affects spending, saving, borrowing, travel, shopping, housing, and major purchases.',
+        videoImage:'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch business confidence because expansion depends on trust in the future.',
+        text:'When businesses feel uncertain, they may pause hiring, reduce spending, protect cash, and delay growth.',
+        videoTitle:'Business Confidence Video Brief',
+        videoText:'Review hiring, expansion, inventory, pricing, marketing, financing, and leadership planning.',
+        videoImage:'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch bank confidence because lending controls movement.',
+        text:'When banks lose confidence, credit can tighten and major customer and business decisions can slow down.',
+        videoTitle:'Bank Confidence Video Brief',
+        videoText:'Review loan approvals, credit standards, deposits, mortgage lending, business funding, and financial stability.',
+        videoImage:'https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch investor confidence because risk appetite moves markets.',
+        text:'When investors are confident, they accept more risk. When they are cautious, they often move toward safety.',
+        videoTitle:'Investor Confidence Video Brief',
+        videoText:'Review stocks, bonds, volatility, safe assets, valuations, and market expectations.',
+        videoImage:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch housing confidence because homes affect families and local spending.',
+        text:'Housing confidence affects buyers, sellers, banks, insurance, contractors, furniture, repairs, and community business movement.',
+        videoTitle:'Housing Confidence Video Brief',
+        videoText:'Review mortgage rates, home prices, rent pressure, insurance, contractor demand, and local spending.',
+        videoImage:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=85'
+      }
+    ];
+
+    const index = new Date().getDate() % confidenceSet.length;
+    const today = confidenceSet[index];
+
+    document.getElementById('focusTitle').textContent = today.title;
+    document.getElementById('focusText').textContent = today.text;
+    document.getElementById('videoTitle').textContent = today.videoTitle;
+    document.getElementById('videoText').textContent = today.videoText;
+
+    document.getElementById('videoPanel').style.backgroundImage =
+      `linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.18)), url("${today.videoImage}")`;
+
+    document.getElementById('dailyDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
