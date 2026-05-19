@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Jobs Reports | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e9cf7a;
+      --green:#087457;
+      --green2:#0a8b68;
+      --white:#f7f7f7;
+      --border:rgba(216,180,90,.92);
+      --max:1200px;
+      --shadow:0 20px 50px rgba(0,0,0,.42);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#050505;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.62;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.24), rgba(0,0,0,.40)),
+        url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1900&q=85") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.8rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      display:flex;
+      gap:28px;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.85rem;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      text-transform:uppercase;
+    }
+
+    .brand-text span:last-child{color:#fff}
+
+    .menu-btn{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:2.8rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--green2);
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#101010;
+      border:2px solid var(--border);
+      max-width:760px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+      font-weight:400;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:34px 0}
+
+    .hero{
+      border-bottom:2px solid var(--border);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.52), rgba(0,0,0,.16), rgba(8,116,87,.18)),
+        url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1900&q=85") center/cover;
+    }
+
+    .hero-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      min-height:690px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:center;
+      padding:60px 0;
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:.98rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5.2rem;
+      color:var(--gold-soft);
+      max-width:760px;
+    }
+
+    h2{
+      font-size:3.35rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f4f4f4;
+      font-size:1.18rem;
+    }
+
+    .hero p{
+      font-size:1.28rem;
+      max-width:700px;
+    }
+
+    .hero-visual{
+      min-height:540px;
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.14)),
+        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1500&q=85") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .visual-caption{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.72) 100%);
+    }
+
+    .visual-caption strong{
+      display:block;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.35rem;
+      line-height:1.08;
+      margin-bottom:12px;
+    }
+
+    .visual-caption span{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      max-width:540px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .cta-btn:hover{
+      background:var(--green2);
+      transform:translateY(-2px);
+    }
+
+    .ticker-shell{
+      background:#050505;
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      padding:8px 0;
+    }
+
+    .live-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .live-card,
+    .live-widget{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.46), rgba(0,0,0,.12)),
+        url("https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1500&q=85") center/cover;
+    }
+
+    .live-card-inner{
+      padding:42px;
+      min-height:430px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:rgba(0,0,0,.08);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      font-size:.95rem;
+    }
+
+    .live-widget{
+      background:#050505;
+    }
+
+    .widget-title{
+      padding:20px 24px;
+      border-bottom:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.82);
+    }
+
+    .widget-title h3{
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+
+    .widget-title p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .widget-frame{
+      min-height:430px;
+      background:#000;
+    }
+
+    .panel{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.50), rgba(0,0,0,.12)),
+        var(--bg) center/cover;
+      margin-bottom:28px;
+    }
+
+    .panel-inner{
+      padding:46px;
+      background:rgba(0,0,0,.06);
+    }
+
+    .section-heading{
+      text-align:center;
+      margin-bottom:26px;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:30px;
+    }
+
+    .section-heading::before,
+    .section-heading::after{
+      content:"";
+      height:2px;
+      background:rgba(216,180,90,.78);
+    }
+
+    .section-heading h2{
+      color:var(--gold-soft);
+      font-size:2rem;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:900;
+      margin:0;
+    }
+
+    .jobs-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:24px;
+    }
+
+    .jobs-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      min-height:500px;
+      display:flex;
+      flex-direction:column;
+      box-shadow:var(--shadow);
+      background:#080808;
+    }
+
+    .jobs-image{
+      min-height:200px;
+      background:center/cover no-repeat;
+    }
+
+    .jobs-body{
+      padding:30px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      background:linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.58));
+    }
+
+    .jobs-body h3{
+      font-size:2.1rem;
+      margin-bottom:16px;
+    }
+
+    .jobs-body p{
+      flex:1;
+      font-size:1.06rem;
+    }
+
+    .card-line{
+      height:1px;
+      background:rgba(216,180,90,.72);
+      margin:12px 0 22px;
+    }
+
+    .tag{
+      color:#fff;
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+
+    .detail-card{
+      border:1px solid rgba(216,180,90,.60);
+      background:rgba(0,0,0,.34);
+      padding:18px 20px;
+    }
+
+    .detail-card strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .detail-card span{
+      display:block;
+      color:#f2f2f2;
+      font-size:1rem;
+    }
+
+    .media-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .image-zone,
+    .video-zone{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      min-height:430px;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+
+    .image-zone{
+      background:
+        linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.12)),
+        url("https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1500&q=85") center/cover;
+    }
+
+    .video-zone{
+      background:#000;
+    }
+
+    .video-panel{
+      position:absolute;
+      inset:0;
+      background:center/cover no-repeat;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .video-panel::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.10);
+    }
+
+    .video-bottom{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.80));
+    }
+
+    .play-badge{
+      width:96px;
+      height:96px;
+      border:4px solid #fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2.8rem;
+      padding-left:6px;
+      background:rgba(0,0,0,.45);
+      margin-bottom:18px;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      z-index:3;
+      background:rgba(0,0,0,.58);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .contact-section{
+      padding:24px 0 42px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.54), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1700&q=85") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:46px;
+      max-width:820px;
+      background:rgba(0,0,0,.08);
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:3.8rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      font-size:1.18rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media(max-width:1100px){
+      .hero-inner,
+      .live-grid,
+      .media-row{
+        grid-template-columns:1fr;
+      }
+
+      .jobs-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .detail-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:4rem}
+    }
+
+    @media(max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{
+        font-size:1.15rem;
+        gap:14px;
+      }
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-inner{
+        min-height:auto;
+        padding:36px 0;
+      }
+
+      .hero-visual{min-height:400px}
+
+      h1{font-size:3rem}
+      h2{font-size:2.55rem}
+      h3{font-size:2rem}
+
+      p,.hero p{font-size:1.05rem}
+
+      .section-heading{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .section-heading::before,
+      .section-heading::after{display:none}
+
+      .section-heading h2{
+        font-size:1.2rem;
+        line-height:1.5;
+      }
+
+      .jobs-grid{grid-template-columns:1fr}
+
+      .live-card-inner,
+      .jobs-body,
+      .panel-inner,
+      .video-bottom,
+      .contact-inner{
+        padding:26px;
+      }
+
+      .cta-btn{width:100%}
+
+      .contact-inner h2{font-size:2.6rem}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text"><span>TITANCORE</span><span>HOLDINGS</span></div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="stock-market-intelligence.html">Stock &amp; Market Intelligence</a>
+          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
+          <a href="jobs-reports.html">Jobs Reports</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Jobs Report Intelligence</div>
+          <h1>Jobs Reports</h1>
+          <p>
+            Jobs reports show hiring strength, wage pressure, unemployment,
+            customer confidence, and the health of the economy.
+          </p>
+
+          <p>
+            This page helps visitors understand how employment movement connects to
+            income, spending, inflation, business growth, lending confidence, and market pressure.
+          </p>
+
+          <div class="btn-row">
+            <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-caption">
+            <strong>Jobs control income, confidence, and spending.</strong>
+            <span>
+              When hiring is strong, families and businesses may feel more confident.
+              When jobs weaken, spending and lending can slow down.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-shell">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+            { "proName": "FOREXCOM:NSXUSD", "title": "Nasdaq" },
+            { "proName": "AMEX:IWM", "title": "Small Caps" },
+            { "proName": "AMEX:XLY", "title": "Consumer Discretionary" },
+            { "proName": "AMEX:XLI", "title": "Industrials" },
+            { "proName": "TVC:US10Y", "title": "10Y Yield" },
+            { "proName": "CBOE:VIX", "title": "VIX" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="live-grid">
+          <div class="live-card">
+            <div class="live-card-inner">
+              <div class="daily-date" id="dailyDate">Today’s Jobs Report Focus</div>
+              <h2 id="focusTitle">Watch jobs because employment controls income and confidence.</h2>
+              <p id="focusText">
+                When hiring is strong, people usually feel more confident spending.
+                When hiring weakens, families and businesses may become cautious.
+              </p>
+            </div>
+          </div>
+
+          <div class="live-widget">
+            <div class="widget-title">
+              <h3>Live Labor Market Signals</h3>
+              <p>Broad market, small caps, consumer sectors, industrials, rates, and volatility.</p>
+            </div>
+
+            <div class="widget-frame">
+              <div class="tradingview-widget-container" style="height:100%;width:100%;">
+                <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                {
+                  "colorTheme": "dark",
+                  "dateRange": "12M",
+                  "showChart": true,
+                  "locale": "en",
+                  "largeChartUrl": "",
+                  "isTransparent": false,
+                  "showSymbolLogo": true,
+                  "showFloatingTooltip": false,
+                  "width": "100%",
+                  "height": "430",
+                  "tabs": [
+                    {
+                      "title": "Jobs Pressure",
+                      "symbols": [
+                        { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
+                        { "s": "AMEX:IWM", "d": "Small Caps" },
+                        { "s": "AMEX:XLY", "d": "Consumer Discretionary" },
+                        { "s": "AMEX:XLI", "d": "Industrials" },
+                        { "s": "TVC:US10Y", "d": "U.S. 10Y Yield" }
+                      ]
+                    },
+                    {
+                      "title": "Confidence",
+                      "symbols": [
+                        { "s": "FOREXCOM:NSXUSD", "d": "Nasdaq 100" },
+                        { "s": "AMEX:XLF", "d": "Financial Sector" },
+                        { "s": "AMEX:XRT", "d": "Retail" },
+                        { "s": "CBOE:VIX", "d": "Volatility" },
+                        { "s": "TVC:DXY", "d": "U.S. Dollar Index" }
+                      ]
+                    }
+                  ]
+                }
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel" style="--bg:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1700&q=85');">
+          <div class="panel-inner">
+            <div class="eyebrow">Jobs Report Definition</div>
+            <h2>Jobs reports show whether the economy is hiring, slowing, or under pressure.</h2>
+            <p>
+              Jobs reports help people understand employment strength. They can show how many jobs are being created,
+              whether unemployment is rising or falling, whether wages are increasing, and whether businesses are confident enough to hire.
+            </p>
+
+            <div class="detail-grid">
+              <div class="detail-card"><strong>Hiring Strength</strong><span>Shows whether companies are adding workers, pausing hiring, or reducing staff.</span></div>
+              <div class="detail-card"><strong>Unemployment</strong><span>Shows how many people are looking for work and how healthy the labor market feels.</span></div>
+              <div class="detail-card"><strong>Wage Pressure</strong><span>Shows whether pay is rising and whether labor costs may pressure business margins.</span></div>
+              <div class="detail-card"><strong>Labor Participation</strong><span>Shows how many people are actively working or looking for work.</span></div>
+              <div class="detail-card"><strong>Job Openings</strong><span>Shows whether businesses are still trying to hire or becoming more cautious.</span></div>
+              <div class="detail-card"><strong>Layoff Pressure</strong><span>Shows whether companies are cutting jobs, reducing hours, or protecting cash.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Jobs Report Areas</h2>
+        </div>
+
+        <div class="jobs-grid">
+          <div class="jobs-card">
+            <div class="jobs-image" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="jobs-body">
+              <h3>Hiring Strength</h3>
+              <p>Hiring strength shows whether businesses are confident enough to add workers, expand teams, and support growth.</p>
+              <div class="card-line"></div>
+              <div class="tag">Hiring Signal</div>
+            </div>
+          </div>
+
+          <div class="jobs-card">
+            <div class="jobs-image" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="jobs-body">
+              <h3>Unemployment</h3>
+              <p>Unemployment movement shows whether more people are finding work or whether the labor market is becoming weaker.</p>
+              <div class="card-line"></div>
+              <div class="tag">Labor Signal</div>
+            </div>
+          </div>
+
+          <div class="jobs-card">
+            <div class="jobs-image" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="jobs-body">
+              <h3>Wage Pressure</h3>
+              <p>Wage pressure can help workers, but it can also raise business costs and affect pricing, hiring, and profit margins.</p>
+              <div class="card-line"></div>
+              <div class="tag">Wage Signal</div>
+            </div>
+          </div>
+
+          <div class="jobs-card">
+            <div class="jobs-image" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="jobs-body">
+              <h3>Job Openings</h3>
+              <p>Job openings show whether companies still need workers or whether demand for labor is cooling down.</p>
+              <div class="card-line"></div>
+              <div class="tag">Opening Signal</div>
+            </div>
+          </div>
+
+          <div class="jobs-card">
+            <div class="jobs-image" style="background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="jobs-body">
+              <h3>Layoff Pressure</h3>
+              <p>Layoff pressure shows whether companies are protecting cash, cutting expenses, or responding to weaker demand.</p>
+              <div class="card-line"></div>
+              <div class="tag">Risk Signal</div>
+            </div>
+          </div>
+
+          <div class="jobs-card">
+            <div class="jobs-image" style="background-image:url('https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="jobs-body">
+              <h3>Income & Spending</h3>
+              <p>Jobs affect family income, consumer spending, credit strength, confidence, and local business movement.</p>
+              <div class="card-line"></div>
+              <div class="tag">Income Signal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-row">
+          <div class="image-zone">
+            <div class="overlay-label">Jobs Reports Image Zone</div>
+          </div>
+
+          <div class="video-zone">
+            <div class="overlay-label">Live Video Area</div>
+            <div class="video-panel" id="videoPanel">
+              <div class="video-bottom">
+                <div class="play-badge">▶</div>
+                <h3 id="videoTitle">Jobs Reports Video Brief</h3>
+                <p id="videoText">
+                  This live video space rotates daily for hiring, unemployment, wages, job openings,
+                  layoffs, income, and spending education.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel" style="--bg:url('https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1700&q=85');">
+          <div class="panel-inner">
+            <div class="eyebrow">Jobs Report Warning Signs</div>
+            <h2>Jobs weakness can affect the economy before every business feels it.</h2>
+            <p>
+              Jobs reports matter because employment affects household income, business confidence,
+              lending confidence, consumer spending, and the ability of families to keep making payments.
+            </p>
+
+            <div class="detail-grid">
+              <div class="detail-card"><strong>Hiring slows</strong><span>Companies may pause new roles, delay interviews, or reduce job postings.</span></div>
+              <div class="detail-card"><strong>Unemployment rises</strong><span>More people looking for work can weaken confidence and spending.</span></div>
+              <div class="detail-card"><strong>Wage growth changes</strong><span>Fast wage growth can pressure business costs, while weak wage growth can hurt households.</span></div>
+              <div class="detail-card"><strong>Hours are reduced</strong><span>Businesses may cut overtime or reduce schedules before layoffs happen.</span></div>
+              <div class="detail-card"><strong>Layoffs increase</strong><span>Layoffs can reduce spending, raise credit risk, and weaken local demand.</span></div>
+              <div class="detail-card"><strong>Small businesses become cautious</strong><span>Smaller companies may slow hiring when sales, costs, or financing become uncertain.</span></div>
+              <div class="detail-card"><strong>Consumer confidence weakens</strong><span>Families may delay purchases when job security feels uncertain.</span></div>
+              <div class="detail-card"><strong>Credit pressure rises</strong><span>Weaker employment can affect loan approvals, payment strength, and bank confidence.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, jobs report questions,
+              or TitanCore-related information, contact TitanCore Holdings through the contact page.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel){
+        menuPanel.classList.remove('open');
+      }
+    });
+
+    const jobsSet = [
+      {
+        title:'Watch jobs because employment controls income and confidence.',
+        text:'When hiring is strong, people usually feel more confident spending. When hiring weakens, families and businesses may become cautious.',
+        videoTitle:'Jobs Reports Video Brief',
+        videoText:'Review hiring strength, unemployment, wages, job openings, layoffs, income, and spending confidence.',
+        videoImage:'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch hiring strength because business confidence shows through jobs.',
+        text:'When companies keep hiring, it can show confidence. When they pause hiring, it can show caution or pressure.',
+        videoTitle:'Hiring Strength Video Brief',
+        videoText:'Review hiring activity, job openings, interviews, payroll growth, business confidence, and expansion signals.',
+        videoImage:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch unemployment because job loss can weaken spending.',
+        text:'Rising unemployment can reduce household confidence, increase credit risk, and slow customer demand.',
+        videoTitle:'Unemployment Signal Video Brief',
+        videoText:'Review unemployment movement, job security, income pressure, consumer confidence, and business demand.',
+        videoImage:'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch wages because pay affects both families and businesses.',
+        text:'Wage growth can support household spending, but it can also raise business labor costs and pricing pressure.',
+        videoTitle:'Wage Pressure Video Brief',
+        videoText:'Review pay growth, labor costs, payroll pressure, inflation connection, pricing, and profit margins.',
+        videoImage:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch layoffs because companies cut labor when pressure rises.',
+        text:'Layoffs can show that companies are protecting cash, responding to weak demand, or preparing for slower conditions.',
+        videoTitle:'Layoff Pressure Video Brief',
+        videoText:'Review layoffs, reduced hours, slower hiring, company caution, consumer spending, and credit risk.',
+        videoImage:'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=85'
+      }
+    ];
+
+    const index = new Date().getDate() % jobsSet.length;
+    const today = jobsSet[index];
+
+    document.getElementById('focusTitle').textContent = today.title;
+    document.getElementById('focusText').textContent = today.text;
+    document.getElementById('videoTitle').textContent = today.videoTitle;
+    document.getElementById('videoText').textContent = today.videoText;
+
+    document.getElementById('videoPanel').style.backgroundImage =
+      `linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.18)), url("${today.videoImage}")`;
+
+    document.getElementById('dailyDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
