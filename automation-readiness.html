@@ -1,1 +1,903 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Automation Readiness | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{
+      display:block;
+    }
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:700px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{
+      color:var(--gold-soft);
+    }
+
+    .section{
+      padding:30px 0;
+    }
+
+    .hero{
+      padding:34px 0 26px;
+    }
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:650px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.48)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 48%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:4.8rem;
+      color:var(--gold-soft);
+      max-width:900px;
+    }
+
+    h2{
+      font-size:3.3rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.4rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:920px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1500&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:26px;
+    }
+
+    .content-inner{
+      padding:42px;
+      background:rgba(0,0,0,.30);
+    }
+
+    .content-inner p{
+      max-width:980px;
+    }
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1rem;
+    }
+
+    .steps-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:22px;
+      margin-top:24px;
+    }
+
+    .step-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      padding:28px;
+      background:rgba(0,0,0,.62);
+      box-shadow:var(--shadow);
+      min-height:250px;
+    }
+
+    .step-number{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .step-card h3{
+      font-size:2rem;
+      margin-bottom:14px;
+    }
+
+    .step-card p{
+      font-size:1rem;
+      margin:0;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:430px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{
+      font-size:3.1rem;
+    }
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{
+      padding:24px 0 40px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:54px;
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .steps-grid,
+      .bullet-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:3.8rem;
+      }
+    }
+
+    @media (max-width:760px){
+      .header-inner{
+        padding:14px 0;
+      }
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{
+        font-size:1.22rem;
+      }
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box,
+      .step-card{
+        border-radius:24px;
+      }
+
+      .hero-box{
+        min-height:580px;
+      }
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{
+        font-size:3rem;
+      }
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{
+        font-size:2rem;
+      }
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Business Systems Intelligence</div>
+            <h1>Automation Readiness</h1>
+
+            <p>
+              Automation Readiness explains what a business should prepare before adding automated routing,
+              system controls, form movement, approval rules, follow-up reminders, or advanced tools.
+            </p>
+
+            <p>
+              A business should not automate confusion. The process should be clear first, so the system knows
+              what information to collect, where to send it, who should review it, when it should be approved,
+              and how the final record should be saved.
+            </p>
+
+            <div class="btn-row">
+              <a href="business-system-intelligence.html" class="cta-btn">Back To Systems <span>›</span></a>
+              <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Purpose</div>
+            <h2>Automation works better when the business process is already organized.</h2>
+
+            <p>
+              Before a business adds automation, it needs to define the real process. Automation can help move
+              information faster, but it cannot fix a weak process by itself. The company must know the intake steps,
+              categories, routing rules, review points, approval needs, record storage, and follow-up expectations.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">The intake form should be clear before automation is added.</div>
+              <div class="bullet">Request categories should be defined before routing rules are built.</div>
+              <div class="bullet">The correct destination should be known before the system sends work anywhere.</div>
+              <div class="bullet">Review steps should be clear before work is marked complete.</div>
+              <div class="bullet">Approval rules should be written before the system triggers final action.</div>
+              <div class="bullet">Records and system reports should be planned before information starts moving.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">System Setup Image</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Automation readiness video space.</h3>
+              <p>
+                This future video area can explain form setup, routing rules, review steps,
+                approval movement, system reports, and how to prepare a process before automation.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Readiness Checklist</div>
+            <h2>What should be ready before automation starts?</h2>
+
+            <div class="steps-grid">
+              <div class="step-card">
+                <div class="step-number">Step 01</div>
+                <h3>Define Intake</h3>
+                <p>
+                  Decide what information must be collected first: name, contact information,
+                  request type, company, service need, timeline, documents, and next step.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 02</div>
+                <h3>Define Routing</h3>
+                <p>
+                  Decide where each request should go: public contact, company page, department,
+                  review team, leadership, records, or follow-up list.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 03</div>
+                <h3>Define Review</h3>
+                <p>
+                  Decide who checks the information, what must be corrected, what needs approval,
+                  and what cannot move forward until it is reviewed.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 04</div>
+                <h3>Define Completion</h3>
+                <p>
+                  Decide when work is complete, where the final record is saved,
+                  and what report or control item should show the result.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 05</div>
+                <h3>Define Exceptions</h3>
+                <p>
+                  Decide what happens when information is missing, the wrong department receives it,
+                  the request is urgent, or approval is delayed.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <div class="step-number">Step 06</div>
+                <h3>Define Control</h3>
+                <p>
+                  Decide what leaders should see: new requests, pending work, delayed work,
+                  corrections, approvals, completed records, and attention items.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Common Mistakes</div>
+            <h2>Do not automate a process that is still unclear.</h2>
+
+            <p>
+              The biggest mistake is adding automation before the business knows the real workflow.
+              If the process is unclear, automation can send information to the wrong place faster,
+              create missed follow-up, duplicate work, confuse responsibility, or hide problems inside the system.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">Do not automate forms that ask weak questions.</div>
+              <div class="bullet">Do not automate routing without clear categories.</div>
+              <div class="bullet">Do not automate approvals without written review rules.</div>
+              <div class="bullet">Do not automate completion without saved records.</div>
+              <div class="bullet">Do not automate follow-up without ownership.</div>
+              <div class="bullet">Do not automate reports without knowing what leaders need to see.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Automation Readiness Focus</div>
+            <h2 id="dailyTitle">Define the process before adding automation.</h2>
+            <p id="dailyText">
+              Today’s readiness focus is process clarity. A system can only move work correctly
+              when the business already knows the right path.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Check whether the intake form collects the right information.</div>
+              <div class="daily-item" id="daily2">Check whether the routing destination is clear.</div>
+              <div class="daily-item" id="daily3">Check whether review and approval rules are written.</div>
+              <div class="daily-item" id="daily4">Check whether final records and system reports are planned.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, business intelligence questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel) menuPanel.classList.remove('open');
+    });
+
+    const dailySet = [
+      {
+        title:'Define the process before adding automation.',
+        text:'Today’s readiness focus is process clarity. A system can only move work correctly when the business already knows the right path.',
+        a:'Check whether the intake form collects the right information.',
+        b:'Check whether the routing destination is clear.',
+        c:'Check whether review and approval rules are written.',
+        d:'Check whether final records and system reports are planned.'
+      },
+      {
+        title:'Routing rules should be written before automation starts.',
+        text:'Today’s readiness focus is routing. Automation should know exactly where each type of request belongs.',
+        a:'Define request categories.',
+        b:'Define the correct destination for each request.',
+        c:'Define who owns follow-up.',
+        d:'Define what happens when the request is incomplete.'
+      },
+      {
+        title:'Approval rules should be clear before work becomes final.',
+        text:'Today’s readiness focus is approval control. Important work should not move forward until the review path is clear.',
+        a:'Define what requires review.',
+        b:'Define what requires correction.',
+        c:'Define what requires approval.',
+        d:'Define where approved records are stored.'
+      },
+      {
+        title:'System controls should show what needs attention.',
+        text:'Today’s readiness focus is leadership visibility. A strong system should show what is new, pending, delayed, approved, completed, and waiting for action.',
+        a:'Review new work.',
+        b:'Review pending work.',
+        c:'Review delays and corrections.',
+        d:'Review completed records.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    const dailyDate = document.getElementById('dailyDate');
+    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
