@@ -1460,82 +1460,111 @@
       day:'numeric'
     });
   </script>
-  <script>
-  const menuPanel = document.getElementById('menuPanel');
-  const openMenu = document.getElementById('openMenu');
-  const closeMenu = document.getElementById('closeMenu');
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* MENU */
+  const menuPanel = document.getElementById("menuPanel");
+  const openMenu = document.getElementById("openMenu");
+  const closeMenu = document.getElementById("closeMenu");
 
   if (openMenu && menuPanel) {
-    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    openMenu.onclick = function () {
+      menuPanel.classList.add("open");
+    };
   }
 
   if (closeMenu && menuPanel) {
-    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+    closeMenu.onclick = function () {
+      menuPanel.classList.remove("open");
+    };
   }
 
   if (menuPanel) {
-    menuPanel.addEventListener('click', (e) => {
+    menuPanel.onclick = function (e) {
       if (e.target === menuPanel) {
-        menuPanel.classList.remove('open');
+        menuPanel.classList.remove("open");
       }
-    });
+    };
   }
 
-  const economyPageLinks = {
-    "Inflation": "inflation.html",
-    "Interest Rates": "interest-rates.html",
-    "Jobs Reports": "jobs-reports.html",
-    "Housing Signals": "housing-signals.html",
-    "Consumer Spending": "consumer-spending.html",
-    "Banking & Lending": "banking-lending.html",
-    "Business Costs": "business-costs.html",
-    "Economic Confidence": "economic-confidence.html",
-    "Market Pressure": "market-pressure.html"
+  /* ECONOMY SIGNAL PAGE LINKS */
+  const pageMap = {
+    "inflation": "inflation.html",
+    "interest rates": "interest-rates.html",
+    "jobs reports": "jobs-reports.html",
+    "job reports": "jobs-reports.html",
+    "housing signals": "housing-signals.html",
+    "consumer spending": "consumer-spending.html",
+    "banking & lending": "banking-lending.html",
+    "banking and lending": "banking-lending.html",
+    "business costs": "business-costs.html",
+    "economic confidence": "economic-confidence.html",
+    "market pressure": "market-pressure.html"
   };
 
-  document.querySelectorAll('.signal-card').forEach((card) => {
-    const titleElement = card.querySelector('h3');
-    if (!titleElement) return;
+  function cleanText(text) {
+    return text
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .replace("&amp;", "&")
+      .trim();
+  }
 
-    const cardTitle = titleElement.textContent.trim();
-    const pageLink = economyPageLinks[cardTitle];
+  document.querySelectorAll(".signal-card").forEach(function (card) {
+    const title = card.querySelector("h3");
+    if (!title) return;
 
-    if (!pageLink) return;
+    const key = cleanText(title.textContent);
+    const link = pageMap[key];
 
-    if (card.tagName.toLowerCase() === 'a') {
-      card.setAttribute('href', pageLink);
-    } else {
-      card.style.cursor = 'pointer';
-      card.addEventListener('click', () => {
-        window.location.href = pageLink;
-      });
+    if (!link) return;
+
+    card.style.cursor = "pointer";
+
+    if (card.tagName.toLowerCase() === "a") {
+      card.href = link;
     }
 
-    const linkText = card.querySelector('.card-link span:first-child');
+    card.onclick = function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = link;
+    };
 
-    if (linkText) {
-      if (cardTitle === "Inflation") linkText.textContent = "Open Inflation";
-      if (cardTitle === "Interest Rates") linkText.textContent = "Open Rates";
-      if (cardTitle === "Jobs Reports") linkText.textContent = "Open Jobs";
-      if (cardTitle === "Housing Signals") linkText.textContent = "Open Housing";
-      if (cardTitle === "Consumer Spending") linkText.textContent = "Open Spending";
-      if (cardTitle === "Banking & Lending") linkText.textContent = "Open Lending";
-      if (cardTitle === "Business Costs") linkText.textContent = "Open Costs";
-      if (cardTitle === "Economic Confidence") linkText.textContent = "Open Confidence";
-      if (cardTitle === "Market Pressure") linkText.textContent = "Open Pressure";
+    const buttonText = card.querySelector(".card-link span:first-child");
+    if (buttonText) {
+      if (key === "inflation") buttonText.textContent = "Open Inflation";
+      if (key === "interest rates") buttonText.textContent = "Open Rates";
+      if (key === "jobs reports" || key === "job reports") buttonText.textContent = "Open Jobs";
+      if (key === "housing signals") buttonText.textContent = "Open Housing";
+      if (key === "consumer spending") buttonText.textContent = "Open Spending";
+      if (key === "banking & lending" || key === "banking and lending") buttonText.textContent = "Open Lending";
+      if (key === "business costs") buttonText.textContent = "Open Costs";
+      if (key === "economic confidence") buttonText.textContent = "Open Confidence";
+      if (key === "market pressure") buttonText.textContent = "Open Pressure";
     }
   });
 
-  const dailyDate = document.getElementById('dailyDate');
+  /* EXTRA STRONG CLICK CONTROL */
+  document.addEventListener("click", function (e) {
+    const card = e.target.closest(".signal-card");
+    if (!card) return;
 
-  if (dailyDate) {
-    dailyDate.textContent = new Date().toLocaleDateString('en-US', {
-      weekday:'long',
-      year:'numeric',
-      month:'long',
-      day:'numeric'
-    });
-  }
+    const title = card.querySelector("h3");
+    if (!title) return;
+
+    const key = cleanText(title.textContent);
+    const link = pageMap[key];
+
+    if (!link) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href = link;
+  });
+
+});
 </script>
 </body>
 </html>
