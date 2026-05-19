@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Indexes | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1800&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:32px 0}
+
+    .hero{padding:34px 0 26px}
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.86), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1800&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.74) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.35rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .ticker-shell{
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      background:#050505;
+      padding:8px 0;
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{max-width:1040px}
+
+    .widget-box{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      background:#050505;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .widget-title{
+      padding:22px 26px;
+      border-bottom:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.88);
+    }
+
+    .widget-title h2{
+      font-size:2.6rem;
+      margin-bottom:8px;
+    }
+
+    .widget-title p{
+      margin:0;
+      font-size:1.05rem;
+      color:#ededed;
+    }
+
+    .widget-frame{
+      min-height:560px;
+      background:#000;
+    }
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{font-size:3.1rem}
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{padding:24px 0 40px}
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{padding:54px}
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .bullet-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
+    }
+
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .widget-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box{
+        border-radius:24px;
+      }
+
+      .hero-box{min-height:620px}
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{font-size:3rem}
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{font-size:2rem}
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{width:100%}
+
+      .widget-frame{min-height:520px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="stock-market-intelligence.html">Market Intelligence</a>
+          <a href="indexes.html">Indexes</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Indexes</div>
+            <h1>Indexes</h1>
+
+            <p>
+              Learn how indexes help people see broad market direction instead of only
+              looking at one company at a time.
+            </p>
+
+            <p>
+              Indexes help visitors understand the bigger market picture. They group many companies
+              together so people can review whether the overall market, a sector, or a certain type
+              of company is moving higher, lower, or sideways.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-shell">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "AMEX:SPY", "title": "S&P 500" },
+            { "proName": "NASDAQ:QQQ", "title": "Nasdaq 100" },
+            { "proName": "AMEX:DIA", "title": "Dow Jones" },
+            { "proName": "AMEX:IWM", "title": "Russell 2000" },
+            { "proName": "CBOE:VIX", "title": "VIX" },
+            { "proName": "TVC:DXY", "title": "Dollar Index" },
+            { "proName": "TVC:US10Y", "title": "10Y Yield" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>An index is a basket that measures market direction.</h2>
+
+            <p>
+              A market index tracks a group of stocks, companies, or assets together.
+              Instead of checking one company only, an index helps visitors understand how a larger part
+              of the market is moving.
+            </p>
+
+            <p>
+              Indexes are useful because they can show broad confidence, investor pressure,
+              sector strength, economic expectation, and whether market movement is spread across many companies
+              or concentrated in only a few.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Broad Market Direction</strong>
+                Indexes help show whether a larger market group is rising, falling, or moving sideways.
+              </div>
+
+              <div class="bullet">
+                <strong>Market Comparison</strong>
+                Indexes help compare large companies, technology companies, small companies,
+                sectors, countries, and market styles.
+              </div>
+
+              <div class="bullet">
+                <strong>Investor Confidence</strong>
+                When major indexes rise, investors may feel more confident. When indexes fall,
+                investors may be reacting to risk, rates, earnings, or economic pressure.
+              </div>
+
+              <div class="bullet">
+                <strong>Business Signal</strong>
+                Index movement can help businesses watch demand, financing pressure,
+                market confidence, customer spending, and economic direction.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="widget-box">
+          <div class="widget-title">
+            <h2>Live Index Market Overview</h2>
+            <p>
+              This live area tracks major indexes and market benchmarks.
+            </p>
+          </div>
+
+          <div class="widget-frame">
+            <div class="tradingview-widget-container" style="height:100%;width:100%;">
+              <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+              {
+                "colorTheme": "dark",
+                "dateRange": "12M",
+                "showChart": true,
+                "locale": "en",
+                "largeChartUrl": "",
+                "isTransparent": false,
+                "showSymbolLogo": true,
+                "showFloatingTooltip": false,
+                "width": "100%",
+                "height": "560",
+                "tabs": [
+                  {
+                    "title": "U.S. Indexes",
+                    "symbols": [
+                      { "s": "AMEX:SPY", "d": "S&P 500" },
+                      { "s": "NASDAQ:QQQ", "d": "Nasdaq 100" },
+                      { "s": "AMEX:DIA", "d": "Dow Jones" },
+                      { "s": "AMEX:IWM", "d": "Russell 2000" },
+                      { "s": "AMEX:VTI", "d": "Total U.S. Market" }
+                    ]
+                  },
+                  {
+                    "title": "Market Signals",
+                    "symbols": [
+                      { "s": "CBOE:VIX", "d": "VIX Volatility" },
+                      { "s": "TVC:DXY", "d": "Dollar Index" },
+                      { "s": "TVC:US10Y", "d": "10Y Treasury Yield" },
+                      { "s": "TVC:GOLD", "d": "Gold" },
+                      { "s": "TVC:USOIL", "d": "Oil" }
+                    ]
+                  },
+                  {
+                    "title": "Global Indexes",
+                    "symbols": [
+                      { "s": "TVC:UKX", "d": "FTSE 100" },
+                      { "s": "TVC:DEU40", "d": "Germany 40" },
+                      { "s": "TVC:NI225", "d": "Nikkei 225" },
+                      { "s": "TVC:HSI", "d": "Hang Seng" },
+                      { "s": "TVC:SA40", "d": "South Africa 40" }
+                    ]
+                  }
+                ]
+              }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Index Learning</div>
+            <h2>Indexes learning areas.</h2>
+
+            <p>
+              These are the main areas to understand when reviewing indexes.
+              Everything stays on this page. No extra inside pages are required.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>S&amp;P 500</strong>
+                The S&amp;P 500 tracks many large U.S. companies and is often used to understand
+                broad U.S. market direction.
+              </div>
+
+              <div class="bullet">
+                <strong>Nasdaq 100</strong>
+                The Nasdaq 100 is heavily connected to technology and growth companies.
+                It can move strongly when investors focus on innovation, software, chips, cloud, and AI-related themes.
+              </div>
+
+              <div class="bullet">
+                <strong>Dow Jones</strong>
+                The Dow Jones tracks a smaller group of large, established companies.
+                It is often watched as a traditional market benchmark.
+              </div>
+
+              <div class="bullet">
+                <strong>Russell 2000</strong>
+                The Russell 2000 tracks smaller companies and can show pressure or strength
+                in small-business-style public companies.
+              </div>
+
+              <div class="bullet">
+                <strong>VIX</strong>
+                The VIX is often called a fear or volatility index. It can rise when investors expect bigger market movement.
+              </div>
+
+              <div class="bullet">
+                <strong>Total Market Index</strong>
+                A total market index gives a wider view of the market by tracking many more companies,
+                not only the biggest names.
+              </div>
+
+              <div class="bullet">
+                <strong>Sector Indexes</strong>
+                Sector indexes show how technology, banking, healthcare, energy, real estate,
+                consumer, utility, and materials companies move separately.
+              </div>
+
+              <div class="bullet">
+                <strong>Global Indexes</strong>
+                Global indexes help compare markets across countries and regions,
+                such as Europe, Japan, China, emerging markets, and other international markets.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">Indexes Image Zone</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Indexes video space.</h3>
+              <p>
+                This area can later hold index education videos, S&amp;P 500 explainers,
+                Nasdaq updates, Dow reviews, Russell 2000 lessons, and market direction summaries.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Business Impact</div>
+            <h2>Index movement can affect business confidence.</h2>
+
+            <p>
+              Index movement can influence how investors, lenders, customers, and business leaders feel about the economy.
+              A rising market can support confidence. A falling market can create caution,
+              slower spending, tighter financing, and more careful planning.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Investor Confidence</strong>
+                Index strength can encourage confidence, while index weakness can create caution and risk awareness.
+              </div>
+
+              <div class="bullet">
+                <strong>Customer Spending</strong>
+                Market pressure can affect how customers feel about money, savings, spending, and major purchases.
+              </div>
+
+              <div class="bullet">
+                <strong>Business Funding</strong>
+                Market direction can affect investor appetite, lender confidence, valuations, and growth funding.
+              </div>
+
+              <div class="bullet">
+                <strong>Hiring Decisions</strong>
+                Broad market weakness can make companies more careful with hiring, expansion, and payroll planning.
+              </div>
+
+              <div class="bullet">
+                <strong>Pricing Pressure</strong>
+                If indexes fall because of inflation, rates, or weak demand, businesses may need to review pricing and margins.
+              </div>
+
+              <div class="bullet">
+                <strong>Expansion Timing</strong>
+                Strong indexes may support growth planning. Weak indexes may push businesses to preserve cash and reduce risk.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">How To Read Indexes</div>
+            <h2>Do not judge the full market from one company.</h2>
+
+            <p>
+              A single company can rise or fall for its own reason. Indexes help visitors compare one company
+              against the broader market. They also help show whether market movement is broad, narrow,
+              healthy, weak, defensive, or risk-heavy.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Check The Big Indexes</strong>
+                Review the S&amp;P 500, Nasdaq, Dow, and Russell 2000 to understand broad market movement.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Market Breadth</strong>
+                Ask whether many companies are moving together or only a few large companies are carrying the market.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Volatility</strong>
+                Review volatility to understand whether investors expect calmer movement or stronger uncertainty.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Rates</strong>
+                Interest rates can affect indexes because they influence borrowing, valuations, housing, banks, and business spending.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Sector Strength</strong>
+                Review which sectors are leading or lagging to understand what is driving the index.
+              </div>
+
+              <div class="bullet">
+                <strong>Use Human Review</strong>
+                Market, money, tax, legal, and business decisions should be reviewed carefully before action.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Index Focus</div>
+            <h2 id="dailyTitle">Review the S&P 500, Nasdaq, Dow, Russell 2000, and VIX.</h2>
+            <p id="dailyText">
+              Today’s index focus is broad direction. Compare major indexes before judging the full market.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Review the S&P 500 for broad market direction.</div>
+              <div class="daily-item" id="daily2">Review the Nasdaq for technology and growth movement.</div>
+              <div class="daily-item" id="daily3">Review the Dow for large established company movement.</div>
+              <div class="daily-item" id="daily4">Review the Russell 2000 and VIX for small-cap and volatility pressure.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, index questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel){
+        menuPanel.classList.remove('open');
+      }
+    });
+
+    const dailySet = [
+      {
+        title:'Review the S&P 500, Nasdaq, Dow, Russell 2000, and VIX.',
+        text:'Today’s index focus is broad direction. Compare major indexes before judging the full market.',
+        a:'Review the S&P 500 for broad market direction.',
+        b:'Review the Nasdaq for technology and growth movement.',
+        c:'Review the Dow for large established company movement.',
+        d:'Review the Russell 2000 and VIX for small-cap and volatility pressure.'
+      },
+      {
+        title:'Compare broad market movement with technology movement.',
+        text:'Today’s index focus is comparison. The Nasdaq can move differently from the S&P 500, Dow, and small-cap indexes.',
+        a:'Review Nasdaq strength or weakness.',
+        b:'Review S&P 500 broad participation.',
+        c:'Review Dow stability or pressure.',
+        d:'Review whether the move is broad or narrow.'
+      },
+      {
+        title:'Watch volatility before trusting the market direction.',
+        text:'Today’s index focus is risk. Volatility can show whether investors are calm, cautious, fearful, or uncertain.',
+        a:'Review the VIX.',
+        b:'Review market breadth.',
+        c:'Review rates and dollar movement.',
+        d:'Review sector leadership.'
+      },
+      {
+        title:'Connect index movement to business confidence.',
+        text:'Today’s index focus is business impact. Index movement can affect customers, lenders, investors, and expansion decisions.',
+        a:'Review customer confidence signals.',
+        b:'Review funding and lending pressure.',
+        c:'Review hiring and expansion timing.',
+        d:'Review risk before business decisions.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    document.getElementById('dailyDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
