@@ -1706,5 +1706,67 @@
       });
     })();
   </script>
+  <script>
+  const stockMarketPageRoutes = {
+    "u.s. stock market": "us-stock-market.html",
+    "us stock market": "us-stock-market.html",
+    "review u.s. market": "us-stock-market.html",
+    "review us market": "us-stock-market.html",
+
+    "indexes": "indexes.html",
+    "review indexes": "indexes.html",
+
+    "global markets": "global-markets.html",
+    "review global markets": "global-markets.html",
+
+    "sectors & industries": "sectors-industries.html",
+    "sectors and industries": "sectors-industries.html",
+    "review sectors": "sectors-industries.html",
+
+    "commodities": "commodities.html",
+    "review commodities": "commodities.html",
+
+    "crypto & coins": "crypto-coins.html",
+    "crypto and coins": "crypto-coins.html",
+    "review crypto": "crypto-coins.html",
+
+    "currency & forex": "currency-forex.html",
+    "currency and forex": "currency-forex.html",
+    "review currency": "currency-forex.html",
+
+    "market news watch": "market-news-watch.html",
+    "review news watch": "market-news-watch.html",
+    "review news": "market-news-watch.html"
+  };
+
+  function cleanRouteText(text){
+    return text
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .replace(/\u00a0/g, " ")
+      .trim();
+  }
+
+  document.querySelectorAll(".info-card").forEach((card) => {
+    const titleText = card.querySelector("h3")?.textContent || "";
+    const buttonText = card.querySelector(".card-link span:first-child")?.textContent || "";
+    const fullText = cleanRouteText(titleText);
+    const reviewText = cleanRouteText(buttonText);
+
+    const page =
+      stockMarketPageRoutes[fullText] ||
+      stockMarketPageRoutes[reviewText];
+
+    if(page){
+      card.setAttribute("href", page);
+      card.style.cursor = "pointer";
+
+      card.addEventListener("click", function(e){
+        e.preventDefault();
+        window.location.href = page;
+      });
+    }
+  });
+</script>
 </body>
 </html>
