@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Global Markets | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e2c878;
+      --green:#167a63;
+      --white:#f5f5f5;
+      --border:rgba(216,180,90,.9);
+      --shadow:0 18px 40px rgba(0,0,0,.38);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:#000;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+        url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1800&q=80") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.9rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      letter-spacing:.5px;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .menu-btn{
+      width:96px;
+      height:96px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:3rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#111;
+      border:2px solid var(--border);
+      max-width:720px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:32px 0}
+
+    .hero{padding:34px 0 26px}
+
+    .hero-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      min-height:720px;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(13,81,65,.46)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .hero-content{
+      padding:58px;
+      width:100%;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.74) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5rem;
+      color:var(--gold-soft);
+      max-width:980px;
+    }
+
+    h2{
+      font-size:3.35rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f1f1f1;
+      font-size:1.18rem;
+    }
+
+    .hero-content p{
+      font-size:1.3rem;
+      max-width:980px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+    }
+
+    .cta-btn:hover{
+      background:#0f8c6d;
+      transform:translateY(-2px);
+    }
+
+    .ticker-shell{
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      background:#050505;
+      padding:8px 0;
+    }
+
+    .content-box{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .content-box.alt{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(10,70,56,.50)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .content-box.dark{
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.90), rgba(10,70,56,.52)),
+        url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80") center/cover;
+    }
+
+    .content-inner{
+      padding:44px;
+      background:rgba(0,0,0,.32);
+    }
+
+    .content-inner p{max-width:1040px}
+
+    .widget-box{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      background:#050505;
+      box-shadow:var(--shadow);
+      margin-bottom:28px;
+    }
+
+    .widget-title{
+      padding:22px 26px;
+      border-bottom:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.88);
+    }
+
+    .widget-title h2{
+      font-size:2.6rem;
+      margin-bottom:8px;
+    }
+
+    .widget-title p{
+      margin:0;
+      font-size:1.05rem;
+      color:#ededed;
+    }
+
+    .widget-frame{
+      min-height:560px;
+      background:#000;
+    }
+
+    .bullet-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .bullet{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.45);
+      padding:18px 20px;
+      color:#f2f2f2;
+      font-size:1.03rem;
+    }
+
+    .bullet strong{
+      color:var(--gold-soft);
+      display:block;
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .media-section{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+    }
+
+    .image-block,
+    .video-block{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      min-height:440px;
+      position:relative;
+      background:#08100f;
+    }
+
+    .image-block{
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80") center/cover;
+    }
+
+    .video-block{
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(0,0,0,.72);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .video-copy{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.76) 45%, rgba(0,0,0,.94) 100%);
+    }
+
+    .video-copy h3{
+      font-size:2.5rem;
+      color:#fff;
+    }
+
+    .play-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      padding:12px 16px;
+      color:var(--gold-soft);
+      background:rgba(0,0,0,.38);
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:.92rem;
+    }
+
+    .daily-panel{
+      border:2px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,.88), rgba(12,84,67,.42)),
+        url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .daily-inside{
+      padding:42px;
+      background:rgba(0,0,0,.34);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+      font-size:1rem;
+    }
+
+    .daily-inside h2{font-size:3.1rem}
+
+    .daily-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .daily-item{
+      border:1px solid rgba(216,180,90,.55);
+      background:rgba(20,122,99,.12);
+      padding:14px 16px;
+      color:#f1f1f1;
+      font-size:1rem;
+    }
+
+    .contact-section{padding:24px 0 40px}
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.66), rgba(0,0,0,.66)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=80") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{padding:54px}
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:4rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      max-width:840px;
+      font-size:1.24rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media (max-width:1100px){
+      .media-section,
+      .bullet-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:3.8rem}
+    }
+
+    @media (max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{font-size:1.22rem}
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-box,
+      .content-box,
+      .widget-box,
+      .image-block,
+      .video-block,
+      .daily-panel,
+      .contact-box{
+        border-radius:24px;
+      }
+
+      .hero-box{min-height:620px}
+
+      .hero-content,
+      .content-inner,
+      .daily-inside,
+      .video-copy,
+      .contact-inner{
+        padding:26px;
+      }
+
+      h1{font-size:3rem}
+
+      h2,
+      .daily-inside h2{
+        font-size:2.45rem;
+      }
+
+      h3{font-size:2rem}
+
+      .hero-content p,
+      .contact-inner p{
+        font-size:1.08rem;
+      }
+
+      .cta-btn{width:100%}
+
+      .widget-frame{min-height:520px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text">TITANCORE HOLDINGS</div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="search-intelligence.html">Search Intelligence</a>
+          <a href="strategy-intelligence.html">Strategy Intelligence</a>
+          <a href="operations-intelligence.html">Operations Intelligence</a>
+          <a href="business-system-intelligence.html">Business Systems Intelligence</a>
+          <a href="stock-market-intelligence.html">Market Intelligence</a>
+          <a href="global-markets.html">Global Markets</a>
+          <a href="ai-awareness-intelligence.html">AI Awareness Intelligence</a>
+          <a href="data-thinking-intelligence.html">Data Thinking Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-box">
+          <div class="hero-content">
+            <div class="eyebrow">Global Markets</div>
+            <h1>Global Markets</h1>
+
+            <p>
+              Review international markets, regional exchanges, country-level business movement,
+              and global investor confidence.
+            </p>
+
+            <p>
+              Global Markets helps visitors understand that business movement does not happen in one country only.
+              U.S. markets, European markets, Asian markets, emerging markets, currencies, rates, commodities,
+              and country-level news can all affect global confidence.
+            </p>
+
+            <div class="btn-row">
+              <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-shell">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+            { "proName": "FOREXCOM:NSXUSD", "title": "Nasdaq 100" },
+            { "proName": "TVC:UKX", "title": "FTSE 100" },
+            { "proName": "TVC:DEU40", "title": "Germany 40" },
+            { "proName": "TVC:NI225", "title": "Nikkei 225" },
+            { "proName": "TVC:HSI", "title": "Hang Seng" },
+            { "proName": "TVC:DXY", "title": "Dollar Index" },
+            { "proName": "TVC:GOLD", "title": "Gold" },
+            { "proName": "TVC:USOIL", "title": "Oil" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">Main Definition</div>
+            <h2>Global markets show how business confidence moves around the world.</h2>
+
+            <p>
+              Global markets include stock exchanges, regional indexes, currency movement,
+              commodities, bond yields, trade pressure, and country-level economic news.
+              A change in one region can affect another region through supply chains, banks,
+              investors, exports, imports, and global business confidence.
+            </p>
+
+            <p>
+              This page helps visitors understand worldwide market movement without sending them
+              to extra subpages. The full explanation stays here.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>International Markets</strong>
+                International markets show how investors are reacting in different countries and regions.
+              </div>
+
+              <div class="bullet">
+                <strong>Regional Exchanges</strong>
+                Regional exchanges help show whether North America, Europe, Asia, and emerging markets are moving together or separately.
+              </div>
+
+              <div class="bullet">
+                <strong>Country-Level Movement</strong>
+                Country-level market movement can reflect local inflation, jobs, rates, policy, elections, currency pressure, or business demand.
+              </div>
+
+              <div class="bullet">
+                <strong>Global Investor Confidence</strong>
+                Global confidence can rise or fall because of rates, wars, trade pressure, currencies, commodities, earnings, and central bank decisions.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="widget-box">
+          <div class="widget-title">
+            <h2>Live Global Market Overview</h2>
+            <p>
+              This live area tracks global indexes, regional benchmarks, currencies, commodities, and market signals.
+            </p>
+          </div>
+
+          <div class="widget-frame">
+            <div class="tradingview-widget-container" style="height:100%;width:100%;">
+              <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+              {
+                "colorTheme": "dark",
+                "dateRange": "12M",
+                "showChart": true,
+                "locale": "en",
+                "largeChartUrl": "",
+                "isTransparent": false,
+                "showSymbolLogo": true,
+                "showFloatingTooltip": false,
+                "width": "100%",
+                "height": "560",
+                "tabs": [
+                  {
+                    "title": "North America",
+                    "symbols": [
+                      { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
+                      { "s": "FOREXCOM:NSXUSD", "d": "Nasdaq 100" },
+                      { "s": "FOREXCOM:DJI", "d": "Dow Jones" },
+                      { "s": "TVC:TSX", "d": "Canada TSX" },
+                      { "s": "TVC:MXX", "d": "Mexico IPC" }
+                    ]
+                  },
+                  {
+                    "title": "Europe",
+                    "symbols": [
+                      { "s": "TVC:UKX", "d": "FTSE 100" },
+                      { "s": "TVC:DEU40", "d": "Germany 40" },
+                      { "s": "TVC:FRA40", "d": "France 40" },
+                      { "s": "TVC:IT40", "d": "Italy 40" },
+                      { "s": "TVC:EU50", "d": "Euro Stoxx 50" }
+                    ]
+                  },
+                  {
+                    "title": "Asia & Global",
+                    "symbols": [
+                      { "s": "TVC:NI225", "d": "Japan Nikkei 225" },
+                      { "s": "TVC:HSI", "d": "Hong Kong Hang Seng" },
+                      { "s": "TVC:KOSPI", "d": "South Korea KOSPI" },
+                      { "s": "TVC:SA40", "d": "South Africa 40" },
+                      { "s": "TVC:DXY", "d": "U.S. Dollar Index" }
+                    ]
+                  },
+                  {
+                    "title": "Global Signals",
+                    "symbols": [
+                      { "s": "TVC:DXY", "d": "U.S. Dollar Index" },
+                      { "s": "TVC:US10Y", "d": "U.S. 10Y Yield" },
+                      { "s": "TVC:GOLD", "d": "Gold" },
+                      { "s": "TVC:USOIL", "d": "Oil" },
+                      { "s": "FX_IDC:EURUSD", "d": "EUR/USD" },
+                      { "s": "FX_IDC:USDJPY", "d": "USD/JPY" }
+                    ]
+                  }
+                ]
+              }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Global Markets Learning</div>
+            <h2>Global Markets learning areas.</h2>
+
+            <p>
+              These are the main areas to understand when reviewing global markets.
+              Everything stays on this page. No extra inside pages are required.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>U.S. Markets</strong>
+                U.S. markets often influence global investor confidence because of large companies,
+                dollar strength, interest rates, technology leadership, and global capital flow.
+              </div>
+
+              <div class="bullet">
+                <strong>European Markets</strong>
+                European markets can reflect banking pressure, energy costs, manufacturing demand,
+                trade activity, inflation, and European Central Bank policy.
+              </div>
+
+              <div class="bullet">
+                <strong>Asian Markets</strong>
+                Asian markets can reflect manufacturing, exports, technology supply chains,
+                currency pressure, consumer demand, and regional growth.
+              </div>
+
+              <div class="bullet">
+                <strong>Emerging Markets</strong>
+                Emerging markets can move strongly with currency pressure, foreign investment,
+                commodity demand, political risk, debt pressure, and global rate changes.
+              </div>
+
+              <div class="bullet">
+                <strong>Currency Pressure</strong>
+                Exchange rates can affect imports, exports, foreign revenue, global pricing,
+                business contracts, travel spending, and international payments.
+              </div>
+
+              <div class="bullet">
+                <strong>Commodity Pressure</strong>
+                Oil, gas, gold, food, metals, and materials can affect inflation,
+                consumer costs, production costs, shipping, and business planning.
+              </div>
+
+              <div class="bullet">
+                <strong>Central Banks</strong>
+                Central banks around the world influence rates, inflation expectations,
+                lending conditions, currency values, and global investor behavior.
+              </div>
+
+              <div class="bullet">
+                <strong>Global Trade</strong>
+                Global trade can be affected by tariffs, shipping routes, sanctions,
+                exports, imports, supply chains, and country-level business demand.
+              </div>
+
+              <div class="bullet">
+                <strong>Geopolitical Risk</strong>
+                Wars, elections, policy changes, sanctions, and country tension can affect energy,
+                currency, commodities, confidence, and international business decisions.
+              </div>
+
+              <div class="bullet">
+                <strong>Regional Confidence</strong>
+                A region can become stronger or weaker depending on jobs, inflation,
+                credit conditions, business activity, consumer spending, and political stability.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-section">
+          <div class="image-block">
+            <div class="overlay-label">Global Markets Image Zone</div>
+          </div>
+
+          <div class="video-block">
+            <div class="overlay-label">Future Video Area</div>
+            <div class="video-copy">
+              <h3>Global Markets video space.</h3>
+              <p>
+                This area can later hold global market education videos, regional exchange summaries,
+                country-level business updates, currency explainers, central bank lessons, and global risk reviews.
+              </p>
+              <div class="play-pill">Video placeholder • Daily change ready</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Business Impact</div>
+            <h2>Global market movement can affect local business decisions.</h2>
+
+            <p>
+              Global markets can affect a business even when that business operates locally.
+              Currency movement, supply chains, shipping costs, oil prices, investor confidence,
+              bank lending, trade pressure, and overseas demand can all reach local companies.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Supply Chains</strong>
+                International market pressure can affect shipping, product availability,
+                supplier pricing, delivery timing, and inventory planning.
+              </div>
+
+              <div class="bullet">
+                <strong>Import Costs</strong>
+                Currency and trade movement can affect the cost of imported products,
+                equipment, materials, and supplies.
+              </div>
+
+              <div class="bullet">
+                <strong>Export Demand</strong>
+                Foreign customer demand, exchange rates, and country-level economic strength
+                can affect businesses selling outside their home market.
+              </div>
+
+              <div class="bullet">
+                <strong>Fuel & Energy</strong>
+                Oil, gas, and energy movement can affect transportation, shipping,
+                utilities, production, and consumer spending.
+              </div>
+
+              <div class="bullet">
+                <strong>Credit Conditions</strong>
+                Global rate decisions and bank confidence can affect lending, credit,
+                financing, investor appetite, and business expansion timing.
+              </div>
+
+              <div class="bullet">
+                <strong>Customer Confidence</strong>
+                Global market fear can affect spending behavior, major purchases,
+                travel, housing, investment, and business confidence.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box">
+          <div class="content-inner">
+            <div class="eyebrow">How To Read Global Markets</div>
+            <h2>Do not judge the world market from one country alone.</h2>
+
+            <p>
+              A strong U.S. market does not always mean the world is strong.
+              A weak European market does not always mean Asia is weak. A currency move,
+              central bank statement, oil shock, election, or trade announcement can affect regions differently.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet">
+                <strong>Check The Region</strong>
+                Separate North America, Europe, Asia, emerging markets, and global indexes before judging the full picture.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Currencies</strong>
+                Currency movement can explain pressure in imports, exports, commodities, international revenue, and foreign payments.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Rates</strong>
+                Global interest-rate movement can change bank lending, investor behavior, currency values, and business confidence.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Commodities</strong>
+                Oil, gas, gold, food, and metals can affect global inflation, production, shipping, and customer pressure.
+              </div>
+
+              <div class="bullet">
+                <strong>Check Country Risk</strong>
+                Elections, wars, sanctions, policy changes, and political tension can move markets quickly.
+              </div>
+
+              <div class="bullet">
+                <strong>Use Human Review</strong>
+                Global market, money, tax, legal, investment, and business decisions should be reviewed carefully before action.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="daily-panel">
+          <div class="daily-inside">
+            <div class="daily-date" id="dailyDate">Today’s Global Markets Focus</div>
+            <h2 id="dailyTitle">Review U.S., Europe, Asia, currency, commodities, and global risk.</h2>
+            <p id="dailyText">
+              Today’s global focus is comparison. Review regional markets before judging worldwide confidence.
+            </p>
+
+            <div class="daily-list">
+              <div class="daily-item" id="daily1">Review U.S. market movement and investor confidence.</div>
+              <div class="daily-item" id="daily2">Review European and Asian market movement.</div>
+              <div class="daily-item" id="daily3">Review currency, dollar, oil, and gold signals.</div>
+              <div class="daily-item" id="daily4">Review country-level risk, central banks, and global trade pressure.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, global market questions,
+              or TitanCore-related information, contact TitanCore Holdings.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel){
+        menuPanel.classList.remove('open');
+      }
+    });
+
+    const dailySet = [
+      {
+        title:'Review U.S., Europe, Asia, currency, commodities, and global risk.',
+        text:'Today’s global focus is comparison. Review regional markets before judging worldwide confidence.',
+        a:'Review U.S. market movement and investor confidence.',
+        b:'Review European and Asian market movement.',
+        c:'Review currency, dollar, oil, and gold signals.',
+        d:'Review country-level risk, central banks, and global trade pressure.'
+      },
+      {
+        title:'Compare regional markets before judging global strength.',
+        text:'Today’s global focus is regional movement. One region can rise while another region struggles.',
+        a:'Review North America.',
+        b:'Review Europe.',
+        c:'Review Asia and emerging markets.',
+        d:'Review whether the move is global or regional.'
+      },
+      {
+        title:'Watch currency and commodity pressure.',
+        text:'Today’s global focus is pressure. Currencies, oil, gold, and food can affect global business costs.',
+        a:'Review U.S. dollar movement.',
+        b:'Review oil and energy pressure.',
+        c:'Review gold and safety demand.',
+        d:'Review import, export, and trade pressure.'
+      },
+      {
+        title:'Connect global markets to local business decisions.',
+        text:'Today’s global focus is business impact. Global movement can affect local costs, customers, credit, and planning.',
+        a:'Review supplier and shipping risk.',
+        b:'Review customer confidence.',
+        c:'Review lending and credit conditions.',
+        d:'Review expansion timing and business risk.'
+      }
+    ];
+
+    const focusIndex = new Date().getDate() % dailySet.length;
+
+    document.getElementById('dailyTitle').textContent = dailySet[focusIndex].title;
+    document.getElementById('dailyText').textContent = dailySet[focusIndex].text;
+    document.getElementById('daily1').textContent = dailySet[focusIndex].a;
+    document.getElementById('daily2').textContent = dailySet[focusIndex].b;
+    document.getElementById('daily3').textContent = dailySet[focusIndex].c;
+    document.getElementById('daily4').textContent = dailySet[focusIndex].d;
+
+    document.getElementById('dailyDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
