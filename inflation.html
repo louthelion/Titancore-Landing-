@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Inflation | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e9cf7a;
+      --green:#087457;
+      --green2:#0a8b68;
+      --white:#f7f7f7;
+      --border:rgba(216,180,90,.92);
+      --max:1200px;
+      --shadow:0 20px 50px rgba(0,0,0,.42);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#050505;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.62;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.38)),
+        url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1900&q=85") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.8rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      display:flex;
+      gap:28px;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.85rem;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      text-transform:uppercase;
+    }
+
+    .brand-text span:last-child{color:#fff}
+
+    .menu-btn{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:2.8rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--green2);
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#101010;
+      border:2px solid var(--border);
+      max-width:760px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+      font-weight:400;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:34px 0}
+
+    .hero{
+      border-bottom:2px solid var(--border);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.50), rgba(0,0,0,.14), rgba(8,116,87,.18)),
+        url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1900&q=85") center/cover;
+    }
+
+    .hero-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      min-height:690px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:center;
+      padding:60px 0;
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:.98rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5.2rem;
+      color:var(--gold-soft);
+      max-width:760px;
+    }
+
+    h2{
+      font-size:3.35rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f4f4f4;
+      font-size:1.18rem;
+    }
+
+    .hero p{
+      font-size:1.28rem;
+      max-width:700px;
+    }
+
+    .hero-visual{
+      min-height:540px;
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.14)),
+        url("https://images.unsplash.com/photo-1556742031-c6961e8560b0?auto=format&fit=crop&w=1500&q=85") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .visual-caption{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.72) 100%);
+    }
+
+    .visual-caption strong{
+      display:block;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.35rem;
+      line-height:1.08;
+      margin-bottom:12px;
+    }
+
+    .visual-caption span{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      max-width:540px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .cta-btn:hover{
+      background:var(--green2);
+      transform:translateY(-2px);
+    }
+
+    .ticker-shell{
+      background:#050505;
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      padding:8px 0;
+    }
+
+    .live-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .live-card,
+    .live-widget{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.46), rgba(0,0,0,.12)),
+        url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1500&q=85") center/cover;
+    }
+
+    .live-card-inner{
+      padding:42px;
+      min-height:430px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:rgba(0,0,0,.08);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      font-size:.95rem;
+    }
+
+    .live-widget{
+      background:#050505;
+    }
+
+    .widget-title{
+      padding:20px 24px;
+      border-bottom:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.82);
+    }
+
+    .widget-title h3{
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+
+    .widget-title p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .widget-frame{
+      min-height:430px;
+      background:#000;
+    }
+
+    .panel{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.50), rgba(0,0,0,.12)),
+        var(--bg) center/cover;
+      margin-bottom:28px;
+    }
+
+    .panel-inner{
+      padding:46px;
+      background:rgba(0,0,0,.06);
+    }
+
+    .section-heading{
+      text-align:center;
+      margin-bottom:26px;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:30px;
+    }
+
+    .section-heading::before,
+    .section-heading::after{
+      content:"";
+      height:2px;
+      background:rgba(216,180,90,.78);
+    }
+
+    .section-heading h2{
+      color:var(--gold-soft);
+      font-size:2rem;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:900;
+      margin:0;
+    }
+
+    .inflation-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:24px;
+    }
+
+    .inflation-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      min-height:500px;
+      display:flex;
+      flex-direction:column;
+      box-shadow:var(--shadow);
+      background:#080808;
+    }
+
+    .inflation-image{
+      min-height:200px;
+      background:center/cover no-repeat;
+    }
+
+    .inflation-body{
+      padding:30px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      background:linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.58));
+    }
+
+    .inflation-body h3{
+      font-size:2.1rem;
+      margin-bottom:16px;
+    }
+
+    .inflation-body p{
+      flex:1;
+      font-size:1.06rem;
+    }
+
+    .card-line{
+      height:1px;
+      background:rgba(216,180,90,.72);
+      margin:12px 0 22px;
+    }
+
+    .tag{
+      color:#fff;
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+
+    .detail-card{
+      border:1px solid rgba(216,180,90,.60);
+      background:rgba(0,0,0,.34);
+      padding:18px 20px;
+    }
+
+    .detail-card strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .detail-card span{
+      display:block;
+      color:#f2f2f2;
+      font-size:1rem;
+    }
+
+    .media-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .image-zone,
+    .video-zone{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      min-height:430px;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+
+    .image-zone{
+      background:
+        linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.12)),
+        url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1500&q=85") center/cover;
+    }
+
+    .video-zone{
+      background:#000;
+    }
+
+    .video-panel{
+      position:absolute;
+      inset:0;
+      background:center/cover no-repeat;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .video-panel::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.10);
+    }
+
+    .video-bottom{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.80));
+    }
+
+    .play-badge{
+      width:96px;
+      height:96px;
+      border:4px solid #fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2.8rem;
+      padding-left:6px;
+      background:rgba(0,0,0,.45);
+      margin-bottom:18px;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      z-index:3;
+      background:rgba(0,0,0,.58);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .contact-section{
+      padding:24px 0 42px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.54), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1700&q=85") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:46px;
+      max-width:820px;
+      background:rgba(0,0,0,.08);
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:3.8rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      font-size:1.18rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media(max-width:1100px){
+      .hero-inner,
+      .live-grid,
+      .media-row{
+        grid-template-columns:1fr;
+      }
+
+      .inflation-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .detail-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:4rem}
+    }
+
+    @media(max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{
+        font-size:1.15rem;
+        gap:14px;
+      }
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-inner{
+        min-height:auto;
+        padding:36px 0;
+      }
+
+      .hero-visual{min-height:400px}
+
+      h1{font-size:3rem}
+      h2{font-size:2.55rem}
+      h3{font-size:2rem}
+
+      p,.hero p{font-size:1.05rem}
+
+      .section-heading{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .section-heading::before,
+      .section-heading::after{display:none}
+
+      .section-heading h2{
+        font-size:1.2rem;
+        line-height:1.5;
+      }
+
+      .inflation-grid{grid-template-columns:1fr}
+
+      .live-card-inner,
+      .inflation-body,
+      .panel-inner,
+      .video-bottom,
+      .contact-inner{
+        padding:26px;
+      }
+
+      .cta-btn{width:100%}
+
+      .contact-inner h2{font-size:2.6rem}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text"><span>TITANCORE</span><span>HOLDINGS</span></div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="stock-market-intelligence.html">Stock &amp; Market Intelligence</a>
+          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
+          <a href="inflation.html">Inflation</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Inflation Intelligence</div>
+          <h1>Inflation</h1>
+          <p>
+            Inflation shows how prices are moving. It affects groceries, fuel, rent,
+            insurance, labor, materials, and customer buying power.
+          </p>
+
+          <p>
+            This page helps visitors understand how rising prices affect families,
+            businesses, lenders, investors, pricing decisions, profit margins, and market pressure.
+          </p>
+
+          <div class="btn-row">
+            <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-caption">
+            <strong>Inflation changes what money can buy.</strong>
+            <span>
+              When prices rise, households feel pressure, businesses review costs,
+              and leaders watch pricing, wages, margins, and demand.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-shell">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "TVC:DXY", "title": "Dollar" },
+            { "proName": "TVC:US10Y", "title": "10Y Yield" },
+            { "proName": "TVC:USOIL", "title": "Oil" },
+            { "proName": "TVC:NATGAS", "title": "Natural Gas" },
+            { "proName": "AMEX:GLD", "title": "Gold" },
+            { "proName": "AMEX:DBA", "title": "Agriculture" },
+            { "proName": "AMEX:XLP", "title": "Consumer Staples" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="live-grid">
+          <div class="live-card">
+            <div class="live-card-inner">
+              <div class="daily-date" id="dailyDate">Today’s Inflation Focus</div>
+              <h2 id="focusTitle">Watch inflation because prices control buying power.</h2>
+              <p id="focusText">
+                Inflation affects groceries, fuel, rent, insurance, labor, materials,
+                customer spending, and business pricing decisions.
+              </p>
+            </div>
+          </div>
+
+          <div class="live-widget">
+            <div class="widget-title">
+              <h3>Live Inflation Signals</h3>
+              <p>Dollar, yields, oil, natural gas, gold, agriculture, staples, and market pressure.</p>
+            </div>
+
+            <div class="widget-frame">
+              <div class="tradingview-widget-container" style="height:100%;width:100%;">
+                <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                {
+                  "colorTheme": "dark",
+                  "dateRange": "12M",
+                  "showChart": true,
+                  "locale": "en",
+                  "largeChartUrl": "",
+                  "isTransparent": false,
+                  "showSymbolLogo": true,
+                  "showFloatingTooltip": false,
+                  "width": "100%",
+                  "height": "430",
+                  "tabs": [
+                    {
+                      "title": "Inflation Signals",
+                      "symbols": [
+                        { "s": "TVC:DXY", "d": "U.S. Dollar Index" },
+                        { "s": "TVC:US10Y", "d": "U.S. 10Y Yield" },
+                        { "s": "TVC:USOIL", "d": "Oil" },
+                        { "s": "TVC:NATGAS", "d": "Natural Gas" },
+                        { "s": "AMEX:GLD", "d": "Gold" }
+                      ]
+                    },
+                    {
+                      "title": "Consumer Impact",
+                      "symbols": [
+                        { "s": "AMEX:DBA", "d": "Agriculture" },
+                        { "s": "AMEX:XLP", "d": "Consumer Staples" },
+                        { "s": "AMEX:XLY", "d": "Consumer Discretionary" },
+                        { "s": "NYSE:WMT", "d": "Walmart" },
+                        { "s": "NASDAQ:COST", "d": "Costco" }
+                      ]
+                    }
+                  ]
+                }
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel" style="--bg:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1700&q=85');">
+          <div class="panel-inner">
+            <div class="eyebrow">Inflation Definition</div>
+            <h2>Inflation means prices are rising across the economy.</h2>
+            <p>
+              Inflation happens when the cost of goods and services increases over time.
+              A little inflation can be normal, but high inflation can reduce buying power,
+              increase business costs, and make families more cautious with spending.
+            </p>
+
+            <div class="detail-grid">
+              <div class="detail-card"><strong>Groceries</strong><span>Food prices affect every household and can quickly reduce extra spending money.</span></div>
+              <div class="detail-card"><strong>Fuel & Energy</strong><span>Gas, electricity, utilities, shipping, and transportation costs can push prices higher.</span></div>
+              <div class="detail-card"><strong>Rent & Housing</strong><span>Rent, mortgage payments, insurance, repairs, and utilities affect monthly budgets.</span></div>
+              <div class="detail-card"><strong>Labor Costs</strong><span>Wage pressure can help workers but can also increase business expenses.</span></div>
+              <div class="detail-card"><strong>Materials & Supplies</strong><span>Products, inventory, packaging, tools, and raw materials can become more expensive.</span></div>
+              <div class="detail-card"><strong>Customer Buying Power</strong><span>When prices rise faster than income, customers may delay or reduce purchases.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Inflation Pressure Areas</h2>
+        </div>
+
+        <div class="inflation-grid">
+          <div class="inflation-card">
+            <div class="inflation-image" style="background-image:url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="inflation-body">
+              <h3>Food Prices</h3>
+              <p>Food inflation affects groceries, restaurants, suppliers, families, and businesses that depend on food inventory.</p>
+              <div class="card-line"></div>
+              <div class="tag">Grocery Signal</div>
+            </div>
+          </div>
+
+          <div class="inflation-card">
+            <div class="inflation-image" style="background-image:url('https://images.unsplash.com/photo-1527018601619-a508a2be00cd?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="inflation-body">
+              <h3>Fuel &amp; Energy</h3>
+              <p>Fuel and energy prices affect transportation, delivery, utilities, business costs, and household budgets.</p>
+              <div class="card-line"></div>
+              <div class="tag">Energy Signal</div>
+            </div>
+          </div>
+
+          <div class="inflation-card">
+            <div class="inflation-image" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="inflation-body">
+              <h3>Rent &amp; Housing</h3>
+              <p>Housing inflation affects rent, insurance, repairs, utilities, mortgage payments, and local spending.</p>
+              <div class="card-line"></div>
+              <div class="tag">Housing Signal</div>
+            </div>
+          </div>
+
+          <div class="inflation-card">
+            <div class="inflation-image" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="inflation-body">
+              <h3>Wages &amp; Labor</h3>
+              <p>Wage pressure affects payroll, hiring decisions, employee retention, pricing, and profit margins.</p>
+              <div class="card-line"></div>
+              <div class="tag">Labor Signal</div>
+            </div>
+          </div>
+
+          <div class="inflation-card">
+            <div class="inflation-image" style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="inflation-body">
+              <h3>Supplies &amp; Materials</h3>
+              <p>Material inflation affects inventory, repairs, construction, packaging, product costs, and business planning.</p>
+              <div class="card-line"></div>
+              <div class="tag">Material Signal</div>
+            </div>
+          </div>
+
+          <div class="inflation-card">
+            <div class="inflation-image" style="background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="inflation-body">
+              <h3>Customer Spending</h3>
+              <p>Customer spending changes when families feel pressure from higher prices and reduced buying power.</p>
+              <div class="card-line"></div>
+              <div class="tag">Demand Signal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-row">
+          <div class="image-zone">
+            <div class="overlay-label">Inflation Image Zone</div>
+          </div>
+
+          <div class="video-zone">
+            <div class="overlay-label">Live Video Area</div>
+            <div class="video-panel" id="videoPanel">
+              <div class="video-bottom">
+                <div class="play-badge">▶</div>
+                <h3 id="videoTitle">Inflation Video Brief</h3>
+                <p id="videoText">
+                  This live video space rotates daily for food prices, fuel, rent,
+                  wages, materials, customer spending, and business cost pressure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel" style="--bg:url('https://images.unsplash.com/photo-1556742031-c6961e8560b0?auto=format&fit=crop&w=1700&q=85');">
+          <div class="panel-inner">
+            <div class="eyebrow">Inflation Warning Signs</div>
+            <h2>Inflation pressure can change business decisions quickly.</h2>
+            <p>
+              Inflation matters because it touches almost every part of the economy.
+              Families may buy less, businesses may raise prices, lenders may become cautious,
+              and investors may watch rates, margins, and demand more closely.
+            </p>
+
+            <div class="detail-grid">
+              <div class="detail-card"><strong>Customers buy less</strong><span>Families may reduce optional purchases when essentials become expensive.</span></div>
+              <div class="detail-card"><strong>Businesses raise prices</strong><span>Companies may increase prices to protect profit margins.</span></div>
+              <div class="detail-card"><strong>Profit margins shrink</strong><span>Costs can rise faster than revenue, weakening business performance.</span></div>
+              <div class="detail-card"><strong>Interest rates may rise</strong><span>High inflation can push central banks to keep borrowing costs higher.</span></div>
+              <div class="detail-card"><strong>Credit pressure grows</strong><span>Families may use more credit cards or delay major purchases.</span></div>
+              <div class="detail-card"><strong>Inventory becomes harder</strong><span>Supplies and materials may cost more, affecting pricing and delivery.</span></div>
+              <div class="detail-card"><strong>Wage pressure increases</strong><span>Employees may need higher pay to keep up with rising living costs.</span></div>
+              <div class="detail-card"><strong>Demand becomes uneven</strong><span>Some businesses stay strong while others slow because customers become selective.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, inflation questions,
+              or TitanCore-related information, contact TitanCore Holdings through the contact page.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel){
+        menuPanel.classList.remove('open');
+      }
+    });
+
+    const inflationSet = [
+      {
+        title:'Watch inflation because prices control buying power.',
+        text:'Inflation affects groceries, fuel, rent, insurance, labor, materials, customer spending, and business pricing decisions.',
+        videoTitle:'Inflation Video Brief',
+        videoText:'Review food prices, fuel, rent, wages, materials, customer spending, and business cost pressure.',
+        videoImage:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch food prices because groceries affect every household.',
+        text:'When food prices rise, families may reduce optional spending and businesses may see customer behavior change.',
+        videoTitle:'Food Price Video Brief',
+        videoText:'Review groceries, restaurants, food suppliers, household budgets, and customer buying power.',
+        videoImage:'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch energy because fuel affects transportation and delivery.',
+        text:'Fuel and energy prices can affect shipping, logistics, utilities, business costs, and household budgets.',
+        videoTitle:'Energy Inflation Video Brief',
+        videoText:'Review fuel, utilities, transportation, delivery costs, logistics, and business operating pressure.',
+        videoImage:'https://images.unsplash.com/photo-1527018601619-a508a2be00cd?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch rent because housing pressure can reduce spending.',
+        text:'When rent and housing costs rise, families may have less money for shopping, services, travel, and savings.',
+        videoTitle:'Housing Inflation Video Brief',
+        videoText:'Review rent, insurance, repairs, utilities, mortgages, and household spending pressure.',
+        videoImage:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch wages because labor cost affects pricing.',
+        text:'Higher wages can support families, but they can also increase payroll costs and pressure business margins.',
+        videoTitle:'Wage Inflation Video Brief',
+        videoText:'Review payroll, wage growth, hiring, labor costs, pricing, and profit margins.',
+        videoImage:'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=85'
+      }
+    ];
+
+    const index = new Date().getDate() % inflationSet.length;
+    const today = inflationSet[index];
+
+    document.getElementById('focusTitle').textContent = today.title;
+    document.getElementById('focusText').textContent = today.text;
+    document.getElementById('videoTitle').textContent = today.videoTitle;
+    document.getElementById('videoText').textContent = today.videoText;
+
+    document.getElementById('videoPanel').style.backgroundImage =
+      `linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.18)), url("${today.videoImage}")`;
+
+    document.getElementById('dailyDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
