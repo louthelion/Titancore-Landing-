@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Banking & Lending | TitanCore Holdings</title>
+
+  <style>
+    :root{
+      --gold:#d8b45a;
+      --gold-soft:#e9cf7a;
+      --green:#087457;
+      --green2:#0a8b68;
+      --white:#f7f7f7;
+      --border:rgba(216,180,90,.92);
+      --max:1200px;
+      --shadow:0 20px 50px rgba(0,0,0,.42);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:#050505;
+      color:var(--white);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.62;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .site-shell{
+      min-height:100vh;
+      background:
+        linear-gradient(rgba(0,0,0,.26), rgba(0,0,0,.42)),
+        url("https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1900&q=85") center/cover fixed;
+    }
+
+    .wrap{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:#000;
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:18px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.8rem;
+      font-weight:700;
+      background:#020202;
+      flex-shrink:0;
+    }
+
+    .brand-text{
+      display:flex;
+      gap:28px;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.85rem;
+      line-height:1.05;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      text-transform:uppercase;
+    }
+
+    .brand-text span:last-child{color:#fff}
+
+    .menu-btn{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      background:var(--green);
+      color:#fff;
+      font-size:2.8rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.25s ease;
+      flex-shrink:0;
+    }
+
+    .menu-btn:hover{
+      background:var(--green2);
+      transform:translateY(-2px);
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.72);
+      display:none;
+      z-index:1200;
+      padding:18px;
+    }
+
+    .menu-panel.open{display:block}
+
+    .menu-card{
+      background:#101010;
+      border:2px solid var(--border);
+      max-width:760px;
+      width:100%;
+      margin:16px auto 0;
+      padding:26px 26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .menu-title{
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2rem;
+      margin:0;
+      font-weight:400;
+    }
+
+    .close-btn{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:2.2rem;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:8px;
+    }
+
+    .menu-links a{
+      display:block;
+      padding:15px 8px;
+      border-bottom:1px solid rgba(216,180,90,.35);
+      font-size:1.1rem;
+      color:#eee;
+    }
+
+    .menu-links a:hover{color:var(--gold-soft)}
+
+    .section{padding:34px 0}
+
+    .hero{
+      border-bottom:2px solid var(--border);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.54), rgba(0,0,0,.18), rgba(8,116,87,.18)),
+        url("https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1900&q=85") center/cover;
+    }
+
+    .hero-inner{
+      width:min(var(--max), calc(100% - 28px));
+      margin:0 auto;
+      min-height:690px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:center;
+      padding:60px 0;
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-size:.98rem;
+      margin-bottom:18px;
+    }
+
+    h1,h2,h3,h4{
+      margin:0 0 18px;
+      line-height:1.05;
+      font-weight:400;
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    h1{
+      font-size:5.2rem;
+      color:var(--gold-soft);
+      max-width:760px;
+    }
+
+    h2{
+      font-size:3.35rem;
+      color:#fff;
+    }
+
+    h3{
+      color:var(--gold-soft);
+      font-size:2.35rem;
+    }
+
+    p{
+      margin:0 0 24px;
+      color:#f4f4f4;
+      font-size:1.18rem;
+    }
+
+    .hero p{
+      font-size:1.28rem;
+      max-width:700px;
+    }
+
+    .hero-visual{
+      min-height:540px;
+      border:2px solid var(--border);
+      border-radius:34px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.14)),
+        url("https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1500&q=85") center/cover;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .visual-caption{
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.72) 100%);
+    }
+
+    .visual-caption strong{
+      display:block;
+      color:var(--gold-soft);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:2.35rem;
+      line-height:1.08;
+      margin-bottom:12px;
+    }
+
+    .visual-caption span{
+      display:block;
+      color:#fff;
+      font-size:1.08rem;
+      max-width:540px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      background:var(--green);
+      border:2px solid var(--gold);
+      color:#fff;
+      padding:20px 28px;
+      min-height:68px;
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      transition:.25s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .cta-btn:hover{
+      background:var(--green2);
+      transform:translateY(-2px);
+    }
+
+    .ticker-shell{
+      background:#050505;
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      padding:8px 0;
+    }
+
+    .live-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+      align-items:stretch;
+    }
+
+    .live-card,
+    .live-widget{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.48), rgba(0,0,0,.14)),
+        url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1500&q=85") center/cover;
+    }
+
+    .live-card-inner{
+      padding:42px;
+      min-height:430px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      background:rgba(0,0,0,.08);
+    }
+
+    .daily-date{
+      color:var(--gold-soft);
+      font-weight:900;
+      letter-spacing:5px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      font-size:.95rem;
+    }
+
+    .live-widget{
+      background:#050505;
+    }
+
+    .widget-title{
+      padding:20px 24px;
+      border-bottom:1px solid rgba(216,180,90,.55);
+      background:rgba(0,0,0,.82);
+    }
+
+    .widget-title h3{
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+
+    .widget-title p{
+      margin:0;
+      font-size:1rem;
+    }
+
+    .widget-frame{
+      min-height:430px;
+      background:#000;
+    }
+
+    .panel{
+      border:2px solid var(--border);
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.52), rgba(0,0,0,.14)),
+        var(--bg) center/cover;
+      margin-bottom:28px;
+    }
+
+    .panel-inner{
+      padding:46px;
+      background:rgba(0,0,0,.06);
+    }
+
+    .section-heading{
+      text-align:center;
+      margin-bottom:26px;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      align-items:center;
+      gap:30px;
+    }
+
+    .section-heading::before,
+    .section-heading::after{
+      content:"";
+      height:2px;
+      background:rgba(216,180,90,.78);
+    }
+
+    .section-heading h2{
+      color:var(--gold-soft);
+      font-size:2rem;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight:900;
+      margin:0;
+    }
+
+    .lending-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:24px;
+    }
+
+    .lending-card{
+      border:2px solid var(--border);
+      border-radius:26px;
+      overflow:hidden;
+      min-height:500px;
+      display:flex;
+      flex-direction:column;
+      box-shadow:var(--shadow);
+      background:#080808;
+    }
+
+    .lending-image{
+      min-height:200px;
+      background:center/cover no-repeat;
+    }
+
+    .lending-body{
+      padding:30px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      background:linear-gradient(180deg, rgba(0,0,0,.28), rgba(0,0,0,.58));
+    }
+
+    .lending-body h3{
+      font-size:2.1rem;
+      margin-bottom:16px;
+    }
+
+    .lending-body p{
+      flex:1;
+      font-size:1.06rem;
+    }
+
+    .card-line{
+      height:1px;
+      background:rgba(216,180,90,.72);
+      margin:12px 0 22px;
+    }
+
+    .tag{
+      color:#fff;
+      font-weight:900;
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-size:.9rem;
+    }
+
+    .detail-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+
+    .detail-card{
+      border:1px solid rgba(216,180,90,.60);
+      background:rgba(0,0,0,.34);
+      padding:18px 20px;
+    }
+
+    .detail-card strong{
+      display:block;
+      color:var(--gold-soft);
+      margin-bottom:6px;
+      font-size:1.08rem;
+    }
+
+    .detail-card span{
+      display:block;
+      color:#f2f2f2;
+      font-size:1rem;
+    }
+
+    .media-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .image-zone,
+    .video-zone{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      min-height:430px;
+      box-shadow:var(--shadow);
+      position:relative;
+    }
+
+    .image-zone{
+      background:
+        linear-gradient(rgba(0,0,0,.04), rgba(0,0,0,.12)),
+        url("https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1500&q=85") center/cover;
+    }
+
+    .video-zone{
+      background:#000;
+    }
+
+    .video-panel{
+      position:absolute;
+      inset:0;
+      background:center/cover no-repeat;
+      display:flex;
+      align-items:flex-end;
+    }
+
+    .video-panel::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.10);
+    }
+
+    .video-bottom{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:34px;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.80));
+    }
+
+    .play-badge{
+      width:96px;
+      height:96px;
+      border:4px solid #fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2.8rem;
+      padding-left:6px;
+      background:rgba(0,0,0,.45);
+      margin-bottom:18px;
+    }
+
+    .overlay-label{
+      position:absolute;
+      top:18px;
+      left:18px;
+      z-index:3;
+      background:rgba(0,0,0,.58);
+      border:1px solid rgba(216,180,90,.85);
+      color:var(--gold-soft);
+      padding:10px 14px;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .contact-section{
+      padding:24px 0 42px;
+    }
+
+    .contact-box{
+      border:2px solid var(--border);
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.54), rgba(0,0,0,.18)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1700&q=85") center/cover;
+      box-shadow:var(--shadow);
+    }
+
+    .contact-inner{
+      padding:46px;
+      max-width:820px;
+      background:rgba(0,0,0,.08);
+    }
+
+    .contact-tag{
+      color:var(--gold-soft);
+      font-size:1rem;
+      font-weight:900;
+      letter-spacing:8px;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .contact-inner h2{
+      font-size:3.8rem;
+      color:#fff;
+      margin-bottom:18px;
+    }
+
+    .contact-inner p{
+      font-size:1.18rem;
+      margin-bottom:26px;
+    }
+
+    footer{
+      background:#000;
+      border-top:2px solid var(--border);
+      padding:24px 0;
+      text-align:center;
+      color:var(--gold-soft);
+      font-size:1rem;
+    }
+
+    @media(max-width:1100px){
+      .hero-inner,
+      .live-grid,
+      .media-row{
+        grid-template-columns:1fr;
+      }
+
+      .lending-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .detail-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{font-size:4rem}
+    }
+
+    @media(max-width:760px){
+      .header-inner{padding:14px 0}
+
+      .brand-mark{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2.2rem;
+      }
+
+      .brand-text{
+        font-size:1.15rem;
+        gap:14px;
+      }
+
+      .menu-btn{
+        width:72px;
+        height:72px;
+        border-width:4px;
+        font-size:2rem;
+      }
+
+      .hero-inner{
+        min-height:auto;
+        padding:36px 0;
+      }
+
+      .hero-visual{min-height:400px}
+
+      h1{font-size:3rem}
+      h2{font-size:2.55rem}
+      h3{font-size:2rem}
+
+      p,.hero p{font-size:1.05rem}
+
+      .section-heading{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+
+      .section-heading::before,
+      .section-heading::after{display:none}
+
+      .section-heading h2{
+        font-size:1.2rem;
+        line-height:1.5;
+      }
+
+      .lending-grid{grid-template-columns:1fr}
+
+      .live-card-inner,
+      .lending-body,
+      .panel-inner,
+      .video-bottom,
+      .contact-inner{
+        padding:26px;
+      }
+
+      .cta-btn{width:100%}
+
+      .contact-inner h2{font-size:2.6rem}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">TH</div>
+          <div class="brand-text"><span>TITANCORE</span><span>HOLDINGS</span></div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open Menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-card">
+        <div class="menu-top">
+          <h2 class="menu-title">TitanCore Menu</h2>
+          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="stock-market-intelligence.html">Stock &amp; Market Intelligence</a>
+          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
+          <a href="banking-lending.html">Banking &amp; Lending</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Banking & Lending Intelligence</div>
+          <h1>Banking &amp; Lending</h1>
+          <p>
+            Banking movement and lending conditions affect credit access,
+            business funding, mortgages, approvals, and financial confidence.
+          </p>
+
+          <p>
+            This page helps visitors understand how banks, loans, credit standards,
+            interest rates, deposits, mortgage movement, and lending pressure connect to the economy.
+          </p>
+
+          <div class="btn-row">
+            <a href="index.html" class="cta-btn">Back Home <span>›</span></a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-caption">
+            <strong>Lending controls movement.</strong>
+            <span>
+              When credit is available, people and businesses can move.
+              When lending tightens, approvals slow, projects pause, and confidence can weaken.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-shell">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            { "proName": "AMEX:XLF", "title": "Financials" },
+            { "proName": "NASDAQ:KRE", "title": "Regional Banks" },
+            { "proName": "NYSE:JPM", "title": "JPMorgan" },
+            { "proName": "NYSE:BAC", "title": "Bank of America" },
+            { "proName": "NYSE:WFC", "title": "Wells Fargo" },
+            { "proName": "TVC:US10Y", "title": "10Y Yield" },
+            { "proName": "TVC:DXY", "title": "Dollar" }
+          ],
+          "showSymbolLogo": true,
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "displayMode": "adaptive",
+          "locale": "en"
+        }
+        </script>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="live-grid">
+          <div class="live-card">
+            <div class="live-card-inner">
+              <div class="daily-date" id="dailyDate">Today’s Banking & Lending Focus</div>
+              <h2 id="focusTitle">Watch lending because credit controls business and consumer movement.</h2>
+              <p id="focusText">
+                When banks tighten lending, businesses may delay expansion, buyers may delay purchases,
+                and families may struggle to qualify for major financing.
+              </p>
+            </div>
+          </div>
+
+          <div class="live-widget">
+            <div class="widget-title">
+              <h3>Live Banking Signals</h3>
+              <p>Financial sector, banks, regional banks, rates, dollar, and broad market confidence.</p>
+            </div>
+
+            <div class="widget-frame">
+              <div class="tradingview-widget-container" style="height:100%;width:100%;">
+                <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                {
+                  "colorTheme": "dark",
+                  "dateRange": "12M",
+                  "showChart": true,
+                  "locale": "en",
+                  "largeChartUrl": "",
+                  "isTransparent": false,
+                  "showSymbolLogo": true,
+                  "showFloatingTooltip": false,
+                  "width": "100%",
+                  "height": "430",
+                  "tabs": [
+                    {
+                      "title": "Banking",
+                      "symbols": [
+                        { "s": "AMEX:XLF", "d": "Financial Sector" },
+                        { "s": "NASDAQ:KRE", "d": "Regional Banks" },
+                        { "s": "NYSE:JPM", "d": "JPMorgan Chase" },
+                        { "s": "NYSE:BAC", "d": "Bank of America" },
+                        { "s": "NYSE:WFC", "d": "Wells Fargo" }
+                      ]
+                    },
+                    {
+                      "title": "Lending Pressure",
+                      "symbols": [
+                        { "s": "TVC:US10Y", "d": "U.S. 10Y Yield" },
+                        { "s": "TVC:DXY", "d": "U.S. Dollar Index" },
+                        { "s": "CBOE:VIX", "d": "Volatility" },
+                        { "s": "FOREXCOM:SPXUSD", "d": "S&P 500" },
+                        { "s": "FOREXCOM:NSXUSD", "d": "Nasdaq 100" }
+                      ]
+                    }
+                  ]
+                }
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel" style="--bg:url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1700&q=85');">
+          <div class="panel-inner">
+            <div class="eyebrow">Banking & Lending Definition</div>
+            <h2>Banking and lending show how easily money moves through the economy.</h2>
+            <p>
+              Banks and lenders help businesses, homeowners, buyers, investors, and families access money.
+              When lending is strong, activity can grow. When lending tightens, approvals slow and financial pressure increases.
+            </p>
+
+            <div class="detail-grid">
+              <div class="detail-card"><strong>Credit Access</strong><span>Shows how easy or difficult it is for people and businesses to qualify for financing.</span></div>
+              <div class="detail-card"><strong>Business Funding</strong><span>Loans, lines of credit, equipment financing, and working capital affect company movement.</span></div>
+              <div class="detail-card"><strong>Mortgage Lending</strong><span>Mortgage rates and approval standards affect homebuyers, sellers, real estate, and local spending.</span></div>
+              <div class="detail-card"><strong>Bank Confidence</strong><span>Banks lend more carefully when they see risk, uncertainty, defaults, or weak deposits.</span></div>
+              <div class="detail-card"><strong>Interest Rate Pressure</strong><span>Higher rates can increase monthly payments and reduce borrower qualification.</span></div>
+              <div class="detail-card"><strong>Approval Standards</strong><span>Debt, income, credit score, collateral, and documentation can become more strict.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Banking & Lending Areas</h2>
+        </div>
+
+        <div class="lending-grid">
+          <div class="lending-card">
+            <div class="lending-image" style="background-image:url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="lending-body">
+              <h3>Banking Movement</h3>
+              <p>Banking movement shows how banks are responding to deposits, risk, rates, credit conditions, and loan demand.</p>
+              <div class="card-line"></div>
+              <div class="tag">Bank Signal</div>
+            </div>
+          </div>
+
+          <div class="lending-card">
+            <div class="lending-image" style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="lending-body">
+              <h3>Credit Access</h3>
+              <p>Credit access affects whether customers, homeowners, investors, and businesses can get approved when they need money.</p>
+              <div class="card-line"></div>
+              <div class="tag">Credit Signal</div>
+            </div>
+          </div>
+
+          <div class="lending-card">
+            <div class="lending-image" style="background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="lending-body">
+              <h3>Mortgage Lending</h3>
+              <p>Mortgage lending affects buyers, sellers, home prices, real estate investors, contractors, insurance, and local demand.</p>
+              <div class="card-line"></div>
+              <div class="tag">Mortgage Signal</div>
+            </div>
+          </div>
+
+          <div class="lending-card">
+            <div class="lending-image" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="lending-body">
+              <h3>Business Funding</h3>
+              <p>Business funding controls working capital, payroll support, equipment purchases, expansion, and growth decisions.</p>
+              <div class="card-line"></div>
+              <div class="tag">Funding Signal</div>
+            </div>
+          </div>
+
+          <div class="lending-card">
+            <div class="lending-image" style="background-image:url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="lending-body">
+              <h3>Interest Rates</h3>
+              <p>Interest rates affect monthly payments, loan qualification, credit card costs, mortgages, auto loans, and business borrowing.</p>
+              <div class="card-line"></div>
+              <div class="tag">Rate Signal</div>
+            </div>
+          </div>
+
+          <div class="lending-card">
+            <div class="lending-image" style="background-image:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=85');"></div>
+            <div class="lending-body">
+              <h3>Approval Standards</h3>
+              <p>Approval standards can tighten when lenders require stronger credit, more income, more documents, or lower risk.</p>
+              <div class="card-line"></div>
+              <div class="tag">Approval Signal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="media-row">
+          <div class="image-zone">
+            <div class="overlay-label">Banking & Lending Image Zone</div>
+          </div>
+
+          <div class="video-zone">
+            <div class="overlay-label">Live Video Area</div>
+            <div class="video-panel" id="videoPanel">
+              <div class="video-bottom">
+                <div class="play-badge">▶</div>
+                <h3 id="videoTitle">Banking & Lending Video Brief</h3>
+                <p id="videoText">
+                  This live video space rotates daily for banking, credit access, business funding,
+                  mortgage lending, interest rates, and approval standards.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="panel" style="--bg:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1700&q=85');">
+          <div class="panel-inner">
+            <div class="eyebrow">Lending Warning Signs</div>
+            <h2>Lending pressure can slow the economy before customers fully understand it.</h2>
+            <p>
+              When lending changes, it can affect people who want homes, companies that need funding,
+              investors who need capital, and customers who depend on credit.
+            </p>
+
+            <div class="detail-grid">
+              <div class="detail-card"><strong>Loan approvals slow down</strong><span>More applications may need review, more documents, or stronger qualification.</span></div>
+              <div class="detail-card"><strong>Interest payments rise</strong><span>Higher payments can reduce affordability and weaken customer demand.</span></div>
+              <div class="detail-card"><strong>Banks become cautious</strong><span>Lenders may protect cash, reduce risk, and avoid weaker borrowers.</span></div>
+              <div class="detail-card"><strong>Business expansion pauses</strong><span>Companies may delay hiring, equipment, locations, marketing, or inventory.</span></div>
+              <div class="detail-card"><strong>Mortgage demand weakens</strong><span>Buyers may wait, sellers may adjust, and housing activity may slow.</span></div>
+              <div class="detail-card"><strong>Credit limits tighten</strong><span>Consumers and businesses may receive lower limits or stricter terms.</span></div>
+              <div class="detail-card"><strong>Financial confidence drops</strong><span>Borrowers may become cautious before official numbers fully show weakness.</span></div>
+              <div class="detail-card"><strong>Cash becomes more important</strong><span>Businesses may protect cash flow when outside funding becomes harder.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="wrap">
+        <div class="contact-box">
+          <div class="contact-inner">
+            <div class="contact-tag">Contact TitanCore</div>
+            <h2>Contact us today</h2>
+            <p>
+              For general questions, professional inquiries, banking and lending questions,
+              or TitanCore-related information, contact TitanCore Holdings through the contact page.
+            </p>
+            <a href="contact.html" class="cta-btn">Get In Touch <span>›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 TitanCore Holdings. All rights reserved.
+    </footer>
+
+  </div>
+
+  <script>
+    const menuPanel = document.getElementById('menuPanel');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    openMenu.addEventListener('click', () => menuPanel.classList.add('open'));
+    closeMenu.addEventListener('click', () => menuPanel.classList.remove('open'));
+
+    menuPanel.addEventListener('click', (e) => {
+      if(e.target === menuPanel){
+        menuPanel.classList.remove('open');
+      }
+    });
+
+    const lendingSet = [
+      {
+        title:'Watch lending because credit controls business and consumer movement.',
+        text:'When banks tighten lending, businesses may delay expansion, buyers may delay purchases, and families may struggle to qualify for major financing.',
+        videoTitle:'Banking & Lending Video Brief',
+        videoText:'Review how banks, credit access, business funding, mortgages, approvals, and confidence connect together.',
+        videoImage:'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch credit access because approvals can change quickly.',
+        text:'Credit access affects whether customers, homeowners, investors, and businesses can qualify for financing.',
+        videoTitle:'Credit Access Video Brief',
+        videoText:'Review borrower qualification, credit score, income, debt, collateral, documentation, and approval strength.',
+        videoImage:'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch mortgage lending because housing connects to many parts of the economy.',
+        text:'Mortgage movement affects buyers, sellers, banks, contractors, insurance, furniture, repairs, and local spending.',
+        videoTitle:'Mortgage Lending Video Brief',
+        videoText:'Review mortgage rates, affordability, loan approvals, housing demand, buyer confidence, and local business movement.',
+        videoImage:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch business funding because companies need capital to move.',
+        text:'Business funding affects payroll, equipment, working capital, inventory, expansion, and growth decisions.',
+        videoTitle:'Business Funding Video Brief',
+        videoText:'Review business loans, lines of credit, working capital, equipment financing, and expansion funding.',
+        videoImage:'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=85'
+      },
+      {
+        title:'Watch approval standards because banks can become stricter.',
+        text:'When approval standards tighten, more borrowers may need stronger credit, more income, better documents, or lower debt.',
+        videoTitle:'Approval Standards Video Brief',
+        videoText:'Review income, debt, documents, credit history, bank risk control, and lending conditions.',
+        videoImage:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=85'
+      }
+    ];
+
+    const index = new Date().getDate() % lendingSet.length;
+    const today = lendingSet[index];
+
+    document.getElementById('focusTitle').textContent = today.title;
+    document.getElementById('focusText').textContent = today.text;
+    document.getElementById('videoTitle').textContent = today.videoTitle;
+    document.getElementById('videoText').textContent = today.videoText;
+
+    document.getElementById('videoPanel').style.backgroundImage =
+      `linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.18)), url("${today.videoImage}")`;
+
+    document.getElementById('dailyDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday:'long',
+      year:'numeric',
+      month:'long',
+      day:'numeric'
+    });
+  </script>
+</body>
+</html>
