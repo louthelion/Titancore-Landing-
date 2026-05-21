@@ -3,1060 +3,1568 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>News & Media | TitanCore Holdings</title>
+  <meta name="description" content="TitanCore Holdings News & Media — public updates, market watch, regional business intelligence, media information, and global business news access." />
 
   <style>
-    :root{
-      --black:#020202;
-      --green:#064b38;
-      --green2:#0b684f;
-      --gold:#d7b35d;
-      --gold2:#f0d07a;
-      --white:#f7f1e6;
-      --soft:#d8d0c4;
-      --line:rgba(215,179,93,.78);
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+    :root{
+      --black:#000;
+      --dark:#070707;
+      --gold:#d8b45a;
+      --gold2:#f2d98c;
+      --green:#087457;
+      --green2:#0a8d69;
+      --white:#fff;
+      --soft:#e9e9e9;
+      --muted:#d8d8d8;
+      --border:rgba(216,180,90,.88);
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       background:#000;
       color:var(--white);
       font-family:Arial, Helvetica, sans-serif;
+      overflow-x:hidden;
+      line-height:1.6;
     }
 
-    a{color:inherit;text-decoration:none}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
-    .page{
-      max-width:1180px;
-      margin:0 auto;
-      background:#000;
-      border-left:1px solid var(--line);
-      border-right:1px solid var(--line);
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .site{
+      width:100%;
       min-height:100vh;
+      background:#000;
     }
 
-    .topbar{
+    .header{
       position:sticky;
       top:0;
-      z-index:100;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:12px;
-      padding:14px 24px;
-      background:linear-gradient(180deg,#050505,#010101);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
+      z-index:1000;
+      background:#000;
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
     }
 
-    .logo{
-      width:76px;
-      height:76px;
-      border:3px solid var(--gold);
-      display:grid;
-      place-items:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
-      font-weight:700;
+    .header-inner{
+      min-height:132px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:20px 36px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
       color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:43px;
+      font-weight:700;
       background:#030303;
       flex-shrink:0;
     }
 
-    .brand{
+    .brand-name{
+      color:var(--gold2);
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(18px,3.5vw,46px);
-      letter-spacing:clamp(1px,.55vw,5px);
+      font-size:31px;
+      letter-spacing:.5px;
       text-transform:uppercase;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    .brand span{color:var(--gold)}
+    .brand-name span{
+      color:#fff;
+      margin-left:8px;
+    }
 
     .menu-btn{
-      width:76px;
-      height:76px;
-      border:3px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:var(--white);
-      font-size:36px;
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      color:#fff;
+      font-size:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       cursor:pointer;
       flex-shrink:0;
     }
 
-    .menu-btn:hover{background:var(--gold);color:#000}
-
-    .menu{
-      display:none;
-      background:#080808;
-      border-bottom:1px solid var(--line);
-      padding:22px 42px 26px;
-    }
-
-    .menu.active{display:block}
-
-    .menu a{
-      display:block;
-      padding:17px 0;
-      border-bottom:1px solid rgba(215,179,93,.25);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      color:var(--soft);
-      font-size:18px;
-    }
-
-    .menu a:hover{
-      color:var(--gold2);
-      padding-left:8px;
-    }
-
-    .hero-banner,
-    .image-section,
-    .contact-section{
-      position:relative;
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-
-    .hero-banner{
-      min-height:520px;
-      display:flex;
-      align-items:center;
-    }
-
-    .image-section{
-      min-height:430px;
-    }
-
-    .contact-section{
-      min-height:330px;
-      display:flex;
-      align-items:center;
-    }
-
-    .hero-banner::before,
-    .image-section::before,
-    .contact-section::before{
-      content:"";
-      position:absolute;
+    .menu-panel{
+      position:fixed;
       inset:0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.80), rgba(0,0,0,.50)),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+      background:rgba(0,0,0,.82);
+      z-index:2000;
+      display:none;
+      padding:24px;
     }
 
-    .green-overlay::before{
-      background:
-        linear-gradient(90deg, rgba(2,37,27,.88), rgba(6,75,56,.64)),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38));
+    .menu-panel.open{
+      display:block;
     }
 
-    .media-overlay::before{
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.82), rgba(40,28,8,.58)),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.40));
+    .menu-box{
+      max-width:760px;
+      margin:20px auto;
+      background:#050505;
+      border:2px solid var(--border);
+      padding:28px;
     }
 
-    .global-overlay::before{
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+      padding-bottom:18px;
+      margin-bottom:20px;
+    }
+
+    .menu-top h2{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      font-weight:400;
+    }
+
+    .close-menu{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:38px;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      gap:12px;
+    }
+
+    .menu-links a{
+      display:block;
+      border:1px solid rgba(216,180,90,.45);
+      padding:18px;
+      color:#fff;
+      font-size:18px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .menu-links a:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .section{
+      position:relative;
+      border-bottom:2px solid rgba(216,180,90,.55);
+      background:#000;
+    }
+
+    .hero{
+      min-height:760px;
+      border-bottom:2px solid var(--border);
       background:
-        linear-gradient(90deg, rgba(0,0,0,.82), rgba(4,36,48,.56)),
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.40));
+        linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.72)),
+        url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85") center/cover no-repeat;
+      display:flex;
+      align-items:center;
+    }
+
+    .bg-office{
+      background:
+        linear-gradient(180deg,rgba(3,78,58,.76),rgba(0,0,0,.86)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85") center/cover no-repeat;
+    }
+
+    .bg-market{
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.62),rgba(0,0,0,.88)),
+        url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1900&q=85") center/cover no-repeat;
+    }
+
+    .bg-news{
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.58),rgba(0,0,0,.88)),
+        url("https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1900&q=85") center/cover no-repeat;
+    }
+
+    .bg-global{
+      background:
+        linear-gradient(180deg,rgba(3,65,48,.72),rgba(0,0,0,.88)),
+        url("https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1900&q=85") center/cover no-repeat;
+    }
+
+    .bg-region{
+      background:
+        linear-gradient(180deg,rgba(4,52,39,.78),rgba(0,0,0,.88)),
+        url("https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1900&q=85") center/cover no-repeat;
+    }
+
+    .wrap{
+      width:min(1120px,calc(100% - 64px));
+      margin:0 auto;
     }
 
     .hero-content,
-    .section-content,
-    .contact-content{
-      position:relative;
-      z-index:1;
-      padding:58px 42px;
-      max-width:980px;
+    .content-block{
+      padding:92px 0;
     }
 
-    .hero-content{
-      max-width:820px;
-      padding-top:64px;
-      padding-bottom:64px;
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:10px;
+      font-weight:900;
+      font-size:20px;
+      margin-bottom:34px;
     }
 
-    .eyebrow,
-    .hero-eyebrow{
+    h1,h2,h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      line-height:1.03;
+    }
+
+    h1{
+      font-size:82px;
+      color:#fff;
+      margin-bottom:34px;
+    }
+
+    h1 span{
+      color:var(--gold2);
+      display:block;
+    }
+
+    h2{
+      font-size:64px;
+      color:#fff;
+      margin-bottom:32px;
+    }
+
+    h2 span{
+      color:var(--gold2);
+    }
+
+    h3{
+      font-size:46px;
+      color:var(--gold2);
+      margin-bottom:22px;
+    }
+
+    p{
+      font-size:32px;
+      color:#fff;
+      line-height:1.65;
+      margin-bottom:34px;
+    }
+
+    .hero p{
+      max-width:930px;
+    }
+
+    .daily-date{
       color:var(--gold2);
       text-transform:uppercase;
       letter-spacing:5px;
-      font-size:14px;
+      font-size:18px;
       font-weight:900;
-      margin-bottom:18px;
-    }
-
-    .hero-content h1,
-    .section-content h2,
-    .contact-content h2{
-      font-family:Georgia, "Times New Roman", serif;
-      font-weight:400;
-      color:var(--white);
-      line-height:1.06;
-    }
-
-    .hero-content h1{
-      font-size:clamp(42px,5vw,74px);
       margin-bottom:22px;
     }
 
-    .hero-content h1 span,
-    .section-content h2 span{
+    .ticker{
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      background:#000;
+      overflow:hidden;
+      white-space:nowrap;
+      padding:18px 0;
+    }
+
+    .ticker-track{
+      display:inline-block;
+      padding-left:100%;
+      animation:tickerMove 40s linear infinite;
       color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-weight:900;
+      font-size:16px;
     }
 
-    .section-content h2,
-    .contact-content h2{
-      font-size:clamp(32px,4vw,54px);
-      margin-bottom:22px;
-      max-width:920px;
-    }
-
-    .hero-content p,
-    .section-content p,
-    .contact-content p{
-      color:#f2ece1;
-      font-size:19px;
-      line-height:1.62;
-      margin-bottom:18px;
-      max-width:940px;
+    @keyframes tickerMove{
+      from{transform:translateX(0);}
+      to{transform:translateX(-100%);}
     }
 
     .btn{
-      min-width:210px;
-      display:inline-flex;
-      justify-content:center;
+      display:flex;
       align-items:center;
-      gap:14px;
-      padding:17px 26px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
+      justify-content:center;
+      width:100%;
+      min-height:118px;
+      border:4px solid var(--gold);
+      background:linear-gradient(135deg,#047153,#0b8d69);
       color:#fff;
       text-transform:uppercase;
+      letter-spacing:9px;
       font-weight:900;
-      letter-spacing:1.5px;
-      width:fit-content;
-      margin-top:8px;
-    }
-
-    .btn:hover{background:var(--gold);color:#000}
-
-    .hub-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-      margin-top:32px;
-    }
-
-    .hub-card{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.44);
-      min-height:250px;
-      padding:26px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      backdrop-filter:blur(2px);
+      font-size:29px;
+      margin-top:34px;
       transition:.25s ease;
     }
 
-    .hub-card:hover{
-      transform:translateY(-2px);
-      background:rgba(215,179,93,.12);
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
     }
 
-    .hub-card h3{
-      font-family:Georgia, "Times New Roman", serif;
+    .btn span{
       color:var(--gold2);
-      font-size:32px;
-      font-weight:400;
-      line-height:1.1;
-      margin-bottom:14px;
+      font-size:46px;
+      margin-left:16px;
     }
 
-    .hub-card p{
-      color:#f7f1e6;
-      font-size:16.5px;
-      line-height:1.55;
-      margin-bottom:22px;
+    .hub-grid,
+    .card-grid,
+    .step-grid{
+      display:grid;
+      gap:46px;
+      margin-top:54px;
     }
 
-    .card-tag{
+    .hub-card,
+    .info-card,
+    .step-card{
+      border:4px solid var(--gold);
+      padding:58px 62px;
+      background:rgba(0,0,0,.50);
+      backdrop-filter:blur(2px);
+    }
+
+    .hub-card:hover,
+    .region-card:hover{
+      background:rgba(8,116,87,.42);
+    }
+
+    .card-label{
       color:var(--gold2);
       text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:12px;
+      letter-spacing:10px;
       font-weight:900;
+      font-size:23px;
+      margin-bottom:28px;
+    }
+
+    .hub-card p,
+    .info-card p,
+    .step-card p{
+      font-size:31px;
+      margin-bottom:28px;
+    }
+
+    .hub-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-top:2px solid rgba(216,180,90,.75);
+      padding-top:34px;
+      margin-top:34px;
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:9px;
+      font-size:25px;
+      font-weight:900;
+    }
+
+    .hub-link span{
+      color:var(--gold2);
+      font-size:48px;
+    }
+
+    .board-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:26px;
+      margin-top:50px;
+    }
+
+    .board-card,
+    .region-card{
+      border:3px solid var(--gold);
+      background:rgba(0,0,0,.55);
+      padding:30px;
+      transition:.25s ease;
+    }
+
+    .board-card h4,
+    .region-card h4{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-size:15px;
+      margin-bottom:18px;
+    }
+
+    .board-card strong,
+    .region-card strong{
+      display:block;
+      color:#fff;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:38px;
+      font-weight:400;
       margin-bottom:14px;
     }
 
-    .card-link{
-      margin-top:auto;
+    .board-card p,
+    .region-card p{
+      font-size:18px;
+      color:var(--soft);
+      margin-bottom:0;
+    }
+
+    .region-card .open-region{
       display:flex;
       justify-content:space-between;
       align-items:center;
-      border-top:1px solid rgba(215,179,93,.42);
-      padding-top:16px;
+      margin-top:28px;
+      padding-top:22px;
+      border-top:1px solid rgba(216,180,90,.75);
+      color:#fff;
       text-transform:uppercase;
-      letter-spacing:2px;
+      letter-spacing:4px;
       font-weight:900;
-      color:var(--white);
-      font-size:14px;
+      font-size:15px;
     }
 
-    .card-link span:last-child{
+    .region-card .open-region span{
       color:var(--gold2);
-      font-size:30px;
+      font-size:32px;
     }
 
-    .info-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-      margin-top:30px;
-    }
-
-    .info-box{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.40);
-      padding:24px;
-      min-height:170px;
-      backdrop-filter:blur(2px);
-    }
-
-    .info-box h3{
-      font-family:Georgia, "Times New Roman", serif;
-      color:var(--gold2);
-      font-size:28px;
-      font-weight:400;
-      margin-bottom:12px;
-      line-height:1.1;
-    }
-
-    .info-box p{
-      color:#f7f1e6;
-      font-size:16px;
-      line-height:1.5;
-      margin-bottom:0;
-    }
-
-    .process-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
+    .tab-bar{
+      display:flex;
+      flex-wrap:wrap;
       gap:16px;
-      margin-top:30px;
+      margin:46px 0 34px;
     }
 
-    .process-step{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.40);
-      padding:22px;
-      min-height:180px;
-      backdrop-filter:blur(2px);
-    }
-
-    .step-number{
-      color:var(--gold2);
+    .tab-btn{
+      border:3px solid var(--gold);
+      background:rgba(0,0,0,.55);
+      color:#fff;
+      padding:18px 24px;
       text-transform:uppercase;
       letter-spacing:3px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .tab-content{
+      display:none;
+    }
+
+    .tab-content.active{
+      display:block;
+    }
+
+    .company-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:28px;
+    }
+
+    .news-card{
+      border:3px solid var(--gold);
+      background:rgba(0,0,0,.60);
+      overflow:hidden;
+    }
+
+    .news-card img{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+    }
+
+    .card-body{
+      padding:30px;
+    }
+
+    .card-body h3{
+      font-size:35px;
+      margin-bottom:18px;
+    }
+
+    .card-body p{
+      font-size:19px;
+      color:var(--soft);
+      margin-bottom:18px;
+    }
+
+    .mini-tag{
+      display:inline-block;
+      border:1px solid var(--border);
+      color:var(--gold2);
+      padding:8px 12px;
+      text-transform:uppercase;
+      letter-spacing:2px;
       font-size:12px;
       font-weight:900;
-      margin-bottom:12px;
     }
 
-    .process-step h3{
-      font-family:Georgia, "Times New Roman", serif;
-      color:var(--gold2);
-      font-size:25px;
-      font-weight:400;
-      margin-bottom:10px;
-      line-height:1.1;
+    .video-wall{
+      min-height:460px;
+      border:4px solid var(--gold);
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.86)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85") center/cover no-repeat;
+      padding:58px;
+      display:flex;
+      align-items:flex-end;
+      margin-top:50px;
+      position:relative;
     }
 
-    .process-step p{
-      color:#f7f1e6;
-      font-size:15.5px;
-      line-height:1.5;
-      margin-bottom:0;
-    }
-
-    .note-box{
-      border:1.5px solid var(--gold);
-      background:rgba(0,0,0,.42);
-      padding:26px;
-      margin-top:28px;
-      backdrop-filter:blur(2px);
-      max-width:980px;
-    }
-
-    .note-box h3{
-      font-family:Georgia, "Times New Roman", serif;
-      color:var(--gold2);
+    .video-wall::after{
+      content:"▶";
+      position:absolute;
+      top:32px;
+      right:32px;
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      background:var(--gold);
+      color:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
       font-size:30px;
-      font-weight:400;
-      margin-bottom:12px;
     }
 
-    .note-box p{
-      color:#f7f1e6;
-      font-size:17px;
-      line-height:1.58;
-      margin-bottom:0;
+    .video-wall p{
+      font-size:28px;
+      max-width:900px;
     }
 
-    .simple-footer{
-      padding:18px 24px;
+    .accordion{
+      display:grid;
+      gap:22px;
+      margin-top:48px;
+    }
+
+    .accordion-item{
+      border:3px solid var(--gold);
+      background:rgba(0,0,0,.54);
+    }
+
+    .accordion-btn{
+      width:100%;
+      background:none;
+      border:none;
+      color:#fff;
+      padding:30px;
+      text-align:left;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      font-size:26px;
+      font-weight:900;
+      cursor:pointer;
+      text-transform:uppercase;
+      letter-spacing:3px;
+    }
+
+    .accordion-btn span{
+      color:var(--gold2);
+      font-size:36px;
+    }
+
+    .accordion-content{
+      display:none;
+      padding:0 30px 30px;
+      color:#fff;
+      font-size:24px;
+      line-height:1.65;
+    }
+
+    .accordion-item.active .accordion-content{
+      display:block;
+    }
+
+    .contact{
+      padding:100px 0;
+      background:
+        linear-gradient(180deg,rgba(3,75,53,.78),rgba(0,0,0,.84)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85") center/cover no-repeat;
+      border-bottom:2px solid var(--border);
+    }
+
+    .contact h2{
+      font-size:68px;
+    }
+
+    .contact p{
+      max-width:930px;
+    }
+
+    footer{
+      background:#000;
+      color:var(--gold2);
       text-align:center;
-      color:var(--gold);
-      font-size:14px;
-      background:#010101;
+      padding:42px 20px;
+      font-size:24px;
+      border-top:2px solid var(--border);
     }
 
-    @media(max-width:1000px){
-      .hub-grid,
-      .info-grid{
-        grid-template-columns:1fr;
+    @media(max-width:1050px){
+      .board-grid{
+        grid-template-columns:1fr 1fr;
       }
 
-      .process-grid{
-        grid-template-columns:1fr 1fr;
+      .company-grid{
+        grid-template-columns:1fr;
       }
     }
 
     @media(max-width:700px){
-      .process-grid{
-        grid-template-columns:1fr;
+      .header-inner{
+        min-height:104px;
+        padding:14px 30px;
       }
-    }
-
-    @media(max-width:600px){
-      .topbar{
-        padding:12px 14px;
-        gap:10px;
-      }
-
-      .logo,
-      .menu-btn{
-        width:62px;
-        height:62px;
-      }
-
-      .logo{font-size:27px}
-      .menu-btn{font-size:30px}
 
       .brand{
-        font-size:16px;
-        letter-spacing:1px;
+        gap:14px;
       }
 
-      .menu{
-        padding:22px 30px 26px;
-      }
-
-      .menu a{
-        font-size:15px;
-        letter-spacing:2.5px;
-      }
-
-      .hero-banner{
-        min-height:430px;
-      }
-
-      .image-section{
-        min-height:360px;
-      }
-
-      .contact-section{
-        min-height:310px;
-      }
-
-      .hero-content,
-      .section-content,
-      .contact-content{
-        padding:38px 24px;
-      }
-
-      .hero-content h1{font-size:40px}
-
-      .section-content h2,
-      .contact-content h2{
+      .brand-mark{
+        width:70px;
+        height:70px;
+        border-width:5px;
         font-size:32px;
       }
 
-      .hero-content p,
-      .section-content p,
-      .contact-content p{
-        font-size:16.5px;
-        line-height:1.55;
+      .brand-name{
+        font-size:18px;
+        max-width:230px;
       }
 
-      .eyebrow,
-      .hero-eyebrow{
-        font-size:12.5px;
-        letter-spacing:3px;
+      .menu-btn{
+        width:70px;
+        height:70px;
+        border-width:5px;
+        font-size:34px;
       }
 
-      .btn{width:100%}
+      .wrap{
+        width:calc(100% - 52px);
+      }
+
+      .hero{
+        min-height:650px;
+      }
+
+      .hero-content,
+      .content-block{
+        padding:70px 0;
+      }
+
+      .eyebrow{
+        font-size:18px;
+        letter-spacing:8px;
+      }
+
+      h1{
+        font-size:56px;
+      }
+
+      h2{
+        font-size:46px;
+      }
+
+      h3{
+        font-size:38px;
+      }
+
+      p{
+        font-size:29px;
+      }
 
       .hub-card,
-      .info-box,
-      .process-step,
-      .note-box{
-        padding:22px;
-        min-height:auto;
+      .info-card,
+      .step-card{
+        padding:40px 36px;
       }
 
-      .hub-card h3{
-        font-size:30px;
-      }
-    }
-
-    @media(max-width:420px){
-      .brand{
-        font-size:15px;
-        letter-spacing:.8px;
+      .card-label{
+        font-size:20px;
+        letter-spacing:8px;
       }
 
-      .logo,
-      .menu-btn{
-        width:58px;
-        height:58px;
-      }
-
-      .logo{font-size:25px}
-    }
-
-
-    /* Shared TitanCore header/menu from index.html */
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:100;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:12px;
-      max-width:1180px;
-      margin:0 auto;
-      padding:14px 24px;
-      background:linear-gradient(180deg,#050505,#010101);
-      border:1px solid rgba(215,179,93,.78);
-      color:#f7f1e6;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .topbar .logo{
-      width:76px;
-      height:76px;
-      border:3px solid #d7b35d;
-      display:grid;
-      place-items:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
-      font-weight:700;
-      color:#f0d07a;
-      background:#030303;
-      flex-shrink:0;
-      text-decoration:none;
-    }
-
-    .topbar .brand{
-      min-width:0;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(18px,3.5vw,46px);
-      font-weight:400;
-      line-height:1.06;
-      letter-spacing:clamp(1px,.55vw,5px);
-      text-transform:uppercase;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      color:#f7f1e6;
-      text-decoration:none;
-    }
-
-    .topbar .brand span{
-      color:#d7b35d;
-    }
-
-    .topbar .menu-btn{
-      width:76px;
-      height:76px;
-      border:3px solid #d7b35d;
-      background:linear-gradient(135deg,#0b684f,#064b38);
-      color:#f7f1e6;
-      font-size:36px;
-      cursor:pointer;
-      flex-shrink:0;
-      transition:background .2s ease, color .2s ease, transform .2s ease;
-      appearance:none;
-      border-radius:0;
-      padding:0;
-      line-height:1;
-    }
-
-    .topbar .menu-btn:hover,
-    .topbar .menu-btn[aria-expanded="true"]{
-      background:#d7b35d;
-      color:#000;
-    }
-
-    .topbar .menu-btn:active{
-      transform:scale(.97);
-    }
-
-    .topbar .logo:focus-visible,
-    .topbar .brand:focus-visible,
-    .topbar .menu-btn:focus-visible,
-    nav.menu a:focus-visible{
-      outline:3px solid #f0d07a;
-      outline-offset:4px;
-    }
-
-    nav.menu{
-      position:sticky;
-      top:105px;
-      z-index:90;
-      display:none;
-      max-width:1180px;
-      margin:0 auto;
-      background:#080808;
-      border-right:1px solid rgba(215,179,93,.78);
-      border-bottom:1px solid rgba(215,179,93,.78);
-      border-left:1px solid rgba(215,179,93,.78);
-      padding:22px 42px 26px;
-      box-shadow:0 18px 32px rgba(0,0,0,.48);
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    nav.menu.active{
-      display:block;
-    }
-
-    nav.menu a{
-      display:block;
-      padding:17px 0;
-      border-bottom:1px solid rgba(215,179,93,.25);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      color:#d8d0c4;
-      font-size:18px;
-      text-decoration:none;
-      transition:color .2s ease, padding-left .2s ease;
-    }
-
-    nav.menu a:hover,
-    nav.menu a:focus-visible{
-      color:#f0d07a;
-      padding-left:8px;
-    }
-
-    @media(max-width:600px){
-      .topbar{
-        padding:12px 14px;
-        gap:10px;
-      }
-
-      .topbar .logo,
-      .topbar .menu-btn{
-        width:62px;
-        height:62px;
-      }
-
-      .topbar .logo{
-        font-size:27px;
-      }
-
-      .topbar .menu-btn{
-        font-size:30px;
-      }
-
-      .topbar .brand{
-        font-size:16px;
-        letter-spacing:1px;
-      }
-
-      nav.menu{
-        top:87px;
-        padding:20px 24px 24px;
-      }
-
-      nav.menu a{
-        font-size:15px;
-        letter-spacing:2.5px;
-      }
-    }
-
-    @media(max-width:420px){
-      .topbar{
-        grid-template-columns:auto minmax(0,1fr) auto;
-        gap:8px;
-      }
-
-      .topbar .brand{
-        font-size:14px;
-        letter-spacing:.6px;
-      }
-
-      .topbar .logo,
-      .topbar .menu-btn{
-        width:54px;
-        height:54px;
-      }
-
-      .topbar .logo{
-        font-size:23px;
-      }
-
-      .topbar .menu-btn{
+      .hub-card p,
+      .info-card p,
+      .step-card p{
         font-size:28px;
       }
 
-      nav.menu{
-        top:79px;
+      .hub-link{
+        font-size:21px;
+        letter-spacing:7px;
+      }
+
+      .board-grid{
+        grid-template-columns:1fr;
+      }
+
+      .btn{
+        min-height:96px;
+        font-size:23px;
+        letter-spacing:7px;
+      }
+
+      .video-wall{
+        padding:36px;
+      }
+
+      .contact h2{
+        font-size:50px;
+      }
+
+      footer{
+        font-size:20px;
       }
     }
-
   </style>
 </head>
 
 <body>
-  <main class="page">
+  <div class="site">
 
-    <header class="topbar">
-    <a href="index.html" class="logo">TH</a>
-    <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
-    <button class="menu-btn" type="button" id="menuButton" aria-label="Open menu" aria-controls="menu" aria-expanded="false">☰</button>
-  </header>
+    <header class="header">
+      <div class="header-inner">
+        <a href="index.html" class="brand">
+          <div class="brand-mark">TH</div>
+          <div class="brand-name">TitanCore <span>Holdings</span></div>
+        </a>
 
-  <nav class="menu" id="menu">
-    <a href="titancore-structure.html">TitanCore Structure</a>
-    <a href="operating-model.html">Operating Model</a>
-    <a href="governance.html">Governance</a>
-    <a href="companies.html">Company</a>
-    <a href="institution.html">Institution</a>
-    <a href="business-intelligence.html">Business Intelligence</a>
-    <a href="news-media.html">News &amp; Media</a>
-  </nav>
-
-
-    <section class="hero-banner daily-bg" data-bg-group="media">
-      <div class="hero-content">
-        <div class="hero-eyebrow">News & Media</div>
-
-        <h1>
-          News<br>
-          <span>& Media.</span>
-        </h1>
-
-        <p>
-          TitanCore Holdings uses the News & Media section as a public information
-          hub for company updates, media content, United States news context, and
-          global news access.
-        </p>
-
-        <a href="index.html" class="btn">Back Home ›</a>
+        <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
       </div>
-    </section>
+    </header>
 
-    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
-      <div class="section-content">
-        <div class="eyebrow">News & Media Hub</div>
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-box">
+        <div class="menu-top">
+          <h2>TitanCore Menu</h2>
+          <button class="close-menu" id="closeMenu">×</button>
+        </div>
 
-        <h2>Public updates, media information, and business news context.</h2>
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="stock-market-intelligence.html">Stock & Market Intelligence</a>
+          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
+          <a href="news-media.html">News & Media</a>
+          <a href="global-news.html">Global News</a>
+          <a href="about-group.html">About Group</a>
+          <a href="companies.html">Companies</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
 
-        <p>
-          The News & Media page keeps public information organized without putting
-          every update on the homepage. This page can include TitanCore updates,
-          media announcements, public notices, and business news context.
-        </p>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="daily-date" id="dailyDate">Daily Business Intelligence</div>
+          <div class="eyebrow">News & Media</div>
+          <h1>News <span>&amp; Media.</span></h1>
 
-        <p>
-          The purpose is to give visitors a professional place to review public
-          information while keeping the front page clean and focused on TitanCore
-          Holdings.
-        </p>
-
-        <div class="note-box">
-          <h3>Clean Public Communication</h3>
-          <p>
-            News & Media should act like a public information room. Company updates,
-            media items, and global news should live here instead of crowding the homepage.
+          <p id="heroDailyText">
+            TitanCore Holdings uses the News &amp; Media section as a public information hub
+            for company updates, media content, United States news context, market awareness,
+            and global news access.
           </p>
+
+          <a href="index.html" class="btn">Back Home <span>›</span></a>
         </div>
       </div>
     </section>
 
-    <section class="image-section daily-bg media-overlay" data-bg-group="media">
-      <div class="section-content">
-        <div class="eyebrow">News Categories</div>
-
-        <h2>Separate local, national, media, and global information.</h2>
-
-        <div class="info-grid">
-          <div class="info-box">
-            <h3>TitanCore Updates</h3>
-            <p>
-              Public updates, company notices, leadership messages, and official
-              TitanCore information.
-            </p>
-          </div>
-
-          <div class="info-box">
-            <h3>U.S. News Context</h3>
-            <p>
-              United States business news, state-level context, and local business
-              information.
-            </p>
-          </div>
-
-          <div class="info-box">
-            <h3>Media Information</h3>
-            <p>
-              Public media content, announcements, press-style updates, and group
-              information.
-            </p>
-          </div>
-        </div>
+    <div class="ticker">
+      <div class="ticker-track" id="dailyTicker">
+        TITANCORE HOLDINGS • DAILY BUSINESS WATCH • MARKET MOVEMENT • GLOBAL NEWS • REGIONAL BUSINESS INTELLIGENCE • MEDIA ROOM
       </div>
-    </section>
+    </div>
 
-    <section class="image-section daily-bg green-overlay" data-bg-group="corporate">
-      <div class="section-content">
-        <div class="eyebrow">Inside News & Media</div>
+    <section class="section bg-office">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">News & Media Hub</div>
+          <h2>Public updates, media information, and business news context.</h2>
 
-        <h2>Global News and About Group belong inside this section.</h2>
+          <p id="hubDailyText">
+            The News &amp; Media page keeps public information organized without putting every
+            update on the homepage. This page can include TitanCore updates, media announcements,
+            public notices, market watch items, and business news context.
+          </p>
 
-        <p>
-          News & Media should work like a hub page. Visitors open News & Media
-          first, then choose the deeper page they need, such as Global News or
-          About Group.
-        </p>
+          <p>
+            The purpose is to give visitors a professional place to review public information
+            while keeping the front page clean and focused on TitanCore Holdings.
+          </p>
 
-        <div class="hub-grid">
-          <a href="global-news.html" class="hub-card">
-            <div>
-              <div class="card-tag">International News</div>
+          <div class="hub-grid">
+            <a class="hub-card" href="global-news.html">
+              <div class="card-label">International News</div>
               <h3>Global News</h3>
               <p>
-                Open the Global News page for international news, global business
-                movement, world market context, and country-level updates.
+                Open the Global News page for international news, global business movement,
+                world market context, and country-level updates.
               </p>
-            </div>
+              <div class="hub-link">Open Global News <span>›</span></div>
+            </a>
 
-            <div class="card-link">
-              <span>Open Global News</span>
-              <span>›</span>
-            </div>
-          </a>
-
-          <a href="about-group.html" class="hub-card">
-            <div>
-              <div class="card-tag">Public Group Information</div>
+            <a class="hub-card" href="about-group.html">
+              <div class="card-label">Public Group Information</div>
               <h3>About Group</h3>
               <p>
-                Open the About Group page for public information about the TitanCore
-                group, ecosystem, and broader public structure.
+                Open the About Group page for public information about the TitanCore group,
+                ecosystem, and broader public structure.
+              </p>
+              <div class="hub-link">Open About Group <span>›</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-market">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">News Flow</div>
+          <h2>News should be easy to read and easy to navigate.</h2>
+
+          <p>
+            Visitors should understand the difference between TitanCore news, United States
+            business news context, media information, market awareness, and global news.
+            Each area should have a clear purpose.
+          </p>
+
+          <div class="step-grid">
+            <div class="step-card">
+              <div class="card-label">Step 01</div>
+              <h3>Update</h3>
+              <p>Share TitanCore public updates and official company information.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="card-label">Step 02</div>
+              <h3>Inform</h3>
+              <p>Provide United States business news and state-level information context.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="card-label">Step 03</div>
+              <h3>Connect</h3>
+              <p>Connect visitors to global news when the information becomes international.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="card-label">Step 04</div>
+              <h3>Archive</h3>
+              <p>Keep public media items organized for later review and reference.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-news" id="market-board">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">Daily Market Board</div>
+          <h2><span>Live-Style</span> Market Watch</h2>
+
+          <p id="marketIntro">
+            This section gives visitors a business-newsroom feeling. These boxes rotate with daily
+            JavaScript content now and can be connected to real market data later.
+          </p>
+
+          <div class="board-grid" id="marketBoard">
+            <div class="board-card" data-market="sp500">
+              <h4>Index</h4>
+              <strong>S&amp;P 500</strong>
+              <p>Large-cap direction, earnings tone, and broad market sentiment.</p>
+            </div>
+
+            <div class="board-card" data-market="nasdaq">
+              <h4>Index</h4>
+              <strong>Nasdaq</strong>
+              <p>Technology, innovation, AI-driven momentum, and growth coverage.</p>
+            </div>
+
+            <div class="board-card" data-market="dow">
+              <h4>Index</h4>
+              <strong>Dow Jones</strong>
+              <p>Industrial movement and blue-chip stability from major companies.</p>
+            </div>
+
+            <div class="board-card" data-market="crypto">
+              <h4>Sector</h4>
+              <strong>Crypto</strong>
+              <p>Bitcoin, Ethereum, stablecoins, and digital-asset headlines.</p>
+            </div>
+
+            <div class="board-card" data-market="realestate">
+              <h4>Sector</h4>
+              <strong>Real Estate</strong>
+              <p>Commercial trends, housing movement, rates impact, and asset flow.</p>
+            </div>
+
+            <div class="board-card" data-market="banking">
+              <h4>Sector</h4>
+              <strong>Banking</strong>
+              <p>Lending conditions, capital access, and finance-sector movement.</p>
+            </div>
+
+            <div class="board-card" data-market="logistics">
+              <h4>Sector</h4>
+              <strong>Logistics</strong>
+              <p>Transportation, fleet, infrastructure, and supply-chain visibility.</p>
+            </div>
+
+            <div class="board-card" data-market="newcompanies">
+              <h4>Sector</h4>
+              <strong>New Companies</strong>
+              <p>Startup openings, venture activity, and emerging business opportunity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-region" id="regional-watch">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">Regional Business Intelligence</div>
+          <h2>Regions guide visitors into deeper country and business information.</h2>
+
+          <p id="regionIntro">
+            Visitors can use regional business areas to understand business movement, market pressure,
+            investing climate, country-level activity, company openings, closures, and opportunity signals.
+          </p>
+
+          <div class="board-grid">
+            <a class="region-card" href="global-news.html#region-united-states" data-region="usa">
+              <h4>Country Watch</h4>
+              <strong>United States</strong>
+              <p>Domestic business movement, state-level activity, new company openings, credit conditions, and market confidence.</p>
+              <div class="open-region">Open U.S. Watch <span>›</span></div>
+            </a>
+
+            <a class="region-card" href="global-news.html#region-canada" data-region="canada">
+              <h4>Country Watch</h4>
+              <strong>Canada</strong>
+              <p>Canadian business movement, banking activity, housing pressure, trade, energy, and investment climate.</p>
+              <div class="open-region">Open Canada <span>›</span></div>
+            </a>
+
+            <a class="region-card" href="global-news.html#region-europe" data-region="europe">
+              <h4>Region Watch</h4>
+              <strong>Europe</strong>
+              <p>Corporate shifts, multinational movement, finance-sector change, industrial trends, and country-level business signals.</p>
+              <div class="open-region">Open Europe <span>›</span></div>
+            </a>
+
+            <a class="region-card" href="global-news.html#region-asia" data-region="asia">
+              <h4>Region Watch</h4>
+              <strong>Asia</strong>
+              <p>Technology strength, manufacturing growth, trade movement, capital flow, and expansion signals.</p>
+              <div class="open-region">Open Asia <span>›</span></div>
+            </a>
+
+            <a class="region-card" href="global-news.html#region-africa" data-region="africa">
+              <h4>Continent Watch</h4>
+              <strong>Africa</strong>
+              <p>African business growth, infrastructure, energy, trade, banking access, real estate, and emerging market activity.</p>
+              <div class="open-region">Open Africa <span>›</span></div>
+            </a>
+
+            <a class="region-card" href="global-news.html#region-caribbean" data-region="caribbean">
+              <h4>Region Watch</h4>
+              <strong>Caribbean</strong>
+              <p>Island economy movement, tourism, trade, real estate, small business growth, banking, and regional opportunity.</p>
+              <div class="open-region">Open Caribbean <span>›</span></div>
+            </a>
+
+            <a class="region-card" href="global-news.html#region-latin-america" data-region="latin">
+              <h4>Region Watch</h4>
+              <strong>Latin America</strong>
+              <p>Business growth, trade, real estate, finance, agriculture, manufacturing, and country-level investment signals.</p>
+              <div class="open-region">Open Latin America <span>›</span></div>
+            </a>
+
+            <a class="region-card" href="global-news.html#region-middle-east" data-region="middleeast">
+              <h4>Region Watch</h4>
+              <strong>Middle East</strong>
+              <p>Energy markets, investment projects, infrastructure growth, finance, logistics, and business expansion activity.</p>
+              <div class="open-region">Open Middle East <span>›</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-office" id="company-intel">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">Company Intelligence</div>
+          <h2>Company updates and public-facing media panels.</h2>
+
+          <p>
+            This section gives TitanCore a serious multi-company newsroom identity by allowing
+            visitors to switch between company-specific media panels inside the same News &amp; Media page.
+          </p>
+
+          <div class="tab-bar">
+            <button class="tab-btn active" data-tab="tab-titancore">TitanCore</button>
+            <button class="tab-btn" data-tab="tab-familyfirst">Family First</button>
+            <button class="tab-btn" data-tab="tab-vaultara">Vaultara</button>
+            <button class="tab-btn" data-tab="tab-vitalpath">VitalPath</button>
+            <button class="tab-btn" data-tab="tab-revmotion">RevMotion</button>
+          </div>
+
+          <div class="tab-content active" id="tab-titancore">
+            <div class="company-grid">
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="TitanCore strategy desk">
+                <div class="card-body">
+                  <h3>TitanCore Holdings Strategy Desk</h3>
+                  <p>Enterprise direction, umbrella-company milestones, and network-wide public visibility.</p>
+                  <span class="mini-tag">Holding Company</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80" alt="Global business watch">
+                <div class="card-body">
+                  <h3>Global Business Watch</h3>
+                  <p>International movement, large company stories, and cross-sector market awareness.</p>
+                  <span class="mini-tag">Global Coverage</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80" alt="Press releases">
+                <div class="card-body">
+                  <h3>Press & Corporate Releases</h3>
+                  <p>Official statements, public updates, executive communication, and enterprise notices.</p>
+                  <span class="mini-tag">Press Office</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-familyfirst">
+            <div class="company-grid">
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80" alt="Commercial real estate movement">
+                <div class="card-body">
+                  <h3>Commercial Real Estate Movement</h3>
+                  <p>Acquisitions, property sourcing, apartment strategy, and investor-oriented asset reports.</p>
+                  <span class="mini-tag">Real Estate Desk</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80" alt="Asset and deal flow">
+                <div class="card-body">
+                  <h3>Asset & Deal Flow</h3>
+                  <p>Seller activity, deal pipeline movement, off-market opportunities, and transaction visibility.</p>
+                  <span class="mini-tag">Deal Flow</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1462899006636-339e08d1844e?auto=format&fit=crop&w=1200&q=80" alt="Investor relations">
+                <div class="card-body">
+                  <h3>Investor Relations</h3>
+                  <p>Opportunity stories, project visibility, and real estate-focused market communication.</p>
+                  <span class="mini-tag">Investor Focus</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-vaultara">
+            <div class="company-grid">
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1200&q=80" alt="Funding and lending coverage">
+                <div class="card-body">
+                  <h3>Funding & Lending Coverage</h3>
+                  <p>Business funding stories, approval readiness, capital pathways, and finance education.</p>
+                  <span class="mini-tag">Funding Desk</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Credit readiness updates">
+                <div class="card-body">
+                  <h3>Credit Readiness Updates</h3>
+                  <p>Credit-building content, qualification guidance, and business finance preparation.</p>
+                  <span class="mini-tag">Credit Desk</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=80" alt="Capital access visibility">
+                <div class="card-body">
+                  <h3>Capital Access Visibility</h3>
+                  <p>Funding access, strategic money tools, and financial-growth positioning.</p>
+                  <span class="mini-tag">Capital Watch</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-vitalpath">
+            <div class="company-grid">
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80" alt="Healthcare operations">
+                <div class="card-body">
+                  <h3>Healthcare Operations</h3>
+                  <p>Staffing activity, service growth, client partnerships, and healthcare operations visibility.</p>
+                  <span class="mini-tag">Healthcare Desk</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80" alt="Staffing and workforce">
+                <div class="card-body">
+                  <h3>Staffing & Workforce</h3>
+                  <p>CNA, HHA, nursing, and assignment-focused workforce reporting.</p>
+                  <span class="mini-tag">Workforce Desk</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=1200&q=80" alt="Transportation and service reach">
+                <div class="card-body">
+                  <h3>Transportation & Service Reach</h3>
+                  <p>Mobility support, service-delivery expansion, and healthcare transport visibility.</p>
+                  <span class="mini-tag">Service Reach</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab-revmotion">
+            <div class="company-grid">
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="Auto market stories">
+                <div class="card-body">
+                  <h3>Auto Market Stories</h3>
+                  <p>Buyer-seller activity, sourcing updates, listings, and vehicle transaction visibility.</p>
+                  <span class="mini-tag">Auto Desk</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80" alt="Marine market coverage">
+                <div class="card-body">
+                  <h3>Marine Market Coverage</h3>
+                  <p>Boat sourcing, buyer activity, marine listings, and platform movement.</p>
+                  <span class="mini-tag">Marine Desk</span>
+                </div>
+              </div>
+
+              <div class="news-card">
+                <img src="https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=80" alt="Platform activity feed">
+                <div class="card-body">
+                  <h3>Platform Activity Feed</h3>
+                  <p>Application flow, listing traffic, operational activity, and transaction updates.</p>
+                  <span class="mini-tag">Platform Feed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-global">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">Video & Global Watch</div>
+          <h2>Featured video center and global business watch.</h2>
+
+          <p>
+            This area is built for executive-style updates, interviews, project media,
+            company explainers, future TitanCore broadcast content, and international business coverage.
+          </p>
+
+          <div class="video-wall">
+            <div>
+              <div class="eyebrow">Featured Video Center</div>
+              <h3 id="videoDailyTitle">TitanCore Briefings, Company Explainers, Market Reports, and Future Broadcast Video</h3>
+              <p id="videoDailyText">
+                This is the dedicated visual wall for executive-style updates, interviews,
+                project media, company explainers, and future TitanCore broadcast content.
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="card-link">
-              <span>Open About Group</span>
-              <span>›</span>
+    <section class="section bg-news">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">Media Panels</div>
+          <h2>Expandable public media information.</h2>
+
+          <p>
+            These collapsible sections give the page room for deeper public information
+            without making the homepage feel overloaded.
+          </p>
+
+          <div class="accordion">
+            <div class="accordion-item active">
+              <button class="accordion-btn">
+                Platform Mission
+                <span>−</span>
+              </button>
+              <div class="accordion-content">
+                TitanCore News &amp; Media is designed to deliver company updates, public-facing
+                intelligence, media visibility, and market awareness for the TitanCore network in
+                one central command structure.
+              </div>
             </div>
-          </a>
-        </div>
-      </div>
-    </section>
 
-    <section class="image-section daily-bg global-overlay" data-bg-group="global">
-      <div class="section-content">
-        <div class="eyebrow">News Flow</div>
+            <div class="accordion-item">
+              <button class="accordion-btn">
+                Market Intelligence Layer
+                <span>+</span>
+              </button>
+              <div class="accordion-content">
+                This platform is structured to support future stock boards, crypto watch panels,
+                sector monitoring, and economic trend tracking across U.S. and international markets.
+              </div>
+            </div>
 
-        <h2>News should be easy to read and easy to navigate.</h2>
-
-        <p>
-          Visitors should understand the difference between TitanCore news, U.S.
-          business news context, media information, and global news. Each area
-          should have a clear purpose.
-        </p>
-
-        <div class="process-grid">
-          <div class="process-step">
-            <div class="step-number">Step 01</div>
-            <h3>Update</h3>
-            <p>
-              Share TitanCore public updates and official company information.
-            </p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">Step 02</div>
-            <h3>Inform</h3>
-            <p>
-              Provide United States business news and state-level information context.
-            </p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">Step 03</div>
-            <h3>Connect</h3>
-            <p>
-              Connect visitors to global news when the information becomes international.
-            </p>
-          </div>
-
-          <div class="process-step">
-            <div class="step-number">Step 04</div>
-            <h3>Archive</h3>
-            <p>
-              Keep public media items organized for later review and reference.
-            </p>
+            <div class="accordion-item">
+              <button class="accordion-btn">
+                Media & Broadcast Expansion
+                <span>+</span>
+              </button>
+              <div class="accordion-content">
+                TitanCore can later expand this page into a live newsroom with embedded video,
+                company bulletins, daily reports, featured interviews, and branded broadcast segments.
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="image-section daily-bg" data-bg-group="media">
-      <div class="section-content">
-        <div class="eyebrow">Professional Purpose</div>
-
-        <h2>Built to make TitanCore’s public communication more serious.</h2>
-
-        <p>
-          The News & Media section gives TitanCore a professional public space for
-          updates, media, and business context. It helps the website look more alive
-          without putting too much information on the homepage.
-        </p>
-
-        <p>
-          Global news should stay separate from U.S. or state-level news. Global
-          News focuses on international movement, while News & Media handles the
-          main public information hub.
-        </p>
-      </div>
-    </section>
-
-    <section class="contact-section daily-bg green-overlay" data-bg-group="corporate">
-      <div class="contact-content">
+    <section class="contact">
+      <div class="wrap">
         <h2>Contact us today</h2>
-
         <p>
-          For general questions or professional inquiries, contact TitanCore Holdings.
+          For general questions, professional inquiries, company news, media requests,
+          or TitanCore-related information, contact TitanCore Holdings through the official contact page.
         </p>
 
-        <a href="contact.html" class="btn">Get In Touch ›</a>
+        <a href="contact.html" class="btn">Get In Touch <span>›</span></a>
       </div>
     </section>
 
-    <footer class="simple-footer">
+    <footer>
       © 2025 TitanCore Holdings. All rights reserved.
     </footer>
 
-  </main>
+  </div>
 
   <script>
-    function toggleMenu(){
-      document.getElementById("menu").classList.toggle("active");
-    }
+    const openMenu = document.getElementById("openMenu");
+    const closeMenu = document.getElementById("closeMenu");
+    const menuPanel = document.getElementById("menuPanel");
 
-    const backgroundSets = {
-      corporate: [
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85"
+    openMenu.addEventListener("click", () => {
+      menuPanel.classList.add("open");
+    });
+
+    closeMenu.addEventListener("click", () => {
+      menuPanel.classList.remove("open");
+    });
+
+    menuPanel.addEventListener("click", (event) => {
+      if(event.target === menuPanel){
+        menuPanel.classList.remove("open");
+      }
+    });
+
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const tabId = button.getAttribute("data-tab");
+
+        tabButtons.forEach(btn => btn.classList.remove("active"));
+        tabContents.forEach(content => content.classList.remove("active"));
+
+        button.classList.add("active");
+        document.getElementById(tabId).classList.add("active");
+      });
+    });
+
+    const accordionItems = document.querySelectorAll(".accordion-item");
+
+    accordionItems.forEach(item => {
+      const btn = item.querySelector(".accordion-btn");
+      const icon = btn.querySelector("span");
+
+      btn.addEventListener("click", () => {
+        const isActive = item.classList.contains("active");
+
+        accordionItems.forEach(other => {
+          other.classList.remove("active");
+          other.querySelector(".accordion-btn span").textContent = "+";
+        });
+
+        if(!isActive){
+          item.classList.add("active");
+          icon.textContent = "−";
+        }
+      });
+    });
+
+    const dailySets = [
+      {
+        hero:"Today’s business watch focuses on market direction, company movement, lending pressure, regional opportunity, and public business information.",
+        hub:"Today, visitors can use this hub to understand business movement, media updates, market signals, and where to go for deeper regional or global information.",
+        ticker:"DAILY BUSINESS WATCH • MARKET PRESSURE • U.S. BUSINESS CONTEXT • GLOBAL NEWS ACCESS • REGIONAL INTELLIGENCE • TITANCORE MEDIA ROOM",
+        marketIntro:"Today’s market board highlights broad indexes, credit conditions, crypto movement, real estate pressure, and business activity signals.",
+        regionIntro:"Today’s regional watch helps visitors think about where business opportunity may be growing, slowing, opening, or becoming risky.",
+        videoTitle:"Daily Business Briefing Window",
+        videoText:"Use this area for future videos, market summaries, TitanCore updates, and business intelligence explainers."
+      },
+      {
+        hero:"Today’s media signal highlights credit access, consumer activity, company expansion, real estate movement, and global business pressure.",
+        hub:"This hub gives visitors a reason to stay longer because it connects company updates, market awareness, regional context, and global news access.",
+        ticker:"CREDIT WATCH • CONSUMER ACTIVITY • COMPANY EXPANSION • REAL ESTATE MOVEMENT • BUSINESS CONFIDENCE • GLOBAL MARKET CONTEXT",
+        marketIntro:"Today’s market watch focuses on lending, banking, consumer confidence, technology movement, and investor behavior.",
+        regionIntro:"Regional business areas can help visitors compare the United States, Canada, Europe, Asia, Africa, the Caribbean, Latin America, and the Middle East.",
+        videoTitle:"Market & Media Broadcast Area",
+        videoText:"This video wall is prepared for future business briefings, executive-style updates, interviews, and media content."
+      },
+      {
+        hero:"Today’s public information watch connects TitanCore updates with business news context, market movement, and international opportunity signals.",
+        hub:"News & Media keeps the TitanCore front page clean while still giving visitors valuable information and deeper places to explore.",
+        ticker:"PUBLIC UPDATE WATCH • BUSINESS NEWS CONTEXT • GLOBAL OPPORTUNITY • STOCK MOVEMENT • STARTUP ACTIVITY • MEDIA INTELLIGENCE",
+        marketIntro:"Today’s market board focuses on stock indexes, crypto headlines, real estate, lending, logistics, and new company activity.",
+        regionIntro:"Visitors can use regional information to understand investment climate, business openings, company movement, and country-level opportunity.",
+        videoTitle:"TitanCore Media Intelligence Window",
+        videoText:"This area can later hold live video, uploaded reports, short clips, market explainers, and public-facing business updates."
+      },
+      {
+        hero:"Today’s business signal highlights banking conditions, new company activity, regional growth, logistics movement, and market confidence.",
+        hub:"The News & Media hub helps TitanCore look alive by giving visitors rotating business information and a clear path to deeper pages.",
+        ticker:"BANKING CONDITIONS • NEW COMPANY WATCH • LOGISTICS MOVEMENT • REGIONAL GROWTH • INVESTOR CONFIDENCE • MARKET SIGNALS",
+        marketIntro:"Today’s market board highlights banking, indexes, logistics, real estate, crypto, and new business formation.",
+        regionIntro:"Regional business intelligence helps people decide where to research opportunity, risk, investment climate, and business expansion.",
+        videoTitle:"Business Signal Broadcast",
+        videoText:"Future videos can explain business signals, market pressure, company updates, and global movement in a professional TitanCore style."
+      }
+    ];
+
+    const marketDailyText = {
+      sp500:[
+        "Broad U.S. company direction, earnings tone, and investor confidence across major public companies.",
+        "Watch large-cap movement, rate pressure, consumer strength, and market confidence.",
+        "A broad market signal for business mood, investor behavior, and public company direction.",
+        "Useful for understanding whether major companies are gaining confidence or facing pressure."
       ],
-      media: [
-        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1600&q=85"
+      nasdaq:[
+        "Technology, innovation, AI movement, software, chips, and growth-company momentum.",
+        "Watch tech strength, digital platforms, investor appetite, and innovation pressure.",
+        "A strong signal for growth sectors, startup mood, and technology confidence.",
+        "Useful for tracking how technology and innovation can affect business opportunity."
       ],
-      global: [
-        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85"
+      dow:[
+        "Industrial companies, blue-chip strength, manufacturing tone, and major business stability.",
+        "Watch traditional business movement, industrial confidence, and large-company pressure.",
+        "A steady signal for older major companies, industrial names, and corporate stability.",
+        "Useful for understanding big business strength outside fast-growth technology."
+      ],
+      crypto:[
+        "Digital-asset movement, Bitcoin, Ethereum, risk appetite, and crypto market sentiment.",
+        "Watch volatility, digital asset confidence, token movement, and regulatory attention.",
+        "A risk signal for speculative markets, alternative assets, and digital finance movement.",
+        "Useful for understanding how digital assets affect investor mood and risk behavior."
+      ],
+      realestate:[
+        "Housing, commercial property, mortgage pressure, rent movement, and investor property activity.",
+        "Watch real estate demand, interest-rate pressure, property values, and lending conditions.",
+        "A signal for families, banks, investors, builders, landlords, and local business movement.",
+        "Useful for understanding how property activity affects business and consumer confidence."
+      ],
+      banking:[
+        "Credit availability, lending standards, bank confidence, mortgage movement, and business loans.",
+        "Watch business funding access, approvals, credit stress, and lending demand.",
+        "A signal for whether money is moving easily or becoming harder for businesses and consumers.",
+        "Useful for understanding capital access, loan pressure, and investor caution."
+      ],
+      logistics:[
+        "Transportation, shipping, warehouse movement, supply chain, delivery, and inventory activity.",
+        "Watch freight movement, supply pressure, fuel costs, and business distribution signals.",
+        "A signal for whether products, materials, and inventory are moving smoothly or slowing.",
+        "Useful for understanding business cost pressure and operational movement."
+      ],
+      newcompanies:[
+        "Startup openings, new business formation, investment interest, and local business creation.",
+        "Watch new company activity, small business confidence, and regional entrepreneurship.",
+        "A signal for opportunity, hiring, funding demand, and new market growth.",
+        "Useful for understanding where fresh business energy is building."
       ]
     };
 
-    function applyDailyBackgrounds(){
-      const sections = document.querySelectorAll(".daily-bg");
-      const day = new Date().getDate();
+    const regionDailyText = {
+      usa:[
+        "Domestic business movement, state-level activity, new company openings, credit conditions, and market confidence.",
+        "United States watch covers jobs, housing, lending, consumer spending, startups, and local business signals.",
+        "Useful for visitors looking for U.S. business trends, state movement, market pressure, and investment context.",
+        "Track U.S. business openings, closures, company movement, banking pressure, and public market behavior."
+      ],
+      canada:[
+        "Canada watch covers banking, housing, energy, trade, small business movement, and regional business confidence.",
+        "Useful for visitors comparing Canadian business climate, property pressure, finance, and investment conditions.",
+        "Track Canadian company activity, lending movement, real estate trends, and trade-related business signals.",
+        "Canada can show strong signals in energy, banking, housing, logistics, and cross-border business."
+      ],
+      europe:[
+        "European business movement, banking conditions, industrial activity, trade pressure, and multinational company signals.",
+        "Europe watch covers regulation, energy, manufacturing, finance, real estate, and cross-border business movement.",
+        "Useful for visitors comparing European markets, country opportunity, and business expansion risk.",
+        "Track European companies, regional markets, finance activity, and country-level business confidence."
+      ],
+      asia:[
+        "Asia watch covers technology, manufacturing, exports, capital movement, trade pressure, and growth markets.",
+        "Useful for tracking business movement in major Asian economies, supply chains, innovation, and investment confidence.",
+        "Asia can show strong signals in production, chips, technology, logistics, and international trade.",
+        "Track Asian business openings, manufacturing strength, global supply chains, and investor interest."
+      ],
+      africa:[
+        "Africa watch covers infrastructure, energy, agriculture, finance access, trade, entrepreneurship, and emerging markets.",
+        "Useful for visitors looking at African country growth, business formation, real estate, and investment opportunity.",
+        "Track African business expansion, logistics, banking access, infrastructure projects, and market development.",
+        "Africa can show opportunity through trade, energy, mobile finance, construction, agriculture, and new business growth."
+      ],
+      caribbean:[
+        "Caribbean watch covers tourism, real estate, trade, small business growth, banking, and island economy movement.",
+        "Useful for visitors looking at Caribbean business opportunity, property movement, tourism demand, and local markets.",
+        "Track Caribbean country-level business, import/export activity, hospitality, real estate, and investment climate.",
+        "The Caribbean can show opportunity through tourism, services, ports, property, small business, and regional trade."
+      ],
+      latin:[
+        "Latin America watch covers trade, manufacturing, agriculture, finance, real estate, and country-level business signals.",
+        "Useful for visitors comparing Latin American countries, investment climate, market risk, and business growth.",
+        "Track Latin American company movement, exports, banking, property, logistics, and consumer economy signals.",
+        "Latin America can show opportunity through manufacturing, agriculture, energy, trade, real estate, and local business."
+      ],
+      middleeast:[
+        "Middle East watch covers energy, finance, logistics, infrastructure, construction, tourism, and investment projects.",
+        "Useful for visitors tracking Middle East business expansion, capital flow, property development, and trade corridors.",
+        "Track Middle East markets, energy movement, banking, major projects, logistics, and regional business confidence.",
+        "The Middle East can show opportunity through energy, infrastructure, finance, travel, shipping, and development."
+      ]
+    };
 
-      sections.forEach(function(section, index){
-        const group = section.dataset.bgGroup || "corporate";
-        const images = backgroundSets[group] || backgroundSets.corporate;
-        const selected = images[(day + index) % images.length];
-        section.style.backgroundImage = "url('" + selected + "')";
+    function getDailyIndex(length){
+      const now = new Date();
+      const start = new Date(now.getFullYear(), 0, 0);
+      const diff = now - start;
+      const oneDay = 1000 * 60 * 60 * 24;
+      const day = Math.floor(diff / oneDay);
+      return day % length;
+    }
+
+    function applyDailyContent(){
+      const index = getDailyIndex(dailySets.length);
+      const daily = dailySets[index];
+
+      const dateOptions = { weekday:"long", year:"numeric", month:"long", day:"numeric" };
+      document.getElementById("dailyDate").textContent = new Date().toLocaleDateString("en-US", dateOptions);
+
+      document.getElementById("heroDailyText").textContent = daily.hero;
+      document.getElementById("hubDailyText").textContent = daily.hub;
+      document.getElementById("dailyTicker").textContent = daily.ticker;
+      document.getElementById("marketIntro").textContent = daily.marketIntro;
+      document.getElementById("regionIntro").textContent = daily.regionIntro;
+      document.getElementById("videoDailyTitle").textContent = daily.videoTitle;
+      document.getElementById("videoDailyText").textContent = daily.videoText;
+
+      document.querySelectorAll("[data-market]").forEach(card => {
+        const key = card.getAttribute("data-market");
+        const textList = marketDailyText[key];
+        if(textList){
+          card.querySelector("p").textContent = textList[index % textList.length];
+        }
+      });
+
+      document.querySelectorAll("[data-region]").forEach(card => {
+        const key = card.getAttribute("data-region");
+        const textList = regionDailyText[key];
+        if(textList){
+          card.querySelector("p").textContent = textList[index % textList.length];
+        }
       });
     }
 
-    applyDailyBackgrounds();
-  </script>
-
-  <script>
-    (function(){
-      const menu = document.getElementById("menu");
-      const menuButton = document.getElementById("menuButton");
-
-      function setMenuState(isOpen){
-        if(!menu || !menuButton){
-          return;
-        }
-
-        menu.classList.toggle("active", isOpen);
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-      }
-
-      function toggleMenu(){
-        if(!menu || !menuButton){
-          return;
-        }
-
-        setMenuState(!menu.classList.contains("active"));
-      }
-
-      if(menuButton){
-        menuButton.addEventListener("click", toggleMenu);
-      }
-
-      if(menu){
-        menu.querySelectorAll("a").forEach(function(link){
-          link.addEventListener("click", function(){
-            setMenuState(false);
-          });
-        });
-      }
-
-      document.addEventListener("click", function(event){
-        if(!menu || !menuButton || !menu.classList.contains("active")){
-          return;
-        }
-
-        if(!menu.contains(event.target) && !menuButton.contains(event.target)){
-          setMenuState(false);
-        }
-      });
-
-      document.addEventListener("keydown", function(event){
-        if(event.key === "Escape"){
-          setMenuState(false);
-        }
-      });
-    })();
+    applyDailyContent();
   </script>
 </body>
 </html>
