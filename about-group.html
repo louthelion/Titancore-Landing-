@@ -895,137 +895,288 @@
   </div>
 
   <script>
-    const openMenu = document.getElementById("openMenu");
-    const closeMenu = document.getElementById("closeMenu");
-    const menuPanel = document.getElementById("menuPanel");
+  const openMenu = document.getElementById("openMenu");
+  const closeMenu = document.getElementById("closeMenu");
+  const menuPanel = document.getElementById("menuPanel");
 
+  if (openMenu && menuPanel) {
     openMenu.addEventListener("click", () => {
       menuPanel.classList.add("open");
     });
+  }
 
+  if (closeMenu && menuPanel) {
     closeMenu.addEventListener("click", () => {
       menuPanel.classList.remove("open");
     });
+  }
 
+  if (menuPanel) {
     menuPanel.addEventListener("click", (event) => {
-      if(event.target === menuPanel){
+      if (event.target === menuPanel) {
         menuPanel.classList.remove("open");
       }
     });
+  }
 
-    const companyData = {
-      titancore:{
-        label:"Holding Company",
-        title:"TitanCore Holdings",
-        description:"TitanCore Holdings is the umbrella group and public structure connecting the TitanCore ecosystem. This panel holds public group updates, official announcements, company direction, network-level information, and major public stories from the holding company.",
-        image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=85",
-        updates:[
-          ["Monthly Update","Group-level public information, strategy direction, and ecosystem-wide visibility."],
-          ["Major News","Large announcements, public notices, partnership stories, and official releases."],
-          ["Board Information","Public-facing leadership messages, structure notes, and group governance context."]
+  const companyData = {
+    titancore: {
+      label: "Holding Company",
+      title: "TitanCore Holdings",
+      description:
+        "TitanCore Holdings is the umbrella group and public structure connecting the TitanCore ecosystem. This panel holds public group updates, official announcements, company direction, network-level information, and major public stories from the holding company.",
+      image:
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=85",
+      updates: [
+        [
+          "Monthly Update",
+          "Group-level public information, strategy direction, and ecosystem-wide visibility."
         ],
-        news:[
-          ["TitanCore Group Direction","Public updates about TitanCore Holdings, ecosystem structure, and company-level oversight.","Holding Company","https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85"],
-          ["Official Public Notices","Important TitanCore public notices, communication updates, and group-level announcements.","Public Notice","https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=85"],
-          ["Network Visibility","Stories showing how TitanCore companies connect under one larger group platform.","Group News","https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=85"]
-        ]
-      },
-      vaultara:{
-        label:"Capital Company",
-        title:"Vaultara Capital",
-        description:"Vaultara Capital’s public news panel can hold updates about funding education, business credit, business formation, capital access, finance readiness, and public company milestones.",
-        image:"https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1400&q=85",
-        updates:[
-          ["Funding Watch","Business funding education, capital access updates, and lender-readiness topics."],
-          ["Credit Movement","Business credit preparation, credit confidence, and financial-readiness updates."],
-          ["Formation News","Business formation guidance, entity-readiness stories, and company-launch topics."]
+        [
+          "Major News",
+          "Large announcements, public notices, partnership stories, and official releases."
         ],
-        news:[
-          ["Funding & Capital Access","Public information about business funding pathways, preparation, and approval readiness.","Funding Desk","https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85"],
-          ["Business Credit Updates","Credit-building education, documentation readiness, and finance preparation.","Credit Desk","https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85"],
-          ["Business Formation Stories","Formation topics, business-startup readiness, and structured company launch information.","Formation Desk","https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=85"]
+        [
+          "Board Information",
+          "Public-facing leadership messages, structure notes, and group governance context."
         ]
-      },
-      familyfirst:{
-        label:"Real Estate Company",
-        title:"Family First Equity Group",
-        description:"Family First Equity Group’s public news panel can hold real estate investing updates, property movement, seller and buyer interest, rental/property information, and public real estate market stories.",
-        image:"https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=85",
-        updates:[
-          ["Property Movement","Real estate market activity, property opportunities, and investor-focused updates."],
-          ["Seller & Buyer Watch","Public stories about seller needs, buyer interest, and property demand."],
-          ["Market Context","Housing, rent, commercial property, and real estate pressure information."]
+      ],
+      news: [
+        [
+          "TitanCore Group Direction",
+          "Public updates about TitanCore Holdings, ecosystem structure, and company-level oversight.",
+          "Holding Company",
+          "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=85"
         ],
-        news:[
-          ["Real Estate Investment Desk","Public information about property opportunities, investor movement, and asset strategy.","Real Estate Desk","https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=85"],
-          ["Property Market Updates","Housing signals, commercial property notes, and real estate business movement.","Property Watch","https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=85"],
-          ["Public Opportunity Stories","Stories around property activity, investment education, and market visibility.","Opportunity Desk","https://images.unsplash.com/photo-1462899006636-339e08d1844e?auto=format&fit=crop&w=1200&q=85"]
-        ]
-      },
-      vitalpath:{
-        label:"Care Group",
-        title:"VitalPath Care Group",
-        description:"VitalPath Care Group’s public news panel can hold healthcare staffing updates, care service information, transport support topics, workforce stories, and public care operations information.",
-        image:"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1400&q=85",
-        updates:[
-          ["Care Operations","Public updates about care support, operations, and service reach."],
-          ["Workforce Watch","Healthcare staffing, CNA, HHA, nursing, and assignment-related information."],
-          ["Service Movement","Transportation support, client service stories, and public care updates."]
+        [
+          "Official Public Notices",
+          "Important TitanCore public notices, communication updates, and group-level announcements.",
+          "Public Notice",
+          "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=85"
         ],
-        news:[
-          ["Healthcare Operations","Public updates about service activity, client support, and care delivery movement.","Care Desk","https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85"],
-          ["Staffing & Workforce","Healthcare workforce stories, staffing readiness, and public assignment information.","Workforce Desk","https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=85"],
-          ["Transport & Service Reach","Care transportation, service expansion, and public support updates.","Service Reach","https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=1200&q=85"]
+        [
+          "Network Visibility",
+          "Stories showing how TitanCore companies connect under one larger group platform.",
+          "Group News",
+          "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=85"
         ]
-      },
-      revmotion:{
-        label:"Auto & Marine",
-        title:"RevMotion Auto & Marine",
-        description:"RevMotion Auto & Marine’s public news panel can hold vehicle-market updates, marine-market stories, buyer-seller activity, platform movement, sourcing stories, and public marketplace information.",
-        image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85",
-        updates:[
-          ["Auto Watch","Vehicle sourcing, buyer-seller movement, and marketplace visibility."],
-          ["Marine Watch","Boat activity, marine sourcing, and public marine market stories."],
-          ["Platform Movement","Listing traffic, marketplace activity, and public transaction updates."]
-        ],
-        news:[
-          ["Auto Market Stories","Buyer-seller vehicle activity, sourcing stories, and auto transaction visibility.","Auto Desk","https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85"],
-          ["Marine Market Coverage","Boat sourcing, marine listings, buyer interest, and marine market visibility.","Marine Desk","https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85"],
-          ["Platform Activity Feed","Marketplace activity, listing movement, and public transaction updates.","Platform Feed","https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=85"]
-        ]
-      }
-    };
+      ]
+    },
 
-    const companyCards = document.querySelectorAll(".company-card");
-    const companyPanel = document.getElementById("companyPanel");
-    const companyLabel = document.getElementById("companyLabel");
-    const companyTitle = document.getElementById("companyTitle");
-    const companyDescription = document.getElementById("companyDescription");
-    const companyImage = document.getElementById("companyImage");
-    const updateGrid = document.getElementById("updateGrid");
-    const newsGrid = document.getElementById("newsGrid");
+    vaultara: {
+      label: "Capital Company",
+      title: "Vaultara Capital",
+      description:
+        "Vaultara Capital’s public news panel can hold updates about funding education, business credit, business formation, capital access, finance readiness, and public company milestones.",
+      image:
+        "https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1400&q=85",
+      updates: [
+        [
+          "Funding Watch",
+          "Business funding education, capital access updates, and lender-readiness topics."
+        ],
+        [
+          "Credit Movement",
+          "Business credit preparation, credit confidence, and financial-readiness updates."
+        ],
+        [
+          "Formation News",
+          "Business formation guidance, entity-readiness stories, and company-launch topics."
+        ]
+      ],
+      news: [
+        [
+          "Funding & Capital Access",
+          "Public information about business funding pathways, preparation, and approval readiness.",
+          "Funding Desk",
+          "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85"
+        ],
+        [
+          "Business Credit Updates",
+          "Credit-building education, documentation readiness, and finance preparation.",
+          "Credit Desk",
+          "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=85"
+        ],
+        [
+          "Business Formation Stories",
+          "Formation topics, business-startup readiness, and structured company launch information.",
+          "Formation Desk",
+          "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=85"
+        ]
+      ]
+    },
 
-    function openCompany(key){
-      const company = companyData[key];
+    familyfirst: {
+      label: "Real Estate Company",
+      title: "Family First Equity Group",
+      description:
+        "Family First Equity Group’s public news panel can hold real estate investing updates, property movement, seller and buyer interest, rental/property information, and public real estate market stories.",
+      image:
+        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1400&q=85",
+      updates: [
+        [
+          "Property Movement",
+          "Real estate market activity, property opportunities, and investor-focused updates."
+        ],
+        [
+          "Seller & Buyer Watch",
+          "Public stories about seller needs, buyer interest, and property demand."
+        ],
+        [
+          "Market Context",
+          "Housing, rent, commercial property, and real estate pressure information."
+        ]
+      ],
+      news: [
+        [
+          "Real Estate Investment Desk",
+          "Public information about property opportunities, investor movement, and asset strategy.",
+          "Real Estate Desk",
+          "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=85"
+        ],
+        [
+          "Property Market Updates",
+          "Housing signals, commercial property notes, and real estate business movement.",
+          "Property Watch",
+          "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=85"
+        ],
+        [
+          "Public Opportunity Stories",
+          "Stories around property activity, investment education, and market visibility.",
+          "Opportunity Desk",
+          "https://images.unsplash.com/photo-1462899006636-339e08d1844e?auto=format&fit=crop&w=1200&q=85"
+        ]
+      ]
+    },
 
-      companyCards.forEach(card => card.classList.remove("active"));
-      document.querySelector(`[data-company="${key}"]`).classList.add("active");
+    vitalpath: {
+      label: "Care Group",
+      title: "VitalPath Care Group",
+      description:
+        "VitalPath Care Group’s public news panel can hold healthcare staffing updates, care service information, transport support topics, workforce stories, and public care operations information.",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1400&q=85",
+      updates: [
+        [
+          "Care Operations",
+          "Public updates about care support, operations, and service reach."
+        ],
+        [
+          "Workforce Watch",
+          "Healthcare staffing, CNA, HHA, nursing, and assignment-related information."
+        ],
+        [
+          "Service Movement",
+          "Transportation support, client service stories, and public care updates."
+        ]
+      ],
+      news: [
+        [
+          "Healthcare Operations",
+          "Public updates about service activity, client support, and care delivery movement.",
+          "Care Desk",
+          "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85"
+        ],
+        [
+          "Staffing & Workforce",
+          "Healthcare workforce stories, staffing readiness, and public assignment information.",
+          "Workforce Desk",
+          "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=85"
+        ],
+        [
+          "Transport & Service Reach",
+          "Care transportation, service expansion, and public support updates.",
+          "Service Reach",
+          "https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=1200&q=85"
+        ]
+      ]
+    },
 
-      companyPanel.classList.add("open");
-      companyLabel.textContent = company.label;
-      companyTitle.textContent = company.title;
-      companyDescription.textContent = company.description;
+    revmotion: {
+      label: "Auto & Marine",
+      title: "RevMotion Auto & Marine",
+      description:
+        "RevMotion Auto & Marine’s public news panel can hold vehicle-market updates, marine-market stories, buyer-seller activity, platform movement, sourcing stories, and public marketplace information.",
+      image:
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85",
+      updates: [
+        [
+          "Auto Watch",
+          "Vehicle sourcing, buyer-seller movement, and marketplace visibility."
+        ],
+        [
+          "Marine Watch",
+          "Boat activity, marine sourcing, and public marine market stories."
+        ],
+        [
+          "Platform Movement",
+          "Listing traffic, marketplace activity, and public transaction updates."
+        ]
+      ],
+      news: [
+        [
+          "Auto Market Stories",
+          "Buyer-seller vehicle activity, sourcing stories, and auto transaction visibility.",
+          "Auto Desk",
+          "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=85"
+        ],
+        [
+          "Marine Market Coverage",
+          "Boat sourcing, marine listings, buyer interest, and marine market visibility.",
+          "Marine Desk",
+          "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85"
+        ],
+        [
+          "Platform Activity Feed",
+          "Marketplace activity, listing movement, and public transaction updates.",
+          "Platform Feed",
+          "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?auto=format&fit=crop&w=1200&q=85"
+        ]
+      ]
+    }
+  };
+
+  const companyCards = document.querySelectorAll(".company-card");
+  const companyPanel = document.getElementById("companyPanel");
+  const companyLabel = document.getElementById("companyLabel");
+  const companyTitle = document.getElementById("companyTitle");
+  const companyDescription = document.getElementById("companyDescription");
+  const companyImage = document.getElementById("companyImage");
+  const updateGrid = document.getElementById("updateGrid");
+  const newsGrid = document.getElementById("newsGrid");
+
+  function openCompany(key, shouldScroll = true) {
+    const company = companyData[key];
+    if (!company) return;
+
+    companyCards.forEach(card => card.classList.remove("active"));
+
+    const selectedCard = document.querySelector(`[data-company="${key}"]`);
+    if (selectedCard) selectedCard.classList.add("active");
+
+    if (companyPanel) companyPanel.classList.add("open");
+    if (companyLabel) companyLabel.textContent = company.label;
+    if (companyTitle) companyTitle.textContent = company.title;
+    if (companyDescription) companyDescription.textContent = company.description;
+
+    if (companyImage) {
       companyImage.style.setProperty("--company-bg", `url("${company.image}")`);
+    }
 
+    if (updateGrid) {
       updateGrid.innerHTML = "";
+
       company.updates.forEach(item => {
         const box = document.createElement("div");
         box.className = "update-card";
         box.innerHTML = `<strong>${item[0]}</strong><span>${item[1]}</span>`;
         updateGrid.appendChild(box);
       });
+    }
 
+    if (newsGrid) {
       newsGrid.innerHTML = "";
+
       company.news.forEach(item => {
         const card = document.createElement("a");
         card.className = "news-card";
@@ -1040,149 +1191,191 @@
         `;
         newsGrid.appendChild(card);
       });
-
-      companyPanel.scrollIntoView({behavior:"smooth", block:"start"});
     }
 
-    companyCards.forEach(card => {
-      card.addEventListener("click", () => {
-        openCompany(card.dataset.company);
+    if (shouldScroll && companyPanel) {
+      companyPanel.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
-    });
-
-    const imageSets = [
-      {
-        hero:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1900&q=85",
-        overview:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85",
-        chooser:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85",
-        flow:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1900&q=85",
-        contact:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85"
-      },
-      {
-        hero:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85",
-        overview:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85",
-        chooser:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1900&q=85",
-        flow:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85",
-        contact:"https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1900&q=85"
-      },
-      {
-        hero:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1900&q=85",
-        overview:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1900&q=85",
-        chooser:"https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1900&q=85",
-        flow:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85",
-        contact:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85"
-      },
-      {
-        hero:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85",
-        overview:"https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1900&q=85",
-        chooser:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1900&q=85",
-        flow:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85",
-        contact:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85"
-      }
-    ];
-
-    const dailySets = [
-      {
-        hero:"TitanCore About Group is the public group information page. Visitors can learn how the TitanCore companies connect, where company-specific news belongs, and how each company’s public updates are organized.",
-        overview:"About Group keeps company-specific news in one clean location. Visitors choose a company and review that company’s public updates, monthly stories, major news, and company information.",
-        ticker:"ABOUT GROUP • COMPANY NEWS LOCATION • TITANCORE HOLDINGS • VAULTARA CAPITAL • FAMILY FIRST EQUITY GROUP • VITALPATH CARE GROUP • REVMOTION AUTO & MARINE"
-      },
-      {
-        hero:"Today’s About Group focus is company visibility, group trust, public communication, monthly updates, and company-level news organization inside the TitanCore ecosystem.",
-        overview:"This page helps visitors understand the TitanCore group before opening a company page, reading company news, or contacting TitanCore.",
-        ticker:"GROUP VISIBILITY • COMPANY UPDATES • PUBLIC INFORMATION • MONTHLY NEWS • MAJOR COMPANY STORIES • TITANCORE ECOSYSTEM"
-      },
-      {
-        hero:"About Group gives TitanCore a clean public place for company-specific updates without crowding the News & Media page or the homepage.",
-        overview:"Each company can have its own news section, monthly updates, big announcements, public stories, and company information inside this page.",
-        ticker:"PUBLIC GROUP INFORMATION • COMPANY-SPECIFIC NEWS • OFFICIAL UPDATES • TITANCORE NETWORK • COMPANY PANELS"
-      },
-      {
-        hero:"About Group connects public visitors to the right company information, giving the TitanCore website stronger structure, trust, and deeper company visibility.",
-        overview:"Visitors can open TitanCore, Vaultara, Family First, VitalPath, or RevMotion and review company-specific public updates in one organized location.",
-        ticker:"TITANCORE GROUP • COMPANY NEWS DESK • PUBLIC TRUST • ECOSYSTEM INFORMATION • COMPANY VISIBILITY"
-      }
-    ];
-
-    function getDailyIndex(length){
-      const now = new Date();
-      const start = new Date(now.getFullYear(), 0, 0);
-      const diff = now - start;
-      const oneDay = 1000 * 60 * 60 * 24;
-      const day = Math.floor(diff / oneDay);
-      return day % length;
-    }
-
-    function setBg(id, url){
-      const el = document.getElementById(id);
-      if(el){
-        el.style.setProperty("--daily-bg", `url("${url}")`);
-      }
-    }
-
-    function applyDailyContent(){
-      const index = getDailyIndex(dailySets.length);
-      const daily = dailySets[index];
-      const images = imageSets[index % imageSets.length];
-
-      const dateOptions = { month:"long", day:"numeric", year:"numeric" };
-      document.getElementById("dailyDate").textContent = new Date().toLocaleDateString("en-US", dateOptions);
-
-      document.getElementById("heroDailyText").textContent = daily.hero;
-      document.getElementById("overviewDailyText").textContent = daily.overview;
-      document.getElementById("dailyTicker").textContent = daily.ticker;
-
-      setBg("heroSection", images.hero);
-      setBg("groupOverview", images.overview);
-      setBg("companyChooser", images.chooser);
-      setBg("newsFlow", images.flow);
-      setBg("contactSection", images.contact);
-    }
-
-    applyDailyContent();
-    openCompany("titancore");
-  </script>
-  <script>
-  function openCompany(key, shouldScroll = true){
-    const company = companyData[key];
-
-    companyCards.forEach(card => card.classList.remove("active"));
-    document.querySelector(`[data-company="${key}"]`).classList.add("active");
-
-    companyPanel.classList.add("open");
-    companyLabel.textContent = company.label;
-    companyTitle.textContent = company.title;
-    companyDescription.textContent = company.description;
-    companyImage.style.setProperty("--company-bg", `url("${company.image}")`);
-
-    updateGrid.innerHTML = "";
-    company.updates.forEach(item => {
-      const box = document.createElement("div");
-      box.className = "update-card";
-      box.innerHTML = `<strong>${item[0]}</strong><span>${item[1]}</span>`;
-      updateGrid.appendChild(box);
-    });
-
-    newsGrid.innerHTML = "";
-    company.news.forEach(item => {
-      const card = document.createElement("a");
-      card.className = "news-card";
-      card.href = "#";
-      card.innerHTML = `
-        <img src="${item[3]}" alt="${item[0]}">
-        <div class="news-body">
-          <h3>${item[0]}</h3>
-          <p>${item[1]}</p>
-          <span class="mini-button">${item[2]}</span>
-        </div>
-      `;
-      newsGrid.appendChild(card);
-    });
-
-    if (shouldScroll) {
-      companyPanel.scrollIntoView({behavior:"smooth", block:"start"});
     }
   }
+
+  companyCards.forEach(card => {
+    card.addEventListener("click", () => {
+      openCompany(card.dataset.company, true);
+    });
+  });
+
+  const imageSets = [
+    {
+      hero: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1900&q=85",
+      overview: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85",
+      chooser: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85",
+      flow: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1900&q=85",
+      contact: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85"
+    },
+    {
+      hero: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85",
+      overview: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85",
+      chooser: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1900&q=85",
+      flow: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85",
+      contact: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1900&q=85"
+    },
+    {
+      hero: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1900&q=85",
+      overview: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1900&q=85",
+      chooser: "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1900&q=85",
+      flow: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85",
+      contact: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85"
+    },
+    {
+      hero: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85",
+      overview: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1900&q=85",
+      chooser: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1900&q=85",
+      flow: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85",
+      contact: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85"
+    }
+  ];
+
+  const dailySets = [
+    {
+      hero:
+        "TitanCore About Group is the public group information page. Visitors can learn how the TitanCore companies connect, where company-specific news belongs, and how each company’s public updates are organized.",
+      overview:
+        "About Group keeps company-specific news in one clean location. Visitors choose a company and review that company’s public updates, monthly stories, major news, and company information.",
+      ticker:
+        "ABOUT GROUP • COMPANY NEWS LOCATION • TITANCORE HOLDINGS • VAULTARA CAPITAL • FAMILY FIRST EQUITY GROUP • VITALPATH CARE GROUP • REVMOTION AUTO & MARINE"
+    },
+    {
+      hero:
+        "Today’s About Group focus is company visibility, group trust, public communication, monthly updates, and company-level news organization inside the TitanCore ecosystem.",
+      overview:
+        "This page helps visitors understand the TitanCore group before opening a company page, reading company news, or contacting TitanCore.",
+      ticker:
+        "GROUP VISIBILITY • COMPANY UPDATES • PUBLIC INFORMATION • MONTHLY NEWS • MAJOR COMPANY STORIES • TITANCORE ECOSYSTEM"
+    },
+    {
+      hero:
+        "About Group gives TitanCore a clean public place for company-specific updates without crowding the News & Media page or the homepage.",
+      overview:
+        "Each company can have its own news section, monthly updates, big announcements, public stories, and company information inside this page.",
+      ticker:
+        "PUBLIC GROUP INFORMATION • COMPANY-SPECIFIC NEWS • OFFICIAL UPDATES • TITANCORE NETWORK • COMPANY PANELS"
+    },
+    {
+      hero:
+        "About Group connects public visitors to the right company information, giving the TitanCore website stronger structure, trust, and deeper company visibility.",
+      overview:
+        "Visitors can open TitanCore, Vaultara, Family First, VitalPath, or RevMotion and review company-specific public updates in one organized location.",
+      ticker:
+        "TITANCORE GROUP • COMPANY NEWS DESK • PUBLIC TRUST • ECOSYSTEM INFORMATION • COMPANY VISIBILITY"
+    }
+  ];
+
+  function getDailyIndex(length) {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now - start;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const day = Math.floor(diff / oneDay);
+    return day % length;
+  }
+
+  function setBg(id, url) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.setProperty("--daily-bg", `url("${url}")`);
+    }
+  }
+
+  function applyDailyContent() {
+    const index = getDailyIndex(dailySets.length);
+    const daily = dailySets[index];
+    const images = imageSets[index % imageSets.length];
+
+    const dailyDate = document.getElementById("dailyDate");
+    const heroDailyText = document.getElementById("heroDailyText");
+    const overviewDailyText = document.getElementById("overviewDailyText");
+    const dailyTicker = document.getElementById("dailyTicker");
+
+    const dateOptions = {
+      month: "long",
+      day: "numeric",
+      year: "numeric"
+    };
+
+    if (dailyDate) {
+      dailyDate.textContent = new Date().toLocaleDateString("en-US", dateOptions);
+    }
+
+    if (heroDailyText) heroDailyText.textContent = daily.hero;
+    if (overviewDailyText) overviewDailyText.textContent = daily.overview;
+    if (dailyTicker) dailyTicker.textContent = daily.ticker;
+
+    setBg("heroSection", images.hero);
+    setBg("groupOverview", images.overview);
+    setBg("companyChooser", images.chooser);
+    setBg("newsFlow", images.flow);
+    setBg("contactSection", images.contact);
+  }
+
+  function forceStartAtTop() {
+    if (!window.location.hash) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto"
+      });
+    }
+  }
+
+  function openCompanyFromHash() {
+    const hash = window.location.hash.replace("#", "").toLowerCase();
+
+    if (!hash) {
+      openCompany("titancore", false);
+      return;
+    }
+
+    const hashRoutes = {
+      titancore: "titancore",
+      "titancore-holdings": "titancore",
+      vaultara: "vaultara",
+      "vaultara-capital": "vaultara",
+      familyfirst: "familyfirst",
+      "family-first": "familyfirst",
+      "family-first-equity-group": "familyfirst",
+      vitalpath: "vitalpath",
+      "vitalpath-care-group": "vitalpath",
+      revmotion: "revmotion",
+      "revmotion-auto-marine": "revmotion",
+      "revmotion-auto-and-marine": "revmotion"
+    };
+
+    const companyKey = hashRoutes[hash];
+
+    if (companyKey) {
+      openCompany(companyKey, true);
+    } else {
+      openCompany("titancore", false);
+      forceStartAtTop();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    applyDailyContent();
+    openCompany("titancore", false);
+    forceStartAtTop();
+  });
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      openCompanyFromHash();
+
+      if (!window.location.hash) {
+        forceStartAtTop();
+      }
+    }, 80);
+  });
 </script>
-</body>
-</html>
