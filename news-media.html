@@ -1378,42 +1378,83 @@
     applyDailyContent();
   </script>
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    function forcePageLink(words, page) {
-      const allItems = document.querySelectorAll("a, button, .hub-card, .card, .news-card, .feature-card");
+  /* TitanCore News & Media page routing fix */
+  (function () {
+    const routes = [
+      {
+        page: "about-group.html",
+        words: [
+          "about group",
+          "open about group",
+          "public group information",
+          "company news location",
+          "company-specific news"
+        ]
+      },
+      {
+        page: "global-news.html",
+        words: [
+          "global news",
+          "open global news",
+          "international news"
+        ]
+      }
+    ];
 
-      allItems.forEach(function (item) {
-        const text = item.innerText.toLowerCase();
+    function textMatches(text, words) {
+      const cleanText = (text || "").toLowerCase().replace(/\s+/g, " ").trim();
+      return words.some(word => cleanText.includes(word.toLowerCase()));
+    }
 
-        const matched = words.some(function (word) {
-          return text.includes(word.toLowerCase());
-        });
+    function applyLinks() {
+      const clickableItems = document.querySelectorAll("a, button, .hub-card, .news-card, .feature-card, .card, [role='button']");
 
-        if (matched) {
-          item.style.cursor = "pointer";
+      clickableItems.forEach(item => {
+        const itemText = item.innerText || item.textContent || "";
 
-          if (item.tagName.toLowerCase() === "a") {
-            item.setAttribute("href", page);
+        routes.forEach(route => {
+          if (textMatches(itemText, route.words)) {
+            item.style.cursor = "pointer";
+            item.setAttribute("data-force-link", route.page);
+
+            if (item.tagName.toLowerCase() === "a") {
+              item.setAttribute("href", route.page);
+            }
           }
-
-          item.addEventListener("click", function (event) {
-            event.preventDefault();
-            window.location.href = page;
-          });
-        }
+        });
       });
     }
 
-    forcePageLink(
-      ["about group", "open about group", "public group information", "company news location"],
-      "about-group.html"
-    );
+    document.addEventListener("click", function (event) {
+      const clicked = event.target.closest("a, button, .hub-card, .news-card, .feature-card, .card, [role='button']");
 
-    forcePageLink(
-      ["global news", "open global news", "international news"],
-      "global-news.html"
-    );
-  });
+      if (!clicked) return;
+
+      const clickedText = clicked.innerText || clicked.textContent || "";
+      let targetPage = clicked.getAttribute("data-force-link");
+
+      routes.forEach(route => {
+        if (textMatches(clickedText, route.words)) {
+          targetPage = route.page;
+        }
+      });
+
+      if (targetPage) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+        window.location.href = targetPage;
+      }
+    }, true);
+
+    applyLinks();
+
+    const observer = new MutationObserver(applyLinks);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  })();
 </script>
 </body>
 </html>
