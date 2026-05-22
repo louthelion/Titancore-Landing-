@@ -3,941 +3,1374 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Global News | TitanCore Holdings</title>
+  <meta name="description" content="TitanCore Holdings Global News — world business news, continent intelligence, country business information, market signals, trade, real estate, banking, logistics, and investment context." />
 
   <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+
     :root{
-      --black:#020202;
-      --green:#064b38;
-      --green2:#0b684f;
-      --gold:#d7b35d;
-      --gold2:#f0d07a;
-      --white:#f7f1e6;
-      --soft:#d8d0c4;
-      --line:rgba(215,179,93,.78);
+      --gold:#d8b45a;
+      --gold2:#f2d98c;
+      --green:#087457;
+      --green2:#0a8d69;
+      --white:#fff;
+      --soft:#ededed;
+      --border:rgba(216,180,90,.88);
     }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth;}
 
     body{
       background:#000;
       color:var(--white);
       font-family:Arial, Helvetica, sans-serif;
+      overflow-x:hidden;
+      line-height:1.6;
     }
 
-    a{color:inherit;text-decoration:none}
+    a{color:inherit;text-decoration:none;}
+    button{font-family:inherit;}
 
-    .page{
-      max-width:1180px;
-      margin:0 auto;
-      background:#000;
-      border-left:1px solid var(--line);
-      border-right:1px solid var(--line);
-      min-height:100vh;
-    }
+    .site{width:100%;min-height:100vh;background:#000;}
 
-    .topbar{
+    .header{
       position:sticky;
       top:0;
-      z-index:100;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:12px;
-      padding:14px 24px;
-      background:linear-gradient(180deg,#050505,#010101);
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
+      z-index:1000;
+      background:#000;
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
     }
 
-    .logo{
-      width:76px;
-      height:76px;
-      border:3px solid var(--gold);
-      display:grid;
-      place-items:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
-      font-weight:700;
+    .header-inner{
+      min-height:132px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:20px 36px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
       color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:43px;
+      font-weight:700;
       background:#030303;
       flex-shrink:0;
     }
 
-    .brand{
+    .brand-name{
+      color:var(--gold2);
       font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(18px,3.5vw,46px);
-      letter-spacing:clamp(1px,.55vw,5px);
+      font-size:31px;
+      letter-spacing:.5px;
       text-transform:uppercase;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    .brand span{color:var(--gold)}
+    .brand-name span{color:#fff;margin-left:8px;}
 
     .menu-btn{
-      width:76px;
-      height:76px;
-      border:3px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
-      color:var(--white);
-      font-size:36px;
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      color:#fff;
+      font-size:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       cursor:pointer;
       flex-shrink:0;
     }
 
-    .menu-btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
-
-    .menu{
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.82);
+      z-index:2000;
       display:none;
-      background:#080808;
-      border-bottom:1px solid var(--line);
-      padding:22px 42px 26px;
+      padding:24px;
     }
 
-    .menu.active{display:block}
+    .menu-panel.open{display:block;}
 
-    .menu a{
-      display:block;
-      padding:17px 0;
-      border-bottom:1px solid rgba(215,179,93,.25);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      color:var(--soft);
-      font-size:18px;
+    .menu-box{
+      max-width:760px;
+      margin:20px auto;
+      background:#050505;
+      border:2px solid var(--border);
+      padding:28px;
     }
 
-    .menu a:hover{
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+      padding-bottom:18px;
+      margin-bottom:20px;
+    }
+
+    .menu-top h2{
       color:var(--gold2);
-      padding-left:8px;
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      font-weight:400;
     }
+
+    .close-menu{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:38px;
+      cursor:pointer;
+    }
+
+    .menu-links{display:grid;gap:12px;}
+
+    .menu-links a{
+      display:block;
+      border:1px solid rgba(216,180,90,.45);
+      padding:18px;
+      color:#fff;
+      font-size:18px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .menu-links a:hover{background:var(--gold);color:#000;}
 
     .section{
       position:relative;
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
-    }
-
-    .section::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.90), rgba(0,0,0,.68)),
-        linear-gradient(180deg, rgba(0,0,0,.26), rgba(0,0,0,.62));
-      z-index:0;
-    }
-
-    .section.green::before{
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.80), rgba(6,75,56,.78)),
-        linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.42));
+      border-bottom:2px solid rgba(216,180,90,.55);
+      background:#000;
     }
 
     .hero{
-      min-height:660px;
+      min-height:760px;
+      border-bottom:2px solid var(--border);
       display:flex;
       align-items:center;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.76)),
+        var(--daily-bg);
+      background-size:cover;
+      background-position:center;
     }
 
-    .content{
-      position:relative;
-      z-index:1;
-      padding:58px 42px;
-      max-width:980px;
+    .bg-section{
+      background:
+        linear-gradient(180deg,rgba(3,78,58,.68),rgba(0,0,0,.83)),
+        var(--daily-bg);
+      background-size:cover;
+      background-position:center;
     }
 
-    .hero .content{
-      max-width:900px;
-      padding-top:74px;
-      padding-bottom:74px;
+    .bg-dark{
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.50),rgba(0,0,0,.86)),
+        var(--daily-bg);
+      background-size:cover;
+      background-position:center;
+    }
+
+    .wrap{
+      width:min(1120px,calc(100% - 64px));
+      margin:0 auto;
+    }
+
+    .hero-content,
+    .content-block{padding:92px 0;}
+
+    .hero-meta{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      margin-bottom:28px;
+    }
+
+    .daily-date{
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:14px;
+      font-weight:800;
+      opacity:.9;
+      text-align:right;
+      line-height:1.2;
     }
 
     .eyebrow{
       color:var(--gold2);
       text-transform:uppercase;
-      letter-spacing:5px;
-      font-size:14px;
+      letter-spacing:10px;
       font-weight:900;
-      margin-bottom:22px;
+      font-size:20px;
+      margin-bottom:34px;
     }
 
     h1,h2,h3{
       font-family:Georgia, "Times New Roman", serif;
       font-weight:400;
-      color:var(--white);
-      line-height:1.06;
+      line-height:1.03;
     }
 
     h1{
-      font-size:clamp(46px,6vw,86px);
-      margin-bottom:30px;
-      max-width:900px;
+      font-size:82px;
+      color:#fff;
+      margin-bottom:34px;
     }
 
-    h1 span,
-    h2 span{
-      color:var(--gold2);
-    }
+    h1 span{color:var(--gold2);display:block;}
 
     h2{
-      font-size:clamp(40px,5vw,72px);
-      margin-bottom:36px;
-      max-width:950px;
+      font-size:64px;
+      color:#fff;
+      margin-bottom:32px;
+    }
+
+    h2 span{color:var(--gold2);}
+
+    h3{
+      font-size:46px;
+      color:var(--gold2);
+      margin-bottom:22px;
     }
 
     p{
-      color:#f2ece1;
-      font-size:22px;
-      line-height:1.72;
-      margin-bottom:26px;
-      max-width:940px;
+      font-size:32px;
+      color:#fff;
+      line-height:1.65;
+      margin-bottom:34px;
     }
+
+    .hero p{max-width:960px;}
 
     .btn{
-      min-width:210px;
-      display:inline-flex;
-      justify-content:center;
+      display:flex;
       align-items:center;
-      gap:14px;
-      padding:20px 30px;
-      border:2px solid var(--gold);
-      background:linear-gradient(135deg,var(--green2),var(--green));
+      justify-content:center;
+      width:100%;
+      min-height:118px;
+      border:4px solid var(--gold);
+      background:linear-gradient(135deg,#047153,#0b8d69);
       color:#fff;
       text-transform:uppercase;
+      letter-spacing:9px;
       font-weight:900;
-      letter-spacing:3px;
-      width:fit-content;
-      cursor:pointer;
+      font-size:29px;
       margin-top:34px;
+      transition:.25s ease;
+      cursor:pointer;
     }
 
-    .btn:hover{
+    .btn:hover{background:var(--gold);color:#000;}
+
+    .btn span{
+      color:var(--gold2);
+      font-size:46px;
+      margin-left:16px;
+    }
+
+    .ticker{
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+      background:#000;
+      overflow:hidden;
+      white-space:nowrap;
+      padding:18px 0;
+    }
+
+    .ticker-track{
+      display:inline-block;
+      padding-left:100%;
+      animation:tickerMove 42s linear infinite;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-weight:900;
+      font-size:16px;
+    }
+
+    @keyframes tickerMove{
+      from{transform:translateX(0);}
+      to{transform:translateX(-100%);}
+    }
+
+    .global-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:26px;
+      margin-top:52px;
+    }
+
+    .global-card,
+    .continent-card,
+    .detail-box,
+    .country-preview,
+    .topic-card{
+      border:4px solid var(--gold);
+      background:rgba(0,0,0,.46);
+      backdrop-filter:blur(2px);
+    }
+
+    .global-card{
+      padding:38px;
+      min-height:340px;
+    }
+
+    .global-card h3{
+      font-size:40px;
+    }
+
+    .global-card p{
+      font-size:22px;
+      color:var(--soft);
+      margin-bottom:0;
+    }
+
+    .continent-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:26px;
+      margin-top:54px;
+    }
+
+    .continent-card{
+      min-height:360px;
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:.25s ease;
+      cursor:pointer;
+      text-align:left;
+      color:#fff;
+    }
+
+    .continent-card:hover,
+    .continent-card.active{
+      background:rgba(8,116,87,.56);
+      transform:translateY(-4px);
+    }
+
+    .continent-card h3{
+      font-size:42px;
+    }
+
+    .continent-card p{
+      font-size:19px;
+      color:var(--soft);
+      margin-bottom:24px;
+    }
+
+    .card-label{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:8px;
+      font-weight:900;
+      font-size:17px;
+      margin-bottom:20px;
+    }
+
+    .card-action{
+      border-top:2px solid rgba(216,180,90,.75);
+      padding-top:22px;
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:5px;
+      font-weight:900;
+      font-size:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .card-action span{
+      color:var(--gold2);
+      font-size:38px;
+    }
+
+    .continent-detail{
+      display:none;
+      margin-top:56px;
+    }
+
+    .continent-detail.open{
+      display:block;
+      animation:fadeIn .35s ease;
+    }
+
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(12px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    .detail-box{
+      padding:54px;
+    }
+
+    .detail-box p{
+      font-size:27px;
+    }
+
+    .profit-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin:36px 0;
+    }
+
+    .profit-item{
+      border:2px solid rgba(216,180,90,.78);
+      padding:24px;
+      background:rgba(0,0,0,.38);
+      color:#fff;
+      font-size:20px;
+      line-height:1.5;
+    }
+
+    .profit-item strong{
+      color:var(--gold2);
+      display:block;
+      margin-bottom:8px;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
+    }
+
+    .country-area{
+      margin-top:42px;
+      border-top:2px solid rgba(216,180,90,.75);
+      padding-top:36px;
+    }
+
+    .country-area h3{
+      font-size:42px;
+    }
+
+    .country-area p{
+      font-size:23px;
+      color:var(--soft);
+    }
+
+    .country-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      margin-top:28px;
+    }
+
+    .country-btn{
+      border:2px solid rgba(216,180,90,.85);
+      background:rgba(0,0,0,.50);
+      color:#fff;
+      padding:16px 14px;
+      text-align:left;
+      font-size:15px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      cursor:pointer;
+      transition:.25s ease;
+      min-height:76px;
+    }
+
+    .country-btn:hover,
+    .country-btn.active{
       background:var(--gold);
       color:#000;
     }
 
-    .card-grid{
+    .country-preview{
+      display:none;
+      margin-top:44px;
+      padding:46px;
+    }
+
+    .country-preview.open{display:block;}
+
+    .country-preview h3{
+      font-size:50px;
+    }
+
+    .country-preview p{
+      font-size:26px;
+    }
+
+    .info-list{
       display:grid;
-      grid-template-columns:1fr;
-      gap:24px;
-      margin-top:40px;
-      max-width:960px;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+      margin:34px 0;
     }
 
-    .info-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.68);
-      padding:44px 46px;
-      backdrop-filter:blur(2px);
+    .info-item{
+      border:2px solid rgba(216,180,90,.75);
+      padding:22px;
+      background:rgba(0,0,0,.32);
+      color:#fff;
+      font-size:20px;
+      line-height:1.5;
     }
 
-    .info-card h3{
+    .info-item strong{
       color:var(--gold2);
-      font-size:clamp(34px,4vw,54px);
-      margin-bottom:22px;
+      display:block;
+      margin-bottom:8px;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:14px;
     }
 
-    .info-card p{
-      color:#f7f1e6;
-      font-size:22px;
-      line-height:1.62;
-      margin-bottom:0;
-    }
-
-    .link-grid{
+    .topic-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:repeat(3,1fr);
       gap:24px;
-      margin-top:40px;
-      max-width:1000px;
+      margin-top:50px;
     }
 
-    .link-card{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.68);
+    .topic-card{
       padding:34px;
-      min-height:270px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      backdrop-filter:blur(2px);
-      transition:.25s ease;
+      min-height:300px;
     }
 
-    .link-card:hover{
-      background:rgba(215,179,93,.14);
-      transform:translateY(-2px);
-    }
-
-    .link-card h3{
-      color:var(--gold2);
-      font-size:clamp(30px,4vw,48px);
+    .topic-card h3{
+      font-size:38px;
       margin-bottom:20px;
     }
 
-    .link-card p{
-      font-size:19px;
-      line-height:1.58;
-      margin-bottom:26px;
+    .topic-card p{
+      font-size:21px;
+      color:var(--soft);
+      margin-bottom:0;
     }
 
-    .card-bottom{
-      border-top:1px solid rgba(215,179,93,.45);
-      padding-top:18px;
+    .video-wall{
+      min-height:460px;
+      border:4px solid var(--gold);
+      padding:58px;
       display:flex;
-      justify-content:space-between;
+      align-items:flex-end;
+      margin-top:50px;
+      position:relative;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.78)),
+        var(--daily-bg);
+      background-size:cover;
+      background-position:center;
+    }
+
+    .video-wall::after{
+      content:"▶";
+      position:absolute;
+      top:32px;
+      right:32px;
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      background:var(--gold);
+      color:#000;
+      display:flex;
       align-items:center;
-      text-transform:uppercase;
-      letter-spacing:2px;
+      justify-content:center;
       font-weight:900;
-      color:var(--white);
+      font-size:30px;
     }
 
-    .card-bottom span:last-child{
+    .video-wall p{
+      font-size:28px;
+      max-width:900px;
+    }
+
+    .contact{
+      padding:100px 0;
+      border-bottom:2px solid var(--border);
+      background:
+        linear-gradient(180deg,rgba(3,75,53,.72),rgba(0,0,0,.80)),
+        var(--daily-bg);
+      background-size:cover;
+      background-position:center;
+    }
+
+    .contact h2{font-size:68px;}
+    .contact p{max-width:930px;}
+
+    footer{
+      background:#000;
       color:var(--gold2);
-      font-size:34px;
-    }
-
-    .daily-box{
-      border:2px solid var(--gold);
-      background:rgba(0,0,0,.68);
-      padding:44px 46px;
-      margin-top:38px;
-      max-width:960px;
-      backdrop-filter:blur(2px);
-    }
-
-    .daily-date{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:13px;
-      font-weight:900;
-      margin-bottom:22px;
-    }
-
-    .daily-box h3{
-      color:var(--gold2);
-      font-size:clamp(34px,4vw,54px);
-      margin-bottom:22px;
-    }
-
-    .simple-footer{
-      padding:24px;
       text-align:center;
-      color:var(--gold);
-      font-size:18px;
-      background:#010101;
-      border-bottom:1px solid var(--line);
+      padding:42px 20px;
+      font-size:24px;
+      border-top:2px solid var(--border);
     }
 
-    @media(max-width:900px){
-      .link-grid{
-        grid-template-columns:1fr;
-      }
+    @media(max-width:1100px){
+      .global-grid,
+      .continent-grid,
+      .profit-grid{grid-template-columns:1fr 1fr;}
+
+      .country-grid{grid-template-columns:repeat(3,1fr);}
+      .topic-grid{grid-template-columns:1fr;}
     }
 
-    @media(max-width:600px){
-      .topbar{
-        padding:12px 14px;
-        gap:10px;
+    @media(max-width:760px){
+      .header-inner{
+        min-height:104px;
+        padding:14px 30px;
       }
 
-      .logo,
+      .brand{gap:14px;}
+
+      .brand-mark{
+        width:70px;
+        height:70px;
+        border-width:5px;
+        font-size:32px;
+      }
+
+      .brand-name{
+        font-size:18px;
+        max-width:230px;
+      }
+
       .menu-btn{
-        width:62px;
-        height:62px;
+        width:70px;
+        height:70px;
+        border-width:5px;
+        font-size:34px;
       }
 
-      .logo{font-size:27px}
-      .menu-btn{font-size:30px}
+      .wrap{width:calc(100% - 52px);}
 
-      .brand{
-        font-size:16px;
-        letter-spacing:1px;
-      }
+      .hero{min-height:650px;}
 
-      .menu{
-        padding:22px 30px 26px;
-      }
+      .hero-content,
+      .content-block{padding:70px 0;}
 
-      .menu a{
-        font-size:15px;
-        letter-spacing:2.5px;
-      }
-
-      .hero{
-        min-height:640px;
-      }
-
-      .content{
-        padding:48px 28px;
-      }
-
-      h1{font-size:42px}
-      h2{font-size:40px}
-
-      p{
-        font-size:21px;
-        line-height:1.68;
+      .daily-date{
+        font-size:12px;
+        letter-spacing:1.7px;
       }
 
       .eyebrow{
-        font-size:13px;
-        letter-spacing:5px;
+        font-size:18px;
+        letter-spacing:8px;
       }
+
+      h1{font-size:56px;}
+      h2{font-size:46px;}
+      h3{font-size:38px;}
+      p{font-size:29px;}
+
+      .global-grid,
+      .continent-grid,
+      .profit-grid,
+      .info-list{grid-template-columns:1fr;}
+
+      .continent-card{
+        min-height:330px;
+        padding:34px;
+      }
+
+      .detail-box,
+      .country-preview{
+        padding:34px;
+      }
+
+      .country-grid{grid-template-columns:1fr;}
+
+      .country-preview h3{font-size:42px;}
+      .country-preview p{font-size:25px;}
 
       .btn{
-        width:100%;
-        margin-top:34px;
-      }
-
-      .info-card,
-      .link-card,
-      .daily-box{
-        padding:34px 32px;
-      }
-
-      .info-card h3,
-      .link-card h3,
-      .daily-box h3{
-        font-size:38px;
-      }
-
-      .info-card p,
-      .link-card p{
-        font-size:21px;
-        line-height:1.62;
-      }
-
-      .simple-footer{
-        font-size:16px;
-      }
-    }
-
-    @media(max-width:420px){
-      .brand{
-        font-size:15px;
-        letter-spacing:.8px;
-      }
-
-      .logo,
-      .menu-btn{
-        width:58px;
-        height:58px;
-      }
-
-      .logo{font-size:25px}
-
-      h1{font-size:40px}
-      h2{font-size:36px}
-    }
-
-
-    /* Shared TitanCore header/menu from index.html */
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:100;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:12px;
-      max-width:1180px;
-      margin:0 auto;
-      padding:14px 24px;
-      background:linear-gradient(180deg,#050505,#010101);
-      border:1px solid rgba(215,179,93,.78);
-      color:#f7f1e6;
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    .topbar .logo{
-      width:76px;
-      height:76px;
-      border:3px solid #d7b35d;
-      display:grid;
-      place-items:center;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
-      font-weight:700;
-      color:#f0d07a;
-      background:#030303;
-      flex-shrink:0;
-      text-decoration:none;
-    }
-
-    .topbar .brand{
-      min-width:0;
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:clamp(18px,3.5vw,46px);
-      font-weight:400;
-      line-height:1.06;
-      letter-spacing:clamp(1px,.55vw,5px);
-      text-transform:uppercase;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      color:#f7f1e6;
-      text-decoration:none;
-    }
-
-    .topbar .brand span{
-      color:#d7b35d;
-    }
-
-    .topbar .menu-btn{
-      width:76px;
-      height:76px;
-      border:3px solid #d7b35d;
-      background:linear-gradient(135deg,#0b684f,#064b38);
-      color:#f7f1e6;
-      font-size:36px;
-      cursor:pointer;
-      flex-shrink:0;
-      transition:background .2s ease, color .2s ease, transform .2s ease;
-      appearance:none;
-      border-radius:0;
-      padding:0;
-      line-height:1;
-    }
-
-    .topbar .menu-btn:hover,
-    .topbar .menu-btn[aria-expanded="true"]{
-      background:#d7b35d;
-      color:#000;
-    }
-
-    .topbar .menu-btn:active{
-      transform:scale(.97);
-    }
-
-    .topbar .logo:focus-visible,
-    .topbar .brand:focus-visible,
-    .topbar .menu-btn:focus-visible,
-    nav.menu a:focus-visible{
-      outline:3px solid #f0d07a;
-      outline-offset:4px;
-    }
-
-    nav.menu{
-      position:sticky;
-      top:105px;
-      z-index:90;
-      display:none;
-      max-width:1180px;
-      margin:0 auto;
-      background:#080808;
-      border-right:1px solid rgba(215,179,93,.78);
-      border-bottom:1px solid rgba(215,179,93,.78);
-      border-left:1px solid rgba(215,179,93,.78);
-      padding:22px 42px 26px;
-      box-shadow:0 18px 32px rgba(0,0,0,.48);
-      font-family:Arial, Helvetica, sans-serif;
-    }
-
-    nav.menu.active{
-      display:block;
-    }
-
-    nav.menu a{
-      display:block;
-      padding:17px 0;
-      border-bottom:1px solid rgba(215,179,93,.25);
-      text-transform:uppercase;
-      letter-spacing:4px;
-      color:#d8d0c4;
-      font-size:18px;
-      text-decoration:none;
-      transition:color .2s ease, padding-left .2s ease;
-    }
-
-    nav.menu a:hover,
-    nav.menu a:focus-visible{
-      color:#f0d07a;
-      padding-left:8px;
-    }
-
-    @media(max-width:600px){
-      .topbar{
-        padding:12px 14px;
-        gap:10px;
-      }
-
-      .topbar .logo,
-      .topbar .menu-btn{
-        width:62px;
-        height:62px;
-      }
-
-      .topbar .logo{
-        font-size:27px;
-      }
-
-      .topbar .menu-btn{
-        font-size:30px;
-      }
-
-      .topbar .brand{
-        font-size:16px;
-        letter-spacing:1px;
-      }
-
-      nav.menu{
-        top:87px;
-        padding:20px 24px 24px;
-      }
-
-      nav.menu a{
-        font-size:15px;
-        letter-spacing:2.5px;
-      }
-    }
-
-    @media(max-width:420px){
-      .topbar{
-        grid-template-columns:auto minmax(0,1fr) auto;
-        gap:8px;
-      }
-
-      .topbar .brand{
-        font-size:14px;
-        letter-spacing:.6px;
-      }
-
-      .topbar .logo,
-      .topbar .menu-btn{
-        width:54px;
-        height:54px;
-      }
-
-      .topbar .logo{
+        min-height:96px;
         font-size:23px;
+        letter-spacing:7px;
       }
 
-      .topbar .menu-btn{
-        font-size:28px;
-      }
-
-      nav.menu{
-        top:79px;
-      }
+      .video-wall{padding:36px;}
+      .contact h2{font-size:50px;}
+      footer{font-size:20px;}
     }
-
   </style>
 </head>
 
 <body>
-  <main class="page">
+  <div class="site">
 
-    <header class="topbar">
-    <a href="index.html" class="logo">TH</a>
-    <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
-    <button class="menu-btn" type="button" id="menuButton" aria-label="Open menu" aria-controls="menu" aria-expanded="false">☰</button>
-  </header>
+    <header class="header">
+      <div class="header-inner">
+        <a href="index.html" class="brand">
+          <div class="brand-mark">TH</div>
+          <div class="brand-name">TitanCore <span>Holdings</span></div>
+        </a>
 
-  <nav class="menu" id="menu">
-    <a href="titancore-structure.html">TitanCore Structure</a>
-    <a href="operating-model.html">Operating Model</a>
-    <a href="governance.html">Governance</a>
-    <a href="companies.html">Company</a>
-    <a href="institution.html">Institution</a>
-    <a href="business-intelligence.html">Business Intelligence</a>
-    <a href="news-media.html">News &amp; Media</a>
-  </nav>
-
-
-    <section class="section hero daily-bg" data-bg-group="global">
-      <div class="content">
-        <div class="eyebrow">Global News</div>
-
-        <h1>
-          International information for
-          <span>business awareness.</span>
-        </h1>
-
-        <p>
-          Global News is the international public information area for TitanCore
-          Holdings. It can help visitors review country-level updates, regional
-          business context, global market movement, and major world events from a
-          business perspective.
-        </p>
-
-        <p>
-          This page is a hub. Visitors can use the cards below to continue into
-          deeper global information pages.
-        </p>
-
-        <a href="news-media.html" class="btn">Back to News &amp; Media ›</a>
+        <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
       </div>
-    </section>
+    </header>
 
-    <section class="section daily-bg" data-bg-group="global">
-      <div class="content">
-        <div class="eyebrow">Global News Categories</div>
-
-        <h2>
-          Choose the type of global information to review.
-        </h2>
-
-        <p>
-          These cards are built as clicking buttons. Later, each page can connect
-          to live sources, country filters, search tools, RSS feeds, or a database
-          so information can update automatically.
-        </p>
-
-        <div class="link-grid">
-          <a href="country-updates.html" class="link-card">
-            <div>
-              <h3>Country-Level Updates</h3>
-              <p>
-                Review country-by-country business, economic, policy, and market
-                updates in a simple public format.
-              </p>
-            </div>
-
-            <div class="card-bottom">
-              <span>Open Country Updates</span>
-              <span>›</span>
-            </div>
-          </a>
-
-          <a href="regional-business.html" class="link-card">
-            <div>
-              <h3>Regional Business Context</h3>
-              <p>
-                Review how different regions of the world connect to business,
-                trade, finance, supply chains, and market movement.
-              </p>
-            </div>
-
-            <div class="card-bottom">
-              <span>Open Regional Business</span>
-              <span>›</span>
-            </div>
-          </a>
-
-          <a href="global-market.html" class="link-card">
-            <div>
-              <h3>Global Market Movement</h3>
-              <p>
-                Review market-related global updates that connect to Business
-                Intelligence and Stock Information.
-              </p>
-            </div>
-
-            <div class="card-bottom">
-              <span>Open Global Market</span>
-              <span>›</span>
-            </div>
-          </a>
-
-          <a href="world-events.html" class="link-card">
-            <div>
-              <h3>World Event Awareness</h3>
-              <p>
-                Review major world events from a business awareness perspective,
-                not as entertainment or general gossip news.
-              </p>
-            </div>
-
-            <div class="card-bottom">
-              <span>Open World Events</span>
-              <span>›</span>
-            </div>
-          </a>
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-box">
+        <div class="menu-top">
+          <h2>TitanCore Menu</h2>
+          <button class="close-menu" id="closeMenu">×</button>
         </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="stock-market-intelligence.html">Stock & Market Intelligence</a>
+          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
+          <a href="news-media.html">News & Media</a>
+          <a href="global-news.html">Global News</a>
+          <a href="about-group.html">About Group</a>
+          <a href="companies.html">Companies</a>
+          <a href="contact.html">Contact</a>
+        </nav>
       </div>
-    </section>
+    </div>
 
-    <section class="section green daily-bg" data-bg-group="global">
-      <div class="content">
-        <div class="eyebrow">Daily Global Focus</div>
+    <section class="hero" id="heroSection">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="hero-meta">
+            <div class="daily-date" id="dailyDate">May 21, 2026</div>
+          </div>
 
-        <h2>
-          Daily-changing global information area.
-        </h2>
+          <div class="eyebrow">Global News</div>
 
-        <p>
-          This section can rotate daily now with simple JavaScript. Later, it can
-          connect to a real global news source so visitors can search by country,
-          region, market, or business topic.
-        </p>
+          <h1>Global <span>Business News.</span></h1>
 
-        <div class="daily-box">
-          <div class="daily-date" id="dailyDate">Loading daily date...</div>
-          <h3 id="dailyTitle">Loading daily global focus...</h3>
-          <p id="dailyText">
-            Loading daily global business summary...
+          <p id="heroDailyText">
+            TitanCore Global News is the world business intelligence hub. Visitors can review global market direction,
+            world business movement, banking pressure, trade, real estate, logistics, crypto, stock market context,
+            business openings, country-level opportunities, and international economy signals.
           </p>
+
+          <a href="index.html" class="btn">Back Home <span>›</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section daily-bg" data-bg-group="business">
-      <div class="content">
-        <div class="eyebrow">Future Live Connection</div>
+    <div class="ticker">
+      <div class="ticker-track" id="dailyTicker">
+        GLOBAL NEWS • WORLD BUSINESS WATCH • STOCK MARKETS • CRYPTO • TRADE • BANKING • REAL ESTATE • LOGISTICS • COUNTRY INTELLIGENCE • INVESTMENT SIGNALS
+      </div>
+    </div>
 
-        <h2>
-          This page is ready for real global search later.
-        </h2>
+    <section class="section bg-section" id="worldOverview">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">World Market Overview</div>
+          <h2>Understand the world first, then open the continent.</h2>
 
-        <p>
-          The next phase can connect this page to live global news sources, search
-          by country, market data, RSS feeds, Netlify functions, or Supabase. That
-          is how the website can show daily information instead of only static text.
-        </p>
+          <p id="overviewDailyText">
+            This page should not start with countries right away. It should first explain the global picture:
+            what is happening in world markets, how businesses are moving, what sectors are growing, where pressure is building,
+            and why country-level information matters.
+          </p>
 
-        <p>
-          For now, the design is ready. The cards already route visitors to the
-          right deeper pages.
-        </p>
+          <div class="global-grid">
+            <div class="global-card">
+              <h3>Global Market</h3>
+              <p>Stocks, crypto, banking, public companies, investor confidence, commodity pressure, and worldwide market direction.</p>
+            </div>
 
-        <a href="news-media.html" class="btn">Back to News &amp; Media ›</a>
+            <div class="global-card">
+              <h3>World Business</h3>
+              <p>New company activity, business expansion, closures, international trade, logistics, manufacturing, and service growth.</p>
+            </div>
+
+            <div class="global-card">
+              <h3>Investment Signals</h3>
+              <p>Real estate, tourism, infrastructure, foreign investment, credit access, currency pressure, and business opportunity.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <footer class="simple-footer">
+    <section class="section bg-dark" id="globalSignals">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">Global Signals</div>
+          <h2>What visitors should understand before choosing a country.</h2>
+
+          <p>
+            Global News helps visitors understand which parts of the world are growing, which areas are under pressure,
+            and which countries may have business opportunity. This keeps TitanCore valuable because people can learn first,
+            then move deeper into continents, countries, market pages, or company pages.
+          </p>
+
+          <div class="topic-grid">
+            <div class="topic-card">
+              <h3>Economy</h3>
+              <p>Inflation, jobs, interest rates, government policy, currency movement, consumer demand, and national confidence.</p>
+            </div>
+
+            <div class="topic-card">
+              <h3>Stock Market</h3>
+              <p>Public companies, index movement, sector performance, investor behavior, and market risk or confidence.</p>
+            </div>
+
+            <div class="topic-card">
+              <h3>Crypto</h3>
+              <p>Digital assets, Bitcoin, Ethereum, stablecoins, regulation, risk appetite, and worldwide crypto movement.</p>
+            </div>
+
+            <div class="topic-card">
+              <h3>Business Openings</h3>
+              <p>New businesses, company expansion, closures, startup movement, hiring, permits, and business confidence.</p>
+            </div>
+
+            <div class="topic-card">
+              <h3>Real Estate</h3>
+              <p>Housing, commercial buildings, rent, construction, mortgage pressure, tourism property, and investor movement.</p>
+            </div>
+
+            <div class="topic-card">
+              <h3>Trade & Logistics</h3>
+              <p>Imports, exports, shipping, ports, trucking, airports, fuel, inventory, manufacturing, and supply-chain movement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-section" id="continentHub">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">Continent Hub</div>
+          <h2>Choose a continent to open its business intelligence.</h2>
+
+          <p>
+            Click a continent below. After you click, the page will open that continent’s business summary,
+            profit drivers, major sectors, and the country list inside that continent. The country list stays hidden until a continent is opened.
+          </p>
+
+          <div class="continent-grid">
+            <button class="continent-card" data-continent="Africa">
+              <div>
+                <div class="card-label">Continent</div>
+                <h3>Africa</h3>
+                <p>Energy, mining, agriculture, fintech, mobile money, infrastructure, ports, real estate, and young consumer markets.</p>
+              </div>
+              <div class="card-action">Open Africa <span>›</span></div>
+            </button>
+
+            <button class="continent-card" data-continent="Asia">
+              <div>
+                <div class="card-label">Continent</div>
+                <h3>Asia</h3>
+                <p>Technology, manufacturing, exports, finance, logistics, population growth, real estate, and digital commerce.</p>
+              </div>
+              <div class="card-action">Open Asia <span>›</span></div>
+            </button>
+
+            <button class="continent-card" data-continent="Europe">
+              <div>
+                <div class="card-label">Continent</div>
+                <h3>Europe</h3>
+                <p>Banking, energy, luxury goods, manufacturing, tourism, regulation, exports, real estate, and public markets.</p>
+              </div>
+              <div class="card-action">Open Europe <span>›</span></div>
+            </button>
+
+            <button class="continent-card" data-continent="North America">
+              <div>
+                <div class="card-label">Continent</div>
+                <h3>North America</h3>
+                <p>U.S., Canada, and Mexico business movement, stock markets, logistics, banking, real estate, and consumer demand.</p>
+              </div>
+              <div class="card-action">Open North America <span>›</span></div>
+            </button>
+
+            <button class="continent-card" data-continent="South America">
+              <div>
+                <div class="card-label">Continent</div>
+                <h3>South America</h3>
+                <p>Agriculture, energy, mining, tourism, banking, ports, currency pressure, real estate, and export movement.</p>
+              </div>
+              <div class="card-action">Open South America <span>›</span></div>
+            </button>
+
+            <button class="continent-card" data-continent="Oceania">
+              <div>
+                <div class="card-label">Continent</div>
+                <h3>Oceania</h3>
+                <p>Australia, New Zealand, Pacific islands, tourism, trade, shipping, agriculture, mining, and island economies.</p>
+              </div>
+              <div class="card-action">Open Oceania <span>›</span></div>
+            </button>
+
+            <button class="continent-card" data-continent="Antarctica">
+              <div>
+                <div class="card-label">Special Zone</div>
+                <h3>Antarctica</h3>
+                <p>Research stations, climate science, logistics, supply missions, treaty rules, and environmental monitoring.</p>
+              </div>
+              <div class="card-action">Open Antarctica <span>›</span></div>
+            </button>
+          </div>
+
+          <div class="continent-detail" id="continentDetail">
+            <div class="detail-box">
+              <div class="card-label" id="detailLabel">Continent Intelligence</div>
+              <h3 id="detailTitle">Select a Continent</h3>
+              <p id="detailText">
+                Choose a continent above to open business intelligence, profit drivers, sectors, and country buttons.
+              </p>
+
+              <div class="profit-grid" id="profitGrid"></div>
+
+              <div class="country-area" id="countryArea">
+                <h3 id="countryAreaTitle">Countries</h3>
+                <p id="countryAreaText">
+                  Choose a country to preview the business information visitors can open.
+                </p>
+
+                <div class="country-grid" id="countryGrid"></div>
+              </div>
+
+              <div class="country-preview" id="countryPreview">
+                <div class="card-label" id="previewLabel">Country Intelligence</div>
+                <h3 id="previewTitle">Country Name</h3>
+                <p id="previewText">
+                  Country business information will appear here.
+                </p>
+
+                <div class="info-list">
+                  <div class="info-item">
+                    <strong>Business News</strong>
+                    New companies, closures, expansion, business confidence, and major public business movement.
+                  </div>
+
+                  <div class="info-item">
+                    <strong>Market Signals</strong>
+                    Stock market context, public companies, investment mood, sector pressure, and economy movement.
+                  </div>
+
+                  <div class="info-item">
+                    <strong>Banking & Credit</strong>
+                    Lending access, bank confidence, credit pressure, funding movement, and financial conditions.
+                  </div>
+
+                  <div class="info-item">
+                    <strong>Real Estate & Logistics</strong>
+                    Property movement, construction, shipping, trade, tourism, transport, and supply-chain signals.
+                  </div>
+                </div>
+
+                <a id="countryOpenLink" href="#" class="btn">
+                  Open Country Intelligence <span>›</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-dark" id="videoSection">
+      <div class="wrap">
+        <div class="content-block">
+          <div class="eyebrow">Global Video Watch</div>
+          <h2>Future video area for world business updates.</h2>
+
+          <p>
+            This section can hold future video briefings, country explainers, continent business reviews,
+            investment education, and global market reports.
+          </p>
+
+          <div class="video-wall" id="videoWall">
+            <div>
+              <div class="eyebrow">Featured Global Briefing</div>
+              <h3 id="videoDailyTitle">Global Business Intelligence Window</h3>
+              <p id="videoDailyText">
+                Use this visual area for future videos about continents, countries, international business movement,
+                market pressure, trade, tourism, and country-level economy signals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contactSection">
+      <div class="wrap">
+        <h2>Contact us today</h2>
+        <p>
+          For questions about global business information, country-level news, market context,
+          or TitanCore-related public information, contact TitanCore Holdings through the official contact page.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch <span>›</span></a>
+      </div>
+    </section>
+
+    <footer>
       © 2025 TitanCore Holdings. All rights reserved.
     </footer>
-
-  </main>
+  </div>
 
   <script>
-    function toggleMenu(){
-      const menu = document.getElementById("menu");
-      if(menu){
-        menu.classList.toggle("active");
-      }
-    }
+    const openMenu = document.getElementById("openMenu");
+    const closeMenu = document.getElementById("closeMenu");
+    const menuPanel = document.getElementById("menuPanel");
 
-    const backgroundSets = {
-      global: [
-        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85"
-      ],
-      business: [
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85",
-        "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1600&q=85"
-      ]
+    openMenu.addEventListener("click", () => {
+      menuPanel.classList.add("open");
+    });
+
+    closeMenu.addEventListener("click", () => {
+      menuPanel.classList.remove("open");
+    });
+
+    menuPanel.addEventListener("click", (event) => {
+      if(event.target === menuPanel){
+        menuPanel.classList.remove("open");
+      }
+    });
+
+    const continentData = {
+      "Africa":{
+        summary:"Africa is a major long-term business growth region. Visitors can watch energy, mining, agriculture, mobile money, fintech, infrastructure, ports, logistics, housing, tourism, and consumer-market growth across different countries.",
+        profits:[
+          ["Energy & Mining","Oil, gas, minerals, gold, lithium, cobalt, copper, and energy development."],
+          ["Agriculture","Food production, exports, land use, processing, and supply-chain opportunity."],
+          ["Infrastructure","Roads, ports, housing, power, internet, logistics, and construction demand."],
+          ["Fintech","Mobile money, banking access, digital payments, and credit expansion."],
+          ["Tourism","Hotels, resorts, airlines, cultural travel, and destination investment."],
+          ["Consumer Growth","Young population, retail growth, mobile commerce, and service businesses."]
+        ],
+        countries:[
+          "Algeria","Angola","Benin","Botswana","Burkina Faso","Burundi","Cabo Verde","Cameroon",
+          "Central African Republic","Chad","Comoros","Congo","Democratic Republic of the Congo","Djibouti",
+          "Egypt","Equatorial Guinea","Eritrea","Eswatini","Ethiopia","Gabon","Gambia","Ghana","Guinea",
+          "Guinea-Bissau","Côte d'Ivoire","Kenya","Lesotho","Liberia","Libya","Madagascar","Malawi",
+          "Mali","Mauritania","Mauritius","Morocco","Mozambique","Namibia","Niger","Nigeria","Rwanda",
+          "São Tomé and Príncipe","Senegal","Seychelles","Sierra Leone","Somalia","South Africa",
+          "South Sudan","Sudan","Tanzania","Togo","Tunisia","Uganda","Zambia","Zimbabwe"
+        ]
+      },
+      "Asia":{
+        summary:"Asia is one of the strongest global business engines. Visitors can watch technology, manufacturing, exports, banking, digital commerce, logistics, real estate, tourism, public markets, and supply-chain movement.",
+        profits:[
+          ["Technology","Semiconductors, software, phones, AI, digital payments, and cloud infrastructure."],
+          ["Manufacturing","Factories, exports, electronics, vehicles, textiles, and industrial production."],
+          ["Trade & Ports","Shipping, ports, imports, exports, and regional supply-chain movement."],
+          ["Finance","Banks, public markets, fintech, insurance, capital movement, and investment flow."],
+          ["Real Estate","Urban growth, housing demand, commercial property, and infrastructure."],
+          ["Consumer Markets","Large populations, online shopping, travel, food, retail, and services."]
+        ],
+        countries:[
+          "Afghanistan","Armenia","Azerbaijan","Bahrain","Bangladesh","Bhutan","Brunei","Cambodia",
+          "China","Cyprus","Georgia","India","Indonesia","Iran","Iraq","Israel","Japan","Jordan",
+          "Kazakhstan","Kuwait","Kyrgyzstan","Laos","Lebanon","Malaysia","Maldives","Mongolia",
+          "Myanmar","Nepal","North Korea","Oman","Pakistan","Palestine","Philippines","Qatar",
+          "Russia","Saudi Arabia","Singapore","South Korea","Sri Lanka","Syria","Taiwan","Tajikistan",
+          "Thailand","Timor-Leste","Turkey","Turkmenistan","United Arab Emirates","Uzbekistan","Vietnam","Yemen"
+        ]
+      },
+      "Europe":{
+        summary:"Europe is important for banking, regulation, manufacturing, luxury brands, energy, public markets, tourism, exports, and advanced services. Visitors can review country-level business strength and market pressure.",
+        profits:[
+          ["Banking & Finance","Major banks, insurance, lending, capital markets, and investment management."],
+          ["Manufacturing","Autos, aerospace, machinery, chemicals, and precision industrial production."],
+          ["Energy","Oil, gas, renewables, electricity costs, and energy security."],
+          ["Tourism","Hotels, airlines, luxury travel, cultural tourism, and destination economies."],
+          ["Luxury & Retail","Fashion, consumer brands, food exports, and high-value goods."],
+          ["Regulation","Policy, taxes, trade rules, privacy rules, and business compliance."]
+        ],
+        countries:[
+          "Albania","Andorra","Austria","Belarus","Belgium","Bosnia and Herzegovina","Bulgaria","Croatia",
+          "Czech Republic","Denmark","Estonia","Finland","France","Germany","Greece","Hungary","Iceland",
+          "Ireland","Italy","Kosovo","Latvia","Liechtenstein","Lithuania","Luxembourg","Malta","Moldova",
+          "Monaco","Montenegro","Netherlands","North Macedonia","Norway","Poland","Portugal","Romania",
+          "San Marino","Serbia","Slovakia","Slovenia","Spain","Sweden","Switzerland","Ukraine",
+          "United Kingdom","Vatican City"
+        ]
+      },
+      "North America":{
+        summary:"North America is a major center for stock markets, banking, technology, real estate, consumer spending, logistics, agriculture, energy, manufacturing, and cross-border trade.",
+        profits:[
+          ["Stock Markets","S&P 500, Nasdaq, Dow Jones, public companies, earnings, and investor confidence."],
+          ["Technology","Software, AI, cloud, chips, startups, digital platforms, and venture capital."],
+          ["Real Estate","Housing, apartments, commercial buildings, mortgage rates, and investor activity."],
+          ["Banking & Credit","Lending, credit cards, business loans, private capital, and banking conditions."],
+          ["Logistics","Trucking, ports, rail, warehouses, delivery networks, and supply chains."],
+          ["Energy & Agriculture","Oil, gas, renewables, food production, exports, and commodities."]
+        ],
+        countries:[
+          "Canada","Mexico","United States"
+        ]
+      },
+      "South America":{
+        summary:"South America is important for agriculture, energy, mining, ports, tourism, banking, real estate, exports, currency pressure, and natural resources. Visitors can review country-level business movement.",
+        profits:[
+          ["Agriculture","Soybeans, beef, coffee, fruit, food exports, and land production."],
+          ["Mining","Copper, lithium, gold, iron ore, and mineral exports."],
+          ["Energy","Oil, gas, hydropower, renewables, and fuel markets."],
+          ["Tourism","Hotels, airlines, culture, nature travel, and destination investment."],
+          ["Ports & Trade","Exports, imports, shipping, logistics, and regional trade corridors."],
+          ["Currency & Banking","Exchange rates, lending, inflation, and bank confidence."]
+        ],
+        countries:[
+          "Argentina","Bolivia","Brazil","Chile","Colombia","Ecuador","Guyana","Paraguay",
+          "Peru","Suriname","Uruguay","Venezuela"
+        ]
+      },
+      "Oceania":{
+        summary:"Oceania includes Australia, New Zealand, and Pacific island economies. Visitors can watch tourism, agriculture, mining, shipping, fishing, real estate, banking, trade, and island economy signals.",
+        profits:[
+          ["Mining & Resources","Iron ore, coal, gas, minerals, and natural-resource exports."],
+          ["Tourism","Resorts, airlines, cruise activity, hotels, and island destination economies."],
+          ["Agriculture","Dairy, meat, crops, food exports, fishing, and rural production."],
+          ["Trade & Shipping","Ports, shipping routes, imports, exports, and Pacific logistics."],
+          ["Real Estate","Housing, land, resort property, commercial space, and investment property."],
+          ["Banking & Services","Financial services, lending, insurance, telecom, and business services."]
+        ],
+        countries:[
+          "Australia","Fiji","Kiribati","Marshall Islands","Micronesia","Nauru","New Zealand",
+          "Palau","Papua New Guinea","Samoa","Solomon Islands","Tonga","Tuvalu","Vanuatu"
+        ]
+      },
+      "Antarctica":{
+        summary:"Antarctica is not a normal business continent with countries, companies, or public stock markets. It is mainly important for research, climate science, logistics, treaty rules, environmental monitoring, and supply missions.",
+        profits:[
+          ["Research","Climate science, ocean studies, ice research, and environmental monitoring."],
+          ["Logistics","Supply missions, ships, aircraft, equipment, and station support."],
+          ["Treaty Rules","International agreements, environmental restrictions, and governance."],
+          ["Technology","Satellite communications, survival systems, energy equipment, and research tools."],
+          ["Tourism Limits","Specialized expedition tourism under strict environmental controls."],
+          ["Risk Watch","Climate change, sea levels, weather patterns, and scientific reporting."]
+        ],
+        countries:[
+          "Antarctic Research Zone","McMurdo Station Area","South Pole Research Area","Antarctic Peninsula","Ross Sea Region"
+        ]
+      }
     };
 
-    function applyDailyBackgrounds(){
-      const sections = document.querySelectorAll(".daily-bg");
-      const day = new Date().getDate();
+    const continentButtons = document.querySelectorAll(".continent-card");
+    const continentDetail = document.getElementById("continentDetail");
+    const detailLabel = document.getElementById("detailLabel");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailText = document.getElementById("detailText");
+    const profitGrid = document.getElementById("profitGrid");
+    const countryAreaTitle = document.getElementById("countryAreaTitle");
+    const countryAreaText = document.getElementById("countryAreaText");
+    const countryGrid = document.getElementById("countryGrid");
+    const countryPreview = document.getElementById("countryPreview");
+    const previewLabel = document.getElementById("previewLabel");
+    const previewTitle = document.getElementById("previewTitle");
+    const previewText = document.getElementById("previewText");
+    const countryOpenLink = document.getElementById("countryOpenLink");
 
-      sections.forEach(function(section, index){
-        const group = section.dataset.bgGroup || "global";
-        const images = backgroundSets[group] || backgroundSets.global;
-        const selected = images[(day + index) % images.length];
-        section.style.backgroundImage = "url('" + selected + "')";
-      });
+    function slugify(text){
+      return text
+        .toLowerCase()
+        .replace(/&/g,"and")
+        .replace(/[^\w\s-]/g,"")
+        .trim()
+        .replace(/\s+/g,"-");
     }
 
-    const dailyGlobalFocus = [
+    function openContinent(continent){
+      const data = continentData[continent];
+
+      continentButtons.forEach(btn => btn.classList.remove("active"));
+      document.querySelector(`[data-continent="${continent}"]`).classList.add("active");
+
+      continentDetail.classList.add("open");
+      countryPreview.classList.remove("open");
+
+      detailLabel.textContent = continent + " / Business Intelligence";
+      detailTitle.textContent = continent;
+      detailText.textContent = data.summary;
+
+      profitGrid.innerHTML = "";
+      data.profits.forEach(item => {
+        const box = document.createElement("div");
+        box.className = "profit-item";
+        box.innerHTML = `<strong>${item[0]}</strong>${item[1]}`;
+        profitGrid.appendChild(box);
+      });
+
+      countryAreaTitle.textContent = continent === "Antarctica" ? "Research Areas" : continent + " Countries";
+      countryAreaText.textContent = continent === "Antarctica"
+        ? "Antarctica does not have normal countries. Choose a research area to preview what kind of information can be shown."
+        : "Choose a country below to preview business information, stock market context, crypto, banking, real estate, logistics, trade, and investment signals.";
+
+      countryGrid.innerHTML = "";
+      data.countries.forEach(country => {
+        const btn = document.createElement("button");
+        btn.className = "country-btn";
+        btn.textContent = country;
+        btn.addEventListener("click", () => selectCountry(continent, country));
+        countryGrid.appendChild(btn);
+      });
+
+      continentDetail.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    function selectCountry(continent, country){
+      document.querySelectorAll(".country-btn").forEach(btn => btn.classList.remove("active"));
+
+      const allButtons = Array.from(document.querySelectorAll(".country-btn"));
+      const clicked = allButtons.find(btn => btn.textContent === country);
+      if(clicked) clicked.classList.add("active");
+
+      countryPreview.classList.add("open");
+      previewLabel.textContent = continent + " / Country Business Watch";
+      previewTitle.textContent = country;
+
+      if(continent === "Antarctica"){
+        previewText.textContent =
+          "Review research movement, climate information, logistics, environmental monitoring, treaty rules, tourism limits, and public information connected to " + country + ".";
+      } else {
+        previewText.textContent =
+          "Review business movement, economy signals, stock market context, crypto movement, banking, real estate, logistics, trade, tourism, investment signals, company openings, company closings, and public business news connected to " + country + ".";
+      }
+
+      countryOpenLink.href =
+        "global-country.html?continent=" + encodeURIComponent(slugify(continent)) +
+        "&country=" + encodeURIComponent(slugify(country));
+
+      countryPreview.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    continentButtons.forEach(card => {
+      card.addEventListener("click", () => {
+        openContinent(card.dataset.continent);
+      });
+    });
+
+    const imageSets = [
       {
-        title:"Country updates help visitors understand business movement.",
-        text:"Today’s focus is country-level information: policy changes, economic direction, business environment, trade movement, and market awareness."
+        hero:"https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1900&q=85",
+        overview:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1900&q=85",
+        signals:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1900&q=85",
+        continents:"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1900&q=85",
+        video:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        contact:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85"
       },
       {
-        title:"Regional business context connects countries together.",
-        text:"Today’s focus is regional awareness: how different parts of the world affect business activity, supply chains, investment confidence, and market direction."
+        hero:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1900&q=85",
+        overview:"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1900&q=85",
+        signals:"https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1900&q=85",
+        continents:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1900&q=85",
+        video:"https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=85",
+        contact:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1900&q=85"
       },
       {
-        title:"Global market movement connects news to business intelligence.",
-        text:"Today’s focus is market movement: major global conditions, financial pressure, currency awareness, commodity movement, and economic signals."
+        hero:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1900&q=85",
+        overview:"https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=1900&q=85",
+        signals:"https://images.unsplash.com/photo-1642543348745-03b1219733d9?auto=format&fit=crop&w=1900&q=85",
+        continents:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1900&q=85",
+        video:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85",
+        contact:"https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1900&q=85"
       },
       {
-        title:"World events should be explained through a business lens.",
-        text:"Today’s focus is world event awareness: major events that may affect business confidence, logistics, markets, institutions, and long-term planning."
+        hero:"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1900&q=85",
+        overview:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1900&q=85",
+        signals:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1900&q=85",
+        continents:"https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1900&q=85",
+        video:"https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=85",
+        contact:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85"
       }
     ];
 
-    function applyDailyFocus(){
-      const today = new Date();
-      const day = today.getDate();
-      const selected = dailyGlobalFocus[day % dailyGlobalFocus.length];
+    const dailySets = [
+      {
+        hero:"Today’s global business watch focuses on world markets, stock movement, crypto, banking, real estate, logistics, business openings, trade, and country-level investment signals.",
+        overview:"This page starts with the world picture first, then gives visitors a clean way to open continents and then countries.",
+        ticker:"GLOBAL BUSINESS WATCH • WORLD MARKETS • STOCK MARKET CONTEXT • CRYPTO • BANKING • REAL ESTATE • LOGISTICS • TRADE • COUNTRY INTELLIGENCE",
+        videoTitle:"Daily Global Business Briefing Window",
+        videoText:"This visual area can later hold global business videos, continent explainers, country briefings, market context, and international business updates."
+      },
+      {
+        hero:"Today’s global news signal highlights trade, tourism, banking conditions, country-level business openings, investment movement, and international market pressure.",
+        overview:"Global News helps visitors understand worldwide business before choosing a continent and then selecting a country for deeper information.",
+        ticker:"TRADE WATCH • TOURISM ACTIVITY • COUNTRY MARKETS • BUSINESS OPENINGS • GLOBAL BANKING • INTERNATIONAL INVESTMENT • TITANCORE GLOBAL NEWS",
+        videoTitle:"Global Market & Country Watch",
+        videoText:"Use this future video area for continent reports, country explainers, public business stories, and global market education."
+      },
+      {
+        hero:"Today’s international business watch connects countries, continents, stock markets, crypto, banking, real estate, logistics, and business confidence.",
+        overview:"This page gives TitanCore a global information layer so visitors can learn about business movement around the world and then move deeper into country pages.",
+        ticker:"INTERNATIONAL BUSINESS WATCH • GLOBAL ECONOMY • COUNTRY INTELLIGENCE • MARKET SIGNALS • REAL ESTATE • LOGISTICS • BUSINESS CONFIDENCE",
+        videoTitle:"International Business Intelligence Window",
+        videoText:"This broadcast space can later include short updates about countries, continents, investment signals, trade movement, and business climate."
+      },
+      {
+        hero:"Today’s country-level watch focuses on business openings, markets, banks, real estate, logistics, tourism, investment signals, and global opportunity.",
+        overview:"Visitors can use the continent cards to open a continent summary first, then choose a country to review business and market information.",
+        ticker:"COUNTRY WATCH • BUSINESS OPENINGS • MARKET MOVEMENT • BANKING ACCESS • TOURISM • TRADE • REAL ESTATE • GLOBAL NEWS",
+        videoTitle:"Country Business Signal Broadcast",
+        videoText:"Future videos can explain country business signals, continent trends, regional pressure, and global opportunity areas."
+      }
+    ];
 
-      document.getElementById("dailyDate").textContent =
-        today.toLocaleDateString("en-US", {
-          weekday:"long",
-          year:"numeric",
-          month:"long",
-          day:"numeric"
-        });
-
-      document.getElementById("dailyTitle").textContent = selected.title;
-      document.getElementById("dailyText").textContent = selected.text;
+    function getDailyIndex(length){
+      const now = new Date();
+      const start = new Date(now.getFullYear(), 0, 0);
+      const diff = now - start;
+      const oneDay = 1000 * 60 * 60 * 24;
+      const day = Math.floor(diff / oneDay);
+      return day % length;
     }
 
-    applyDailyBackgrounds();
-    applyDailyFocus();
-  </script>
-
-  <script>
-    (function(){
-      const menu = document.getElementById("menu");
-      const menuButton = document.getElementById("menuButton");
-
-      function setMenuState(isOpen){
-        if(!menu || !menuButton){
-          return;
-        }
-
-        menu.classList.toggle("active", isOpen);
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    function setBg(id, url){
+      const el = document.getElementById(id);
+      if(el){
+        el.style.setProperty("--daily-bg", `url("${url}")`);
       }
+    }
 
-      function toggleMenu(){
-        if(!menu || !menuButton){
-          return;
-        }
+    function applyDailyContent(){
+      const index = getDailyIndex(dailySets.length);
+      const daily = dailySets[index];
+      const images = imageSets[index % imageSets.length];
 
-        setMenuState(!menu.classList.contains("active"));
-      }
+      const dateOptions = { month:"long", day:"numeric", year:"numeric" };
+      document.getElementById("dailyDate").textContent = new Date().toLocaleDateString("en-US", dateOptions);
 
-      if(menuButton){
-        menuButton.addEventListener("click", toggleMenu);
-      }
+      document.getElementById("heroDailyText").textContent = daily.hero;
+      document.getElementById("overviewDailyText").textContent = daily.overview;
+      document.getElementById("dailyTicker").textContent = daily.ticker;
+      document.getElementById("videoDailyTitle").textContent = daily.videoTitle;
+      document.getElementById("videoDailyText").textContent = daily.videoText;
 
-      if(menu){
-        menu.querySelectorAll("a").forEach(function(link){
-          link.addEventListener("click", function(){
-            setMenuState(false);
-          });
-        });
-      }
+      setBg("heroSection", images.hero);
+      setBg("worldOverview", images.overview);
+      setBg("globalSignals", images.signals);
+      setBg("continentHub", images.continents);
+      setBg("videoSection", images.video);
+      setBg("videoWall", images.video);
+      setBg("contactSection", images.contact);
+    }
 
-      document.addEventListener("click", function(event){
-        if(!menu || !menuButton || !menu.classList.contains("active")){
-          return;
-        }
-
-        if(!menu.contains(event.target) && !menuButton.contains(event.target)){
-          setMenuState(false);
-        }
-      });
-
-      document.addEventListener("keydown", function(event){
-        if(event.key === "Escape"){
-          setMenuState(false);
-        }
-      });
-    })();
+    applyDailyContent();
   </script>
 </body>
 </html>
