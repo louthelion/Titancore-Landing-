@@ -1142,5 +1142,47 @@
     applyDailyContent();
     openCompany("titancore");
   </script>
+  <script>
+  function openCompany(key, shouldScroll = true){
+    const company = companyData[key];
+
+    companyCards.forEach(card => card.classList.remove("active"));
+    document.querySelector(`[data-company="${key}"]`).classList.add("active");
+
+    companyPanel.classList.add("open");
+    companyLabel.textContent = company.label;
+    companyTitle.textContent = company.title;
+    companyDescription.textContent = company.description;
+    companyImage.style.setProperty("--company-bg", `url("${company.image}")`);
+
+    updateGrid.innerHTML = "";
+    company.updates.forEach(item => {
+      const box = document.createElement("div");
+      box.className = "update-card";
+      box.innerHTML = `<strong>${item[0]}</strong><span>${item[1]}</span>`;
+      updateGrid.appendChild(box);
+    });
+
+    newsGrid.innerHTML = "";
+    company.news.forEach(item => {
+      const card = document.createElement("a");
+      card.className = "news-card";
+      card.href = "#";
+      card.innerHTML = `
+        <img src="${item[3]}" alt="${item[0]}">
+        <div class="news-body">
+          <h3>${item[0]}</h3>
+          <p>${item[1]}</p>
+          <span class="mini-button">${item[2]}</span>
+        </div>
+      `;
+      newsGrid.appendChild(card);
+    });
+
+    if (shouldScroll) {
+      companyPanel.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+  }
+</script>
 </body>
 </html>
