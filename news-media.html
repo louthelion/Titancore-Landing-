@@ -1377,5 +1377,43 @@
 
     applyDailyContent();
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function forcePageLink(words, page) {
+      const allItems = document.querySelectorAll("a, button, .hub-card, .card, .news-card, .feature-card");
+
+      allItems.forEach(function (item) {
+        const text = item.innerText.toLowerCase();
+
+        const matched = words.some(function (word) {
+          return text.includes(word.toLowerCase());
+        });
+
+        if (matched) {
+          item.style.cursor = "pointer";
+
+          if (item.tagName.toLowerCase() === "a") {
+            item.setAttribute("href", page);
+          }
+
+          item.addEventListener("click", function (event) {
+            event.preventDefault();
+            window.location.href = page;
+          });
+        }
+      });
+    }
+
+    forcePageLink(
+      ["about group", "open about group", "public group information", "company news location"],
+      "about-group.html"
+    );
+
+    forcePageLink(
+      ["global news", "open global news", "international news"],
+      "global-news.html"
+    );
+  });
+</script>
 </body>
 </html>
