@@ -1263,8 +1263,12 @@
             archive releases, and future Founder Talks. The newsroom stays open for everyone; subscription is optional.
           </p>
 
-          <form name="titancore-media-briefing" method="POST" data-netlify="true" action="/media-briefing-thank-you.html">
-            <input type="hidden" name="form-name" value="titancore-media-briefing">
+          <<form name="titancore-media-briefing" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/media-briefing-thank-you.html">
+  <input type="hidden" name="form-name" value="titancore-media-briefing">
+
+  <p style="display:none;">
+    <label>Do not fill this out: <input name="bot-field"></label>
+  </p>
 
             <div class="form-grid">
               <div class="field">
