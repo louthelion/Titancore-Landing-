@@ -62,28 +62,74 @@
     .simple-footer{padding:24px;text-align:center;color:var(--gold);font-size:18px;background:#010101}
     @media(max-width:900px){.grid,.flow{grid-template-columns:1fr}}
     @media(max-width:600px){.topbar{padding:12px 14px;gap:10px}.logo,.menu-btn{width:62px;height:62px}.logo{font-size:27px}.menu-btn{font-size:30px}.brand{font-size:16px;letter-spacing:1px}.menu{padding:22px 30px 26px}.menu a{font-size:15px;letter-spacing:2.5px}.content{padding:48px 28px}h1{font-size:42px}h2{font-size:40px}p{font-size:21px;line-height:1.68}.btn{width:100%}.plain-picture{min-height:320px}.box,.info-card{padding:30px}.item span,.info-card li{font-size:18px}.video-section{padding:42px 28px}.video-main{min-height:430px}.video-copy{padding:28px}}
-  </style>
+  
+/* TitanCore unified header/menu/footer */
+.header{position:sticky;top:0;z-index:200;background:#000;border-top:1px solid #d7b35d;border-bottom:1px solid #d7b35d;}
+.header-inner{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#f7f1e6;min-width:0;}
+.brand-mark{width:64px;height:64px;border:2px solid #d7b35d;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:700;color:#f0d07a;background:#030303;flex-shrink:0;}
+.brand-name{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,3vw,34px);letter-spacing:1.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;}
+.brand-name span{color:#d7b35d;}
+.menu-btn{width:64px;height:64px;border:2px solid #d7b35d;background:#0b684f;color:#fff;font-size:34px;line-height:1;cursor:pointer;flex-shrink:0;}
+.menu-panel{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-start;justify-content:flex-end;z-index:500;padding:0;}
+.menu-panel.open{display:flex;}
+.menu-box{width:min(420px,95vw);min-height:100vh;background:#080808;border-left:1px solid #d7b35d;padding:24px;}
+.menu-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(215,179,93,.4);}
+.menu-top h2{font-size:24px;color:#f0d07a;margin:0;}
+.close-menu{border:1px solid #d7b35d;background:#111;color:#fff;font-size:32px;line-height:1;padding:2px 12px;cursor:pointer;}
+.menu-links{display:flex;flex-direction:column;padding-top:14px;}
+.menu-links a{padding:14px 4px;border-bottom:1px solid rgba(215,179,93,.25);color:#f7f1e6;text-decoration:none;letter-spacing:1px;}
+.titancore-footer{margin-top:auto;background:#050505;border-top:1px solid #d7b35d;padding:28px 20px;text-align:center;color:#f7f1e6;}
+.footer-logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
+.footer-mark{width:36px;height:36px;border:1px solid #d7b35d;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;color:#f0d07a;font-weight:700;}
+.footer-brand-name{font-family:Georgia,"Times New Roman",serif;letter-spacing:1px;color:#f0d07a;}
+.footer-copy{margin:0 0 12px;font-size:14px;}
+.footer-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;}
+.footer-links a,.footer-current{color:#f7f1e6;font-size:14px;text-decoration:none;}
+.footer-links a:hover{color:#f0d07a;}
+.footer-dot{color:#d7b35d;}
+.footer-current{color:#f0d07a;}
+.footer-social-icons{display:flex;justify-content:center;gap:10px;}
+.footer-social-icons a{width:34px;height:34px;border:1px solid #d7b35d;color:#f7f1e6;display:grid;place-items:center;text-decoration:none;font-weight:700;}
+@media (max-width:640px){.header-inner{padding:10px 14px}.brand-mark,.menu-btn{width:54px;height:54px}.brand-name{font-size:clamp(15px,4.6vw,23px)}.menu-box{padding:18px}}
+
+</style>
 </head>
 
 <body>
   <main class="page">
-    <header class="topbar">
-      <a href="index.html" class="logo">TH</a>
-      <a href="index.html" class="brand"><span>TitanCore</span> Holdings</a>
-      <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
-    </header>
+    <header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">TH</div>
+      <div class="brand-name">TitanCore <span>Holdings</span></div>
+    </a>
 
-    <nav class="menu" id="menu">
-      <a href="titancore-structure.html">TitanCore Structure</a>
-      <a href="operating-model.html">Operating Model</a>
-      <a href="governance.html">Governance</a>
-      <a href="companies.html">Company</a>
-      <a href="institution.html">Institution</a>
+    <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<div class="menu-panel" id="menuPanel">
+  <div class="menu-box">
+    <div class="menu-top">
+      <h2>TitanCore Menu</h2>
+      <button class="close-menu" id="closeMenu">×</button>
+    </div>
+
+    <nav class="menu-links">
+      <a href="index.html">Home</a>
       <a href="business-intelligence.html">Business Intelligence</a>
-      <a href="search-intelligence.html">Search Intelligence</a>
-      <a href="strategy-control.html">Strategy &amp; Control</a>
+      <a href="stock-market-intelligence.html">Stock &amp; Market Intelligence</a>
+      <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
       <a href="news-media.html">News &amp; Media</a>
+      <a href="global-news.html">Global News</a>
+      <a href="about-group.html">About Group</a>
+      <a href="blogs.html">TitanCore Insights</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="contact.html">Contact</a>
     </nav>
+  </div>
+</div>
 
     <section class="section hero daily-bg" data-bg-group="positioning">
       <div class="content">
@@ -258,7 +304,24 @@
       </div>
     </section>
 
-    <footer class="simple-footer">© 2025 TitanCore Holdings. All rights reserved.</footer>
+    <footer class="titancore-footer">
+  <div class="footer-logo-row">
+    <div class="footer-mark">TH</div>
+    <div class="footer-brand-name">TitanCore Holdings</div>
+  </div>
+
+  <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
+
+  <div class="footer-links">
+    <a href="privacy-policy.html">Privacy Policy</a> <span class="footer-dot">•</span> <a href="terms-of-use.html">Terms of Use</a> <span class="footer-dot">•</span> <a href="blogs.html">Blogs</a> <span class="footer-dot">•</span> <a href="feedback.html">Feedback</a>
+  </div>
+
+  <div class="footer-social-icons">
+    <a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+    <a href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram" class="instagram">◎</a>
+    <a href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn" class="linkedin">in</a>
+  </div>
+</footer>
   </main>
 
   <script>
@@ -312,5 +375,26 @@
     const videoPanel=document.getElementById("dailyVideoPanel");
     if(videoPanel){videoPanel.style.backgroundImage="url('"+videoPictures[day%videoPictures.length]+"')";}
   </script>
+<script>
+  const openMenu = document.getElementById("openMenu");
+  const closeMenu = document.getElementById("closeMenu");
+  const menuPanel = document.getElementById("menuPanel");
+
+  if(openMenu && menuPanel){
+    openMenu.addEventListener("click", () => menuPanel.classList.add("open"));
+  }
+
+  if(closeMenu && menuPanel){
+    closeMenu.addEventListener("click", () => menuPanel.classList.remove("open"));
+  }
+
+  if(menuPanel){
+    menuPanel.addEventListener("click", event => {
+      if(event.target === menuPanel){
+        menuPanel.classList.remove("open");
+      }
+    });
+  }
+</script>
 </body>
 </html>
