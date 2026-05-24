@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Privacy Policy | TitanCore Holdings</title>
+  <meta name="description" content="TitanCore Holdings Privacy Policy — how public website information, forms, subscriptions, feedback, and communications are handled." />
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    :root{
+      --gold:#d8b45a;
+      --gold2:#f2d98c;
+      --green:#087457;
+      --green2:#0a8d69;
+      --black:#000;
+      --dark:#111713;
+      --white:#fff;
+      --soft:#e9ece9;
+      --muted:#c9d2cb;
+      --border:rgba(216,180,90,.88);
+      --border-soft:rgba(216,180,90,.42);
+    }
+
+    html{scroll-behavior:smooth;}
+
+    body{
+      background:#000;
+      color:#fff;
+      font-family:Arial, Helvetica, sans-serif;
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none;}
+    button{font-family:inherit;}
+
+    .site{width:100%;min-height:100vh;background:#000;}
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:#000;
+      border-top:2px solid var(--border);
+      border-bottom:2px solid var(--border);
+    }
+
+    .header-inner{
+      min-height:132px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:20px 36px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      min-width:0;
+    }
+
+    .brand-mark{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:43px;
+      font-weight:700;
+      background:#030303;
+      flex-shrink:0;
+    }
+
+    .brand-name{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:31px;
+      text-transform:uppercase;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand-name span{color:#fff;margin-left:8px;}
+
+    .menu-btn{
+      width:92px;
+      height:92px;
+      border:6px solid var(--gold);
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      color:#fff;
+      font-size:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      flex-shrink:0;
+    }
+
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.84);
+      z-index:2000;
+      display:none;
+      padding:24px;
+    }
+
+    .menu-panel.open{display:block;}
+
+    .menu-box{
+      max-width:760px;
+      margin:20px auto;
+      background:#050505;
+      border:2px solid var(--border);
+      padding:28px;
+    }
+
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--border);
+      padding-bottom:18px;
+      margin-bottom:20px;
+    }
+
+    .menu-top h2{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:34px;
+      font-weight:400;
+    }
+
+    .close-menu{
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:38px;
+      cursor:pointer;
+    }
+
+    .menu-links{display:grid;gap:12px;}
+
+    .menu-links a{
+      display:block;
+      border:1px solid rgba(216,180,90,.45);
+      padding:18px;
+      color:#fff;
+      font-size:18px;
+      background:rgba(255,255,255,.02);
+    }
+
+    .menu-links a:hover{background:var(--gold);color:#000;}
+
+    .wrap{
+      width:min(1120px,calc(100% - 64px));
+      margin:0 auto;
+    }
+
+    .hero{
+      min-height:680px;
+      display:flex;
+      align-items:center;
+      border-bottom:2px solid var(--border);
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.86)),
+        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{padding:88px 0;}
+
+    .eyebrow{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:8px;
+      font-weight:900;
+      font-size:18px;
+      margin-bottom:28px;
+    }
+
+    h1,h2,h3{
+      font-family:Georgia, "Times New Roman", serif;
+      font-weight:400;
+      line-height:1.05;
+    }
+
+    h1{
+      font-size:82px;
+      color:#fff;
+      margin-bottom:34px;
+    }
+
+    h1 span{color:var(--gold2);display:block;}
+
+    h2{
+      font-size:52px;
+      color:#fff;
+      margin-bottom:24px;
+    }
+
+    h3{
+      font-size:34px;
+      color:var(--gold2);
+      margin-bottom:16px;
+    }
+
+    p,li{
+      font-size:24px;
+      color:#fff;
+      line-height:1.7;
+    }
+
+    p{margin-bottom:26px;}
+
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:104px;
+      border:4px solid var(--gold);
+      background:linear-gradient(135deg,#047153,#0b8d69);
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:8px;
+      font-weight:900;
+      font-size:25px;
+      margin-top:34px;
+      cursor:pointer;
+      transition:.25s ease;
+      text-align:center;
+    }
+
+    .btn:hover{background:var(--gold);color:#000;}
+
+    .btn span{
+      color:var(--gold2);
+      font-size:40px;
+      margin-left:14px;
+    }
+
+    .policy-section{
+      padding:88px 0;
+      background:#111713;
+      border-bottom:2px solid var(--border-soft);
+    }
+
+    .policy-box{
+      border:4px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:46px;
+      margin-bottom:28px;
+    }
+
+    .policy-box ul{
+      padding-left:26px;
+      display:grid;
+      gap:12px;
+      margin-top:16px;
+    }
+
+    .policy-note{
+      border:3px solid var(--gold);
+      background:rgba(3,75,53,.55);
+      padding:30px;
+      margin-top:34px;
+    }
+
+    .contact{
+      padding:100px 0;
+      border-bottom:2px solid var(--border);
+      background:
+        linear-gradient(180deg,rgba(3,75,53,.72),rgba(0,0,0,.82)),
+        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
+      background-size:cover;
+      background-position:center;
+    }
+
+    .contact h2{font-size:68px;}
+
+    .titancore-footer{
+      background:#050505;
+      border-top:2px solid var(--border);
+      padding:58px 24px;
+      text-align:center;
+      color:#fff;
+    }
+
+    .footer-logo-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:22px;
+    }
+
+    .footer-mark{
+      width:64px;
+      height:64px;
+      border:4px solid var(--gold);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:30px;
+      font-weight:700;
+      background:#000;
+    }
+
+    .footer-brand-name{
+      color:var(--gold2);
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:32px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .footer-copy{
+      color:#fff;
+      font-size:20px;
+      margin:0 0 26px;
+    }
+
+    .footer-links{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:34px;
+    }
+
+    .footer-links a,
+    .footer-current{
+      color:#fff;
+      font-size:22px;
+      font-weight:900;
+    }
+
+    .footer-links a:hover,
+    .footer-current{
+      color:var(--gold2);
+    }
+
+    .footer-dot{
+      color:var(--gold2);
+      font-size:22px;
+      font-weight:900;
+    }
+
+    .footer-social-icons{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    .footer-social-icons a{
+      width:76px;
+      height:76px;
+      border-radius:50%;
+      background:#fff;
+      color:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:34px;
+      font-weight:900;
+      border:4px solid var(--gold);
+      transition:.25s ease;
+    }
+
+    .footer-social-icons a:hover{
+      background:var(--gold);
+      color:#000;
+      transform:translateY(-4px);
+    }
+
+    .footer-social-icons .instagram{font-size:38px;}
+    .footer-social-icons .linkedin{font-size:30px;}
+
+    @media(max-width:760px){
+      .header-inner{
+        min-height:104px;
+        padding:14px 30px;
+      }
+
+      .brand{gap:14px;}
+
+      .brand-mark{
+        width:70px;
+        height:70px;
+        border-width:5px;
+        font-size:32px;
+      }
+
+      .brand-name{
+        font-size:18px;
+        max-width:230px;
+      }
+
+      .menu-btn{
+        width:70px;
+        height:70px;
+        border-width:5px;
+        font-size:34px;
+      }
+
+      .wrap{width:calc(100% - 52px);}
+      .hero{min-height:620px;}
+      .hero-content{padding:70px 0;}
+
+      h1{font-size:54px;}
+      h2{font-size:40px;}
+      p,li{font-size:21px;}
+
+      .policy-box{padding:30px;}
+
+      .btn{
+        min-height:92px;
+        font-size:21px;
+        letter-spacing:6px;
+      }
+
+      .contact h2{font-size:48px;}
+
+      .footer-logo-row{flex-direction:column;}
+      .footer-brand-name{font-size:24px;}
+      .footer-copy{font-size:17px;}
+      .footer-links a,
+      .footer-current{font-size:18px;}
+      .footer-social-icons a{
+        width:66px;
+        height:66px;
+        font-size:30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site">
+
+    <header class="header">
+      <div class="header-inner">
+        <a href="index.html" class="brand">
+          <div class="brand-mark">TH</div>
+          <div class="brand-name">TitanCore <span>Holdings</span></div>
+        </a>
+
+        <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
+      </div>
+    </header>
+
+    <div class="menu-panel" id="menuPanel">
+      <div class="menu-box">
+        <div class="menu-top">
+          <h2>TitanCore Menu</h2>
+          <button class="close-menu" id="closeMenu">×</button>
+        </div>
+
+        <nav class="menu-links">
+          <a href="index.html">Home</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="stock-market-intelligence.html">Stock & Market Intelligence</a>
+          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
+          <a href="news-media.html">News & Media</a>
+          <a href="global-news.html">Global News</a>
+          <a href="about-group.html">About Group</a>
+          <a href="blogs.html">TitanCore Insights</a>
+          <a href="feedback.html">Feedback</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="eyebrow">Privacy Policy</div>
+
+          <h1>Privacy <span>Policy.</span></h1>
+
+          <p>
+            This Privacy Policy explains how TitanCore Holdings handles information submitted through
+            public website forms, subscriptions, feedback, contact requests, and public communication channels.
+          </p>
+
+          <a href="index.html" class="btn">Back Home <span>›</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="policy-section">
+      <div class="wrap">
+
+        <div class="policy-box">
+          <h2>Last Updated</h2>
+          <p>May 2026</p>
+        </div>
+
+        <div class="policy-box">
+          <h2>Information We May Collect</h2>
+          <p>
+            TitanCore Holdings may collect information visitors choose to submit through website forms.
+            This may include:
+          </p>
+          <ul>
+            <li>Name</li>
+            <li>Email address</li>
+            <li>Phone number, when provided</li>
+            <li>Subscription preferences</li>
+            <li>Feedback or message content</li>
+            <li>Selected interests, such as company news, global business news, market watch, or media updates</li>
+          </ul>
+        </div>
+
+        <div class="policy-box">
+          <h2>How Information May Be Used</h2>
+          <p>
+            TitanCore Holdings may use submitted information to:
+          </p>
+          <ul>
+            <li>Respond to public inquiries</li>
+            <li>Send requested updates or media briefings</li>
+            <li>Review feedback and suggestions</li>
+            <li>Improve public website pages, articles, media content, and visitor experience</li>
+            <li>Organize public communication connected to TitanCore Holdings and its company network</li>
+          </ul>
+        </div>
+
+        <div class="policy-box">
+          <h2>Forms, Subscriptions, and Feedback</h2>
+          <p>
+            When visitors submit a subscription, feedback message, or contact request, the information may be
+            received through website form services and sent to TitanCore Holdings for review. Feedback is reviewed
+            privately first and is not automatically published publicly.
+          </p>
+        </div>
+
+        <div class="policy-box">
+          <h2>Third-Party Platforms</h2>
+          <p>
+            TitanCore Holdings may provide links to official social media pages such as Facebook, Instagram,
+            and LinkedIn. When visitors leave the TitanCore website and visit those platforms, the privacy practices
+            of those platforms may apply.
+          </p>
+        </div>
+
+        <div class="policy-box">
+          <h2>Cookies and Analytics</h2>
+          <p>
+            TitanCore Holdings may later use website tools, analytics, or hosting services that help understand
+            website traffic, visitor activity, form submissions, and page performance. If additional tracking tools
+            are added in the future, this policy may be updated.
+          </p>
+        </div>
+
+        <div class="policy-box">
+          <h2>Information Sharing</h2>
+          <p>
+            TitanCore Holdings does not intend to sell visitor information. Information may be used internally to
+            manage public communications, subscriptions, feedback, website inquiries, and business-related public
+            contact.
+          </p>
+        </div>
+
+        <div class="policy-box">
+          <h2>Data Security</h2>
+          <p>
+            TitanCore Holdings aims to keep submitted information handled responsibly. However, no website or online
+            transmission can be guaranteed completely secure. Visitors should avoid submitting sensitive private
+            information through public website forms.
+          </p>
+        </div>
+
+        <div class="policy-box">
+          <h2>Children’s Privacy</h2>
+          <p>
+            The TitanCore Holdings public website is intended for general business and public information purposes.
+            It is not designed to collect information from children.
+          </p>
+        </div>
+
+        <div class="policy-box">
+          <h2>Policy Updates</h2>
+          <p>
+            TitanCore Holdings may update this Privacy Policy as the website, forms, media features, subscriptions,
+            and public communication systems develop.
+          </p>
+        </div>
+
+        <div class="policy-note">
+          <h3>Contact</h3>
+          <p>
+            For privacy-related questions, contact TitanCore Holdings at contact@titancoreholdings.com
+            or through the official contact page.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="wrap">
+        <h2>Contact us today</h2>
+        <p>
+          For general questions, privacy-related questions, or professional inquiries, contact TitanCore Holdings
+          through the official contact page.
+        </p>
+
+        <a href="contact.html" class="btn">Get In Touch <span>›</span></a>
+      </div>
+    </section>
+
+    <footer class="titancore-footer">
+      <div class="footer-logo-row">
+        <div class="footer-mark">TH</div>
+        <div class="footer-brand-name">TitanCore Holdings</div>
+      </div>
+
+      <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
+
+      <div class="footer-links">
+        <span class="footer-current">Privacy Policy</span>
+        <span class="footer-dot">•</span>
+        <a href="terms-of-use.html">Terms of Use</a>
+        <span class="footer-dot">•</span>
+        <a href="blogs.html">Blogs</a>
+        <span class="footer-dot">•</span>
+        <a href="feedback.html">Feedback</a>
+      </div>
+
+      <div class="footer-social-icons">
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram" class="instagram">◎</a>
+        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn" class="linkedin">in</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const openMenu = document.getElementById("openMenu");
+    const closeMenu = document.getElementById("closeMenu");
+    const menuPanel = document.getElementById("menuPanel");
+
+    if(openMenu && menuPanel){
+      openMenu.addEventListener("click", () => menuPanel.classList.add("open"));
+    }
+
+    if(closeMenu && menuPanel){
+      closeMenu.addEventListener("click", () => menuPanel.classList.remove("open"));
+    }
+
+    if(menuPanel){
+      menuPanel.addEventListener("click", event => {
+        if(event.target === menuPanel){
+          menuPanel.classList.remove("open");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
