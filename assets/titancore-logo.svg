@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 180" role="img" aria-labelledby="t"><title id="t">TitanCore Holdings</title><rect width="860" height="180" fill="none"/><g transform="translate(10 10)"><rect x="0" y="0" width="160" height="160" rx="10" fill="#000" stroke="#d7b35d" stroke-width="6"/><circle cx="80" cy="80" r="52" fill="none" stroke="#d7b35d" stroke-width="4"/><path d="M80 28v104M28 80h104M44 52c18 10 54 10 72 0M44 108c18-10 54-10 72 0" stroke="#064b38" stroke-width="4" fill="none"/><path d="M52 48h56M80 48v74" stroke="#f7f1e6" stroke-width="8"/><path d="M96 48v74M96 82h34M130 48v74" stroke="#f0d07a" stroke-width="7"/></g><text x="190" y="78" font-family="Georgia, 'Times New Roman', serif" font-size="50" fill="#f0d07a" letter-spacing="2">TITANCORE</text><text x="190" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#f7f1e6" letter-spacing="4">HOLDINGS</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 180" role="img" aria-labelledby="t">
+  <title id="t">TitanCore Holdings</title>
+  <g transform="translate(10 10)">
+    <rect x="0" y="0" width="160" height="160" rx="10" fill="none" stroke="#d7b35d" stroke-width="6"/>
+    <circle cx="80" cy="80" r="52" fill="none" stroke="#d7b35d" stroke-width="4"/>
+    <path d="M80 28v104M28 80h104M44 52c18 10 54 10 72 0M44 108c18-10 54-10 72 0" stroke="#087457" stroke-width="4" fill="none"/>
+    <path d="M52 48h56M80 48v74" stroke="#f2d98c" stroke-width="8"/>
+    <path d="M96 48v74M96 82h34M130 48v74" stroke="#087457" stroke-width="7"/>
+  </g>
+  <text x="190" y="78" font-family="Georgia, 'Times New Roman', serif" font-size="50" fill="#f2d98c" letter-spacing="2">TITANCORE</text>
+  <text x="190" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="40" fill="#087457" letter-spacing="4">HOLDINGS</text>
+</svg>
