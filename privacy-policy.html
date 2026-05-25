@@ -91,6 +91,25 @@
 
     .brand-name span{color:#fff;margin-left:8px;}
 
+    .tc-header-logo{
+      width:auto;
+      height:72px;
+      max-width:230px;
+      display:block;
+      object-fit:contain;
+      background:transparent;
+    }
+
+    .tc-footer-logo{
+      width:180px;
+      max-width:80%;
+      height:auto;
+      display:block;
+      margin:0 auto 18px;
+      object-fit:contain;
+      background:transparent;
+    }
+
     .menu-btn{
       width:92px;
       height:92px;
@@ -359,38 +378,43 @@
       font-size:22px;
       font-weight:900;
     }
-
     .footer-social-icons{
       display:flex;
       justify-content:center;
       align-items:center;
       gap:22px;
       flex-wrap:wrap;
+      margin-top:24px;
     }
 
     .footer-social-icons a{
       width:76px;
       height:76px;
       border-radius:50%;
-      background:#fff;
-      color:#000;
+      background:#000;
+      color:var(--gold2);
       display:flex;
       align-items:center;
       justify-content:center;
       font-size:34px;
       font-weight:900;
       border:4px solid var(--gold);
-      transition:.25s ease;
+      text-decoration:none;
+      box-shadow:0 0 18px rgba(216,180,90,.18);
     }
 
     .footer-social-icons a:hover{
-      background:var(--gold);
-      color:#000;
-      transform:translateY(-4px);
+      background:var(--green);
+      color:#fff;
     }
 
-    .footer-social-icons .instagram{font-size:38px;}
-    .footer-social-icons .linkedin{font-size:30px;}
+    .footer-social-icons .instagram{
+      font-size:38px;
+    }
+
+    .footer-social-icons .linkedin{
+      font-size:30px;
+    }
 
     @media(max-width:760px){
       .header-inner{
@@ -412,7 +436,7 @@
         max-width:230px;
       }
 
-      .menu-btn{
+    .menu-btn{
         width:70px;
         height:70px;
         border-width:5px;
@@ -442,6 +466,15 @@
       .footer-copy{font-size:17px;}
       .footer-links a,
       .footer-current{font-size:18px;}
+      .tc-header-logo{
+        height:58px;
+        max-width:170px;
+      }
+
+      .tc-footer-logo{
+        width:150px;
+      }
+
       .footer-social-icons a{
         width:66px;
         height:66px;
@@ -458,7 +491,7 @@
     <header class="header">
   <div class="header-inner">
     <a href="index.html" class="brand">
-      <img src="assets/titancore-logo.svg" alt="TitanCore Holdings" class="tc-logo-img">
+      <img src="assets/titancore-logo.svg" alt="TitanCore Holdings" class="tc-logo-img tc-header-logo">
     </a>
 
     <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
@@ -628,7 +661,7 @@
 
     <footer class="titancore-footer">
   <div class="footer-logo-row">
-    <img src="assets/titancore-logo.svg" alt="TitanCore Holdings" class="tc-logo-img footer-logo-img">
+    <img src="assets/titancore-logo.svg" alt="TitanCore Holdings" class="tc-logo-img tc-footer-logo">
   </div>
 
   <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
