@@ -6,23 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Feedback & Suggestions | TitanCore Holdings</title>
-  <meta name="description" content="Send feedback, suggestions, article ideas, business topics, and public comments to TitanCore Holdings." />
+  <meta name="description" content="Send private feedback and suggestions to TitanCore Holdings." />
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
 
     :root{
-      --gold:#d8b45a;
-      --gold2:#f2d98c;
+      --black:#000;
       --green:#087457;
       --green2:#0a8d69;
-      --black:#000;
-      --dark:#111713;
+      --gold:#d8b45a;
+      --gold2:#f2d98c;
       --white:#fff;
-      --soft:#e9ece9;
-      --muted:#c9d2cb;
-      --border:rgba(216,180,90,.88);
-      --border-soft:rgba(216,180,90,.42);
+      --line:rgba(216,180,90,.86);
+      --line-soft:rgba(216,180,90,.38);
     }
 
     html{scroll-behavior:smooth;}
@@ -32,73 +29,84 @@
       color:#fff;
       font-family:Arial, Helvetica, sans-serif;
       overflow-x:hidden;
-      line-height:1.55;
+      line-height:1.6;
     }
 
-    a{color:inherit;text-decoration:none;}
-    button,input,select,textarea{font-family:inherit;}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-    .site{width:100%;min-height:100vh;background:#000;}
+    .site{
+      min-height:100vh;
+      background:#000;
+    }
 
     .header{
       position:sticky;
       top:0;
       z-index:1000;
       background:#000;
-      border-top:2px solid var(--border);
-      border-bottom:2px solid var(--border);
+      border-top:2px solid var(--gold);
+      border-bottom:2px solid var(--gold);
     }
 
     .header-inner{
-      min-height:132px;
+      min-height:108px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
-      padding:20px 36px;
+      gap:18px;
+      padding:18px 34px;
+      max-width:1240px;
+      margin:0 auto;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:22px;
+      gap:16px;
       min-width:0;
     }
 
     .brand-mark{
-      width:92px;
-      height:92px;
-      border:6px solid var(--gold);
+      width:76px;
+      height:76px;
+      border:4px solid var(--gold);
       display:flex;
       align-items:center;
       justify-content:center;
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:43px;
-      font-weight:700;
-      background:#030303;
+      background:#000;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      font-weight:900;
       flex-shrink:0;
     }
 
     .brand-name{
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:31px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:30px;
       text-transform:uppercase;
+      letter-spacing:1.5px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    .brand-name span{color:#fff;margin-left:8px;}
+    .brand-name span{
+      color:#fff;
+      margin-left:8px;
+    }
 
     .menu-btn{
-      width:92px;
-      height:92px;
-      border:6px solid var(--gold);
+      width:76px;
+      height:76px;
+      border:4px solid var(--gold);
       background:linear-gradient(135deg,var(--green),var(--green2));
       color:#fff;
-      font-size:44px;
+      font-size:38px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -109,200 +117,234 @@
     .menu-panel{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.84);
+      background:rgba(0,0,0,.78);
       z-index:2000;
       display:none;
-      padding:24px;
+      padding:18px;
     }
 
-    .menu-panel.open{display:block;}
+    .menu-panel.open{
+      display:block;
+    }
 
     .menu-box{
-      max-width:760px;
-      margin:20px auto;
+      width:min(560px,100%);
+      margin:18px auto;
       background:#050505;
-      border:2px solid var(--border);
-      padding:28px;
+      border:3px solid var(--gold);
+      padding:24px;
+      box-shadow:0 0 30px rgba(0,0,0,.55);
     }
 
     .menu-top{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      border-bottom:1px solid var(--border);
-      padding-bottom:18px;
-      margin-bottom:20px;
+      border-bottom:1px solid var(--line-soft);
+      padding-bottom:16px;
+      margin-bottom:18px;
+      gap:14px;
     }
 
     .menu-top h2{
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:34px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:30px;
       font-weight:400;
     }
 
     .close-menu{
-      background:none;
-      border:none;
+      background:#000;
+      border:2px solid var(--gold);
       color:#fff;
-      font-size:38px;
+      font-size:34px;
+      width:54px;
+      height:54px;
       cursor:pointer;
     }
 
-    .menu-links{display:grid;gap:12px;}
+    .menu-links{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
 
     .menu-links a{
       display:block;
-      border:1px solid rgba(216,180,90,.45);
-      padding:18px;
+      border:1px solid var(--line-soft);
+      padding:15px 16px;
       color:#fff;
-      font-size:18px;
+      font-weight:900;
+      font-size:16px;
+      letter-spacing:.8px;
       background:rgba(255,255,255,.02);
+      text-transform:uppercase;
     }
 
-    .menu-links a:hover{background:var(--gold);color:#000;}
+    .menu-links a:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu-support-links{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid var(--line-soft);
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .menu-support-links a{
+      color:var(--gold2);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1.2px;
+    }
 
     .wrap{
-      width:min(1120px,calc(100% - 64px));
+      width:min(1120px,calc(100% - 54px));
       margin:0 auto;
     }
 
     .hero{
-      min-height:720px;
+      min-height:600px;
       display:flex;
       align-items:center;
-      border-bottom:2px solid var(--border);
+      border-bottom:2px solid var(--gold);
       background:
-        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.86)),
+        linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.90)),
         url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1900&q=85");
       background-size:cover;
       background-position:center;
     }
 
-    .hero-content{padding:90px 0;}
+    .hero-content{
+      padding:80px 0;
+    }
 
     .eyebrow{
       color:var(--gold2);
       text-transform:uppercase;
-      letter-spacing:8px;
+      letter-spacing:7px;
       font-weight:900;
-      font-size:18px;
-      margin-bottom:28px;
+      font-size:16px;
+      margin-bottom:24px;
     }
 
     h1,h2,h3{
-      font-family:Georgia, "Times New Roman", serif;
+      font-family:Georgia,"Times New Roman",serif;
       font-weight:400;
-      line-height:1.05;
+      line-height:1.07;
     }
 
     h1{
-      font-size:84px;
-      color:#fff;
-      margin-bottom:34px;
-    }
-
-    h1 span{color:var(--gold2);display:block;}
-
-    h2{
-      font-size:60px;
+      font-size:76px;
       color:#fff;
       margin-bottom:28px;
     }
 
-    h3{
-      font-size:42px;
+    h1 span{
       color:var(--gold2);
-      margin-bottom:18px;
+      display:block;
+    }
+
+    h2{
+      font-size:48px;
+      color:#fff;
+      margin-bottom:22px;
+    }
+
+    h3{
+      font-size:31px;
+      color:var(--gold2);
+      margin-bottom:14px;
+    }
+
+    p,li{
+      font-size:22px;
+      color:#fff;
+      line-height:1.7;
     }
 
     p{
-      font-size:28px;
-      color:#fff;
-      line-height:1.65;
-      margin-bottom:30px;
+      margin-bottom:24px;
     }
-
-    .hero p{max-width:960px;}
 
     .btn{
       display:flex;
       align-items:center;
       justify-content:center;
       width:100%;
-      min-height:108px;
+      min-height:94px;
       border:4px solid var(--gold);
-      background:linear-gradient(135deg,#047153,#0b8d69);
+      background:linear-gradient(135deg,var(--green),var(--green2));
       color:#fff;
       text-transform:uppercase;
-      letter-spacing:8px;
+      letter-spacing:7px;
       font-weight:900;
-      font-size:26px;
-      margin-top:34px;
+      font-size:22px;
+      margin-top:30px;
       cursor:pointer;
       transition:.25s ease;
       text-align:center;
     }
 
-    .btn:hover{background:var(--gold);color:#000;}
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .btn span{
       color:var(--gold2);
-      font-size:44px;
-      margin-left:16px;
+      font-size:36px;
+      margin-left:12px;
+    }
+
+    .btn:hover span{
+      color:#000;
     }
 
     .section{
-      padding:88px 0;
-      background:#111713;
-      border-bottom:2px solid var(--border-soft);
+      padding:82px 0;
+      background:#101710;
+      border-bottom:2px solid var(--line-soft);
     }
 
-    .info-grid{
+    .box{
+      border:4px solid var(--gold);
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-bottom:26px;
+    }
+
+    .grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:24px;
-      margin-top:40px;
+      gap:22px;
+      margin-top:32px;
     }
 
-    .info-card{
-      border:4px solid var(--gold);
-      background:rgba(0,0,0,.45);
-      padding:32px;
-      min-height:260px;
+    .card{
+      border:3px solid var(--gold);
+      background:rgba(0,0,0,.50);
+      padding:28px;
+      min-height:220px;
     }
 
-    .info-card h3{
-      font-size:34px;
-    }
-
-    .info-card p{
-      font-size:20px;
-      color:var(--soft);
+    .card p{
+      font-size:18px;
+      color:#e9ece9;
       margin-bottom:0;
-    }
-
-    .form-section{
-      padding:88px 0;
-      background:
-        linear-gradient(180deg,rgba(3,75,53,.70),rgba(0,0,0,.88)),
-        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85");
-      background-size:cover;
-      background-position:center;
-      border-bottom:2px solid var(--border-soft);
-    }
-
-    .form-box{
-      border:4px solid var(--gold);
-      background:rgba(0,0,0,.68);
-      padding:46px;
     }
 
     .form-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:18px;
-      margin-top:28px;
+      margin-top:26px;
     }
 
     .field{
@@ -310,27 +352,34 @@
       gap:8px;
     }
 
-    .field.full{grid-column:1/-1;}
+    .field.full{
+      grid-column:1/-1;
+    }
 
     label{
       color:var(--gold2);
       text-transform:uppercase;
-      letter-spacing:3px;
+      letter-spacing:2.5px;
       font-weight:900;
       font-size:13px;
     }
 
-    input,select,textarea{
+    input,
+    select,
+    textarea{
       width:100%;
       border:2px solid var(--gold);
       background:#050805;
       color:#fff;
-      padding:14px 16px;
+      padding:14px 15px;
       font-size:17px;
       outline:none;
     }
 
-    input,select{min-height:58px;}
+    input,
+    select{
+      min-height:58px;
+    }
 
     textarea{
       min-height:180px;
@@ -344,7 +393,7 @@
 
     .submit-btn{
       width:100%;
-      min-height:74px;
+      min-height:72px;
       border:3px solid var(--gold);
       background:linear-gradient(135deg,var(--green),var(--green2));
       color:#fff;
@@ -353,7 +402,7 @@
       font-weight:900;
       font-size:18px;
       cursor:pointer;
-      margin-top:18px;
+      margin-top:14px;
     }
 
     .submit-btn:hover{
@@ -362,178 +411,353 @@
     }
 
     .contact{
-      padding:100px 0;
-      border-bottom:2px solid var(--border);
+      padding:86px 0;
+      border-bottom:2px solid var(--gold);
       background:
-        linear-gradient(180deg,rgba(3,75,53,.72),rgba(0,0,0,.82)),
+        linear-gradient(180deg,rgba(8,116,87,.68),rgba(0,0,0,.86)),
         url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
       background-size:cover;
       background-position:center;
     }
 
-    .contact h2{font-size:68px;}
+    .contact h2{
+      font-size:60px;
+    }
 
     .titancore-footer{
-      background:#050505;
-      border-top:2px solid var(--border);
-      padding:58px 24px;
+      background:#000;
+      border-top:2px solid var(--gold);
+      padding:74px 24px 86px;
       text-align:center;
       color:#fff;
     }
 
-    .footer-logo-row{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:16px;
-      margin-bottom:22px;
-    }
-
     .footer-mark{
-      width:64px;
-      height:64px;
+      width:104px;
+      height:104px;
+      margin:0 auto 34px;
       border:4px solid var(--gold);
       display:flex;
       align-items:center;
       justify-content:center;
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:30px;
-      font-weight:700;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:52px;
+      font-weight:900;
       background:#000;
     }
 
     .footer-brand-name{
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:42px;
       text-transform:uppercase;
-      letter-spacing:1px;
+      letter-spacing:12px;
+      line-height:1.55;
+      margin-bottom:46px;
     }
 
     .footer-copy{
       color:#fff;
-      font-size:20px;
-      margin:0 0 26px;
+      font-size:26px;
+      letter-spacing:2px;
+      line-height:1.9;
+      margin:0 0 54px;
     }
 
     .footer-links{
       display:flex;
       justify-content:center;
       align-items:center;
-      gap:14px;
+      gap:22px;
       flex-wrap:wrap;
-      margin-bottom:34px;
+      margin-bottom:32px;
     }
 
-    .footer-links a{
+    .footer-links a,
+    .footer-current{
       color:#fff;
-      font-size:22px;
-      font-weight:900;
+      font-size:26px;
+      letter-spacing:2.4px;
+      font-weight:400;
     }
 
-    .footer-links a:hover{color:var(--gold2);}
+    .footer-links a:hover,
+    .footer-current{
+      color:var(--gold2);
+    }
 
     .footer-dot{
       color:var(--gold2);
-      font-size:22px;
+      font-size:24px;
       font-weight:900;
+      line-height:1;
+    }
+
+    .footer-feedback-line{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:0 0 58px;
+    }
+
+    .footer-feedback-line a,
+    .footer-feedback-line .footer-current{
+      color:#fff;
+      font-size:26px;
+      letter-spacing:2.4px;
+      font-weight:400;
+    }
+
+    .footer-feedback-line a:hover,
+    .footer-feedback-line .footer-current{
+      color:var(--gold2);
     }
 
     .footer-social-icons{
       display:flex;
       justify-content:center;
       align-items:center;
-      gap:22px;
-      flex-wrap:wrap;
+      gap:34px;
+      flex-wrap:nowrap;
     }
 
-    .footer-social-icons a{
-      width:76px;
-      height:76px;
-      border-radius:50%;
-      background:#fff;
-      color:#000;
+    .social-square{
+      width:106px;
+      height:106px;
+      border:4px solid var(--gold);
+      background:#000;
+      color:#fff;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:34px;
-      font-weight:900;
-      border:4px solid var(--gold);
+      text-decoration:none;
       transition:.25s ease;
+      flex:0 0 auto;
     }
 
-    .footer-social-icons a:hover{
-      background:var(--gold);
-      color:#000;
-      transform:translateY(-4px);
+    .social-square:hover{
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      color:#fff;
+      transform:translateY(-3px);
     }
 
-    .footer-social-icons .instagram{font-size:38px;}
-    .footer-social-icons .linkedin{font-size:30px;}
+    .social-symbol{
+      font-size:46px;
+      line-height:1;
+      font-weight:900;
+      letter-spacing:0;
+    }
 
-    @media(max-width:980px){
-      .info-grid{grid-template-columns:1fr;}
-      .form-grid{grid-template-columns:1fr;}
+    .social-symbol.instagram{
+      font-size:62px;
+      font-weight:400;
+    }
+
+    .social-symbol.linkedin{
+      font-size:44px;
+      font-weight:900;
+    }
+
+    @media(max-width:900px){
+      .grid,
+      .form-grid{
+        grid-template-columns:1fr;
+      }
     }
 
     @media(max-width:760px){
       .header-inner{
-        min-height:104px;
-        padding:14px 30px;
+        min-height:92px;
+        padding:12px 22px;
       }
 
-      .brand{gap:14px;}
+      .brand{
+        gap:12px;
+      }
 
       .brand-mark{
-        width:70px;
-        height:70px;
-        border-width:5px;
-        font-size:32px;
+        width:62px;
+        height:62px;
+        font-size:27px;
+        border-width:3px;
       }
 
       .brand-name{
         font-size:18px;
-        max-width:230px;
+        max-width:210px;
       }
 
       .menu-btn{
-        width:70px;
-        height:70px;
-        border-width:5px;
-        font-size:34px;
+        width:62px;
+        height:62px;
+        font-size:31px;
+        border-width:3px;
       }
 
-      .wrap{width:calc(100% - 52px);}
+      .wrap{
+        width:calc(100% - 46px);
+      }
 
-      .hero{min-height:650px;}
-      .hero-content{padding:70px 0;}
+      .hero{
+        min-height:560px;
+      }
+
+      .hero-content{
+        padding:62px 0;
+      }
 
       .eyebrow{
-        font-size:17px;
+        font-size:14px;
+        letter-spacing:5px;
+      }
+
+      h1{
+        font-size:48px;
+      }
+
+      h2{
+        font-size:36px;
+      }
+
+      h3{
+        font-size:27px;
+      }
+
+      p,li{
+        font-size:19px;
+      }
+
+      .box{
+        padding:28px;
+      }
+
+      .btn{
+        min-height:84px;
+        font-size:18px;
+        letter-spacing:5px;
+      }
+
+      .contact h2{
+        font-size:42px;
+      }
+
+      .titancore-footer{
+        padding:62px 16px 72px;
+      }
+
+      .footer-mark{
+        width:92px;
+        height:92px;
+        font-size:45px;
+        margin-bottom:28px;
+      }
+
+      .footer-brand-name{
+        font-size:32px;
+        letter-spacing:9px;
+        margin-bottom:38px;
+      }
+
+      .footer-copy{
+        font-size:21px;
+        letter-spacing:1.5px;
+        margin-bottom:44px;
+      }
+
+      .footer-links{
+        gap:16px;
+        margin-bottom:26px;
+      }
+
+      .footer-links a,
+      .footer-current{
+        font-size:22px;
+        letter-spacing:2px;
+      }
+
+      .footer-feedback-line{
+        margin-bottom:46px;
+      }
+
+      .footer-feedback-line a,
+      .footer-feedback-line .footer-current{
+        font-size:22px;
+        letter-spacing:2px;
+      }
+
+      .footer-social-icons{
+        gap:24px;
+      }
+
+      .social-square{
+        width:88px;
+        height:88px;
+      }
+
+      .social-symbol{
+        font-size:40px;
+      }
+
+      .social-symbol.instagram{
+        font-size:54px;
+      }
+
+      .social-symbol.linkedin{
+        font-size:38px;
+      }
+    }
+
+    @media(max-width:460px){
+      .footer-brand-name{
+        font-size:25px;
         letter-spacing:7px;
       }
 
-      h1{font-size:56px;}
-      p{font-size:25px;}
-
-      .btn{
-        min-height:92px;
-        font-size:22px;
-        letter-spacing:6px;
+      .footer-copy{
+        font-size:18px;
       }
 
-      .form-box{padding:32px;}
-      .contact h2{font-size:50px;}
+      .footer-links{
+        gap:10px;
+      }
 
-      .footer-logo-row{flex-direction:column;}
-      .footer-brand-name{font-size:24px;}
-      .footer-copy{font-size:17px;}
-      .footer-links a{font-size:18px;}
-      .footer-social-icons a{
-        width:66px;
-        height:66px;
-        font-size:30px;
+      .footer-links a,
+      .footer-current{
+        font-size:19px;
+        letter-spacing:1.2px;
+      }
+
+      .footer-dot{
+        font-size:18px;
+      }
+
+      .footer-feedback-line a,
+      .footer-feedback-line .footer-current{
+        font-size:19px;
+        letter-spacing:1.2px;
+      }
+
+      .footer-social-icons{
+        gap:14px;
+      }
+
+      .social-square{
+        width:74px;
+        height:74px;
+        border-width:3px;
+      }
+
+      .social-symbol{
+        font-size:34px;
+      }
+
+      .social-symbol.instagram{
+        font-size:46px;
+      }
+
+      .social-symbol.linkedin{
+        font-size:32px;
       }
     }
   </style>
@@ -557,21 +781,25 @@
       <div class="menu-box">
         <div class="menu-top">
           <h2>TitanCore Menu</h2>
-          <button class="close-menu" id="closeMenu">×</button>
+          <button class="close-menu" id="closeMenu" aria-label="Close menu">×</button>
         </div>
 
         <nav class="menu-links">
           <a href="index.html">Home</a>
-          <a href="business-intelligence.html">Business Intelligence</a>
-          <a href="stock-market-intelligence.html">Stock & Market Intelligence</a>
-          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
-          <a href="news-media.html">News & Media</a>
-          <a href="global-news.html">Global News</a>
           <a href="about-group.html">About Group</a>
+          <a href="companies.html">Companies</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="news-media.html">News &amp; Media</a>
+          <a href="global-news.html">Global News</a>
           <a href="blogs.html">TitanCore Insights</a>
-          <a href="feedback.html">Feedback</a>
           <a href="contact.html">Contact</a>
         </nav>
+
+        <div class="menu-support-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
       </div>
     </div>
 
@@ -594,42 +822,13 @@
 
     <section class="section">
       <div class="wrap">
-        <div class="eyebrow">Why Feedback Matters</div>
-        <h2>Help TitanCore Improve.</h2>
-
-        <p>
-          Feedback helps TitanCore understand what visitors like, what information is helpful,
-          what topics people want more of, and how the public pages can become more valuable.
-        </p>
-
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>Suggestions</h3>
-            <p>Send ideas for business topics, news coverage, global business information, market watch, or future media content.</p>
-          </div>
-
-          <div class="info-card">
-            <h3>Reader Feedback</h3>
-            <p>Tell TitanCore what you liked, what was confusing, what helped you, or what you want explained better.</p>
-          </div>
-
-          <div class="info-card">
-            <h3>Private Review</h3>
-            <p>Messages are sent privately first. TitanCore decides later what should be published publicly.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="form-section">
-      <div class="wrap">
-        <div class="form-box">
-          <div class="eyebrow">Send Feedback</div>
-          <h2>Tell TitanCore What You Think.</h2>
+        <div class="box">
+          <h2>Tell TitanCore What You Think</h2>
 
           <p>
             Use this form for public-page feedback, business topic suggestions, article ideas,
             media ideas, global news suggestions, market watch suggestions, or general comments.
+            Messages are reviewed privately first.
           </p>
 
           <form name="titancore-feedback" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/feedback-thank-you.html">
@@ -683,28 +882,46 @@
             </div>
           </form>
         </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Suggestions</h3>
+            <p>Send topics for business intelligence, global news, market watch, media, or future articles.</p>
+          </div>
+
+          <div class="card">
+            <h3>Private First</h3>
+            <p>Feedback comes to TitanCore privately. Nothing is automatically published on the website.</p>
+          </div>
+
+          <div class="card">
+            <h3>Improve the Site</h3>
+            <p>Your comments can help TitanCore improve public information and visitor experience.</p>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="contact">
       <div class="wrap">
         <h2>Contact us today</h2>
-
-        <p>
-          For general questions or professional inquiries, contact TitanCore Holdings through the official contact page.
-        </p>
-
+        <p>For general questions or professional inquiries, contact TitanCore Holdings through the official contact page.</p>
         <a href="contact.html" class="btn">Get In Touch <span>›</span></a>
       </div>
     </section>
 
     <footer class="titancore-footer">
-      <div class="footer-logo-row">
-        <div class="footer-mark">TH</div>
-        <div class="footer-brand-name">TitanCore Holdings</div>
+      <div class="footer-mark">TH</div>
+
+      <div class="footer-brand-name">
+        TitanCore<br>
+        Holdings
       </div>
 
-      <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
+      <p class="footer-copy">
+        © 2026 TitanCore Holdings • All rights<br>
+        reserved
+      </p>
 
       <div class="footer-links">
         <a href="privacy-policy.html">Privacy Policy</a>
@@ -712,12 +929,25 @@
         <a href="terms-of-use.html">Terms of Use</a>
         <span class="footer-dot">•</span>
         <a href="blogs.html">Blogs</a>
+        <span class="footer-dot">•</span>
+      </div>
+
+      <div class="footer-feedback-line">
+        <span class="footer-current">Feedback</span>
       </div>
 
       <div class="footer-social-icons">
-        <a href="#" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Instagram" class="instagram">◎</a>
-        <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn" class="linkedin">in</a>
+        <a class="social-square" href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="social-symbol">f</span>
+        </a>
+
+        <a class="social-square" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram">
+          <span class="social-symbol instagram">◎</span>
+        </a>
+
+        <a class="social-square" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="social-symbol linkedin">in</span>
+        </a>
       </div>
     </footer>
 
@@ -743,6 +973,12 @@
         }
       });
     }
+
+    document.addEventListener("keydown", event => {
+      if(event.key === "Escape" && menuPanel){
+        menuPanel.classList.remove("open");
+      }
+    });
   </script>
 </body>
 </html>
