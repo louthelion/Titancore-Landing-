@@ -1,498 +1,513 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Privacy Policy | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings Privacy Policy — how public website information, forms, subscriptions, feedback, and communications are handled." />
-
+  <meta name="description" content="TitanCore Holdings Privacy Policy." />
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
 
-    :root{
-      --gold:#d8b45a;
-      --gold2:#f2d98c;
-      --green:#087457;
-      --green2:#0a8d69;
-      --black:#000;
-      --dark:#111713;
-      --white:#fff;
-      --soft:#e9ece9;
-      --muted:#c9d2cb;
-      --border:rgba(216,180,90,.88);
-      --border-soft:rgba(216,180,90,.42);
-    }
-
-    html{scroll-behavior:smooth;}
-
-    body{
-      background:#000;
-      color:#fff;
-      font-family:Arial, Helvetica, sans-serif;
-      overflow-x:hidden;
-      line-height:1.6;
-    }
-
-    a{color:inherit;text-decoration:none;}
-    button{font-family:inherit;}
-
-    .site{width:100%;min-height:100vh;background:#000;}
-
-    .header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:#000;
-      border-top:2px solid var(--border);
-      border-bottom:2px solid var(--border);
-    }
-
-    .header-inner{
-      min-height:132px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      padding:20px 36px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:22px;
-      min-width:0;
-    }
-
-    .brand-mark{
-      width:92px;
-      height:92px;
-      border:6px solid var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:43px;
-      font-weight:700;
-      background:#030303;
-      flex-shrink:0;
-    }
-
-    .brand-name{
-      color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:31px;
-      text-transform:uppercase;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-
-    .brand-name span{color:#fff;margin-left:8px;}
-
-    .menu-btn{
-      width:92px;
-      height:92px;
-      border:6px solid var(--gold);
-      background:linear-gradient(135deg,var(--green),var(--green2));
-      color:#fff;
-      font-size:44px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      flex-shrink:0;
-    }
-
-    .menu-panel{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.84);
-      z-index:2000;
-      display:none;
-      padding:24px;
-    }
-
-    .menu-panel.open{display:block;}
-
-    .menu-box{
-      max-width:760px;
-      margin:20px auto;
-      background:#050505;
-      border:2px solid var(--border);
-      padding:28px;
-    }
-
-    .menu-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom:1px solid var(--border);
-      padding-bottom:18px;
-      margin-bottom:20px;
-    }
-
-    .menu-top h2{
-      color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:34px;
-      font-weight:400;
-    }
-
-    .close-menu{
-      background:none;
-      border:none;
-      color:#fff;
-      font-size:38px;
-      cursor:pointer;
-    }
-
-    .menu-links{display:grid;gap:12px;}
-
-    .menu-links a{
-      display:block;
-      border:1px solid rgba(216,180,90,.45);
-      padding:18px;
-      color:#fff;
-      font-size:18px;
-      background:rgba(255,255,255,.02);
-    }
-
-    .menu-links a:hover{background:var(--gold);color:#000;}
-
-    .wrap{
-      width:min(1120px,calc(100% - 64px));
-      margin:0 auto;
-    }
-
-    .hero{
-      min-height:680px;
-      display:flex;
-      align-items:center;
-      border-bottom:2px solid var(--border);
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.86)),
-        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85");
-      background-size:cover;
-      background-position:center;
-    }
-
-    .hero-content{padding:88px 0;}
-
-    .eyebrow{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:8px;
-      font-weight:900;
-      font-size:18px;
-      margin-bottom:28px;
-    }
-
-    h1,h2,h3{
-      font-family:Georgia, "Times New Roman", serif;
-      font-weight:400;
-      line-height:1.05;
-    }
-
-    h1{
-      font-size:82px;
-      color:#fff;
-      margin-bottom:34px;
-    }
-
-    h1 span{color:var(--gold2);display:block;}
-
-    h2{
-      font-size:52px;
-      color:#fff;
-      margin-bottom:24px;
-    }
-
-    h3{
-      font-size:34px;
-      color:var(--gold2);
-      margin-bottom:16px;
-    }
-
-    p,li{
-      font-size:24px;
-      color:#fff;
-      line-height:1.7;
-    }
-
-    p{margin-bottom:26px;}
-
-    .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-      min-height:104px;
-      border:4px solid var(--gold);
-      background:linear-gradient(135deg,#047153,#0b8d69);
-      color:#fff;
-      text-transform:uppercase;
-      letter-spacing:8px;
-      font-weight:900;
-      font-size:25px;
-      margin-top:34px;
-      cursor:pointer;
-      transition:.25s ease;
-      text-align:center;
-    }
-
-    .btn:hover{background:var(--gold);color:#000;}
-
-    .btn span{
-      color:var(--gold2);
-      font-size:40px;
-      margin-left:14px;
-    }
-
-    .policy-section{
-      padding:88px 0;
-      background:#111713;
-      border-bottom:2px solid var(--border-soft);
-    }
-
-    .policy-box{
-      border:4px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:46px;
-      margin-bottom:28px;
-    }
-
-    .policy-box ul{
-      padding-left:26px;
-      display:grid;
-      gap:12px;
-      margin-top:16px;
-    }
-
-    .policy-note{
-      border:3px solid var(--gold);
-      background:rgba(3,75,53,.55);
-      padding:30px;
-      margin-top:34px;
-    }
-
-    .contact{
-      padding:100px 0;
-      border-bottom:2px solid var(--border);
-      background:
-        linear-gradient(180deg,rgba(3,75,53,.72),rgba(0,0,0,.82)),
-        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
-      background-size:cover;
-      background-position:center;
-    }
-
-    .contact h2{font-size:68px;}
-
-    .titancore-footer{
-      background:#050505;
-      border-top:2px solid var(--border);
-      padding:58px 24px;
-      text-align:center;
-      color:#fff;
-    }
-
-    .footer-logo-row{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:16px;
-      margin-bottom:22px;
-    }
-
-    .footer-mark{
-      width:64px;
-      height:64px;
-      border:4px solid var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:30px;
-      font-weight:700;
-      background:#000;
-    }
-
-    .footer-brand-name{
-      color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
-      text-transform:uppercase;
-      letter-spacing:1px;
-    }
-
-    .footer-copy{
-      color:#fff;
-      font-size:20px;
-      margin:0 0 26px;
-    }
-
-    .footer-links{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom:34px;
-    }
-
-    .footer-links a,
-    .footer-current{
-      color:#fff;
-      font-size:22px;
-      font-weight:900;
-    }
-
-    .footer-links a:hover,
-    .footer-current{
-      color:var(--gold2);
-    }
-
-    .footer-dot{
-      color:var(--gold2);
-      font-size:22px;
-      font-weight:900;
-    }
-
-    .footer-social-icons{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:22px;
-      flex-wrap:wrap;
-    }
-
-    .footer-social-icons a{
-      width:76px;
-      height:76px;
-      border-radius:50%;
-      background:#fff;
-      color:#000;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:34px;
-      font-weight:900;
-      border:4px solid var(--gold);
-      transition:.25s ease;
-    }
-
-    .footer-social-icons a:hover{
-      background:var(--gold);
-      color:#000;
-      transform:translateY(-4px);
-    }
-
-    .footer-social-icons .instagram{font-size:38px;}
-    .footer-social-icons .linkedin{font-size:30px;}
-
-    @media(max-width:760px){
-      .header-inner{
-        min-height:104px;
-        padding:14px 30px;
-      }
-
-      .brand{gap:14px;}
-
-      .brand-mark{
-        width:70px;
-        height:70px;
-        border-width:5px;
-        font-size:32px;
-      }
-
-      .brand-name{
-        font-size:18px;
-        max-width:230px;
-      }
-
-      .menu-btn{
-        width:70px;
-        height:70px;
-        border-width:5px;
-        font-size:34px;
-      }
-
-      .wrap{width:calc(100% - 52px);}
-      .hero{min-height:620px;}
-      .hero-content{padding:70px 0;}
-
-      h1{font-size:54px;}
-      h2{font-size:40px;}
-      p,li{font-size:21px;}
-
-      .policy-box{padding:30px;}
-
-      .btn{
-        min-height:92px;
-        font-size:21px;
-        letter-spacing:6px;
-      }
-
-      .contact h2{font-size:48px;}
-
-      .footer-logo-row{flex-direction:column;}
-      .footer-brand-name{font-size:24px;}
-      .footer-copy{font-size:17px;}
-      .footer-links a,
-      .footer-current{font-size:18px;}
-      .footer-social-icons a{
-        width:66px;
-        height:66px;
-        font-size:30px;
-      }
-    }
-  
-/* TitanCore unified header/menu/footer */
-.header{position:sticky;top:0;z-index:200;background:#000;border-top:1px solid #d7b35d;border-bottom:1px solid #d7b35d;}
-.header-inner{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#f7f1e6;min-width:0;}
-.brand-mark{width:64px;height:64px;border:2px solid #d7b35d;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:700;color:#f0d07a;background:#030303;flex-shrink:0;}
-.brand-name{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,3vw,34px);letter-spacing:1.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;}
-.brand-name span{color:#d7b35d;}
-.menu-btn{width:64px;height:64px;border:2px solid #d7b35d;background:#0b684f;color:#fff;font-size:34px;line-height:1;cursor:pointer;flex-shrink:0;}
-.menu-panel{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-start;justify-content:flex-end;z-index:500;padding:0;}
-.menu-panel.open{display:flex;}
-.menu-box{width:min(420px,95vw);min-height:100vh;background:#080808;border-left:1px solid #d7b35d;padding:24px;}
-.menu-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(215,179,93,.4);}
-.menu-top h2{font-size:24px;color:#f0d07a;margin:0;}
-.close-menu{border:1px solid #d7b35d;background:#111;color:#fff;font-size:32px;line-height:1;padding:2px 12px;cursor:pointer;}
-.menu-links{display:flex;flex-direction:column;padding-top:14px;}
-.menu-links a{padding:14px 4px;border-bottom:1px solid rgba(215,179,93,.25);color:#f7f1e6;text-decoration:none;letter-spacing:1px;}
-.titancore-footer{margin-top:auto;background:#050505;border-top:1px solid #d7b35d;padding:28px 20px;text-align:center;color:#f7f1e6;}
-.footer-logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
-.footer-mark{width:36px;height:36px;border:1px solid #d7b35d;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;color:#f0d07a;font-weight:700;}
-.footer-brand-name{font-family:Georgia,"Times New Roman",serif;letter-spacing:1px;color:#f0d07a;}
-.footer-copy{margin:0 0 12px;font-size:14px;}
-.footer-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;}
-.footer-links a,.footer-current{color:#f7f1e6;font-size:14px;text-decoration:none;}
-.footer-links a:hover{color:#f0d07a;}
-.footer-dot{color:#d7b35d;}
-.footer-current{color:#f0d07a;}
-.footer-social-icons{display:flex;justify-content:center;gap:10px;}
-.footer-social-icons a{width:34px;height:34px;border:1px solid #d7b35d;color:#f7f1e6;display:grid;place-items:center;text-decoration:none;font-weight:700;}
-@media (max-width:640px){.header-inner{padding:10px 14px}.brand-mark,.menu-btn{width:54px;height:54px}.brand-name{font-size:clamp(15px,4.6vw,23px)}.menu-box{padding:18px}}
-
-</style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --black:#000;
+  --green:#087457;
+  --green2:#0a8d69;
+  --gold:#d8b45a;
+  --gold2:#f2d98c;
+  --white:#fff;
+  --line:rgba(216,180,90,.86);
+  --line-soft:rgba(216,180,90,.38);
+}
+html{scroll-behavior:smooth;}
+body{
+  background:#000;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+a{text-decoration:none;color:inherit;}
+.site{min-height:100vh;background:#000;}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#000;
+  border-top:2px solid var(--gold);
+  border-bottom:2px solid var(--gold);
+}
+.header-inner{
+  min-height:108px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:18px 34px;
+  max-width:1240px;
+  margin:0 auto;
+}
+.brand{display:flex;align-items:center;gap:16px;min-width:0;}
+.brand-mark{
+  width:76px;
+  height:76px;
+  border:4px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold2);
+  background:#000;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:34px;
+  font-weight:900;
+  flex-shrink:0;
+}
+.brand-name{
+  color:var(--gold2);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:30px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.brand-name span{color:#fff;margin-left:8px;}
+.menu-btn{
+  width:76px;
+  height:76px;
+  border:4px solid var(--gold);
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#fff;
+  font-size:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  flex-shrink:0;
+}
+.menu-panel{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.78);
+  z-index:2000;
+  display:none;
+  padding:18px;
+}
+.menu-panel.open{display:block;}
+.menu-box{
+  width:min(560px,100%);
+  margin:18px auto;
+  background:#050505;
+  border:3px solid var(--gold);
+  padding:24px;
+  box-shadow:0 0 30px rgba(0,0,0,.55);
+}
+.menu-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line-soft);
+  padding-bottom:16px;
+  margin-bottom:18px;
+  gap:14px;
+}
+.menu-top h2{
+  color:var(--gold2);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:30px;
+  font-weight:400;
+}
+.close-menu{
+  background:#000;
+  border:2px solid var(--gold);
+  color:#fff;
+  font-size:34px;
+  width:54px;
+  height:54px;
+  cursor:pointer;
+}
+.menu-links{display:grid;grid-template-columns:1fr;gap:10px;}
+.menu-links a{
+  display:block;
+  border:1px solid var(--line-soft);
+  padding:15px 16px;
+  color:#fff;
+  font-weight:900;
+  font-size:16px;
+  letter-spacing:.8px;
+  background:rgba(255,255,255,.02);
+  text-transform:uppercase;
+}
+.menu-links a:hover{background:var(--gold);color:#000;}
+.menu-support-links{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid var(--line-soft);
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.menu-support-links a{
+  color:var(--gold2);
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+}
+
+.wrap{width:min(1120px,calc(100% - 54px));margin:0 auto;}
+.hero{
+  min-height:600px;
+  display:flex;
+  align-items:center;
+  border-bottom:2px solid var(--gold);
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.90)),
+    var(--hero-bg);
+  background-size:cover;
+  background-position:center;
+}
+.hero-content{padding:80px 0;}
+.eyebrow{
+  color:var(--gold2);
+  text-transform:uppercase;
+  letter-spacing:7px;
+  font-weight:900;
+  font-size:16px;
+  margin-bottom:24px;
+}
+h1,h2,h3{
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:400;
+  line-height:1.07;
+}
+h1{font-size:76px;color:#fff;margin-bottom:28px;}
+h1 span{color:var(--gold2);display:block;}
+h2{font-size:48px;color:#fff;margin-bottom:22px;}
+h3{font-size:31px;color:var(--gold2);margin-bottom:14px;}
+p,li{font-size:22px;color:#fff;line-height:1.7;}
+p{margin-bottom:24px;}
+ul{padding-left:26px;display:grid;gap:10px;}
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:94px;
+  border:4px solid var(--gold);
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:7px;
+  font-weight:900;
+  font-size:22px;
+  margin-top:30px;
+  cursor:pointer;
+  transition:.25s ease;
+  text-align:center;
+}
+.btn:hover{background:var(--gold);color:#000;}
+.btn span{color:var(--gold2);font-size:36px;margin-left:12px;}
+.btn:hover span{color:#000;}
+.section{
+  padding:82px 0;
+  background:#101710;
+  border-bottom:2px solid var(--line-soft);
+}
+.section.alt{
+  background:
+    linear-gradient(180deg,rgba(8,116,87,.58),rgba(0,0,0,.88)),
+    var(--section-bg);
+  background-size:cover;
+  background-position:center;
+}
+.box{
+  border:4px solid var(--gold);
+  background:rgba(0,0,0,.58);
+  padding:38px;
+  margin-bottom:26px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:32px;
+}
+.card{
+  border:3px solid var(--gold);
+  background:rgba(0,0,0,.50);
+  padding:28px;
+  min-height:220px;
+}
+.card p{font-size:18px;color:#e9ece9;margin-bottom:0;}
+.article-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:34px;
+}
+.article-card{
+  border:3px solid var(--gold);
+  background:#07110b;
+  overflow:hidden;
+}
+.article-card img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  display:block;
+}
+.article-body{padding:24px;}
+.article-body h3{
+  font-family:Arial,Helvetica,sans-serif;
+  font-weight:900;
+  color:#fff;
+  font-size:24px;
+  line-height:1.2;
+}
+.article-body p{font-size:17px;color:#e9ece9;margin-bottom:18px;}
+.mini-tag{
+  display:inline-flex;
+  border:2px solid var(--gold);
+  color:var(--gold2);
+  padding:10px 12px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:12px;
+  font-weight:900;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:26px;
+}
+.field{display:grid;gap:8px;}
+.field.full{grid-column:1/-1;}
+label{
+  color:var(--gold2);
+  text-transform:uppercase;
+  letter-spacing:2.5px;
+  font-weight:900;
+  font-size:13px;
+}
+input,select,textarea{
+  width:100%;
+  border:2px solid var(--gold);
+  background:#050805;
+  color:#fff;
+  padding:14px 15px;
+  font-size:17px;
+  outline:none;
+}
+input,select{min-height:58px;}
+textarea{min-height:180px;resize:vertical;}
+input::placeholder,textarea::placeholder{color:#b9c1ba;}
+.submit-btn{
+  width:100%;
+  min-height:72px;
+  border:3px solid var(--gold);
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:5px;
+  font-weight:900;
+  font-size:18px;
+  cursor:pointer;
+  margin-top:14px;
+}
+.submit-btn:hover{background:var(--gold);color:#000;}
+.contact{
+  padding:86px 0;
+  border-bottom:2px solid var(--gold);
+  background:
+    linear-gradient(180deg,rgba(8,116,87,.68),rgba(0,0,0,.86)),
+    url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
+  background-size:cover;
+  background-position:center;
+}
+.contact h2{font-size:60px;}
+
+/* FOOTER ORGANIZED LIKE SCREENSHOT */
+.titancore-footer{
+  background:#000;
+  border-top:2px solid var(--gold);
+  padding:74px 24px 86px;
+  text-align:center;
+  color:#fff;
+}
+.footer-mark{
+  width:104px;
+  height:104px;
+  margin:0 auto 34px;
+  border:4px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--gold2);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:52px;
+  font-weight:900;
+  background:#000;
+}
+.footer-brand-name{
+  color:var(--gold2);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:42px;
+  text-transform:uppercase;
+  letter-spacing:12px;
+  line-height:1.55;
+  margin-bottom:46px;
+}
+.footer-copy{
+  color:#fff;
+  font-size:26px;
+  letter-spacing:2px;
+  line-height:1.9;
+  margin:0 0 54px;
+}
+.footer-links{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-bottom:32px;
+}
+.footer-links a,.footer-current{
+  color:#fff;
+  font-size:26px;
+  letter-spacing:2.4px;
+  font-weight:400;
+}
+.footer-links a:hover,.footer-current{color:var(--gold2);}
+.footer-dot{
+  color:var(--gold2);
+  font-size:24px;
+  font-weight:900;
+  line-height:1;
+}
+.footer-feedback-line{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 0 58px;
+}
+.footer-feedback-line a,
+.footer-feedback-line .footer-current{
+  color:#fff;
+  font-size:26px;
+  letter-spacing:2.4px;
+  font-weight:400;
+}
+.footer-feedback-line a:hover,
+.footer-feedback-line .footer-current{color:var(--gold2);}
+.footer-social-icons{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:34px;
+  flex-wrap:nowrap;
+}
+.social-square{
+  width:106px;
+  height:106px;
+  border:4px solid var(--gold);
+  background:#000;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  transition:.25s ease;
+  flex:0 0 auto;
+}
+.social-square:hover{
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#fff;
+  transform:translateY(-3px);
+}
+.social-symbol{
+  font-size:46px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:0;
+}
+.social-symbol.instagram{
+  font-size:62px;
+  font-weight:400;
+}
+.social-symbol.linkedin{
+  font-size:44px;
+  font-weight:900;
+}
+
+@media(max-width:900px){
+  .grid,.article-grid{grid-template-columns:1fr;}
+  .form-grid{grid-template-columns:1fr;}
+}
+@media(max-width:760px){
+  .header-inner{min-height:92px;padding:12px 22px;}
+  .brand{gap:12px;}
+  .brand-mark{width:62px;height:62px;font-size:27px;border-width:3px;}
+  .brand-name{font-size:18px;max-width:210px;}
+  .menu-btn{width:62px;height:62px;font-size:31px;border-width:3px;}
+  .wrap{width:calc(100% - 46px);}
+  .hero{min-height:560px;}
+  .hero-content{padding:62px 0;}
+  .eyebrow{font-size:14px;letter-spacing:5px;}
+  h1{font-size:48px;}
+  h2{font-size:36px;}
+  h3{font-size:27px;}
+  p,li{font-size:19px;}
+  .box{padding:28px;}
+  .btn{min-height:84px;font-size:18px;letter-spacing:5px;}
+  .contact h2{font-size:42px;}
+
+  .titancore-footer{padding:62px 16px 72px;}
+  .footer-mark{width:92px;height:92px;font-size:45px;margin-bottom:28px;}
+  .footer-brand-name{font-size:32px;letter-spacing:9px;margin-bottom:38px;}
+  .footer-copy{font-size:21px;letter-spacing:1.5px;margin-bottom:44px;}
+  .footer-links{gap:16px;margin-bottom:26px;}
+  .footer-links a,.footer-current{font-size:22px;letter-spacing:2px;}
+  .footer-feedback-line{margin-bottom:46px;}
+  .footer-feedback-line a,.footer-feedback-line .footer-current{font-size:22px;letter-spacing:2px;}
+  .footer-social-icons{gap:24px;}
+  .social-square{width:88px;height:88px;}
+  .social-symbol{font-size:40px;}
+  .social-symbol.instagram{font-size:54px;}
+  .social-symbol.linkedin{font-size:38px;}
+}
+@media(max-width:460px){
+  .footer-brand-name{font-size:25px;letter-spacing:7px;}
+  .footer-copy{font-size:18px;}
+  .footer-links{gap:10px;}
+  .footer-links a,.footer-current{font-size:19px;letter-spacing:1.2px;}
+  .footer-dot{font-size:18px;}
+  .footer-feedback-line a,.footer-feedback-line .footer-current{font-size:19px;letter-spacing:1.2px;}
+  .footer-social-icons{gap:14px;}
+  .social-square{width:74px;height:74px;border-width:3px;}
+  .social-symbol{font-size:34px;}
+  .social-symbol.instagram{font-size:46px;}
+  .social-symbol.linkedin{font-size:32px;}
+}
+
+.hero{--hero-bg:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85");}
+  </style>
 </head>
-
 <body>
   <div class="site">
-
-    <header class="header">
+    
+<header class="header">
   <div class="header-inner">
     <a href="index.html" class="brand">
       <div class="brand-mark">TH</div>
       <div class="brand-name">TitanCore <span>Holdings</span></div>
     </a>
-
-    <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
+    <button class="menu-btn" id="openMenu" aria-label="Open menu">â°</button>
   </div>
 </header>
 
@@ -500,227 +515,109 @@
   <div class="menu-box">
     <div class="menu-top">
       <h2>TitanCore Menu</h2>
-      <button class="close-menu" id="closeMenu">×</button>
+      <button class="close-menu" id="closeMenu" aria-label="Close menu">Ã</button>
     </div>
-
     <nav class="menu-links">
       <a href="index.html">Home</a>
+      <a href="about-group.html">About Group</a>
+      <a href="companies.html">Companies</a>
       <a href="business-intelligence.html">Business Intelligence</a>
-      <a href="stock-market-intelligence.html">Stock &amp; Market Intelligence</a>
-      <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
       <a href="news-media.html">News &amp; Media</a>
       <a href="global-news.html">Global News</a>
-      <a href="about-group.html">About Group</a>
       <a href="blogs.html">TitanCore Insights</a>
-      <a href="feedback.html">Feedback</a>
       <a href="contact.html">Contact</a>
     </nav>
+    <div class="menu-support-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-use.html">Terms of Use</a>
+      <a href="feedback.html">Feedback</a>
+    </div>
   </div>
 </div>
 
-    <div class="menu-panel" id="menuPanel">
-      <div class="menu-box">
-        <div class="menu-top">
-          <h2>TitanCore Menu</h2>
-          <button class="close-menu" id="closeMenu">×</button>
-        </div>
-
-        <nav class="menu-links">
-          <a href="index.html">Home</a>
-          <a href="business-intelligence.html">Business Intelligence</a>
-          <a href="stock-market-intelligence.html">Stock & Market Intelligence</a>
-          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
-          <a href="news-media.html">News & Media</a>
-          <a href="global-news.html">Global News</a>
-          <a href="about-group.html">About Group</a>
-          <a href="blogs.html">TitanCore Insights</a>
-          <a href="feedback.html">Feedback</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
+    
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Privacy <span>Policy.</span></h1>
+      <p>This Privacy Policy explains how TitanCore Holdings handles information submitted through public website forms, subscriptions, feedback, contact requests, and public communication channels.</p>
+      <a href="index.html" class="btn">Back Home <span>âº</span></a>
     </div>
-
-    <section class="hero">
-      <div class="wrap">
-        <div class="hero-content">
-          <div class="eyebrow">Privacy Policy</div>
-
-          <h1>Privacy <span>Policy.</span></h1>
-
-          <p>
-            This Privacy Policy explains how TitanCore Holdings handles information submitted through
-            public website forms, subscriptions, feedback, contact requests, and public communication channels.
-          </p>
-
-          <a href="index.html" class="btn">Back Home <span>›</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="policy-section">
-      <div class="wrap">
-
-        <div class="policy-box">
-          <h2>Last Updated</h2>
-          <p>May 2026</p>
-        </div>
-
-        <div class="policy-box">
-          <h2>Information We May Collect</h2>
-          <p>
-            TitanCore Holdings may collect information visitors choose to submit through website forms.
-            This may include:
-          </p>
-          <ul>
-            <li>Name</li>
-            <li>Email address</li>
-            <li>Phone number, when provided</li>
-            <li>Subscription preferences</li>
-            <li>Feedback or message content</li>
-            <li>Selected interests, such as company news, global business news, market watch, or media updates</li>
-          </ul>
-        </div>
-
-        <div class="policy-box">
-          <h2>How Information May Be Used</h2>
-          <p>
-            TitanCore Holdings may use submitted information to:
-          </p>
-          <ul>
-            <li>Respond to public inquiries</li>
-            <li>Send requested updates or media briefings</li>
-            <li>Review feedback and suggestions</li>
-            <li>Improve public website pages, articles, media content, and visitor experience</li>
-            <li>Organize public communication connected to TitanCore Holdings and its company network</li>
-          </ul>
-        </div>
-
-        <div class="policy-box">
-          <h2>Forms, Subscriptions, and Feedback</h2>
-          <p>
-            When visitors submit a subscription, feedback message, or contact request, the information may be
-            received through website form services and sent to TitanCore Holdings for review. Feedback is reviewed
-            privately first and is not automatically published publicly.
-          </p>
-        </div>
-
-        <div class="policy-box">
-          <h2>Third-Party Platforms</h2>
-          <p>
-            TitanCore Holdings may provide links to official social media pages such as Facebook, Instagram,
-            and LinkedIn. When visitors leave the TitanCore website and visit those platforms, the privacy practices
-            of those platforms may apply.
-          </p>
-        </div>
-
-        <div class="policy-box">
-          <h2>Cookies and Analytics</h2>
-          <p>
-            TitanCore Holdings may later use website tools, analytics, or hosting services that help understand
-            website traffic, visitor activity, form submissions, and page performance. If additional tracking tools
-            are added in the future, this policy may be updated.
-          </p>
-        </div>
-
-        <div class="policy-box">
-          <h2>Information Sharing</h2>
-          <p>
-            TitanCore Holdings does not intend to sell visitor information. Information may be used internally to
-            manage public communications, subscriptions, feedback, website inquiries, and business-related public
-            contact.
-          </p>
-        </div>
-
-        <div class="policy-box">
-          <h2>Data Security</h2>
-          <p>
-            TitanCore Holdings aims to keep submitted information handled responsibly. However, no website or online
-            transmission can be guaranteed completely secure. Visitors should avoid submitting sensitive private
-            information through public website forms.
-          </p>
-        </div>
-
-        <div class="policy-box">
-          <h2>Children’s Privacy</h2>
-          <p>
-            The TitanCore Holdings public website is intended for general business and public information purposes.
-            It is not designed to collect information from children.
-          </p>
-        </div>
-
-        <div class="policy-box">
-          <h2>Policy Updates</h2>
-          <p>
-            TitanCore Holdings may update this Privacy Policy as the website, forms, media features, subscriptions,
-            and public communication systems develop.
-          </p>
-        </div>
-
-        <div class="policy-note">
-          <h3>Contact</h3>
-          <p>
-            For privacy-related questions, contact TitanCore Holdings at contact@titancoreholdings.com
-            or through the official contact page.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="contact">
-      <div class="wrap">
-        <h2>Contact us today</h2>
-        <p>
-          For general questions, privacy-related questions, or professional inquiries, contact TitanCore Holdings
-          through the official contact page.
-        </p>
-
-        <a href="contact.html" class="btn">Get In Touch <span>›</span></a>
-      </div>
-    </section>
-
-    <footer class="titancore-footer">
-  <div class="footer-logo-row">
-    <div class="footer-mark">TH</div>
-    <div class="footer-brand-name">TitanCore Holdings</div>
   </div>
+</section>
 
-  <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
+<section class="section">
+  <div class="wrap">
+    <div class="box"><h2>Last Updated</h2><p>May 2026</p></div>
+    <div class="box">
+      <h2>Information We May Collect</h2>
+      <p>TitanCore Holdings may collect information visitors choose to submit through website forms, including:</p>
+      <ul>
+        <li>Name, email address, and phone number when provided.</li>
+        <li>Subscription preferences and selected interests.</li>
+        <li>Feedback, suggestions, article ideas, and message content.</li>
+        <li>General inquiry details submitted through public contact forms.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>How Information May Be Used</h2>
+      <p>TitanCore Holdings may use submitted information to respond to inquiries, review feedback, send requested updates, improve website content, and organize public communications connected to TitanCore Holdings and its company network.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Forms</h3><p>Website form submissions may be received through hosting/form tools and routed to TitanCore for review.</p></div>
+      <div class="card"><h3>Feedback</h3><p>Feedback is reviewed privately first. It is not automatically published publicly.</p></div>
+      <div class="card"><h3>Social Platforms</h3><p>Links to Facebook, Instagram, and LinkedIn take visitors to outside platforms with their own policies.</p></div>
+    </div>
+    <div class="box"><h2>Information Sharing</h2><p>TitanCore Holdings does not intend to sell visitor information. Information may be used internally for public communication, subscriptions, feedback review, and website inquiries.</p></div>
+    <div class="box"><h2>Security</h2><p>No website or online transmission can be guaranteed completely secure. Visitors should avoid submitting sensitive private information through public website forms.</p></div>
+    <div class="box"><h2>Policy Updates</h2><p>TitanCore Holdings may update this Privacy Policy as the website, forms, subscriptions, media features, and public communication systems develop.</p></div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <h2>Contact us today</h2>
+    <p>For privacy-related questions, contact TitanCore Holdings through the official contact page.</p>
+    <a href="contact.html" class="btn">Get In Touch <span>âº</span></a>
+  </div>
+</section>
+
+    
+<footer class="titancore-footer">
+  <div class="footer-mark">TH</div>
+  <div class="footer-brand-name">TitanCore<br>Holdings</div>
+
+  <p class="footer-copy">Â© 2026 TitanCore Holdings â¢ All rights<br>reserved</p>
 
   <div class="footer-links">
-    <span class="footer-current">Privacy Policy</span> <span class="footer-dot">•</span> <a href="terms-of-use.html">Terms of Use</a> <span class="footer-dot">•</span> <a href="blogs.html">Blogs</a> <span class="footer-dot">•</span> <a href="feedback.html">Feedback</a>
+    <span class="footer-current">Privacy Policy</span>
+    <span class="footer-dot">â¢</span>
+    <a href="terms-of-use.html">Terms of Use</a>
+    <span class="footer-dot">â¢</span>
+    <a href="blogs.html">Blogs</a>
+    <span class="footer-dot">â¢</span>
+  </div>
+
+  <div class="footer-feedback-line">
+    <a href="feedback.html">Feedback</a>
   </div>
 
   <div class="footer-social-icons">
-    <a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-    <a href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram" class="instagram">◎</a>
-    <a href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn" class="linkedin">in</a>
+    <a class="social-square" href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+      <span class="social-symbol">f</span>
+    </a>
+    <a class="social-square" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram">
+      <span class="social-symbol instagram">â</span>
+    </a>
+    <a class="social-square" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <span class="social-symbol linkedin">in</span>
+    </a>
   </div>
 </footer>
 
   </div>
-
-  <script>
-    const openMenu = document.getElementById("openMenu");
-    const closeMenu = document.getElementById("closeMenu");
-    const menuPanel = document.getElementById("menuPanel");
-
-    if(openMenu && menuPanel){
-      openMenu.addEventListener("click", () => menuPanel.classList.add("open"));
-    }
-
-    if(closeMenu && menuPanel){
-      closeMenu.addEventListener("click", () => menuPanel.classList.remove("open"));
-    }
-
-    if(menuPanel){
-      menuPanel.addEventListener("click", event => {
-        if(event.target === menuPanel){
-          menuPanel.classList.remove("open");
-        }
-      });
-    }
-  </script>
+  
 <script>
   const openMenu = document.getElementById("openMenu");
   const closeMenu = document.getElementById("closeMenu");
@@ -729,11 +626,9 @@
   if(openMenu && menuPanel){
     openMenu.addEventListener("click", () => menuPanel.classList.add("open"));
   }
-
   if(closeMenu && menuPanel){
     closeMenu.addEventListener("click", () => menuPanel.classList.remove("open"));
   }
-
   if(menuPanel){
     menuPanel.addEventListener("click", event => {
       if(event.target === menuPanel){
@@ -741,6 +636,12 @@
       }
     });
   }
+  document.addEventListener("keydown", event => {
+    if(event.key === "Escape" && menuPanel){
+      menuPanel.classList.remove("open");
+    }
+  });
 </script>
+
 </body>
 </html>
