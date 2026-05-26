@@ -1,928 +1,817 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>TitanCore Holdings | Private Holding Company</title>
-  <meta name="description" content="TitanCore Holdings is a private holding company built to organize, support, and guide a network of business interests, media intelligence, company structure, and public communication." />
+  <meta name="description" content="TitanCore Holdings is a private holding company built to organize, guide, and support its company network, business intelligence, media platform, global business education, and public communication." />
 
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
+    /* -----------------------------
+      TITANCORE LUXURY V2 — CSS
+    ------------------------------ /
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background:#000;
+      color:#fff;
+      overflow-x:hidden;
+      line-height:1.6;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
 
     :root{
       --black:#000;
-      --green:#087457;
-      --green2:#0a8d69;
-      --gold:#d8b45a;
-      --gold2:#f2d98c;
+      --panel:#070707;
+      --panel2:#0c0f0c;
       --white:#fff;
       --soft:#e9ece9;
-      --muted:#c9d2cb;
-      --line:rgba(216,180,90,.86);
-      --line-soft:rgba(216,180,90,.38);
+
+      --green:#087457;
+      --green2:#0a8d69;
+
+      --gold:#d8b45a;
+      --gold2:#f2d98c;
+      --gold3:#a47b1f;
+
+      --line:rgba(242,217,140,.55);
+      --line-soft:rgba(242,217,140,.20);
+
+      --shadow: 0 24px 70px rgba(0,0,0,.62);
+      --shadow2: 0 16px 40px rgba(0,0,0,.55);
+
+      --radius: 22px;
+      --radius2: 14px;
+
+      --container: 1180px;
+
+      --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
 
-    html{scroll-behavior:smooth;}
-
-    body{
-      background:#000;
-      color:#fff;
-      font-family:Arial, Helvetica, sans-serif;
-      overflow-x:hidden;
-      line-height:1.6;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    .site{
+    / Subtle “luxury lighting” /
+    .site {
       min-height:100vh;
-      background:#000;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(216,180,90,.12), transparent 55%),
+        radial-gradient(900px 600px at 80% 20%, rgba(8,116,87,.14), transparent 55%),
+        radial-gradient(1000px 800px at 50% 85%, rgba(242,217,140,.08), transparent 60%),
+        #000;
+      position:relative;
     }
 
-    .header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:#000;
-      border-top:2px solid var(--gold);
-      border-bottom:2px solid var(--gold);
+    / Optional subtle noise overlay (pure CSS) /
+    .site::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.06;
+      mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      background-size:220px 220px;
     }
 
-    .header-inner{
-      min-height:108px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      padding:18px 34px;
-      max-width:1240px;
+    .wrap{
+      width:min(var(--container), calc(100% - 48px));
       margin:0 auto;
     }
 
+    / Gold border “metal” /
+    .metal-border{
+      position:relative;
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+    .metal-border::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      padding:2px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg,
+          rgba(242,217,140,.95),
+          rgba(216,180,90,.55) 25%,
+          rgba(164,123,31,.75) 50%,
+          rgba(242,217,140,.65) 75%,
+          rgba(216,180,90,.85)
+        );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events:none;
+      opacity:.92;
+    }
+
+    / Header /
+    header{
+      position:sticky;
+      top:0;
+      z-index:999;
+      backdrop-filter: blur(10px);
+      background: rgba(0,0,0,.62);
+      border-bottom:1px solid var(--line-soft);
+    }
+    .header-inner{
+      min-height:96px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:18px 0;
+    }
     .brand{
       display:flex;
       align-items:center;
-      gap:16px;
+      gap:14px;
       min-width:0;
     }
-
     .brand-mark{
-      width:76px;
-      height:76px;
-      border:4px solid var(--gold);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--gold2);
-      background:#000;
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:34px;
-      font-weight:900;
-      flex-shrink:0;
+      width:62px;
+      height:62px;
+      display:grid;
+      place-items:center;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(242,217,140,.18), transparent 55%),
+        linear-gradient(135deg, rgba(8,116,87,.55), rgba(0,0,0,.9));
+      box-shadow: var(--shadow2);
+      position:relative;
     }
-
-    .brand-name{
+    .brand-mark span{
+      font-family:var(--serif);
+      font-weight:900;
+      letter-spacing:.6px;
+      font-size:22px;
       color:var(--gold2);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:30px;
       text-transform:uppercase;
-      letter-spacing:1.5px;
+    }
+    .brand-name{
+      font-family:var(--serif);
+      text-transform:uppercase;
+      letter-spacing:1.4px;
+      font-size: clamp(16px, 2vw, 22px);
+      color:var(--gold2);
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
-
-    .brand-name span{
+    .brand-name b{
       color:#fff;
+      font-weight:400;
       margin-left:8px;
     }
 
-    .menu-btn{
-      width:76px;
-      height:76px;
-      border:4px solid var(--gold);
-      background:linear-gradient(135deg,var(--green),var(--green2));
-      color:#fff;
-      font-size:38px;
+    .nav-actions{
       display:flex;
       align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      flex-shrink:0;
+      gap:12px;
     }
 
-    .menu-panel{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.78);
-      z-index:2000;
-      display:none;
-      padding:18px;
-    }
-
-    .menu-panel.open{
-      display:block;
-    }
-
-    .menu-box{
-      width:min(560px,100%);
-      margin:18px auto;
-      background:#050505;
-      border:3px solid var(--gold);
-      padding:24px;
-      box-shadow:0 0 30px rgba(0,0,0,.55);
-    }
-
-    .menu-top{
+    / Desktop links (hidden on mobile) /
+    .top-links{
       display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom:1px solid var(--line-soft);
-      padding-bottom:16px;
-      margin-bottom:18px;
       gap:14px;
+      align-items:center;
+      padding-right:6px;
+    }
+    .top-links a{
+      font-size:13px;
+      letter-spacing:2.2px;
+      text-transform:uppercase;
+      opacity:.92;
+      padding:10px 10px;
+      border-radius: 12px;
+      transition:.18s ease;
+    }
+    .top-links a:hover{
+      background: rgba(242,217,140,.08);
+      opacity:1;
     }
 
-    .menu-top h2{
-      color:var(--gold2);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:30px;
-      font-weight:400;
-    }
-
-    .close-menu{
-      background:#000;
-      border:2px solid var(--gold);
-      color:#fff;
-      font-size:34px;
+    .menu-btn{
       width:54px;
       height:54px;
-      cursor:pointer;
-    }
-
-    .menu-links{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-    }
-
-    .menu-links a{
-      display:block;
-      border:1px solid var(--line-soft);
-      padding:15px 16px;
-      color:#fff;
-      font-weight:900;
-      font-size:16px;
-      letter-spacing:.8px;
-      background:rgba(255,255,255,.02);
-      text-transform:uppercase;
-    }
-
-    .menu-links a:hover{
-      background:var(--gold);
-      color:#000;
-    }
-
-    .menu-support-links{
-      margin-top:18px;
-      padding-top:16px;
-      border-top:1px solid var(--line-soft);
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .menu-support-links a{
-      color:var(--gold2);
-      font-size:13px;
-      font-weight:900;
-      text-transform:uppercase;
-      letter-spacing:1.2px;
-    }
-
-    .wrap{
-      width:min(1120px,calc(100% - 54px));
-      margin:0 auto;
-    }
-
-    .hero{
-      min-height:760px;
-      display:flex;
-      align-items:center;
-      border-bottom:2px solid var(--gold);
+      border-radius: 16px;
+      border:1px solid var(--line);
       background:
-        linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.92)),
+        radial-gradient(circle at 20% 20%, rgba(242,217,140,.15), transparent 60%),
+        linear-gradient(135deg, rgba(8,116,87,.70), rgba(0,0,0,.85));
+      color:#fff;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
+      transition:.18s ease;
+    }
+    .menu-btn:hover{
+      transform: translateY(-1px);
+    }
+    .menu-btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible{
+      outline: 3px solid rgba(242,217,140,.55);
+      outline-offset: 3px;
+    }
+
+    / Hero /
+    .hero{
+      position:relative;
+      padding: 88px 0 62px;
+      border-bottom:1px solid var(--line-soft);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.85)),
         var(--hero-bg);
       background-size:cover;
       background-position:center;
     }
 
-    .hero-content{
-      padding:92px 0;
-      max-width:980px;
-    }
-
-    .date-line{
-      color:#fff;
-      text-transform:uppercase;
-      letter-spacing:2.2px;
-      font-weight:900;
-      font-size:14px;
-      margin-bottom:22px;
-      opacity:.95;
-    }
-
-    .eyebrow{
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:7px;
-      font-weight:900;
-      font-size:16px;
-      margin-bottom:24px;
-    }
-
-    h1,h2,h3{
-      font-family:Georgia,"Times New Roman",serif;
-      font-weight:400;
-      line-height:1.07;
-    }
-
-    h1{
-      font-size:82px;
-      color:#fff;
-      margin-bottom:30px;
-    }
-
-    h1 span{
-      color:var(--gold2);
-      display:block;
-    }
-
-    h2{
-      font-size:52px;
-      color:#fff;
-      margin-bottom:24px;
-    }
-
-    h2 span{
-      color:var(--gold2);
-    }
-
-    h3{
-      font-size:32px;
-      color:var(--gold2);
-      margin-bottom:14px;
-    }
-
-    p,li{
-      font-size:23px;
-      color:#fff;
-      line-height:1.7;
-    }
-
-    p{
-      margin-bottom:24px;
-    }
-
-    .btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-      min-height:94px;
-      border:4px solid var(--gold);
-      background:linear-gradient(135deg,var(--green),var(--green2));
-      color:#fff;
-      text-transform:uppercase;
-      letter-spacing:7px;
-      font-weight:900;
-      font-size:22px;
-      margin-top:28px;
-      cursor:pointer;
-      transition:.25s ease;
-      text-align:center;
-    }
-
-    .btn:hover{
-      background:var(--gold);
-      color:#000;
-    }
-
-    .btn span{
-      color:var(--gold2);
-      font-size:36px;
-      margin-left:12px;
-    }
-
-    .btn:hover span{
-      color:#000;
-    }
-
-    .button-row{
+    .hero-grid{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-      margin-top:32px;
-    }
-
-    .section{
-      padding:88px 0;
-      background:#101710;
-      border-bottom:2px solid var(--line-soft);
-    }
-
-    .section.dark{
-      background:#000;
-    }
-
-    .section.media-bg{
-      background:
-        linear-gradient(180deg,rgba(8,116,87,.62),rgba(0,0,0,.90)),
-        var(--section-bg);
-      background-size:cover;
-      background-position:center;
-    }
-
-    .section-title{
-      margin-bottom:38px;
-    }
-
-    .section-title p{
-      max-width:940px;
-      color:#f2f2f2;
-    }
-
-    .feature-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:28px;
       align-items:stretch;
     }
 
-    .feature-text{
-      border:4px solid var(--gold);
-      background:rgba(0,0,0,.58);
-      padding:38px;
-    }
-
-    .feature-image{
-      min-height:520px;
-      border:4px solid var(--gold);
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.55)),
-        var(--feature-bg);
-      background-size:cover;
-      background-position:center;
-    }
-
-    .plain-photo{
-      min-height:560px;
-      border-top:4px solid var(--gold);
-      border-bottom:4px solid var(--gold);
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.32)),
-        var(--plain-bg);
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:flex-end;
-    }
-
-    .plain-caption{
-      width:100%;
-      background:rgba(0,0,0,.72);
-      border-top:2px solid var(--gold);
-      padding:34px 0;
-    }
-
-    .plain-caption p{
-      margin:0;
-      color:#fff;
-    }
-
-    .card-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:24px;
-    }
-
-    .card{
-      border:4px solid var(--gold);
-      background:rgba(0,0,0,.58);
-      padding:30px;
-      min-height:260px;
-      transition:.25s ease;
-    }
-
-    .card:hover{
-      transform:translateY(-4px);
-      background:rgba(8,116,87,.40);
-    }
-
-    .card p{
-      font-size:18px;
-      color:#e9ece9;
-      margin-bottom:0;
-    }
-
-    .card-action{
-      border-top:2px solid rgba(216,180,90,.66);
-      padding-top:16px;
-      margin-top:22px;
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:13px;
-      font-weight:900;
-    }
-
-    .media-wall{
-      display:grid;
-      grid-template-columns:1.3fr .7fr;
-      gap:26px;
-      align-items:stretch;
-    }
-
-    .video-screen{
-      min-height:520px;
-      border:4px solid var(--gold);
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,0,0,.78)),
-        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85");
-      background-size:cover;
-      background-position:center;
-      position:relative;
-      display:flex;
-      align-items:flex-end;
-      padding:36px;
-    }
-
-    .play-button{
-      position:absolute;
-      top:30px;
-      right:30px;
-      width:78px;
-      height:78px;
-      border:4px solid var(--gold);
-      background:#000;
-      color:var(--gold2);
+    .kicker{
       display:flex;
       align-items:center;
+      gap:12px;
+      margin-bottom:14px;
+      opacity:.98;
+      flex-wrap:wrap;
+    }
+    .pill{
+      font-size:12px;
+      letter-spacing:2.6px;
+      text-transform:uppercase;
+      padding:8px 10px;
+      border-radius: 999px;
+      background: rgba(242,217,140,.10);
+      border: 1px solid rgba(242,217,140,.22);
+      color: var(--gold2);
+    }
+    .date-line{
+      font-size:12px;
+      letter-spacing:2.6px;
+      text-transform:uppercase;
+      opacity:.9;
+    }
+
+    h1,h2,h3{ font-family:var(--serif); font-weight:400; line-height:1.05; }
+    h1{
+      font-size: clamp(44px, 6vw, 78px);
+      margin: 12px 0 18px;
+    }
+    h1 span{
+      color: var(--gold2);
+      display:block;
+    }
+    p{
+      font-size: clamp(16px, 2.1vw, 20px);
+      color: rgba(255,255,255,.90);
+      line-height: 1.75;
+      margin-bottom: 18px;
+      font-family: var(--sans);
+    }
+
+    .hero-panel{
+      padding: 34px;
+      border-radius: var(--radius);
+      background: rgba(10,12,10,.56);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top: 18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
       justify-content:center;
-      font-size:34px;
-      font-weight:900;
+      gap:12px;
+      min-height:58px;
+      padding: 0 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(242,217,140,.35);
+      text-transform:uppercase;
+      letter-spacing: 3.8px;
+      font-weight: 900;
+      font-size: 12px;
+      cursor:pointer;
+      transition:.22s ease;
+      position:relative;
+      overflow:hidden;
+      user-select:none;
     }
 
-    .video-screen h3{
+    / Luxury “shine” /
+    .btn::after{
+      content:"";
+      position:absolute;
+      inset:-80px -120px;
+      transform: rotate(20deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+      opacity:0;
+      transition:.35s ease;
+    }
+    .btn:hover::after{
+      opacity:1;
+      inset:-80px 120px;
+    }
+
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(8,116,87,.85), rgba(0,0,0,.92));
       color:#fff;
-      font-family:Arial, Helvetica, sans-serif;
-      font-size:34px;
-      font-weight:900;
+      box-shadow: var(--shadow2);
+    }
+    .btn.primary:hover{
+      transform: translateY(-2px);
+      border-color: rgba(242,217,140,.6);
+    }
+    .btn.secondary{
+      background: rgba(0,0,0,.35);
+      color: var(--gold2);
+    }
+    .btn.secondary:hover{
+      background: rgba(242,217,140,.10);
+      transform: translateY(-2px);
+    }
+    .btn .arrow{
+      color: var(--gold2);
+      font-size: 18px;
+      margin-top:-1px;
     }
 
-    .video-screen p{
-      font-size:19px;
-      margin-bottom:0;
-      color:#f2f2f2;
-    }
-
-    .video-list{
-      display:grid;
+    / Right hero “executive brief” /
+    .brief{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
       gap:18px;
     }
-
-    .video-card{
-      min-height:158px;
-      border:3px solid var(--gold);
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.78)),
-        var(--video-bg);
-      background-size:cover;
-      background-position:center;
-      padding:22px;
-      display:flex;
-      align-items:flex-end;
-      position:relative;
-    }
-
-    .video-card::before{
-      content:"▶";
-      position:absolute;
-      top:18px;
-      right:18px;
-      width:44px;
-      height:44px;
-      border:2px solid var(--gold);
-      background:#000;
-      color:var(--gold2);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
+    .brief h3{
+      font-size: 18px;
+      letter-spacing: 3px;
+      text-transform:uppercase;
+      font-family: var(--sans);
       font-weight:900;
-    }
-
-    .video-card h3{
-      font-family:Arial, Helvetica, sans-serif;
       color:#fff;
-      font-size:21px;
-      font-weight:900;
-      margin-bottom:0;
+      margin-bottom:10px;
+    }
+    .brief .metric{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(242,217,140,.15);
+    }
+    .metric b{
+      color: var(--gold2);
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing:.6px;
+    }
+    .metric span{
+      opacity:.9;
+      font-size: 13px;
+      letter-spacing:2px;
+      text-transform:uppercase;
     }
 
+    / News strip /
     .news-strip{
-      background:#050805;
-      border-top:2px solid var(--gold);
-      border-bottom:2px solid var(--gold);
+      background: rgba(0,0,0,.55);
+      border-top:1px solid var(--line-soft);
+      border-bottom:1px solid var(--line-soft);
       overflow:hidden;
-      white-space:nowrap;
-      padding:16px 0;
+      padding: 14px 0;
     }
-
     .ticker{
       display:inline-block;
       padding-left:100%;
       animation:tickerMove 38s linear infinite;
-      color:#fff;
+      font-size: 12px;
+      letter-spacing: 3px;
       text-transform:uppercase;
-      letter-spacing:3px;
       font-weight:900;
-      font-size:15px;
+      opacity:.95;
+      font-family: var(--sans);
     }
-
     .ticker span{
       color:#000;
-      background:var(--gold);
-      padding:7px 12px;
-      margin-right:18px;
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      padding:6px 10px;
+      border-radius: 999px;
+      margin-right: 14px;
     }
-
     @keyframes tickerMove{
-      from{transform:translateX(0);}
-      to{transform:translateX(-100%);}
+      from{ transform: translateX(0); }
+      to{ transform: translateX(-100%); }
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      .ticker{ animation:none; padding-left:0; }
+      .btn::after{ display:none; }
     }
 
-    .contact{
-      padding:92px 0;
-      border-bottom:2px solid var(--gold);
+    / Sections /
+    .section{
+      padding: 86px 0;
+      background: rgba(10,14,10,.72);
+      border-bottom: 1px solid rgba(242,217,140,.16);
+    }
+    .section.dark{
+      background: rgba(0,0,0,.70);
+    }
+    .section-title{
+      margin-bottom: 34px;
+      max-width: 920px;
+    }
+    .eyebrow{
+      color: var(--gold2);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: 12px;
+      margin-bottom: 12px;
+      font-family: var(--sans);
+      opacity:.95;
+    }
+    h2{
+      font-size: clamp(30px, 4.5vw, 52px);
+      margin-bottom: 16px;
+    }
+    h2 span{ color: var(--gold2); }
+
+    / Feature grid /
+    .feature-grid{
+      display:grid;
+      grid-template-columns: 1.06fr .94fr;
+      gap: 22px;
+      align-items:stretch;
+    }
+    .panel{
+      border-radius: var(--radius);
+      background: rgba(0,0,0,.40);
+      box-shadow: var(--shadow2);
+      padding: 34px;
+    }
+    .panel h3{
+      color: var(--gold2);
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+    .feature-image{
+      min-height: 520px;
+      border-radius: var(--radius);
       background:
-        linear-gradient(180deg,rgba(8,116,87,.70),rgba(0,0,0,.88)),
-        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
-      background-size:cover;
+        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.62)),
+        var(--feature-bg);
+      background-size: cover;
       background-position:center;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .feature-image::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(600px 300px at 30% 20%, rgba(242,217,140,.10), transparent 60%),
+        radial-gradient(700px 400px at 70% 80%, rgba(8,116,87,.12), transparent 65%);
+      pointer-events:none;
     }
 
-    .contact h2{
-      font-size:62px;
+    / Card grid /
+    .card-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .card{
+      border-radius: var(--radius);
+      background: rgba(0,0,0,.40);
+      padding: 30px;
+      box-shadow: var(--shadow2);
+      transition:.22s ease;
+      position:relative;
+      overflow:hidden;
+      min-height: 260px;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-60px -120px;
+      transform: rotate(15deg);
+      background: linear-gradient(90deg, transparent, rgba(242,217,140,.14), transparent);
+      opacity:0;
+      transition:.35s ease;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      background: rgba(8,116,87,.18);
+    }
+    .card:hover::after{ opacity:1; inset:-60px 120px; }
+    .card h3{
+      font-size: 28px;
+      color: var(--gold2);
+      margin-bottom: 10px;
+    }
+    .card p{
+      font-size: 16px;
+      color: rgba(233,236,233,.92);
+      margin-bottom: 0;
+    }
+    .card-action{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(242,217,140,.18);
+      color: var(--gold2);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 900;
+      font-family: var(--sans);
     }
 
-    .titancore-footer{
-      background:#000;
-      border-top:2px solid var(--gold);
-      padding:74px 24px 86px;
-      text-align:center;
-      color:#fff;
-    }
-
-    .footer-mark{
-      width:104px;
-      height:104px;
-      margin:0 auto 34px;
-      border:4px solid var(--gold);
+    / Full-width photo break /
+    .plain-photo{
+      min-height: 520px;
       display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--gold2);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:52px;
-      font-weight:900;
-      background:#000;
+      align-items:flex-end;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.62)),
+        var(--plain-bg);
+      background-size: cover;
+      background-position:center;
+      border-top: 1px solid rgba(242,217,140,.20);
+      border-bottom: 1px solid rgba(242,217,140,.20);
     }
-
-    .footer-brand-name{
-      color:var(--gold2);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:42px;
-      text-transform:uppercase;
-      letter-spacing:12px;
-      line-height:1.55;
-      margin-bottom:46px;
+    .plain-caption{
+      width:100%;
+      background: rgba(0,0,0,.66);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(242,217,140,.20);
+      padding: 28px 0;
     }
+    .plain-caption p{ margin:0; }
 
-    .footer-copy{
+    / Video block /
+    .video-block{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      align-items:stretch;
+    }
+    .video-screen{
+      min-height: 520px;
+      border-radius: var(--radius);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.80)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85");
+      background-size: cover;
+      background-position:center;
+      box-shadow: var(--shadow);
+      position:relative;
+      padding: 32px;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+    }
+    .play-button{
+      position:absolute;
+      top: 22px;
+      right: 22px;
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display:grid;
+      place-items:center;
+      color: var(--gold2);
+      background: rgba(0,0,0,.72);
+      border: 1px solid rgba(242,217,140,.35);
+      box-shadow: var(--shadow2);
+      font-size: 26px;
+      font-weight: 900;
+    }
+    .video-screen h3{
+      font-family: var(--sans);
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
       color:#fff;
-      font-size:26px;
-      letter-spacing:2px;
-      line-height:1.9;
-      margin:0 0 54px;
+    }
+    .video-screen p{
+      font-size: 16px;
+      color: rgba(255,255,255,.90);
+      margin:0;
     }
 
+    / Contact /
+    .contact{
+      padding: 90px 0;
+      background:
+        linear-gradient(180deg, rgba(8,116,87,.55), rgba(0,0,0,.88)),
+        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
+      background-size: cover;
+      background-position:center;
+      border-top: 1px solid rgba(242,217,140,.20);
+      border-bottom: 1px solid rgba(242,217,140,.20);
+    }
+    .contact h2{
+      font-size: clamp(34px, 5vw, 58px);
+    }
+
+    / Footer /
+    footer{
+      padding: 70px 0 84px;
+      text-align:center;
+      background: rgba(0,0,0,.78);
+      border-top: 1px solid rgba(242,217,140,.18);
+    }
+    .footer-mark{
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 24px;
+      border-radius: 26px;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(242,217,140,.18), transparent 55%),
+        linear-gradient(135deg, rgba(8,116,87,.55), rgba(0,0,0,.9));
+      box-shadow: var(--shadow2);
+      color: var(--gold2);
+      font-family: var(--serif);
+      font-size: 34px;
+      font-weight: 900;
+    }
+    .footer-brand-name{
+      font-family: var(--serif);
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      font-size: clamp(22px, 3.2vw, 40px);
+      color: var(--gold2);
+      line-height: 1.45;
+      margin-bottom: 22px;
+    }
+    .footer-copy{
+      opacity:.92;
+      margin-bottom: 30px;
+      letter-spacing: 1.2px;
+    }
     .footer-links{
       display:flex;
+      gap: 14px;
       justify-content:center;
-      align-items:center;
-      gap:22px;
       flex-wrap:wrap;
-      margin-bottom:32px;
+      margin-bottom: 24px;
+      opacity:.95;
     }
-
     .footer-links a{
-      color:#fff;
-      font-size:26px;
-      letter-spacing:2.4px;
-      font-weight:400;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(242,217,140,.14);
+      background: rgba(255,255,255,.02);
+      transition:.2s ease;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 900;
     }
-
     .footer-links a:hover{
-      color:var(--gold2);
+      background: rgba(242,217,140,.10);
+      border-color: rgba(242,217,140,.30);
     }
 
-    .footer-dot{
-      color:var(--gold2);
-      font-size:24px;
-      font-weight:900;
-      line-height:1;
-    }
-
-    .footer-feedback-line{
+    .social-row{
       display:flex;
       justify-content:center;
-      align-items:center;
-      margin:0 0 58px;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .social{
+      width: 54px; height: 54px;
+      border-radius: 18px;
+      border: 1px solid rgba(242,217,140,.25);
+      display:grid;
+      place-items:center;
+      background: rgba(0,0,0,.55);
+      transition:.2s ease;
+      box-shadow: var(--shadow2);
+      font-weight: 900;
+    }
+    .social:hover{
+      background: linear-gradient(135deg, rgba(8,116,87,.75), rgba(0,0,0,.92));
+      transform: translateY(-2px);
+      border-color: rgba(242,217,140,.50);
     }
 
-    .footer-feedback-line a{
-      color:#fff;
-      font-size:26px;
-      letter-spacing:2.4px;
-      font-weight:400;
+    / Menu dialog /
+    .menu-overlay{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.70);
+      display:none;
+      z-index:2000;
+      padding: 18px;
+      backdrop-filter: blur(10px);
     }
-
-    .footer-feedback-line a:hover{
-      color:var(--gold2);
+    .menu-overlay.open{ display:block; }
+    .menu-box{
+      width: min(620px, 100%);
+      margin: 60px auto 0;
+      border-radius: var(--radius);
+      background: rgba(10,10,10,.86);
+      box-shadow: var(--shadow);
+      padding: 22px;
     }
-
-    .footer-social-icons{
+    .menu-top{
       display:flex;
-      justify-content:center;
       align-items:center;
-      gap:34px;
-      flex-wrap:nowrap;
+      justify-content:space-between;
+      gap:14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(242,217,140,.18);
+      margin-bottom: 14px;
     }
-
-    .social-square{
-      width:106px;
-      height:106px;
-      border:4px solid var(--gold);
-      background:#000;
+    .menu-top h2{
+      font-size: 22px;
+      margin:0;
+      color: var(--gold2);
+    }
+    .close-menu{
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      border: 1px solid rgba(242,217,140,.35);
+      background: rgba(0,0,0,.55);
       color:#fff;
+      cursor:pointer;
+    }
+    .menu-links{
+      display:grid;
+      gap: 10px;
+      padding-top: 6px;
+    }
+    .menu-links a{
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(242,217,140,.16);
+      background: rgba(255,255,255,.02);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 900;
+      font-size: 13px;
+      transition:.2s ease;
+    }
+    .menu-links a:hover{
+      background: rgba(242,217,140,.12);
+      border-color: rgba(242,217,140,.35);
+    }
+    .menu-support{
       display:flex;
-      align-items:center;
+      gap: 10px;
       justify-content:center;
-      text-decoration:none;
-      transition:.25s ease;
-      flex:0 0 auto;
+      flex-wrap:wrap;
+      padding-top: 14px;
+      margin-top: 14px;
+      border-top: 1px solid rgba(242,217,140,.16);
+    }
+    .menu-support a{
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold2);
+      font-weight: 900;
+      padding: 10px 10px;
+      border-radius: 999px;
+      background: rgba(242,217,140,.06);
+      border: 1px solid rgba(242,217,140,.14);
     }
 
-    .social-square:hover{
-      background:linear-gradient(135deg,var(--green),var(--green2));
-      color:#fff;
-      transform:translateY(-3px);
-    }
-
-    .social-symbol{
-      font-size:46px;
-      line-height:1;
-      font-weight:900;
-      letter-spacing:0;
-    }
-
-    .social-symbol.instagram{
-      font-size:62px;
-      font-weight:400;
-    }
-
-    .social-symbol.linkedin{
-      font-size:44px;
-      font-weight:900;
-    }
-
-    @media(max-width:980px){
-      .feature-grid,
-      .media-wall{
-        grid-template-columns:1fr;
+    / Responsive */
+    @media (max-width: 980px){
+      .hero-grid, .feature-grid, .video-block, .card-grid{
+        grid-template-columns: 1fr;
       }
-
-      .card-grid{
-        grid-template-columns:1fr;
-      }
-
-      .button-row{
-        grid-template-columns:1fr;
-      }
-    }
-
-    @media(max-width:760px){
-      .header-inner{
-        min-height:92px;
-        padding:12px 22px;
-      }
-
-      .brand{
-        gap:12px;
-      }
-
-      .brand-mark{
-        width:62px;
-        height:62px;
-        font-size:27px;
-        border-width:3px;
-      }
-
-      .brand-name{
-        font-size:18px;
-        max-width:210px;
-      }
-
-      .menu-btn{
-        width:62px;
-        height:62px;
-        font-size:31px;
-        border-width:3px;
-      }
-
-      .wrap{
-        width:calc(100% - 46px);
-      }
-
-      .hero{
-        min-height:660px;
-      }
-
-      .hero-content{
-        padding:70px 0;
-      }
-
-      .eyebrow{
-        font-size:14px;
-        letter-spacing:5px;
-      }
-
-      h1{
-        font-size:50px;
-      }
-
-      h2{
-        font-size:38px;
-      }
-
-      h3{
-        font-size:27px;
-      }
-
-      p,li{
-        font-size:19px;
-      }
-
-      .btn{
-        min-height:84px;
-        font-size:18px;
-        letter-spacing:5px;
-      }
-
-      .feature-text,
-      .card{
-        padding:28px;
-      }
-
-      .feature-image,
-      .plain-photo,
-      .video-screen{
-        min-height:420px;
-      }
-
-      .contact h2{
-        font-size:42px;
-      }
-
-      .titancore-footer{
-        padding:62px 16px 72px;
-      }
-
-      .footer-mark{
-        width:92px;
-        height:92px;
-        font-size:45px;
-        margin-bottom:28px;
-      }
-
-      .footer-brand-name{
-        font-size:32px;
-        letter-spacing:9px;
-        margin-bottom:38px;
-      }
-
-      .footer-copy{
-        font-size:21px;
-        letter-spacing:1.5px;
-        margin-bottom:44px;
-      }
-
-      .footer-links{
-        gap:16px;
-        margin-bottom:26px;
-      }
-
-      .footer-links a{
-        font-size:22px;
-        letter-spacing:2px;
-      }
-
-      .footer-feedback-line{
-        margin-bottom:46px;
-      }
-
-      .footer-feedback-line a{
-        font-size:22px;
-        letter-spacing:2px;
-      }
-
-      .footer-social-icons{
-        gap:24px;
-      }
-
-      .social-square{
-        width:88px;
-        height:88px;
-      }
-
-      .social-symbol{
-        font-size:40px;
-      }
-
-      .social-symbol.instagram{
-        font-size:54px;
-      }
-
-      .social-symbol.linkedin{
-        font-size:38px;
-      }
-    }
-
-    @media(max-width:460px){
-      .footer-brand-name{
-        font-size:25px;
-        letter-spacing:7px;
-      }
-
-      .footer-copy{
-        font-size:18px;
-      }
-
-      .footer-links{
-        gap:10px;
-      }
-
-      .footer-links a{
-        font-size:19px;
-        letter-spacing:1.2px;
-      }
-
-      .footer-dot{
-        font-size:18px;
-      }
-
-      .footer-feedback-line a{
-        font-size:19px;
-        letter-spacing:1.2px;
-      }
-
-      .footer-social-icons{
-        gap:14px;
-      }
-
-      .social-square{
-        width:74px;
-        height:74px;
-        border-width:3px;
-      }
-
-      .social-symbol{
-        font-size:34px;
-      }
-
-      .social-symbol.instagram{
-        font-size:46px;
-      }
-
-      .social-symbol.linkedin{
-        font-size:32px;
-      }
+      .top-links{ display:none; }
+      .hero{ padding-top: 64px; }
     }
   </style>
 </head>
@@ -930,19 +819,33 @@
 <body>
   <div class="site">
 
-    <header class="header">
-      <div class="header-inner">
-        <a href="index.html" class="brand">
-          <div class="brand-mark">TH</div>
-          <div class="brand-name">TitanCore <span>Holdings</span></div>
+    <!-- HEADER -->
+    <header>
+      <div class="wrap header-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark metal-border"><span>TH</span></div>
+          <div class="brand-name">TitanCore <b>Holdings</b></div>
         </a>
 
-        <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
+        <div class="nav-actions">
+          <nav class="top-links" aria-label="Primary">
+            <a href="about-group.html">About</a>
+            <a href="companies.html">Companies</a>
+            <a href="business-intelligence.html">Intelligence</a>
+            <a href="news-media.html">News & Media</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+
+          <button class="menu-btn" id="openMenu" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
+            ☰
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="menu-panel" id="menuPanel">
-      <div class="menu-box">
+    <!-- MENU -->
+    <div class="menu-overlay" id="menuPanel" role="dialog" aria-modal="true" aria-label="TitanCore menu">
+      <div class="menu-box metal-border" role="document">
         <div class="menu-top">
           <h2>TitanCore Menu</h2>
           <button class="close-menu" id="closeMenu" aria-label="Close menu">×</button>
@@ -953,13 +856,12 @@
           <a href="about-group.html">About Group</a>
           <a href="companies.html">Companies</a>
           <a href="business-intelligence.html">Business Intelligence</a>
-          <a href="news-media.html">News &amp; Media</a>
-          <a href="global-news.html">Global News</a>
+          <a href="news-media.html">News & Media</a>
           <a href="blogs.html">TitanCore Insights</a>
           <a href="contact.html">Contact</a>
         </nav>
 
-        <div class="menu-support-links">
+        <div class="menu-support">
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms-of-use.html">Terms of Use</a>
           <a href="feedback.html">Feedback</a>
@@ -967,329 +869,313 @@
       </div>
     </div>
 
+    <!-- HERO -->
     <section class="hero" id="hero">
-      <div class="wrap">
-        <div class="hero-content">
-          <div class="date-line" id="dateLine">TitanCore Holdings</div>
+      <div class="wrap hero-grid">
 
-          <div class="eyebrow">Private Holding Company</div>
+        <div class="hero-panel metal-border">
+          <div class="kicker">
+            <span class="pill">Private Holding Company</span>
+            <div class="date-line" id="dateLine">TitanCore Holdings</div>
+          </div>
 
           <h1>TitanCore <span>Holdings.</span></h1>
 
           <p>
-            TitanCore Holdings is the parent structure built to organize, guide, and support a growing
-            network of companies, business intelligence pages, media updates, institutional communication,
-            and public-facing business information.
+            TitanCore Holdings is the parent organization built to guide a growing company network,
+            business intelligence, public media communication, global business education, and institutional direction.
           </p>
 
-          <div class="button-row">
-            <a href="about-group.html" class="btn">Learn More <span>›</span></a>
-            <a href="companies.html" class="btn">View Companies <span>›</span></a>
+          <div class="cta-row">
+            <a href="about-group.html" class="btn primary">
+              Learn More <span class="arrow">›</span>
+            </a>
+            <a href="companies.html" class="btn secondary">
+              View Companies <span class="arrow">›</span>
+            </a>
           </div>
         </div>
+
+        <aside class="hero-panel metal-border brief">
+          <div>
+            <h3>Executive Overview</h3>
+            <p style="margin-bottom:0;">
+              A clean “front door” experience: parent structure first, then the correct lane.
+            </p>
+          </div>
+
+          <div>
+            <div class="metric">
+              <b>01</b>
+              <span>Company Network</span>
+            </div>
+            <div class="metric">
+              <b>02</b>
+              <span>Business Intelligence</span>
+            </div>
+            <div class="metric">
+              <b>03</b>
+              <span>News & Media</span>
+            </div>
+            <div class="metric" style="border-bottom:none;">
+              <b>04</b>
+              <span>Insights & Contact</span>
+            </div>
+          </div>
+        </aside>
+
       </div>
     </section>
 
+    <!-- TICKER -->
     <div class="news-strip">
       <div class="ticker">
         <span>TitanCore Watch</span>
-        Holding Company • Business Intelligence • Global News • News & Media • Company Network • Capital Structure • Public Information
+        Holding Company • Company Network • Business Intelligence • News & Media • Global Business • Public Information • Institutional Communication
       </div>
     </div>
 
+    <!-- OVERVIEW -->
     <section class="section">
       <div class="wrap">
         <div class="section-title">
-          <div class="eyebrow">Structure First</div>
-          <h2>A Holding Company Built For <span>Control, Clarity, and Direction.</span></h2>
+          <div class="eyebrow">TitanCore Overview</div>
+          <h2>The Parent Company <span>Comes First.</span></h2>
           <p>
-            TitanCore is designed as the umbrella. Public pages explain the group, the companies,
-            the business intelligence environment, and the communication routes visitors can use to learn more.
+            This homepage introduces TitanCore Holdings with clarity. Subsidiary detail belongs inside its proper parent pages,
+            keeping the front door premium, simple, and organized.
           </p>
         </div>
 
         <div class="feature-grid">
-          <div class="feature-text">
-            <h3>What TitanCore Does</h3>
+          <div class="panel metal-border">
+            <h3>What TitanCore Represents</h3>
             <p>
-              TitanCore Holdings provides the top-level identity for a company network. The homepage stays focused
-              on TitanCore itself: what it controls, how it supports the group, and where visitors should go next.
+              TitanCore Holdings is the umbrella structure. It organizes the company network, business intelligence,
+              public media, global business education, and official communication routes.
             </p>
-
-            <p>
-              Visitors can enter company pages, business intelligence, global news, News & Media, or contact routing
-              without the homepage becoming crowded.
+            <p style="margin-bottom:0;">
+              Visitors enter through TitanCore, then move into: About Group, Companies, Business Intelligence, News & Media,
+              TitanCore Insights, or Contact.
             </p>
-
-            <a href="about-group.html" class="btn">About TitanCore <span>›</span></a>
           </div>
 
-          <div class="feature-image" id="featureImage"></div>
+          <div class="feature-image metal-border" id="featureImage"></div>
         </div>
       </div>
     </section>
 
+    <!-- PHOTO BREAK -->
     <section class="plain-photo" id="plainPhoto">
       <div class="plain-caption">
         <div class="wrap">
-          <div class="eyebrow">Daily Image Window</div>
+          <div class="eyebrow">Picture Window</div>
           <p>
-            This plain media section is designed to feel premium, visual, and alive. The picture can rotate daily
-            while the text remains clean and readable over the bottom.
+            A clean visual break — image can rotate daily while the structure stays focused on TitanCore Holdings.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- MAIN DOORS -->
     <section class="section dark">
       <div class="wrap">
         <div class="section-title">
-          <div class="eyebrow">Main Gateways</div>
-          <h2>Explore The TitanCore <span>Public Network.</span></h2>
+          <div class="eyebrow">Main Public Doors</div>
+          <h2>One Door For Each <span>Main Area.</span></h2>
           <p>
-            These are the main paths visitors should use from the homepage.
+            Each card is a parent section — smaller details stay inside the parent pages so the homepage stays executive.
           </p>
         </div>
 
         <div class="card-grid">
-          <a href="companies.html" class="card">
-            <h3>Companies</h3>
-            <p>
-              View the TitanCore company network and enter company-specific pages for Vaultara Capital,
-              Family First Equity Group, VitalPath Care Group, RevMotion Auto & Marine, and future entities.
-            </p>
-            <div class="card-action">Open Companies</div>
+          <a href="companies.html" class="card metal-border">
+            <h3>Company Network</h3>
+            <p>Explore TitanCore companies, descriptions, and direct links to each brand site.</p>
+            <div class="card-action">Open Company Network</div>
           </a>
 
-          <a href="business-intelligence.html" class="card">
+          <a href="business-intelligence.html" class="card metal-border">
             <h3>Business Intelligence</h3>
-            <p>
-              Access public business education, stock and market intelligence, economy signals, business systems,
-              search intelligence, and decision discipline content.
-            </p>
-            <div class="card-action">View Intelligence</div>
+            <p>Markets, sectors, real estate, technology, finance, logistics, and education.</p>
+            <div class="card-action">Open Business Intelligence</div>
           </a>
 
-          <a href="news-media.html" class="card">
+          <a href="news-media.html" class="card metal-border">
             <h3>News & Media</h3>
-            <p>
-              Enter the public newsroom for TitanCore updates, business headlines, media briefings,
-              archives, subscription, and public communication routing.
-            </p>
-            <div class="card-action">Open Newsroom</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section media-bg" id="mediaSection">
-      <div class="wrap">
-        <div class="section-title">
-          <div class="eyebrow">Media & Video</div>
-          <h2>Video Briefing <span>Studio.</span></h2>
-          <p>
-            This section gives the homepage a media feel. It is prepared for future TitanCore videos,
-            interviews, business briefings, founder conversations, and media announcements.
-          </p>
-        </div>
-
-        <div class="media-wall">
-          <div class="video-screen">
-            <div class="play-button">▶</div>
-            <div>
-              <h3>TitanCore Media Briefing Window</h3>
-              <p>
-                Use this area later for your official TitanCore video, business talk, entrepreneur interview,
-                or company media briefing.
-              </p>
-            </div>
-          </div>
-
-          <div class="video-list">
-            <a href="news-media.html" class="video-card" style='--video-bg:url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85");'>
-              <h3>News & Media Updates</h3>
-            </a>
-
-            <a href="blogs.html" class="video-card" style='--video-bg:url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85");'>
-              <h3>TitanCore Insights</h3>
-            </a>
-
-            <a href="global-news.html" class="video-card" style='--video-bg:url("https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=85");'>
-              <h3>Global Business Window</h3>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap">
-        <div class="section-title">
-          <div class="eyebrow">Business Intelligence</div>
-          <h2>Market, Company, and Global <span>Information Channels.</span></h2>
-          <p>
-            TitanCore public intelligence pages are built to help visitors understand business movement,
-            market signals, company updates, global regions, and public education topics.
-          </p>
-        </div>
-
-        <div class="card-grid">
-          <a href="stock-market-intelligence.html" class="card">
-            <h3>Stock & Market Intelligence</h3>
-            <p>
-              S&amp;P 500, Nasdaq, Dow Jones, crypto, banks, logistics, real estate, sectors,
-              and market-watch pathways.
-            </p>
-            <div class="card-action">Open Market Watch</div>
+            <p>Updates, headlines, archives, subscription, video, and global news inside one lane.</p>
+            <div class="card-action">Open News & Media</div>
           </a>
 
-          <a href="global-news.html" class="card">
-            <h3>Global News</h3>
-            <p>
-              World business, continents, country-level business activity, stock market notes,
-              trade, finance, and regional business information.
-            </p>
-            <div class="card-action">Open Global News</div>
-          </a>
-
-          <a href="blogs.html" class="card">
+          <a href="blogs.html" class="card metal-border">
             <h3>TitanCore Insights</h3>
-            <p>
-              Public blog and business journal for education, monthly articles, market explainers,
-              founder topics, and media stories.
-            </p>
+            <p>Public journal for articles, education, founder topics, market explainers, and stories.</p>
             <div class="card-action">Open Insights</div>
           </a>
         </div>
       </div>
     </section>
 
+    <!-- VIDEO -->
+    <section class="section dark">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="eyebrow">Homepage Video</div>
+          <h2>TitanCore Media <span>Window.</span></h2>
+          <p>This is a homepage preview. Full video library and archives live inside News & Media.</p>
+        </div>
+
+        <div class="video-block">
+          <div class="video-screen metal-border">
+            <div class="play-button" aria-hidden="true">▶</div>
+            <div>
+              <h3>TitanCore Briefing Window</h3>
+              <p>Future briefings, founder talks, interviews, and public updates can appear here.</p>
+            </div>
+          </div>
+
+          <div class="panel metal-border">
+            <h3 style="color:var(--gold2); font-size:30px; margin-bottom:12px;">Content Stays Organized</h3>
+            <p>
+              The homepage shows the window — the full library, Global News, archive, and subscription system
+              stays inside News & Media.
+            </p>
+            <a href="news-media.html" class="btn primary" style="margin-top:10px;">
+              Open News & Media <span class="arrow">›</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section class="contact">
       <div class="wrap">
         <div class="eyebrow">Official Contact</div>
         <h2>Contact us today</h2>
-
         <p>
           For general questions, company inquiries, public information, media feedback, or professional communication,
           contact TitanCore Holdings through the official contact page.
         </p>
-
-        <a href="contact.html" class="btn">Get In Touch <span>›</span></a>
+        <a href="contact.html" class="btn primary">
+          Get In Touch <span class="arrow">›</span>
+        </a>
       </div>
     </section>
 
-    <footer class="titancore-footer">
-      <div class="footer-mark">TH</div>
+    <!-- FOOTER -->
+    <footer>
+      <div class="wrap">
+        <div class="footer-mark metal-border">TH</div>
+        <div class="footer-brand-name">
+          TitanCore<br/>Holdings
+        </div>
 
-      <div class="footer-brand-name">
-        TitanCore<br>
-        Holdings
-      </div>
+        <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
 
-      <p class="footer-copy">
-        © 2026 TitanCore Holdings • All rights<br>
-        reserved
-      </p>
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+          <a href="blogs.html">Blogs</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
 
-      <div class="footer-links">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <span class="footer-dot">•</span>
-        <a href="terms-of-use.html">Terms of Use</a>
-        <span class="footer-dot">•</span>
-        <a href="blogs.html">Blogs</a>
-        <span class="footer-dot">•</span>
-      </div>
-
-      <div class="footer-feedback-line">
-        <a href="feedback.html">Feedback</a>
-      </div>
-
-      <div class="footer-social-icons">
-        <a class="social-square" href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-          <span class="social-symbol">f</span>
-        </a>
-
-        <a class="social-square" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram">
-          <span class="social-symbol instagram">◎</span>
-        </a>
-
-        <a class="social-square" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <span class="social-symbol linkedin">in</span>
-        </a>
+        <div class="social-row">
+          <a class="social" href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+          <a class="social" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+          <a class="social" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        </div>
       </div>
     </footer>
 
   </div>
 
   <script>
+    // -----------------------------
+    // LUXURY V2 — Menu (Accessible)
+    // -----------------------------
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
     const menuPanel = document.getElementById("menuPanel");
 
-    if(openMenu && menuPanel){
-      openMenu.addEventListener("click", () => menuPanel.classList.add("open"));
+    let lastFocus = null;
+
+    function openDialog(){
+      if(!menuPanel) return;
+      lastFocus = document.activeElement;
+      menuPanel.classList.add("open");
+      document.body.style.overflow = "hidden";
+      openMenu?.setAttribute("aria-expanded", "true");
+      // focus first link
+      const firstLink = menuPanel.querySelector(".menu-links a");
+      firstLink?.focus();
+    }
+    function closeDialog(){
+      if(!menuPanel) return;
+      menuPanel.classList.remove("open");
+      document.body.style.overflow = "";
+      openMenu?.setAttribute("aria-expanded", "false");
+      lastFocus?.focus?.();
     }
 
-    if(closeMenu && menuPanel){
-      closeMenu.addEventListener("click", () => menuPanel.classList.remove("open"));
-    }
+    openMenu?.addEventListener("click", openDialog);
+    closeMenu?.addEventListener("click", closeDialog);
 
-    if(menuPanel){
-      menuPanel.addEventListener("click", event => {
-        if(event.target === menuPanel){
-          menuPanel.classList.remove("open");
+    menuPanel?.addEventListener("click", (e) => {
+      if(e.target === menuPanel) closeDialog();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && menuPanel?.classList.contains("open")) closeDialog();
+
+      // basic focus trap
+      if(e.key === "Tab" && menuPanel?.classList.contains("open")){
+        const focusable = menuPanel.querySelectorAll('a, button');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if(e.shiftKey && document.activeElement === first){
+          e.preventDefault(); last.focus();
+        } else if(!e.shiftKey && document.activeElement === last){
+          e.preventDefault(); first.focus();
         }
-      });
-    }
-
-    document.addEventListener("keydown", event => {
-      if(event.key === "Escape" && menuPanel){
-        menuPanel.classList.remove("open");
       }
     });
 
+    // -----------------------------
+    // Daily image rotation
+    // -----------------------------
     const dailyImages = [
       {
         hero:"url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1900&q=85')",
         feature:"url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85')",
-        plain:"url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1900&q=85')",
-        section:"url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1900&q=85')"
+        plain:"url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1900&q=85')"
       },
       {
         hero:"url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85')",
         feature:"url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85')",
-        plain:"url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1900&q=85')",
-        section:"url('https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1900&q=85')"
+        plain:"url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1900&q=85')"
       },
       {
         hero:"url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1900&q=85')",
         feature:"url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=85')",
-        plain:"url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1900&q=85')",
-        section:"url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85')"
+        plain:"url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1900&q=85')"
       }
     ];
 
     const today = new Date();
-    const index = today.getDate() % dailyImages.length;
-    const selected = dailyImages[index];
+    const selected = dailyImages[today.getDate() % dailyImages.length];
 
     const hero = document.getElementById("hero");
     const featureImage = document.getElementById("featureImage");
     const plainPhoto = document.getElementById("plainPhoto");
-    const mediaSection = document.getElementById("mediaSection");
     const dateLine = document.getElementById("dateLine");
 
-    if(hero){hero.style.setProperty("--hero-bg", selected.hero);}
-    if(featureImage){featureImage.style.setProperty("--feature-bg", selected.feature);}
-    if(plainPhoto){plainPhoto.style.setProperty("--plain-bg", selected.plain);}
-    if(mediaSection){mediaSection.style.setProperty("--section-bg", selected.section);}
+    if(hero) hero.style.setProperty("--hero-bg", selected.hero);
+    if(featureImage) featureImage.style.setProperty("--feature-bg", selected.feature);
+    if(plainPhoto) plainPhoto.style.setProperty("--plain-bg", selected.plain);
 
     if(dateLine){
-      dateLine.textContent = today.toLocaleDateString("en-US", {
-        month:"long",
-        day:"numeric",
-        year:"numeric"
-      });
+      dateLine.textContent = today.toLocaleDateString("en-US", { month:"long", day:"numeric", year:"numeric" });
     }
   </script>
 </body>
