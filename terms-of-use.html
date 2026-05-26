@@ -5,23 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Terms of Use | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings Terms of Use — website rules, public information use, visitor responsibilities, media content, feedback, and public communications." />
+  <meta name="description" content="TitanCore Holdings Terms of Use." />
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
 
     :root{
-      --gold:#d8b45a;
-      --gold2:#f2d98c;
+      --black:#000;
       --green:#087457;
       --green2:#0a8d69;
-      --black:#000;
-      --dark:#111713;
+      --gold:#d8b45a;
+      --gold2:#f2d98c;
       --white:#fff;
-      --soft:#e9ece9;
-      --muted:#c9d2cb;
-      --border:rgba(216,180,90,.88);
-      --border-soft:rgba(216,180,90,.42);
+      --line:rgba(216,180,90,.86);
+      --line-soft:rgba(216,180,90,.38);
     }
 
     html{scroll-behavior:smooth;}
@@ -34,70 +31,81 @@
       line-height:1.6;
     }
 
-    a{color:inherit;text-decoration:none;}
-    button{font-family:inherit;}
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
 
-    .site{width:100%;min-height:100vh;background:#000;}
+    .site{
+      min-height:100vh;
+      background:#000;
+    }
 
     .header{
       position:sticky;
       top:0;
       z-index:1000;
       background:#000;
-      border-top:2px solid var(--border);
-      border-bottom:2px solid var(--border);
+      border-top:2px solid var(--gold);
+      border-bottom:2px solid var(--gold);
     }
 
     .header-inner{
-      min-height:132px;
+      min-height:108px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
-      padding:20px 36px;
+      gap:18px;
+      padding:18px 34px;
+      max-width:1240px;
+      margin:0 auto;
     }
 
     .brand{
       display:flex;
       align-items:center;
-      gap:22px;
+      gap:16px;
       min-width:0;
     }
 
     .brand-mark{
-      width:92px;
-      height:92px;
-      border:6px solid var(--gold);
+      width:76px;
+      height:76px;
+      border:4px solid var(--gold);
       display:flex;
       align-items:center;
       justify-content:center;
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:43px;
-      font-weight:700;
-      background:#030303;
+      background:#000;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      font-weight:900;
       flex-shrink:0;
     }
 
     .brand-name{
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:31px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:30px;
       text-transform:uppercase;
+      letter-spacing:1.5px;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
 
-    .brand-name span{color:#fff;margin-left:8px;}
+    .brand-name span{
+      color:#fff;
+      margin-left:8px;
+    }
 
     .menu-btn{
-      width:92px;
-      height:92px;
-      border:6px solid var(--gold);
+      width:76px;
+      height:76px;
+      border:4px solid var(--gold);
       background:linear-gradient(135deg,var(--green),var(--green2));
       color:#fff;
-      font-size:44px;
+      font-size:38px;
       display:flex;
       align-items:center;
       justify-content:center;
@@ -108,245 +116,305 @@
     .menu-panel{
       position:fixed;
       inset:0;
-      background:rgba(0,0,0,.84);
+      background:rgba(0,0,0,.78);
       z-index:2000;
       display:none;
-      padding:24px;
+      padding:18px;
     }
 
-    .menu-panel.open{display:block;}
+    .menu-panel.open{
+      display:block;
+    }
 
     .menu-box{
-      max-width:760px;
-      margin:20px auto;
+      width:min(560px,100%);
+      margin:18px auto;
       background:#050505;
-      border:2px solid var(--border);
-      padding:28px;
+      border:3px solid var(--gold);
+      padding:24px;
+      box-shadow:0 0 30px rgba(0,0,0,.55);
     }
 
     .menu-top{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      border-bottom:1px solid var(--border);
-      padding-bottom:18px;
-      margin-bottom:20px;
+      border-bottom:1px solid var(--line-soft);
+      padding-bottom:16px;
+      margin-bottom:18px;
+      gap:14px;
     }
 
     .menu-top h2{
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:34px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:30px;
       font-weight:400;
     }
 
     .close-menu{
-      background:none;
-      border:none;
+      background:#000;
+      border:2px solid var(--gold);
       color:#fff;
-      font-size:38px;
+      font-size:34px;
+      width:54px;
+      height:54px;
       cursor:pointer;
     }
 
-    .menu-links{display:grid;gap:12px;}
+    .menu-links{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+    }
 
     .menu-links a{
       display:block;
-      border:1px solid rgba(216,180,90,.45);
-      padding:18px;
+      border:1px solid var(--line-soft);
+      padding:15px 16px;
       color:#fff;
-      font-size:18px;
+      font-weight:900;
+      font-size:16px;
+      letter-spacing:.8px;
       background:rgba(255,255,255,.02);
+      text-transform:uppercase;
     }
 
-    .menu-links a:hover{background:var(--gold);color:#000;}
+    .menu-links a:hover{
+      background:var(--gold);
+      color:#000;
+    }
+
+    .menu-support-links{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid var(--line-soft);
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .menu-support-links a{
+      color:var(--gold2);
+      font-size:13px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1.2px;
+    }
 
     .wrap{
-      width:min(1120px,calc(100% - 64px));
+      width:min(1120px,calc(100% - 54px));
       margin:0 auto;
     }
 
     .hero{
-      min-height:680px;
+      min-height:600px;
       display:flex;
       align-items:center;
-      border-bottom:2px solid var(--border);
+      border-bottom:2px solid var(--gold);
       background:
-        linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.86)),
+        linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.90)),
         url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
       background-size:cover;
       background-position:center;
     }
 
-    .hero-content{padding:88px 0;}
+    .hero-content{
+      padding:80px 0;
+    }
 
     .eyebrow{
       color:var(--gold2);
       text-transform:uppercase;
-      letter-spacing:8px;
+      letter-spacing:7px;
       font-weight:900;
-      font-size:18px;
-      margin-bottom:28px;
-    }
-
-    h1,h2,h3{
-      font-family:Georgia, "Times New Roman", serif;
-      font-weight:400;
-      line-height:1.05;
-    }
-
-    h1{
-      font-size:82px;
-      color:#fff;
-      margin-bottom:34px;
-    }
-
-    h1 span{color:var(--gold2);display:block;}
-
-    h2{
-      font-size:52px;
-      color:#fff;
+      font-size:16px;
       margin-bottom:24px;
     }
 
-    h3{
-      font-size:34px;
+    h1,h2,h3{
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      line-height:1.07;
+    }
+
+    h1{
+      font-size:76px;
+      color:#fff;
+      margin-bottom:28px;
+    }
+
+    h1 span{
       color:var(--gold2);
-      margin-bottom:16px;
+      display:block;
+    }
+
+    h2{
+      font-size:48px;
+      color:#fff;
+      margin-bottom:22px;
+    }
+
+    h3{
+      font-size:31px;
+      color:var(--gold2);
+      margin-bottom:14px;
     }
 
     p,li{
-      font-size:24px;
+      font-size:22px;
       color:#fff;
       line-height:1.7;
     }
 
-    p{margin-bottom:26px;}
+    p{
+      margin-bottom:24px;
+    }
+
+    ul{
+      padding-left:26px;
+      display:grid;
+      gap:10px;
+    }
 
     .btn{
       display:flex;
       align-items:center;
       justify-content:center;
       width:100%;
-      min-height:104px;
+      min-height:94px;
       border:4px solid var(--gold);
-      background:linear-gradient(135deg,#047153,#0b8d69);
+      background:linear-gradient(135deg,var(--green),var(--green2));
       color:#fff;
       text-transform:uppercase;
-      letter-spacing:8px;
+      letter-spacing:7px;
       font-weight:900;
-      font-size:25px;
-      margin-top:34px;
+      font-size:22px;
+      margin-top:30px;
       cursor:pointer;
       transition:.25s ease;
       text-align:center;
     }
 
-    .btn:hover{background:var(--gold);color:#000;}
+    .btn:hover{
+      background:var(--gold);
+      color:#000;
+    }
 
     .btn span{
       color:var(--gold2);
-      font-size:40px;
-      margin-left:14px;
+      font-size:36px;
+      margin-left:12px;
     }
 
-    .terms-section{
-      padding:88px 0;
-      background:#111713;
-      border-bottom:2px solid var(--border-soft);
+    .btn:hover span{
+      color:#000;
     }
 
-    .terms-box{
+    .section{
+      padding:82px 0;
+      background:#101710;
+      border-bottom:2px solid var(--line-soft);
+    }
+
+    .box{
       border:4px solid var(--gold);
-      background:rgba(0,0,0,.50);
-      padding:46px;
-      margin-bottom:28px;
+      background:rgba(0,0,0,.58);
+      padding:38px;
+      margin-bottom:26px;
     }
 
-    .terms-box ul{
-      padding-left:26px;
+    .grid{
       display:grid;
-      gap:12px;
-      margin-top:16px;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:32px;
     }
 
-    .terms-note{
+    .card{
       border:3px solid var(--gold);
-      background:rgba(3,75,53,.55);
-      padding:30px;
-      margin-top:34px;
+      background:rgba(0,0,0,.50);
+      padding:28px;
+      min-height:220px;
+    }
+
+    .card p{
+      font-size:18px;
+      color:#e9ece9;
+      margin-bottom:0;
     }
 
     .contact{
-      padding:100px 0;
-      border-bottom:2px solid var(--border);
+      padding:86px 0;
+      border-bottom:2px solid var(--gold);
       background:
-        linear-gradient(180deg,rgba(3,75,53,.72),rgba(0,0,0,.82)),
-        url("https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1900&q=85");
+        linear-gradient(180deg,rgba(8,116,87,.68),rgba(0,0,0,.86)),
+        url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
       background-size:cover;
       background-position:center;
     }
 
-    .contact h2{font-size:68px;}
+    .contact h2{
+      font-size:60px;
+    }
 
     .titancore-footer{
-      background:#050505;
-      border-top:2px solid var(--border);
-      padding:58px 24px;
+      background:#000;
+      border-top:2px solid var(--gold);
+      padding:74px 24px 86px;
       text-align:center;
       color:#fff;
     }
 
-    .footer-logo-row{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:16px;
-      margin-bottom:22px;
-    }
-
     .footer-mark{
-      width:64px;
-      height:64px;
+      width:104px;
+      height:104px;
+      margin:0 auto 34px;
       border:4px solid var(--gold);
       display:flex;
       align-items:center;
       justify-content:center;
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:30px;
-      font-weight:700;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:52px;
+      font-weight:900;
       background:#000;
     }
 
     .footer-brand-name{
       color:var(--gold2);
-      font-family:Georgia, "Times New Roman", serif;
-      font-size:32px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:42px;
       text-transform:uppercase;
-      letter-spacing:1px;
+      letter-spacing:12px;
+      line-height:1.55;
+      margin-bottom:46px;
     }
 
     .footer-copy{
       color:#fff;
-      font-size:20px;
-      margin:0 0 26px;
+      font-size:26px;
+      letter-spacing:2px;
+      line-height:1.9;
+      margin:0 0 54px;
     }
 
     .footer-links{
       display:flex;
       justify-content:center;
       align-items:center;
-      gap:14px;
+      gap:22px;
       flex-wrap:wrap;
-      margin-bottom:34px;
+      margin-bottom:32px;
     }
 
     .footer-links a,
     .footer-current{
       color:#fff;
-      font-size:22px;
-      font-weight:900;
+      font-size:26px;
+      letter-spacing:2.4px;
+      font-weight:400;
     }
 
     .footer-links a:hover,
@@ -356,187 +424,316 @@
 
     .footer-dot{
       color:var(--gold2);
-      font-size:22px;
+      font-size:24px;
       font-weight:900;
+      line-height:1;
+    }
+
+    .footer-feedback-line{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:0 0 58px;
+    }
+
+    .footer-feedback-line a,
+    .footer-feedback-line .footer-current{
+      color:#fff;
+      font-size:26px;
+      letter-spacing:2.4px;
+      font-weight:400;
+    }
+
+    .footer-feedback-line a:hover,
+    .footer-feedback-line .footer-current{
+      color:var(--gold2);
     }
 
     .footer-social-icons{
       display:flex;
       justify-content:center;
       align-items:center;
-      gap:22px;
-      flex-wrap:wrap;
+      gap:34px;
+      flex-wrap:nowrap;
     }
 
-    .footer-social-icons a{
-      width:76px;
-      height:76px;
-      border-radius:50%;
-      background:#fff;
-      color:#000;
+    .social-square{
+      width:106px;
+      height:106px;
+      border:4px solid var(--gold);
+      background:#000;
+      color:#fff;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:34px;
-      font-weight:900;
-      border:4px solid var(--gold);
+      text-decoration:none;
       transition:.25s ease;
+      flex:0 0 auto;
     }
 
-    .footer-social-icons a:hover{
-      background:var(--gold);
-      color:#000;
-      transform:translateY(-4px);
+    .social-square:hover{
+      background:linear-gradient(135deg,var(--green),var(--green2));
+      color:#fff;
+      transform:translateY(-3px);
     }
 
-    .footer-social-icons .instagram{font-size:38px;}
-    .footer-social-icons .linkedin{font-size:30px;}
+    .social-symbol{
+      font-size:46px;
+      line-height:1;
+      font-weight:900;
+      letter-spacing:0;
+    }
+
+    .social-symbol.instagram{
+      font-size:62px;
+      font-weight:400;
+    }
+
+    .social-symbol.linkedin{
+      font-size:44px;
+      font-weight:900;
+    }
+
+    @media(max-width:900px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+    }
 
     @media(max-width:760px){
       .header-inner{
-        min-height:104px;
-        padding:14px 30px;
+        min-height:92px;
+        padding:12px 22px;
       }
 
-      .brand{gap:14px;}
+      .brand{
+        gap:12px;
+      }
 
       .brand-mark{
-        width:70px;
-        height:70px;
-        border-width:5px;
-        font-size:32px;
+        width:62px;
+        height:62px;
+        font-size:27px;
+        border-width:3px;
       }
 
       .brand-name{
         font-size:18px;
-        max-width:230px;
+        max-width:210px;
       }
 
       .menu-btn{
-        width:70px;
-        height:70px;
-        border-width:5px;
+        width:62px;
+        height:62px;
+        font-size:31px;
+        border-width:3px;
+      }
+
+      .wrap{
+        width:calc(100% - 46px);
+      }
+
+      .hero{
+        min-height:560px;
+      }
+
+      .hero-content{
+        padding:62px 0;
+      }
+
+      .eyebrow{
+        font-size:14px;
+        letter-spacing:5px;
+      }
+
+      h1{
+        font-size:48px;
+      }
+
+      h2{
+        font-size:36px;
+      }
+
+      h3{
+        font-size:27px;
+      }
+
+      p,li{
+        font-size:19px;
+      }
+
+      .box{
+        padding:28px;
+      }
+
+      .btn{
+        min-height:84px;
+        font-size:18px;
+        letter-spacing:5px;
+      }
+
+      .contact h2{
+        font-size:42px;
+      }
+
+      .titancore-footer{
+        padding:62px 16px 72px;
+      }
+
+      .footer-mark{
+        width:92px;
+        height:92px;
+        font-size:45px;
+        margin-bottom:28px;
+      }
+
+      .footer-brand-name{
+        font-size:32px;
+        letter-spacing:9px;
+        margin-bottom:38px;
+      }
+
+      .footer-copy{
+        font-size:21px;
+        letter-spacing:1.5px;
+        margin-bottom:44px;
+      }
+
+      .footer-links{
+        gap:16px;
+        margin-bottom:26px;
+      }
+
+      .footer-links a,
+      .footer-current{
+        font-size:22px;
+        letter-spacing:2px;
+      }
+
+      .footer-feedback-line{
+        margin-bottom:46px;
+      }
+
+      .footer-feedback-line a,
+      .footer-feedback-line .footer-current{
+        font-size:22px;
+        letter-spacing:2px;
+      }
+
+      .footer-social-icons{
+        gap:24px;
+      }
+
+      .social-square{
+        width:88px;
+        height:88px;
+      }
+
+      .social-symbol{
+        font-size:40px;
+      }
+
+      .social-symbol.instagram{
+        font-size:54px;
+      }
+
+      .social-symbol.linkedin{
+        font-size:38px;
+      }
+    }
+
+    @media(max-width:460px){
+      .footer-brand-name{
+        font-size:25px;
+        letter-spacing:7px;
+      }
+
+      .footer-copy{
+        font-size:18px;
+      }
+
+      .footer-links{
+        gap:10px;
+      }
+
+      .footer-links a,
+      .footer-current{
+        font-size:19px;
+        letter-spacing:1.2px;
+      }
+
+      .footer-dot{
+        font-size:18px;
+      }
+
+      .footer-feedback-line a,
+      .footer-feedback-line .footer-current{
+        font-size:19px;
+        letter-spacing:1.2px;
+      }
+
+      .footer-social-icons{
+        gap:14px;
+      }
+
+      .social-square{
+        width:74px;
+        height:74px;
+        border-width:3px;
+      }
+
+      .social-symbol{
         font-size:34px;
       }
 
-      .wrap{width:calc(100% - 52px);}
-      .hero{min-height:620px;}
-      .hero-content{padding:70px 0;}
-
-      h1{font-size:54px;}
-      h2{font-size:40px;}
-      p,li{font-size:21px;}
-
-      .terms-box{padding:30px;}
-
-      .btn{
-        min-height:92px;
-        font-size:21px;
-        letter-spacing:6px;
+      .social-symbol.instagram{
+        font-size:46px;
       }
 
-      .contact h2{font-size:48px;}
-
-      .footer-logo-row{flex-direction:column;}
-      .footer-brand-name{font-size:24px;}
-      .footer-copy{font-size:17px;}
-      .footer-links a,
-      .footer-current{font-size:18px;}
-      .footer-social-icons a{
-        width:66px;
-        height:66px;
-        font-size:30px;
+      .social-symbol.linkedin{
+        font-size:32px;
       }
     }
-  
-/* TitanCore unified header/menu/footer */
-.header{position:sticky;top:0;z-index:200;background:#000;border-top:1px solid #d7b35d;border-bottom:1px solid #d7b35d;}
-.header-inner{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#f7f1e6;min-width:0;}
-.brand-mark{width:64px;height:64px;border:2px solid #d7b35d;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:700;color:#f0d07a;background:#030303;flex-shrink:0;}
-.brand-name{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,3vw,34px);letter-spacing:1.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;}
-.brand-name span{color:#d7b35d;}
-.menu-btn{width:64px;height:64px;border:2px solid #d7b35d;background:#0b684f;color:#fff;font-size:34px;line-height:1;cursor:pointer;flex-shrink:0;}
-.menu-panel{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-start;justify-content:flex-end;z-index:500;padding:0;}
-.menu-panel.open{display:flex;}
-.menu-box{width:min(420px,95vw);min-height:100vh;background:#080808;border-left:1px solid #d7b35d;padding:24px;}
-.menu-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(215,179,93,.4);}
-.menu-top h2{font-size:24px;color:#f0d07a;margin:0;}
-.close-menu{border:1px solid #d7b35d;background:#111;color:#fff;font-size:32px;line-height:1;padding:2px 12px;cursor:pointer;}
-.menu-links{display:flex;flex-direction:column;padding-top:14px;}
-.menu-links a{padding:14px 4px;border-bottom:1px solid rgba(215,179,93,.25);color:#f7f1e6;text-decoration:none;letter-spacing:1px;}
-.titancore-footer{margin-top:auto;background:#050505;border-top:1px solid #d7b35d;padding:28px 20px;text-align:center;color:#f7f1e6;}
-.footer-logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
-.footer-mark{width:36px;height:36px;border:1px solid #d7b35d;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;color:#f0d07a;font-weight:700;}
-.footer-brand-name{font-family:Georgia,"Times New Roman",serif;letter-spacing:1px;color:#f0d07a;}
-.footer-copy{margin:0 0 12px;font-size:14px;}
-.footer-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;}
-.footer-links a,.footer-current{color:#f7f1e6;font-size:14px;text-decoration:none;}
-.footer-links a:hover{color:#f0d07a;}
-.footer-dot{color:#d7b35d;}
-.footer-current{color:#f0d07a;}
-.footer-social-icons{display:flex;justify-content:center;gap:10px;}
-.footer-social-icons a{width:34px;height:34px;border:1px solid #d7b35d;color:#f7f1e6;display:grid;place-items:center;text-decoration:none;font-weight:700;}
-@media (max-width:640px){.header-inner{padding:10px 14px}.brand-mark,.menu-btn{width:54px;height:54px}.brand-name{font-size:clamp(15px,4.6vw,23px)}.menu-box{padding:18px}}
-
-</style>
+  </style>
 </head>
 
 <body>
   <div class="site">
 
     <header class="header">
-  <div class="header-inner">
-    <a href="index.html" class="brand">
-      <div class="brand-mark">TH</div>
-      <div class="brand-name">TitanCore <span>Holdings</span></div>
-    </a>
+      <div class="header-inner">
+        <a href="index.html" class="brand">
+          <div class="brand-mark">TH</div>
+          <div class="brand-name">TitanCore <span>Holdings</span></div>
+        </a>
 
-    <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
-  </div>
-</header>
-
-<div class="menu-panel" id="menuPanel">
-  <div class="menu-box">
-    <div class="menu-top">
-      <h2>TitanCore Menu</h2>
-      <button class="close-menu" id="closeMenu">×</button>
-    </div>
-
-    <nav class="menu-links">
-      <a href="index.html">Home</a>
-      <a href="business-intelligence.html">Business Intelligence</a>
-      <a href="stock-market-intelligence.html">Stock &amp; Market Intelligence</a>
-      <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
-      <a href="news-media.html">News &amp; Media</a>
-      <a href="global-news.html">Global News</a>
-      <a href="about-group.html">About Group</a>
-      <a href="blogs.html">TitanCore Insights</a>
-      <a href="feedback.html">Feedback</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</div>
+        <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
+      </div>
+    </header>
 
     <div class="menu-panel" id="menuPanel">
       <div class="menu-box">
         <div class="menu-top">
           <h2>TitanCore Menu</h2>
-          <button class="close-menu" id="closeMenu">×</button>
+          <button class="close-menu" id="closeMenu" aria-label="Close menu">×</button>
         </div>
 
         <nav class="menu-links">
           <a href="index.html">Home</a>
-          <a href="business-intelligence.html">Business Intelligence</a>
-          <a href="stock-market-intelligence.html">Stock & Market Intelligence</a>
-          <a href="economy-signal-intelligence.html">Economy Signal Intelligence</a>
-          <a href="news-media.html">News & Media</a>
-          <a href="global-news.html">Global News</a>
           <a href="about-group.html">About Group</a>
+          <a href="companies.html">Companies</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="news-media.html">News &amp; Media</a>
+          <a href="global-news.html">Global News</a>
           <a href="blogs.html">TitanCore Insights</a>
-          <a href="feedback.html">Feedback</a>
           <a href="contact.html">Contact</a>
         </nav>
+
+        <div class="menu-support-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
       </div>
     </div>
 
@@ -557,128 +754,125 @@
       </div>
     </section>
 
-    <section class="terms-section">
+    <section class="section">
       <div class="wrap">
-
-        <div class="terms-box">
+        <div class="box">
           <h2>Last Updated</h2>
           <p>May 2026</p>
         </div>
 
-        <div class="terms-box">
+        <div class="box">
           <h2>Use of This Website</h2>
           <p>
-            TitanCore Holdings public website pages are provided for general public information, business education,
-            company information, media updates, and communication routing.
+            TitanCore Holdings public website pages are provided for general public information,
+            business education, company information, media updates, and communication routing.
           </p>
         </div>
 
-        <div class="terms-box">
+        <div class="box">
           <h2>Informational Purpose Only</h2>
           <p>
-            Content on this website may discuss business topics, markets, global business, company updates, media,
-            real estate, funding, credit, logistics, and general business education. This information is provided for
-            general public understanding and should not be treated as financial, legal, tax, investment, or professional advice.
+            Content may discuss business topics, markets, global business, company updates, media,
+            real estate, funding, credit, logistics, and general business education. This information
+            is for general understanding and should not be treated as financial, legal, tax, investment,
+            or professional advice.
           </p>
         </div>
 
-        <div class="terms-box">
+        <div class="box">
           <h2>Visitor Responsibilities</h2>
-          <p>
-            Visitors agree not to misuse the website, forms, feedback pages, subscription tools, or public communication channels.
-          </p>
+
           <ul>
             <li>Do not submit false or misleading information.</li>
-            <li>Do not use the website to send spam or harmful content.</li>
-            <li>Do not attempt to interfere with website operation or security.</li>
-            <li>Do not copy, misuse, or misrepresent TitanCore Holdings branding, content, or public materials.</li>
+            <li>Do not use forms to send spam or harmful content.</li>
+            <li>Do not interfere with website operation or security.</li>
+            <li>Do not copy or misrepresent TitanCore Holdings branding, content, or public materials.</li>
           </ul>
         </div>
 
-        <div class="terms-box">
-          <h2>Forms and Submissions</h2>
-          <p>
-            Visitors may submit contact requests, subscriptions, feedback, suggestions, or messages through public forms.
-            Submitting a form does not create a business relationship, approval, agreement, or guarantee of response.
-          </p>
+        <div class="grid">
+          <div class="card">
+            <h3>Submissions</h3>
+            <p>Submitting a form does not create a business relationship, approval, agreement, or guarantee of response.</p>
+          </div>
+
+          <div class="card">
+            <h3>Feedback</h3>
+            <p>TitanCore may review submitted topics or suggestions to improve future content.</p>
+          </div>
+
+          <div class="card">
+            <h3>External Links</h3>
+            <p>Third-party platforms may have separate terms, policies, and practices.</p>
+          </div>
         </div>
 
-        <div class="terms-box">
-          <h2>Feedback and Suggestions</h2>
-          <p>
-            Feedback submitted to TitanCore Holdings is reviewed privately first. TitanCore Holdings may use submitted
-            ideas, topics, or suggestions to improve public website content, media topics, business education, or future articles.
-          </p>
-        </div>
-
-        <div class="terms-box">
-          <h2>External Links and Social Media</h2>
-          <p>
-            This website may link to outside platforms such as Facebook, Instagram, LinkedIn, or other third-party services.
-            TitanCore Holdings is not responsible for the content, terms, policies, or practices of third-party websites.
-          </p>
-        </div>
-
-        <div class="terms-box">
+        <div class="box">
           <h2>No Guarantee</h2>
           <p>
-            TitanCore Holdings aims to provide helpful and organized public information, but does not guarantee that all
-            website content will always be complete, current, error-free, or available at all times.
+            TitanCore Holdings aims to provide helpful organized public information, but does not guarantee
+            that all website content will always be complete, current, error-free, or available at all times.
           </p>
         </div>
 
-        <div class="terms-box">
-          <h2>Content Ownership</h2>
-          <p>
-            TitanCore Holdings branding, page layouts, written content, design direction, public company structure,
-            and website materials are intended for TitanCore Holdings public use. Visitors should not copy or use
-            TitanCore content in a way that misrepresents ownership, affiliation, or authorization.
-          </p>
-        </div>
-
-        <div class="terms-box">
+        <div class="box">
           <h2>Changes to Terms</h2>
           <p>
-            TitanCore Holdings may update these Terms of Use as the website, public pages, media features, forms,
-            and company information structure continue to develop.
+            TitanCore Holdings may update these Terms of Use as the website, public pages, media features,
+            forms, and company information structure continue to develop.
           </p>
         </div>
+      </div>
+    </section>
 
-  
-       
-        
-        
-        
-        <section class="contact">
+    <section class="contact">
       <div class="wrap">
         <h2>Contact us today</h2>
-        <p>
-          For general questions, website questions, or professional inquiries, contact TitanCore Holdings
-          through the official contact page.
-        </p>
-
+        <p>For questions about these Terms of Use, contact TitanCore Holdings through the official contact page.</p>
         <a href="contact.html" class="btn">Get In Touch <span>›</span></a>
       </div>
     </section>
 
     <footer class="titancore-footer">
-  <div class="footer-logo-row">
-    <div class="footer-mark">TH</div>
-    <div class="footer-brand-name">TitanCore Holdings</div>
-  </div>
+      <div class="footer-mark">TH</div>
 
-  <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
+      <div class="footer-brand-name">
+        TitanCore<br>
+        Holdings
+      </div>
 
-  <div class="footer-links">
-    <a href="privacy-policy.html">Privacy Policy</a> <span class="footer-dot">•</span> <span class="footer-current">Terms of Use</span> <span class="footer-dot">•</span> <a href="blogs.html">Blogs</a> <span class="footer-dot">•</span> <a href="feedback.html">Feedback</a>
-  </div>
+      <p class="footer-copy">
+        © 2026 TitanCore Holdings • All rights<br>
+        reserved
+      </p>
 
-  <div class="footer-social-icons">
-    <a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-    <a href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram" class="instagram">◎</a>
-    <a href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn" class="linkedin">in</a>
-  </div>
-</footer>
+      <div class="footer-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <span class="footer-dot">•</span>
+        <span class="footer-current">Terms of Use</span>
+        <span class="footer-dot">•</span>
+        <a href="blogs.html">Blogs</a>
+        <span class="footer-dot">•</span>
+      </div>
+
+      <div class="footer-feedback-line">
+        <a href="feedback.html">Feedback</a>
+      </div>
+
+      <div class="footer-social-icons">
+        <a class="social-square" href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="social-symbol">f</span>
+        </a>
+
+        <a class="social-square" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram">
+          <span class="social-symbol instagram">◎</span>
+        </a>
+
+        <a class="social-square" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="social-symbol linkedin">in</span>
+        </a>
+      </div>
+    </footer>
 
   </div>
 
@@ -702,27 +896,12 @@
         }
       });
     }
-  </script>
-<script>
-  const openMenu = document.getElementById("openMenu");
-  const closeMenu = document.getElementById("closeMenu");
-  const menuPanel = document.getElementById("menuPanel");
 
-  if(openMenu && menuPanel){
-    openMenu.addEventListener("click", () => menuPanel.classList.add("open"));
-  }
-
-  if(closeMenu && menuPanel){
-    closeMenu.addEventListener("click", () => menuPanel.classList.remove("open"));
-  }
-
-  if(menuPanel){
-    menuPanel.addEventListener("click", event => {
-      if(event.target === menuPanel){
+    document.addEventListener("keydown", event => {
+      if(event.key === "Escape" && menuPanel){
         menuPanel.classList.remove("open");
       }
     });
-  }
-</script>
+  </script>
 </body>
 </html>
