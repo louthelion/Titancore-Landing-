@@ -3,32 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>TitanCore Holdings | Private Holding Company</title>
   <meta name="description" content="TitanCore Holdings is a private holding company built to organize, guide, and support its company network, business intelligence, media platform, global business education, and public communication." />
 
   <style>
-    /* -----------------------------
-      TITANCORE LUXURY V2 — CSS
-    ------------------------------ /
+    /* =========================================================
+      TITANCORE — LUXURY / EXTRAVAGANT V3
+      - keeps your structure, upgrades styling & UX significantly
+    ========================================================== */
 
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
+    {margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
       background:#000;
       color:#fff;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
       overflow-x:hidden;
       line-height:1.6;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
-    a { color:inherit; text-decoration:none; }
-    button { font:inherit; }
+    a{text-decoration:none;color:inherit;}
+    button{font:inherit}
 
     :root{
       --black:#000;
-      --panel:#070707;
-      --panel2:#0c0f0c;
-      --white:#fff;
-      --soft:#e9ece9;
+      --ink:#050505;
+      --panel: rgba(10,10,10,.62);
+      --panel2: rgba(0,0,0,.45);
 
       --green:#087457;
       --green2:#0a8d69;
@@ -37,33 +38,34 @@
       --gold2:#f2d98c;
       --gold3:#a47b1f;
 
-      --line:rgba(242,217,140,.55);
-      --line-soft:rgba(242,217,140,.20);
+      --white:#fff;
+      --soft:#e9ece9;
+
+      --line: rgba(242,217,140,.42);
+      --line-soft: rgba(242,217,140,.18);
 
       --shadow: 0 24px 70px rgba(0,0,0,.62);
-      --shadow2: 0 16px 40px rgba(0,0,0,.55);
+      --shadow2: 0 14px 38px rgba(0,0,0,.55);
 
       --radius: 22px;
-      --radius2: 14px;
-
-      --container: 1180px;
+      --radius2: 16px;
 
       --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --container: 1180px;
     }
 
-    / Subtle “luxury lighting” /
-    .site {
+    / Luxury lighting background /
+    .site{
       min-height:100vh;
       background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(216,180,90,.12), transparent 55%),
-        radial-gradient(900px 600px at 80% 20%, rgba(8,116,87,.14), transparent 55%),
-        radial-gradient(1000px 800px at 50% 85%, rgba(242,217,140,.08), transparent 60%),
+        radial-gradient(1200px 700px at 18% 10%, rgba(216,180,90,.14), transparent 58%),
+        radial-gradient(900px 700px at 82% 22%, rgba(8,116,87,.16), transparent 58%),
+        radial-gradient(1000px 800px at 50% 88%, rgba(242,217,140,.09), transparent 60%),
         #000;
       position:relative;
     }
 
-    / Optional subtle noise overlay (pure CSS) /
+    / Micro-noise overlay (pure CSS, no external files) /
     .site::before{
       content:"";
       position:fixed;
@@ -80,13 +82,13 @@
       margin:0 auto;
     }
 
-    / Gold border “metal” /
-    .metal-border{
+    / Metallic border utility /
+    .metal{
       position:relative;
       border-radius: var(--radius);
       overflow:hidden;
     }
-    .metal-border::before{
+    .metal::before{
       content:"";
       position:absolute;
       inset:0;
@@ -95,10 +97,10 @@
       background:
         linear-gradient(135deg,
           rgba(242,217,140,.95),
-          rgba(216,180,90,.55) 25%,
-          rgba(164,123,31,.75) 50%,
-          rgba(242,217,140,.65) 75%,
-          rgba(216,180,90,.85)
+          rgba(216,180,90,.55) 22%,
+          rgba(164,123,31,.78) 52%,
+          rgba(242,217,140,.62) 74%,
+          rgba(216,180,90,.86)
         );
       -webkit-mask:
         linear-gradient(#000 0 0) content-box,
@@ -109,17 +111,24 @@
       opacity:.92;
     }
 
-    / Header /
-    header{
+    / Focus states (premium + accessible) /
+    :focus-visible{
+      outline: 3px solid rgba(242,217,140,.55);
+      outline-offset: 3px;
+      border-radius: 14px;
+    }
+
+    / ================= HEADER ================= /
+    .header{
       position:sticky;
       top:0;
-      z-index:999;
+      z-index:1000;
       backdrop-filter: blur(10px);
       background: rgba(0,0,0,.62);
       border-bottom:1px solid var(--line-soft);
     }
     .header-inner{
-      min-height:96px;
+      min-height:92px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -133,31 +142,30 @@
       min-width:0;
     }
     .brand-mark{
-      width:62px;
-      height:62px;
+      width:62px;height:62px;
       display:grid;
       place-items:center;
-      border-radius: 16px;
+      border-radius: 18px;
       background:
         radial-gradient(circle at 30% 30%, rgba(242,217,140,.18), transparent 55%),
-        linear-gradient(135deg, rgba(8,116,87,.55), rgba(0,0,0,.9));
+        linear-gradient(135deg, rgba(8,116,87,.60), rgba(0,0,0,.92));
       box-shadow: var(--shadow2);
-      position:relative;
+      flex:0 0 auto;
     }
     .brand-mark span{
-      font-family:var(--serif);
+      font-family: var(--serif);
       font-weight:900;
-      letter-spacing:.6px;
+      color: var(--gold2);
       font-size:22px;
-      color:var(--gold2);
+      letter-spacing:.8px;
       text-transform:uppercase;
     }
     .brand-name{
-      font-family:var(--serif);
+      font-family: var(--serif);
       text-transform:uppercase;
       letter-spacing:1.4px;
       font-size: clamp(16px, 2vw, 22px);
-      color:var(--gold2);
+      color: var(--gold2);
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
@@ -171,19 +179,16 @@
     .nav-actions{
       display:flex;
       align-items:center;
-      gap:12px;
+      gap:10px;
     }
-
-    / Desktop links (hidden on mobile) /
     .top-links{
       display:flex;
-      gap:14px;
       align-items:center;
-      padding-right:6px;
+      gap:12px;
     }
     .top-links a{
-      font-size:13px;
-      letter-spacing:2.2px;
+      font-size:12px;
+      letter-spacing:2.4px;
       text-transform:uppercase;
       opacity:.92;
       padding:10px 10px;
@@ -196,101 +201,212 @@
     }
 
     .menu-btn{
-      width:54px;
-      height:54px;
+      width:54px;height:54px;
       border-radius: 16px;
       border:1px solid var(--line);
       background:
-        radial-gradient(circle at 20% 20%, rgba(242,217,140,.15), transparent 60%),
-        linear-gradient(135deg, rgba(8,116,87,.70), rgba(0,0,0,.85));
+        radial-gradient(circle at 20% 20%, rgba(242,217,140,.16), transparent 60%),
+        linear-gradient(135deg, rgba(8,116,87,.78), rgba(0,0,0,.92));
       color:#fff;
+      font-size:22px;
       display:grid;
       place-items:center;
       cursor:pointer;
       box-shadow: var(--shadow2);
       transition:.18s ease;
     }
-    .menu-btn:hover{
-      transform: translateY(-1px);
+    .menu-btn:hover{ transform: translateY(-1px); }
+
+    / ================= MENU DIALOG ================= /
+    .menu-panel{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.72);
+      z-index:2000;
+      display:none;
+      padding:18px;
+      backdrop-filter: blur(12px);
     }
-    .menu-btn:focus-visible,
-    a:focus-visible,
-    button:focus-visible{
-      outline: 3px solid rgba(242,217,140,.55);
-      outline-offset: 3px;
+    .menu-panel.open{ display:block; }
+
+    .menu-box{
+      width:min(640px, 100%);
+      margin: 60px auto 0;
+      background: rgba(8,8,8,.86);
+      box-shadow: var(--shadow);
+      padding:22px;
+      border-radius: var(--radius);
     }
 
-    / Hero /
+    .menu-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding-bottom:14px;
+      margin-bottom:14px;
+      border-bottom:1px solid rgba(242,217,140,.18);
+    }
+    .menu-top h2{
+      color:var(--gold2);
+      font-family: var(--serif);
+      font-weight:400;
+      font-size:24px;
+      letter-spacing:.4px;
+    }
+    .close-menu{
+      width:46px;height:46px;
+      border-radius: 16px;
+      border:1px solid rgba(242,217,140,.35);
+      background: rgba(0,0,0,.55);
+      color:#fff;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    .menu-links{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      padding-top: 6px;
+    }
+    .menu-links a{
+      display:block;
+      border:1px solid rgba(242,217,140,.16);
+      background: rgba(255,255,255,.02);
+      padding:14px 14px;
+      border-radius: 16px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:900;
+      font-size:13px;
+      transition:.2s ease;
+    }
+    .menu-links a:hover{
+      background: rgba(242,217,140,.12);
+      border-color: rgba(242,217,140,.36);
+    }
+
+    .menu-support-links{
+      margin-top:14px;
+      padding-top:14px;
+      border-top:1px solid rgba(242,217,140,.16);
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .menu-support-links a{
+      color: var(--gold2);
+      font-size:12px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      padding:10px 10px;
+      border-radius: 999px;
+      background: rgba(242,217,140,.06);
+      border:1px solid rgba(242,217,140,.14);
+    }
+
+    / ================= TYPOGRAPHY ================= /
+    h1,h2,h3{
+      font-family: var(--serif);
+      font-weight:400;
+      line-height:1.05;
+    }
+    p,li{
+      font-size: clamp(16px, 2.0vw, 20px);
+      color: rgba(255,255,255,.90);
+      line-height:1.75;
+    }
+
+    .eyebrow{
+      color: var(--gold2);
+      text-transform:uppercase;
+      letter-spacing: 6px;
+      font-weight:900;
+      font-size:12px;
+      margin-bottom:14px;
+      opacity:.95;
+    }
+
+    / ================= HERO ================= /
     .hero{
-      position:relative;
-      padding: 88px 0 62px;
+      padding: 78px 0 58px;
       border-bottom:1px solid var(--line-soft);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.85)),
+        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.88)),
         var(--hero-bg);
       background-size:cover;
       background-position:center;
     }
-
     .hero-grid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
-      gap:28px;
+      gap:22px;
       align-items:stretch;
     }
 
-    .kicker{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      margin-bottom:14px;
-      opacity:.98;
-      flex-wrap:wrap;
+    .panel{
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px;
+      position:relative;
+      overflow:hidden;
     }
-    .pill{
-      font-size:12px;
-      letter-spacing:2.6px;
-      text-transform:uppercase;
-      padding:8px 10px;
-      border-radius: 999px;
-      background: rgba(242,217,140,.10);
-      border: 1px solid rgba(242,217,140,.22);
-      color: var(--gold2);
+    .panel::after{
+      content:"";
+      position:absolute;
+      inset:-60px -140px;
+      transform: rotate(18deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);
+      opacity:.0;
+      transition:.35s ease;
+      pointer-events:none;
     }
+    .panel:hover::after{
+      opacity:.55;
+      inset:-60px 140px;
+    }
+
     .date-line{
       font-size:12px;
-      letter-spacing:2.6px;
       text-transform:uppercase;
+      letter-spacing:2.6px;
       opacity:.9;
+      margin-bottom:10px;
     }
 
-    h1,h2,h3{ font-family:var(--serif); font-weight:400; line-height:1.05; }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(242,217,140,.22);
+      background: rgba(242,217,140,.10);
+      color: var(--gold2);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
     h1{
       font-size: clamp(44px, 6vw, 78px);
-      margin: 12px 0 18px;
+      margin: 8px 0 14px;
+      color:#fff;
     }
     h1 span{
-      color: var(--gold2);
       display:block;
-    }
-    p{
-      font-size: clamp(16px, 2.1vw, 20px);
-      color: rgba(255,255,255,.90);
-      line-height: 1.75;
-      margin-bottom: 18px;
-      font-family: var(--sans);
-    }
-
-    .hero-panel{
-      padding: 34px;
-      border-radius: var(--radius);
-      background: rgba(10,12,10,.56);
-      box-shadow: var(--shadow);
+      color: var(--gold2);
     }
 
     .cta-row{
       display:flex;
-      gap:14px;
+      gap:12px;
       flex-wrap:wrap;
       margin-top: 18px;
     }
@@ -303,7 +419,7 @@
       min-height:58px;
       padding: 0 18px;
       border-radius: 16px;
-      border: 1px solid rgba(242,217,140,.35);
+      border:1px solid rgba(242,217,140,.35);
       text-transform:uppercase;
       letter-spacing: 3.8px;
       font-weight: 900;
@@ -313,102 +429,84 @@
       position:relative;
       overflow:hidden;
       user-select:none;
+      text-align:center;
+      width: auto;
     }
-
-    / Luxury “shine” /
     .btn::after{
       content:"";
       position:absolute;
-      inset:-80px -120px;
-      transform: rotate(20deg);
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+      inset:-80px -160px;
+      transform: rotate(18deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.20), transparent);
       opacity:0;
       transition:.35s ease;
     }
     .btn:hover::after{
       opacity:1;
-      inset:-80px 120px;
+      inset:-80px 160px;
     }
+    .btn .arrow{ color: var(--gold2); font-size:18px; margin-top:-1px; }
 
     .btn.primary{
       background: linear-gradient(135deg, rgba(8,116,87,.85), rgba(0,0,0,.92));
       color:#fff;
       box-shadow: var(--shadow2);
     }
-    .btn.primary:hover{
-      transform: translateY(-2px);
-      border-color: rgba(242,217,140,.6);
-    }
+    .btn.primary:hover{ transform: translateY(-2px); border-color: rgba(242,217,140,.6); }
     .btn.secondary{
-      background: rgba(0,0,0,.35);
+      background: rgba(0,0,0,.30);
       color: var(--gold2);
     }
-    .btn.secondary:hover{
-      background: rgba(242,217,140,.10);
-      transform: translateY(-2px);
-    }
-    .btn .arrow{
-      color: var(--gold2);
-      font-size: 18px;
-      margin-top:-1px;
-    }
+    .btn.secondary:hover{ transform: translateY(-2px); background: rgba(242,217,140,.10); }
 
-    / Right hero “executive brief” /
-    .brief{
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:18px;
-    }
+    / Executive brief panel /
     .brief h3{
-      font-size: 18px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      font-size: 13px;
+      font-weight: 900;
       letter-spacing: 3px;
-      text-transform:uppercase;
-      font-family: var(--sans);
-      font-weight:900;
-      color:#fff;
-      margin-bottom:10px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
     }
-    .brief .metric{
+    .metric{
       display:flex;
       align-items:baseline;
       justify-content:space-between;
       padding: 14px 0;
-      border-bottom: 1px solid rgba(242,217,140,.15);
+      border-bottom: 1px solid rgba(242,217,140,.16);
     }
     .metric b{
-      color: var(--gold2);
       font-family: var(--serif);
-      font-size: 24px;
+      font-size: 26px;
+      color: var(--gold2);
       font-weight: 700;
       letter-spacing:.6px;
     }
     .metric span{
-      opacity:.9;
-      font-size: 13px;
+      font-size:12px;
       letter-spacing:2px;
       text-transform:uppercase;
+      opacity:.92;
     }
 
-    / News strip /
+    / ================= TICKER ================= /
     .news-strip{
       background: rgba(0,0,0,.55);
       border-top:1px solid var(--line-soft);
       border-bottom:1px solid var(--line-soft);
       overflow:hidden;
-      padding: 14px 0;
+      white-space:nowrap;
+      padding:14px 0;
     }
     .ticker{
       display:inline-block;
       padding-left:100%;
       animation:tickerMove 38s linear infinite;
-      font-size: 12px;
-      letter-spacing: 3px;
       text-transform:uppercase;
+      letter-spacing:3px;
       font-weight:900;
+      font-size:12px;
       opacity:.95;
-      font-family: var(--sans);
     }
     .ticker span{
       color:#000;
@@ -418,69 +516,69 @@
       margin-right: 14px;
     }
     @keyframes tickerMove{
-      from{ transform: translateX(0); }
-      to{ transform: translateX(-100%); }
+      from{transform:translateX(0);}
+      to{transform:translateX(-100%);}
     }
     @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      .ticker{ animation:none; padding-left:0; }
-      .btn::after{ display:none; }
+      html{scroll-behavior:auto;}
+      .ticker{animation:none;padding-left:0;}
+      .btn::after, .panel::after{display:none;}
     }
 
-    / Sections /
+    / ================= SECTIONS ================= /
     .section{
       padding: 86px 0;
       background: rgba(10,14,10,.72);
-      border-bottom: 1px solid rgba(242,217,140,.16);
+      border-bottom:1px solid rgba(242,217,140,.14);
     }
-    .section.dark{
-      background: rgba(0,0,0,.70);
+    .section.dark{ background: rgba(0,0,0,.70); }
+    .section.media-bg{
+      background:
+        linear-gradient(180deg, rgba(8,116,87,.55), rgba(0,0,0,.88)),
+        var(--section-bg);
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid rgba(242,217,140,.16);
     }
+
     .section-title{
-      margin-bottom: 34px;
+      margin-bottom: 32px;
       max-width: 920px;
     }
-    .eyebrow{
-      color: var(--gold2);
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      font-weight: 900;
-      font-size: 12px;
-      margin-bottom: 12px;
-      font-family: var(--sans);
-      opacity:.95;
-    }
     h2{
-      font-size: clamp(30px, 4.5vw, 52px);
-      margin-bottom: 16px;
+      font-size: clamp(30px, 4.6vw, 52px);
+      margin-bottom: 14px;
+      color:#fff;
     }
     h2 span{ color: var(--gold2); }
+    h3{
+      font-size: 28px;
+      color: var(--gold2);
+      margin-bottom: 12px;
+    }
+    .section-title p{ color: rgba(255,255,255,.88); }
 
-    / Feature grid /
     .feature-grid{
       display:grid;
       grid-template-columns: 1.06fr .94fr;
-      gap: 22px;
+      gap: 18px;
       align-items:stretch;
     }
-    .panel{
-      border-radius: var(--radius);
-      background: rgba(0,0,0,.40);
-      box-shadow: var(--shadow2);
+    .feature-text{
       padding: 34px;
-    }
-    .panel h3{
-      color: var(--gold2);
-      font-size: 30px;
-      margin-bottom: 12px;
+      background: rgba(0,0,0,.40);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
     }
     .feature-image{
       min-height: 520px;
       border-radius: var(--radius);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.62)),
+        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.62)),
         var(--feature-bg);
-      background-size: cover;
+      background-size:cover;
       background-position:center;
       box-shadow: var(--shadow);
       position:relative;
@@ -491,170 +589,168 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(600px 300px at 30% 20%, rgba(242,217,140,.10), transparent 60%),
-        radial-gradient(700px 400px at 70% 80%, rgba(8,116,87,.12), transparent 65%);
+        radial-gradient(600px 300px at 25% 20%, rgba(242,217,140,.10), transparent 62%),
+        radial-gradient(700px 450px at 75% 80%, rgba(8,116,87,.12), transparent 65%);
       pointer-events:none;
     }
 
-    / Card grid /
-    .card-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-    .card{
-      border-radius: var(--radius);
-      background: rgba(0,0,0,.40);
-      padding: 30px;
-      box-shadow: var(--shadow2);
-      transition:.22s ease;
-      position:relative;
-      overflow:hidden;
-      min-height: 260px;
-    }
-    .card::after{
-      content:"";
-      position:absolute;
-      inset:-60px -120px;
-      transform: rotate(15deg);
-      background: linear-gradient(90deg, transparent, rgba(242,217,140,.14), transparent);
-      opacity:0;
-      transition:.35s ease;
-    }
-    .card:hover{
-      transform: translateY(-4px);
-      background: rgba(8,116,87,.18);
-    }
-    .card:hover::after{ opacity:1; inset:-60px 120px; }
-    .card h3{
-      font-size: 28px;
-      color: var(--gold2);
-      margin-bottom: 10px;
-    }
-    .card p{
-      font-size: 16px;
-      color: rgba(233,236,233,.92);
-      margin-bottom: 0;
-    }
-    .card-action{
-      margin-top: 18px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(242,217,140,.18);
-      color: var(--gold2);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-      font-weight: 900;
-      font-family: var(--sans);
-    }
-
-    / Full-width photo break /
     .plain-photo{
       min-height: 520px;
       display:flex;
       align-items:flex-end;
       background:
-        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.62)),
+        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.64)),
         var(--plain-bg);
-      background-size: cover;
+      background-size:cover;
       background-position:center;
-      border-top: 1px solid rgba(242,217,140,.20);
-      border-bottom: 1px solid rgba(242,217,140,.20);
+      border-top:1px solid rgba(242,217,140,.18);
+      border-bottom:1px solid rgba(242,217,140,.18);
     }
     .plain-caption{
       width:100%;
       background: rgba(0,0,0,.66);
-      backdrop-filter: blur(8px);
-      border-top: 1px solid rgba(242,217,140,.20);
-      padding: 28px 0;
+      backdrop-filter: blur(10px);
+      border-top:1px solid rgba(242,217,140,.18);
+      padding: 26px 0;
     }
-    .plain-caption p{ margin:0; }
 
-    / Video block /
+    / Cards /
+    .card-grid{
+      display:grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 16px;
+    }
+    .card{
+      background: rgba(0,0,0,.40);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding: 30px;
+      min-height: 260px;
+      transition:.22s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-60px -160px;
+      transform: rotate(16deg);
+      background: linear-gradient(90deg, transparent, rgba(242,217,140,.16), transparent);
+      opacity:0;
+      transition:.35s ease;
+      pointer-events:none;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      background: rgba(8,116,87,.18);
+    }
+    .card:hover::after{
+      opacity:1;
+      inset:-60px 160px;
+    }
+    .card p{
+      font-size: 16px;
+      color: rgba(233,236,233,.92);
+    }
+    .card-action{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top:1px solid rgba(242,217,140,.18);
+      color: var(--gold2);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    / Video /
     .video-block{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
+      gap: 16px;
       align-items:stretch;
     }
     .video-screen{
       min-height: 520px;
       border-radius: var(--radius);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.80)),
+        linear-gradient(180deg, rgba(0,0,0,.16), rgba(0,0,0,.82)),
         url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85");
-      background-size: cover;
+      background-size:cover;
       background-position:center;
       box-shadow: var(--shadow);
       position:relative;
-      padding: 32px;
       display:flex;
       align-items:flex-end;
+      padding: 32px;
       overflow:hidden;
     }
     .play-button{
       position:absolute;
-      top: 22px;
-      right: 22px;
-      width: 64px;
-      height: 64px;
+      top:22px;
+      right:22px;
+      width:64px;
+      height:64px;
       border-radius: 20px;
+      border:1px solid rgba(242,217,140,.35);
+      background: rgba(0,0,0,.72);
+      color: var(--gold2);
       display:grid;
       place-items:center;
-      color: var(--gold2);
-      background: rgba(0,0,0,.72);
-      border: 1px solid rgba(242,217,140,.35);
+      font-size:26px;
+      font-weight:900;
       box-shadow: var(--shadow2);
-      font-size: 26px;
-      font-weight: 900;
     }
     .video-screen h3{
-      font-family: var(--sans);
-      font-weight: 900;
-      font-size: 22px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      font-weight:900;
+      font-size: 18px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      margin-bottom:10px;
       color:#fff;
     }
-    .video-screen p{
-      font-size: 16px;
-      color: rgba(255,255,255,.90);
-      margin:0;
+    .video-screen p{ font-size: 16px; margin:0; color: rgba(255,255,255,.90); }
+
+    .video-side{
+      background: rgba(0,0,0,.44);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow2);
+      padding: 30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
     }
 
     / Contact /
     .contact{
-      padding: 90px 0;
+      padding: 86px 0;
       background:
-        linear-gradient(180deg, rgba(8,116,87,.55), rgba(0,0,0,.88)),
+        linear-gradient(180deg, rgba(8,116,87,.52), rgba(0,0,0,.90)),
         url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85");
-      background-size: cover;
+      background-size:cover;
       background-position:center;
-      border-top: 1px solid rgba(242,217,140,.20);
-      border-bottom: 1px solid rgba(242,217,140,.20);
+      border-top:1px solid rgba(242,217,140,.18);
+      border-bottom:1px solid rgba(242,217,140,.18);
     }
-    .contact h2{
-      font-size: clamp(34px, 5vw, 58px);
-    }
+    .contact h2{ font-size: clamp(34px, 5vw, 58px); }
 
     / Footer /
-    footer{
+    .titancore-footer{
+      background: rgba(0,0,0,.78);
+      border-top:1px solid rgba(242,217,140,.16);
       padding: 70px 0 84px;
       text-align:center;
-      background: rgba(0,0,0,.78);
-      border-top: 1px solid rgba(242,217,140,.18);
     }
     .footer-mark{
-      width: 92px;
-      height: 92px;
-      margin: 0 auto 24px;
+      width:92px;height:92px;
+      margin:0 auto 22px;
       border-radius: 26px;
-      display:grid;
-      place-items:center;
       background:
         radial-gradient(circle at 30% 30%, rgba(242,217,140,.18), transparent 55%),
-        linear-gradient(135deg, rgba(8,116,87,.55), rgba(0,0,0,.9));
+        linear-gradient(135deg, rgba(8,116,87,.55), rgba(0,0,0,.92));
+      display:grid;
+      place-items:center;
       box-shadow: var(--shadow2);
       color: var(--gold2);
       font-family: var(--serif);
@@ -668,150 +764,71 @@
       font-size: clamp(22px, 3.2vw, 40px);
       color: var(--gold2);
       line-height: 1.45;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
     .footer-copy{
       opacity:.92;
-      margin-bottom: 30px;
-      letter-spacing: 1.2px;
+      letter-spacing:1.2px;
+      margin-bottom: 26px;
     }
     .footer-links{
       display:flex;
-      gap: 14px;
       justify-content:center;
       flex-wrap:wrap;
-      margin-bottom: 24px;
-      opacity:.95;
+      gap: 10px;
+      margin-bottom: 16px;
     }
     .footer-links a{
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-weight:900;
       padding: 10px 12px;
       border-radius: 14px;
-      border: 1px solid rgba(242,217,140,.14);
+      border:1px solid rgba(242,217,140,.14);
       background: rgba(255,255,255,.02);
       transition:.2s ease;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 900;
     }
     .footer-links a:hover{
       background: rgba(242,217,140,.10);
       border-color: rgba(242,217,140,.30);
     }
 
-    .social-row{
+    .footer-social-icons{
       display:flex;
       justify-content:center;
+      align-items:center;
       gap: 12px;
-      margin-top: 18px;
+      margin-top: 12px;
     }
-    .social{
-      width: 54px; height: 54px;
+    .social-square{
+      width:54px;height:54px;
       border-radius: 18px;
-      border: 1px solid rgba(242,217,140,.25);
+      border:1px solid rgba(242,217,140,.25);
+      background: rgba(0,0,0,.55);
       display:grid;
       place-items:center;
-      background: rgba(0,0,0,.55);
-      transition:.2s ease;
       box-shadow: var(--shadow2);
-      font-weight: 900;
+      transition:.2s ease;
+      font-weight:900;
     }
-    .social:hover{
-      background: linear-gradient(135deg, rgba(8,116,87,.75), rgba(0,0,0,.92));
+    .social-square:hover{
+      background: linear-gradient(135deg, rgba(8,116,87,.78), rgba(0,0,0,.92));
       transform: translateY(-2px);
       border-color: rgba(242,217,140,.50);
     }
+    .social-symbol{ font-size: 18px; font-weight: 900; letter-spacing:0; }
+    .social-symbol.instagram{ font-size: 20px; font-weight: 700; }
+    .social-symbol.linkedin{ font-size: 18px; font-weight: 900; }
 
-    / Menu dialog /
-    .menu-overlay{
-      position:fixed;
-      inset:0;
-      background: rgba(0,0,0,.70);
-      display:none;
-      z-index:2000;
-      padding: 18px;
-      backdrop-filter: blur(10px);
-    }
-    .menu-overlay.open{ display:block; }
-    .menu-box{
-      width: min(620px, 100%);
-      margin: 60px auto 0;
-      border-radius: var(--radius);
-      background: rgba(10,10,10,.86);
-      box-shadow: var(--shadow);
-      padding: 22px;
-    }
-    .menu-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid rgba(242,217,140,.18);
-      margin-bottom: 14px;
-    }
-    .menu-top h2{
-      font-size: 22px;
-      margin:0;
-      color: var(--gold2);
-    }
-    .close-menu{
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      border: 1px solid rgba(242,217,140,.35);
-      background: rgba(0,0,0,.55);
-      color:#fff;
-      cursor:pointer;
-    }
-    .menu-links{
-      display:grid;
-      gap: 10px;
-      padding-top: 6px;
-    }
-    .menu-links a{
-      padding: 14px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(242,217,140,.16);
-      background: rgba(255,255,255,.02);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 900;
-      font-size: 13px;
-      transition:.2s ease;
-    }
-    .menu-links a:hover{
-      background: rgba(242,217,140,.12);
-      border-color: rgba(242,217,140,.35);
-    }
-    .menu-support{
-      display:flex;
-      gap: 10px;
-      justify-content:center;
-      flex-wrap:wrap;
-      padding-top: 14px;
-      margin-top: 14px;
-      border-top: 1px solid rgba(242,217,140,.16);
-    }
-    .menu-support a{
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold2);
-      font-weight: 900;
-      padding: 10px 10px;
-      border-radius: 999px;
-      background: rgba(242,217,140,.06);
-      border: 1px solid rgba(242,217,140,.14);
-    }
-
-    / Responsive */
-    @media (max-width: 980px){
-      .hero-grid, .feature-grid, .video-block, .card-grid{
-        grid-template-columns: 1fr;
-      }
+    / ================= RESPONSIVE ================= /
+    @media(max-width:980px){
+      .hero-grid, .feature-grid, .video-block, .card-grid{ grid-template-columns:1fr; }
       .top-links{ display:none; }
-      .hero{ padding-top: 64px; }
+    }
+    @media(max-width:760px){
+      .panel, .feature-text, .card, .video-side{ padding: 26px; }
+      .feature-image, .video-screen{ min-height: 420px; }
     }
   </style>
 </head>
@@ -820,32 +837,30 @@
   <div class="site">
 
     <!-- HEADER -->
-    <header>
+    <header class="header">
       <div class="wrap header-inner">
-        <a class="brand" href="index.html">
-          <div class="brand-mark metal-border"><span>TH</span></div>
+        <a href="index.html" class="brand" aria-label="TitanCore Holdings home">
+          <div class="brand-mark metal"><span>TH</span></div>
           <div class="brand-name">TitanCore <b>Holdings</b></div>
         </a>
 
         <div class="nav-actions">
-          <nav class="top-links" aria-label="Primary">
+          <nav class="top-links" aria-label="Primary navigation">
             <a href="about-group.html">About</a>
             <a href="companies.html">Companies</a>
             <a href="business-intelligence.html">Intelligence</a>
-            <a href="news-media.html">News & Media</a>
+            <a href="news-media.html">News</a>
             <a href="contact.html">Contact</a>
           </nav>
 
-          <button class="menu-btn" id="openMenu" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">
-            ☰
-          </button>
+          <button class="menu-btn" id="openMenu" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button>
         </div>
       </div>
     </header>
 
     <!-- MENU -->
-    <div class="menu-overlay" id="menuPanel" role="dialog" aria-modal="true" aria-label="TitanCore menu">
-      <div class="menu-box metal-border" role="document">
+    <div class="menu-panel" id="menuPanel" role="dialog" aria-modal="true" aria-label="TitanCore Menu">
+      <div class="menu-box metal" role="document">
         <div class="menu-top">
           <h2>TitanCore Menu</h2>
           <button class="close-menu" id="closeMenu" aria-label="Close menu">×</button>
@@ -861,7 +876,7 @@
           <a href="contact.html">Contact</a>
         </nav>
 
-        <div class="menu-support">
+        <div class="menu-support-links">
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms-of-use.html">Terms of Use</a>
           <a href="feedback.html">Feedback</a>
@@ -873,55 +888,34 @@
     <section class="hero" id="hero">
       <div class="wrap hero-grid">
 
-        <div class="hero-panel metal-border">
-          <div class="kicker">
-            <span class="pill">Private Holding Company</span>
-            <div class="date-line" id="dateLine">TitanCore Holdings</div>
-          </div>
+        <div class="panel metal">
+          <div class="pill">Private Holding Company</div>
+          <div class="date-line" id="dateLine">TitanCore Holdings</div>
 
           <h1>TitanCore <span>Holdings.</span></h1>
 
           <p>
-            TitanCore Holdings is the parent organization built to guide a growing company network,
-            business intelligence, public media communication, global business education, and institutional direction.
+            TitanCore Holdings is the parent company built to organize, guide, and support a growing
+            company network, public business information, media communication, global business education,
+            and institutional direction.
           </p>
 
           <div class="cta-row">
-            <a href="about-group.html" class="btn primary">
-              Learn More <span class="arrow">›</span>
-            </a>
-            <a href="companies.html" class="btn secondary">
-              View Companies <span class="arrow">›</span>
-            </a>
+            <a href="about-group.html" class="btn primary">Learn More <span class="arrow">›</span></a>
+            <a href="companies.html" class="btn secondary">View Companies <span class="arrow">›</span></a>
           </div>
         </div>
 
-        <aside class="hero-panel metal-border brief">
-          <div>
-            <h3>Executive Overview</h3>
-            <p style="margin-bottom:0;">
-              A clean “front door” experience: parent structure first, then the correct lane.
-            </p>
-          </div>
+        <aside class="panel metal brief">
+          <h3>Executive Overview</h3>
+          <p style="margin-bottom:12px;">
+            TitanCore is the front door. Each major lane stays clean, separated, and organized.
+          </p>
 
-          <div>
-            <div class="metric">
-              <b>01</b>
-              <span>Company Network</span>
-            </div>
-            <div class="metric">
-              <b>02</b>
-              <span>Business Intelligence</span>
-            </div>
-            <div class="metric">
-              <b>03</b>
-              <span>News & Media</span>
-            </div>
-            <div class="metric" style="border-bottom:none;">
-              <b>04</b>
-              <span>Insights & Contact</span>
-            </div>
-          </div>
+          <div class="metric"><b>01</b><span>Company Network</span></div>
+          <div class="metric"><b>02</b><span>Business Intelligence</span></div>
+          <div class="metric"><b>03</b><span>News & Media</span></div>
+          <div class="metric" style="border-bottom:none;"><b>04</b><span>Insights & Contact</span></div>
         </aside>
 
       </div>
@@ -942,25 +936,25 @@
           <div class="eyebrow">TitanCore Overview</div>
           <h2>The Parent Company <span>Comes First.</span></h2>
           <p>
-            This homepage introduces TitanCore Holdings with clarity. Subsidiary detail belongs inside its proper parent pages,
-            keeping the front door premium, simple, and organized.
+            The homepage introduces TitanCore Holdings clearly. It should not show every company,
+            every stock page, or every global news page outside. Those details belong inside their proper parent pages.
           </p>
         </div>
 
         <div class="feature-grid">
-          <div class="panel metal-border">
+          <div class="feature-text metal">
             <h3>What TitanCore Represents</h3>
             <p>
-              TitanCore Holdings is the umbrella structure. It organizes the company network, business intelligence,
-              public media, global business education, and official communication routes.
+              TitanCore Holdings is the umbrella structure. It organizes the company network,
+              business intelligence, public media, global business education, and official contact routes.
             </p>
             <p style="margin-bottom:0;">
-              Visitors enter through TitanCore, then move into: About Group, Companies, Business Intelligence, News & Media,
-              TitanCore Insights, or Contact.
+              Visitors should use this homepage as the front door, then enter: About Group, Companies,
+              Business Intelligence, News & Media, TitanCore Insights, or Contact.
             </p>
           </div>
 
-          <div class="feature-image metal-border" id="featureImage"></div>
+          <div class="feature-image metal" id="featureImage"></div>
         </div>
       </div>
     </section>
@@ -971,7 +965,8 @@
         <div class="wrap">
           <div class="eyebrow">Picture Window</div>
           <p>
-            A clean visual break — image can rotate daily while the structure stays focused on TitanCore Holdings.
+            This section is a clean picture-only visual break for the homepage. The image can rotate daily
+            while the page stays focused on TitanCore Holdings.
           </p>
         </div>
       </div>
@@ -984,34 +979,72 @@
           <div class="eyebrow">Main Public Doors</div>
           <h2>One Door For Each <span>Main Area.</span></h2>
           <p>
-            Each card is a parent section — smaller details stay inside the parent pages so the homepage stays executive.
+            Each card below is a parent section. The smaller details stay inside those parent pages,
+            so the homepage stays clean and organized.
           </p>
         </div>
 
         <div class="card-grid">
-          <a href="companies.html" class="card metal-border">
+          <a href="companies.html" class="card metal">
             <h3>Company Network</h3>
-            <p>Explore TitanCore companies, descriptions, and direct links to each brand site.</p>
+            <p>
+              See all TitanCore companies, read each company description, and click direct links to each company website or landing page.
+            </p>
             <div class="card-action">Open Company Network</div>
           </a>
 
-          <a href="business-intelligence.html" class="card metal-border">
+          <a href="business-intelligence.html" class="card metal">
             <h3>Business Intelligence</h3>
-            <p>Markets, sectors, real estate, technology, finance, logistics, and education.</p>
+            <p>
+              Stock market, indexes, real estate, technology, oil, finance, crypto, logistics, sectors, and business education.
+            </p>
             <div class="card-action">Open Business Intelligence</div>
           </a>
 
-          <a href="news-media.html" class="card metal-border">
+          <a href="news-media.html" class="card metal">
             <h3>News & Media</h3>
-            <p>Updates, headlines, archives, subscription, video, and global news inside one lane.</p>
+            <p>
+              TitanCore updates, media, headlines, archives, subscription, video, and Global News organized together.
+            </p>
             <div class="card-action">Open News & Media</div>
           </a>
 
-          <a href="blogs.html" class="card metal-border">
+          <a href="blogs.html" class="card metal">
             <h3>TitanCore Insights</h3>
-            <p>Public journal for articles, education, founder topics, market explainers, and stories.</p>
+            <p>
+              Public business journal for education, articles, founder topics, market explainers, and TitanCore stories.
+            </p>
             <div class="card-action">Open Insights</div>
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GLOBAL BUSINESS -->
+    <section class="section media-bg" id="globalBusinessSection">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="eyebrow">Global Business</div>
+          <h2>Global Business Is A <span>Business Lane.</span></h2>
+          <p>
+            Global Business is about business activity, trade, industries, country economies, international opportunity,
+            banking movement, logistics, and global market education. Global News belongs inside News & Media.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-text metal">
+            <h3>Global Business Belongs With Business Intelligence</h3>
+            <p>
+              Visitors who want country business information, continent business movement, trade activity,
+              and international opportunity should enter the business intelligence structure.
+            </p>
+            <p style="margin-bottom:0;">
+              Visitors who want current world headlines should enter News & Media, where Global News is organized with media updates and archives.
+            </p>
+          </div>
+
+          <div class="feature-image metal" id="globalBusinessImage"></div>
         </div>
       </div>
     </section>
@@ -1022,27 +1055,28 @@
         <div class="section-title">
           <div class="eyebrow">Homepage Video</div>
           <h2>TitanCore Media <span>Window.</span></h2>
-          <p>This is a homepage preview. Full video library and archives live inside News & Media.</p>
+          <p>
+            This is only a homepage video placeholder. Full Global News, media archives, and video content
+            should be organized inside the News & Media page.
+          </p>
         </div>
 
         <div class="video-block">
-          <div class="video-screen metal-border">
+          <div class="video-screen metal">
             <div class="play-button" aria-hidden="true">▶</div>
             <div>
-              <h3>TitanCore Briefing Window</h3>
-              <p>Future briefings, founder talks, interviews, and public updates can appear here.</p>
+              <h3>TitanCore Media Briefing Window</h3>
+              <p>Future TitanCore video briefings, founder talks, interviews, and public media updates can appear here.</p>
             </div>
           </div>
 
-          <div class="panel metal-border">
-            <h3 style="color:var(--gold2); font-size:30px; margin-bottom:12px;">Content Stays Organized</h3>
+          <div class="video-side metal">
+            <h3>Video Content Stays Organized</h3>
             <p>
-              The homepage shows the window — the full library, Global News, archive, and subscription system
-              stays inside News & Media.
+              The homepage shows the media window. The full video library, Global News, archive, and media
+              subscription system should live inside News & Media.
             </p>
-            <a href="news-media.html" class="btn primary" style="margin-top:10px;">
-              Open News & Media <span class="arrow">›</span>
-            </a>
+            <a href="news-media.html" class="btn primary" style="margin-top:10px;">Open News & Media <span class="arrow">›</span></a>
           </div>
         </div>
       </div>
@@ -1057,16 +1091,15 @@
           For general questions, company inquiries, public information, media feedback, or professional communication,
           contact TitanCore Holdings through the official contact page.
         </p>
-        <a href="contact.html" class="btn primary">
-          Get In Touch <span class="arrow">›</span>
-        </a>
+        <a href="contact.html" class="btn primary">Get In Touch <span class="arrow">›</span></a>
       </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer class="titancore-footer">
       <div class="wrap">
-        <div class="footer-mark metal-border">TH</div>
+        <div class="footer-mark metal">TH</div>
+
         <div class="footer-brand-name">
           TitanCore<br/>Holdings
         </div>
@@ -1080,10 +1113,16 @@
           <a href="feedback.html">Feedback</a>
         </div>
 
-        <div class="social-row">
-          <a class="social" href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-          <a class="social" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
-          <a class="social" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+        <div class="footer-social-icons">
+          <a class="social-square" href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+            <span class="social-symbol">f</span>
+          </a>
+          <a class="social-square" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram">
+            <span class="social-symbol instagram">◎</span>
+          </a>
+          <a class="social-square" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <span class="social-symbol linkedin">in</span>
+          </a>
         </div>
       </div>
     </footer>
@@ -1091,9 +1130,9 @@
   </div>
 
   <script>
-    // -----------------------------
-    // LUXURY V2 — Menu (Accessible)
-    // -----------------------------
+    / ==========================
+      Menu: accessible dialog
+    ========================== /
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
     const menuPanel = document.getElementById("menuPanel");
@@ -1105,16 +1144,15 @@
       lastFocus = document.activeElement;
       menuPanel.classList.add("open");
       document.body.style.overflow = "hidden";
-      openMenu?.setAttribute("aria-expanded", "true");
-      // focus first link
-      const firstLink = menuPanel.querySelector(".menu-links a");
-      firstLink?.focus();
+      openMenu?.setAttribute("aria-expanded","true");
+      const first = menuPanel.querySelector(".menu-links a");
+      first?.focus();
     }
     function closeDialog(){
       if(!menuPanel) return;
       menuPanel.classList.remove("open");
       document.body.style.overflow = "";
-      openMenu?.setAttribute("aria-expanded", "false");
+      openMenu?.setAttribute("aria-expanded","false");
       lastFocus?.focus?.();
     }
 
@@ -1128,37 +1166,40 @@
     document.addEventListener("keydown", (e) => {
       if(e.key === "Escape" && menuPanel?.classList.contains("open")) closeDialog();
 
-      // basic focus trap
+      // Focus trap while open
       if(e.key === "Tab" && menuPanel?.classList.contains("open")){
-        const focusable = menuPanel.querySelectorAll('a, button');
+        const focusable = menuPanel.querySelectorAll("a,button");
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
         if(e.shiftKey && document.activeElement === first){
           e.preventDefault(); last.focus();
-        } else if(!e.shiftKey && document.activeElement === last){
+        }else if(!e.shiftKey && document.activeElement === last){
           e.preventDefault(); first.focus();
         }
       }
     });
 
-    // -----------------------------
-    // Daily image rotation
-    // -----------------------------
+    / ==========================
+      Daily image rotation (your existing logic)
+    ========================== */
     const dailyImages = [
       {
         hero:"url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1900&q=85')",
         feature:"url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1600&q=85')",
-        plain:"url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1900&q=85')"
+        plain:"url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1900&q=85')",
+        section:"url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1900&q=85')"
       },
       {
         hero:"url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85')",
         feature:"url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85')",
-        plain:"url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1900&q=85')"
+        plain:"url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1900&q=85')",
+        section:"url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85')"
       },
       {
         hero:"url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1900&q=85')",
         feature:"url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1600&q=85')",
-        plain:"url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1900&q=85')"
+        plain:"url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1900&q=85')",
+        section:"url('https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1900&q=85')"
       }
     ];
 
@@ -1168,11 +1209,15 @@
     const hero = document.getElementById("hero");
     const featureImage = document.getElementById("featureImage");
     const plainPhoto = document.getElementById("plainPhoto");
+    const globalBusinessSection = document.getElementById("globalBusinessSection");
+    const globalBusinessImage = document.getElementById("globalBusinessImage");
     const dateLine = document.getElementById("dateLine");
 
     if(hero) hero.style.setProperty("--hero-bg", selected.hero);
     if(featureImage) featureImage.style.setProperty("--feature-bg", selected.feature);
     if(plainPhoto) plainPhoto.style.setProperty("--plain-bg", selected.plain);
+    if(globalBusinessSection) globalBusinessSection.style.setProperty("--section-bg", selected.section);
+    if(globalBusinessImage) globalBusinessImage.style.setProperty("--feature-bg", selected.feature);
 
     if(dateLine){
       dateLine.textContent = today.toLocaleDateString("en-US", { month:"long", day:"numeric", year:"numeric" });
