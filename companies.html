@@ -5,10 +5,160 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Companies | TitanCore Holdings</title>
-  <meta name="description" content="Official TitanCore Holdings company network directory for Vaultara Capital, Family First Equity Group, VitalPath Care Group, and RevMotion Auto & Marine." />
+  <meta name="description" content="Official TitanCore Holdings company network directory." />
+
+  <!-- ✅ BASIC SEO / SHARING (Add what was missing) -->
+  https://YOURDOMAIN.com/companies.html
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Companies | TitanCore Holdings" />
+  <meta property="og:description" content="Official TitanCore Holdings company network directory." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOURDOMAIN.com/companies.html" />
+  <meta property="og:image" content="https://YOURDOMAIN.com/assets/og/titancore-companies.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Companies | TitanCore Holdings" />
+  <meta name="twitter:description" content="Official TitanCore Holdings company network directory." />
+  <meta name="twitter:image" content="https://YOURDOMAIN.com/assets/og/titancore-companies.jpg" />
+
+  <!-- ✅ STRUCTURED DATA (JSON‑LD) -->
+  <!-- Uses CollectionPage for directory intent, ItemList for the listed companies, BreadcrumbList for hierarchy, and Organization entities. -->
+  <!-- Google recommends JSON‑LD structured data; Breadcrumb & Organization markup are supported patterns. [1](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)[2](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb)[3](https://developers.google.com/search/docs/appearance/structured-data/organization) -->
+  <!-- Schema.org supports CollectionPage/BreadcrumbList/parentOrganization. [4](https://schema.org/CollectionPage)[5](https://schema.org/BreadcrumbList)[6](https://schema.org/parentOrganization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://YOURDOMAIN.com/#organization",
+        "name": "TitanCore Holdings",
+        "url": "https://YOURDOMAIN.com/",
+        "sameAs": [
+          "https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr",
+          "https://www.instagram.com/titancoreholdings/",
+          "https://www.linkedin.com/company/titancore-holdings/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://YOURDOMAIN.com/#website",
+        "url": "https://YOURDOMAIN.com/",
+        "name": "TitanCore Holdings",
+        "publisher": { "@id": "https://YOURDOMAIN.com/#organization" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://YOURDOMAIN.com/companies.html#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://YOURDOMAIN.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Companies",
+            "item": "https://YOURDOMAIN.com/companies.html"
+          }
+        ]
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://YOURDOMAIN.com/companies.html#webpage",
+        "url": "https://YOURDOMAIN.com/companies.html",
+        "name": "Companies | TitanCore Holdings",
+        "description": "Official TitanCore Holdings company network directory.",
+        "isPartOf": { "@id": "https://YOURDOMAIN.com/#website" },
+        "about": { "@id": "https://YOURDOMAIN.com/#organization" },
+        "breadcrumb": { "@id": "https://YOURDOMAIN.com/companies.html#breadcrumbs" },
+        "mainEntity": { "@id": "https://YOURDOMAIN.com/companies.html#company-list" }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://YOURDOMAIN.com/companies.html#company-list",
+        "name": "TitanCore Holdings Company Network",
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "numberOfItems": 5,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": { "@id": "https://YOURDOMAIN.com/titancore-holdings.html#org" }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": { "@id": "https://YOURDOMAIN.com/vaultara-capital.html#org" }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": { "@id": "https://familyfirstequitygroup.com/#org" }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": { "@id": "https://YOURDOMAIN.com/vitalpath-care-group.html#org" }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": { "@id": "https://YOURDOMAIN.com/revmotion-auto-marine.html#org" }
+          }
+        ]
+      },
+
+      {
+        "@type": "Organization",
+        "@id": "https://YOURDOMAIN.com/titancore-holdings.html#org",
+        "name": "TitanCore Holdings",
+        "url": "https://YOURDOMAIN.com/titancore-holdings.html",
+        "sameAs": [
+          "https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr",
+          "https://www.instagram.com/titancoreholdings/",
+          "https://www.linkedin.com/company/titancore-holdings/"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://YOURDOMAIN.com/vaultara-capital.html#org",
+        "name": "Vaultara Capital",
+        "url": "https://YOURDOMAIN.com/vaultara-capital.html",
+        "parentOrganization": { "@id": "https://YOURDOMAIN.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://familyfirstequitygroup.com/#org",
+        "name": "Family First Equity Group",
+        "url": "https://familyfirstequitygroup.com/",
+        "parentOrganization": { "@id": "https://YOURDOMAIN.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://YOURDOMAIN.com/vitalpath-care-group.html#org",
+        "name": "VitalPath Care Group",
+        "url": "https://YOURDOMAIN.com/vitalpath-care-group.html",
+        "parentOrganization": { "@id": "https://YOURDOMAIN.com/#organization" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://YOURDOMAIN.com/revmotion-auto-marine.html#org",
+        "name": "RevMotion Auto & Marine",
+        "url": "https://YOURDOMAIN.com/revmotion-auto-marine.html",
+        "parentOrganization": { "@id": "https://YOURDOMAIN.com/#organization" }
+      }
+    ]
+  }
+  </script>
 
   <style>
-    *{
+    {
       margin:0;
       padding:0;
       box-sizing:border-box;
@@ -27,8 +177,8 @@
     }
 
     a{
-      text-decoration:none;
       color:inherit;
+      text-decoration:none;
     }
 
     button{
@@ -47,6 +197,30 @@
       --radius:22px;
       --serif:ui-serif,Georgia,"Times New Roman",Times,serif;
       --container:1180px;
+    }
+
+    / ✅ Added: Skip link (accessibility) /
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:12px;
+      z-index:5000;
+      background:#000;
+      color:var(--gold2);
+      border:1px solid var(--line);
+      padding:12px 14px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+    .skip-link:focus{
+      left:12px;
+    }
+
+    / ✅ Optional: reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *{ transition:none !important; animation:none !important; }
     }
 
     .site{
@@ -73,7 +247,13 @@
       inset:0;
       padding:2px;
       border-radius:var(--radius);
-      background:linear-gradient(135deg,rgba(242,217,140,.95),rgba(216,180,90,.55),rgba(164,123,31,.78),rgba(242,217,140,.72));
+      background:linear-gradient(
+        135deg,
+        rgba(242,217,140,.95),
+        rgba(216,180,90,.55),
+        rgba(164,123,31,.78),
+        rgba(242,217,140,.72)
+      );
       -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
       -webkit-mask-composite:xor;
       mask-composite:exclude;
@@ -296,7 +476,8 @@
       margin-bottom:16px;
     }
 
-    .btn-row{
+    .btn-row,
+    .actions{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
@@ -319,6 +500,7 @@
       background:linear-gradient(135deg,rgba(8,116,87,.85),rgba(0,0,0,.92));
       color:#fff;
       box-shadow:var(--shadow2);
+      text-align:center;
     }
 
     .btn.secondary{
@@ -332,12 +514,12 @@
     }
 
     .hero{
-      min-height:680px;
+      min-height:650px;
       display:flex;
       align-items:center;
       border-bottom:1px solid var(--line-soft);
       background:
-        linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.58),rgba(0,0,0,.86)),
+        linear-gradient(90deg,rgba(0,0,0,.90),rgba(0,0,0,.58),rgba(0,0,0,.86)),
         url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1900&q=85");
       background-size:cover;
       background-position:center;
@@ -376,6 +558,14 @@
       font-weight:900;
     }
 
+    .definition-box{
+      background:rgba(0,0,0,.62);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:30px;
+      margin-top:28px;
+    }
+
     .section{
       padding:90px 0;
       border-bottom:1px solid rgba(242,217,140,.14);
@@ -406,10 +596,15 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow2);
       padding:30px;
-      min-height:280px;
+      min-height:300px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+    }
+
+    .company-card.parent{
+      grid-column:1 / -1;
+      background:linear-gradient(135deg,rgba(8,116,87,.28),rgba(0,0,0,.78));
     }
 
     .tagrow{
@@ -435,47 +630,6 @@
       font-size:16px;
       color:rgba(233,236,233,.94);
       margin-bottom:18px;
-    }
-
-    .actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:16px;
-    }
-
-    .profiles{
-      display:grid;
-      gap:22px;
-    }
-
-    .profile{
-      background:rgba(0,0,0,.62);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow2);
-      padding:32px;
-    }
-
-    .profile p{
-      font-size:17px;
-    }
-
-    .meta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin:12px 0 16px;
-    }
-
-    .pill{
-      font-size:11px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      font-weight:900;
-      border:1px solid rgba(242,217,140,.22);
-      background:rgba(255,255,255,.02);
-      padding:7px 10px;
-      color:rgba(255,255,255,.92);
     }
 
     .contact{
@@ -568,6 +722,10 @@
       .grid{
         grid-template-columns:1fr;
       }
+
+      .company-card.parent{
+        grid-column:auto;
+      }
     }
 
     @media(max-width:760px){
@@ -584,7 +742,7 @@
       }
 
       .company-card,
-      .profile{
+      .definition-box{
         padding:26px;
       }
 
@@ -596,6 +754,9 @@
 </head>
 
 <body>
+  <!-- ✅ Added: Skip link -->
+  #directorySkip to company directory</a>
+
   <div class="site">
 
     <header class="header">
@@ -621,7 +782,7 @@
           <a href="about-group.html">About Group</a>
           <a href="companies.html">Companies</a>
           <a href="business-intelligence.html">Business Intelligence</a>
-          <a href="news-media.html">News &amp; Media</a>
+          <a href="news-media.html">News & Media</a>
           <a href="blogs.html">TitanCore Insights</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -629,6 +790,7 @@
         <div class="menu-support-links">
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms-of-use.html">Terms of Use</a>
+          <a href="blogs.html">Blogs</a>
           <a href="feedback.html">Feedback</a>
         </div>
       </div>
@@ -648,17 +810,21 @@
           <h1>TitanCore <span>Companies.</span></h1>
 
           <p>
-            This page is the official directory for the TitanCore Holdings company network.
-            Each company is organized under the parent structure for clean public routing.
+            This page is the official company network directory for TitanCore Holdings.
+            It shows TitanCore first as the parent company, then the companies organized under the TitanCore structure.
           </p>
 
-          <p>
-            Visitors can review the active TitanCore company network below and choose the correct
-            company lane without mixing company services into the TitanCore homepage.
-          </p>
+          <div class="definition-box metal">
+            <h3>What This Page Is For</h3>
+            <p>
+              Visitors use this page to choose which company they want to learn about. TitanCore information,
+              institution routes, investor routes, bank routes, and financial routes belong inside the separate TitanCore page,
+              not repeated on this directory page.
+            </p>
 
-          <div class="btn-row">
-            <a href="index.html" class="btn">Back Home <span class="arrow">›</span></a>
+            <div class="btn-row">
+              <a href="index.html" class="btn">Back Home <span class="arrow">›</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -667,14 +833,35 @@
     <section class="section" id="directory">
       <div class="wrap">
         <div class="section-title">
-          <div class="eyebrow">Company Directory</div>
-          <h2>Active Brands <span>&amp; Subsidiaries.</span></h2>
+          <div class="eyebrow">Official Directory</div>
+          <h2>TitanCore First. <span>Companies Under The Parent.</span></h2>
           <p>
-            Select a company to review its TitanCore profile or open the official company website when available.
+            Select a company below. TitanCore Holdings opens its own dedicated page. Subsidiaries open their own pages or official sites.
           </p>
         </div>
 
         <div class="grid">
+
+          <article class="company-card parent metal">
+            <div>
+              <div class="tagrow">
+                <span class="tag">Parent Company</span>
+                <span class="tag">Holding Structure</span>
+                <span class="tag">Institution Route Inside</span>
+              </div>
+
+              <h3>TitanCore <span>Holdings</span></h3>
+
+              <p>
+                TitanCore Holdings is the parent company of the network. Click below to open the dedicated TitanCore page,
+                where TitanCore information, institution access, institution financial, investors, and banks should live.
+              </p>
+            </div>
+
+            <div class="actions">
+              <a href="titancore-holdings.html" class="btn">Open TitanCore Page <span class="arrow">›</span></a>
+            </div>
+          </article>
 
           <article class="company-card metal">
             <div>
@@ -686,14 +873,13 @@
               <h3>Vaultara <span>Capital</span></h3>
 
               <p>
-                Capital-focused brand under TitanCore Holdings, built around funding, credit,
+                Capital-focused company under TitanCore Holdings, built around funding, credit,
                 business formation, and structured financial support.
               </p>
             </div>
 
             <div class="actions">
-              <a href="#vaultara" class="btn">Open Profile <span class="arrow">›</span></a>
-              <a href="vaultara-capital.html" class="btn secondary">Company Page <span class="arrow">›</span></a>
+              <a href="vaultara-capital.html" class="btn">Open Vaultara Page <span class="arrow">›</span></a>
             </div>
           </article>
 
@@ -707,14 +893,13 @@
               <h3>Family First <span>Equity Group</span></h3>
 
               <p>
-                Real estate investment brand under TitanCore Holdings, focused on property opportunity,
+                Real estate investment company under TitanCore Holdings, focused on property opportunity,
                 seller/buyer routing, and property-related inquiries.
               </p>
             </div>
 
             <div class="actions">
-              <a href="#familyfirst" class="btn">Open Profile <span class="arrow">›</span></a>
-              <a href="https://familyfirstequitygroup.com" target="_blank" rel="noopener" class="btn secondary">Visit Site <span class="arrow">›</span></a>
+              <a href="https://familyfirstequitygroup.com" target="_blank" rel="noopener" class="btn">Open Family First Site <span class="arrow">›</span></a>
             </div>
           </article>
 
@@ -728,105 +913,35 @@
               <h3>VitalPath <span>Care Group</span></h3>
 
               <p>
-                Health and care brand within the TitanCore ecosystem, organized for future healthcare,
+                Health and care company within the TitanCore ecosystem, organized for future healthcare,
                 care support, and public information routing.
               </p>
             </div>
 
             <div class="actions">
-              <a href="#vitalpath" class="btn">Open Profile <span class="arrow">›</span></a>
-              <a href="vitalpath-care-group.html" class="btn secondary">Company Page <span class="arrow">›</span></a>
+              <a href="vitalpath-care-group.html" class="btn">Open VitalPath Page <span class="arrow">›</span></a>
             </div>
           </article>
 
           <article class="company-card metal">
             <div>
               <div class="tagrow">
-                <span class="tag">Auto &amp; Marine</span>
+                <span class="tag">Auto & Marine</span>
                 <span class="tag">Services</span>
               </div>
 
-              <h3>RevMotion <span>Auto &amp; Marine</span></h3>
+              <h3>RevMotion <span>Auto & Marine</span></h3>
 
               <p>
-                Automotive and marine-related brand within TitanCore Holdings, built for future service routing,
+                Automotive and marine-related company under TitanCore Holdings, built for future service routing,
                 vehicle/marine needs, and public inquiries.
               </p>
             </div>
 
             <div class="actions">
-              <a href="#revmotion" class="btn">Open Profile <span class="arrow">›</span></a>
-              <a href="revmotion-auto-marine.html" class="btn secondary">Company Page <span class="arrow">›</span></a>
+              <a href="revmotion-auto-marine.html" class="btn">Open RevMotion Page <span class="arrow">›</span></a>
             </div>
           </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-      <div class="wrap">
-        <div class="section-title">
-          <div class="eyebrow">Company Profiles</div>
-          <h2>Company Information <span>Inside TitanCore.</span></h2>
-          <p>
-            These profiles explain each company without placing full service forms directly on TitanCore’s parent-company pages.
-          </p>
-        </div>
-
-        <div class="profiles">
-
-          <div class="profile metal" id="vaultara">
-            <h3>Vaultara <span>Capital</span></h3>
-            <div class="meta">
-              <span class="pill">Finance</span>
-              <span class="pill">Capital</span>
-              <span class="pill">TitanCore Network</span>
-            </div>
-            <p>
-              Vaultara Capital is the TitanCore finance and capital-focused brand. Its public role is connected to
-              funding, credit direction, business formation, and structured financial support.
-            </p>
-          </div>
-
-          <div class="profile metal" id="familyfirst">
-            <h3>Family First <span>Equity Group</span></h3>
-            <div class="meta">
-              <span class="pill">Real Estate</span>
-              <span class="pill">Investment</span>
-              <span class="pill">TitanCore Network</span>
-            </div>
-            <p>
-              Family First Equity Group is the TitanCore real estate investment brand. It should be presented as
-              an investor/business, not as a broker or real estate agency.
-            </p>
-          </div>
-
-          <div class="profile metal" id="vitalpath">
-            <h3>VitalPath <span>Care Group</span></h3>
-            <div class="meta">
-              <span class="pill">Health</span>
-              <span class="pill">Care</span>
-              <span class="pill">TitanCore Network</span>
-            </div>
-            <p>
-              VitalPath Care Group is the TitanCore health and care brand. It can grow into a public-facing
-              health/care information and service routing lane.
-            </p>
-          </div>
-
-          <div class="profile metal" id="revmotion">
-            <h3>RevMotion <span>Auto &amp; Marine</span></h3>
-            <div class="meta">
-              <span class="pill">Auto</span>
-              <span class="pill">Marine</span>
-              <span class="pill">TitanCore Network</span>
-            </div>
-            <p>
-              RevMotion Auto &amp; Marine is the TitanCore vehicle and marine-related brand. It is organized
-              separately so its services do not mix with TitanCore’s parent-company overview.
-            </p>
-          </div>
 
         </div>
       </div>
@@ -876,49 +991,92 @@
 
   </div>
 
+  <!-- ✅ Improved menu JS: focus trap + restore focus -->
   <script>
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
     const menuPanel = document.getElementById("menuPanel");
 
+    let lastFocusedEl = null;
+
+    function getFocusable(container){
+      return [...container.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, not([tabindex="-1"])'
+      )].filter(el => !el.hasAttribute("disabled") && el.getAttribute("aria-hidden") !== "true");
+    }
+
+    function trapFocus(e){
+      if(!menuPanel || !menuPanel.classList.contains("open")) return;
+      if(e.key !== "Tab") return;
+
+      const focusables = getFocusable(menuPanel);
+      if(!focusables.length) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if(e.shiftKey && document.activeElement === first){
+        e.preventDefault();
+        last.focus();
+      } else if(!e.shiftKey && document.activeElement === last){
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
     function openDialog(){
       if(!menuPanel) return;
+      lastFocusedEl = document.activeElement;
+
       menuPanel.classList.add("open");
       document.body.style.overflow = "hidden";
+
       if(openMenu){
         openMenu.setAttribute("aria-expanded","true");
       }
+
+      setTimeout(() => {
+        (closeMenu || getFocusable(menuPanel)[0])?.focus();
+      }, 0);
+
+      document.addEventListener("keydown", trapFocus);
     }
 
     function closeDialog(){
       if(!menuPanel) return;
+
       menuPanel.classList.remove("open");
       document.body.style.overflow = "";
+
       if(openMenu){
         openMenu.setAttribute("aria-expanded","false");
       }
+
+      document.removeEventListener("keydown", trapFocus);
+
+      if(lastFocusedEl && typeof lastFocusedEl.focus === "function"){
+        lastFocusedEl.focus();
+      }
     }
 
-    if(openMenu){
-      openMenu.addEventListener("click", openDialog);
-    }
+    openMenu?.addEventListener("click", openDialog);
+    closeMenu?.addEventListener("click", closeDialog);
 
-    if(closeMenu){
-      closeMenu.addEventListener("click", closeDialog);
-    }
-
-    if(menuPanel){
-      menuPanel.addEventListener("click", function(e){
-        if(e.target === menuPanel){
-          closeDialog();
-        }
-      });
-    }
-
-    document.addEventListener("keydown", function(e){
-      if(e.key === "Escape" && menuPanel && menuPanel.classList.contains("open")){
+    menuPanel?.addEventListener("click", function(e){
+      if(e.target === menuPanel){
         closeDialog();
       }
+    });
+
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape" && menuPanel?.classList.contains("open")){
+        closeDialog();
+      }
+    });
+
+    // Optional: close menu after selecting a nav link (nice mobile UX)
+    document.querySelectorAll("#menuPanel a").forEach(link => {
+      link.addEventListener("click", () => closeDialog());
     });
   </script>
 </body>
