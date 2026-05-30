@@ -1,11 +1,11 @@
-<!doctype html>
+<<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Video Content | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings Video Content Program with public business videos, market videos, crypto videos, real estate videos, leadership videos, entrepreneur videos, browser audio messages, and future TitanCore original media." />
+  <meta name="description" content="TitanCore Holdings Video Content Program with public business video, market video, crypto video, real estate video, banking video, leadership video, guest studio video, audio-style video programs, replay archive, and future TitanCore original media." />
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
@@ -76,7 +76,7 @@
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(0,0,0,.84);
+      background:rgba(0,0,0,.86);
       backdrop-filter:blur(12px);
       border-bottom:1px solid var(--line-soft);
     }
@@ -554,12 +554,8 @@
 
     .schedule-grid{
       display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:16px;
-    }
-
-    .schedule-card{
-      min-height:230px;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
     }
 
     .schedule-card .time{
@@ -822,9 +818,9 @@
           <h1>Video Content <span>Program.</span></h1>
 
           <p>
-            This page uses public embedded videos now so the page is not empty. Later, when TitanCore creates its own
-            CEO videos, guest interviews, business videos, studio videos, and audio programs, the public embeds can be
-            replaced with TitanCore-owned videos.
+            This page is for watching and listening. It uses public embedded videos now, so the page is not empty.
+            Later, TitanCore can replace these public players with its own CEO videos, guest interviews, business videos,
+            studio shows, audio programs, and replay library.
           </p>
 
           <p class="source-note">
@@ -835,7 +831,7 @@
           <div class="btn-row">
             <a href="index.html" class="btn secondary">Back Home <span class="arrow">›</span></a>
             <a href="#mainProgram" class="btn">Start Watching <span class="arrow">›</span></a>
-            <a href="#audioProgram" class="btn">Play Audio <span class="arrow">›</span></a>
+            <a href="#audioProgram" class="btn">Audio-Style Videos <span class="arrow">›</span></a>
           </div>
         </div>
 
@@ -852,7 +848,7 @@
     <div class="ticker" aria-label="TitanCore video content ticker">
       <div class="ticker-track">
         <span>Video Content</span>
-        Public Business Video • Stock Market Video • Bitcoin & Crypto Video • Real Estate Video • Banking Video • Leadership Video • Guest Interviews • Audio Program • Replay Archive • Future TitanCore-Owned Media
+        Public Business Video • Stock Market Video • Bitcoin & Crypto Video • Real Estate Video • Banking Video • Leadership Video • Guest Interviews • Audio-Style Video • Replay Archive • Future TitanCore-Owned Media
       </div>
     </div>
 
@@ -910,7 +906,7 @@
           <div class="eyebrow">Video Content Area</div>
           <p>
             This area organizes public business video now, then later becomes TitanCore’s own media library
-            for CEO messages, guest shows, business videos, audio shows, and replays.
+            for CEO messages, guest shows, business videos, audio-style shows, and replays.
           </p>
         </div>
       </div>
@@ -1019,33 +1015,47 @@
         <div class="section-title">
           <div class="eyebrow">Live Schedule</div>
           <h2>Upcoming Video <span>Programs.</span></h2>
-          <p>This schedule explains how the TitanCore video program can run when your own studio videos begin.</p>
+          <p>
+            These schedule cards now include videos. Later, the videos can become TitanCore’s real live schedule and replay program.
+          </p>
         </div>
 
         <div class="schedule-grid">
-          <div class="schedule-card metal">
+          <article class="schedule-card metal">
             <span class="time">Morning</span>
             <h3>Business Morning Video</h3>
             <p>Stocks, Bitcoin, crypto, finance, banking, and business market watch.</p>
-          </div>
+            <div class="video-frame daily-video" data-list="morning" data-offset="13"></div>
+            <p class="current-video-title">Loading video title...</p>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Morning Video <span class="arrow">›</span></a>
+          </article>
 
-          <div class="schedule-card metal">
+          <article class="schedule-card metal">
             <span class="time">Afternoon</span>
             <h3>Market Program</h3>
             <p>Business movement, economy video, sectors, finance, and market talk.</p>
-          </div>
+            <div class="video-frame daily-video" data-list="market" data-offset="14"></div>
+            <p class="current-video-title">Loading video title...</p>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Market Video <span class="arrow">›</span></a>
+          </article>
 
-          <div class="schedule-card metal">
+          <article class="schedule-card metal">
             <span class="time">Evening</span>
             <h3>Guest Program</h3>
             <p>Entrepreneurs, business owners, young founders, investors, and invited guests.</p>
-          </div>
+            <div class="video-frame daily-video" data-list="guest" data-offset="15"></div>
+            <p class="current-video-title">Loading video title...</p>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Guest Video <span class="arrow">›</span></a>
+          </article>
 
-          <div class="schedule-card metal">
+          <article class="schedule-card metal">
             <span class="time">Special</span>
             <h3>Leadership Live</h3>
             <p>CEO, President, Vice President, meeting announcement, or official TitanCore message.</p>
-          </div>
+            <div class="video-frame daily-video" data-list="leadership" data-offset="16"></div>
+            <p class="current-video-title">Loading video title...</p>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Leadership Video <span class="arrow">›</span></a>
+          </article>
         </div>
       </div>
     </section>
@@ -1054,72 +1064,48 @@
       <div class="wrap">
         <div class="section-title">
           <div class="eyebrow">Audio Program</div>
-          <h2>Business Audio <span>Broadcast.</span></h2>
+          <h2>Real Audio-Style <span>Video Programs.</span></h2>
           <p>
-            Visitors can press play and hear daily business, market, leadership, and entrepreneur messages.
-            This uses the browser voice, so no private audio file is needed.
+            This section does not use fake browser voice. These are real public videos that visitors can listen to like audio.
+            Later, replace them with TitanCore podcast audio, CEO audio, guest audio, and business broadcast audio.
           </p>
         </div>
 
         <div class="grid">
-          <article class="audio-card metal">
-            <div class="label">Business Audio</div>
+          <article class="video-card metal">
+            <div class="label">Business Audio-Style Video</div>
             <h3>Daily Business Audio</h3>
-            <p id="audioTextBusiness">Loading business audio...</p>
-            <div class="audio-box">Daily business message for visitors who want to listen.</div>
-            <div class="btn-row">
-              <button class="btn play-audio" type="button" data-audio="business">▶ Play Business</button>
-              <button class="btn secondary stop-audio" type="button">Stop</button>
-            </div>
+            <p>Public business talk video that visitors can listen to like audio.</p>
+            <div class="video-frame daily-video" data-list="businessAudio" data-offset="17"></div>
+            <p class="current-video-title">Loading video title...</p>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Business Audio <span class="arrow">›</span></a>
           </article>
 
-          <article class="audio-card metal">
-            <div class="label">Market Audio</div>
+          <article class="video-card metal">
+            <div class="label">Market Audio-Style Video</div>
             <h3>Market Audio</h3>
-            <p id="audioTextMarket">Loading market audio...</p>
-            <div class="audio-box">Market, stock, finance, and business signal message.</div>
-            <div class="btn-row">
-              <button class="btn play-audio" type="button" data-audio="market">▶ Play Market</button>
-              <button class="btn secondary stop-audio" type="button">Stop</button>
-            </div>
+            <p>Public market, stock, finance, and business signal video.</p>
+            <div class="video-frame daily-video" data-list="marketAudio" data-offset="18"></div>
+            <p class="current-video-title">Loading video title...</p>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Market Audio <span class="arrow">›</span></a>
           </article>
 
-          <article class="audio-card metal">
-            <div class="label">Leadership Audio</div>
+          <article class="video-card metal">
+            <div class="label">Leadership Audio-Style Video</div>
             <h3>Leadership Audio</h3>
-            <p id="audioTextLeadership">Loading leadership audio...</p>
-            <div class="audio-box">Leadership, CEO mindset, founder discipline, and company-building message.</div>
-            <div class="btn-row">
-              <button class="btn play-audio" type="button" data-audio="leadership">▶ Play Leadership</button>
-              <button class="btn secondary stop-audio" type="button">Stop</button>
-            </div>
+            <p>Public leadership and CEO-mindset video that visitors can listen to.</p>
+            <div class="video-frame daily-video" data-list="leadershipAudio" data-offset="19"></div>
+            <p class="current-video-title">Loading video title...</p>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Leadership Audio <span class="arrow">›</span></a>
           </article>
 
-          <article class="audio-card metal">
-            <div class="label">Entrepreneur Audio</div>
+          <article class="video-card metal">
+            <div class="label">Entrepreneur Audio-Style Video</div>
             <h3>Entrepreneur Audio</h3>
-            <p id="audioTextEntrepreneur">Loading entrepreneur audio...</p>
-            <div class="audio-box">Entrepreneurship, guest speaker, founder story, and business-building message.</div>
-            <div class="btn-row">
-              <button class="btn play-audio" type="button" data-audio="entrepreneur">▶ Play Entrepreneur</button>
-              <button class="btn secondary stop-audio" type="button">Stop</button>
-            </div>
-          </article>
-
-          <article class="video-card metal">
-            <div class="label">Audio-Style Video</div>
-            <h3>Business Audio-Style Video</h3>
-            <div class="video-frame daily-video" data-list="audioVideo" data-offset="13"></div>
+            <p>Public entrepreneur, founder, and business-builder video that can be listened to like audio.</p>
+            <div class="video-frame daily-video" data-list="entrepreneurAudio" data-offset="20"></div>
             <p class="current-video-title">Loading video title...</p>
-            <a class="btn open-youtube" target="_blank" rel="noopener">Open Video <span class="arrow">›</span></a>
-          </article>
-
-          <article class="video-card metal">
-            <div class="label">Audio Replay</div>
-            <h3>Business Audio Replay Video</h3>
-            <div class="video-frame daily-video" data-list="audioVideo" data-offset="14"></div>
-            <p class="current-video-title">Loading video title...</p>
-            <a class="btn open-youtube" target="_blank" rel="noopener">Open Video <span class="arrow">›</span></a>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Entrepreneur Audio <span class="arrow">›</span></a>
           </article>
         </div>
       </div>
@@ -1137,9 +1123,9 @@
           <article class="video-card metal">
             <div class="label">Replay Player</div>
             <h3>Public Replay Backup</h3>
-            <div class="video-frame daily-video" data-list="replay" data-offset="15"></div>
+            <div class="video-frame daily-video" data-list="replay" data-offset="21"></div>
             <p class="current-video-title">Loading video title...</p>
-            <a class="btn open-youtube" target="_blank" rel="noopener">Open Video <span class="arrow">›</span></a>
+            <a class="btn open-youtube" target="_blank" rel="noopener">Open Replay <span class="arrow">›</span></a>
           </article>
 
           <div class="card metal">
@@ -1316,8 +1302,8 @@
       ],
       entrepreneur: [
         { id: "bNpx7gpSqbY", title: "Public entrepreneur startup lesson" },
-        { id: "EulhKrrfMnw", title: "Public business testing lesson" },
-        { id: "jwxaihchx_E", title: "Public business scaling lesson" }
+        { id: "EulhKrrfMnw", title: "Public founder learning lesson" },
+        { id: "qp0HIF3SfI4", title: "Public business speaker backup video" }
       ],
       business: [
         { id: "bNpx7gpSqbY", title: "Public business growth education" },
@@ -1339,11 +1325,6 @@
         { id: "Qh-M3_L4xYk", title: "Public bond and credit education" },
         { id: "jhvCc5tKAno", title: "Public saving and investing education" }
       ],
-      audioVideo: [
-        { id: "lmyZMtPVodo", title: "Public leadership audio-style program" },
-        { id: "qp0HIF3SfI4", title: "Public business leadership audio-style program" },
-        { id: "bNpx7gpSqbY", title: "Public entrepreneur audio-style program" }
-      ],
       ceo: [
         { id: "qp0HIF3SfI4", title: "Public CEO mindset and leadership backup video" },
         { id: "lmyZMtPVodo", title: "Public leadership trust backup video" },
@@ -1359,33 +1340,30 @@
         { id: "98qfFzqDKR8", title: "Public market studio backup video" },
         { id: "qp0HIF3SfI4", title: "Public leadership studio backup video" }
       ],
+      businessAudio: [
+        { id: "bNpx7gpSqbY", title: "Public business audio-style video" },
+        { id: "EulhKrrfMnw", title: "Public business lesson audio-style video" },
+        { id: "jwxaihchx_E", title: "Public business growth audio-style video" }
+      ],
+      marketAudio: [
+        { id: "98qfFzqDKR8", title: "Public market audio-style video" },
+        { id: "Qh-M3_L4xYk", title: "Public finance audio-style video" },
+        { id: "ro3v84swtZ4", title: "Public investing audio-style video" }
+      ],
+      leadershipAudio: [
+        { id: "qp0HIF3SfI4", title: "Public leadership audio-style video" },
+        { id: "lmyZMtPVodo", title: "Public CEO mindset audio-style video" },
+        { id: "bNpx7gpSqbY", title: "Public founder leadership audio-style video" }
+      ],
+      entrepreneurAudio: [
+        { id: "bNpx7gpSqbY", title: "Public entrepreneur audio-style video" },
+        { id: "EulhKrrfMnw", title: "Public founder method audio-style video" },
+        { id: "qp0HIF3SfI4", title: "Public entrepreneur leadership audio-style video" }
+      ],
       replay: [
         { id: "bNpx7gpSqbY", title: "Public replay business video" },
         { id: "98qfFzqDKR8", title: "Public replay market video" },
         { id: "lmyZMtPVodo", title: "Public replay leadership video" }
-      ]
-    };
-
-    const audioMessages = {
-      business: [
-        "Welcome to TitanCore Business Audio. Today, focus on discipline, leadership, money movement, business education, and clear decision making.",
-        "TitanCore business reminder. Free information builds trust. When people learn from you every day, they come back and remember your company.",
-        "Today’s business focus is value. Give people useful information first. Trust is built before business is done."
-      ],
-      market: [
-        "Today’s market focus. Business owners should watch money, credit, real estate, banking, customers, and the economy before they make big decisions.",
-        "Market lesson. Stocks, banking, credit, crypto, real estate, and oil can all affect business confidence and customer behavior.",
-        "TitanCore market reminder. Do not chase noise. Watch signals, study patterns, and make disciplined decisions."
-      ],
-      leadership: [
-        "Today’s leadership focus is responsibility. A strong leader listens, learns, organizes, and moves with discipline.",
-        "Leadership reminder. A CEO must think long term, protect the company name, and build trust one decision at a time.",
-        "TitanCore leadership audio. People follow clarity. Speak clearly, plan clearly, and move with purpose."
-      ],
-      entrepreneur: [
-        "Entrepreneur message. Start small, test your idea, learn from customers, and improve before spending too much money.",
-        "Founder lesson. Every business needs trust, service, discipline, and a simple path for customers to understand what you offer.",
-        "Business builder reminder. Do not wait for perfect. Build, learn, correct, and keep moving."
       ]
     };
 
@@ -1417,7 +1395,7 @@
           </iframe>
         `;
 
-        const card = box.closest(".video-card");
+        const card = box.closest(".video-card, .schedule-card");
         if(card){
           const openLink = card.querySelector(".open-youtube");
           const titleLine = card.querySelector(".current-video-title");
@@ -1430,51 +1408,6 @@
             titleLine.textContent = "Now showing: " + video.title;
           }
         }
-      });
-    }
-
-    function pickAudioMessage(type){
-      const list = audioMessages[type] || audioMessages.business;
-      const index = getDayNumber() % list.length;
-      return list[index];
-    }
-
-    function buildAudioText(){
-      document.getElementById("audioTextBusiness").textContent = pickAudioMessage("business");
-      document.getElementById("audioTextMarket").textContent = pickAudioMessage("market");
-      document.getElementById("audioTextLeadership").textContent = pickAudioMessage("leadership");
-      document.getElementById("audioTextEntrepreneur").textContent = pickAudioMessage("entrepreneur");
-    }
-
-    function speakMessage(type){
-      if(!("speechSynthesis" in window)){
-        alert("Audio voice is not available in this browser.");
-        return;
-      }
-
-      window.speechSynthesis.cancel();
-
-      const message = new SpeechSynthesisUtterance(pickAudioMessage(type));
-      message.rate = 0.92;
-      message.pitch = 1;
-      message.volume = 1;
-
-      window.speechSynthesis.speak(message);
-    }
-
-    function connectAudioButtons(){
-      document.querySelectorAll(".play-audio").forEach(function(btn){
-        btn.addEventListener("click",function(){
-          speakMessage(btn.dataset.audio);
-        });
-      });
-
-      document.querySelectorAll(".stop-audio").forEach(function(){
-        this.addEventListener("click",function(){
-          if("speechSynthesis" in window){
-            window.speechSynthesis.cancel();
-          }
-        });
       });
     }
 
@@ -1529,14 +1462,6 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     buildDailyVideos();
-    buildAudioText();
-    connectAudioButtons();
-
-    window.addEventListener("beforeunload",function(){
-      if("speechSynthesis" in window){
-        window.speechSynthesis.cancel();
-      }
-    });
   </script>
 </body>
 </html>
