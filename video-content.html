@@ -5,20 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Video Content | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings video and audio content program with daily rotating videos, custom built-in audio cards, leadership video, guest studio, live schedule, replay archive, and future TitanCore-owned media." />
+  <meta name="description" content="TitanCore Holdings video and listen mode content program with daily rotating public videos, business talks, market conversations, leadership interviews, guest studio, replay archive, and future TitanCore-owned media." />
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-
-    body{
-      background:#000;
-      color:#fff;
-      font-family:Arial,Helvetica,sans-serif;
-      overflow-x:hidden;
-      line-height:1.65;
-    }
-
+    body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;line-height:1.65}
     a{text-decoration:none;color:inherit}
     button{font:inherit;color:inherit}
 
@@ -42,12 +34,7 @@
         #000;
     }
 
-    .wrap{
-      width:min(1180px,calc(100% - 46px));
-      margin:auto;
-      position:relative;
-      z-index:2;
-    }
+    .wrap{width:min(1180px,calc(100% - 46px));margin:auto;position:relative;z-index:2}
 
     .header{
       position:sticky;
@@ -67,12 +54,7 @@
       padding:16px 0;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
 
     .mark{
       width:62px;
@@ -98,10 +80,7 @@
       text-overflow:ellipsis;
     }
 
-    .brandname span{
-      color:#fff;
-      margin-left:8px;
-    }
+    .brandname span{color:#fff;margin-left:8px}
 
     .menuBtn{
       width:56px;
@@ -129,7 +108,6 @@
       margin:60px auto 0;
       background:#050505;
       border:1px solid var(--line);
-      border-radius:0;
       padding:22px;
       box-shadow:var(--shadow);
     }
@@ -143,24 +121,9 @@
       margin-bottom:14px;
     }
 
-    .menuTop h2{
-      font:400 28px var(--serif);
-      color:var(--gold2);
-    }
-
-    .closeBtn{
-      width:48px;
-      height:48px;
-      border:1px solid var(--line);
-      background:#000;
-      font-size:30px;
-      cursor:pointer;
-    }
-
-    .links{
-      display:grid;
-      gap:9px;
-    }
+    .menuTop h2{font:400 28px var(--serif);color:var(--gold2)}
+    .closeBtn{width:48px;height:48px;border:1px solid var(--line);background:#000;font-size:30px;cursor:pointer}
+    .links{display:grid;gap:9px}
 
     .links a{
       border:1px solid rgba(242,217,140,.14);
@@ -171,32 +134,12 @@
       font-size:13px;
     }
 
-    .links a:hover{
-      background:rgba(216,180,90,.12);
-    }
+    .links a:hover{background:rgba(216,180,90,.12)}
 
-    h1,h2,h3{
-      font-family:var(--serif);
-      font-weight:400;
-      line-height:1.05;
-    }
-
-    h1{
-      font-size:clamp(48px,8vw,92px);
-      margin:18px 0;
-    }
-
-    h2{
-      font-size:clamp(34px,6vw,66px);
-      margin-bottom:18px;
-    }
-
-    h3{
-      font-size:clamp(25px,4vw,42px);
-      color:var(--gold2);
-      margin-bottom:14px;
-    }
-
+    h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05}
+    h1{font-size:clamp(48px,8vw,92px);margin:18px 0}
+    h2{font-size:clamp(34px,6vw,66px);margin-bottom:18px}
+    h3{font-size:clamp(25px,4vw,42px);color:var(--gold2);margin-bottom:14px}
     h1 span,h2 span{color:var(--gold2)}
 
     p{
@@ -217,12 +160,7 @@
 
     .label{letter-spacing:3px}
 
-    .btnrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:22px;
-    }
+    .btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 
     .btn{
       display:inline-flex;
@@ -242,15 +180,8 @@
       text-align:center;
     }
 
-    .btn:hover{
-      border-color:var(--gold2);
-      transform:translateY(-1px);
-    }
-
-    .btn.secondary{
-      background:#050505;
-      color:var(--gold2);
-    }
+    .btn:hover{border-color:var(--gold2);transform:translateY(-1px)}
+    .btn.secondary{background:#050505;color:var(--gold2)}
 
     .hero,.section,.contact{
       background:
@@ -261,16 +192,8 @@
       border-bottom:1px solid rgba(242,217,140,.16);
     }
 
-    .hero{
-      min-height:760px;
-      display:flex;
-      align-items:center;
-    }
-
-    .heroContent{
-      max-width:1050px;
-      padding:92px 0;
-    }
+    .hero{min-height:760px;display:flex;align-items:center}
+    .heroContent{max-width:1050px;padding:92px 0}
 
     .badge{
       display:inline-flex;
@@ -294,9 +217,7 @@
       animation:pulse 1.2s infinite;
     }
 
-    @keyframes pulse{
-      50%{transform:scale(1.55);opacity:.55}
-    }
+    @keyframes pulse{50%{transform:scale(1.55);opacity:.55}}
 
     .time{
       display:inline-flex;
@@ -310,7 +231,7 @@
       font-size:12px;
     }
 
-    .heroCard,.card,.videoCard,.audioCard{
+    .heroCard,.card,.videoCard,.listenCard{
       background:rgba(0,0,0,.76);
       border:1px solid var(--line);
       border-radius:var(--radius);
@@ -319,10 +240,7 @@
       overflow:hidden;
     }
 
-    .heroCard{
-      margin-top:28px;
-      max-width:1000px;
-    }
+    .heroCard{margin-top:28px;max-width:1000px}
 
     .ticker{
       overflow:hidden;
@@ -343,16 +261,9 @@
       font-size:12px;
     }
 
-    .ticker b{
-      background:var(--gold2);
-      color:#000;
-      padding:7px 10px;
-      margin-right:14px;
-    }
+    .ticker b{background:var(--gold2);color:#000;padding:7px 10px;margin-right:14px}
 
-    @keyframes ticker{
-      to{transform:translateX(-100%)}
-    }
+    @keyframes ticker{to{transform:translateX(-100%)}}
 
     .programNav{
       position:sticky;
@@ -363,10 +274,7 @@
       overflow-x:auto;
     }
 
-    .programNav div{
-      display:flex;
-      min-width:max-content;
-    }
+    .programNav div{display:flex;min-width:max-content}
 
     .programNav a{
       padding:18px 24px;
@@ -377,40 +285,15 @@
       font-size:12px;
     }
 
-    .programNav a:hover{
-      background:var(--gold2);
-      color:#000;
-    }
+    .programNav a:hover{background:var(--gold2);color:#000}
 
-    .section{
-      padding:92px 0;
-      scroll-margin-top:178px;
-    }
+    .section{padding:92px 0;scroll-margin-top:178px}
+    .title{max-width:980px;margin-bottom:32px}
+    .two{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 
-    .title{
-      max-width:980px;
-      margin-bottom:32px;
-    }
-
-    .two{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:22px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:22px;
-    }
-
-    .three{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .videoFrame{
+    .videoFrame,.listenFrame{
       width:100%;
       background:#000;
       border:2px solid rgba(242,217,140,.45);
@@ -418,39 +301,97 @@
       overflow:hidden;
       margin-top:16px;
       aspect-ratio:16/9;
+      position:relative;
     }
 
-    .videoFrame iframe{
+    .videoFrame iframe,.listenFrame iframe{
       width:100%;
       height:100%;
       border:0;
       display:block;
     }
 
-    .note{
-      font-size:14px;
-      color:rgba(255,255,255,.75);
-      margin-top:12px;
+    .listenFrame::before{
+      content:"LISTEN MODE";
+      position:absolute;
+      top:12px;
+      left:12px;
+      z-index:2;
+      background:linear-gradient(135deg,var(--gold2),var(--gold));
+      color:#000;
+      padding:7px 10px;
+      font-size:11px;
+      letter-spacing:2px;
+      font-weight:900;
     }
 
-    .infoList{
+    .listenCard{
+      position:relative;
+      border-color:rgba(242,217,140,.42);
+    }
+
+    .listenCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(420px 220px at 18% 8%,rgba(242,217,140,.08),transparent 60%),
+        radial-gradient(420px 220px at 90% 18%,rgba(8,116,87,.12),transparent 65%);
+    }
+
+    .listenCard > *{position:relative;z-index:2}
+
+    .listenTop{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      margin-bottom:10px;
+    }
+
+    .listenIcon{
+      width:58px;
+      height:58px;
+      border-radius:50%;
       display:grid;
-      gap:16px;
+      place-items:center;
+      background:linear-gradient(135deg,var(--green),#020202);
+      border:2px solid rgba(242,217,140,.62);
+      color:#fff;
+      font-weight:900;
+      font-size:24px;
+      box-shadow:0 0 24px rgba(8,116,87,.45);
+      flex:0 0 auto;
     }
 
-    .info{
-      border:1px solid rgba(242,217,140,.24);
-      background:rgba(0,0,0,.56);
-      padding:18px;
+    .listenWave{
+      display:flex;
+      gap:5px;
+      align-items:center;
+      margin-top:12px;
+      height:34px;
     }
 
-    .info b{
+    .listenWave span{
       display:block;
-      color:var(--gold2);
-      font:400 24px var(--serif);
-      margin-bottom:8px;
+      width:6px;
+      background:var(--gold2);
+      box-shadow:0 0 10px rgba(242,217,140,.45);
     }
 
+    .listenWave span:nth-child(1){height:12px}
+    .listenWave span:nth-child(2){height:24px}
+    .listenWave span:nth-child(3){height:16px}
+    .listenWave span:nth-child(4){height:30px}
+    .listenWave span:nth-child(5){height:18px}
+    .listenWave span:nth-child(6){height:26px}
+    .listenWave span:nth-child(7){height:14px}
+
+    .note{font-size:14px;color:rgba(255,255,255,.75);margin-top:12px}
+
+    .infoList{display:grid;gap:16px}
+    .info{border:1px solid rgba(242,217,140,.24);background:rgba(0,0,0,.56);padding:18px}
+    .info b{display:block;color:var(--gold2);font:400 24px var(--serif);margin-bottom:8px}
     .info p{font-size:16px}
 
     .slotTitle{
@@ -483,140 +424,6 @@
       border-top:1px solid rgba(242,217,140,.18);
     }
 
-    .audioCard{
-      min-height:560px;
-      position:relative;
-    }
-
-    .audioCard.playing{
-      border-color:var(--gold2);
-      box-shadow:0 0 42px rgba(8,116,87,.55);
-    }
-
-    .audioDeck{
-      background:
-        radial-gradient(circle at 50% 20%,rgba(242,217,140,.16),transparent 35%),
-        linear-gradient(135deg,rgba(8,116,87,.28),rgba(0,0,0,.96));
-      border:2px solid rgba(242,217,140,.42);
-      min-height:245px;
-      margin-top:16px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:18px;
-      position:relative;
-      overflow:hidden;
-      box-shadow:inset 0 0 55px rgba(0,0,0,.72);
-    }
-
-    .audioDeck::before{
-      content:"";
-      position:absolute;
-      width:260px;
-      height:260px;
-      border-radius:50%;
-      border:1px solid rgba(242,217,140,.12);
-      box-shadow:0 0 42px rgba(8,116,87,.34);
-      animation:slowSpin 14s linear infinite;
-    }
-
-    @keyframes slowSpin{
-      from{transform:rotate(0deg)}
-      to{transform:rotate(360deg)}
-    }
-
-    .audioCircle{
-      width:118px;
-      height:118px;
-      border-radius:50%;
-      border:3px solid rgba(242,217,140,.72);
-      background:linear-gradient(135deg,rgba(8,116,87,.92),rgba(0,0,0,.98));
-      display:grid;
-      place-items:center;
-      color:#fff;
-      font-size:36px;
-      font-weight:900;
-      position:relative;
-      z-index:2;
-      box-shadow:0 0 34px rgba(8,116,87,.75);
-    }
-
-    .audioWave{
-      height:42px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:6px;
-      position:relative;
-      z-index:2;
-    }
-
-    .audioWave span{
-      display:block;
-      width:7px;
-      height:14px;
-      background:var(--gold2);
-      box-shadow:0 0 12px rgba(242,217,140,.4);
-      opacity:.85;
-      transform-origin:center;
-    }
-
-    .audioCard.playing .audioWave span:nth-child(1){animation:wave 1s infinite ease-in-out}
-    .audioCard.playing .audioWave span:nth-child(2){animation:wave 1.15s infinite ease-in-out .08s}
-    .audioCard.playing .audioWave span:nth-child(3){animation:wave .95s infinite ease-in-out .16s}
-    .audioCard.playing .audioWave span:nth-child(4){animation:wave 1.2s infinite ease-in-out .24s}
-    .audioCard.playing .audioWave span:nth-child(5){animation:wave 1s infinite ease-in-out .32s}
-    .audioCard.playing .audioWave span:nth-child(6){animation:wave 1.12s infinite ease-in-out .4s}
-    .audioCard.playing .audioWave span:nth-child(7){animation:wave .9s infinite ease-in-out .48s}
-
-    @keyframes wave{
-      0%,100%{height:12px}
-      50%{height:40px}
-    }
-
-    .audioText{
-      margin-top:16px;
-      padding:18px;
-      border:1px dashed rgba(242,217,140,.34);
-      background:rgba(0,0,0,.45);
-      color:rgba(255,255,255,.88);
-      font-size:16px;
-      line-height:1.65;
-    }
-
-    .audioControls{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:18px;
-    }
-
-    .audioBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 18px;
-      border:1px solid rgba(242,217,140,.38);
-      background:linear-gradient(135deg,var(--green),#020202);
-      color:#fff;
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-weight:900;
-      font-size:12px;
-      cursor:pointer;
-    }
-
-    .audioBtn.stop{
-      background:#050505;
-      color:var(--gold2);
-    }
-
-    .audioBtn:hover{
-      border-color:var(--gold2);
-    }
-
     footer{
       background:#020202;
       text-align:center;
@@ -645,13 +452,7 @@
       margin-bottom:16px;
     }
 
-    .footlinks,.social{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:16px;
-    }
+    .footlinks,.social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px}
 
     .footlinks a{
       border:1px solid rgba(242,217,140,.16);
@@ -683,13 +484,12 @@
       .menuBtn{width:54px;height:54px}
       .hero{min-height:720px}
       .heroContent{padding:62px 0}
-      .heroCard,.card,.videoCard,.audioCard{padding:24px}
-      .btn,.audioBtn{width:100%}
+      .heroCard,.card,.videoCard,.listenCard{padding:24px}
+      .btn{width:100%}
       .time{margin-left:0;margin-top:10px}
       .programNav a{padding:16px 22px}
       .section{scroll-margin-top:160px}
       .band{min-height:320px}
-      .audioCard{min-height:auto}
     }
   </style>
 </head>
@@ -729,7 +529,7 @@
 
     <section class="hero" id="hero">
       <div class="wrap heroContent">
-        <span class="badge"><span class="pulse"></span> Daily Video + Built-In Audio Program</span>
+        <span class="badge"><span class="pulse"></span> Video + Listen Mode Program</span>
         <span class="time" id="clock">Loading time...</span>
 
         <div class="eyebrow" style="margin-top:24px;">TitanCore Video Content</div>
@@ -737,21 +537,19 @@
         <h1>Video Content <span>Program.</span></h1>
 
         <p>
-          This page is the TitanCore video and audio program. Videos rotate automatically every day.
-          Audio messages also change automatically every day and play inside custom TitanCore audio cards.
+          This page gives visitors video content and listen-mode content. People who do not want to watch can still listen to business talks, market conversations, leadership lessons, and entrepreneur interviews while driving, walking, or working.
         </p>
 
         <div class="heroCard">
-          <h3>Daily Media. Built Into TitanCore.</h3>
+          <h3>Watch Mode + Listen Mode.</h3>
           <p>
-            No ugly outside audio frame. No plain playlist button box. Each video and each audio title has its own card,
-            its own player area, and its own daily content.
+            The video cards show public YouTube videos. The listen-mode cards use public YouTube talks and interviews that work like audio for visitors who just want to listen. Later, TitanCore can replace these with TitanCore-owned shows.
           </p>
 
           <div class="btnrow">
             <a href="index.html" class="btn secondary">Back Home ›</a>
             <a href="#videoChannels" class="btn">Watch Videos ›</a>
-            <a href="#audioProgram" class="btn">Hear Audio ›</a>
+            <a href="#listenMode" class="btn">Open Listen Mode ›</a>
           </div>
         </div>
       </div>
@@ -759,8 +557,8 @@
 
     <div class="ticker">
       <div>
-        <b>Video + Audio Content</b>
-        Daily Video Rotation • Daily Audio Words • Business • Stock Market • Bitcoin • Oil • Leadership • Guest Studio • Replay Archive
+        <b>Video + Listen Mode</b>
+        Business Talks • Market Conversations • Bitcoin & Crypto • Oil & Energy • Leadership Lessons • Founder Interviews • Guest Studio • Daily Rotation
       </div>
     </div>
 
@@ -771,7 +569,7 @@
         <a href="#leadershipLive">Leadership Live</a>
         <a href="#liveSchedule">Live Schedule</a>
         <a href="#guestStudio">Guest Studio</a>
-        <a href="#audioProgram">Audio Channels</a>
+        <a href="#listenMode">Listen Mode</a>
         <a href="#replayArchive">Replay Archive</a>
         <a href="#memberProgram">Member Program</a>
       </div>
@@ -792,14 +590,14 @@
             <div class="videoFrame videoSlot" data-list="main" data-offset="0"></div>
             <p class="note">Daily rotating public business video. Replace later with TitanCore’s own main studio video.</p>
             <div class="btnrow">
-              <a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a>
+              <a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a>
             </div>
           </div>
 
           <div class="card">
             <div class="label">Program Purpose</div>
-            <h3>Video First</h3>
-            <p>This page is built for watching and listening. Visitors should always see a player inside every media topic.</p>
+            <h3>Video First. Listening Ready.</h3>
+            <p>This page is built for people who watch video and people who prefer to listen while doing something else.</p>
 
             <div class="infoList">
               <div class="info">
@@ -808,13 +606,13 @@
               </div>
 
               <div class="info">
-                <b>Daily Audio Words</b>
-                <p>Each audio card has daily words behind it. The message changes every day.</p>
+                <b>Listen Mode</b>
+                <p>The listen section uses real public talks and interviews, not fake computer text.</p>
               </div>
 
               <div class="info">
                 <b>Replace Later</b>
-                <p>When TitanCore has original media, replace the video IDs and audio messages.</p>
+                <p>When TitanCore has original media, replace the public video IDs with TitanCore-owned content.</p>
               </div>
             </div>
           </div>
@@ -825,10 +623,9 @@
     <section class="band" id="imageBand">
       <div class="bandin">
         <div class="wrap">
-          <div class="eyebrow">Video + Audio Content Area</div>
+          <div class="eyebrow">Video + Listen Content Area</div>
           <p>
-            Public videos and browser-read audio are backup content only. When TitanCore creates original media,
-            replace the public video IDs and audio words with TitanCore-owned content.
+            Public videos are backup content only. When TitanCore creates original media, replace the public video IDs with TitanCore videos, interviews, audio shows, and live programs.
           </p>
         </div>
       </div>
@@ -849,7 +646,7 @@
             <p>Daily public business/economy video for visitors who want business education.</p>
             <div class="videoFrame videoSlot" data-list="business" data-offset="1"></div>
             <p class="note">Public backup video. Replace later with TitanCore business video.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -858,7 +655,7 @@
             <p>Daily market and stock education video for finance learning.</p>
             <div class="videoFrame videoSlot" data-list="market" data-offset="2"></div>
             <p class="note">Public backup video. Replace later with TitanCore market coverage.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -867,7 +664,7 @@
             <p>Daily crypto and blockchain education for digital finance learning.</p>
             <div class="videoFrame videoSlot" data-list="crypto" data-offset="3"></div>
             <p class="note">Public backup video. Replace later with TitanCore crypto/business video.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -876,7 +673,7 @@
             <p>Daily energy and finance video for business cost and market awareness.</p>
             <div class="videoFrame videoSlot" data-list="energy" data-offset="4"></div>
             <p class="note">Public backup video. Replace later with TitanCore energy video.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
         </div>
       </div>
@@ -897,7 +694,7 @@
             <p>Future TitanCore CEO message area.</p>
             <div class="videoFrame videoSlot" data-list="ceo" data-offset="5"></div>
             <p class="note">Replace later with your TitanCore CEO message.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -906,7 +703,7 @@
             <p>Future TitanCore President message area.</p>
             <div class="videoFrame videoSlot" data-list="president" data-offset="6"></div>
             <p class="note">Replace later with a TitanCore President video.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -915,7 +712,7 @@
             <p>Future TitanCore Vice President message area.</p>
             <div class="videoFrame videoSlot" data-list="vp" data-offset="7"></div>
             <p class="note">Replace later with a TitanCore Vice President video.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
         </div>
       </div>
@@ -935,7 +732,7 @@
             <h3>Business Morning Video</h3>
             <p>Stocks, Bitcoin, crypto, oil, finance, banking, and business market watch.</p>
             <div class="videoFrame videoSlot" data-list="morning" data-offset="8"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -943,7 +740,7 @@
             <h3>Market Program</h3>
             <p>Business movement, economy video, sectors, finance, and public market talk.</p>
             <div class="videoFrame videoSlot" data-list="afternoon" data-offset="9"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -951,7 +748,7 @@
             <h3>Guest Program</h3>
             <p>Entrepreneurs, business owners, young founders, investors, and invited guests.</p>
             <div class="videoFrame videoSlot" data-list="evening" data-offset="10"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -959,7 +756,7 @@
             <h3>Leadership Live</h3>
             <p>CEO, President, Vice President, meeting announcement, or official TitanCore message.</p>
             <div class="videoFrame videoSlot" data-list="special" data-offset="11"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
         </div>
       </div>
@@ -980,7 +777,7 @@
             <p>Future interview area for TitanCore guests.</p>
             <div class="videoFrame videoSlot" data-list="guest" data-offset="12"></div>
             <p class="note">Replace later with TitanCore guest interviews.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -989,7 +786,7 @@
             <p>Invite entrepreneurs to talk about how they built their business.</p>
             <div class="videoFrame videoSlot" data-list="entrepreneur" data-offset="13"></div>
             <p class="note">Replace later with TitanCore entrepreneur interviews.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -998,7 +795,7 @@
             <p>Young founders can discuss mistakes, lessons, and growth.</p>
             <div class="videoFrame videoSlot" data-list="founder" data-offset="14"></div>
             <p class="note">Replace later with TitanCore young founder interviews.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
@@ -1007,130 +804,111 @@
             <p>Business owners can explain their company and experience.</p>
             <div class="videoFrame videoSlot" data-list="owner" data-offset="15"></div>
             <p class="note">Replace later with TitanCore business owner interviews.</p>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="audioProgram">
+    <section class="section" id="listenMode">
       <div class="wrap">
         <div class="title">
-          <div class="eyebrow">Built-In Audio Channels</div>
-          <h2>Business Audio <span>Channels.</span></h2>
+          <div class="eyebrow">Listen Mode</div>
+          <h2>Business Audio-Style <span>Listening Channels.</span></h2>
           <p>
-            This audio section is custom-built inside TitanCore. The words change automatically every day.
-            Visitors press Play or Stop inside each card.
+            This section is for people who want to listen, not watch. These are real public talks, interviews, and business conversations from YouTube. Visitors can press play and listen while driving, walking, or working.
           </p>
         </div>
 
         <div class="grid">
-          <article class="audioCard" data-audio="business">
-            <div class="label">Business / Economy Audio</div>
-            <h3>Business / Economy Audio</h3>
-            <p>Daily business and economy audio message built into the TitanCore page.</p>
-
-            <div class="audioDeck">
-              <div class="audioCircle">▶</div>
-              <div class="audioWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <article class="listenCard">
+            <div class="listenTop">
+              <div class="listenIcon">▶</div>
+              <div>
+                <div class="label">Business Talk</div>
+                <h3>Business Talk Listening</h3>
+              </div>
             </div>
-
-            <div class="audioText"></div>
-
-            <div class="audioControls">
-              <button class="audioBtn playAudio" type="button">Play Audio</button>
-              <button class="audioBtn stop stopAudio" type="button">Stop Audio</button>
-            </div>
+            <p>Business lessons and company-building talks for people who want useful audio-style content.</p>
+            <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="listenFrame listenSlot" data-list="listenBusiness" data-offset="22"></div>
+            <p class="note">Public audio-style YouTube talk. Replace later with TitanCore business audio.</p>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
           </article>
 
-          <article class="audioCard" data-audio="market">
-            <div class="label">Market Signal Audio</div>
-            <h3>Market Signal Audio</h3>
-            <p>Daily stock market, finance, money movement, and business signal audio.</p>
-
-            <div class="audioDeck">
-              <div class="audioCircle">▶</div>
-              <div class="audioWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <article class="listenCard">
+            <div class="listenTop">
+              <div class="listenIcon">▶</div>
+              <div>
+                <div class="label">Market Talk</div>
+                <h3>Market Talk Listening</h3>
+              </div>
             </div>
-
-            <div class="audioText"></div>
-
-            <div class="audioControls">
-              <button class="audioBtn playAudio" type="button">Play Audio</button>
-              <button class="audioBtn stop stopAudio" type="button">Stop Audio</button>
-            </div>
+            <p>Finance, economy, stock market, and money conversations for people who want to listen.</p>
+            <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="listenFrame listenSlot" data-list="listenMarket" data-offset="23"></div>
+            <p class="note">Public audio-style market content. Replace later with TitanCore market audio.</p>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
           </article>
 
-          <article class="audioCard" data-audio="crypto">
-            <div class="label">Bitcoin / Crypto Audio</div>
-            <h3>Bitcoin / Crypto Audio</h3>
-            <p>Daily Bitcoin, crypto, blockchain, and digital finance audio message.</p>
-
-            <div class="audioDeck">
-              <div class="audioCircle">▶</div>
-              <div class="audioWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <article class="listenCard">
+            <div class="listenTop">
+              <div class="listenIcon">▶</div>
+              <div>
+                <div class="label">Crypto Talk</div>
+                <h3>Bitcoin / Crypto Listening</h3>
+              </div>
             </div>
-
-            <div class="audioText"></div>
-
-            <div class="audioControls">
-              <button class="audioBtn playAudio" type="button">Play Audio</button>
-              <button class="audioBtn stop stopAudio" type="button">Stop Audio</button>
-            </div>
+            <p>Bitcoin, crypto, blockchain, digital money, and future finance conversations.</p>
+            <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="listenFrame listenSlot" data-list="listenCrypto" data-offset="24"></div>
+            <p class="note">Public audio-style crypto talk. Replace later with TitanCore crypto audio.</p>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
           </article>
 
-          <article class="audioCard" data-audio="energy">
-            <div class="label">Oil / Energy Audio</div>
-            <h3>Oil / Energy Audio</h3>
-            <p>Daily oil, energy, transportation cost, inflation, and business impact audio.</p>
-
-            <div class="audioDeck">
-              <div class="audioCircle">▶</div>
-              <div class="audioWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <article class="listenCard">
+            <div class="listenTop">
+              <div class="listenIcon">▶</div>
+              <div>
+                <div class="label">Leadership Talk</div>
+                <h3>Leadership Listening</h3>
+              </div>
             </div>
-
-            <div class="audioText"></div>
-
-            <div class="audioControls">
-              <button class="audioBtn playAudio" type="button">Play Audio</button>
-              <button class="audioBtn stop stopAudio" type="button">Stop Audio</button>
-            </div>
+            <p>Leadership, CEO mindset, discipline, management, and professional growth talks.</p>
+            <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="listenFrame listenSlot" data-list="listenLeadership" data-offset="25"></div>
+            <p class="note">Public audio-style leadership talk. Replace later with TitanCore leadership audio.</p>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
           </article>
 
-          <article class="audioCard" data-audio="leadership">
-            <div class="label">Leadership Audio</div>
-            <h3>Leadership Audio</h3>
-            <p>Daily CEO mindset, discipline, leadership, and company-building audio.</p>
-
-            <div class="audioDeck">
-              <div class="audioCircle">▶</div>
-              <div class="audioWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <article class="listenCard">
+            <div class="listenTop">
+              <div class="listenIcon">▶</div>
+              <div>
+                <div class="label">Founder Talk</div>
+                <h3>Entrepreneur Listening</h3>
+              </div>
             </div>
-
-            <div class="audioText"></div>
-
-            <div class="audioControls">
-              <button class="audioBtn playAudio" type="button">Play Audio</button>
-              <button class="audioBtn stop stopAudio" type="button">Stop Audio</button>
-            </div>
+            <p>Founder stories, entrepreneur lessons, business owner interviews, and startup growth talks.</p>
+            <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="listenFrame listenSlot" data-list="listenEntrepreneur" data-offset="26"></div>
+            <p class="note">Public audio-style founder talk. Replace later with TitanCore guest/founder audio.</p>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
           </article>
 
-          <article class="audioCard" data-audio="entrepreneur">
-            <div class="label">Entrepreneur Audio</div>
-            <h3>Entrepreneur Audio</h3>
-            <p>Daily founder, entrepreneur, guest studio, and business owner audio message.</p>
-
-            <div class="audioDeck">
-              <div class="audioCircle">▶</div>
-              <div class="audioWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <article class="listenCard">
+            <div class="listenTop">
+              <div class="listenIcon">▶</div>
+              <div>
+                <div class="label">Business Education</div>
+                <h3>Education Listening</h3>
+              </div>
             </div>
-
-            <div class="audioText"></div>
-
-            <div class="audioControls">
-              <button class="audioBtn playAudio" type="button">Play Audio</button>
-              <button class="audioBtn stop stopAudio" type="button">Stop Audio</button>
-            </div>
+            <p>Long-form business education and learning content for people who prefer audio-style listening.</p>
+            <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="listenFrame listenSlot" data-list="listenEducation" data-offset="27"></div>
+            <p class="note">Public audio-style education talk. Replace later with TitanCore education audio.</p>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
           </article>
         </div>
       </div>
@@ -1140,7 +918,7 @@
       <div class="wrap">
         <div class="title">
           <div class="eyebrow">Replay Archive</div>
-          <h2>Saved Video <span>& Audio Replays.</span></h2>
+          <h2>Saved Video <span>& Listen Replays.</span></h2>
           <p>This section is for replays. It has public backup videos now and can later hold TitanCore-owned saved videos.</p>
         </div>
 
@@ -1149,24 +927,24 @@
             <div class="label">Leadership Replay</div>
             <h3>Leadership Replays</h3>
             <p>CEO, President, Vice President, and TitanCore official messages.</p>
-            <div class="videoFrame videoSlot" data-list="leadershipReplay" data-offset="16"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="videoFrame videoSlot" data-list="leadershipReplay" data-offset="28"></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
             <div class="label">Business Replay</div>
             <h3>Business Video Replays</h3>
             <p>Stocks, Bitcoin, crypto, oil, finance, economy, and market videos.</p>
-            <div class="videoFrame videoSlot" data-list="businessReplay" data-offset="17"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="videoFrame videoSlot" data-list="businessReplay" data-offset="29"></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
-            <div class="label">Audio-Style Replay</div>
+            <div class="label">Listen Replay</div>
             <h3>Audio-Style Replays</h3>
-            <p>Business audio-style talks, leadership audio-style talks, and replay content.</p>
-            <div class="videoFrame videoSlot" data-list="audioReplay" data-offset="18"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <p>Business listening, leadership listening, and replay content.</p>
+            <div class="videoFrame videoSlot" data-list="audioReplay" data-offset="30"></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
         </div>
       </div>
@@ -1185,24 +963,24 @@
             <div class="label">Premium Video</div>
             <h3>Member Video</h3>
             <p>Future paid video area for special business briefings, interviews, and deeper programming.</p>
-            <div class="videoFrame videoSlot" data-list="member" data-offset="19"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="videoFrame videoSlot" data-list="member" data-offset="31"></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
             <div class="label">Sponsor Video</div>
             <h3>Studio Sponsors</h3>
             <p>Future sponsor placements for businesses that want visibility inside TitanCore video programming.</p>
-            <div class="videoFrame videoSlot" data-list="sponsor" data-offset="20"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="videoFrame videoSlot" data-list="sponsor" data-offset="32"></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
 
           <article class="videoCard">
             <div class="label">Premium Access</div>
             <h3>Member Access</h3>
             <p>Future private video, audio, and special broadcast access for subscribers or members.</p>
-            <div class="videoFrame videoSlot" data-list="premium" data-offset="21"></div>
-            <div class="btnrow"><a class="btn videoOpen" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
+            <div class="videoFrame videoSlot" data-list="premium" data-offset="33"></div>
+            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Video ›</a></div>
           </article>
         </div>
       </div>
@@ -1260,45 +1038,20 @@
       entrepreneur:["bNpx7gpSqbY","jwxaihchx_E","EulhKrrfMnw"],
       founder:["bNpx7gpSqbY","EulhKrrfMnw","jwxaihchx_E"],
       owner:["jwxaihchx_E","EulhKrrfMnw","bNpx7gpSqbY"],
+
+      listenBusiness:["bNpx7gpSqbY","EulhKrrfMnw","jwxaihchx_E"],
+      listenMarket:["98qfFzqDKR8","Qh-M3_L4xYk","ro3v84swtZ4"],
+      listenCrypto:["pVZzgzYZdCA","30rzkohK7GI","dZ3_Uw5H8zc"],
+      listenLeadership:["qp0HIF3SfI4","lmyZMtPVodo","bNpx7gpSqbY"],
+      listenEntrepreneur:["bNpx7gpSqbY","jwxaihchx_E","EulhKrrfMnw"],
+      listenEducation:["EulhKrrfMnw","bNpx7gpSqbY","qp0HIF3SfI4"],
+
       leadershipReplay:["lmyZMtPVodo","qp0HIF3SfI4","bNpx7gpSqbY"],
       businessReplay:["EulhKrrfMnw","98qfFzqDKR8","bNpx7gpSqbY"],
       audioReplay:["qp0HIF3SfI4","lmyZMtPVodo","EulhKrrfMnw"],
       member:["jwxaihchx_E","bNpx7gpSqbY","EulhKrrfMnw"],
       sponsor:["EulhKrrfMnw","jwxaihchx_E","bNpx7gpSqbY"],
       premium:["bNpx7gpSqbY","jwxaihchx_E","qp0HIF3SfI4"]
-    };
-
-    const audioLibrary = {
-      business:[
-        "TitanCore business brief. Today, focus on customers, service, trust, cash flow, and clean decision making. A strong business earns attention by giving useful information first.",
-        "TitanCore daily business message. Free education builds trust. When visitors learn from your company every day, they remember your name when they need help.",
-        "Business discipline matters. Watch costs, listen to customers, protect the company name, and move with a long term plan."
-      ],
-      market:[
-        "Market signal audio. Watch stocks, banking, credit, interest rates, real estate, oil, and consumer confidence. All of these can affect business movement.",
-        "Today’s market reminder. Do not make decisions from noise. Look for patterns, risk, cash flow, and customer behavior.",
-        "Market discipline. A business owner should understand money movement before making big decisions."
-      ],
-      crypto:[
-        "Crypto audio. Bitcoin and digital assets can move fast. Learn first, understand risk, and never make decisions from hype alone.",
-        "Digital finance reminder. Blockchain, Bitcoin, and crypto are part of the future conversation, but discipline and risk control come first.",
-        "Crypto market lesson. Fast movement can create opportunity and danger. Education must come before action."
-      ],
-      energy:[
-        "Energy audio. Oil and energy prices can affect transportation, food, shipping, construction, and business operating costs.",
-        "Energy business reminder. When energy prices move, businesses may feel pressure in delivery, supply chains, and customer prices.",
-        "Oil and energy lesson. Watch fuel, transportation, and global supply movement because they can change business costs."
-      ],
-      leadership:[
-        "Leadership audio. A CEO must think long term, protect the company name, and build trust one decision at a time.",
-        "Leadership discipline. Strong leaders listen, organize, communicate clearly, and take responsibility before blaming others.",
-        "CEO mindset. Build the system, protect the mission, and lead with patience, discipline, and clear direction."
-      ],
-      entrepreneur:[
-        "Entrepreneur audio. Every business needs trust, service, discipline, and a simple reason for customers to believe in the company.",
-        "Founder lesson. Start small, test the idea, learn from people, and improve before spending too much money.",
-        "Business owner reminder. Growth comes from consistency, reputation, customer care, and the courage to keep learning."
-      ]
     };
 
     function dayNumber(){
@@ -1320,87 +1073,23 @@
       return "https://www.youtube.com/watch?v=" + id;
     }
 
-    function buildVideos(){
-      document.querySelectorAll(".videoSlot").forEach(slot => {
+    function buildMedia(){
+      document.querySelectorAll(".videoSlot, .listenSlot").forEach(slot => {
         const listName = slot.dataset.list || "main";
         const offset = slot.dataset.offset || 0;
         const videoId = pick(videoLibrary[listName], offset);
 
         slot.innerHTML =
-          '<iframe src="' + embed(videoId) + '" title="TitanCore daily public video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+          '<iframe src="' + embed(videoId) + '" title="TitanCore daily public media" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
 
-        const card = slot.closest(".videoCard");
-        const link = card ? card.querySelector(".videoOpen") : null;
+        const card = slot.closest(".videoCard, .listenCard");
+        const link = card ? card.querySelector(".openVideo") : null;
 
         if(link){
           link.href = watch(videoId);
         }
       });
     }
-
-    function buildAudioText(){
-      document.querySelectorAll(".audioCard").forEach((card, index) => {
-        const key = card.dataset.audio;
-        const message = pick(audioLibrary[key], index);
-        const text = card.querySelector(".audioText");
-
-        if(text){
-          text.textContent = message;
-        }
-      });
-    }
-
-    let currentCard = null;
-
-    function stopAllAudio(){
-      window.speechSynthesis.cancel();
-
-      document.querySelectorAll(".audioCard").forEach(card => {
-        card.classList.remove("playing");
-        const circle = card.querySelector(".audioCircle");
-        if(circle) circle.textContent = "▶";
-      });
-
-      currentCard = null;
-    }
-
-    function playAudioCard(card){
-      stopAllAudio();
-
-      const text = card.querySelector(".audioText");
-      if(!text) return;
-
-      const message = new SpeechSynthesisUtterance(text.textContent.trim());
-      message.rate = 0.92;
-      message.pitch = 1;
-      message.volume = 1;
-
-      message.onend = function(){
-        card.classList.remove("playing");
-        const circle = card.querySelector(".audioCircle");
-        if(circle) circle.textContent = "▶";
-        currentCard = null;
-      };
-
-      currentCard = card;
-      card.classList.add("playing");
-
-      const circle = card.querySelector(".audioCircle");
-      if(circle) circle.textContent = "■";
-
-      window.speechSynthesis.speak(message);
-    }
-
-    document.querySelectorAll(".playAudio").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const card = btn.closest(".audioCard");
-        playAudioCard(card);
-      });
-    });
-
-    document.querySelectorAll(".stopAudio").forEach(btn => {
-      btn.addEventListener("click", stopAllAudio);
-    });
 
     const panel = document.getElementById("menuPanel");
     const openBtn = document.getElementById("openMenu");
@@ -1484,14 +1173,13 @@
 
     document.getElementById("leadershipLive").style.setProperty("--bg",im.leadership);
     document.getElementById("guestStudio").style.setProperty("--bg",im.guest);
-    document.getElementById("audioProgram").style.setProperty("--bg",im.audio);
+    document.getElementById("listenMode").style.setProperty("--bg",im.audio);
     document.getElementById("memberProgram").style.setProperty("--bg",im.leadership);
     document.getElementById("contact").style.setProperty("--bg",im.contact);
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    buildVideos();
-    buildAudioText();
+    buildMedia();
   </script>
 </body>
 </html>
