@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Video Content | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings video content program with public video backups, playlist hub, CEO video area, guest studio, live schedule, replay archive, member program, and local MP3 audio playlist." />
+  <meta name="description" content="TitanCore Holdings video and audio content program with public video backups, public audio podcast embeds, playlist hub, CEO video area, guest studio, live schedule, replay archive, and future TitanCore-owned media." />
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;line-height:1.65}
+
+    body{
+      background:#000;
+      color:#fff;
+      font-family:Arial,Helvetica,sans-serif;
+      overflow-x:hidden;
+      line-height:1.65;
+    }
+
     a{text-decoration:none;color:inherit}
     button{font:inherit;color:inherit}
 
@@ -34,10 +42,17 @@
         #000;
     }
 
-    .wrap{width:min(1180px,calc(100% - 46px));margin:auto;position:relative;z-index:2}
+    .wrap{
+      width:min(1180px,calc(100% - 46px));
+      margin:auto;
+      position:relative;
+      z-index:2;
+    }
 
     .header{
-      position:sticky;top:0;z-index:1000;
+      position:sticky;
+      top:0;
+      z-index:1000;
       background:rgba(0,0,0,.93);
       backdrop-filter:blur(12px);
       border-bottom:1px solid rgba(242,217,140,.18);
@@ -52,9 +67,18 @@
       padding:16px 0;
     }
 
-    .brand{display:flex;align-items:center;gap:14px;min-width:0}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
     .mark{
-      width:62px;height:62px;display:grid;place-items:center;
+      width:62px;
+      height:62px;
+      display:grid;
+      place-items:center;
       background:linear-gradient(135deg,rgba(8,116,87,.75),#050505);
       border:1px solid var(--line);
       color:var(--gold2);
@@ -76,7 +100,8 @@
     .brandname span{color:#fff;margin-left:8px}
 
     .menuBtn{
-      width:56px;height:56px;
+      width:56px;
+      height:56px;
       border:1px solid var(--line);
       background:linear-gradient(135deg,var(--green),#020202);
       font-size:28px;
@@ -84,7 +109,9 @@
     }
 
     .panel{
-      position:fixed;inset:0;z-index:2000;
+      position:fixed;
+      inset:0;
+      z-index:2000;
       background:rgba(0,0,0,.78);
       display:none;
       padding:18px;
@@ -110,9 +137,24 @@
       margin-bottom:14px;
     }
 
-    .menuTop h2{font:400 28px var(--serif);color:var(--gold2)}
-    .closeBtn{width:48px;height:48px;border:1px solid var(--line);background:#000;font-size:30px;cursor:pointer}
-    .links{display:grid;gap:9px}
+    .menuTop h2{
+      font:400 28px var(--serif);
+      color:var(--gold2);
+    }
+
+    .closeBtn{
+      width:48px;
+      height:48px;
+      border:1px solid var(--line);
+      background:#000;
+      font-size:30px;
+      cursor:pointer;
+    }
+
+    .links{
+      display:grid;
+      gap:9px;
+    }
 
     .links a{
       border:1px solid rgba(242,217,140,.14);
@@ -123,14 +165,40 @@
       font-size:13px;
     }
 
-    .links a:hover{background:rgba(216,180,90,.12)}
+    .links a:hover{
+      background:rgba(216,180,90,.12);
+    }
 
-    h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05}
-    h1{font-size:clamp(48px,8vw,92px);margin:18px 0}
-    h2{font-size:clamp(34px,6vw,66px);margin-bottom:18px}
-    h3{font-size:clamp(25px,4vw,42px);color:var(--gold2);margin-bottom:14px}
+    h1,h2,h3{
+      font-family:var(--serif);
+      font-weight:400;
+      line-height:1.05;
+    }
+
+    h1{
+      font-size:clamp(48px,8vw,92px);
+      margin:18px 0;
+    }
+
+    h2{
+      font-size:clamp(34px,6vw,66px);
+      margin-bottom:18px;
+    }
+
+    h3{
+      font-size:clamp(25px,4vw,42px);
+      color:var(--gold2);
+      margin-bottom:14px;
+    }
+
     h1 span,h2 span{color:var(--gold2)}
-    p{font-size:clamp(17px,3.6vw,22px);line-height:1.8;color:var(--soft);margin-bottom:15px}
+
+    p{
+      font-size:clamp(17px,3.6vw,22px);
+      line-height:1.8;
+      color:var(--soft);
+      margin-bottom:15px;
+    }
 
     .eyebrow,.label{
       color:var(--gold2);
@@ -143,7 +211,12 @@
 
     .label{letter-spacing:3px}
 
-    .btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
 
     .btn{
       display:inline-flex;
@@ -162,8 +235,15 @@
       text-align:center;
     }
 
-    .btn:hover{border-color:var(--gold2);transform:translateY(-1px)}
-    .btn.secondary{background:#050505;color:var(--gold2)}
+    .btn:hover{
+      border-color:var(--gold2);
+      transform:translateY(-1px);
+    }
+
+    .btn.secondary{
+      background:#050505;
+      color:var(--gold2);
+    }
 
     .hero,.section,.contact{
       background:
@@ -174,8 +254,16 @@
       border-bottom:1px solid rgba(242,217,140,.16);
     }
 
-    .hero{min-height:760px;display:flex;align-items:center}
-    .heroContent{max-width:1050px;padding:92px 0}
+    .hero{
+      min-height:760px;
+      display:flex;
+      align-items:center;
+    }
+
+    .heroContent{
+      max-width:1050px;
+      padding:92px 0;
+    }
 
     .badge{
       display:inline-flex;
@@ -191,13 +279,17 @@
     }
 
     .pulse{
-      width:10px;height:10px;border-radius:50%;
+      width:10px;
+      height:10px;
+      border-radius:50%;
       background:var(--green2);
       box-shadow:0 0 18px rgba(10,141,105,.95);
       animation:pulse 1.2s infinite;
     }
 
-    @keyframes pulse{50%{transform:scale(1.55);opacity:.55}}
+    @keyframes pulse{
+      50%{transform:scale(1.55);opacity:.55}
+    }
 
     .time{
       display:inline-flex;
@@ -220,7 +312,10 @@
       overflow:hidden;
     }
 
-    .heroCard{margin-top:28px;max-width:1000px}
+    .heroCard{
+      margin-top:28px;
+      max-width:1000px;
+    }
 
     .ticker{
       overflow:hidden;
@@ -241,8 +336,16 @@
       font-size:12px;
     }
 
-    .ticker b{background:var(--gold2);color:#000;padding:7px 10px;margin-right:14px}
-    @keyframes ticker{to{transform:translateX(-100%)}}
+    .ticker b{
+      background:var(--gold2);
+      color:#000;
+      padding:7px 10px;
+      margin-right:14px;
+    }
+
+    @keyframes ticker{
+      to{transform:translateX(-100%)}
+    }
 
     .programNav{
       position:sticky;
@@ -253,7 +356,10 @@
       overflow-x:auto;
     }
 
-    .programNav div{display:flex;min-width:max-content}
+    .programNav div{
+      display:flex;
+      min-width:max-content;
+    }
 
     .programNav a{
       padding:18px 24px;
@@ -264,17 +370,40 @@
       font-size:12px;
     }
 
-    .programNav a:hover{background:var(--gold2);color:#000}
+    .programNav a:hover{
+      background:var(--gold2);
+      color:#000;
+    }
 
-    .section{padding:92px 0}
-    .title{max-width:980px;margin-bottom:32px}
-    .two{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-    .three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .section{
+      padding:92px 0;
+    }
 
-    .videoFrame{
+    .title{
+      max-width:980px;
+      margin-bottom:32px;
+    }
+
+    .two{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+
+    .three{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
+
+    .videoFrame,.audioFrame{
       width:100%;
-      aspect-ratio:16/9;
       background:#000;
       border:2px solid rgba(242,217,140,.45);
       box-shadow:var(--shadow);
@@ -282,11 +411,37 @@
       margin-top:16px;
     }
 
-    .videoFrame iframe{width:100%;height:100%;border:0;display:block}
-    .note{font-size:14px;color:rgba(255,255,255,.75);margin-top:12px}
-    .nowTitle{font:400 clamp(23px,4vw,34px) var(--serif);color:var(--gold2);margin-top:16px}
+    .videoFrame{aspect-ratio:16/9}
+    .audioFrame{min-height:460px}
 
-    .playlist{display:grid;gap:12px;margin-top:16px}
+    .videoFrame iframe,.audioFrame iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    .audioFrame iframe{
+      min-height:460px;
+    }
+
+    .note{
+      font-size:14px;
+      color:rgba(255,255,255,.75);
+      margin-top:12px;
+    }
+
+    .nowTitle{
+      font:400 clamp(23px,4vw,34px) var(--serif);
+      color:var(--gold2);
+      margin-top:16px;
+    }
+
+    .playlist{
+      display:grid;
+      gap:12px;
+      margin-top:16px;
+    }
 
     .playlist button{
       min-height:54px;
@@ -306,9 +461,24 @@
       border-color:var(--gold2);
     }
 
-    .infoList{display:grid;gap:16px}
-    .info{border:1px solid rgba(242,217,140,.24);background:rgba(0,0,0,.56);padding:18px}
-    .info b{display:block;color:var(--gold2);font:400 24px var(--serif);margin-bottom:8px}
+    .infoList{
+      display:grid;
+      gap:16px;
+    }
+
+    .info{
+      border:1px solid rgba(242,217,140,.24);
+      background:rgba(0,0,0,.56);
+      padding:18px;
+    }
+
+    .info b{
+      display:block;
+      color:var(--gold2);
+      font:400 24px var(--serif);
+      margin-bottom:8px;
+    }
+
     .info p{font-size:16px}
 
     .slotTitle{
@@ -341,54 +511,6 @@
       border-top:1px solid rgba(242,217,140,.18);
     }
 
-    .audioLayout{
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:22px;
-      align-items:start;
-    }
-
-    .audioBox{
-      background:rgba(0,0,0,.76);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:26px;
-      box-shadow:var(--shadow);
-    }
-
-    audio{width:100%;margin:18px 0;display:block}
-
-    .audioList{display:grid;gap:12px;margin-top:16px}
-
-    .audioBtn{
-      min-height:58px;
-      border:1px solid rgba(242,217,140,.28);
-      background:#050505;
-      color:#fff;
-      padding:14px;
-      text-align:left;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-weight:900;
-      font-size:12px;
-      cursor:pointer;
-    }
-
-    .audioBtn:hover,.audioBtn.active{
-      background:linear-gradient(135deg,var(--green),#020202);
-      border-color:var(--gold2);
-    }
-
-    .audioStatus{
-      border:1px dashed rgba(242,217,140,.35);
-      padding:16px;
-      margin-top:16px;
-      color:rgba(255,255,255,.82);
-      font-size:15px;
-      line-height:1.7;
-      background:rgba(0,0,0,.42);
-    }
-
     footer{
       background:#020202;
       text-align:center;
@@ -397,8 +519,11 @@
     }
 
     .footMark{
-      width:86px;height:86px;margin:0 auto 20px;
-      display:grid;place-items:center;
+      width:86px;
+      height:86px;
+      margin:0 auto 20px;
+      display:grid;
+      place-items:center;
       border:1px solid var(--line);
       background:linear-gradient(135deg,var(--green),#020202);
       font:900 34px var(--serif);
@@ -413,7 +538,13 @@
       margin-bottom:16px;
     }
 
-    .footlinks,.social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .footlinks,.social{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
 
     .footlinks a{
       border:1px solid rgba(242,217,140,.16);
@@ -424,15 +555,17 @@
     }
 
     .social a{
-      width:52px;height:52px;
-      display:grid;place-items:center;
+      width:52px;
+      height:52px;
+      display:grid;
+      place-items:center;
       border:1px solid var(--line);
       background:#050505;
       font-weight:900;
     }
 
     @media(max-width:1040px){
-      .two,.grid,.three,.audioLayout{grid-template-columns:1fr}
+      .two,.grid,.three{grid-template-columns:1fr}
       .programNav{top:82px}
     }
 
@@ -443,11 +576,12 @@
       .menuBtn{width:54px;height:54px}
       .hero{min-height:720px}
       .heroContent{padding:62px 0}
-      .heroCard,.card,.videoCard,.audioBox{padding:24px}
+      .heroCard,.card,.videoCard,.audioCard{padding:24px}
       .btn{width:100%}
       .time{margin-left:0;margin-top:10px}
       .programNav a{padding:16px 22px}
       .band{min-height:320px}
+      .audioFrame,.audioFrame iframe{min-height:390px}
     }
   </style>
 </head>
@@ -496,14 +630,14 @@
 
         <p>
           This page is the TitanCore video and audio program. Video sections use public video backups now.
-          Audio uses local MP3 file addresses now. Later, TitanCore can replace both with its own videos and audio.
+          Audio sections use public podcast players now. Later, TitanCore can replace both with its own videos and audio.
         </p>
 
         <div class="heroCard">
           <h3>Video for Watching. Audio for Listening.</h3>
           <p>
-            The video playlist uses YouTube. The audio playlist uses MP3 files inside your website folder:
-            <b>assets/audio</b>. Upload the MP3 files there and the audio player will work.
+            The video playlist uses YouTube. The audio playlist uses public podcast/audio embed players.
+            When TitanCore creates original media, replace the public links inside the code.
           </p>
 
           <div class="btnrow">
@@ -518,7 +652,7 @@
     <div class="ticker">
       <div>
         <b>Video + Audio Content</b>
-        Public Business Video • Local MP3 Audio • Stock Market • Bitcoin & Crypto • Oil & Energy • Leadership • Guest Interviews • Replay Archive • Future TitanCore-Owned Media
+        Public Business Video • Public Audio Players • Stock Market • Bitcoin & Crypto • Oil & Energy • Leadership • Guest Interviews • Replay Archive • Future TitanCore-Owned Media
       </div>
     </div>
 
@@ -571,13 +705,13 @@
               </div>
 
               <div class="info">
-                <b>Audio Playlist</b>
-                <p>Audio plays from local MP3 files inside assets/audio.</p>
+                <b>Public Audio</b>
+                <p>Audio players use public podcast/audio embeds until TitanCore audio is ready.</p>
               </div>
 
               <div class="info">
                 <b>Replace Later</b>
-                <p>When TitanCore has original media, replace the video IDs and MP3 files.</p>
+                <p>When TitanCore has original media, replace the video IDs and audio embed links.</p>
               </div>
             </div>
           </div>
@@ -631,8 +765,8 @@
         <div class="wrap">
           <div class="eyebrow">Video + Audio Content Area</div>
           <p>
-            Public videos are backup content only. Audio uses MP3 files inside assets/audio.
-            When TitanCore creates original videos or audio, replace the public videos and MP3 files.
+            Public videos and audio players are backup content only. When TitanCore creates original media,
+            replace the public video IDs and audio embed links.
           </p>
         </div>
       </div>
@@ -798,89 +932,47 @@
     <section class="section" id="audioProgram">
       <div class="wrap">
         <div class="title">
-          <div class="eyebrow">Audio Program</div>
-          <h2>Business Audio <span>Playlist.</span></h2>
+          <div class="eyebrow">Public Audio Playlist</div>
+          <h2>Business Audio <span>Program.</span></h2>
           <p>
-            This is audio only. No YouTube video here. Upload MP3 files into <b>assets/audio</b>,
-            then visitors can press play and listen.
+            This is the real audio section. No YouTube video here.
+            Click an audio topic and the public audio player changes.
           </p>
         </div>
 
-        <div class="audioLayout">
-          <div class="audioBox">
+        <div class="two">
+          <div class="audioCard">
             <div class="label">Now Playing Audio</div>
-            <h3 id="audioTitle">Daily Business Audio</h3>
+            <h3 id="audioTitle">Business / Economy Audio</h3>
 
-            <audio id="audioPlayer" controls preload="none">
-              <source id="audioSource" src="assets/audio/business-audio.mp3" type="audio/mpeg">
-              Your browser does not support the audio player.
-            </audio>
+            <div class="audioFrame" id="audioFrame"></div>
 
-            <p class="note" id="audioDescription">
-              Daily business message for visitors who want to listen while driving, walking, or working.
+            <p class="note" id="audioNote">
+              Press play inside the audio player. Later, replace this public audio with TitanCore-owned audio.
             </p>
 
             <div class="btnrow">
-              <button class="btn" type="button" onclick="playAudio()">▶ Play Audio</button>
-              <button class="btn secondary" type="button" onclick="stopAudio()">Stop Audio</button>
-            </div>
-
-            <div class="audioStatus" id="audioStatus">
-              Selected file: <b>assets/audio/business-audio.mp3</b>. If you do not hear sound, upload the MP3 file using this exact address.
+              <a class="btn" id="audioOpen" href="#" target="_blank" rel="noopener">Open Audio Source ›</a>
             </div>
           </div>
 
-          <div class="audioBox">
+          <div class="card">
             <div class="label">Choose Audio Topic</div>
             <h3>Audio Playlist</h3>
 
-            <div class="audioList">
-              <button class="audioBtn active" type="button"
-                data-title="Daily Business Audio"
-                data-file="assets/audio/business-audio.mp3"
-                data-description="Daily business message for visitors who want to listen while driving, walking, or working.">
-                Business Audio
-              </button>
-
-              <button class="audioBtn" type="button"
-                data-title="Market Audio"
-                data-file="assets/audio/market-audio.mp3"
-                data-description="Audio about stocks, banking, credit, real estate, oil, and business confidence.">
-                Market Audio
-              </button>
-
-              <button class="audioBtn" type="button"
-                data-title="Bitcoin & Crypto Audio"
-                data-file="assets/audio/crypto-audio.mp3"
-                data-description="Audio education about Bitcoin, crypto, blockchain, digital money, and risk awareness.">
-                Bitcoin / Crypto Audio
-              </button>
-
-              <button class="audioBtn" type="button"
-                data-title="Oil & Energy Audio"
-                data-file="assets/audio/energy-audio.mp3"
-                data-description="Audio about oil, energy, transportation cost, inflation pressure, and business impact.">
-                Oil / Energy Audio
-              </button>
-
-              <button class="audioBtn" type="button"
-                data-title="Leadership Audio"
-                data-file="assets/audio/leadership-audio.mp3"
-                data-description="CEO mindset, leadership discipline, founder responsibility, and company-building reminders.">
-                Leadership Audio
-              </button>
-
-              <button class="audioBtn" type="button"
-                data-title="Entrepreneur Audio"
-                data-file="assets/audio/entrepreneur-audio.mp3"
-                data-description="Founder lessons, business owner reminders, and entrepreneur motivation.">
-                Entrepreneur Audio
-              </button>
+            <div class="playlist">
+              <button class="active" type="button" data-audio="businessAudio">Business / Economy Audio</button>
+              <button type="button" data-audio="morningAudio">Morning Business Audio</button>
+              <button type="button" data-audio="marketAudio">Market Signal Audio</button>
+              <button type="button" data-audio="cryptoAudio">Bitcoin / Crypto Audio</button>
+              <button type="button" data-audio="energyAudio">Oil / Energy Audio</button>
+              <button type="button" data-audio="leadershipAudio">Leadership Audio</button>
+              <button type="button" data-audio="entrepreneurAudio">Entrepreneur Audio</button>
             </div>
 
-            <div class="audioStatus">
-              Later, when TitanCore records original audio, replace these MP3 files with your own TitanCore audio files.
-            </div>
+            <p class="note">
+              This is public audio backup content. When TitanCore creates its own audio, replace the audio embed links.
+            </p>
           </div>
         </div>
       </div>
@@ -1013,6 +1105,51 @@
       premiumAccessVideo:{id:"bNpx7gpSqbY",title:"Future Premium Access Preview",note:"Public business preview video for future premium area."}
     };
 
+    const audioLibrary = {
+      businessAudio:{
+        title:"Business / Economy Audio",
+        embed:"https://embed.podcasts.apple.com/us/podcast/marketplace/id201853034?theme=dark",
+        open:"https://podcasts.apple.com/us/podcast/marketplace/id201853034",
+        note:"Public business and economy audio player. Replace later with TitanCore business audio."
+      },
+      morningAudio:{
+        title:"Morning Business Audio",
+        embed:"https://embed.podcasts.apple.com/us/podcast/marketplace-morning-report/id73330130?theme=dark",
+        open:"https://podcasts.apple.com/us/podcast/marketplace-morning-report/id73330130",
+        note:"Public morning business audio player. Replace later with TitanCore morning audio."
+      },
+      marketAudio:{
+        title:"Market Signal Audio",
+        embed:"https://embed.podcasts.apple.com/us/podcast/planet-money/id290783428?theme=dark",
+        open:"https://podcasts.apple.com/us/podcast/planet-money/id290783428",
+        note:"Public money, economy, and market audio player. Replace later with TitanCore market audio."
+      },
+      cryptoAudio:{
+        title:"Bitcoin / Crypto Audio",
+        embed:"https://embed.podcasts.apple.com/us/podcast/unchained/id1123922160?theme=dark",
+        open:"https://podcasts.apple.com/us/podcast/unchained/id1123922160",
+        note:"Public crypto and blockchain audio player. Replace later with TitanCore crypto audio."
+      },
+      energyAudio:{
+        title:"Oil / Energy Audio",
+        embed:"https://embed.podcasts.apple.com/us/podcast/the-energy-gang/id663379413?theme=dark",
+        open:"https://podcasts.apple.com/us/podcast/the-energy-gang/id663379413",
+        note:"Public energy business audio player. Replace later with TitanCore energy audio."
+      },
+      leadershipAudio:{
+        title:"Leadership Audio",
+        embed:"https://embed.podcasts.apple.com/us/podcast/hbr-ideacast/id152022135?theme=dark",
+        open:"https://podcasts.apple.com/us/podcast/hbr-ideacast/id152022135",
+        note:"Public business leadership audio player. Replace later with TitanCore leadership audio."
+      },
+      entrepreneurAudio:{
+        title:"Entrepreneur Audio",
+        embed:"https://embed.podcasts.apple.com/us/podcast/masters-of-scale/id1227971746?theme=dark",
+        open:"https://podcasts.apple.com/us/podcast/masters-of-scale/id1227971746",
+        note:"Public entrepreneur and founder audio player. Replace later with TitanCore guest/founder audio."
+      }
+    };
+
     function embed(id){
       return "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&playsinline=1";
     }
@@ -1058,12 +1195,25 @@
       document.getElementById("playlistOpen").href = watch(v.id);
     }
 
+    function setAudio(key){
+      const audio = audioLibrary[key] || audioLibrary.businessAudio;
+      const frame = document.getElementById("audioFrame");
+
+      frame.innerHTML =
+        '<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="' + audio.embed + '" title="' + safe(audio.title) + '"></iframe>';
+
+      document.getElementById("audioTitle").textContent = audio.title;
+      document.getElementById("audioNote").textContent = audio.note;
+      document.getElementById("audioOpen").href = audio.open;
+    }
+
     document.querySelectorAll(".videoSlot").forEach(el => {
       renderSlot(el, el.dataset.video || "mainBusiness");
     });
 
     setMain("mainBusiness");
     setPlaylist("marketVideo");
+    setAudio("businessAudio");
 
     document.querySelectorAll(".playlist button[data-play]").forEach(btn => {
       btn.addEventListener("click", () => {
@@ -1073,51 +1223,12 @@
       });
     });
 
-    const audioPlayer = document.getElementById("audioPlayer");
-    const audioSource = document.getElementById("audioSource");
-    const audioTitle = document.getElementById("audioTitle");
-    const audioDescription = document.getElementById("audioDescription");
-    const audioStatus = document.getElementById("audioStatus");
-
-    function setAudio(button){
-      const title = button.dataset.title;
-      const file = button.dataset.file;
-      const description = button.dataset.description;
-
-      document.querySelectorAll(".audioBtn").forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
-
-      audioPlayer.pause();
-      audioPlayer.currentTime = 0;
-
-      audioTitle.textContent = title;
-      audioDescription.textContent = description;
-      audioSource.src = file;
-      audioPlayer.load();
-
-      audioStatus.innerHTML =
-        "Selected: <b>" + title + "</b>. Press Play. If no sound plays, upload this MP3 file: <b>" + file + "</b>";
-    }
-
-    function playAudio(){
-      audioPlayer.play().catch(() => {
-        audioStatus.innerHTML =
-          "Audio did not start. Make sure the MP3 file is uploaded in <b>assets/audio</b>, then tap Play again.";
+    document.querySelectorAll(".playlist button[data-audio]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".playlist button[data-audio]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        setAudio(btn.dataset.audio);
       });
-    }
-
-    function stopAudio(){
-      audioPlayer.pause();
-      audioPlayer.currentTime = 0;
-    }
-
-    document.querySelectorAll(".audioBtn").forEach(button => {
-      button.addEventListener("click", () => setAudio(button));
-    });
-
-    audioPlayer.addEventListener("error", () => {
-      audioStatus.innerHTML =
-        "This audio file is missing or not uploaded yet. Upload the correct MP3 file into <b>assets/audio</b>.";
     });
 
     const panel = document.getElementById("menuPanel");
