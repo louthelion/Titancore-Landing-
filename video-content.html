@@ -5,20 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Video Content | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings video and audio content program with public video backups, public audio podcast embeds, playlist hub, CEO video area, guest studio, live schedule, replay archive, and future TitanCore-owned media." />
+  <meta name="description" content="TitanCore Holdings video and audio content program with public video backups, public audio channels, CEO video area, guest studio, live schedule, replay archive, and future TitanCore-owned media." />
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-
-    body{
-      background:#000;
-      color:#fff;
-      font-family:Arial,Helvetica,sans-serif;
-      overflow-x:hidden;
-      line-height:1.65;
-    }
-
+    body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;line-height:1.65}
     a{text-decoration:none;color:inherit}
     button{font:inherit;color:inherit}
 
@@ -27,7 +19,7 @@
       --gold2:#f2d98c;
       --green:#087457;
       --green2:#0a8d69;
-      --line:rgba(242,217,140,.35);
+      --line:rgba(242,217,140,.36);
       --soft:rgba(255,255,255,.88);
       --serif:Georgia,"Times New Roman",serif;
       --shadow:0 18px 55px rgba(0,0,0,.65);
@@ -42,18 +34,13 @@
         #000;
     }
 
-    .wrap{
-      width:min(1180px,calc(100% - 46px));
-      margin:auto;
-      position:relative;
-      z-index:2;
-    }
+    .wrap{width:min(1180px,calc(100% - 46px));margin:auto;position:relative;z-index:2}
 
     .header{
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(0,0,0,.93);
+      background:rgba(0,0,0,.96);
       backdrop-filter:blur(12px);
       border-bottom:1px solid rgba(242,217,140,.18);
     }
@@ -67,18 +54,11 @@
       padding:16px 0;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
 
     .mark{
-      width:62px;
-      height:62px;
-      display:grid;
-      place-items:center;
+      width:62px;height:62px;
+      display:grid;place-items:center;
       background:linear-gradient(135deg,rgba(8,116,87,.75),#050505);
       border:1px solid var(--line);
       color:var(--gold2);
@@ -100,8 +80,7 @@
     .brandname span{color:#fff;margin-left:8px}
 
     .menuBtn{
-      width:56px;
-      height:56px;
+      width:56px;height:56px;
       border:1px solid var(--line);
       background:linear-gradient(135deg,var(--green),#020202);
       font-size:28px;
@@ -137,24 +116,9 @@
       margin-bottom:14px;
     }
 
-    .menuTop h2{
-      font:400 28px var(--serif);
-      color:var(--gold2);
-    }
-
-    .closeBtn{
-      width:48px;
-      height:48px;
-      border:1px solid var(--line);
-      background:#000;
-      font-size:30px;
-      cursor:pointer;
-    }
-
-    .links{
-      display:grid;
-      gap:9px;
-    }
+    .menuTop h2{font:400 28px var(--serif);color:var(--gold2)}
+    .closeBtn{width:48px;height:48px;border:1px solid var(--line);background:#000;font-size:30px;cursor:pointer}
+    .links{display:grid;gap:9px}
 
     .links a{
       border:1px solid rgba(242,217,140,.14);
@@ -165,32 +129,12 @@
       font-size:13px;
     }
 
-    .links a:hover{
-      background:rgba(216,180,90,.12);
-    }
+    .links a:hover{background:rgba(216,180,90,.12)}
 
-    h1,h2,h3{
-      font-family:var(--serif);
-      font-weight:400;
-      line-height:1.05;
-    }
-
-    h1{
-      font-size:clamp(48px,8vw,92px);
-      margin:18px 0;
-    }
-
-    h2{
-      font-size:clamp(34px,6vw,66px);
-      margin-bottom:18px;
-    }
-
-    h3{
-      font-size:clamp(25px,4vw,42px);
-      color:var(--gold2);
-      margin-bottom:14px;
-    }
-
+    h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05}
+    h1{font-size:clamp(48px,8vw,92px);margin:18px 0}
+    h2{font-size:clamp(34px,6vw,66px);margin-bottom:18px}
+    h3{font-size:clamp(25px,4vw,42px);color:var(--gold2);margin-bottom:14px}
     h1 span,h2 span{color:var(--gold2)}
 
     p{
@@ -211,12 +155,7 @@
 
     .label{letter-spacing:3px}
 
-    .btnrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:22px;
-    }
+    .btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 
     .btn{
       display:inline-flex;
@@ -235,15 +174,8 @@
       text-align:center;
     }
 
-    .btn:hover{
-      border-color:var(--gold2);
-      transform:translateY(-1px);
-    }
-
-    .btn.secondary{
-      background:#050505;
-      color:var(--gold2);
-    }
+    .btn:hover{border-color:var(--gold2);transform:translateY(-1px)}
+    .btn.secondary{background:#050505;color:var(--gold2)}
 
     .hero,.section,.contact{
       background:
@@ -254,16 +186,8 @@
       border-bottom:1px solid rgba(242,217,140,.16);
     }
 
-    .hero{
-      min-height:760px;
-      display:flex;
-      align-items:center;
-    }
-
-    .heroContent{
-      max-width:1050px;
-      padding:92px 0;
-    }
+    .hero{min-height:760px;display:flex;align-items:center}
+    .heroContent{max-width:1050px;padding:92px 0}
 
     .badge{
       display:inline-flex;
@@ -279,17 +203,13 @@
     }
 
     .pulse{
-      width:10px;
-      height:10px;
-      border-radius:50%;
+      width:10px;height:10px;border-radius:50%;
       background:var(--green2);
       box-shadow:0 0 18px rgba(10,141,105,.95);
       animation:pulse 1.2s infinite;
     }
 
-    @keyframes pulse{
-      50%{transform:scale(1.55);opacity:.55}
-    }
+    @keyframes pulse{50%{transform:scale(1.55);opacity:.55}}
 
     .time{
       display:inline-flex;
@@ -304,7 +224,7 @@
     }
 
     .heroCard,.card,.videoCard,.audioCard{
-      background:rgba(0,0,0,.74);
+      background:rgba(0,0,0,.76);
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:26px;
@@ -312,10 +232,7 @@
       overflow:hidden;
     }
 
-    .heroCard{
-      margin-top:28px;
-      max-width:1000px;
-    }
+    .heroCard{margin-top:28px;max-width:1000px}
 
     .ticker{
       overflow:hidden;
@@ -336,16 +253,9 @@
       font-size:12px;
     }
 
-    .ticker b{
-      background:var(--gold2);
-      color:#000;
-      padding:7px 10px;
-      margin-right:14px;
-    }
+    .ticker b{background:var(--gold2);color:#000;padding:7px 10px;margin-right:14px}
 
-    @keyframes ticker{
-      to{transform:translateX(-100%)}
-    }
+    @keyframes ticker{to{transform:translateX(-100%)}}
 
     .programNav{
       position:sticky;
@@ -356,10 +266,7 @@
       overflow-x:auto;
     }
 
-    .programNav div{
-      display:flex;
-      min-width:max-content;
-    }
+    .programNav div{display:flex;min-width:max-content}
 
     .programNav a{
       padding:18px 24px;
@@ -370,37 +277,17 @@
       font-size:12px;
     }
 
-    .programNav a:hover{
-      background:var(--gold2);
-      color:#000;
-    }
+    .programNav a:hover{background:var(--gold2);color:#000}
 
     .section{
       padding:92px 0;
+      scroll-margin-top:178px;
     }
 
-    .title{
-      max-width:980px;
-      margin-bottom:32px;
-    }
-
-    .two{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:22px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:22px;
-    }
-
-    .three{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
+    .title{max-width:980px;margin-bottom:32px}
+    .two{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 
     .videoFrame,.audioFrame{
       width:100%;
@@ -421,15 +308,9 @@
       display:block;
     }
 
-    .audioFrame iframe{
-      min-height:460px;
-    }
+    .audioFrame iframe{min-height:460px}
 
-    .note{
-      font-size:14px;
-      color:rgba(255,255,255,.75);
-      margin-top:12px;
-    }
+    .note{font-size:14px;color:rgba(255,255,255,.75);margin-top:12px}
 
     .nowTitle{
       font:400 clamp(23px,4vw,34px) var(--serif);
@@ -437,11 +318,7 @@
       margin-top:16px;
     }
 
-    .playlist{
-      display:grid;
-      gap:12px;
-      margin-top:16px;
-    }
+    .playlist{display:grid;gap:12px;margin-top:16px}
 
     .playlist button{
       min-height:54px;
@@ -461,24 +338,9 @@
       border-color:var(--gold2);
     }
 
-    .infoList{
-      display:grid;
-      gap:16px;
-    }
-
-    .info{
-      border:1px solid rgba(242,217,140,.24);
-      background:rgba(0,0,0,.56);
-      padding:18px;
-    }
-
-    .info b{
-      display:block;
-      color:var(--gold2);
-      font:400 24px var(--serif);
-      margin-bottom:8px;
-    }
-
+    .infoList{display:grid;gap:16px}
+    .info{border:1px solid rgba(242,217,140,.24);background:rgba(0,0,0,.56);padding:18px}
+    .info b{display:block;color:var(--gold2);font:400 24px var(--serif);margin-bottom:8px}
     .info p{font-size:16px}
 
     .slotTitle{
@@ -511,6 +373,14 @@
       border-top:1px solid rgba(242,217,140,.18);
     }
 
+    .audioCard{
+      min-height:680px;
+    }
+
+    .audioCard p{
+      font-size:clamp(16px,3vw,20px);
+    }
+
     footer{
       background:#020202;
       text-align:center;
@@ -519,11 +389,8 @@
     }
 
     .footMark{
-      width:86px;
-      height:86px;
-      margin:0 auto 20px;
-      display:grid;
-      place-items:center;
+      width:86px;height:86px;margin:0 auto 20px;
+      display:grid;place-items:center;
       border:1px solid var(--line);
       background:linear-gradient(135deg,var(--green),#020202);
       font:900 34px var(--serif);
@@ -538,13 +405,7 @@
       margin-bottom:16px;
     }
 
-    .footlinks,.social{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:16px;
-    }
+    .footlinks,.social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px}
 
     .footlinks a{
       border:1px solid rgba(242,217,140,.16);
@@ -555,10 +416,8 @@
     }
 
     .social a{
-      width:52px;
-      height:52px;
-      display:grid;
-      place-items:center;
+      width:52px;height:52px;
+      display:grid;place-items:center;
       border:1px solid var(--line);
       background:#050505;
       font-weight:900;
@@ -580,8 +439,10 @@
       .btn{width:100%}
       .time{margin-left:0;margin-top:10px}
       .programNav a{padding:16px 22px}
+      .section{scroll-margin-top:160px}
       .band{min-height:320px}
       .audioFrame,.audioFrame iframe{min-height:390px}
+      .audioCard{min-height:auto}
     }
   </style>
 </head>
@@ -612,7 +473,7 @@
           <a href="about-group.html">About Group</a>
           <a href="companies.html">Companies</a>
           <a href="business-intelligence.html">Business Intelligence</a>
-          <a href="news-media.html">News & Media</a>
+          <a href="news-media.html">News &amp; Media</a>
           <a href="blogs.html">TitanCore Insights</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -636,14 +497,14 @@
         <div class="heroCard">
           <h3>Video for Watching. Audio for Listening.</h3>
           <p>
-            The video playlist uses YouTube. The audio playlist uses public podcast/audio embed players.
-            When TitanCore creates original media, replace the public links inside the code.
+            The video playlist uses YouTube. The audio area shows every audio topic separately,
+            the same way the video section shows every video card.
           </p>
 
           <div class="btnrow">
             <a href="index.html" class="btn secondary">Back Home ›</a>
             <a href="#mainProgram" class="btn">Start Watching ›</a>
-            <a href="#audioProgram" class="btn">Open Audio Playlist ›</a>
+            <a href="#audioProgram" class="btn">Open Audio Channels ›</a>
           </div>
         </div>
       </div>
@@ -652,7 +513,7 @@
     <div class="ticker">
       <div>
         <b>Video + Audio Content</b>
-        Public Business Video • Public Audio Players • Stock Market • Bitcoin & Crypto • Oil & Energy • Leadership • Guest Interviews • Replay Archive • Future TitanCore-Owned Media
+        Public Business Video • Public Audio Channels • Stock Market • Bitcoin & Crypto • Oil & Energy • Leadership • Guest Interviews • Replay Archive • Future TitanCore-Owned Media
       </div>
     </div>
 
@@ -664,7 +525,7 @@
         <a href="#leadershipLive">Leadership Live</a>
         <a href="#liveSchedule">Live Schedule</a>
         <a href="#guestStudio">Guest Studio</a>
-        <a href="#audioProgram">Audio Playlist</a>
+        <a href="#audioProgram">Audio Channels</a>
         <a href="#replayArchive">Replay Archive</a>
         <a href="#memberProgram">Member Program</a>
       </div>
@@ -706,7 +567,7 @@
 
               <div class="info">
                 <b>Public Audio</b>
-                <p>Audio players use public podcast/audio embeds until TitanCore audio is ready.</p>
+                <p>Audio channels use public podcast/audio embeds until TitanCore audio is ready.</p>
               </div>
 
               <div class="info">
@@ -932,48 +793,91 @@
     <section class="section" id="audioProgram">
       <div class="wrap">
         <div class="title">
-          <div class="eyebrow">Public Audio Playlist</div>
-          <h2>Business Audio <span>Program.</span></h2>
+          <div class="eyebrow">Public Audio Program</div>
+          <h2>Business Audio <span>Channels.</span></h2>
           <p>
-            This is the real audio section. No YouTube video here.
-            Click an audio topic and the public audio player changes.
+            This is the audio-only area. Each audio topic is separate like the video cards.
+            Visitors scroll down, choose the audio topic, and press play on that audio player.
           </p>
         </div>
 
-        <div class="two">
-          <div class="audioCard">
-            <div class="label">Now Playing Audio</div>
-            <h3 id="audioTitle">Business / Economy Audio</h3>
-
-            <div class="audioFrame" id="audioFrame"></div>
-
-            <p class="note" id="audioNote">
-              Press play inside the audio player. Later, replace this public audio with TitanCore-owned audio.
-            </p>
-
-            <div class="btnrow">
-              <a class="btn" id="audioOpen" href="#" target="_blank" rel="noopener">Open Audio Source ›</a>
+        <div class="grid">
+          <article class="audioCard">
+            <div class="label">Business / Economy Audio</div>
+            <h3>Business / Economy Audio</h3>
+            <p>Public business and economy audio for visitors who want to listen instead of watching video.</p>
+            <div class="audioFrame">
+              <iframe title="Business and Economy Audio" src="https://embed.podcasts.apple.com/us/podcast/marketplace/id201853034?theme=dark" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe>
             </div>
-          </div>
+            <p class="note">Public audio backup. Replace later with TitanCore business audio.</p>
+            <div class="btnrow"><a class="btn" href="https://podcasts.apple.com/us/podcast/marketplace/id201853034" target="_blank" rel="noopener">Open Audio Source ›</a></div>
+          </article>
 
-          <div class="card">
-            <div class="label">Choose Audio Topic</div>
-            <h3>Audio Playlist</h3>
-
-            <div class="playlist">
-              <button class="active" type="button" data-audio="businessAudio">Business / Economy Audio</button>
-              <button type="button" data-audio="morningAudio">Morning Business Audio</button>
-              <button type="button" data-audio="marketAudio">Market Signal Audio</button>
-              <button type="button" data-audio="cryptoAudio">Bitcoin / Crypto Audio</button>
-              <button type="button" data-audio="energyAudio">Oil / Energy Audio</button>
-              <button type="button" data-audio="leadershipAudio">Leadership Audio</button>
-              <button type="button" data-audio="entrepreneurAudio">Entrepreneur Audio</button>
+          <article class="audioCard">
+            <div class="label">Morning Business Audio</div>
+            <h3>Morning Business Audio</h3>
+            <p>Public morning business audio for visitors checking business news early in the day.</p>
+            <div class="audioFrame">
+              <iframe title="Morning Business Audio" src="https://embed.podcasts.apple.com/us/podcast/marketplace-morning-report/id73330130?theme=dark" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe>
             </div>
+            <p class="note">Public morning audio backup. Replace later with TitanCore morning audio.</p>
+            <div class="btnrow"><a class="btn" href="https://podcasts.apple.com/us/podcast/marketplace-morning-report/id73330130" target="_blank" rel="noopener">Open Audio Source ›</a></div>
+          </article>
 
-            <p class="note">
-              This is public audio backup content. When TitanCore creates its own audio, replace the audio embed links.
-            </p>
-          </div>
+          <article class="audioCard">
+            <div class="label">Market Signal Audio</div>
+            <h3>Market Signal Audio</h3>
+            <p>Public money, economy, and market audio for people who want market information by listening.</p>
+            <div class="audioFrame">
+              <iframe title="Market Signal Audio" src="https://embed.podcasts.apple.com/us/podcast/planet-money/id290783428?theme=dark" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe>
+            </div>
+            <p class="note">Public market audio backup. Replace later with TitanCore market audio.</p>
+            <div class="btnrow"><a class="btn" href="https://podcasts.apple.com/us/podcast/planet-money/id290783428" target="_blank" rel="noopener">Open Audio Source ›</a></div>
+          </article>
+
+          <article class="audioCard">
+            <div class="label">Bitcoin / Crypto Audio</div>
+            <h3>Bitcoin / Crypto Audio</h3>
+            <p>Public crypto and blockchain audio for visitors interested in Bitcoin, crypto, and digital finance.</p>
+            <div class="audioFrame">
+              <iframe title="Bitcoin and Crypto Audio" src="https://embed.podcasts.apple.com/us/podcast/unchained/id1123922160?theme=dark" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe>
+            </div>
+            <p class="note">Public crypto audio backup. Replace later with TitanCore crypto audio.</p>
+            <div class="btnrow"><a class="btn" href="https://podcasts.apple.com/us/podcast/unchained/id1123922160" target="_blank" rel="noopener">Open Audio Source ›</a></div>
+          </article>
+
+          <article class="audioCard">
+            <div class="label">Oil / Energy Audio</div>
+            <h3>Oil / Energy Audio</h3>
+            <p>Public energy audio for oil, energy, transportation, business cost, and economic movement.</p>
+            <div class="audioFrame">
+              <iframe title="Oil and Energy Audio" src="https://embed.podcasts.apple.com/us/podcast/the-energy-gang/id663379413?theme=dark" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe>
+            </div>
+            <p class="note">Public energy audio backup. Replace later with TitanCore energy audio.</p>
+            <div class="btnrow"><a class="btn" href="https://podcasts.apple.com/us/podcast/the-energy-gang/id663379413" target="_blank" rel="noopener">Open Audio Source ›</a></div>
+          </article>
+
+          <article class="audioCard">
+            <div class="label">Leadership Audio</div>
+            <h3>Leadership Audio</h3>
+            <p>Public leadership and business management audio for CEO mindset and professional growth.</p>
+            <div class="audioFrame">
+              <iframe title="Leadership Audio" src="https://embed.podcasts.apple.com/us/podcast/hbr-ideacast/id152022135?theme=dark" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe>
+            </div>
+            <p class="note">Public leadership audio backup. Replace later with TitanCore leadership audio.</p>
+            <div class="btnrow"><a class="btn" href="https://podcasts.apple.com/us/podcast/hbr-ideacast/id152022135" target="_blank" rel="noopener">Open Audio Source ›</a></div>
+          </article>
+
+          <article class="audioCard">
+            <div class="label">Entrepreneur Audio</div>
+            <h3>Entrepreneur Audio</h3>
+            <p>Public founder and entrepreneur audio for startup lessons, business growth, and guest-style listening.</p>
+            <div class="audioFrame">
+              <iframe title="Entrepreneur Audio" src="https://embed.podcasts.apple.com/us/podcast/masters-of-scale/id1227971746?theme=dark" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"></iframe>
+            </div>
+            <p class="note">Public entrepreneur audio backup. Replace later with TitanCore guest or founder audio.</p>
+            <div class="btnrow"><a class="btn" href="https://podcasts.apple.com/us/podcast/masters-of-scale/id1227971746" target="_blank" rel="noopener">Open Audio Source ›</a></div>
+          </article>
         </div>
       </div>
     </section>
@@ -1105,51 +1009,6 @@
       premiumAccessVideo:{id:"bNpx7gpSqbY",title:"Future Premium Access Preview",note:"Public business preview video for future premium area."}
     };
 
-    const audioLibrary = {
-      businessAudio:{
-        title:"Business / Economy Audio",
-        embed:"https://embed.podcasts.apple.com/us/podcast/marketplace/id201853034?theme=dark",
-        open:"https://podcasts.apple.com/us/podcast/marketplace/id201853034",
-        note:"Public business and economy audio player. Replace later with TitanCore business audio."
-      },
-      morningAudio:{
-        title:"Morning Business Audio",
-        embed:"https://embed.podcasts.apple.com/us/podcast/marketplace-morning-report/id73330130?theme=dark",
-        open:"https://podcasts.apple.com/us/podcast/marketplace-morning-report/id73330130",
-        note:"Public morning business audio player. Replace later with TitanCore morning audio."
-      },
-      marketAudio:{
-        title:"Market Signal Audio",
-        embed:"https://embed.podcasts.apple.com/us/podcast/planet-money/id290783428?theme=dark",
-        open:"https://podcasts.apple.com/us/podcast/planet-money/id290783428",
-        note:"Public money, economy, and market audio player. Replace later with TitanCore market audio."
-      },
-      cryptoAudio:{
-        title:"Bitcoin / Crypto Audio",
-        embed:"https://embed.podcasts.apple.com/us/podcast/unchained/id1123922160?theme=dark",
-        open:"https://podcasts.apple.com/us/podcast/unchained/id1123922160",
-        note:"Public crypto and blockchain audio player. Replace later with TitanCore crypto audio."
-      },
-      energyAudio:{
-        title:"Oil / Energy Audio",
-        embed:"https://embed.podcasts.apple.com/us/podcast/the-energy-gang/id663379413?theme=dark",
-        open:"https://podcasts.apple.com/us/podcast/the-energy-gang/id663379413",
-        note:"Public energy business audio player. Replace later with TitanCore energy audio."
-      },
-      leadershipAudio:{
-        title:"Leadership Audio",
-        embed:"https://embed.podcasts.apple.com/us/podcast/hbr-ideacast/id152022135?theme=dark",
-        open:"https://podcasts.apple.com/us/podcast/hbr-ideacast/id152022135",
-        note:"Public business leadership audio player. Replace later with TitanCore leadership audio."
-      },
-      entrepreneurAudio:{
-        title:"Entrepreneur Audio",
-        embed:"https://embed.podcasts.apple.com/us/podcast/masters-of-scale/id1227971746?theme=dark",
-        open:"https://podcasts.apple.com/us/podcast/masters-of-scale/id1227971746",
-        note:"Public entrepreneur and founder audio player. Replace later with TitanCore guest/founder audio."
-      }
-    };
-
     function embed(id){
       return "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&playsinline=1";
     }
@@ -1195,39 +1054,18 @@
       document.getElementById("playlistOpen").href = watch(v.id);
     }
 
-    function setAudio(key){
-      const audio = audioLibrary[key] || audioLibrary.businessAudio;
-      const frame = document.getElementById("audioFrame");
-
-      frame.innerHTML =
-        '<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation" src="' + audio.embed + '" title="' + safe(audio.title) + '"></iframe>';
-
-      document.getElementById("audioTitle").textContent = audio.title;
-      document.getElementById("audioNote").textContent = audio.note;
-      document.getElementById("audioOpen").href = audio.open;
-    }
-
     document.querySelectorAll(".videoSlot").forEach(el => {
       renderSlot(el, el.dataset.video || "mainBusiness");
     });
 
     setMain("mainBusiness");
     setPlaylist("marketVideo");
-    setAudio("businessAudio");
 
     document.querySelectorAll(".playlist button[data-play]").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".playlist button[data-play]").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         setPlaylist(btn.dataset.play);
-      });
-    });
-
-    document.querySelectorAll(".playlist button[data-audio]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".playlist button[data-audio]").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        setAudio(btn.dataset.audio);
       });
     });
 
