@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Video Content | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings video content program with public video backups, playlist hub, CEO video area, guest studio, live schedule, replay archive, member program, and audio-only business broadcasts." />
+  <meta name="description" content="TitanCore Holdings video and audio content program with public video backups, public podcast audio feeds, playlist hub, CEO video area, guest studio, live schedule, replay archive, and future TitanCore-owned media." />
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
@@ -512,17 +512,83 @@
 
     .audioGrid{
       display:grid;
-      grid-template-columns:repeat(2,1fr);
+      grid-template-columns:1.05fr .95fr;
       gap:22px;
+      align-items:start;
+    }
+
+    .audioPlayerBox{
+      background:rgba(0,0,0,.76);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    audio{
+      width:100%;
+      margin:18px 0;
+      display:block;
+    }
+
+    .audioList{
+      display:grid;
+      gap:12px;
+      margin-top:16px;
+      max-height:480px;
+      overflow:auto;
+      padding-right:4px;
+    }
+
+    .audioItem{
+      border:1px solid rgba(242,217,140,.22);
+      background:#050505;
+      color:#fff;
+      padding:14px;
+      text-align:left;
+      cursor:pointer;
+    }
+
+    .audioItem:hover,
+    .audioItem.active{
+      border-color:var(--gold2);
+      background:rgba(8,116,87,.25);
+    }
+
+    .audioItem b{
+      display:block;
+      color:var(--gold2);
+      font-family:var(--serif);
+      font-size:20px;
+      font-weight:400;
+      margin-bottom:6px;
+    }
+
+    .audioItem span{
+      display:block;
+      font-size:12px;
+      letter-spacing:1.5px;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.7);
+    }
+
+    .audioStatus{
+      border:1px dashed rgba(242,217,140,.35);
+      padding:16px;
+      margin-top:16px;
+      color:rgba(255,255,255,.82);
+      font-size:15px;
+      line-height:1.7;
+      background:rgba(0,0,0,.42);
     }
 
     .script{
       border:1px dashed rgba(242,217,140,.42);
       background:rgba(0,0,0,.55);
-      padding:20px;
+      padding:18px;
       margin-top:18px;
       color:#fff;
-      font-size:18px;
+      font-size:17px;
       line-height:1.7;
     }
 
@@ -597,7 +663,7 @@
       .menuBtn{width:54px;height:54px}
       .hero{min-height:720px}
       .heroContent{padding:62px 0}
-      .heroCard,.card,.videoCard,.audioCard{padding:24px}
+      .heroCard,.card,.videoCard,.audioCard,.audioPlayerBox{padding:24px}
       .btn{width:100%}
       .time{margin-left:0;margin-top:10px}
       .programNav a{padding:16px 22px}
@@ -641,7 +707,7 @@
 
     <section class="hero" id="hero">
       <div class="wrap heroContent">
-        <span class="badge"><span class="pulse"></span> Video Content Program</span>
+        <span class="badge"><span class="pulse"></span> Video + Audio Content Program</span>
         <span class="time" id="clock">Loading time...</span>
 
         <div class="eyebrow" style="margin-top:24px;">TitanCore Video Content</div>
@@ -649,22 +715,21 @@
         <h1>Video Content <span>Program.</span></h1>
 
         <p>
-          This page is the TitanCore video and audio program. Every video area has a working public video backup now.
-          Later, when TitanCore records its own CEO videos, guest interviews, live shows, and replay archive,
-          those public embeds can be replaced.
+          This page is the TitanCore video and audio program. Video sections use public video backups now.
+          Audio sections use public podcast/audio feeds now. Later, TitanCore can replace both with its own videos and audio.
         </p>
 
         <div class="heroCard">
-          <h3>No Blank Video Areas</h3>
+          <h3>Video for Watching. Audio for Listening.</h3>
           <p>
-            Leadership, guest studio, schedule, replays, and future member areas all have public videos now.
-            The Playlist Hub lets visitors click topics and change the active video on the page.
+            The video playlist uses YouTube. The audio playlist uses public podcast RSS/audio feeds.
+            When TitanCore creates original content, replace the public links with TitanCore-owned media.
           </p>
 
           <div class="btnrow">
             <a href="index.html" class="btn secondary">Back Home ›</a>
             <a href="#mainProgram" class="btn">Start Watching ›</a>
-            <a href="#playlistHub" class="btn">Open Playlist ›</a>
+            <a href="#audioProgram" class="btn">Open Audio Playlist ›</a>
           </div>
         </div>
       </div>
@@ -672,20 +737,20 @@
 
     <div class="ticker">
       <div>
-        <b>Video Content</b>
-        Public Business Video • Stock Market Video • Bitcoin & Crypto Video • Oil & Energy Video • Leadership Video • Guest Interviews • Audio-Only Broadcast • Replay Archive • Future TitanCore-Owned Media
+        <b>Video + Audio Content</b>
+        Public Business Video • Public Podcast Audio • Stock Market • Bitcoin & Crypto • Oil & Energy • Leadership • Guest Interviews • Replay Archive • Future TitanCore-Owned Media
       </div>
     </div>
 
     <nav class="programNav">
       <div>
         <a href="#mainProgram">Main Program</a>
-        <a href="#playlistHub">Playlist Hub</a>
+        <a href="#playlistHub">Video Playlist</a>
         <a href="#videoChannels">Video Channels</a>
         <a href="#leadershipLive">Leadership Live</a>
         <a href="#liveSchedule">Live Schedule</a>
         <a href="#guestStudio">Guest Studio</a>
-        <a href="#audioProgram">Audio Program</a>
+        <a href="#audioProgram">Audio Playlist</a>
         <a href="#replayArchive">Replay Archive</a>
         <a href="#memberProgram">Member Program</a>
       </div>
@@ -728,13 +793,13 @@
               </div>
 
               <div class="info">
-                <b>Studio Video Later</b>
-                <p>When your CEO video or guest studio program is ready, replace the public embed.</p>
+                <b>Audio Playlist</b>
+                <p>Public podcast/audio feeds play now until TitanCore records its own audio.</p>
               </div>
 
               <div class="info">
-                <b>Audio Separate</b>
-                <p>Audio Program uses listening buttons. Video sections use YouTube embeds.</p>
+                <b>Replace Later</b>
+                <p>When TitanCore has original media, replace the public video IDs and RSS feeds.</p>
               </div>
             </div>
           </div>
@@ -745,20 +810,20 @@
     <section class="section" id="playlistHub">
       <div class="wrap">
         <div class="title">
-          <div class="eyebrow">Public Playlist Hub</div>
+          <div class="eyebrow">Public Video Playlist Hub</div>
           <h2>Click a topic and <span>change the video.</span></h2>
-          <p>This is a built-in TitanCore playlist. It uses public videos now so the page does not stay blank.</p>
+          <p>This is the video playlist. It uses YouTube video backups only.</p>
         </div>
 
         <div class="two">
           <div class="videoCard">
-            <div class="label">Playlist Screen</div>
-            <h3>TitanCore Playlist</h3>
+            <div class="label">Video Playlist Screen</div>
+            <h3>TitanCore Video Playlist</h3>
 
             <div class="videoFrame videoSlot" id="playlistVideo" data-video="marketVideo"></div>
 
             <div class="nowTitle" id="playlistTitle">Loading playlist video...</div>
-            <p class="note" id="playlistNote">Choose a topic from the playlist list.</p>
+            <p class="note" id="playlistNote">Choose a video topic from the playlist list.</p>
 
             <div class="btnrow">
               <a class="btn" id="playlistOpen" href="#" target="_blank" rel="noopener">Open Video ›</a>
@@ -766,7 +831,7 @@
           </div>
 
           <div class="card">
-            <div class="label">Choose Topic</div>
+            <div class="label">Choose Video Topic</div>
             <h3>Video Playlist</h3>
 
             <div class="playlist">
@@ -786,9 +851,10 @@
     <section class="band" id="imageBand">
       <div class="bandin">
         <div class="wrap">
-          <div class="eyebrow">Video Content Area</div>
+          <div class="eyebrow">Video + Audio Content Area</div>
           <p>
-            Public videos are backup content only. When TitanCore creates original videos, replace the YouTube ID in the JavaScript video library.
+            Public videos and public audio feeds are backup content only. When TitanCore creates original videos or audio,
+            replace the public links inside the JavaScript library.
           </p>
         </div>
       </div>
@@ -958,83 +1024,59 @@
     <section class="section" id="audioProgram">
       <div class="wrap">
         <div class="title">
-          <div class="eyebrow">Audio Program</div>
-          <h2>Business Audio <span>Broadcast.</span></h2>
+          <div class="eyebrow">Public Audio Playlist</div>
+          <h2>Business Audio <span>Program.</span></h2>
           <p>
-            This section is for people who want to listen, not watch. No YouTube video box here.
-            Visitors press play and hear business, market, leadership, entrepreneur, crypto, and energy messages.
+            This is the real audio section. It loads public podcast/audio episodes now.
+            Later, replace the RSS feeds with TitanCore-owned audio files or TitanCore podcast feeds.
           </p>
         </div>
 
         <div class="audioGrid">
-          <article class="audioCard">
-            <div class="label">Business Audio</div>
-            <h3>Daily Business Audio</h3>
-            <p>A daily business message for visitors who want to listen while driving, working, or walking.</p>
-            <div class="script" id="businessText">TitanCore business reminder. Free information builds trust. When people learn from you every day, they come back and remember your company.</div>
-            <div class="btnrow">
-              <button class="btn" type="button" onclick="playAudioMessage('businessText')">▶ Play Business Audio</button>
-              <button class="btn secondary" type="button" onclick="stopAudioMessage()">Stop</button>
-            </div>
-          </article>
+          <div class="audioPlayerBox">
+            <div class="label">Now Playing Audio</div>
+            <h3 id="audioTitle">Loading public audio...</h3>
 
-          <article class="audioCard">
-            <div class="label">Market Audio</div>
-            <h3>Market Audio</h3>
-            <p>Audio about stocks, banking, credit, crypto, real estate, oil, and business confidence.</p>
-            <div class="script" id="marketText">Market lesson. Stocks, banking, credit, crypto, real estate, and oil can all affect business confidence and customer behavior.</div>
-            <div class="btnrow">
-              <button class="btn" type="button" onclick="playAudioMessage('marketText')">▶ Play Market Audio</button>
-              <button class="btn secondary" type="button" onclick="stopAudioMessage()">Stop</button>
-            </div>
-          </article>
+            <audio id="audioPlayer" controls preload="none">
+              Your browser does not support the audio player.
+            </audio>
 
-          <article class="audioCard">
-            <div class="label">Leadership Audio</div>
-            <h3>Leadership Audio</h3>
-            <p>CEO mindset, leadership discipline, founder responsibility, and company-building reminders.</p>
-            <div class="script" id="leadershipText">Leadership reminder. A CEO must think long term, protect the company name, and build trust one decision at a time.</div>
-            <div class="btnrow">
-              <button class="btn" type="button" onclick="playAudioMessage('leadershipText')">▶ Play Leadership Audio</button>
-              <button class="btn secondary" type="button" onclick="stopAudioMessage()">Stop</button>
-            </div>
-          </article>
+            <p class="note" id="audioDescription">
+              Choose an audio category on the right. Then press Play on the audio player.
+            </p>
 
-          <article class="audioCard">
-            <div class="label">Entrepreneur Audio</div>
-            <h3>Entrepreneur Audio</h3>
-            <p>Founder lessons, business owner reminders, and entrepreneur motivation.</p>
-            <div class="script" id="entrepreneurText">Founder lesson. Every business needs trust, service, discipline, and a simple reason for customers to believe in the company.</div>
             <div class="btnrow">
-              <button class="btn" type="button" onclick="playAudioMessage('entrepreneurText')">▶ Play Entrepreneur Audio</button>
-              <button class="btn secondary" type="button" onclick="stopAudioMessage()">Stop</button>
+              <a class="btn" id="audioOpenLink" href="#" target="_blank" rel="noopener">Open Source Episode ›</a>
+              <button class="btn secondary" type="button" onclick="stopPublicAudio()">Stop Audio</button>
             </div>
-          </article>
 
-          <article class="audioCard">
-            <div class="label">Crypto Audio</div>
-            <h3>Bitcoin & Crypto Audio</h3>
-            <p>Audio education about Bitcoin, crypto, blockchain, digital money, and risk awareness.</p>
-            <div class="script" id="cryptoText">Crypto reminder. Bitcoin and digital assets can move fast. Visitors should learn first, understand risk, and never make decisions from hype alone.</div>
-            <div class="btnrow">
-              <button class="btn" type="button" onclick="playAudioMessage('cryptoText')">▶ Play Crypto Audio</button>
-              <button class="btn secondary" type="button" onclick="stopAudioMessage()">Stop</button>
+            <div class="audioStatus" id="audioStatus">
+              Loading public podcast feed. If the feed blocks direct audio, use Open Source Episode.
             </div>
-          </article>
+          </div>
 
-          <article class="audioCard">
-            <div class="label">Oil & Energy Audio</div>
-            <h3>Oil & Energy Audio</h3>
-            <p>Audio about oil, energy, transportation cost, inflation pressure, and business impact.</p>
-            <div class="script" id="energyText">Energy lesson. Oil and energy prices can affect transportation, food prices, shipping, construction, and business operating costs.</div>
-            <div class="btnrow">
-              <button class="btn" type="button" onclick="playAudioMessage('energyText')">▶ Play Energy Audio</button>
-              <button class="btn secondary" type="button" onclick="stopAudioMessage()">Stop</button>
+          <div class="card">
+            <div class="label">Choose Audio Feed</div>
+            <h3>Audio Playlist</h3>
+
+            <div class="playlist" id="audioFeedButtons">
+              <button class="active" type="button" data-feed="marketplace">Business / Economy Audio</button>
+              <button type="button" data-feed="morning">Morning Business Audio</button>
+              <button type="button" data-feed="planetMoney">Money / Economy Audio</button>
+              <button type="button" data-feed="indicator">Market Signal Audio</button>
+              <button type="button" data-feed="founder">Entrepreneur Audio</button>
+              <button type="button" data-feed="energy">Oil / Energy Audio</button>
             </div>
-          </article>
+
+            <div class="audioList" id="audioEpisodeList">
+              <div class="audioStatus">Episodes loading...</div>
+            </div>
+          </div>
         </div>
 
-        <p class="audioNote">Note: On iPhone and most phones, the visitor must tap Play first before audio can start.</p>
+        <p class="audioNote">
+          Phone note: visitors must tap the audio player Play button. Browsers do not allow websites to start sound automatically.
+        </p>
       </div>
     </section>
 
@@ -1165,6 +1207,39 @@
       premiumAccessVideo:{id:"bNpx7gpSqbY",title:"Future Premium Access Preview",note:"Public business preview video for future premium area."}
     };
 
+    const audioFeeds = {
+      marketplace:{
+        name:"Business / Economy Audio",
+        url:"https://www.marketplace.org/feed/podcast/marketplace/",
+        keywords:[]
+      },
+      morning:{
+        name:"Morning Business Audio",
+        url:"https://www.marketplace.org/feed/podcast/marketplace-morning-report/",
+        keywords:[]
+      },
+      planetMoney:{
+        name:"Money / Economy Audio",
+        url:"https://feeds.npr.org/510289/podcast.xml",
+        keywords:[]
+      },
+      indicator:{
+        name:"Market Signal Audio",
+        url:"https://feeds.npr.org/510325/podcast.xml",
+        keywords:[]
+      },
+      founder:{
+        name:"Entrepreneur Audio",
+        url:"https://feeds.npr.org/510313/podcast.xml",
+        keywords:["founder","startup","business","company","entrepreneur"]
+      },
+      energy:{
+        name:"Oil / Energy Audio",
+        url:"https://www.marketplace.org/feed/podcast/marketplace/",
+        keywords:["oil","energy","gas","fuel","transportation","shipping"]
+      }
+    };
+
     function embed(id){
       return "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&playsinline=1";
     }
@@ -1176,7 +1251,7 @@
     function renderSlot(el,key){
       const v = videos[key] || videos.mainBusiness;
       el.innerHTML =
-        '<iframe src="' + embed(v.id) + '" title="' + v.title + '" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        '<iframe src="' + embed(v.id) + '" title="' + safe(v.title) + '" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
     }
 
     function setMain(key){
@@ -1201,6 +1276,117 @@
       document.getElementById("playlistOpen").href = watch(v.id);
     }
 
+    function safe(text){
+      return String(text || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+    }
+
+    function cleanDescription(text){
+      const div = document.createElement("div");
+      div.innerHTML = text || "";
+      return (div.textContent || div.innerText || "").replace(/\s+/g," ").trim();
+    }
+
+    async function fetchAudioFeed(feedKey){
+      const feed = audioFeeds[feedKey] || audioFeeds.marketplace;
+      const status = document.getElementById("audioStatus");
+      const list = document.getElementById("audioEpisodeList");
+
+      status.textContent = "Loading " + feed.name + "...";
+      list.innerHTML = '<div class="audioStatus">Loading public audio episodes...</div>';
+
+      try{
+        const api = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(feed.url);
+        const res = await fetch(api, { cache:"no-store" });
+        const data = await res.json();
+
+        let items = (data.items || []).map(item => ({
+          title:item.title || "Untitled Audio",
+          link:item.link || "#",
+          description:cleanDescription(item.description || ""),
+          date:item.pubDate || "",
+          audio:item.enclosure && item.enclosure.link ? item.enclosure.link : ""
+        })).filter(item => item.audio);
+
+        if(feed.keywords && feed.keywords.length){
+          const filtered = items.filter(item => {
+            const hay = (item.title + " " + item.description).toLowerCase();
+            return feed.keywords.some(k => hay.includes(k.toLowerCase()));
+          });
+
+          if(filtered.length){
+            items = filtered;
+          }
+        }
+
+        items = items.slice(0,8);
+
+        if(!items.length){
+          throw new Error("No playable audio episodes found.");
+        }
+
+        renderAudioEpisodes(items, feed.name);
+        setAudioEpisode(items[0], feed.name, 0);
+        status.textContent = "Loaded " + items.length + " public audio episodes from " + feed.name + ".";
+      }catch(err){
+        status.textContent = "Public audio could not load right now. Use Open Source Episode, or add TitanCore audio files later.";
+        list.innerHTML =
+          '<div class="audioStatus">' +
+          'Audio feed unavailable right now. This can happen if the public source blocks the browser request. ' +
+          'Later, TitanCore audio files can be connected directly here.' +
+          '</div>';
+      }
+    }
+
+    function renderAudioEpisodes(items, feedName){
+      const list = document.getElementById("audioEpisodeList");
+      list.innerHTML = "";
+
+      items.forEach((item,index) => {
+        const btn = document.createElement("button");
+        btn.className = "audioItem" + (index === 0 ? " active" : "");
+        btn.type = "button";
+        btn.innerHTML =
+          "<b>" + safe(item.title) + "</b>" +
+          "<span>" + safe(feedName) + (item.date ? " • " + safe(item.date.substring(0,16)) : "") + "</span>";
+
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".audioItem").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          setAudioEpisode(item, feedName, index);
+        });
+
+        list.appendChild(btn);
+      });
+    }
+
+    function setAudioEpisode(item, feedName, index){
+      const player = document.getElementById("audioPlayer");
+      const title = document.getElementById("audioTitle");
+      const description = document.getElementById("audioDescription");
+      const open = document.getElementById("audioOpenLink");
+
+      player.pause();
+      player.src = item.audio;
+      player.load();
+
+      title.textContent = item.title;
+      description.textContent = item.description || ("Public audio from " + feedName + ".");
+      open.href = item.link || item.audio || "#";
+    }
+
+    function stopPublicAudio(){
+      const player = document.getElementById("audioPlayer");
+      if(player){
+        player.pause();
+        player.currentTime = 0;
+      }
+    }
+
     document.querySelectorAll(".videoSlot").forEach(el => {
       renderSlot(el, el.dataset.video || "mainBusiness");
     });
@@ -1208,11 +1394,19 @@
     setMain("mainBusiness");
     setPlaylist("marketVideo");
 
-    document.querySelectorAll(".playlist button").forEach(btn => {
+    document.querySelectorAll(".playlist button[data-play]").forEach(btn => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".playlist button").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".playlist button[data-play]").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
         setPlaylist(btn.dataset.play);
+      });
+    });
+
+    document.querySelectorAll("#audioFeedButtons button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#audioFeedButtons button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        fetchAudioFeed(btn.dataset.feed);
       });
     });
 
@@ -1260,24 +1454,6 @@
     updateClock();
     setInterval(updateClock,1000);
 
-    function playAudioMessage(id){
-      const box = document.getElementById(id);
-      if(!box) return;
-
-      window.speechSynthesis.cancel();
-
-      const m = new SpeechSynthesisUtterance(box.textContent.trim());
-      m.rate = 0.9;
-      m.pitch = 1;
-      m.volume = 1;
-
-      window.speechSynthesis.speak(m);
-    }
-
-    function stopAudioMessage(){
-      window.speechSynthesis.cancel();
-    }
-
     const imgs = [
       {
         hero:"url('https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1900&q=85')",
@@ -1321,6 +1497,8 @@
     document.getElementById("contact").style.setProperty("--bg",im.contact);
 
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    fetchAudioFeed("marketplace");
   </script>
 </body>
 </html>
