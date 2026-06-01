@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>TitanCore Audio Test</title>
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      background:#000;
+      color:#fff;
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.6;
+    }
+
+    :root{
+      --gold:#d8b45a;
+      --gold2:#f2d98c;
+      --green:#087457;
+      --line:rgba(242,217,140,.36);
+      --serif:Georgia,"Times New Roman",serif;
+    }
+
+    .wrap{
+      width:min(1180px,calc(100% - 34px));
+      margin:auto;
+      padding:50px 0;
+    }
+
+    .top{
+      text-align:center;
+      margin-bottom:35px;
+    }
+
+    .logo{
+      width:82px;
+      height:82px;
+      border-radius:50%;
+      border:1px solid var(--line);
+      background:linear-gradient(135deg,var(--green),#020202);
+      display:grid;
+      place-items:center;
+      margin:0 auto 18px;
+      color:var(--gold2);
+      font:900 32px var(--serif);
+    }
+
+    h1,h2{
+      font-family:var(--serif);
+      font-weight:400;
+      line-height:1.1;
+    }
+
+    h1{
+      font-size:clamp(40px,8vw,76px);
+      color:var(--gold2);
+      margin-bottom:12px;
+    }
+
+    .top p{
+      max-width:850px;
+      margin:auto;
+      color:rgba(255,255,255,.86);
+      font-size:20px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+    }
+
+    .card{
+      background:
+        radial-gradient(420px 220px at 20% 10%,rgba(242,217,140,.10),transparent 60%),
+        linear-gradient(135deg,rgba(8,116,87,.24),rgba(0,0,0,.96));
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:24px;
+      box-shadow:0 18px 55px rgba(0,0,0,.65);
+      min-height:520px;
+    }
+
+    .label{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-weight:900;
+      font-size:12px;
+      margin-bottom:12px;
+    }
+
+    h2{
+      color:var(--gold2);
+      font-size:clamp(26px,4vw,42px);
+      margin-bottom:14px;
+    }
+
+    .desc{
+      color:rgba(255,255,255,.84);
+      font-size:16px;
+      margin-bottom:16px;
+    }
+
+    .art{
+      width:100%;
+      min-height:210px;
+      border:2px solid rgba(242,217,140,.42);
+      background:#050505;
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      margin:16px 0;
+    }
+
+    .art img{
+      width:100%;
+      height:100%;
+      max-height:260px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .placeholder{
+      width:116px;
+      height:116px;
+      border-radius:50%;
+      border:3px solid var(--gold2);
+      background:linear-gradient(135deg,var(--green),#020202);
+      display:grid;
+      place-items:center;
+      font-size:40px;
+      font-weight:900;
+    }
+
+    audio{
+      width:100%;
+      margin-top:14px;
+    }
+
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    a.btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 16px;
+      border:1px solid var(--line);
+      color:#000;
+      background:linear-gradient(135deg,var(--gold2),var(--gold));
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:900;
+      font-size:12px;
+      text-decoration:none;
+    }
+
+    .status{
+      color:var(--gold2);
+      font-size:14px;
+      margin-top:12px;
+    }
+
+    @media(max-width:900px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="top">
+      <div class="logo">TH</div>
+      <h1>TitanCore Audio Test</h1>
+      <p>
+        This page tests real public business audio pulled through a Netlify Function.
+        The audio player stays inside TitanCore instead of using ugly outside podcast boxes.
+      </p>
+    </div>
+
+    <section class="grid" id="audioGrid"></section>
+  </main>
+
+  <script>
+    const audioCards = [
+      {
+        id:"201853034",
+        label:"Business / Economy",
+        title:"Marketplace Business Audio"
+      },
+      {
+        id:"73330130",
+        label:"Morning Business",
+        title:"Marketplace Morning Report"
+      },
+      {
+        id:"290783428",
+        label:"Money / Market",
+        title:"Planet Money"
+      },
+      {
+        id:"1123922160",
+        label:"Bitcoin / Crypto",
+        title:"Unchained Crypto"
+      },
+      {
+        id:"663379413",
+        label:"Oil / Energy",
+        title:"Energy Gang"
+      },
+      {
+        id:"152022135",
+        label:"Leadership",
+        title:"HBR IdeaCast"
+      },
+      {
+        id:"1227971746",
+        label:"Entrepreneur",
+        title:"Masters of Scale"
+      }
+    ];
+
+    function clean(text){
+      const div = document.createElement("div");
+      div.innerHTML = text || "";
+      return div.textContent || div.innerText || "";
+    }
+
+    function createCard(item){
+      return `
+        <article class="card" data-id="${item.id}">
+          <div class="label">${item.label}</div>
+          <h2>${item.title}</h2>
+          <div class="art">
+            <div class="placeholder">▶</div>
+          </div>
+          <div class="status">Loading real public audio...</div>
+        </article>
+      `;
+    }
+
+    async function loadAudio(card){
+      const id = card.dataset.id;
+
+      try{
+        const response = await fetch("/.netlify/functions/audio-feed?id=" + encodeURIComponent(id));
+        const data = await response.json();
+
+        if(!response.ok || data.error){
+          throw new Error(data.error || "Audio failed.");
+        }
+
+        const description = clean(data.description).slice(0,260);
+
+        card.innerHTML = `
+          <div class="label">${clean(data.showTitle)}</div>
+          <h2>${clean(data.episodeTitle)}</h2>
+
+          <div class="art">
+            ${
+              data.image
+                ? `<img src="${data.image}" alt="${clean(data.showTitle)} artwork">`
+                : `<div class="placeholder">▶</div>`
+            }
+          </div>
+
+          <p class="desc">${description}</p>
+
+          <audio controls preload="none" src="${data.audioUrl}">
+            Your browser does not support audio playback.
+          </audio>
+
+          <div class="btnrow">
+            ${
+              data.sourceUrl
+                ? `<a class="btn" href="${data.sourceUrl}" target="_blank" rel="noopener">Open Source</a>`
+                : ""
+            }
+          </div>
+
+          <div class="status">Real public audio loaded through TitanCore test bridge.</div>
+        `;
+      }catch(error){
+        card.innerHTML += `
+          <div class="status">
+            Audio did not load: ${error.message}
+          </div>
+        `;
+      }
+    }
+
+    const grid = document.getElementById("audioGrid");
+    grid.innerHTML = audioCards.map(createCard).join("");
+
+    document.querySelectorAll(".card").forEach(loadAudio);
+  </script>
+</body>
+</html>
