@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Video Content | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings video and listen mode content program with daily rotating public videos, business talks, market conversations, leadership interviews, guest studio, replay archive, and future TitanCore-owned media." />
+  <meta name="description" content="TitanCore Holdings video and audio listening hub with daily rotating public business videos, market videos, crypto videos, leadership talks, entrepreneur interviews, and public audio source links." />
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
@@ -160,7 +160,12 @@
 
     .label{letter-spacing:3px}
 
-    .btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
 
     .btn{
       display:inline-flex;
@@ -182,6 +187,7 @@
 
     .btn:hover{border-color:var(--gold2);transform:translateY(-1px)}
     .btn.secondary{background:#050505;color:var(--gold2)}
+    .btn.gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#000}
 
     .hero,.section,.contact{
       background:
@@ -387,6 +393,53 @@
     .listenWave span:nth-child(6){height:26px}
     .listenWave span:nth-child(7){height:14px}
 
+    .sourceBox{
+      margin-top:18px;
+      padding:18px;
+      border:1px solid rgba(242,217,140,.24);
+      background:rgba(0,0,0,.48);
+    }
+
+    .sourceBox h4{
+      color:var(--gold2);
+      font-family:var(--serif);
+      font-size:24px;
+      font-weight:400;
+      margin-bottom:8px;
+    }
+
+    .sourceBox p{
+      font-size:15px;
+      line-height:1.65;
+      margin-bottom:12px;
+    }
+
+    .sourceLinks{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .sourceLinks a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:0 12px;
+      border:1px solid rgba(242,217,140,.28);
+      background:#050505;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:900;
+      font-size:11px;
+    }
+
+    .sourceLinks a:hover{
+      background:var(--gold2);
+      color:#000;
+    }
+
     .note{font-size:14px;color:rgba(255,255,255,.75);margin-top:12px}
 
     .infoList{display:grid;gap:16px}
@@ -490,6 +543,7 @@
       .programNav a{padding:16px 22px}
       .section{scroll-margin-top:160px}
       .band{min-height:320px}
+      .sourceLinks a{width:100%}
     }
   </style>
 </head>
@@ -529,7 +583,7 @@
 
     <section class="hero" id="hero">
       <div class="wrap heroContent">
-        <span class="badge"><span class="pulse"></span> Video + Listen Mode Program</span>
+        <span class="badge"><span class="pulse"></span> Video + Audio Listening Hub</span>
         <span class="time" id="clock">Loading time...</span>
 
         <div class="eyebrow" style="margin-top:24px;">TitanCore Video Content</div>
@@ -537,19 +591,19 @@
         <h1>Video Content <span>Program.</span></h1>
 
         <p>
-          This page gives visitors video content and listen-mode content. People who do not want to watch can still listen to business talks, market conversations, leadership lessons, and entrepreneur interviews while driving, walking, or working.
+          This page gives visitors video content and audio-style listening content. People who do not want to watch can still listen to business talks, market conversations, leadership lessons, and entrepreneur interviews while driving, walking, or working.
         </p>
 
         <div class="heroCard">
-          <h3>Watch Mode + Listen Mode.</h3>
+          <h3>Watch Mode + Public Audio Source Hub.</h3>
           <p>
-            The video cards show public YouTube videos. The listen-mode cards use public YouTube talks and interviews that work like audio for visitors who just want to listen. Later, TitanCore can replace these with TitanCore-owned shows.
+            The video cards show public YouTube videos. The audio hub connects visitors to real public listening sources like Spotify-style podcasts, market news sources, business shows, leadership talks, and entrepreneur interviews. Later, TitanCore can replace these with TitanCore-owned shows.
           </p>
 
           <div class="btnrow">
             <a href="index.html" class="btn secondary">Back Home ›</a>
             <a href="#videoChannels" class="btn">Watch Videos ›</a>
-            <a href="#listenMode" class="btn">Open Listen Mode ›</a>
+            <a href="#audioHub" class="btn gold">Open Audio Hub ›</a>
           </div>
         </div>
       </div>
@@ -557,8 +611,8 @@
 
     <div class="ticker">
       <div>
-        <b>Video + Listen Mode</b>
-        Business Talks • Market Conversations • Bitcoin & Crypto • Oil & Energy • Leadership Lessons • Founder Interviews • Guest Studio • Daily Rotation
+        <b>Video + Audio Hub</b>
+        Morning Business Audio • Afternoon Market Audio • Evening Entrepreneur Audio • Spotify-Style Listening • CNBC-Style Market Source • Daily Public Video Rotation
       </div>
     </div>
 
@@ -569,7 +623,7 @@
         <a href="#leadershipLive">Leadership Live</a>
         <a href="#liveSchedule">Live Schedule</a>
         <a href="#guestStudio">Guest Studio</a>
-        <a href="#listenMode">Listen Mode</a>
+        <a href="#audioHub">Audio Hub</a>
         <a href="#replayArchive">Replay Archive</a>
         <a href="#memberProgram">Member Program</a>
       </div>
@@ -596,7 +650,7 @@
 
           <div class="card">
             <div class="label">Program Purpose</div>
-            <h3>Video First. Listening Ready.</h3>
+            <h3>Video First. Audio Source Ready.</h3>
             <p>This page is built for people who watch video and people who prefer to listen while doing something else.</p>
 
             <div class="infoList">
@@ -606,13 +660,13 @@
               </div>
 
               <div class="info">
-                <b>Listen Mode</b>
-                <p>The listen section uses real public talks and interviews, not fake computer text.</p>
+                <b>Real Public Audio Sources</b>
+                <p>The audio hub connects visitors to real public sources instead of weak fake computer reading.</p>
               </div>
 
               <div class="info">
                 <b>Replace Later</b>
-                <p>When TitanCore has original media, replace the public video IDs with TitanCore-owned content.</p>
+                <p>When TitanCore has original media, replace the public video IDs and public source links with TitanCore-owned content.</p>
               </div>
             </div>
           </div>
@@ -623,9 +677,9 @@
     <section class="band" id="imageBand">
       <div class="bandin">
         <div class="wrap">
-          <div class="eyebrow">Video + Listen Content Area</div>
+          <div class="eyebrow">Video + Audio Content Area</div>
           <p>
-            Public videos are backup content only. When TitanCore creates original media, replace the public video IDs with TitanCore videos, interviews, audio shows, and live programs.
+            Public videos and public audio links are backup content only. When TitanCore creates original media, replace the public video IDs and outside source links with TitanCore videos, interviews, audio shows, and live programs.
           </p>
         </div>
       </div>
@@ -810,13 +864,14 @@
       </div>
     </section>
 
-    <section class="section" id="listenMode">
+    <section class="section" id="audioHub">
       <div class="wrap">
         <div class="title">
-          <div class="eyebrow">Listen Mode</div>
-          <h2>Business Audio-Style <span>Listening Channels.</span></h2>
+          <div class="eyebrow">TitanCore Audio & Listening Hub</div>
+          <h2>Free Public Audio <span>Source Center.</span></h2>
           <p>
-            This section is for people who want to listen, not watch. These are real public talks, interviews, and business conversations from YouTube. Visitors can press play and listen while driving, walking, or working.
+            This section is for visitors who want to listen while driving, walking, working, or resting.
+            Each card has a listen-mode player inside TitanCore plus buttons to open real public audio and market sources.
           </p>
         </div>
 
@@ -825,90 +880,144 @@
             <div class="listenTop">
               <div class="listenIcon">▶</div>
               <div>
-                <div class="label">Business Talk</div>
-                <h3>Business Talk Listening</h3>
+                <div class="label">Morning Business Audio</div>
+                <h3>Morning Business Listening</h3>
               </div>
             </div>
-            <p>Business lessons and company-building talks for people who want useful audio-style content.</p>
+
+            <p>Business talks and market education for visitors starting their day.</p>
             <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            <div class="listenFrame listenSlot" data-list="listenBusiness" data-offset="22"></div>
-            <p class="note">Public audio-style YouTube talk. Replace later with TitanCore business audio.</p>
-            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
+            <div class="listenFrame listenSlot" data-list="listenMorning" data-offset="22"></div>
+
+            <div class="sourceBox">
+              <h4>Open Public Audio Sources</h4>
+              <p>Use these sources when visitors want more audio-style business and market information.</p>
+              <div class="sourceLinks">
+                <a href="https://open.spotify.com/search/business%20news%20podcast" target="_blank" rel="noopener">Spotify Business</a>
+                <a href="https://www.marketplace.org/shows/marketplace-morning-report/" target="_blank" rel="noopener">Marketplace Morning</a>
+                <a href="https://www.cnbc.com/podcasts/" target="_blank" rel="noopener">CNBC Podcasts</a>
+              </div>
+            </div>
           </article>
 
           <article class="listenCard">
             <div class="listenTop">
               <div class="listenIcon">▶</div>
               <div>
-                <div class="label">Market Talk</div>
-                <h3>Market Talk Listening</h3>
+                <div class="label">Afternoon Market Audio</div>
+                <h3>Market & Stock Listening</h3>
               </div>
             </div>
-            <p>Finance, economy, stock market, and money conversations for people who want to listen.</p>
+
+            <p>Finance, economy, stock market, and money conversations for afternoon listeners.</p>
             <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
             <div class="listenFrame listenSlot" data-list="listenMarket" data-offset="23"></div>
-            <p class="note">Public audio-style market content. Replace later with TitanCore market audio.</p>
-            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
+
+            <div class="sourceBox">
+              <h4>Open Market Sources</h4>
+              <p>Public sources for market headlines, business news, finance articles, and listening content.</p>
+              <div class="sourceLinks">
+                <a href="https://www.cnbc.com/" target="_blank" rel="noopener">CNBC Market</a>
+                <a href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance</a>
+                <a href="https://open.spotify.com/search/stock%20market%20podcast" target="_blank" rel="noopener">Spotify Market</a>
+              </div>
+            </div>
           </article>
 
           <article class="listenCard">
             <div class="listenTop">
               <div class="listenIcon">▶</div>
               <div>
-                <div class="label">Crypto Talk</div>
-                <h3>Bitcoin / Crypto Listening</h3>
+                <div class="label">Bitcoin / Crypto Audio</div>
+                <h3>Crypto Listening</h3>
               </div>
             </div>
+
             <p>Bitcoin, crypto, blockchain, digital money, and future finance conversations.</p>
             <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
             <div class="listenFrame listenSlot" data-list="listenCrypto" data-offset="24"></div>
-            <p class="note">Public audio-style crypto talk. Replace later with TitanCore crypto audio.</p>
-            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
+
+            <div class="sourceBox">
+              <h4>Open Crypto Sources</h4>
+              <p>Public crypto education and listening sources. TitanCore-owned crypto audio can replace this later.</p>
+              <div class="sourceLinks">
+                <a href="https://open.spotify.com/search/crypto%20podcast" target="_blank" rel="noopener">Spotify Crypto</a>
+                <a href="https://www.coindesk.com/" target="_blank" rel="noopener">CoinDesk</a>
+                <a href="https://www.youtube.com/results?search_query=bitcoin+crypto+podcast+business" target="_blank" rel="noopener">YouTube Crypto</a>
+              </div>
+            </div>
           </article>
 
           <article class="listenCard">
             <div class="listenTop">
               <div class="listenIcon">▶</div>
               <div>
-                <div class="label">Leadership Talk</div>
+                <div class="label">Oil / Energy Audio</div>
+                <h3>Energy Listening</h3>
+              </div>
+            </div>
+
+            <p>Oil, energy, transportation cost, inflation, and business impact listening content.</p>
+            <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            <div class="listenFrame listenSlot" data-list="listenEnergy" data-offset="25"></div>
+
+            <div class="sourceBox">
+              <h4>Open Energy Sources</h4>
+              <p>Public energy and business sources for visitors tracking oil, energy, and market movement.</p>
+              <div class="sourceLinks">
+                <a href="https://open.spotify.com/search/energy%20podcast%20business" target="_blank" rel="noopener">Spotify Energy</a>
+                <a href="https://www.cnbc.com/energy/" target="_blank" rel="noopener">CNBC Energy</a>
+                <a href="https://www.youtube.com/results?search_query=oil+energy+business+podcast" target="_blank" rel="noopener">YouTube Energy</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="listenCard">
+            <div class="listenTop">
+              <div class="listenIcon">▶</div>
+              <div>
+                <div class="label">Leadership Audio</div>
                 <h3>Leadership Listening</h3>
               </div>
             </div>
+
             <p>Leadership, CEO mindset, discipline, management, and professional growth talks.</p>
             <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            <div class="listenFrame listenSlot" data-list="listenLeadership" data-offset="25"></div>
-            <p class="note">Public audio-style leadership talk. Replace later with TitanCore leadership audio.</p>
-            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
+            <div class="listenFrame listenSlot" data-list="listenLeadership" data-offset="26"></div>
+
+            <div class="sourceBox">
+              <h4>Open Leadership Sources</h4>
+              <p>Public leadership and executive learning sources for people who want to listen and grow.</p>
+              <div class="sourceLinks">
+                <a href="https://open.spotify.com/search/leadership%20podcast" target="_blank" rel="noopener">Spotify Leadership</a>
+                <a href="https://www.youtube.com/results?search_query=leadership+business+podcast" target="_blank" rel="noopener">YouTube Leadership</a>
+                <a href="https://hbr.org/podcasts" target="_blank" rel="noopener">HBR Podcasts</a>
+              </div>
+            </div>
           </article>
 
           <article class="listenCard">
             <div class="listenTop">
               <div class="listenIcon">▶</div>
               <div>
-                <div class="label">Founder Talk</div>
+                <div class="label">Evening Entrepreneur Audio</div>
                 <h3>Entrepreneur Listening</h3>
               </div>
             </div>
+
             <p>Founder stories, entrepreneur lessons, business owner interviews, and startup growth talks.</p>
             <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            <div class="listenFrame listenSlot" data-list="listenEntrepreneur" data-offset="26"></div>
-            <p class="note">Public audio-style founder talk. Replace later with TitanCore guest/founder audio.</p>
-            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
-          </article>
+            <div class="listenFrame listenSlot" data-list="listenEntrepreneur" data-offset="27"></div>
 
-          <article class="listenCard">
-            <div class="listenTop">
-              <div class="listenIcon">▶</div>
-              <div>
-                <div class="label">Business Education</div>
-                <h3>Education Listening</h3>
+            <div class="sourceBox">
+              <h4>Open Entrepreneur Sources</h4>
+              <p>Public founder and entrepreneur sources for visitors who want business motivation and lessons.</p>
+              <div class="sourceLinks">
+                <a href="https://open.spotify.com/search/entrepreneur%20podcast" target="_blank" rel="noopener">Spotify Founder</a>
+                <a href="https://www.youtube.com/results?search_query=entrepreneur+interview+business+podcast" target="_blank" rel="noopener">YouTube Founder</a>
+                <a href="https://open.spotify.com/search/business%20interview%20podcast" target="_blank" rel="noopener">Business Interviews</a>
               </div>
             </div>
-            <p>Long-form business education and learning content for people who prefer audio-style listening.</p>
-            <div class="listenWave"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-            <div class="listenFrame listenSlot" data-list="listenEducation" data-offset="27"></div>
-            <p class="note">Public audio-style education talk. Replace later with TitanCore education audio.</p>
-            <div class="btnrow"><a class="btn openVideo" href="#" target="_blank" rel="noopener">Open Listen Video ›</a></div>
           </article>
         </div>
       </div>
@@ -918,7 +1027,7 @@
       <div class="wrap">
         <div class="title">
           <div class="eyebrow">Replay Archive</div>
-          <h2>Saved Video <span>& Listen Replays.</span></h2>
+          <h2>Saved Video <span>& Audio Replays.</span></h2>
           <p>This section is for replays. It has public backup videos now and can later hold TitanCore-owned saved videos.</p>
         </div>
 
@@ -940,7 +1049,7 @@
           </article>
 
           <article class="videoCard">
-            <div class="label">Listen Replay</div>
+            <div class="label">Audio Replay</div>
             <h3>Audio-Style Replays</h3>
             <p>Business listening, leadership listening, and replay content.</p>
             <div class="videoFrame videoSlot" data-list="audioReplay" data-offset="30"></div>
@@ -1039,12 +1148,12 @@
       founder:["bNpx7gpSqbY","EulhKrrfMnw","jwxaihchx_E"],
       owner:["jwxaihchx_E","EulhKrrfMnw","bNpx7gpSqbY"],
 
-      listenBusiness:["bNpx7gpSqbY","EulhKrrfMnw","jwxaihchx_E"],
+      listenMorning:["bNpx7gpSqbY","EulhKrrfMnw","98qfFzqDKR8"],
       listenMarket:["98qfFzqDKR8","Qh-M3_L4xYk","ro3v84swtZ4"],
       listenCrypto:["pVZzgzYZdCA","30rzkohK7GI","dZ3_Uw5H8zc"],
+      listenEnergy:["GtaoP0skPWc","Qh-M3_L4xYk","98qfFzqDKR8"],
       listenLeadership:["qp0HIF3SfI4","lmyZMtPVodo","bNpx7gpSqbY"],
       listenEntrepreneur:["bNpx7gpSqbY","jwxaihchx_E","EulhKrrfMnw"],
-      listenEducation:["EulhKrrfMnw","bNpx7gpSqbY","qp0HIF3SfI4"],
 
       leadershipReplay:["lmyZMtPVodo","qp0HIF3SfI4","bNpx7gpSqbY"],
       businessReplay:["EulhKrrfMnw","98qfFzqDKR8","bNpx7gpSqbY"],
@@ -1173,7 +1282,7 @@
 
     document.getElementById("leadershipLive").style.setProperty("--bg",im.leadership);
     document.getElementById("guestStudio").style.setProperty("--bg",im.guest);
-    document.getElementById("listenMode").style.setProperty("--bg",im.audio);
+    document.getElementById("audioHub").style.setProperty("--bg",im.audio);
     document.getElementById("memberProgram").style.setProperty("--bg",im.leadership);
     document.getElementById("contact").style.setProperty("--bg",im.contact);
 
