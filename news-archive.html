@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>News Archive | TitanCore Holdings</title>
+  <meta name="description" content="TitanCore Holdings News Archive by month and date for market news, business headlines, Bitcoin, oil, real estate, economy, and daily media history." />
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      background:#000;
+      color:#fff;
+      font-family:Arial,Helvetica,sans-serif;
+      line-height:1.65;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+    button{font:inherit;color:inherit}
+
+    :root{
+      --gold:#d8b45a;
+      --gold2:#f2d98c;
+      --green:#087457;
+      --green2:#0a8d69;
+      --line:rgba(242,217,140,.38);
+      --soft:rgba(255,255,255,.88);
+      --serif:Georgia,"Times New Roman",serif;
+      --shadow:0 20px 60px rgba(0,0,0,.65);
+      --radius:30px;
+    }
+
+    .page{
+      min-height:100vh;
+      background:
+        radial-gradient(900px 600px at 12% 0%,rgba(216,180,90,.12),transparent 58%),
+        radial-gradient(900px 650px at 88% 12%,rgba(8,116,87,.20),transparent 62%),
+        #000;
+    }
+
+    .wrap{
+      width:min(1180px,calc(100% - 42px));
+      margin:auto;
+      position:relative;
+      z-index:2;
+    }
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(0,0,0,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(242,217,140,.18);
+    }
+
+    .headin{
+      min-height:92px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:16px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .mark{
+      width:62px;
+      height:62px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,rgba(8,116,87,.75),#050505);
+      border:1px solid var(--line);
+      border-radius:50%;
+      color:var(--gold2);
+      font:900 24px var(--serif);
+      box-shadow:var(--shadow);
+      flex:0 0 auto;
+    }
+
+    .brandname{
+      font:400 clamp(17px,4.8vw,24px) var(--serif);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      color:var(--gold2);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brandname span{color:#fff;margin-left:8px}
+
+    .menuBtn{
+      width:56px;
+      height:56px;
+      border:1px solid var(--line);
+      border-radius:0;
+      background:linear-gradient(135deg,var(--green),#020202);
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    .panel{
+      position:fixed;
+      inset:0;
+      z-index:2000;
+      background:rgba(0,0,0,.78);
+      display:none;
+      padding:18px;
+    }
+
+    .panel.open{display:block}
+
+    .menuBox{
+      width:min(640px,100%);
+      margin:60px auto 0;
+      background:#050505;
+      border:1px solid var(--line);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .menuTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      border-bottom:1px solid rgba(242,217,140,.18);
+      padding-bottom:14px;
+      margin-bottom:14px;
+    }
+
+    .menuTop h2{
+      font:400 28px var(--serif);
+      color:var(--gold2);
+    }
+
+    .closeBtn{
+      width:48px;
+      height:48px;
+      border:1px solid var(--line);
+      background:#000;
+      font-size:30px;
+      cursor:pointer;
+    }
+
+    .links{
+      display:grid;
+      gap:9px;
+    }
+
+    .links a{
+      border:1px solid rgba(242,217,140,.14);
+      padding:14px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:900;
+      font-size:13px;
+    }
+
+    .links a:hover{
+      background:rgba(216,180,90,.12);
+    }
+
+    h1,h2,h3{
+      font-family:var(--serif);
+      font-weight:400;
+      line-height:1.05;
+    }
+
+    h1{
+      font-size:clamp(48px,8vw,94px);
+      margin:18px 0;
+    }
+
+    h2{
+      font-size:clamp(36px,7vw,70px);
+      margin-bottom:18px;
+      color:var(--gold2);
+    }
+
+    h3{
+      font-size:clamp(27px,5vw,44px);
+      color:var(--gold2);
+      margin-bottom:14px;
+    }
+
+    h1 span,h2 span{color:var(--gold2)}
+
+    p{
+      font-size:clamp(18px,4vw,23px);
+      color:var(--soft);
+      line-height:1.75;
+      margin-bottom:16px;
+    }
+
+    .eyebrow,.label{
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:6px;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:16px;
+    }
+
+    .label{letter-spacing:4px}
+
+    .btnrow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    .btn,.monthBtn,.dayBtn,.modeBtn,.storyBtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 18px;
+      border:1px solid rgba(242,217,140,.42);
+      background:linear-gradient(135deg,var(--green),#020202);
+      color:#fff;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-weight:900;
+      font-size:12px;
+      text-align:center;
+      cursor:pointer;
+    }
+
+    .btn:hover,
+    .btn:active,
+    .btn.clicked,
+    .monthBtn.active,
+    .dayBtn.active,
+    .modeBtn.active,
+    .storyBtn:hover,
+    .storyBtn:active,
+    .storyBtn.clicked{
+      background:linear-gradient(135deg,var(--gold2),var(--gold));
+      color:#000;
+      border-color:var(--gold2);
+    }
+
+    .btn.secondary{
+      background:#050505;
+      color:var(--gold2);
+    }
+
+    .hero{
+      min-height:690px;
+      display:flex;
+      align-items:center;
+      background:
+        linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.64),rgba(0,0,0,.92)),
+        url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1900&q=85");
+      background-size:cover;
+      background-position:center;
+      border-bottom:1px solid rgba(242,217,140,.20);
+    }
+
+    .heroContent{
+      max-width:1080px;
+      padding:86px 0;
+    }
+
+    .statusRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-bottom:22px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      background:linear-gradient(135deg,var(--gold2),var(--gold));
+      color:#000;
+      padding:10px 14px;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-weight:900;
+      font-size:12px;
+    }
+
+    .pulse{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--green2);
+      box-shadow:0 0 18px rgba(10,141,105,.95);
+      animation:pulse 1.2s infinite;
+    }
+
+    @keyframes pulse{
+      50%{transform:scale(1.6);opacity:.55}
+    }
+
+    .timeChip{
+      color:var(--gold2);
+      border:1px solid rgba(242,217,140,.30);
+      background:rgba(0,0,0,.55);
+      padding:10px 14px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .heroPanel{
+      margin-top:28px;
+      max-width:980px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(0,0,0,.72);
+      box-shadow:var(--shadow);
+      padding:30px;
+    }
+
+    .ticker{
+      overflow:hidden;
+      white-space:nowrap;
+      background:#020202;
+      border-top:1px solid rgba(242,217,140,.22);
+      border-bottom:1px solid rgba(242,217,140,.22);
+      padding:14px 0;
+    }
+
+    .ticker div{
+      display:inline-block;
+      padding-left:100%;
+      animation:ticker 42s linear infinite;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-weight:900;
+      font-size:12px;
+    }
+
+    .ticker b{
+      background:linear-gradient(135deg,var(--gold2),var(--gold));
+      color:#000;
+      padding:7px 10px;
+      margin-right:14px;
+    }
+
+    @keyframes ticker{
+      to{transform:translateX(-100%)}
+    }
+
+    .section{
+      padding:86px 0;
+      border-bottom:1px solid rgba(242,217,140,.16);
+      background:
+        radial-gradient(800px 440px at 15% 0%,rgba(216,180,90,.11),transparent 60%),
+        radial-gradient(720px 460px at 88% 14%,rgba(8,116,87,.16),transparent 64%),
+        #000;
+    }
+
+    .sectionTitle{
+      max-width:1000px;
+      margin-bottom:34px;
+    }
+
+    .archivePanel,.card{
+      background:
+        radial-gradient(420px 220px at 18% 8%,rgba(242,217,140,.08),transparent 60%),
+        rgba(0,0,0,.76);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .selectorGrid{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:22px;
+      align-items:start;
+      margin-bottom:30px;
+    }
+
+    .monthList,.dayList,.modeList{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .selectedDateBox{
+      display:inline-flex;
+      border:1px solid rgba(242,217,140,.35);
+      padding:10px 14px;
+      color:var(--gold2);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:12px;
+      font-weight:900;
+      background:rgba(0,0,0,.55);
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      margin-top:30px;
+    }
+
+    .headlineList{
+      display:grid;
+      gap:14px;
+      margin-top:12px;
+    }
+
+    .headline{
+      border:1px solid rgba(242,217,140,.24);
+      background:rgba(0,0,0,.50);
+      padding:16px;
+    }
+
+    .headlineTitle{
+      color:#fff;
+      font-weight:900;
+      font-size:16px;
+      line-height:1.45;
+      margin-bottom:8px;
+    }
+
+    .headlineMeta{
+      color:var(--gold2);
+      font-size:12px;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .storyBtn{
+      min-height:46px;
+      padding:0 14px;
+      font-size:11px;
+      text-decoration:none;
+    }
+
+    .mediaArchive{
+      margin-top:30px;
+      border:2px solid rgba(216,180,90,.55);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#050505;
+      box-shadow:var(--shadow);
+    }
+
+    .mediaFrame{
+      width:100%;
+      aspect-ratio:16/9;
+      background:#000;
+      border-bottom:1px solid rgba(242,217,140,.32);
+    }
+
+    .mediaFrame iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    .mediaBody{
+      padding:26px;
+    }
+
+    footer{
+      background:#020202;
+      text-align:center;
+      padding:64px 0 80px;
+      border-top:1px solid rgba(242,217,140,.18);
+    }
+
+    .footMark{
+      width:86px;
+      height:86px;
+      margin:0 auto 20px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--green),#020202);
+      font:900 34px var(--serif);
+      color:var(--gold2);
+    }
+
+    .footBrand{
+      font:400 clamp(24px,5vw,38px) var(--serif);
+      letter-spacing:8px;
+      text-transform:uppercase;
+      color:var(--gold2);
+      margin-bottom:16px;
+    }
+
+    .footlinks,.social{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .footlinks a{
+      border:1px solid rgba(242,217,140,.16);
+      padding:9px 12px;
+      font-size:12px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    .social a{
+      width:52px;
+      height:52px;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      background:#050505;
+      font-weight:900;
+    }
+
+    @media(max-width:1040px){
+      .selectorGrid,.grid2{grid-template-columns:1fr}
+    }
+
+    @media(max-width:760px){
+      .wrap{width:calc(100% - 34px)}
+      .headin{min-height:82px}
+      .mark{width:56px;height:56px}
+      .menuBtn{width:54px;height:54px}
+      .hero{min-height:660px}
+      .heroContent{padding:62px 0}
+      .heroPanel,.archivePanel,.card,.mediaBody{padding:24px}
+      .btn,.monthBtn,.dayBtn,.modeBtn,.storyBtn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="header">
+      <div class="wrap headin">
+        <a class="brand" href="index.html">
+          <div class="mark">TH</div>
+          <div class="brandname">TitanCore <span>Holdings</span></div>
+        </a>
+
+        <button class="menuBtn" id="openMenu" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </header>
+
+    <div class="panel" id="menuPanel">
+      <div class="menuBox">
+        <div class="menuTop">
+          <h2>TitanCore Menu</h2>
+          <button class="closeBtn" id="closeMenu">×</button>
+        </div>
+
+        <nav class="links">
+          <a href="index.html">Home</a>
+          <a href="news-media.html">News &amp; Media</a>
+          <a href="news-content.html">News Content</a>
+          <a href="news-archive.html">News Archive</a>
+          <a href="video-content.html">Video Content Backup</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="wrap heroContent">
+        <div class="statusRow">
+          <span class="badge"><span class="pulse"></span> News Archive</span>
+          <span class="timeChip" id="liveClock">Loading time...</span>
+        </div>
+
+        <div class="eyebrow">TitanCore News Archive</div>
+
+        <h1>Archive by <span>Month & Date.</span></h1>
+
+        <p>
+          TitanCore News Archive starts from June 2026 going forward. Visitors can choose a month,
+          choose a date, and review the public market desk for morning news, afternoon updates, and evening watch.
+        </p>
+
+        <div class="heroPanel">
+          <h3>June 2026 starts the archive.</h3>
+          <p>
+            We do not fake May. The archive begins now and grows month by month. When each month is complete,
+            that month becomes part of TitanCore’s public business history.
+          </p>
+
+          <div class="btnrow">
+            <a class="btn" href="#archiveSystem">Open Archive ›</a>
+            <a class="btn secondary" href="news-content.html">Back to News Content ›</a>
+            <a class="btn secondary" href="news-media.html">News & Media ›</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <div>
+        <b>News Archive</b>
+        June 2026 Forward • Morning News • Afternoon Market Update • Evening Closing Watch • Bitcoin • Oil • Real Estate • Economy • Public Media History •
+      </div>
+    </div>
+
+    <section class="section" id="archiveSystem">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <div class="eyebrow">Archive Control Center</div>
+          <h2>Select Month, Date <span>& News Time.</span></h2>
+          <p>
+            Choose a month and date to view that day’s market news desk. This archive starts with June 2026 and grows going forward.
+          </p>
+
+          <div class="selectedDateBox" id="selectedDateBox">Loading archive date...</div>
+        </div>
+
+        <div class="selectorGrid">
+          <article class="archivePanel">
+            <div class="label">Month Archive</div>
+            <h3>Months</h3>
+            <p>Archive starts from June 2026. Future months will appear automatically.</p>
+            <div class="monthList" id="monthList"></div>
+          </article>
+
+          <article class="archivePanel">
+            <div class="label">Date Archive</div>
+            <h3>Days</h3>
+            <p>Choose the day you want to review.</p>
+            <div class="dayList" id="dayList"></div>
+
+            <div class="modeList">
+              <button class="modeBtn active" data-mode="morning">Morning News</button>
+              <button class="modeBtn" data-mode="afternoon">Afternoon Update</button>
+              <button class="modeBtn" data-mode="evening">Evening Watch</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid2" id="archiveNewsGrid">
+          <article class="card">
+            <div class="label">Archive Loading</div>
+            <h3>Opening archive record.</h3>
+            <p>TitanCore is connecting the selected archive day.</p>
+          </article>
+        </div>
+
+        <div class="mediaArchive">
+          <div class="mediaFrame" id="archiveVideoFrame"></div>
+          <div class="mediaBody">
+            <div class="label">Daily Media Window Archive</div>
+            <h3 id="archiveVideoTitle">Daily Media Video</h3>
+            <p>
+              This public media video is connected to the selected archive date. Later, TitanCore original videos can replace public videos.
+            </p>
+            <div class="btnrow">
+              <a class="btn" id="archiveVideoOpen" href="news-content.html">Open News Content ›</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <div class="footMark">TH</div>
+        <div class="footBrand">TitanCore<br>Holdings</div>
+
+        <p>© <span id="year"></span> TitanCore Holdings • All rights reserved</p>
+
+        <div class="footlinks">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+          <a href="blogs.html">Blogs</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
+
+        <div class="social">
+          <a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener">f</a>
+          <a href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener">◎</a>
+          <a href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener">in</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const archiveStart = new Date(2026,5,1);
+    const today = new Date();
+
+    let selectedYear = today.getFullYear();
+    let selectedMonth = today.getMonth();
+    let selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    let selectedMode = "morning";
+
+    if(selectedDate < archiveStart){
+      selectedDate = archiveStart;
+      selectedYear = 2026;
+      selectedMonth = 5;
+    }
+
+    const archiveVideos = [
+      { id:"bNpx7gpSqbY", title:"Business Startup Lesson" },
+      { id:"EulhKrrfMnw", title:"Business Growth Lesson" },
+      { id:"98qfFzqDKR8", title:"Stock Market Education" },
+      { id:"Qh-M3_L4xYk", title:"Finance Education" },
+      { id:"qp0HIF3SfI4", title:"Leadership Business Talk" },
+      { id:"lmyZMtPVodo", title:"Leadership Mindset Talk" }
+    ];
+
+    const openMenu = document.getElementById("openMenu");
+    const closeMenu = document.getElementById("closeMenu");
+    const menuPanel = document.getElementById("menuPanel");
+
+    function openDialog(){
+      menuPanel.classList.add("open");
+      document.body.style.overflow = "hidden";
+      openMenu.setAttribute("aria-expanded","true");
+      closeMenu.focus();
+    }
+
+    function closeDialog(){
+      menuPanel.classList.remove("open");
+      document.body.style.overflow = "";
+      openMenu.setAttribute("aria-expanded","false");
+      openMenu.focus();
+    }
+
+    openMenu.addEventListener("click",openDialog);
+    closeMenu.addEventListener("click",closeDialog);
+
+    menuPanel.addEventListener("click",function(e){
+      if(e.target === menuPanel){
+        closeDialog();
+      }
+    });
+
+    document.addEventListener("keydown",function(e){
+      if(e.key === "Escape" && menuPanel.classList.contains("open")){
+        closeDialog();
+      }
+    });
+
+    document.addEventListener("click",function(e){
+      const btn = e.target.closest(".btn,.storyBtn");
+      if(btn){
+        btn.classList.add("clicked");
+      }
+    });
+
+    function updateClock(){
+      const clock = document.getElementById("liveClock");
+      const now = new Date();
+
+      clock.textContent = now.toLocaleString("en-US",{
+        weekday:"short",
+        month:"short",
+        day:"numeric",
+        hour:"numeric",
+        minute:"2-digit",
+        second:"2-digit",
+        hour12:true
+      });
+    }
+
+    updateClock();
+    setInterval(updateClock,1000);
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function dateKey(date){
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2,"0");
+      const d = String(date.getDate()).padStart(2,"0");
+      return y + "-" + m + "-" + d;
+    }
+
+    function monthLabel(year, month){
+      return new Date(year, month, 1).toLocaleDateString("en-US",{
+        month:"long",
+        year:"numeric"
+      });
+    }
+
+    function dayNumber(date){
+      return Math.floor(new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime() / 86400000);
+    }
+
+    function cleanText(text){
+      const div = document.createElement("div");
+      div.innerHTML = text || "";
+      return div.textContent || div.innerText || "";
+    }
+
+    function buildMonths(){
+      const box = document.getElementById("monthList");
+      if(!box) return;
+
+      const months = [];
+      let cursor = new Date(archiveStart.getFullYear(), archiveStart.getMonth(), 1);
+      const end = new Date(today.getFullYear(), today.getMonth(), 1);
+
+      while(cursor <= end){
+        months.push({
+          year:cursor.getFullYear(),
+          month:cursor.getMonth(),
+          label:monthLabel(cursor.getFullYear(), cursor.getMonth())
+        });
+
+        cursor.setMonth(cursor.getMonth() + 1);
+      }
+
+      box.innerHTML = months.map(function(item){
+        const active = item.year === selectedYear && item.month === selectedMonth ? "active" : "";
+        return `<button class="monthBtn ${active}" data-year="${item.year}" data-month="${item.month}">${item.label}</button>`;
+      }).join("");
+
+      document.querySelectorAll(".monthBtn").forEach(function(btn){
+        btn.addEventListener("click",function(){
+          selectedYear = Number(btn.dataset.year);
+          selectedMonth = Number(btn.dataset.month);
+          selectedDate = new Date(selectedYear, selectedMonth, 1);
+
+          if(selectedDate < archiveStart){
+            selectedDate = archiveStart;
+          }
+
+          if(selectedDate > today){
+            selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+          }
+
+          buildMonths();
+          buildDays();
+          loadArchive();
+        });
+      });
+    }
+
+    function buildDays(){
+      const box = document.getElementById("dayList");
+      if(!box) return;
+
+      const firstDay = new Date(selectedYear, selectedMonth, 1);
+      const lastDay = new Date(selectedYear, selectedMonth + 1, 0);
+
+      const days = [];
+      for(let d = 1; d <= lastDay.getDate(); d++){
+        const current = new Date(selectedYear, selectedMonth, d);
+
+        if(current < archiveStart) continue;
+        if(current > today) continue;
+
+        days.push(current);
+      }
+
+      box.innerHTML = days.map(function(day){
+        const active = dateKey(day) === dateKey(selectedDate) ? "active" : "";
+        return `<button class="dayBtn ${active}" data-date="${dateKey(day)}">${day.toLocaleDateString("en-US",{month:"short",day:"numeric"})}</button>`;
+      }).join("");
+
+      document.querySelectorAll(".dayBtn").forEach(function(btn){
+        btn.addEventListener("click",function(){
+          const parts = btn.dataset.date.split("-");
+          selectedDate = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+
+          buildDays();
+          loadArchive();
+        });
+      });
+    }
+
+    function updateSelectedDateBox(){
+      const box = document.getElementById("selectedDateBox");
+      if(!box) return;
+
+      const modeLabel =
+        selectedMode === "afternoon" ? "Afternoon Update" :
+        selectedMode === "evening" ? "Evening Watch" :
+        "Morning News";
+
+      box.textContent =
+        modeLabel + " • " +
+        selectedDate.toLocaleDateString("en-US",{
+          weekday:"long",
+          month:"long",
+          day:"numeric",
+          year:"numeric"
+        });
+    }
+
+    function buildHeadlineSection(section){
+      const items = section.items || [];
+
+      const headlines = items.map(function(item){
+        const title = cleanText(item.title);
+        const source = cleanText(item.source || "Public News Source");
+        const pub = cleanText(item.pubDate || "");
+        const link = item.link || "#";
+
+        return `
+          <div class="headline">
+            <div class="headlineTitle">${title}</div>
+            <div class="headlineMeta">${source}${pub ? " • " + pub : ""}</div>
+            <a class="storyBtn" href="${link}" target="_blank" rel="noopener">Open Story ›</a>
+          </div>
+        `;
+      }).join("");
+
+      return `
+        <article class="card">
+          <div class="label">${cleanText(section.label)}</div>
+          <h3>${cleanText(section.label)}</h3>
+          <div class="headlineList">
+            ${headlines || "<p>Archive headlines are updating.</p>"}
+          </div>
+        </article>
+      `;
+    }
+
+    function buildArchiveVideo(){
+      const frame = document.getElementById("archiveVideoFrame");
+      const title = document.getElementById("archiveVideoTitle");
+      const open = document.getElementById("archiveVideoOpen");
+
+      if(!frame) return;
+
+      const video = archiveVideos[dayNumber(selectedDate) % archiveVideos.length];
+
+      frame.innerHTML = `
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/${video.id}?rel=0&playsinline=1&vday=${dateKey(selectedDate)}"
+          title="${video.title}"
+          loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      `;
+
+      if(title) title.textContent = video.title;
+      if(open) open.href = "news-content.html";
+    }
+
+    async function loadArchive(){
+      const grid = document.getElementById("archiveNewsGrid");
+      if(!grid) return;
+
+      updateSelectedDateBox();
+      buildArchiveVideo();
+
+      grid.innerHTML = `
+        <article class="card">
+          <div class="label">Archive Loading</div>
+          <h3>Opening archive for ${dateKey(selectedDate)}.</h3>
+          <p>TitanCore is connecting the selected day and news time.</p>
+        </article>
+      `;
+
+      try{
+        const response = await fetch(
+          "/.netlify/functions/market-news?day=" +
+          encodeURIComponent(dateKey(selectedDate)) +
+          "&mode=" +
+          encodeURIComponent(selectedMode) +
+          "&archive=1"
+        );
+
+        const data = await response.json();
+
+        if(!data.ok || !Array.isArray(data.sections) || !data.sections.length){
+          throw new Error(data.error || "Archive is updating.");
+        }
+
+        grid.innerHTML = data.sections.map(buildHeadlineSection).join("");
+      }catch(error){
+        grid.innerHTML = `
+          <article class="card">
+            <div class="label">Archive Notice</div>
+            <h3>Archive is preparing this date.</h3>
+            <p>
+              TitanCore archive starts from June 2026 going forward. If this message stays visible,
+              check that netlify/functions/market-news.js is uploaded and Netlify finished deploying.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="label">Selected Date</div>
+            <h3>${dateKey(selectedDate)}</h3>
+            <p>
+              Morning, afternoon, and evening archive records will appear here as the daily news system continues.
+            </p>
+          </article>
+        `;
+      }
+    }
+
+    document.querySelectorAll(".modeBtn").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        document.querySelectorAll(".modeBtn").forEach(function(b){
+          b.classList.remove("active");
+        });
+
+        btn.classList.add("active");
+        selectedMode = btn.dataset.mode || "morning";
+        loadArchive();
+      });
+    });
+
+    buildMonths();
+    buildDays();
+    loadArchive();
+  </script>
+</body>
+</html>
