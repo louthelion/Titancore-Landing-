@@ -5,54 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Media Content | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings Media Content live feed for business news, market headlines, Bitcoin, oil, real estate, economy, watch media, real audio, and archive access." />
+  <meta name="description" content="TitanCore Holdings Media Content page with live business TV, live market audio, daily business headlines, replay videos, and archive access." />
 
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{
-      background:#1f2024;
-      color:#f4f4f4;
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.55;
-      overflow-x:hidden;
-    }
+    body{background:#1f2024;color:#f4f4f4;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
     a{text-decoration:none;color:inherit}
     button{font:inherit;color:inherit}
 
     :root{
+      --black:#000;
+      --dark:#1f2024;
+      --card:#292a2f;
+      --card2:#202126;
       --gold:#d8b45a;
       --gold2:#f2d98c;
       --green:#087457;
       --green2:#0a8d69;
-      --dark:#1f2024;
-      --card:#28292e;
-      --card2:#202126;
-      --line:rgba(242,217,140,.34);
+      --line:rgba(242,217,140,.36);
       --soft:rgba(255,255,255,.78);
       --muted:rgba(255,255,255,.52);
       --serif:Georgia,"Times New Roman",serif;
-      --shadow:0 18px 55px rgba(0,0,0,.45);
+      --shadow:0 18px 55px rgba(0,0,0,.5);
     }
 
     .page{
       min-height:100vh;
       background:
-        radial-gradient(900px 600px at 12% 0%,rgba(216,180,90,.08),transparent 58%),
-        radial-gradient(900px 650px at 88% 12%,rgba(8,116,87,.12),transparent 62%),
+        radial-gradient(900px 600px at 10% 0%,rgba(216,180,90,.09),transparent 60%),
+        radial-gradient(900px 600px at 90% 10%,rgba(8,116,87,.14),transparent 62%),
         var(--dark);
     }
 
-    .wrap{
-      width:min(1120px,calc(100% - 34px));
-      margin:auto;
-    }
+    .wrap{width:min(1120px,calc(100% - 34px));margin:auto}
 
     .header{
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(0,0,0,.95);
+      background:rgba(0,0,0,.96);
       backdrop-filter:blur(12px);
       border-bottom:1px solid rgba(242,217,140,.18);
     }
@@ -66,19 +58,10 @@
       padding:16px 0;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-
+    .brand{display:flex;align-items:center;gap:14px;min-width:0}
     .mark{
-      width:62px;
-      height:62px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
+      width:62px;height:62px;border-radius:50%;
+      display:grid;place-items:center;
       background:linear-gradient(135deg,var(--green),#050505);
       border:1px solid var(--line);
       color:var(--gold2);
@@ -100,8 +83,7 @@
     .brandname span{color:#fff;margin-left:8px}
 
     .menuBtn{
-      width:56px;
-      height:56px;
+      width:56px;height:56px;
       border:1px solid var(--line);
       background:linear-gradient(135deg,var(--green),#020202);
       font-size:28px;
@@ -137,25 +119,16 @@
       margin-bottom:14px;
     }
 
-    .menuTop h2{
-      font:400 28px var(--serif);
-      color:var(--gold2);
-    }
-
+    .menuTop h2{font:400 28px var(--serif);color:var(--gold2)}
     .closeBtn{
-      width:48px;
-      height:48px;
+      width:48px;height:48px;
       border:1px solid var(--line);
       background:#000;
       font-size:30px;
       cursor:pointer;
     }
 
-    .links{
-      display:grid;
-      gap:9px;
-    }
-
+    .links{display:grid;gap:9px}
     .links a{
       border:1px solid rgba(242,217,140,.14);
       padding:14px;
@@ -165,9 +138,7 @@
       font-size:13px;
     }
 
-    .links a:hover{
-      background:rgba(216,180,90,.12);
-    }
+    .links a:hover{background:rgba(216,180,90,.12)}
 
     .topbar{
       background:#15161a;
@@ -175,13 +146,7 @@
       padding:14px 0;
     }
 
-    .topbarIn{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-    }
+    .topbarIn{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
     .liveBadge{
       display:inline-flex;
@@ -197,17 +162,13 @@
     }
 
     .pulse{
-      width:10px;
-      height:10px;
-      border-radius:50%;
+      width:10px;height:10px;border-radius:50%;
       background:var(--green2);
       box-shadow:0 0 18px rgba(10,141,105,.95);
       animation:pulse 1.2s infinite;
     }
 
-    @keyframes pulse{
-      50%{transform:scale(1.6);opacity:.55}
-    }
+    @keyframes pulse{50%{transform:scale(1.6);opacity:.55}}
 
     .timeChip{
       color:var(--gold2);
@@ -229,11 +190,7 @@
       overflow-x:auto;
     }
 
-    .mediaNav div{
-      display:flex;
-      min-width:max-content;
-    }
-
+    .mediaNav div{display:flex;min-width:max-content}
     .mediaNav a{
       padding:17px 22px;
       border-right:1px solid rgba(242,217,140,.15);
@@ -243,59 +200,9 @@
       font-size:12px;
     }
 
-    .mediaNav a:hover{
-      background:var(--gold2);
-      color:#000;
-    }
+    .mediaNav a:hover{background:var(--gold2);color:#000}
 
-    h1,h2,h3{
-      line-height:1.08;
-      margin:0;
-    }
-
-    h1{
-      font-size:clamp(34px,7vw,64px);
-      font-weight:900;
-      letter-spacing:-1px;
-    }
-
-    h2{
-      font-size:clamp(28px,6vw,46px);
-      font-weight:900;
-    }
-
-    h3{
-      font-size:clamp(22px,5vw,34px);
-      font-weight:900;
-    }
-
-    .serif{
-      font-family:var(--serif);
-      font-weight:400;
-      color:var(--gold2);
-    }
-
-    p{
-      color:var(--soft);
-      font-size:clamp(17px,4vw,22px);
-      line-height:1.72;
-      margin:14px 0 0;
-    }
-
-    .section{
-      padding:48px 0;
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-
-    .sectionHead{
-      margin-bottom:24px;
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-
+    .section{padding:48px 0;border-bottom:1px solid rgba(255,255,255,.08)}
     .kicker{
       color:var(--gold2);
       text-transform:uppercase;
@@ -305,65 +212,17 @@
       margin-bottom:12px;
     }
 
-    .leadGrid{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:22px;
-      align-items:start;
-    }
+    h1,h2,h3{line-height:1.08;margin:0}
+    h1{font-size:clamp(36px,8vw,68px);font-weight:900;letter-spacing:-1px}
+    h2{font-size:clamp(30px,6vw,48px);font-weight:900}
+    h3{font-size:clamp(22px,5vw,34px);font-weight:900}
+    .serif{font-family:var(--serif);font-weight:400;color:var(--gold2)}
 
-    .leadStory{
-      background:var(--card);
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
+    p{color:var(--soft);font-size:clamp(17px,4vw,22px);line-height:1.72;margin:14px 0 0}
+    .small{font-size:15px;color:var(--muted);line-height:1.55}
 
-    .leadImage{
-      width:100%;
-      aspect-ratio:16/10;
-      background:#111;
-      overflow:hidden;
-    }
-
-    .leadImage img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    .leadBody{
-      padding:26px;
-    }
-
-    .category{
-      color:rgba(255,255,255,.48);
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:13px;
-      font-weight:900;
-      margin-bottom:14px;
-    }
-
-    .leadBody h1{
-      color:#fff;
-    }
-
-    .summary{
-      color:rgba(255,255,255,.66);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:clamp(19px,4vw,25px);
-      line-height:1.58;
-    }
-
-    .btnrow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:20px;
-    }
-
-    .btn,.storyBtn,.modeBtn{
+    .btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+    .btn,.modeBtn,.sourceTab,.storyBtn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
@@ -380,84 +239,69 @@
       cursor:pointer;
     }
 
-    .listenBtn{
-      background:#0b74ff;
-      border-color:#0b74ff;
-      border-radius:999px;
-      color:#fff;
-      gap:8px;
-      min-height:46px;
-      padding:0 18px;
-    }
-
-    .btn:hover,
-    .btn:active,
-    .btn.clicked,
-    .storyBtn:hover,
-    .storyBtn:active,
-    .storyBtn.clicked,
-    .modeBtn.active,
-    .modeBtn:active{
+    .btn:hover,.btn:active,.btn.clicked,
+    .modeBtn.active,.modeBtn:active,
+    .sourceTab.active,.sourceTab:active,
+    .storyBtn:hover,.storyBtn:active,.storyBtn.clicked{
       background:linear-gradient(135deg,var(--gold2),var(--gold));
       color:#000;
       border-color:var(--gold2);
     }
 
-    .btn.secondary{
-      background:#15161a;
-      color:var(--gold2);
-    }
+    .btn.secondary{background:#15161a;color:var(--gold2)}
+    .blueBtn{background:#0b74ff;border-color:#0b74ff;border-radius:999px}
 
-    .sideList{
-      display:grid;
-      gap:16px;
-    }
-
-    .storyCard{
+    .heroGrid{display:grid;grid-template-columns:1.12fr .88fr;gap:22px;align-items:start}
+    .tvCard,.newsCard,.storyCard,.audioCard,.watchBlock,.archiveBox{
       background:var(--card);
+      box-shadow:var(--shadow);
+    }
+
+    .tvCard{overflow:hidden}
+    .tvTop{padding:24px}
+    .tvFrame{
+      width:100%;
+      aspect-ratio:16/9;
+      background:#000;
+      border-top:1px solid rgba(255,255,255,.10);
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .tvFrame iframe{width:100%;height:100%;border:0;display:block}
+    .sourceTabs{display:flex;gap:10px;overflow-x:auto;padding:16px;background:#202126}
+    .sourceTab{min-width:max-content}
+
+    .sideFeed{display:grid;gap:16px}
+    .leadImage{
+      width:100%;
+      aspect-ratio:16/10;
+      background:#111;
+      overflow:hidden;
+    }
+
+    .leadImage img{width:100%;height:100%;object-fit:cover;display:block}
+    .storyCard{
       padding:18px;
       display:grid;
       grid-template-columns:132px 1fr;
       gap:18px;
       align-items:center;
-      box-shadow:var(--shadow);
     }
 
-    .storyThumb{
-      width:132px;
-      height:105px;
-      background:#111;
-      overflow:hidden;
-    }
-
-    .storyThumb img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    .storyText h3{
-      color:#f1f1f1;
-      font-size:clamp(21px,4.6vw,30px);
-      line-height:1.14;
-    }
-
-    .storyText p{
-      font-family:Georgia,"Times New Roman",serif;
+    .thumb{width:132px;height:105px;background:#111;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .category{
       color:rgba(255,255,255,.48);
-      font-size:17px;
-      line-height:1.5;
-      margin-top:10px;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      font-weight:900;
+      margin-bottom:10px;
     }
 
-    .modeRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin:20px 0 24px;
-    }
+    .storyCard h3{color:#f1f1f1;font-size:clamp(20px,4.5vw,28px);line-height:1.14}
 
+    .modeRow{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 24px}
     .marketDate{
       display:inline-flex;
       border:1px solid rgba(242,217,140,.35);
@@ -468,150 +312,43 @@
       font-size:12px;
       font-weight:900;
       background:rgba(0,0,0,.35);
+      margin-top:14px;
     }
 
-    .headlineGrid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px;
-    }
-
-    .headlineCard{
-      background:var(--card);
-      padding:20px;
-      box-shadow:var(--shadow);
-    }
-
-    .headlineList{
-      display:grid;
-      gap:14px;
-      margin-top:12px;
-    }
+    .headlineGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .newsCard{padding:20px}
+    .headlineList{display:grid;gap:14px;margin-top:12px}
 
     .headline{
       border-top:1px solid rgba(255,255,255,.12);
       padding-top:14px;
       display:grid;
-      grid-template-columns:1fr 120px;
+      grid-template-columns:1fr 110px;
       gap:14px;
       align-items:start;
     }
 
-    .headline:first-child{
-      border-top:0;
-      padding-top:0;
-    }
+    .headline:first-child{border-top:0;padding-top:0}
+    .headlineTitle{color:#f4f4f4;font-weight:900;font-size:17px;line-height:1.32}
+    .headlineMeta{color:rgba(255,255,255,.46);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;margin-top:8px}
+    .headlineImg{width:110px;height:78px;background:#111;overflow:hidden}
+    .headlineImg img{width:100%;height:100%;object-fit:cover;display:block}
 
-    .headlineTitle{
-      color:#f4f4f4;
-      font-weight:900;
-      font-size:17px;
-      line-height:1.32;
-    }
-
-    .headlineMeta{
-      color:rgba(255,255,255,.46);
-      font-size:12px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
-      margin-top:8px;
-    }
-
-    .headlineImg{
-      width:120px;
-      height:84px;
-      background:#121212;
-      overflow:hidden;
-    }
-
-    .headlineImg img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    .watchBlock{
-      background:var(--card);
-      padding:20px;
-      box-shadow:var(--shadow);
-    }
-
-    .watchMain{
-      width:100%;
-      aspect-ratio:16/9;
-      background:#000;
-      border:1px solid rgba(255,255,255,.12);
-      overflow:hidden;
-      position:relative;
-    }
-
-    .watchMain iframe{
-      width:100%;
-      height:100%;
-      border:0;
-      display:block;
-    }
-
-    .videoRail{
-      display:flex;
-      gap:10px;
-      overflow-x:auto;
-      padding:12px 0 2px;
-    }
-
-    .videoMini{
-      min-width:210px;
-      background:#676767;
-      border:3px solid transparent;
-      cursor:pointer;
-    }
-
-    .videoMini.active{
-      border-color:#3288e6;
-      background:#3c83df;
-    }
-
-    .videoMini img{
-      width:100%;
-      height:110px;
-      object-fit:cover;
-      display:block;
-    }
-
-    .videoMini div{
-      padding:10px;
-      font-size:16px;
-      line-height:1.2;
-      font-weight:700;
-      color:#fff;
-    }
-
-    .audioGrid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px;
-    }
-
-    .audioCard{
-      background:var(--card);
-      box-shadow:var(--shadow);
-      padding:20px;
-    }
-
-    .audioTop{
+    .listenHeader{
       display:flex;
       align-items:center;
+      justify-content:space-between;
       gap:14px;
-      margin-bottom:14px;
+      flex-wrap:wrap;
+      margin-bottom:22px;
     }
 
+    .audioGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .audioCard{padding:20px}
+    .audioTop{display:flex;align-items:center;gap:14px;margin-bottom:14px}
     .audioIcon{
-      width:58px;
-      height:58px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
+      width:58px;height:58px;border-radius:50%;
+      display:grid;place-items:center;
       background:#0b74ff;
       color:#fff;
       font-size:24px;
@@ -621,7 +358,7 @@
 
     .audioArt{
       width:100%;
-      min-height:220px;
+      min-height:210px;
       background:#101010;
       display:grid;
       place-items:center;
@@ -630,48 +367,28 @@
       border:1px solid rgba(255,255,255,.10);
     }
 
-    .audioArt img{
-      width:100%;
-      height:100%;
-      max-height:280px;
-      object-fit:cover;
-      display:block;
-    }
-
+    .audioArt img{width:100%;height:100%;max-height:270px;object-fit:cover;display:block}
     .audioPlaceholder{
-      width:110px;
-      height:110px;
-      border-radius:50%;
+      width:110px;height:110px;border-radius:50%;
       background:linear-gradient(135deg,var(--green),#020202);
       border:3px solid var(--gold2);
-      display:grid;
-      place-items:center;
-      font-size:38px;
-      font-weight:900;
-    }
-
-    .audioDesc{
-      color:rgba(255,255,255,.68);
-      font-size:16px;
-      line-height:1.55;
+      display:grid;place-items:center;
+      font-size:38px;font-weight:900;
     }
 
     audio{width:100%;margin-top:14px}
 
-    .archiveMini{
-      background:var(--card);
-      box-shadow:var(--shadow);
-      padding:22px;
-    }
+    .watchBlock{padding:20px}
+    .watchMain{width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+    .watchMain iframe{width:100%;height:100%;border:0;display:block}
+    .videoRail{display:flex;gap:10px;overflow-x:auto;padding:12px 0 2px}
+    .videoMini{min-width:210px;background:#676767;border:3px solid transparent;cursor:pointer;color:#fff;text-align:left}
+    .videoMini.active{border-color:#3288e6;background:#3c83df}
+    .videoMini img{width:100%;height:110px;object-fit:cover;display:block}
+    .videoMini div{padding:10px;font-size:16px;line-height:1.2;font-weight:700}
 
-    .archiveMonths{
-      display:flex;
-      gap:10px;
-      overflow-x:auto;
-      margin-top:18px;
-      padding-bottom:4px;
-    }
-
+    .archiveBox{padding:22px}
+    .archiveMonths{display:flex;gap:10px;overflow-x:auto;margin-top:18px;padding-bottom:4px}
     .archivePill{
       min-width:max-content;
       border:1px solid rgba(242,217,140,.42);
@@ -684,10 +401,7 @@
       font-weight:900;
     }
 
-    .archivePill.active{
-      background:linear-gradient(135deg,var(--gold2),var(--gold));
-      color:#000;
-    }
+    .archivePill.active{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#000}
 
     .contact{
       padding:52px 0;
@@ -706,11 +420,9 @@
     }
 
     .footMark{
-      width:82px;
-      height:82px;
+      width:82px;height:82px;
       margin:0 auto 18px;
-      display:grid;
-      place-items:center;
+      display:grid;place-items:center;
       border:1px solid var(--line);
       border-radius:50%;
       background:linear-gradient(135deg,var(--green),#020202);
@@ -726,14 +438,7 @@
       margin-bottom:14px;
     }
 
-    .footlinks,.social{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:16px;
-    }
-
+    .footlinks,.social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:16px}
     .footlinks a{
       border:1px solid rgba(242,217,140,.16);
       padding:9px 12px;
@@ -743,17 +448,15 @@
     }
 
     .social a{
-      width:52px;
-      height:52px;
-      display:grid;
-      place-items:center;
+      width:52px;height:52px;
+      display:grid;place-items:center;
       border:1px solid var(--line);
       background:#050505;
       font-weight:900;
     }
 
     @media(max-width:1040px){
-      .leadGrid,.headlineGrid,.audioGrid{grid-template-columns:1fr}
+      .heroGrid,.headlineGrid,.audioGrid{grid-template-columns:1fr}
       .mediaNav{top:82px}
     }
 
@@ -762,11 +465,11 @@
       .headin{min-height:82px}
       .mark{width:56px;height:56px}
       .menuBtn{width:54px;height:54px}
-      .leadBody{padding:22px}
+      .tvTop{padding:22px}
       .storyCard{grid-template-columns:120px 1fr;padding:15px;gap:14px}
-      .storyThumb{width:120px;height:95px}
-      .headline{grid-template-columns:1fr 108px}
-      .headlineImg{width:108px;height:76px}
+      .thumb{width:120px;height:95px}
+      .headline{grid-template-columns:1fr 104px}
+      .headlineImg{width:104px;height:74px}
       .btn,.modeBtn,.storyBtn{width:100%}
       .videoMini{min-width:190px}
     }
@@ -782,7 +485,6 @@
           <div class="mark">TH</div>
           <div class="brandname">TitanCore <span>Holdings</span></div>
         </a>
-
         <button class="menuBtn" id="openMenu" aria-label="Open menu" aria-expanded="false">☰</button>
       </div>
     </header>
@@ -797,7 +499,7 @@
         <nav class="links">
           <a href="index.html">Home</a>
           <a href="news-media.html">News &amp; Media</a>
-          <a href="media-content.html">Media Content</a>
+          <a href="video-content.html">Media Content</a>
           <a href="news-archive.html">News Archive</a>
           <a href="business-intelligence.html">Business Intelligence</a>
           <a href="contact.html">Contact</a>
@@ -807,83 +509,87 @@
 
     <div class="topbar">
       <div class="wrap topbarIn">
-        <span class="liveBadge"><span class="pulse"></span> TitanCore Live Media Feed</span>
+        <span class="liveBadge"><span class="pulse"></span> TitanCore Media Content</span>
         <span class="timeChip" id="liveClock">Loading time...</span>
       </div>
     </div>
 
     <nav class="mediaNav">
       <div>
-        <a href="#lead">Lead Story</a>
+        <a href="#live-tv">Live TV</a>
+        <a href="#listen">Live Audio</a>
         <a href="#headlines">Headlines</a>
-        <a href="#marketDesk">Market Desk</a>
-        <a href="#watch">Watch</a>
-        <a href="#audio">Listen</a>
+        <a href="#replays">Replays</a>
         <a href="#archive">Archive</a>
       </div>
     </nav>
 
     <main>
-      <section class="section" id="lead">
-        <div class="wrap">
-          <div class="leadGrid">
-            <article class="leadStory">
-              <div class="leadImage">
-                <img id="leadImage" src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1400&q=85" alt="Daily business media lead story">
-              </div>
 
-              <div class="leadBody">
-                <div class="category" id="leadCategory">Global Business</div>
-                <h1 id="leadTitle">Today’s business and market news desk is opening</h1>
-                <p class="summary" id="leadSummary">
-                  Daily public business, market, Bitcoin, oil, real estate, economy, and global headlines appear here first.
+      <section class="section" id="live-tv">
+        <div class="wrap">
+          <div class="heroGrid">
+
+            <article class="tvCard">
+              <div class="tvTop">
+                <div class="kicker">Live Business TV Desk</div>
+                <h1 class="serif">Watch live business media.</h1>
+                <p>
+                  Live TV goes on top. Visitors can watch public business, finance, market, and global news streams when the source allows embedding.
                 </p>
 
                 <div class="btnrow">
-                  <a class="btn listenBtn" href="#audio">▶ Listen</a>
-                  <a class="btn" id="leadOpenStory" href="#marketDesk">Open Story ›</a>
+                  <a class="btn blueBtn" id="openLiveSource" href="#" target="_blank" rel="noopener">Open Live Source ›</a>
+                  <a class="btn secondary" href="#listen">Listen Instead ›</a>
                 </div>
+
+                <p class="small">
+                  If a live TV source blocks the inside player, use Open Live Source.
+                </p>
               </div>
+
+              <div class="tvFrame" id="liveTvFrame"></div>
+
+              <div class="sourceTabs" id="sourceTabs"></div>
             </article>
 
-            <aside class="sideList" id="topStoryList">
+            <aside class="sideFeed" id="topStoryList">
               <article class="storyCard">
-                <div class="storyThumb">
+                <div class="thumb">
                   <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=700&q=85" alt="">
                 </div>
-                <div class="storyText">
-                  <div class="category">News</div>
-                  <h3>Loading today’s headlines</h3>
+                <div>
+                  <div class="category">Media Desk</div>
+                  <h3>Loading today’s business headlines</h3>
                 </div>
               </article>
             </aside>
+
           </div>
+        </div>
+      </section>
+
+      <section class="section" id="listen">
+        <div class="wrap">
+          <div class="listenHeader">
+            <div>
+              <div class="kicker">Live Audio Desk</div>
+              <h2>Listen to business audio</h2>
+              <p>For visitors who do not want to watch TV, this section loads real public business and market audio.</p>
+            </div>
+            <a class="btn blueBtn" href="#audioGrid">Play Audio ›</a>
+          </div>
+
+          <div class="audioGrid" id="audioGrid"></div>
         </div>
       </section>
 
       <section class="section" id="headlines">
         <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <div class="kicker">Today’s Headlines</div>
-              <h2>Business, market, global, and local-style headlines</h2>
-            </div>
-          </div>
-
-          <div class="sideList" id="headlineStoryList"></div>
-        </div>
-      </section>
-
-      <section class="section" id="marketDesk">
-        <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <div class="kicker">TitanCore Market Desk</div>
-              <h2 id="deskTitle">Morning News Brief</h2>
-              <p id="deskText">Start the day with public business, market, Bitcoin, oil, real estate, and economy headlines.</p>
-              <div class="marketDate" id="deskDate">Loading today’s media desk...</div>
-            </div>
-          </div>
+          <div class="kicker">Daily Headlines</div>
+          <h2 id="deskTitle">Morning News Brief</h2>
+          <p id="deskText">Start the day with public business, market, Bitcoin, oil, real estate, and economy headlines.</p>
+          <div class="marketDate" id="deskDate">Loading today’s media desk...</div>
 
           <div class="modeRow">
             <button class="modeBtn active" data-mode="morning">Morning News</button>
@@ -892,7 +598,7 @@
           </div>
 
           <div class="headlineGrid" id="marketNewsGrid">
-            <article class="headlineCard">
+            <article class="newsCard">
               <div class="category">Media Desk Loading</div>
               <h3>Opening today’s media desk</h3>
               <p>TitanCore is connecting business, market, Bitcoin, oil, real estate, and economy headlines.</p>
@@ -901,49 +607,31 @@
         </div>
       </section>
 
-      <section class="section" id="watch">
+      <section class="section" id="replays">
         <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <div class="kicker">Watch</div>
-              <h2>Daily media watch</h2>
-              <p>Public media video windows appear here until TitanCore original media is ready.</p>
-            </div>
-          </div>
+          <div class="kicker">Watch Replays</div>
+          <h2>Replay videos by day</h2>
+          <p>When the live TV day passes, people can still use the replay area and archive to review what happened.</p>
 
           <div class="watchBlock">
             <div class="watchMain" id="watchMain"></div>
             <div class="videoRail" id="videoRail"></div>
 
             <div style="margin-top:18px;">
-              <h3 id="watchTitle">Daily Media Watch</h3>
-              <p id="watchSummary" class="summary">Daily business and market media video.</p>
+              <h3 id="watchTitle">Daily Business Replay</h3>
+              <p id="watchSummary">Daily market and business media replay.</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="section" id="audio">
-        <div class="wrap">
-          <div class="sectionHead">
-            <div>
-              <div class="kicker">Listen</div>
-              <h2>Real audio desk</h2>
-              <p>Real public audio loads through the TitanCore audio bridge for visitors who want to listen instead of watch.</p>
-            </div>
-          </div>
-
-          <div class="audioGrid" id="audioGrid"></div>
         </div>
       </section>
 
       <section class="section" id="archive">
         <div class="wrap">
-          <div class="archiveMini">
-            <div class="kicker">Archive</div>
-            <h2>Small archive by month and date</h2>
+          <div class="archiveBox">
+            <div class="kicker">Replay Archive</div>
+            <h2>Archive by month and date</h2>
             <p>
-              Archive starts from June 2026 going forward. Visitors can review past market days by month, date, morning, afternoon, and evening.
+              Archive starts from June 2026 going forward. Visitors can review past days by month, date, morning, afternoon, evening, TV replay, audio, and market headlines.
             </p>
 
             <div class="archiveMonths">
@@ -954,13 +642,13 @@
 
             <div class="btnrow">
               <a class="btn" href="news-archive.html">Open Full Archive ›</a>
-              <a class="btn secondary" href="news-media.html">News & Media ›</a>
+              <a class="btn secondary" href="news-media.html">News &amp; Media ›</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="contact" id="contact">
+      <section class="contact">
         <div class="wrap">
           <div class="kicker">Contact TitanCore</div>
           <h2 class="serif">Contact us today</h2>
@@ -970,6 +658,7 @@
           </div>
         </div>
       </section>
+
     </main>
 
     <footer>
@@ -996,6 +685,27 @@
   </div>
 
   <script>
+    const liveSources = [
+      {
+        name:"Bloomberg TV",
+        type:"youtube",
+        channel:"UCIALMKvObZNtJ6AmdCLP7Lg",
+        open:"https://www.bloomberg.com/live"
+      },
+      {
+        name:"Yahoo Finance",
+        type:"youtube",
+        channel:"UCEAZeUIeJs0IjQiqTCdVSIg",
+        open:"https://finance.yahoo.com/video/"
+      },
+      {
+        name:"CNBC",
+        type:"open",
+        channel:"",
+        open:"https://www.cnbc.com/live-tv/"
+      }
+    ];
+
     const fallbackImages = [
       "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=85",
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=85",
@@ -1004,7 +714,7 @@
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
     ];
 
-    const watchVideos = [
+    const replayVideos = [
       { id:"bNpx7gpSqbY", title:"Business Startup Lesson", summary:"Business media and startup learning for today." },
       { id:"EulhKrrfMnw", title:"Business Growth Lesson", summary:"Daily business growth and scaling media." },
       { id:"98qfFzqDKR8", title:"Stock Market Education", summary:"Market and stock education media window." },
@@ -1082,10 +792,9 @@
 
     function dateKey(){
       const now = new Date();
-      const y = now.getFullYear();
-      const m = String(now.getMonth() + 1).padStart(2,"0");
-      const d = String(now.getDate()).padStart(2,"0");
-      return y + "-" + m + "-" + d;
+      return now.getFullYear() + "-" +
+        String(now.getMonth() + 1).padStart(2,"0") + "-" +
+        String(now.getDate()).padStart(2,"0");
     }
 
     function dayNumber(){
@@ -1101,6 +810,59 @@
 
     function imgForIndex(index){
       return fallbackImages[index % fallbackImages.length];
+    }
+
+    function loadLiveSource(index){
+      const source = liveSources[index] || liveSources[0];
+      const frame = document.getElementById("liveTvFrame");
+      const open = document.getElementById("openLiveSource");
+
+      open.href = source.open;
+
+      if(source.type === "youtube" && source.channel){
+        frame.innerHTML = `
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/live_stream?channel=${source.channel}&rel=0&playsinline=1"
+            title="${source.name} live business TV"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        `;
+      }else{
+        frame.innerHTML = `
+          <div style="height:100%;display:grid;place-items:center;text-align:center;padding:28px;background:#050505;">
+            <div>
+              <div class="kicker">${source.name}</div>
+              <h2 class="serif">Open live source</h2>
+              <p>This live TV source may require opening the official site.</p>
+              <div class="btnrow">
+                <a class="btn blueBtn" href="${source.open}" target="_blank" rel="noopener">Open ${source.name} ›</a>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      document.querySelectorAll(".sourceTab").forEach(function(tab,i){
+        tab.classList.toggle("active",i === index);
+      });
+    }
+
+    function buildLiveTabs(){
+      const tabs = document.getElementById("sourceTabs");
+
+      tabs.innerHTML = liveSources.map(function(source,index){
+        return `<button class="sourceTab ${index === 0 ? "active" : ""}" data-index="${index}">${source.name}</button>`;
+      }).join("");
+
+      tabs.querySelectorAll(".sourceTab").forEach(function(tab){
+        tab.addEventListener("click",function(){
+          loadLiveSource(Number(tab.dataset.index || 0));
+        });
+      });
+
+      loadLiveSource(0);
     }
 
     function currentMode(){
@@ -1138,45 +900,32 @@
     function buildStoryCard(item,index){
       const title = cleanText(item.title || "Today’s business headline");
       const source = cleanText(item.source || "Public News Source");
-      const summary = cleanText(item.summary || "").slice(0,130);
 
       return `
         <article class="storyCard">
-          <div class="storyThumb">
+          <div class="thumb">
             <img src="${imgForIndex(index)}" alt="">
           </div>
-          <div class="storyText">
+          <div>
             <div class="category">${source}</div>
             <h3>${title}</h3>
-            ${summary ? `<p>${summary}</p>` : ""}
           </div>
         </article>
       `;
     }
 
-    function buildLeadFromSections(sections){
+    function buildTopStories(sections){
       const all = [];
+
       sections.forEach(function(section){
         (section.items || []).forEach(function(item){
-          all.push({
-            ...item,
-            sectionLabel: section.label
-          });
+          all.push({...item, sectionLabel:section.label});
         });
       });
 
       if(!all.length) return;
 
-      const lead = all[0];
-
-      document.getElementById("leadCategory").textContent = cleanText(lead.sectionLabel || "Global Business");
-      document.getElementById("leadTitle").textContent = cleanText(lead.title);
-      document.getElementById("leadSummary").textContent = cleanText(lead.summary || "Daily public business, market, and global headlines are updating.").slice(0,260);
-      document.getElementById("leadImage").src = imgForIndex(dayNumber());
-      document.getElementById("leadOpenStory").href = lead.link || "#";
-
-      document.getElementById("topStoryList").innerHTML = all.slice(1,4).map(buildStoryCard).join("");
-      document.getElementById("headlineStoryList").innerHTML = all.slice(4,10).map(buildStoryCard).join("");
+      document.getElementById("topStoryList").innerHTML = all.slice(0,4).map(buildStoryCard).join("");
     }
 
     function buildMarketSection(section,sectionIndex){
@@ -1205,7 +954,7 @@
       }).join("");
 
       return `
-        <article class="headlineCard">
+        <article class="newsCard">
           <div class="category">${cleanText(section.label)}</div>
           <h3>${cleanText(section.label)}</h3>
           <div class="headlineList">
@@ -1218,9 +967,8 @@
     function fallbackNews(mode){
       setDeskText(mode);
 
-      const grid = document.getElementById("marketNewsGrid");
-      grid.innerHTML = `
-        <article class="headlineCard">
+      document.getElementById("marketNewsGrid").innerHTML = `
+        <article class="newsCard">
           <div class="category">Today’s Media Desk</div>
           <h3>Media desk is updating</h3>
           <p>TitanCore is connecting the public news desk. When the live feed responds, headlines will appear here.</p>
@@ -1230,20 +978,18 @@
       const fallbackItems = [
         {title:"Business and market headlines are loading", source:"TitanCore Media"},
         {title:"Bitcoin, oil, real estate, and economy watch is opening", source:"TitanCore Market Desk"},
-        {title:"Morning, afternoon, and evening updates will appear here", source:"TitanCore News Content"}
+        {title:"Morning, afternoon, and evening updates will appear here", source:"TitanCore Media Content"}
       ];
 
       document.getElementById("topStoryList").innerHTML = fallbackItems.map(buildStoryCard).join("");
-      document.getElementById("headlineStoryList").innerHTML = fallbackItems.map(buildStoryCard).join("");
     }
 
     async function loadMarketDesk(mode){
       const grid = document.getElementById("marketNewsGrid");
-
       setDeskText(mode);
 
       grid.innerHTML = `
-        <article class="headlineCard">
+        <article class="newsCard">
           <div class="category">Media Desk Loading</div>
           <h3>Opening ${mode} media desk</h3>
           <p>TitanCore is connecting today’s public media headlines.</p>
@@ -1266,7 +1012,7 @@
           throw new Error("Media desk updating.");
         }
 
-        buildLeadFromSections(data.sections);
+        buildTopStories(data.sections);
         grid.innerHTML = data.sections.map(buildMarketSection).join("");
       }catch(error){
         fallbackNews(mode);
@@ -1292,8 +1038,8 @@
       return "https://img.youtube.com/vi/" + id + "/hqdefault.jpg";
     }
 
-    function loadWatch(index){
-      const video = watchVideos[index % watchVideos.length];
+    function loadReplay(index){
+      const video = replayVideos[index % replayVideos.length];
 
       document.getElementById("watchMain").innerHTML = `
         <iframe
@@ -1313,10 +1059,10 @@
       });
     }
 
-    function buildWatch(){
+    function buildReplays(){
       const rail = document.getElementById("videoRail");
 
-      rail.innerHTML = watchVideos.map(function(video,index){
+      rail.innerHTML = replayVideos.map(function(video,index){
         return `
           <button class="videoMini ${index === 0 ? "active" : ""}" data-index="${index}">
             <img src="${youtubeThumb(video.id)}" alt="">
@@ -1327,11 +1073,11 @@
 
       rail.querySelectorAll(".videoMini").forEach(function(card){
         card.addEventListener("click",function(){
-          loadWatch(Number(card.dataset.index || 0));
+          loadReplay(Number(card.dataset.index || 0));
         });
       });
 
-      loadWatch(dayNumber() % watchVideos.length);
+      loadReplay(dayNumber() % replayVideos.length);
     }
 
     function createAudioCard(item){
@@ -1349,7 +1095,7 @@
             <div class="audioPlaceholder">▶</div>
           </div>
 
-          <p class="audioDesc">
+          <p class="small">
             Connecting real public business audio. When the TitanCore audio bridge responds, the real episode player will appear here.
           </p>
         </article>
@@ -1386,7 +1132,7 @@
             }
           </div>
 
-          <p class="audioDesc">${description}</p>
+          <p class="small">${description}</p>
 
           <audio controls preload="none" src="${data.audioUrl}">
             Your browser does not support audio playback.
@@ -1406,7 +1152,7 @@
             <div class="audioPlaceholder">▶</div>
           </div>
 
-          <p class="audioDesc">
+          <p class="small">
             TitanCore is checking the real audio bridge. This section will show the public audio player when Netlify finishes loading the function.
           </p>
         `;
@@ -1425,8 +1171,9 @@
       button.classList.toggle("active",button.dataset.mode === startMode);
     });
 
+    buildLiveTabs();
     loadMarketDesk(startMode);
-    buildWatch();
+    buildReplays();
     buildAudio();
   </script>
 </body>
