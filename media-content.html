@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Media Content | TitanCore Holdings</title>
-  <meta name="description" content="TitanCore Holdings Media Content page with live business TV, live market audio, daily headlines, replay media, and archive access." />
+  <meta name="description" content="TitanCore Holdings Media Content page with live business TV, live market audio, business video channels, replay videos, and archive access." />
 
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      background:#1f2024;
-      color:#f4f4f4;
+      background:#000;
+      color:#fff;
       font-family:Arial,Helvetica,sans-serif;
       overflow-x:hidden;
       line-height:1.55;
@@ -22,26 +22,27 @@
 
     :root{
       --black:#000;
-      --dark:#1f2024;
-      --card:#292a2f;
-      --card2:#202126;
+      --dark:#111;
+      --card:#050505;
+      --card2:#141414;
       --gold:#d8b45a;
       --gold2:#f2d98c;
       --green:#087457;
       --green2:#0a8d69;
-      --line:rgba(242,217,140,.36);
+      --line:rgba(242,217,140,.42);
       --soft:rgba(255,255,255,.78);
       --muted:rgba(255,255,255,.52);
       --serif:Georgia,"Times New Roman",serif;
-      --shadow:0 18px 55px rgba(0,0,0,.5);
+      --shadow:0 18px 55px rgba(0,0,0,.65);
+      --radius:32px;
     }
 
     .page{
       min-height:100vh;
       background:
-        radial-gradient(900px 600px at 10% 0%,rgba(216,180,90,.09),transparent 60%),
-        radial-gradient(900px 600px at 90% 10%,rgba(8,116,87,.14),transparent 62%),
-        var(--dark);
+        radial-gradient(900px 600px at 10% 0%,rgba(216,180,90,.10),transparent 60%),
+        radial-gradient(900px 600px at 90% 10%,rgba(8,116,87,.18),transparent 62%),
+        #000;
     }
 
     .wrap{width:min(1120px,calc(100% - 34px));margin:auto}
@@ -52,7 +53,7 @@
       z-index:1000;
       background:rgba(0,0,0,.96);
       backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(242,217,140,.18);
+      border-bottom:1px solid rgba(242,217,140,.20);
     }
 
     .headin{
@@ -155,7 +156,7 @@
     .links a:hover{background:rgba(216,180,90,.12)}
 
     .topbar{
-      background:#15161a;
+      background:#090909;
       border-bottom:1px solid rgba(255,255,255,.08);
       padding:14px 0;
     }
@@ -234,7 +235,7 @@
     }
 
     .section{
-      padding:48px 0;
+      padding:56px 0;
       border-bottom:1px solid rgba(255,255,255,.08);
     }
 
@@ -248,8 +249,8 @@
     }
 
     h1,h2,h3{line-height:1.08;margin:0}
-    h1{font-size:clamp(36px,8vw,68px);font-weight:900;letter-spacing:-1px}
-    h2{font-size:clamp(30px,6vw,48px);font-weight:900}
+    h1{font-size:clamp(38px,8vw,72px);font-weight:900;letter-spacing:-1px}
+    h2{font-size:clamp(32px,6vw,52px);font-weight:900}
     h3{font-size:clamp(22px,5vw,34px);font-weight:900}
 
     .serif{
@@ -278,12 +279,12 @@
       margin-top:20px;
     }
 
-    .btn,.modeBtn,.sourceTab,.storyBtn{
+    .btn,.sourceTab,.stationBtn,.videoBtn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:48px;
-      padding:0 16px;
+      min-height:50px;
+      padding:0 17px;
       border:1px solid rgba(242,217,140,.42);
       background:linear-gradient(135deg,var(--green),#020202);
       color:#fff;
@@ -296,40 +297,33 @@
     }
 
     .btn:hover,.btn:active,.btn.clicked,
-    .modeBtn.active,.modeBtn:active,
     .sourceTab.active,.sourceTab:active,
-    .storyBtn:hover,.storyBtn:active,.storyBtn.clicked{
+    .stationBtn.active,.stationBtn:active,
+    .videoBtn.active,.videoBtn:active{
       background:linear-gradient(135deg,var(--gold2),var(--gold));
       color:#000;
       border-color:var(--gold2);
     }
 
-    .btn.secondary{
-      background:#15161a;
-      color:var(--gold2);
-    }
-
-    .blueBtn{
-      background:#0b74ff;
-      border-color:#0b74ff;
-      border-radius:999px;
-    }
+    .btn.secondary{background:#050505;color:var(--gold2)}
+    .blueBtn{background:#0b74ff;border-color:#0b74ff;border-radius:999px}
 
     .heroGrid{
       display:grid;
-      grid-template-columns:1.12fr .88fr;
+      grid-template-columns:1.08fr .92fr;
       gap:22px;
       align-items:start;
     }
 
-    .tvCard,.newsCard,.storyCard,.audioCard,.watchBlock,.archiveBox{
+    .tvCard,.stationCard,.videoCard,.watchBlock,.archiveBox{
       background:var(--card);
+      border:1px solid rgba(242,217,140,.22);
       box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      overflow:hidden;
     }
 
-    .tvCard{overflow:hidden}
-
-    .tvTop{padding:24px}
+    .tvTop{padding:26px}
 
     .tvFrame{
       width:100%;
@@ -337,6 +331,7 @@
       background:#000;
       border-top:1px solid rgba(255,255,255,.10);
       border-bottom:1px solid rgba(255,255,255,.10);
+      overflow:hidden;
     }
 
     .tvFrame iframe{
@@ -351,207 +346,124 @@
       gap:10px;
       overflow-x:auto;
       padding:16px;
-      background:#202126;
+      background:#070707;
     }
 
     .sourceTab{
       min-width:max-content;
     }
 
-    .sideFeed{
+    .sideStations{
       display:grid;
       gap:16px;
     }
 
-    .storyCard{
+    .stationCard{
       padding:18px;
       display:grid;
-      grid-template-columns:132px 1fr;
-      gap:18px;
+      grid-template-columns:96px 1fr;
+      gap:16px;
       align-items:center;
     }
 
-    .thumb{
-      width:132px;
-      height:105px;
-      background:#111;
-      overflow:hidden;
+    .stationLogo{
+      width:96px;
+      height:76px;
+      background:linear-gradient(135deg,var(--green),#020202);
+      border:1px solid var(--line);
+      display:grid;
+      place-items:center;
+      color:var(--gold2);
+      font:900 22px var(--serif);
+      text-align:center;
     }
 
-    .thumb img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    .category{
-      color:rgba(255,255,255,.48);
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:12px;
-      font-weight:900;
-      margin-bottom:10px;
-    }
-
-    .storyCard h3{
-      color:#f1f1f1;
+    .stationCard h3{
       font-size:clamp(20px,4.5vw,28px);
       line-height:1.14;
+      color:#fff;
     }
 
-    .modeRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin:20px 0 24px;
-    }
-
-    .marketDate{
-      display:inline-flex;
-      border:1px solid rgba(242,217,140,.35);
-      padding:10px 14px;
-      color:var(--gold2);
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-size:12px;
-      font-weight:900;
-      background:rgba(0,0,0,.35);
-      margin-top:14px;
-    }
-
-    .headlineGrid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px;
-    }
-
-    .newsCard{
-      padding:20px;
-    }
-
-    .headlineList{
-      display:grid;
-      gap:14px;
-      margin-top:12px;
-    }
-
-    .headline{
-      border-top:1px solid rgba(255,255,255,.12);
-      padding-top:14px;
-      display:grid;
-      grid-template-columns:1fr 110px;
-      gap:14px;
-      align-items:start;
-    }
-
-    .headline:first-child{
-      border-top:0;
-      padding-top:0;
-    }
-
-    .headlineTitle{
-      color:#f4f4f4;
-      font-weight:900;
-      font-size:17px;
-      line-height:1.32;
-    }
-
-    .headlineMeta{
-      color:rgba(255,255,255,.46);
-      font-size:12px;
-      letter-spacing:1.2px;
-      text-transform:uppercase;
+    .stationCard p{
+      font-size:15px;
+      color:var(--muted);
       margin-top:8px;
     }
 
-    .headlineImg{
-      width:110px;
-      height:78px;
-      background:#111;
-      overflow:hidden;
+    .audioStage{
+      background:var(--card);
+      border:1px solid rgba(242,217,140,.22);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      padding:24px;
+      margin-bottom:18px;
     }
 
-    .headlineImg img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
-    .listenHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-bottom:22px;
-    }
-
-    .audioGrid{
+    .audioPlayerBox{
+      margin-top:18px;
+      min-height:240px;
+      border:1px solid rgba(242,217,140,.28);
+      background:#000;
       display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px;
-    }
-
-    .audioCard{
-      padding:20px;
-    }
-
-    .audioTop{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      margin-bottom:14px;
+      place-items:center;
+      text-align:center;
+      padding:22px;
     }
 
     .audioIcon{
-      width:58px;
-      height:58px;
+      width:96px;
+      height:96px;
       border-radius:50%;
       display:grid;
       place-items:center;
       background:#0b74ff;
       color:#fff;
-      font-size:24px;
+      font-size:40px;
       font-weight:900;
-      flex:0 0 auto;
+      margin:0 auto 16px;
     }
 
-    .audioArt{
-      width:100%;
-      min-height:210px;
-      background:#101010;
+    .audioSources{
+      display:flex;
+      gap:10px;
+      overflow-x:auto;
+      padding:6px 0 2px;
+    }
+
+    .stationBtn{
+      min-width:max-content;
+    }
+
+    .videoGrid{
       display:grid;
-      place-items:center;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .videoCard{
+      padding:18px;
+    }
+
+    .videoFrame{
+      width:100%;
+      aspect-ratio:16/9;
+      background:#000;
+      border:1px solid rgba(242,217,140,.28);
       overflow:hidden;
       margin:14px 0;
-      border:1px solid rgba(255,255,255,.10);
     }
 
-    .audioArt img{
+    .videoFrame iframe{
       width:100%;
       height:100%;
-      max-height:270px;
-      object-fit:cover;
+      border:0;
       display:block;
     }
 
-    .audioPlaceholder{
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      background:linear-gradient(135deg,var(--green),#020202);
-      border:3px solid var(--gold2);
-      display:grid;
-      place-items:center;
-      font-size:38px;
-      font-weight:900;
-    }
-
-    audio{
-      width:100%;
-      margin-top:14px;
+    .videoCard h3{
+      color:var(--gold2);
+      font-family:var(--serif);
+      font-weight:400;
     }
 
     .watchBlock{
@@ -582,7 +494,7 @@
 
     .videoMini{
       min-width:210px;
-      background:#676767;
+      background:#353535;
       border:3px solid transparent;
       cursor:pointer;
       color:#fff;
@@ -609,7 +521,7 @@
     }
 
     .archiveBox{
-      padding:22px;
+      padding:24px;
     }
 
     .archiveMonths{
@@ -623,7 +535,7 @@
     .archivePill{
       min-width:max-content;
       border:1px solid rgba(242,217,140,.42);
-      background:#15161a;
+      background:#050505;
       color:var(--gold2);
       padding:12px 14px;
       text-transform:uppercase;
@@ -638,7 +550,7 @@
     }
 
     .contact{
-      padding:52px 0;
+      padding:58px 0;
       background:
         linear-gradient(90deg,rgba(0,0,0,.88),rgba(8,116,87,.42),rgba(0,0,0,.88)),
         url("https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1900&q=85");
@@ -701,7 +613,7 @@
     }
 
     @media(max-width:1040px){
-      .heroGrid,.headlineGrid,.audioGrid{grid-template-columns:1fr}
+      .heroGrid,.videoGrid{grid-template-columns:1fr}
       .mediaNav{top:82px}
     }
 
@@ -710,12 +622,11 @@
       .headin{min-height:82px}
       .mark{width:56px;height:56px}
       .menuBtn{width:54px;height:54px}
-      .tvTop{padding:22px}
-      .storyCard{grid-template-columns:120px 1fr;padding:15px;gap:14px}
-      .thumb{width:120px;height:95px}
-      .headline{grid-template-columns:1fr 104px}
-      .headlineImg{width:104px;height:74px}
-      .btn,.modeBtn,.storyBtn{width:100%}
+      .tvTop,.audioStage,.archiveBox{padding:22px}
+      .stationCard{grid-template-columns:82px 1fr;padding:15px;gap:14px}
+      .stationLogo{width:82px;height:68px;font-size:18px}
+      .btn,.sourceTab,.stationBtn,.videoBtn{width:100%}
+      .sourceTabs,.audioSources{display:grid;grid-template-columns:1fr;overflow:visible}
       .videoMini{min-width:190px}
     }
   </style>
@@ -754,7 +665,7 @@
 
     <div class="topbar">
       <div class="wrap topbarIn">
-        <span class="liveBadge"><span class="pulse"></span> TitanCore Media Content</span>
+        <span class="liveBadge"><span class="pulse"></span> Live TV + Live Audio + Video Channels</span>
         <span class="timeChip" id="liveClock">Loading time...</span>
       </div>
     </div>
@@ -762,8 +673,8 @@
     <nav class="mediaNav">
       <div>
         <a href="#live-tv">Live TV</a>
-        <a href="#listen">Live Audio</a>
-        <a href="#headlines">Headlines</a>
+        <a href="#live-audio">Live Audio</a>
+        <a href="#channels">Video Channels</a>
         <a href="#replays">Replays</a>
         <a href="#archive">Archive</a>
       </div>
@@ -778,91 +689,78 @@
             <article class="tvCard">
               <div class="tvTop">
                 <div class="kicker">Live Business TV Desk</div>
-                <h1 class="serif">Watch live business media.</h1>
+                <h1 class="serif">Watch business TV live.</h1>
                 <p>
-                  Live TV goes on top. Visitors can watch public business, finance, market, and global news streams when the source allows embedding.
+                  Live TV goes on top. Bloomberg plays inside the page. Other business channels open from their official live source when they block inside playback.
                 </p>
 
                 <div class="btnrow">
                   <a class="btn blueBtn" id="openLiveSource" href="#" target="_blank" rel="noopener">Open Live Source ›</a>
-                  <a class="btn secondary" href="#listen">Listen Instead ›</a>
+                  <a class="btn secondary" href="#live-audio">Listen Instead ›</a>
                 </div>
-
-                <p class="small">
-                  If a live TV source blocks the inside player, use Open Live Source.
-                </p>
               </div>
 
               <div class="tvFrame" id="liveTvFrame"></div>
               <div class="sourceTabs" id="sourceTabs"></div>
             </article>
 
-            <aside class="sideFeed" id="topStoryList">
-              <article class="storyCard">
-                <div class="thumb">
-                  <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=700&q=85" alt="">
-                </div>
-                <div>
-                  <div class="category">Media Desk</div>
-                  <h3>Loading today’s business headlines</h3>
-                </div>
-              </article>
-            </aside>
+            <aside class="sideStations" id="liveStationCards"></aside>
 
           </div>
         </div>
       </section>
 
-      <section class="section" id="listen">
+      <section class="section" id="live-audio">
         <div class="wrap">
-          <div class="listenHeader">
-            <div>
-              <div class="kicker">Live Audio Desk</div>
-              <h2>Listen to business audio</h2>
-              <p>For visitors who do not want to watch TV, this section loads real public business and market audio.</p>
+          <div class="kicker">Live Business Audio Desk</div>
+          <h2>Listen to live business audio.</h2>
+          <p>
+            This section is for visitors who do not want to watch TV. They can open live business radio, market audio, finance audio, and crypto audio sources.
+          </p>
+
+          <div class="audioStage">
+            <div class="audioPlayerBox" id="audioPlayerBox">
+              <div>
+                <div class="audioIcon">▶</div>
+                <h3 class="serif" id="audioTitle">Select a live audio station</h3>
+                <p id="audioText">Choose a live business audio source below.</p>
+                <div class="btnrow">
+                  <a class="btn blueBtn" id="openAudioSource" href="#" target="_blank" rel="noopener">Open Audio Source ›</a>
+                </div>
+              </div>
             </div>
-            <a class="btn blueBtn" href="#audioGrid">Play Audio ›</a>
-          </div>
 
-          <div class="audioGrid" id="audioGrid"></div>
+            <div class="audioSources" id="audioSources"></div>
+          </div>
         </div>
       </section>
 
-      <section class="section" id="headlines">
+      <section class="section" id="channels">
         <div class="wrap">
-          <div class="kicker">Daily Headlines</div>
-          <h2 id="deskTitle">Morning News Brief</h2>
-          <p id="deskText">Start the day with public business, market, Bitcoin, oil, real estate, and economy headlines.</p>
-          <div class="marketDate" id="deskDate">Loading today’s media desk...</div>
+          <div class="kicker">Video Channels</div>
+          <h2>Business video channels.</h2>
+          <p>
+            All cards below are video cards. No article cards. These videos rotate daily until TitanCore has its own studio content.
+          </p>
 
-          <div class="modeRow">
-            <button class="modeBtn active" data-mode="morning">Morning News</button>
-            <button class="modeBtn" data-mode="afternoon">Afternoon Update</button>
-            <button class="modeBtn" data-mode="evening">Evening Watch</button>
-          </div>
-
-          <div class="headlineGrid" id="marketNewsGrid">
-            <article class="newsCard">
-              <div class="category">Media Desk Loading</div>
-              <h3>Opening today’s media desk</h3>
-              <p>TitanCore is connecting business, market, Bitcoin, oil, real estate, and economy headlines.</p>
-            </article>
-          </div>
+          <div class="videoGrid" id="videoGrid"></div>
         </div>
       </section>
 
       <section class="section" id="replays">
         <div class="wrap">
-          <div class="kicker">Watch Replays</div>
-          <h2>Replay by day</h2>
-          <p>When the live TV day passes, people can still use the replay area and archive to review what happened.</p>
+          <div class="kicker">Replay Video Desk</div>
+          <h2>Past video replays.</h2>
+          <p>
+            When the live day passes, visitors can use replay videos and the archive to review market, business, Bitcoin, oil, and economy content.
+          </p>
 
           <div class="watchBlock">
             <div class="watchMain" id="watchMain"></div>
             <div class="videoRail" id="videoRail"></div>
 
             <div style="margin-top:18px;">
-              <h3 id="watchTitle">Daily Business Replay</h3>
+              <h3 id="watchTitle" class="serif">Daily Business Replay</h3>
               <p id="watchSummary">Daily market and business media replay.</p>
             </div>
           </div>
@@ -873,9 +771,9 @@
         <div class="wrap">
           <div class="archiveBox">
             <div class="kicker">Replay Archive</div>
-            <h2>Archive by month and date</h2>
+            <h2>Archive by month and date.</h2>
             <p>
-              Archive starts from June 2026 going forward. Visitors can review past days by month, date, morning, afternoon, evening, TV replay, audio, and market headlines.
+              Archive starts from June 2026 going forward. Visitors can review past days by month, date, live TV replay, audio, and video channel category.
             </p>
 
             <div class="archiveMonths">
@@ -929,50 +827,124 @@
   </div>
 
   <script>
-    const liveSources = [
+    const liveTvSources = [
       {
         name:"Bloomberg TV",
-        type:"youtube",
+        short:"BBG",
+        mode:"embed",
         channel:"UCIALMKvObZNtJ6AmdCLP7Lg",
-        open:"https://www.bloomberg.com/live/"
+        open:"https://www.bloomberg.com/live/",
+        desc:"Business, markets, global finance, economy, and market movement."
+      },
+      {
+        name:"CNBC Live",
+        short:"CNBC",
+        mode:"open",
+        open:"https://www.cnbc.com/live-tv/",
+        desc:"Business TV, markets, stocks, companies, and financial news."
       },
       {
         name:"Yahoo Finance",
-        type:"youtube",
-        channel:"UCEAZeUIeJs0IjQiqTCdVSIg",
-        open:"https://finance.yahoo.com/video/"
+        short:"YF",
+        mode:"open",
+        open:"https://finance.yahoo.com/video/",
+        desc:"Market video, stocks, finance, business, and investing."
       },
       {
-        name:"CNBC",
-        type:"open",
-        channel:"",
-        open:"https://www.cnbc.com/live-tv/"
+        name:"Reuters Business",
+        short:"RTR",
+        mode:"open",
+        open:"https://www.reuters.com/business/",
+        desc:"Global business, economy, companies, finance, and markets."
+      },
+      {
+        name:"BNN Bloomberg",
+        short:"BNN",
+        mode:"open",
+        open:"https://www.bnnbloomberg.ca/video",
+        desc:"Business video, markets, economy, and financial analysis."
       }
     ];
 
-    const fallbackImages = [
-      "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=85",
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=85",
-      "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=900&q=85",
-      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=85",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+    const liveAudioSources = [
+      {
+        name:"Bloomberg Radio",
+        short:"BBG Radio",
+        open:"https://www.bloomberg.com/audio",
+        desc:"Live business radio for markets, finance, economy, and global business."
+      },
+      {
+        name:"Marketplace",
+        short:"Marketplace",
+        open:"https://www.marketplace.org/",
+        desc:"Business, economy, money, jobs, and market audio."
+      },
+      {
+        name:"CNBC Audio / Live",
+        short:"CNBC",
+        open:"https://www.cnbc.com/live-tv/",
+        desc:"Business live source for markets, stocks, and companies."
+      },
+      {
+        name:"Yahoo Finance Video",
+        short:"Yahoo",
+        open:"https://finance.yahoo.com/video/",
+        desc:"Finance video/audio source for markets and business."
+      },
+      {
+        name:"CoinDesk",
+        short:"Crypto",
+        open:"https://www.coindesk.com/video/",
+        desc:"Bitcoin, crypto, digital assets, and market video/audio source."
+      }
+    ];
+
+    const videoChannels = [
+      {
+        label:"Market Video",
+        title:"Market & Stock Video",
+        video:"98qfFzqDKR8",
+        desc:"Stocks, finance, public markets, and market education."
+      },
+      {
+        label:"Bitcoin / Crypto Video",
+        title:"Bitcoin & Crypto Video",
+        video:"pVZzgzYZdCA",
+        desc:"Bitcoin, crypto, blockchain, and digital finance content."
+      },
+      {
+        label:"Oil / Energy Video",
+        title:"Oil & Energy Video",
+        video:"GtaoP0skPWc",
+        desc:"Oil, energy, inflation, and market movement content."
+      },
+      {
+        label:"Business Growth Video",
+        title:"Business Growth Video",
+        video:"EulhKrrfMnw",
+        desc:"Business growth, scaling, and company-building content."
+      },
+      {
+        label:"Finance Video",
+        title:"Finance Education Video",
+        video:"Qh-M3_L4xYk",
+        desc:"Finance education, money, markets, and economic learning."
+      },
+      {
+        label:"Leadership Video",
+        title:"Leadership & Business Video",
+        video:"lmyZMtPVodo",
+        desc:"Leadership, CEO mindset, and business-building media."
+      }
     ];
 
     const replayVideos = [
-      { id:"bNpx7gpSqbY", title:"Business Startup Lesson", summary:"Business media and startup learning for today." },
-      { id:"EulhKrrfMnw", title:"Business Growth Lesson", summary:"Daily business growth and scaling media." },
-      { id:"98qfFzqDKR8", title:"Stock Market Education", summary:"Market and stock education media window." },
-      { id:"Qh-M3_L4xYk", title:"Finance Education", summary:"Finance, bonds, and market education." },
-      { id:"GtaoP0skPWc", title:"Energy and Economy Media", summary:"Oil, energy, and market movement education." }
-    ];
-
-    const audioCards = [
-      { id:"201853034", label:"Business / Economy Audio", title:"Marketplace Business Audio" },
-      { id:"73330130", label:"Morning Business Audio", title:"Marketplace Morning Report" },
-      { id:"290783428", label:"Money / Market Audio", title:"Planet Money" },
-      { id:"1123922160", label:"Bitcoin / Crypto Audio", title:"Unchained Crypto" },
-      { id:"663379413", label:"Oil / Energy Audio", title:"The Energy Gang" },
-      { id:"152022135", label:"Leadership Audio", title:"HBR IdeaCast" }
+      { id:"bNpx7gpSqbY", title:"Business Startup Replay", summary:"Business media and startup learning replay." },
+      { id:"EulhKrrfMnw", title:"Business Growth Replay", summary:"Business growth and scaling replay." },
+      { id:"98qfFzqDKR8", title:"Stock Market Replay", summary:"Market and stock education replay." },
+      { id:"Qh-M3_L4xYk", title:"Finance Replay", summary:"Finance and market education replay." },
+      { id:"GtaoP0skPWc", title:"Oil & Energy Replay", summary:"Oil, energy, and economy replay." },
+      { id:"pVZzgzYZdCA", title:"Bitcoin Replay", summary:"Bitcoin, crypto, and digital finance replay." }
     ];
 
     const openMenu = document.getElementById("openMenu");
@@ -1009,7 +981,7 @@
     });
 
     document.addEventListener("click",function(e){
-      const btn = e.target.closest(".btn,.storyBtn");
+      const btn = e.target.closest(".btn");
       if(btn){
         btn.classList.add("clicked");
       }
@@ -1046,27 +1018,29 @@
       return Math.floor(new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime() / 86400000);
     }
 
-    function cleanText(text){
-      const div = document.createElement("div");
-      div.innerHTML = text || "";
-      return div.textContent || div.innerText || "";
+    function youtubeEmbed(id){
+      return "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&playsinline=1&vday=" + dateKey();
     }
 
-    function imgForIndex(index){
-      return fallbackImages[index % fallbackImages.length];
+    function youtubeLive(channel){
+      return "https://www.youtube-nocookie.com/embed/live_stream?channel=" + channel + "&rel=0&playsinline=1";
     }
 
-    function loadLiveSource(index){
-      const source = liveSources[index] || liveSources[0];
+    function youtubeThumb(id){
+      return "https://img.youtube.com/vi/" + id + "/hqdefault.jpg";
+    }
+
+    function loadLiveTv(index){
+      const source = liveTvSources[index] || liveTvSources[0];
       const frame = document.getElementById("liveTvFrame");
       const open = document.getElementById("openLiveSource");
 
       open.href = source.open;
 
-      if(source.type === "youtube" && source.channel){
+      if(source.mode === "embed" && source.channel){
         frame.innerHTML = `
           <iframe
-            src="https://www.youtube-nocookie.com/embed/live_stream?channel=${source.channel}&rel=0&playsinline=1"
+            src="${youtubeLive(source.channel)}"
             title="${source.name} live business TV"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1079,7 +1053,7 @@
             <div>
               <div class="kicker">${source.name}</div>
               <h2 class="serif">Open live source</h2>
-              <p>This live TV source may require opening the official site.</p>
+              <p>${source.desc}</p>
               <div class="btnrow">
                 <a class="btn blueBtn" href="${source.open}" target="_blank" rel="noopener">Open ${source.name} ›</a>
               </div>
@@ -1093,193 +1067,102 @@
       });
     }
 
-    function buildLiveTabs(){
+    function buildLiveTv(){
       const tabs = document.getElementById("sourceTabs");
+      const cards = document.getElementById("liveStationCards");
 
-      tabs.innerHTML = liveSources.map(function(source,index){
+      tabs.innerHTML = liveTvSources.map(function(source,index){
         return `<button class="sourceTab ${index === 0 ? "active" : ""}" data-index="${index}">${source.name}</button>`;
+      }).join("");
+
+      cards.innerHTML = liveTvSources.map(function(source,index){
+        return `
+          <article class="stationCard">
+            <div class="stationLogo">${source.short}</div>
+            <div>
+              <div class="category">Live TV Source</div>
+              <h3>${source.name}</h3>
+              <p>${source.desc}</p>
+              <div class="btnrow">
+                <button class="btn" data-tv="${index}">Load Source ›</button>
+              </div>
+            </div>
+          </article>
+        `;
       }).join("");
 
       tabs.querySelectorAll(".sourceTab").forEach(function(tab){
         tab.addEventListener("click",function(){
-          loadLiveSource(Number(tab.dataset.index || 0));
+          loadLiveTv(Number(tab.dataset.index || 0));
         });
       });
 
-      loadLiveSource(0);
-    }
-
-    function currentMode(){
-      const hour = new Date().getHours();
-      if(hour < 12) return "morning";
-      if(hour < 17) return "afternoon";
-      return "evening";
-    }
-
-    function setDeskText(mode){
-      const title = document.getElementById("deskTitle");
-      const text = document.getElementById("deskText");
-      const date = document.getElementById("deskDate");
-      const now = new Date();
-
-      if(mode === "afternoon"){
-        title.textContent = "Afternoon Market Update";
-        text.textContent = "Follow market movement, stock news, energy movement, crypto updates, and business economy changes.";
-        date.textContent = "Afternoon Update • " + now.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});
-        return;
-      }
-
-      if(mode === "evening"){
-        title.textContent = "Evening Closing Watch";
-        text.textContent = "Review the day’s business movement, market signals, and global economy headlines.";
-        date.textContent = "Evening Watch • " + now.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});
-        return;
-      }
-
-      title.textContent = "Morning News Brief";
-      text.textContent = "Start the day with public business, market, Bitcoin, oil, real estate, and economy headlines.";
-      date.textContent = "Morning Brief • " + now.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});
-    }
-
-    function buildStoryCard(item,index){
-      const title = cleanText(item.title || "Today’s business headline");
-      const source = cleanText(item.source || "Public News Source");
-
-      return `
-        <article class="storyCard">
-          <div class="thumb">
-            <img src="${imgForIndex(index)}" alt="">
-          </div>
-          <div>
-            <div class="category">${source}</div>
-            <h3>${title}</h3>
-          </div>
-        </article>
-      `;
-    }
-
-    function buildTopStories(sections){
-      const all = [];
-
-      sections.forEach(function(section){
-        (section.items || []).forEach(function(item){
-          all.push({...item, sectionLabel:section.label});
+      cards.querySelectorAll("[data-tv]").forEach(function(btn){
+        btn.addEventListener("click",function(){
+          loadLiveTv(Number(btn.dataset.tv || 0));
+          document.getElementById("live-tv").scrollIntoView({behavior:"smooth"});
         });
       });
 
-      if(!all.length) return;
-
-      document.getElementById("topStoryList").innerHTML = all.slice(0,4).map(buildStoryCard).join("");
+      loadLiveTv(0);
     }
 
-    function buildMarketSection(section,sectionIndex){
-      const items = section.items || [];
+    function buildAudio(){
+      const sources = document.getElementById("audioSources");
 
-      const headlines = items.map(function(item,index){
-        const title = cleanText(item.title);
-        const source = cleanText(item.source || "Public News Source");
-        const pub = cleanText(item.pubDate || "");
-        const link = item.link || "#";
-
-        return `
-          <div class="headline">
-            <div>
-              <div class="headlineTitle">${title}</div>
-              <div class="headlineMeta">${source}${pub ? " • " + pub : ""}</div>
-              <div class="btnrow">
-                <a class="storyBtn" href="${link}" target="_blank" rel="noopener">Open Story ›</a>
-              </div>
-            </div>
-            <div class="headlineImg">
-              <img src="${imgForIndex(sectionIndex + index)}" alt="">
-            </div>
-          </div>
-        `;
+      sources.innerHTML = liveAudioSources.map(function(source,index){
+        return `<button class="stationBtn ${index === 0 ? "active" : ""}" data-audio="${index}">${source.name}</button>`;
       }).join("");
 
-      return `
-        <article class="newsCard">
-          <div class="category">${cleanText(section.label)}</div>
-          <h3>${cleanText(section.label)}</h3>
-          <div class="headlineList">
-            ${headlines || "<p>Headlines are updating.</p>"}
-          </div>
-        </article>
-      `;
-    }
-
-    function fallbackNews(mode){
-      setDeskText(mode);
-
-      document.getElementById("marketNewsGrid").innerHTML = `
-        <article class="newsCard">
-          <div class="category">Today’s Media Desk</div>
-          <h3>Media desk is updating</h3>
-          <p>TitanCore is connecting the public news desk. When the live feed responds, headlines will appear here.</p>
-        </article>
-      `;
-
-      const fallbackItems = [
-        {title:"Business and market headlines are loading", source:"TitanCore Media"},
-        {title:"Bitcoin, oil, real estate, and economy watch is opening", source:"TitanCore Market Desk"},
-        {title:"Morning, afternoon, and evening updates will appear here", source:"TitanCore Media Content"}
-      ];
-
-      document.getElementById("topStoryList").innerHTML = fallbackItems.map(buildStoryCard).join("");
-    }
-
-    async function loadMarketDesk(mode){
-      const grid = document.getElementById("marketNewsGrid");
-      setDeskText(mode);
-
-      grid.innerHTML = `
-        <article class="newsCard">
-          <div class="category">Media Desk Loading</div>
-          <h3>Opening ${mode} media desk</h3>
-          <p>TitanCore is connecting today’s public media headlines.</p>
-        </article>
-      `;
-
-      try{
-        const response = await fetch(
-          "/.netlify/functions/market-news?day=" +
-          encodeURIComponent(dateKey()) +
-          "&mode=" +
-          encodeURIComponent(mode) +
-          "&v=" +
-          encodeURIComponent(dateKey())
-        );
-
-        const data = await response.json();
-
-        if(!data.ok || !Array.isArray(data.sections) || !data.sections.length){
-          throw new Error("Media desk updating.");
-        }
-
-        buildTopStories(data.sections);
-        grid.innerHTML = data.sections.map(buildMarketSection).join("");
-      }catch(error){
-        fallbackNews(mode);
-      }
-    }
-
-    document.querySelectorAll(".modeBtn").forEach(function(button){
-      button.addEventListener("click",function(){
-        document.querySelectorAll(".modeBtn").forEach(function(btn){
-          btn.classList.remove("active");
+      sources.querySelectorAll(".stationBtn").forEach(function(btn){
+        btn.addEventListener("click",function(){
+          loadAudioSource(Number(btn.dataset.audio || 0));
         });
-
-        button.classList.add("active");
-        loadMarketDesk(button.dataset.mode || "morning");
       });
-    });
 
-    function youtubeEmbed(id){
-      return "https://www.youtube-nocookie.com/embed/" + id + "?rel=0&playsinline=1&vday=" + dateKey();
+      loadAudioSource(0);
     }
 
-    function youtubeThumb(id){
-      return "https://img.youtube.com/vi/" + id + "/hqdefault.jpg";
+    function loadAudioSource(index){
+      const source = liveAudioSources[index] || liveAudioSources[0];
+
+      document.getElementById("audioTitle").textContent = source.name;
+      document.getElementById("audioText").textContent = source.desc;
+      document.getElementById("openAudioSource").href = source.open;
+
+      document.querySelectorAll(".stationBtn").forEach(function(btn,i){
+        btn.classList.toggle("active",i === index);
+      });
+    }
+
+    function buildVideoChannels(){
+      const grid = document.getElementById("videoGrid");
+
+      grid.innerHTML = videoChannels.map(function(card,index){
+        const offsetVideo = videoChannels[(dayNumber() + index) % videoChannels.length];
+
+        return `
+          <article class="videoCard">
+            <div class="kicker">${card.label}</div>
+            <h3>${card.title}</h3>
+            <p>${card.desc}</p>
+
+            <div class="videoFrame">
+              <iframe
+                src="${youtubeEmbed(offsetVideo.video)}"
+                title="${card.title}"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="btnrow">
+              <a class="btn" href="https://www.youtube.com/watch?v=${offsetVideo.video}" target="_blank" rel="noopener">Open Video ›</a>
+            </div>
+          </article>
+        `;
+      }).join("");
     }
 
     function loadReplay(index){
@@ -1324,101 +1207,10 @@
       loadReplay(dayNumber() % replayVideos.length);
     }
 
-    function createAudioCard(item){
-      return `
-        <article class="audioCard" data-id="${item.id}">
-          <div class="audioTop">
-            <div class="audioIcon">▶</div>
-            <div>
-              <div class="category">${item.label}</div>
-              <h3>${item.title}</h3>
-            </div>
-          </div>
-
-          <div class="audioArt">
-            <div class="audioPlaceholder">▶</div>
-          </div>
-
-          <p class="small">
-            Connecting real public business audio. When the TitanCore audio bridge responds, the real episode player will appear here.
-          </p>
-        </article>
-      `;
-    }
-
-    async function loadAudio(card){
-      const id = card.dataset.id;
-
-      try{
-        const response = await fetch("/.netlify/functions/audio-feed?id=" + encodeURIComponent(id) + "&day=" + encodeURIComponent(dateKey()));
-        const data = await response.json();
-
-        if(!response.ok || data.error){
-          throw new Error("Audio bridge connecting.");
-        }
-
-        const description = cleanText(data.description).slice(0,260);
-
-        card.innerHTML = `
-          <div class="audioTop">
-            <div class="audioIcon">▶</div>
-            <div>
-              <div class="category">${cleanText(data.showTitle)}</div>
-              <h3>${cleanText(data.episodeTitle)}</h3>
-            </div>
-          </div>
-
-          <div class="audioArt">
-            ${
-              data.image
-                ? `<img src="${data.image}" alt="${cleanText(data.showTitle)} artwork">`
-                : `<div class="audioPlaceholder">▶</div>`
-            }
-          </div>
-
-          <p class="small">${description}</p>
-
-          <audio controls preload="none" src="${data.audioUrl}">
-            Your browser does not support audio playback.
-          </audio>
-        `;
-      }catch(error){
-        card.innerHTML = `
-          <div class="audioTop">
-            <div class="audioIcon">▶</div>
-            <div>
-              <div class="category">Real Audio Connecting</div>
-              <h3>TitanCore Audio</h3>
-            </div>
-          </div>
-
-          <div class="audioArt">
-            <div class="audioPlaceholder">▶</div>
-          </div>
-
-          <p class="small">
-            TitanCore is checking the real audio bridge. This section will show the public audio player when Netlify finishes loading the function.
-          </p>
-        `;
-      }
-    }
-
-    function buildAudio(){
-      const grid = document.getElementById("audioGrid");
-      grid.innerHTML = audioCards.map(createAudioCard).join("");
-      document.querySelectorAll(".audioCard").forEach(loadAudio);
-    }
-
-    const startMode = currentMode();
-
-    document.querySelectorAll(".modeBtn").forEach(function(button){
-      button.classList.toggle("active",button.dataset.mode === startMode);
-    });
-
-    buildLiveTabs();
-    loadMarketDesk(startMode);
-    buildReplays();
+    buildLiveTv();
     buildAudio();
+    buildVideoChannels();
+    buildReplays();
   </script>
 </body>
 </html>
