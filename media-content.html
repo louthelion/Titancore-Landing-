@@ -1,162 +1,1039 @@
-<script>
-  const tvSources = [
-    { label: 'Bloomberg TV', src: 'https://www.youtube.com/embed/iEpJwprxDdk?autoplay=0&rel=0', official: 'https://www.youtube.com/@BloombergTV/streams', fallback: false },
-    { label: 'CNBC', src: 'https://www.youtube.com/embed/f0bM4VZenOA?autoplay=0&rel=0', official: 'https://www.youtube.com/@CNBCtelevision/videos', fallback: false },
-    { label: 'Yahoo Finance', src: '', official: 'https://finance.yahoo.com/video/', fallback: true },
-    { label: 'DW Global News', src: 'https://www.youtube.com/embed/V9KZGs1MtP4?autoplay=0&rel=0', official: 'https://www.youtube.com/@dwnews/live', fallback: false },
-    { label: 'Reuters Business', src: '', official: 'https://www.reuters.com/video/', fallback: true },
-    { label: 'BNN Bloomberg', src: 'https://www.youtube.com/embed/YOHVUTE0uPQ?autoplay=0&rel=0', official: 'https://www.youtube.com/@BNNBloomberg/videos', fallback: false }
-  ];
-
-  const audioSources = [
-    { label: 'Bloomberg Radio', src: 'https://www.youtube.com/embed/RJYpKBybG7U?autoplay=0&rel=0', official: 'https://www.youtube.com/@BloombergTV/streams', fallback: false, copy:'Live radio and market talk in one place. If a station limits playback, open the official source below.' },
-    { label: 'BBC World Service', src: '', official: 'https://www.bbc.com/audio/play/live/bbc_world_service', fallback: true, copy:'BBC World Service is linked here as a live global business-news listening option.' },
-    { label: 'Marketplace', src: '', official: 'https://www.marketplace.org/shows/marketplace/', fallback: true, copy:'Marketplace is included as a trusted business and economy listening source.' },
-    { label: 'CoinDesk Crypto', src: 'https://www.youtube.com/embed/hM8yT0N8g4g?autoplay=0&rel=0', official: 'https://www.youtube.com/@CoinDesk/videos', fallback: false, copy:'Crypto-focused market listening and digital asset updates.' },
-    { label: 'Yahoo Finance Audio', src: '', official: 'https://finance.yahoo.com/videos/', fallback: true, copy:'Yahoo Finance audio content may require the official source.' }
-  ];
-
-  const studioSources = [
-    { label: 'TitanCore Studio Live', src: 'https://www.youtube.com/embed/5r0znE5-CwQ?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=live+business+education', fallback: false },
-    { label: 'CEO Briefing Studio', src: 'https://www.youtube.com/embed/NsJSAlY8Smo?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=ceo+briefing+leadership+youtube', fallback: false },
-    { label: 'Entrepreneur Guest Studio', src: 'https://www.youtube.com/embed/tbnzAVRZ9Xc?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=entrepreneur+interview+business+youtube', fallback: false },
-    { label: 'Subsidiary Studio', src: 'https://www.youtube.com/embed/LB0YtqN0gkQ?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=business+subsidiary+operations+youtube', fallback: false }
-  ];
-
-  const studioAudioSources = [
-    { label: 'Studio Live Audio', src: 'https://www.youtube.com/embed/6JwkaLt9pf8?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=business+audio+education', fallback: false, copy:'Future TitanCore studio listening experience with clean placeholder programming.' },
-    { label: 'CEO Briefing Audio', src: 'https://www.youtube.com/embed/z9M0sRSeZt8?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=ceo+leadership+audio+business', fallback: false, copy:'Leadership and executive placeholder audio while TitanCore originals are prepared.' },
-    { label: 'Entrepreneur Guest Audio', src: 'https://www.youtube.com/embed/XAD9J5A9W8U?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=entrepreneur+talk+audio+business', fallback: false, copy:'Entrepreneur guest placeholder programming in one shared audio area.' },
-    { label: 'Subsidiary Update Audio', src: 'https://www.youtube.com/embed/aXJ7_3sVt7E?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=business+update+audio+education', fallback: false, copy:'Business update placeholder audio for future subsidiary reporting.' }
-  ];
-
-  const replayVideos = [
-    { label:'Market Closing Replay', src:'https://www.youtube.com/embed/Ti-4h2j3r7o?rel=0', thumb:'https://i.ytimg.com/vi/Ti-4h2j3r7o/hqdefault.jpg', meta:'Markets recap replay' },
-    { label:'Crypto Market Replay', src:'https://www.youtube.com/embed/hM8yT0N8g4g?rel=0', thumb:'https://i.ytimg.com/vi/hM8yT0N8g4g/hqdefault.jpg', meta:'Digital assets replay' },
-    { label:'Energy Desk Replay', src:'https://www.youtube.com/embed/ZtV1Q6F7N4A?rel=0', thumb:'https://i.ytimg.com/vi/ZtV1Q6F7N4A/hqdefault.jpg', meta:'Energy and commodities replay' },
-    { label:'Real Estate Replay', src:'https://www.youtube.com/embed/nM8dMju5qk0?rel=0', thumb:'https://i.ytimg.com/vi/nM8dMju5qk0/hqdefault.jpg', meta:'Economy and CRE replay' },
-    { label:'Leadership Replay', src:'https://www.youtube.com/embed/k7qQ3g3ofJw?rel=0', thumb:'https://i.ytimg.com/vi/k7qQ3g3ofJw/hqdefault.jpg', meta:'Leadership and growth replay' }
-  ];
-
-  function setupVideoTabs({sources, tabsId, iframeId, messageId, officialId}) {
-    const tabs = document.getElementById(tabsId);
-    const iframe = document.getElementById(iframeId);
-    const msg = document.getElementById(messageId);
-    const official = document.getElementById(officialId);
-
-    if (!tabs || !iframe || !msg || !official) return;
-
-    function activate(source, btn){
-      [...tabs.children].forEach(x => x.classList.remove('active'));
-      btn.classList.add('active');
-      official.href = source.official;
-
-      if(source.fallback){
-        iframe.src = 'about:blank';
-        msg.classList.add('show');
-      } else {
-        iframe.src = source.src;
-        msg.classList.remove('show');
-      }
-
-      iframe.title = source.label;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Content | TitanCore Holdings</title>
+  <meta name="description" content="Live business TV, business audio, TitanCore Studio placeholders, business video channels, and replay archive for TitanCore Holdings." />
+  <style>
+    :root{
+      --bg:#050505;
+      --panel:#0b0b0b;
+      --panel-2:#121212;
+      --gold:#d4af37;
+      --gold-soft:#b78f13;
+      --green:#0f6a3d;
+      --green-2:#1f8f58;
+      --white:#f3e8b0;
+      --border:rgba(212,175,55,.38);
+      --shadow:0 16px 36px rgba(0,0,0,.34);
+      --radius:22px;
+      --radius-sm:14px;
+      --header-h:84px;
+      --max:1240px;
     }
 
-    sources.forEach((source, index) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'tab-btn' + (index === 0 ? ' active' : '');
-      btn.textContent = source.label;
-      btn.addEventListener('click', () => activate(source, btn));
-      tabs.appendChild(btn);
-    });
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
-    if (sources.length && tabs.children.length) {
-      activate(sources[0], tabs.children[0]);
-    }
-  }
-
-  function setupAudioTabs({sources, tabsId, iframeId, officialId, titleId, copyId, fallbackId, embedWrapId}) {
-    const tabs = document.getElementById(tabsId);
-    const iframe = document.getElementById(iframeId);
-    const official = document.getElementById(officialId);
-    const title = document.getElementById(titleId);
-    const copy = document.getElementById(copyId);
-    const fallback = document.getElementById(fallbackId);
-    const embedWrap = document.getElementById(embedWrapId);
-
-    if (!tabs || !iframe || !official || !title || !copy || !fallback || !embedWrap) return;
-
-    function activate(source, btn){
-      [...tabs.children].forEach(x => x.classList.remove('active'));
-      btn.classList.add('active');
-
-      title.textContent = source.label;
-      copy.textContent = source.copy || 'Business audio placeholder.';
-      official.href = source.official;
-
-      if(source.fallback){
-        iframe.src = 'about:blank';
-        fallback.classList.add('show');
-        embedWrap.style.display = 'none';
-      } else {
-        iframe.src = source.src;
-        fallback.classList.remove('show');
-        embedWrap.style.display = 'flex';
-      }
-
-      iframe.title = source.label;
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--gold);
+      line-height:1.6;
     }
 
-    sources.forEach((source, index) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'tab-btn' + (index === 0 ? ' active' : '');
-      btn.textContent = source.label;
-      btn.addEventListener('click', () => activate(source, btn));
-      tabs.appendChild(btn);
-    });
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
 
-    if (sources.length && tabs.children.length) {
-      activate(sources[0], tabs.children[0]);
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
     }
-  }
 
-  function setupReplay(){
-    const list = document.getElementById('replay-thumbs');
-    const player = document.getElementById('replay-player');
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(5,5,5,.95);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(8px);
+    }
 
-    if (!list || !player) return;
+    .header-inner{
+      min-height:var(--header-h);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:14px 0;
+    }
 
-    replayVideos.forEach((item, index) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'thumb-btn' + (index === 0 ? ' active' : '');
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-shrink:0;
+    }
 
-      btn.innerHTML = 
-        <span class="thumb-preview">
-          ${item.thumb}
-        </span>
-        <span>
-          <span class="thumb-title">${item.label}</span>
-          <span class="thumb-meta">${item.meta}</span>
-        </span>
-      ;
+    .brand-logo{
+      width:52px;
+      height:52px;
+      border-radius:999px;
+      border:2px solid var(--gold);
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:1.1rem;
+      color:var(--gold);
+      background:radial-gradient(circle at 30% 30%, rgba(212,175,55,.12), rgba(0,0,0,.95));
+      box-shadow:0 0 0 5px rgba(15,106,61,.18);
+    }
 
-      btn.addEventListener('click', () => {
-        [...list.children].forEach(x => x.classList.remove('active'));
+    .brand-title{
+      font-size:1.05rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .brand-sub{
+      font-size:.72rem;
+      color:#d7bf67;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .main-nav{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:10px 12px;
+    }
+
+    .main-nav a{
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:10px 15px;
+      font-size:.93rem;
+      letter-spacing:.02em;
+      transition:.25s ease;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus-visible,
+    .main-nav a.active{
+      background:var(--green);
+      border-color:var(--green-2);
+      color:#fff5cd;
+      outline:none;
+    }
+
+    main{padding:28px 0 56px}
+
+    .hero{padding:20px 0 8px}
+
+    .eyebrow{
+      font-size:.8rem;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:#e4c96c;
+      margin-bottom:8px;
+    }
+
+    h1,h2,h3,h4,p{margin:0}
+
+    h1{
+      font-size:clamp(2rem, 4vw, 3.1rem);
+      line-height:1.08;
+      margin-bottom:12px;
+    }
+
+    .hero p{
+      max-width:900px;
+      color:#eadb9e;
+    }
+
+    .section{padding:28px 0 0}
+
+    .section-card{
+      background:linear-gradient(180deg, rgba(18,18,18,.98), rgba(9,9,9,.98));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+
+    .section-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:18px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .section-header p{
+      max-width:840px;
+      color:#e7d8a1;
+    }
+
+    h2{
+      font-size:clamp(1.35rem,2vw,2rem);
+      margin-bottom:6px;
+    }
+
+    .player-shell{
+      border:1px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      background:#000;
+      position:relative;
+      min-height:320px;
+    }
+
+    .player-shell.video{
+      aspect-ratio:16/9;
+      min-height:min(56vw, 640px);
+    }
+
+    .player-shell.audio{
+      min-height:240px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      background:linear-gradient(180deg, rgba(9,9,9,.98), rgba(16,16,16,.92));
+    }
+
+    .player-shell iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      background:#000;
+    }
+
+    .player-message{
+      position:absolute;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:30px;
+      background:linear-gradient(180deg, rgba(10,10,10,.95), rgba(5,5,5,.98));
+      color:#f0df9a;
+      z-index:3;
+    }
+
+    .player-message.show{display:flex}
+
+    .player-message-inner{max-width:620px}
+
+    .player-message strong{
+      display:block;
+      font-size:1.15rem;
+      margin-bottom:8px;
+    }
+
+    .player-message p{
+      margin-bottom:14px;
+      color:#f0df9a;
+    }
+
+    .official-link-wrap{
+      display:flex;
+      justify-content:flex-start;
+      margin-top:14px;
+    }
+
+    .tabs{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .tab-btn,
+    .cta,
+    .ghost-btn{
+      appearance:none;
+      border:1px solid var(--gold);
+      background:var(--green);
+      color:#fff8dd;
+      padding:11px 16px;
+      border-radius:999px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s ease;
+      font-size:.95rem;
+      line-height:1.2;
+      box-shadow:none;
+    }
+
+    .tab-btn:hover,
+    .tab-btn:focus-visible,
+    .tab-btn.active,
+    .cta:hover,
+    .cta:focus-visible,
+    .ghost-btn:hover,
+    .ghost-btn:focus-visible{
+      background:var(--gold);
+      color:#060606;
+      outline:none;
+    }
+
+    .official-link{margin-top:16px}
+
+    .section-note{
+      margin-top:14px;
+      color:#eddc9d;
+      font-size:.96rem;
+      border-left:3px solid var(--gold);
+      padding-left:12px;
+    }
+
+    .audio-card{
+      width:100%;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(0,0,0,.35);
+      padding:18px;
+    }
+
+    .audio-card h3{
+      font-size:1.2rem;
+      margin-bottom:6px;
+    }
+
+    .audio-card p{
+      color:#e7d8a0;
+      margin-bottom:14px;
+    }
+
+    .audio-embed,
+    .audio-fallback{
+      width:100%;
+      min-height:94px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:#090909;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+    }
+
+    .audio-embed iframe{
+      width:100%;
+      min-height:94px;
+      border:0;
+      background:transparent;
+    }
+
+    .audio-fallback{
+      display:none;
+      text-align:center;
+      color:#f0df9a;
+    }
+
+    .audio-fallback.show{display:flex}
+
+    .grid-cards{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:16px;
+      margin-top:20px;
+    }
+
+    .video-card{
+      grid-column:span 6;
+      background:linear-gradient(180deg, rgba(15,15,15,.96), rgba(9,9,9,.96));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+
+    .video-card h3{
+      font-size:1.06rem;
+      margin-bottom:12px;
+    }
+
+    .video-embed{
+      aspect-ratio:16/9;
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+      background:#000;
+      margin-bottom:12px;
+    }
+
+    .video-embed iframe{
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    .card-copy{
+      color:#eadb9e;
+      font-size:.94rem;
+    }
+
+    .replay-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.4fr) minmax(260px,.75fr);
+      gap:18px;
+      align-items:start;
+    }
+
+    .replay-main{display:flex;flex-direction:column}
+
+    .thumb-list{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      max-height:560px;
+      overflow:auto;
+      padding-right:4px;
+    }
+
+    .thumb-btn{
+      display:grid;
+      grid-template-columns:128px 1fr;
+      gap:12px;
+      align-items:center;
+      padding:10px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:#0a0a0a;
+      color:var(--gold);
+      cursor:pointer;
+      transition:.2s ease;
+      text-align:left;
+    }
+
+    .thumb-btn:hover,
+    .thumb-btn:focus-visible,
+    .thumb-btn.active{
+      background:rgba(15,106,61,.22);
+      outline:none;
+    }
+
+    .thumb-preview{
+      aspect-ratio:16/9;
+      background:#000;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+
+    .thumb-preview img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .thumb-title{
+      display:block;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+
+    .thumb-meta{
+      display:block;
+      font-size:.88rem;
+      color:#e7d8a0;
+    }
+
+    .archive-box,
+    .contact-box{
+      text-align:center;
+    }
+
+    .button-row{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .ghost-btn{
+      background:transparent;
+      color:var(--gold);
+    }
+
+    .site-footer{
+      border-top:1px solid var(--border);
+      padding:26px 0 44px;
+      background:#060606;
+      margin-top:42px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .footer-copy{
+      color:#e7d89f;
+      font-size:.92rem;
+    }
+
+    @media (max-width: 980px){
+      .video-card{grid-column:span 12}
+      .replay-layout{grid-template-columns:1fr}
+      .thumb-list{grid-template-columns:repeat(2,1fr);max-height:none}
+      .thumb-btn{grid-template-columns:1fr}
+    }
+
+    @media (max-width: 760px){
+      :root{--header-h:76px}
+      .container{width:min(var(--max), calc(100% - 22px))}
+      .header-inner{align-items:flex-start;flex-direction:column}
+      .main-nav{justify-content:flex-start}
+      .section-card{padding:18px}
+      .tabs{gap:8px}
+      .tab-btn,.cta,.ghost-btn{width:100%;justify-content:center;text-align:center}
+      .thumb-list{grid-template-columns:1fr}
+      .official-link-wrap{justify-content:stretch}
+      .official-link-wrap .cta{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="TitanCore Holdings home">
+        <div class="brand-logo">TH</div>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-sub">Media Content</div>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        about.htmlAbout</a>
+        <a href="news-media.html">News & Media</a>
+        <a href="media-content.html" class="active" aria-current="page">Media Content</a>
+        <a href="news-archive.html">Archive</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">TitanCore Holdings</div>
+        <h1>Media Content</h1>
+        <p>Monitor live market television, business audio, future TitanCore studio streams, on-demand business video channels, and replay access in one black, gold, and green TitanCore media desk.</p>
+      </div>
+    </section>
+
+    <section class="section" id="live-business-tv">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2>1. Live Business TV Desk</h2>
+              <p>One main player keeps visitors inside the page. Tap a channel below to swap the feed inside the same player.</p>
+            </div>
+          </div>
+
+          <div class="player-shell video" id="tv-player-shell">
+            <iframe
+              id="tv-player"
+              src="https://www.youtube.com/embed/iEpJwprxDdk?autoplay=0&rel=0"
+              title="Bloomberg TV"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+
+            <div class="player-message" id="tv-message">
+              <div class="player-message-inner">
+                <strong>This source may block inside playback.</strong>
+                <p>Use the official source button.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabs" id="tv-tabs"></div>
+
+          <div class="official-link-wrap official-link">
+            https://www.youtube.com/@BloombergTV/streams">Open Official Source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="live-business-audio">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2>2. Live Business Audio Desk</h2>
+              <p>One audio area only. Switch stations using the tabs below and keep the interface clean for mobile and desktop listeners.</p>
+            </div>
+          </div>
+
+          <div class="player-shell audio">
+            <div class="audio-card">
+              <h3 id="audio-title">Bloomberg Radio</h3>
+              <p id="audio-copy">Live radio and market talk in one place. If a station limits playback, open the official source below.</p>
+
+              <div class="audio-embed" id="audio-embed-wrap">
+                <iframe
+                  id="audio-player"
+                  src="https://www.youtube.com/embed/RJYpKBybG7U?autoplay=0&rel=0"
+                  title="Bloomberg Radio"
+                  loading="lazy"
+                  allowfullscreen
+                  referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+              </div>
+
+              <div class="audio-fallback" id="audio-message">This source may block inside playback. Use the official source button.</div>
+            </div>
+          </div>
+
+          <div class="tabs" id="audio-tabs"></div>
+
+          <div class="official-link-wrap official-link">
+            https://www.youtube.com/@BloombergTV/streams">Open Official Source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="titan-core-studio">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2>3. TitanCore Studio</h2>
+              <p>TitanCore Studio content coming soon. Public business video placeholder shown for now.</p>
+            </div>
+          </div>
+
+          <div class="player-shell video" id="studio-player-shell">
+            <iframe
+              id="studio-player"
+              src="https://www.youtube.com/embed/5r0znE5-CwQ?autoplay=0&rel=0"
+              title="TitanCore Studio Live"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+
+            <div class="player-message" id="studio-message">
+              <div class="player-message-inner">
+                <strong>This source may block inside playback.</strong>
+                <p>Use the official source button.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabs" id="studio-tabs"></div>
+
+          <div class="official-link-wrap official-link">
+            <a id="studio-official" class="cta" href="https://www.youtube.com/reuters" target="_blank" rel="noopener noreferrer">Open Official Source</a>
+          </div>
+
+          <p class="section-note">Reserved for future CEO briefings, guest entrepreneur interviews, business investor talks, young entrepreneur conversations, subsidiary updates, and TitanCore company media.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="studio-audio">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2>4. TitanCore Studio Audio</h2>
+              <p>This is the future listening desk for TitanCore Studio. For now, clean business audio placeholders are used in one shared player area.</p>
+            </div>
+          </div>
+
+          <div class="player-shell audio">
+            <div class="audio-card">
+              <h3 id="studio-audio-title">Studio Live Audio</h3>
+              <p id="studio-audio-copy">Future TitanCore studio listening experience with clean placeholder programming.</p>
+
+              <div class="audio-embed" id="studio-audio-embed-wrap">
+                <iframe
+                  id="studio-audio-player"
+                  src="https://www.youtube.com/embed/6JwkaLt9pf8?autoplay=0&rel=0"
+                  title="Studio Live Audio"
+                  loading="lazy"
+                  allowfullscreen
+                  referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+              </div>
+
+              <div class="audio-fallback" id="studio-audio-message">This source may block inside playback. Use the official source button.</div>
+            </div>
+          </div>
+
+          <div class="tabs" id="studio-audio-tabs"></div>
+
+          <div class="official-link-wrap official-link">
+            <a id="studio-audio-official" class="cta" href="https://www.youtube.com/reuters" target="_blank" rel="noopener noreferrer">Open Official Source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="business-video-channels">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2>5. Business Video Channels</h2>
+              <p>Video cards only. No article cards, no open story links, and no unrelated entertainment content.</p>
+            </div>
+          </div>
+
+          <div class="grid-cards">
+            <article class="video-card">
+              <h3>Market & Stock Video</h3>
+              <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/Ti-4h2j3r7o?rel=0" title="Market & Stock Video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p class="card-copy">Business market analysis placeholder focused on public investing, equities, and macro signals.</p>
+            </article>
+
+            <article class="video-card">
+              <h3>Bitcoin & Crypto Video</h3>
+              <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/hM8yT0N8g4g?rel=0" title="Bitcoin & Crypto Video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p class="card-copy">Crypto and digital-asset programming with a business and market education angle.</p>
+            </article>
+
+            <article class="video-card">
+              <h3>Oil & Energy Video</h3>
+              <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/ZtV1Q6F7N4A?rel=0" title="Oil & Energy Video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p class="card-copy">Energy market and commodities placeholder content for oil, power, and industry watchers.</p>
+            </article>
+
+            <article class="video-card">
+              <h3>Real Estate & Economy Video</h3>
+              <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/nM8dMju5qk0?rel=0" title="Real Estate & Economy Video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p class="card-copy">Commercial real estate and economic education placeholder designed for investors and operators.</p>
+            </article>
+
+            <article class="video-card">
+              <h3>Auto & Marine Business Video</h3>
+              <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/Qn9t4VUXbPo?rel=0" title="Auto & Marine Business Video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p class="card-copy">Industry-business placeholder content tied to transportation, dealership trends, and marine markets.</p>
+            </article>
+
+            <article class="video-card">
+              <h3>Finance Education Video</h3>
+              <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/4j2emMn7UaI?rel=0" title="Finance Education Video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p class="card-copy">Finance education placeholder content for budgeting, wealth building, money habits, and investment basics.</p>
+            </article>
+
+            <article class="video-card">
+              <h3>Leadership / Business Growth Video</h3>
+              <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/k7qQ3g3ofJw?rel=0" title="Leadership / Business Growth Video" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+              <p class="card-copy">Leadership and growth placeholder content for founders, executives, and scaling teams.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="replay-video-desk">
+      <div class="container">
+        <div class="section-card">
+          <div class="section-header">
+            <div>
+              <h2>6. Replay Video Desk</h2>
+              <p>Past videos only. Use the replay thumbnails below to load a selected replay in the main player.</p>
+            </div>
+          </div>
+
+          <div class="replay-layout">
+            <div class="replay-main">
+              <div class="player-shell video">
+                <iframe
+                  id="replay-player"
+                  src="https://www.youtube.com/embed/Ti-4h2j3r7o?rel=0"
+                  title="Market Closing Replay"
+                  loading="lazy"
+                  allowfullscreen
+                  referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+              </div>
+            </div>
+
+            <div class="thumb-list" id="replay-thumbs"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="replay-archive">
+      <div class="container">
+        <div class="section-card archive-box">
+          <div class="section-header" style="justify-content:center; text-align:center;">
+            <div>
+              <h2>7. Replay Archive</h2>
+              <p>Archive starts from June 2026 going forward. Visitors can review past days by month and date: live TV replay, live audio replay, TitanCore Studio replay, CEO briefing replay, guest interview replay, and video channel category replay.</p>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <a class="cta" href="news-archive.html">Open Full Archive ›</a>
+            <a class="ghost-btn" href="news-media.html">News & Media ›</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact-titancore">
+      <div class="container">
+        <div class="section-card contact-box">
+          <div class="section-header" style="justify-content:center; text-align:center; margin-bottom:0;">
+            <div>
+              <h2>8. Contact TitanCore</h2>
+              <p>Contact us today</p>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <a class="cta" href="contact.html">Get In Touch ›</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <div class="brand-logo">TH</div>
+        <div>
+          <div class="brand-title">TitanCore Holdings</div>
+          <div class="brand-sub">Business media desk</div>
+        </div>
+      </div>
+      <p class="footer-copy">© 2026 TitanCore Holdings. Live media, studio placeholders, and replay access in one TitanCore interface.</p>
+    </div>
+  </footer>
+
+  <script>
+    const tvSources = [
+      { label: 'Bloomberg TV', src: 'https://www.youtube.com/embed/iEpJwprxDdk?autoplay=0&rel=0', official: 'https://www.youtube.com/@BloombergTV/streams', fallback: false },
+      { label: 'CNBC', src: 'https://www.youtube.com/embed/f0bM4VZenOA?autoplay=0&rel=0', official: 'https://www.youtube.com/@CNBCtelevision/videos', fallback: false },
+      { label: 'Yahoo Finance', src: '', official: 'https://finance.yahoo.com/video/', fallback: true },
+      { label: 'DW Global News', src: 'https://www.youtube.com/embed/V9KZGs1MtP4?autoplay=0&rel=0', official: 'https://www.youtube.com/@dwnews/live', fallback: false },
+      { label: 'Reuters Business', src: '', official: 'https://www.reuters.com/video/', fallback: true },
+      { label: 'BNN Bloomberg', src: 'https://www.youtube.com/embed/YOHVUTE0uPQ?autoplay=0&rel=0', official: 'https://www.youtube.com/@BNNBloomberg/videos', fallback: false }
+    ];
+
+    const audioSources = [
+      { label: 'Bloomberg Radio', src: 'https://www.youtube.com/embed/RJYpKBybG7U?autoplay=0&rel=0', official: 'https://www.youtube.com/@BloombergTV/streams', fallback: false, copy:'Live radio and market talk in one place. If a station limits playback, open the official source below.' },
+      { label: 'BBC World Service', src: '', official: 'https://www.bbc.com/audio/play/live/bbc_world_service', fallback: true, copy:'BBC World Service is linked here as a live global business-news listening option.' },
+      { label: 'Marketplace', src: '', official: 'https://www.marketplace.org/shows/marketplace/', fallback: true, copy:'Marketplace is included as a trusted business and economy listening source.' },
+      { label: 'CoinDesk Crypto', src: 'https://www.youtube.com/embed/hM8yT0N8g4g?autoplay=0&rel=0', official: 'https://www.youtube.com/@CoinDesk/videos', fallback: false, copy:'Crypto-focused market listening and digital asset updates.' },
+      { label: 'Yahoo Finance Audio', src: '', official: 'https://finance.yahoo.com/videos/', fallback: true, copy:'Yahoo Finance audio content may require the official source.' }
+    ];
+
+    const studioSources = [
+      { label: 'TitanCore Studio Live', src: 'https://www.youtube.com/embed/5r0znE5-CwQ?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=live+business+education', fallback: false },
+      { label: 'CEO Briefing Studio', src: 'https://www.youtube.com/embed/NsJSAlY8Smo?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=ceo+briefing+leadership+youtube', fallback: false },
+      { label: 'Entrepreneur Guest Studio', src: 'https://www.youtube.com/embed/tbnzAVRZ9Xc?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=entrepreneur+interview+business+youtube', fallback: false },
+      { label: 'Subsidiary Studio', src: 'https://www.youtube.com/embed/LB0YtqN0gkQ?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=business+subsidiary+operations+youtube', fallback: false }
+    ];
+
+    const studioAudioSources = [
+      { label: 'Studio Live Audio', src: 'https://www.youtube.com/embed/6JwkaLt9pf8?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=business+audio+education', fallback: false, copy:'Future TitanCore studio listening experience with clean placeholder programming.' },
+      { label: 'CEO Briefing Audio', src: 'https://www.youtube.com/embed/z9M0sRSeZt8?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=ceo+leadership+audio+business', fallback: false, copy:'Leadership and executive placeholder audio while TitanCore originals are prepared.' },
+      { label: 'Entrepreneur Guest Audio', src: 'https://www.youtube.com/embed/XAD9J5A9W8U?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=entrepreneur+talk+audio+business', fallback: false, copy:'Entrepreneur guest placeholder programming in one shared audio area.' },
+      { label: 'Subsidiary Update Audio', src: 'https://www.youtube.com/embed/aXJ7_3sVt7E?autoplay=0&rel=0', official: 'https://www.youtube.com/results?search_query=business+update+audio+education', fallback: false, copy:'Business update placeholder audio for future subsidiary reporting.' }
+    ];
+
+    const replayVideos = [
+      { label:'Market Closing Replay', src:'https://www.youtube.com/embed/Ti-4h2j3r7o?rel=0', thumb:'https://i.ytimg.com/vi/Ti-4h2j3r7o/hqdefault.jpg', meta:'Markets recap replay' },
+      { label:'Crypto Market Replay', src:'https://www.youtube.com/embed/hM8yT0N8g4g?rel=0', thumb:'https://i.ytimg.com/vi/hM8yT0N8g4g/hqdefault.jpg', meta:'Digital assets replay' },
+      { label:'Energy Desk Replay', src:'https://www.youtube.com/embed/ZtV1Q6F7N4A?rel=0', thumb:'https://i.ytimg.com/vi/ZtV1Q6F7N4A/hqdefault.jpg', meta:'Energy and commodities replay' },
+      { label:'Real Estate Replay', src:'https://www.youtube.com/embed/nM8dMju5qk0?rel=0', thumb:'https://i.ytimg.com/vi/nM8dMju5qk0/hqdefault.jpg', meta:'Economy and CRE replay' },
+      { label:'Leadership Replay', src:'https://www.youtube.com/embed/k7qQ3g3ofJw?rel=0', thumb:'https://i.ytimg.com/vi/k7qQ3g3ofJw/hqdefault.jpg', meta:'Leadership and growth replay' }
+    ];
+
+    function setupVideoTabs({sources, tabsId, iframeId, messageId, officialId}) {
+      const tabs = document.getElementById(tabsId);
+      const iframe = document.getElementById(iframeId);
+      const msg = document.getElementById(messageId);
+      const official = document.getElementById(officialId);
+
+      if (!tabs || !iframe || !msg || !official) return;
+
+      function activate(source, btn){
+        [...tabs.children].forEach(x => x.classList.remove('active'));
         btn.classList.add('active');
-        player.src = item.src;
-        player.title = item.label;
+        official.href = source.official;
+
+        if(source.fallback){
+          iframe.src = 'about:blank';
+          msg.classList.add('show');
+        } else {
+          iframe.src = source.src;
+          msg.classList.remove('show');
+        }
+
+        iframe.title = source.label;
+      }
+
+      tabs.innerHTML = '';
+
+      sources.forEach((source, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'tab-btn' + (index === 0 ? ' active' : '');
+        btn.textContent = source.label;
+        btn.addEventListener('click', () => activate(source, btn));
+        tabs.appendChild(btn);
       });
 
-      list.appendChild(btn);
-    });
-  }
+      if (sources.length && tabs.children.length) {
+        activate(sources[0], tabs.children[0]);
+      }
+    }
 
-  setupVideoTabs({sources:tvSources, tabsId:'tv-tabs', iframeId:'tv-player', messageId:'tv-message', officialId:'tv-official'});
-  setupAudioTabs({sources:audioSources, tabsId:'audio-tabs', iframeId:'audio-player', officialId:'audio-official', titleId:'audio-title', copyId:'audio-copy', fallbackId:'audio-message', embedWrapId:'audio-embed-wrap'});
-  setupVideoTabs({sources:studioSources, tabsId:'studio-tabs', iframeId:'studio-player', messageId:'studio-message', officialId:'studio-official'});
-  setupAudioTabs({sources:studioAudioSources, tabsId:'studio-audio-tabs', iframeId:'studio-audio-player', officialId:'studio-audio-official', titleId:'studio-audio-title', copyId:'studio-audio-copy', fallbackId:'studio-audio-message', embedWrapId:'studio-audio-embed-wrap'});
-  setupReplay();
-</script>
+    function setupAudioTabs({sources, tabsId, iframeId, officialId, titleId, copyId, fallbackId, embedWrapId}) {
+      const tabs = document.getElementById(tabsId);
+      const iframe = document.getElementById(iframeId);
+      const official = document.getElementById(officialId);
+      const title = document.getElementById(titleId);
+      const copy = document.getElementById(copyId);
+      const fallback = document.getElementById(fallbackId);
+      const embedWrap = document.getElementById(embedWrapId);
+
+      if (!tabs || !iframe || !official || !title || !copy || !fallback || !embedWrap) return;
+
+      function activate(source, btn){
+        [...tabs.children].forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+
+        title.textContent = source.label;
+        copy.textContent = source.copy || 'Business audio placeholder.';
+        official.href = source.official;
+
+        if(source.fallback){
+          iframe.src = 'about:blank';
+          fallback.classList.add('show');
+          embedWrap.style.display = 'none';
+        } else {
+          iframe.src = source.src;
+          fallback.classList.remove('show');
+          embedWrap.style.display = 'flex';
+        }
+
+        iframe.title = source.label;
+      }
+
+      tabs.innerHTML = '';
+
+      sources.forEach((source, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'tab-btn' + (index === 0 ? ' active' : '');
+        btn.textContent = source.label;
+        btn.addEventListener('click', () => activate(source, btn));
+        tabs.appendChild(btn);
+      });
+
+      if (sources.length && tabs.children.length) {
+        activate(sources[0], tabs.children[0]);
+      }
+    }
+
+    function setupReplay(){
+      const list = document.getElementById('replay-thumbs');
+      const player = document.getElementById('replay-player');
+
+      if (!list || !player) return;
+
+      list.innerHTML = '';
+
+      replayVideos.forEach((item, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'thumb-btn' + (index === 0 ? ' active' : '');
+
+        btn.innerHTML = 
+          <span class="thumb-preview">
+            ${item.thumb}
+          </span>
+          <span>
+            <span class="thumb-title">${item.label}</span>
+            <span class="thumb-meta">${item.meta}</span>
+          </span>
+        ;
+
+        btn.addEventListener('click', () => {
+          [...list.children].forEach(x => x.classList.remove('active'));
+          btn.classList.add('active');
+          player.src = item.src;
+          player.title = item.label;
+        });
+
+        list.appendChild(btn);
+      });
+    }
+
+    setupVideoTabs({
+      sources: tvSources,
+      tabsId: 'tv-tabs',
+      iframeId: 'tv-player',
+      messageId: 'tv-message',
+      officialId: 'tv-official'
+    });
+
+    setupAudioTabs({
+      sources: audioSources,
+      tabsId: 'audio-tabs',
+      iframeId: 'audio-player',
+      officialId: 'audio-official',
+      titleId: 'audio-title',
+      copyId: 'audio-copy',
+      fallbackId: 'audio-message',
+      embedWrapId: 'audio-embed-wrap'
+    });
+
+    setupVideoTabs({
+      sources: studioSources,
+      tabsId: 'studio-tabs',
+      iframeId: 'studio-player',
+      messageId: 'studio-message',
+      officialId: 'studio-official'
+    });
+
+    setupAudioTabs({
+      sources: studioAudioSources,
+      tabsId: 'studio-audio-tabs',
+      iframeId: 'studio-audio-player',
+      officialId: 'studio-audio-official',
+      titleId: 'studio-audio-title',
+      copyId: 'studio-audio-copy',
+      fallbackId: 'studio-audio-message',
+      embedWrapId: 'studio-audio-embed-wrap'
+    });
+
+    setupReplay();
+  </script>
+</body>
+</html>
