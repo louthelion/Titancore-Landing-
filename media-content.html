@@ -175,6 +175,16 @@
     .audio-card .card-body { display: flex; min-height: 350px; flex-direction: column; }
     .audio-card .archive-note { margin-top: auto; }
     .audio-status { min-height: 24px; margin: 8px 0 0; color: var(--gold-bright); font-size: 0.8rem; font-weight: 700; }
+    .audio-player-shell { width: 100%; margin: 22px 0 4px; padding: 12px; border: 1px solid var(--gold-line); border-radius: 18px; background: rgba(0, 0, 0, 0.46); box-shadow: 0 0 30px rgba(13, 153, 114, 0.12); }
+    .audio-player-shell iframe { width: 100%; height: 152px; border: 0; border-radius: 12px; background: #000; }
+    .audio-player-shell audio { width: 100%; min-height: 54px; accent-color: var(--green-bright); }
+    .audio-source-only { display: grid; min-height: 152px; place-items: center; padding: 24px; border: 1px dashed rgba(216, 181, 91, 0.36); border-radius: 12px; background: radial-gradient(circle, rgba(8, 116, 87, 0.18), transparent 72%); text-align: center; }
+    .audio-source-only p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+    .audio-source-name { margin: 10px 0 0; color: var(--muted); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .audio-card .audio-player-shell { margin-top: 18px; }
+    .audio-card .card-body { min-height: 590px; }
+    .studio-card .button { align-self: flex-start; margin-top: 18px; }
+    .placeholder-note { color: var(--gold-bright); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 
     .studio-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
     .studio-card { min-height: 330px; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; }
@@ -308,7 +318,7 @@
         <div class="section-heading">
           <p class="eyebrow">Daily Rotation • Audio Only</p>
           <h2 id="featuredAudioHeading">Today’s Featured Audio</h2>
-          <p>A spoken TitanCore business edition powered by browser speech synthesis. This section contains no video frame, video thumbnail, or external audio stream.</p>
+          <p>A selected public podcast/audio episode from the TitanCore audio rotation. This premium audio-only panel contains no live radio, live TV, video frame, or YouTube player.</p>
         </div>
         <article class="feature-card audio-feature" id="featuredAudioCard">
           <div class="audio-visual">
@@ -318,7 +328,7 @@
               </div>
               <p class="eyebrow">TitanCore Audio Desk</p>
               <div class="audio-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-              <p class="audio-status" id="featuredAudioStatus" aria-live="polite">Ready to play</p>
+              <p class="audio-status" id="featuredAudioStatus" aria-live="polite">Official episode ready</p>
             </div>
           </div>
           <div class="audio-copy">
@@ -330,9 +340,13 @@
               <span class="label" id="featuredAudioCategory"></span>
               <span class="label">Audio Only</span>
             </div>
+            <div class="audio-player-shell" id="featuredAudioPlayer" aria-label="Today’s official audio episode player"></div>
+            <p class="audio-source-name" id="featuredAudioSource"></p>
             <div class="button-row">
               <button class="button" id="playFeaturedAudio" type="button">Play Audio</button>
-              <button class="button secondary" id="stopFeaturedAudio" type="button">Stop Audio</button>
+              <button class="button secondary" id="stopFeaturedAudio" type="button">Stop</button>
+              <a class="button" id="featuredAudioOpen" href="#" target="_blank" rel="noopener">Open Audio Episode</a>
+              <a class="button secondary" href="media-archive.html">View Media Archive</a>
             </div>
             <div class="rotation-strip" aria-label="Media rotation schedule">
               <div class="rotation-item"><strong>Daily</strong><span>Fresh featured video and audio selection.</span></div>
@@ -361,7 +375,7 @@
         <div class="section-heading">
           <p class="eyebrow">Spoken Business Briefings • Audio Only</p>
           <h2 id="audioGalleryHeading">Audio Gallery</h2>
-          <p>Each card plays its own written business script through browser speech synthesis. There are no YouTube players, video frames, or video thumbnails in this gallery.</p>
+          <p>Browse real, completed public podcast/audio episodes by business subject. Official audio embeds and clean source links are used without live radio, live TV, YouTube players, video frames, or video thumbnails.</p>
         </div>
         <div class="audio-grid" id="audioGrid"></div>
       </div>
@@ -370,15 +384,16 @@
     <section class="section section-glow" id="titancore-studio" aria-labelledby="studioHeading">
       <div class="wrap">
         <div class="section-heading">
-          <p class="eyebrow">Future Original Programming</p>
+          <p class="eyebrow">Future Original Programming • Public Placeholders Active</p>
           <h2 id="studioHeading">TitanCore Studio</h2>
-          <p>A reserved home for future TitanCore-owned video and audio. These are clean coming-soon spaces—not inactive or broken media players.</p>
+          <p>A complete preview of TitanCore’s future original programming. Public business video and leadership/audio sources serve as clearly marked placeholders until TitanCore Studio launches.</p>
         </div>
         <div class="studio-grid">
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">CEO</div><h3>CEO Briefing</h3><p>Executive updates, strategic direction, and leadership communication from TitanCore Holdings.</p></div><span class="coming-soon">Coming Soon</span></article>
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">Q&amp;A</div><h3>Guest Entrepreneur Interview</h3><p>Conversations with business builders, operators, founders, and experienced entrepreneurs.</p></div><span class="coming-soon">Coming Soon</span></article>
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">TH</div><h3>Subsidiary Update</h3><p>Focused media updates from TitanCore companies, brands, initiatives, and operating teams.</p></div><span class="coming-soon">Coming Soon</span></article>
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">♫</div><h3>TitanCore Studio Audio</h3><p>Original audio-only briefings, interviews, lessons, and company editions produced by TitanCore.</p></div><span class="coming-soon">Coming Soon</span></article>
+          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">▶</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>TitanCore Studio Video</h3><p>A public business video placeholder for the future home of TitanCore-produced reports, interviews, and company programming.</p></div><a class="button" href="https://www.youtube.com/watch?v=lmyZMtPVodo" target="_blank" rel="noopener">Open Video Placeholder</a></article>
+          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">♫</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>TitanCore Studio Audio</h3><p>A public leadership podcast/audio episode placeholder for future original audio-only briefings and conversations.</p></div><a class="button" href="https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9" target="_blank" rel="noopener">Open Audio Placeholder</a></article>
+          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">CEO</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>CEO Briefing</h3><p>Executive updates, strategic direction, and leadership communication prepared for a future TitanCore-owned briefing series.</p></div><a class="button" href="https://open.spotify.com/episode/6sD5QAK5iK1NqHSBywQCqn" target="_blank" rel="noopener">Open Leadership Audio</a></article>
+          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">Q&amp;A</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>Guest Entrepreneur Interview</h3><p>Public entrepreneur and business-growth programming previews the future interview space for founders, builders, and operators.</p></div><a class="button" href="https://www.youtube.com/watch?v=lmyZMtPVodo" target="_blank" rel="noopener">Open Interview Placeholder</a></article>
+          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">TH</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>Subsidiary Update</h3><p>A future home for focused video and audio updates from TitanCore companies, brands, initiatives, and operating teams.</p></div><a class="button" href="media-archive.html">View Future Archive</a></article>
         </div>
       </div>
     </section>
@@ -443,6 +458,8 @@
         <a href="terms-of-use.html">Terms of Use</a>
         <a href="blogs.html">Blogs</a>
         <a href="feedback.html">Feedback</a>
+        <a href="media-archive.html">Media Archive</a>
+        <a href="news-media.html">News &amp; Media</a>
       </nav>
       <div class="social-links" aria-label="TitanCore social media">
         <a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">f</a>
@@ -461,7 +478,6 @@
         title: "Understanding the Stock Market and Business Movement",
         videoId: "98qfFzqDKR8",
         description: "A public business video edition focused on stocks, companies, market movement, and the signals that shape financial decisions.",
-        script: "Welcome to the TitanCore Market Audio Edition. Today we are watching stock market direction, company performance, investor sentiment, and the economic signals that can influence business decisions. Strong market awareness begins with context, patience, and disciplined review. This briefing is educational and does not provide financial advice.",
         cadence: "Daily Rotation"
       },
       {
@@ -471,7 +487,6 @@
         title: "Bitcoin, Blockchain, and Digital Asset Awareness",
         videoId: "pVZzgzYZdCA",
         description: "A public educational video covering Bitcoin, blockchain, digital assets, market cycles, and risk awareness.",
-        script: "Welcome to the TitanCore Bitcoin and Crypto Audio Edition. Today we are reviewing Bitcoin movement, blockchain activity, digital asset adoption, regulation, and market risk. Crypto markets can move quickly, so careful research, source verification, and risk discipline remain essential. This briefing is educational and does not provide financial advice.",
         cadence: "Daily Rotation"
       },
       {
@@ -481,7 +496,6 @@
         title: "Oil, Energy, and the Business Cost Chain",
         videoId: "GtaoP0skPWc",
         description: "A public energy edition examining oil, gas, commodities, production, and the relationship between energy and business costs.",
-        script: "Welcome to the TitanCore Oil and Energy Audio Edition. Today we are tracking oil, gas, production, supply conditions, and commodity prices. Energy movement can affect transportation, inflation, manufacturing, and household costs, making it an important part of business awareness.",
         cadence: "Weekly Focus"
       },
       {
@@ -491,7 +505,6 @@
         title: "Housing, Interest Rates, and Economic Pressure",
         videoId: "bNpx7gpSqbY",
         description: "A public real estate and economy video focused on housing, rent, property, interest rates, and changing economic conditions.",
-        script: "Welcome to the TitanCore Real Estate and Economy Audio Edition. Today we are focused on housing supply, rent, property values, mortgage rates, and economic pressure. These signals can affect families, investors, builders, and local businesses in different ways.",
         cadence: "Weekly Focus"
       },
       {
@@ -501,7 +514,6 @@
         title: "Auto, Marine, and Transportation Business Trends",
         videoId: "EulhKrrfMnw",
         description: "A public business edition exploring automotive, marine, transportation, dealership, and marketplace trends.",
-        script: "Welcome to the TitanCore Auto and Marine Business Audio Edition. Today we are watching vehicle demand, marine activity, inventory, financing, transportation costs, and marketplace opportunity. Operators can use these signals to ask better questions about customers, pricing, and changing demand.",
         cadence: "Monthly Feature"
       },
       {
@@ -511,7 +523,6 @@
         title: "Building Stronger Everyday Financial Decisions",
         videoId: "Qh-M3_L4xYk",
         description: "A public educational video focused on money, credit, funding, capital, budgeting, and financial decision-making.",
-        script: "Welcome to the TitanCore Finance Education Audio Edition. Today we are reviewing budgeting, credit, funding, capital, cash flow, and everyday money habits. Financial strength is supported by accurate numbers, clear priorities, responsible planning, and consistent review.",
         cadence: "Weekly Focus"
       },
       {
@@ -521,8 +532,101 @@
         title: "Leadership Discipline and Sustainable Business Growth",
         videoId: "lmyZMtPVodo",
         description: "A public leadership video with lessons for founders, operators, teams, entrepreneurs, and long-term business growth.",
-        script: "Welcome to the TitanCore Leadership and Business Growth Audio Edition. Today we are focused on decision discipline, team communication, customer value, responsible execution, and long-term growth. Strong leadership is built through clarity, accountability, learning, and consistent action.",
         cadence: "Weekly Focus"
+      }
+    ];
+
+    const audioEditions = [
+      {
+        category: "Market",
+        title: "Market Audio Edition",
+        description: "A public podcast/audio episode about stocks, companies, markets, and business movement.",
+        date: "June 2026",
+        type: "audio",
+        embedType: "iframe",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r",
+        sourceName: "Thoughts on the Market • A Thematic Look at Market Volatility",
+        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
+      },
+      {
+        category: "Bitcoin & Crypto",
+        title: "Bitcoin & Crypto Audio Edition",
+        description: "A public podcast/audio episode about Bitcoin, crypto markets, adoption, risk, and digital assets.",
+        date: "June 2026",
+        type: "audio",
+        embedType: "iframe",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G",
+        sourceName: "Crypto Curious • The OG’s Reunite to Talk Markets and Crypto",
+        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
+      },
+      {
+        category: "Oil & Energy",
+        title: "Oil & Energy Audio Edition",
+        description: "A public podcast/audio episode about oil, gas, energy policy, production, and business costs.",
+        date: "June 2026",
+        type: "audio",
+        embedType: "iframe",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/2fOMGdpdKQWLFfXvFGa8B8?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/2fOMGdpdKQWLFfXvFGa8B8",
+        sourceName: "POLITICO Energy • The State of U.S. Oil and Gas",
+        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
+      },
+      {
+        category: "Real Estate & Economy",
+        title: "Real Estate & Economy Audio Edition",
+        description: "A public podcast/audio episode about property, housing economics, investment, and market conditions.",
+        date: "June 2026",
+        type: "audio",
+        embedType: "iframe",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz",
+        sourceName: "Generations of Wealth • Creative Real Estate Success",
+        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
+      },
+      {
+        category: "Auto & Marine Business",
+        title: "Auto & Marine Business Audio Edition",
+        description: "A public podcast/audio episode about automotive retail, dealership operations, marine technology, and transportation business.",
+        date: "June 2026",
+        type: "audio",
+        embedType: "iframe",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/6IUvRq66quGfIWGagbS7la?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/6IUvRq66quGfIWGagbS7la",
+        sourceName: "Car Dealership Guy Podcast • The Lead Response Crisis Hurting Dealers",
+        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
+      },
+      {
+        category: "Finance Education",
+        title: "Finance Education Audio Edition",
+        description: "A public podcast/audio episode about saving, investing, financial habits, and stronger everyday money decisions.",
+        date: "June 2026",
+        type: "audio",
+        embedType: "iframe",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX",
+        sourceName: "BiggerPockets Money • Supercharging Your Savings",
+        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
+      },
+      {
+        category: "Leadership / Business Growth",
+        title: "Leadership / Business Growth Audio Edition",
+        description: "A public podcast/audio episode about leadership mindset, entrepreneurship, teams, and sustainable business growth.",
+        date: "June 2026",
+        type: "audio",
+        embedType: "iframe",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9",
+        sourceName: "Inside Strategic Coach • The Mindset That Makes 10x Growth Feel Easy",
+        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
       }
     ];
 
@@ -531,7 +635,7 @@
     const today = new Date();
     const dayIndex = Math.floor(new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime() / 86400000);
     const featuredVideo = mediaEditions[dayIndex % mediaEditions.length];
-    const featuredAudio = mediaEditions[(dayIndex + 3) % mediaEditions.length];
+    const featuredAudio = audioEditions[(dayIndex + 3) % audioEditions.length];
     const dateLabel = today.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
     function youtubeEmbed(item) {
@@ -556,10 +660,13 @@
       document.getElementById("featuredVideoCategory").textContent = featuredVideo.videoCategory;
       document.getElementById("featuredVideoSource").href = sourceUrl(featuredVideo);
 
-      document.getElementById("featuredAudioTitle").textContent = featuredAudio.audioCategory;
+      document.getElementById("featuredAudioTitle").textContent = featuredAudio.title;
       document.getElementById("featuredAudioDescription").textContent = featuredAudio.description;
-      document.getElementById("featuredAudioDate").textContent = dateLabel;
+      document.getElementById("featuredAudioDate").textContent = featuredAudio.date;
       document.getElementById("featuredAudioCategory").textContent = featuredAudio.category;
+      document.getElementById("featuredAudioSource").textContent = featuredAudio.sourceName;
+      document.getElementById("featuredAudioOpen").href = featuredAudio.officialUrl;
+      renderAudioSource(document.getElementById("featuredAudioPlayer"), featuredAudio, "Today’s featured audio episode");
     }
 
     function createVideoCards() {
@@ -617,9 +724,35 @@
       });
     }
 
+    function renderAudioSource(container, item, title) {
+      container.replaceChildren();
+      if (item.embedType === "audio" && item.audioUrl) {
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.preload = "metadata";
+        audio.src = item.audioUrl;
+        audio.setAttribute("aria-label", title);
+        container.appendChild(audio);
+        return;
+      }
+      if (item.embedType === "iframe" && item.iframeUrl) {
+        const iframe = document.createElement("iframe");
+        iframe.src = item.iframeUrl;
+        iframe.title = title;
+        iframe.loading = "lazy";
+        iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+        container.appendChild(iframe);
+        return;
+      }
+      const fallback = document.createElement("div");
+      fallback.className = "audio-source-only";
+      fallback.innerHTML = `<p>This publisher provides the completed episode on its official audio page.</p>`;
+      container.appendChild(fallback);
+    }
+
     function createAudioCards() {
       const grid = document.getElementById("audioGrid");
-      mediaEditions.forEach((item, index) => {
+      audioEditions.forEach((item, index) => {
         const article = document.createElement("article");
         article.className = "gallery-card audio-card";
         article.id = `audioCard${index}`;
@@ -629,71 +762,76 @@
               <div class="audio-symbol">${iconSvg}</div>
               <p class="eyebrow">Audio-Only Edition</p>
               ${barsMarkup}
-              <p class="audio-status" id="audioStatus${index}" aria-live="polite">Ready to play</p>
+              <p class="audio-status" id="audioStatus${index}" aria-live="polite">Official episode ready</p>
             </div>
           </div>
           <div class="card-body">
-            <p class="eyebrow">${item.audioCategory}</p>
-            <h3>${item.audioCategory}</h3>
+            <p class="eyebrow">${item.category}</p>
+            <h3>${item.title}</h3>
             <p>${item.description}</p>
             <div class="meta">
-              <span class="label">${item.audioCategory}</span>
-              <span class="label">${dateLabel}</span>
+              <span class="label">${item.category}</span>
+              <span class="label">${item.date}</span>
               <span class="label">Audio Only</span>
             </div>
+            <div class="audio-player-shell" id="audioPlayer${index}" aria-label="${item.title} official episode player"></div>
+            <p class="audio-source-name">${item.sourceName}</p>
             <div class="button-row">
               <button class="button play-audio" type="button" data-audio-index="${index}">Play Audio</button>
-              <button class="button secondary stop-audio" type="button">Stop</button>
+              <button class="button secondary stop-audio" type="button" data-audio-index="${index}">Stop</button>
+              <a class="button" href="${item.officialUrl}" target="_blank" rel="noopener">Open Audio Episode</a>
+              <a class="button secondary" href="media-archive.html">View Archive</a>
             </div>
-            <div class="archive-note">Archive note: this spoken edition has its own category script and belongs in the Media Archive as audio—not video.</div>
+            <div class="archive-note">Archive note: ${item.archiveNote}</div>
           </div>`;
         grid.appendChild(article);
+        renderAudioSource(document.getElementById(`audioPlayer${index}`), item, item.title);
       });
     }
 
-    let activeAudioCard = null;
-    let activeStatus = null;
-
-    function stopSpeech(message = "Stopped") {
-      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-      if (activeAudioCard) activeAudioCard.classList.remove("is-playing");
-      if (activeStatus) activeStatus.textContent = message;
-      activeAudioCard = null;
-      activeStatus = null;
+    function activateAudioCard(card, status, player) {
+      document.querySelectorAll(".audio-card.is-playing, #featuredAudioCard.is-playing").forEach((item) => item.classList.remove("is-playing"));
+      card.classList.add("is-playing");
+      status.textContent = "Use the play control in the official audio player.";
+      const control = player.querySelector("audio, iframe, a");
+      if (control) {
+        control.focus({ preventScroll: true });
+        player.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      if (control instanceof HTMLMediaElement) control.play().catch(() => {});
     }
 
-    function speakScript(script, card, status) {
-      stopSpeech();
-      if (!("speechSynthesis" in window)) {
-        status.textContent = "Speech playback is not supported by this browser.";
-        return;
+    function stopAudio(item, card, status, player, title) {
+      const media = player.querySelector("audio");
+      if (media) {
+        media.pause();
+        media.currentTime = 0;
+      } else {
+        renderAudioSource(player, item, title);
       }
-      const utterance = new SpeechSynthesisUtterance(script);
-      utterance.rate = 0.92;
-      utterance.pitch = 1;
-      utterance.volume = 1;
-      activeAudioCard = card;
-      activeStatus = status;
-      card.classList.add("is-playing");
-      status.textContent = "Playing audio edition…";
-      utterance.onend = () => stopSpeech("Audio edition complete");
-      utterance.onerror = () => stopSpeech("Audio playback stopped");
-      window.speechSynthesis.speak(utterance);
+      card.classList.remove("is-playing");
+      status.textContent = "Stopped — official episode ready";
     }
 
     function bindAudioControls() {
       const featuredCard = document.getElementById("featuredAudioCard");
       const featuredStatus = document.getElementById("featuredAudioStatus");
-      document.getElementById("playFeaturedAudio").addEventListener("click", () => speakScript(featuredAudio.script, featuredCard, featuredStatus));
-      document.getElementById("stopFeaturedAudio").addEventListener("click", () => stopSpeech());
+      const featuredPlayer = document.getElementById("featuredAudioPlayer");
+      document.getElementById("playFeaturedAudio").addEventListener("click", () => activateAudioCard(featuredCard, featuredStatus, featuredPlayer));
+      document.getElementById("stopFeaturedAudio").addEventListener("click", () => stopAudio(featuredAudio, featuredCard, featuredStatus, featuredPlayer, "Today’s featured audio episode"));
 
       document.querySelectorAll(".play-audio").forEach((button) => {
         button.addEventListener("click", () => {
           const index = Number(button.dataset.audioIndex);
-          speakScript(mediaEditions[index].script, document.getElementById(`audioCard${index}`), document.getElementById(`audioStatus${index}`));
+          activateAudioCard(document.getElementById(`audioCard${index}`), document.getElementById(`audioStatus${index}`), document.getElementById(`audioPlayer${index}`));
         });
       });
-      document.querySelectorAll(".stop-audio").forEach((button) => button.addEventListener("click", () => stopSpeech()));
+      document.querySelectorAll(".stop-audio").forEach((button) => {
+        button.addEventListener("click", () => {
+          const index = Number(button.dataset.audioIndex);
+          stopAudio(audioEditions[index], document.getElementById(`audioCard${index}`), document.getElementById(`audioStatus${index}`), document.getElementById(`audioPlayer${index}`), audioEditions[index].title);
+        });
+      });
     }
 
     function bindMenu() {
@@ -731,7 +869,6 @@
     bindAudioControls();
     bindMenu();
     document.getElementById("footerYear").textContent = new Date().getFullYear();
-    window.addEventListener("beforeunload", () => { if ("speechSynthesis" in window) window.speechSynthesis.cancel(); });
   </script>
 </body>
 </html>
