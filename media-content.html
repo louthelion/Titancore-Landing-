@@ -159,12 +159,15 @@
     .audio-source-only { display: grid; min-height: 152px; place-items: center; padding: 24px; border: 1px dashed rgba(216, 181, 91, 0.36); border-radius: 12px; background: radial-gradient(circle, rgba(8, 116, 87, 0.18), transparent 72%); text-align: center; }
     .audio-source-only p { margin: 0; color: var(--muted); font-size: 0.9rem; }
     .audio-card .audio-player-shell { margin-top: 18px; }
-    .studio-card .button { align-self: flex-start; margin-top: 18px; }
     .placeholder-note { color: var(--gold-bright); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 
-    .studio-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-    .studio-card { min-height: 330px; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; }
-    .studio-icon { width: 72px; height: 72px; display: grid; place-items: center; margin-bottom: 34px; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-bright); background: rgba(8, 116, 87, 0.22); font-family: var(--serif); font-size: 1.25rem; }
+    .studio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .studio-card { min-width: 0; overflow: hidden; }
+    .studio-card-copy { padding: 25px; }
+    .studio-card-copy p { color: var(--muted); }
+    .studio-card .video-frame { border-width: 0 0 1px; border-radius: 0; }
+    .studio-audio-player { margin: 0; border-width: 0 0 1px; border-radius: 0; }
+    .studio-audio-player iframe { height: 152px; }
     .coming-soon { display: inline-flex; align-self: flex-start; padding: 6px 10px; border: 1px solid rgba(216, 181, 91, 0.32); border-radius: 999px; color: var(--gold-bright); font-size: 0.67rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
 
     .archive-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; align-items: start; }
@@ -198,7 +201,7 @@
       .wrap { width: min(100% - 28px, var(--max-width)); }
       .section { padding: 72px 0; }
       .hero { min-height: auto; padding: 80px 0; }
-      .hero-actions, .gallery-grid, .audio-grid { grid-template-columns: 1fr; }
+      .hero-actions, .gallery-grid, .audio-grid, .studio-grid { grid-template-columns: 1fr; }
       .hero-action { min-height: 82px; }
       .archive-structure { grid-template-columns: 1fr; }
       .brand-name { letter-spacing: 0.035em; }
@@ -279,7 +282,7 @@
               <span class="label">Video Edition</span>
             </div>
             <div class="button-row">
-              <a class="button" id="featuredVideoSource" href="#" target="_blank" rel="noopener">Open Video Source</a>
+              <a class="button" href="#video-gallery">Browse More Videos</a>
               <a class="button secondary" href="media-archive.html">View Media Archive</a>
             </div>
           </div>
@@ -305,7 +308,7 @@
             </div>
             <div class="audio-player-shell" id="featuredAudioPlayer" aria-label="Today’s official audio episode player"></div>
             <div class="button-row">
-              <a class="button" id="featuredAudioOpen" href="#" target="_blank" rel="noopener">Open Audio Episode</a>
+              <a class="button" href="#audio-gallery">Browse More Audio</a>
               <a class="button secondary" href="media-archive.html">View Media Archive</a>
             </div>
             <div class="archive-note" id="featuredAudioArchiveNote"></div>
@@ -345,11 +348,36 @@
           <p>A complete preview of TitanCore’s future original programming. Public business video and leadership/audio sources serve as clearly marked placeholders until TitanCore Studio launches.</p>
         </div>
         <div class="studio-grid">
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">▶</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>TitanCore Studio Video</h3><p>A public business video placeholder for the future home of TitanCore-produced reports, interviews, and company programming.</p></div><a class="button" href="https://www.youtube.com/watch?v=lmyZMtPVodo" target="_blank" rel="noopener">Open Video Placeholder</a></article>
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">♫</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>TitanCore Studio Audio</h3><p>A public leadership podcast/audio episode placeholder for future original audio-only briefings and conversations.</p></div><a class="button" href="https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9" target="_blank" rel="noopener">Open Audio Placeholder</a></article>
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">CEO</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>CEO Briefing</h3><p>Executive updates, strategic direction, and leadership communication prepared for a future TitanCore-owned briefing series.</p></div><a class="button" href="https://open.spotify.com/episode/6sD5QAK5iK1NqHSBywQCqn" target="_blank" rel="noopener">Open Leadership Audio</a></article>
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">Q&amp;A</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>Guest Entrepreneur Interview</h3><p>Public entrepreneur and business-growth programming previews the future interview space for founders, builders, and operators.</p></div><a class="button" href="https://www.youtube.com/watch?v=lmyZMtPVodo" target="_blank" rel="noopener">Open Interview Placeholder</a></article>
-          <article class="studio-card"><div><div class="studio-icon" aria-hidden="true">TH</div><p class="placeholder-note">Placeholder until TitanCore Studio launches.</p><h3>Subsidiary Update</h3><p>A future home for focused video and audio updates from TitanCore companies, brands, initiatives, and operating teams.</p></div><a class="button" href="media-archive.html">View Future Archive</a></article>
+          <article class="studio-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/lmyZMtPVodo?rel=0&amp;playsinline=1" title="Temporary TitanCore Studio business video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="studio-card-copy"><p class="placeholder-note">Temporary in-page video • TitanCore original coming later</p><h3>TitanCore Studio Video</h3><p>Watch a temporary business and leadership program here now. This player will become the home of TitanCore-produced reports, live content, interviews, and company programming.</p></div>
+          </article>
+          <article class="studio-card">
+            <div class="audio-player-shell studio-audio-player">
+              <iframe src="https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&amp;theme=0" title="Temporary TitanCore Studio leadership audio" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+            <div class="studio-card-copy"><p class="placeholder-note">Temporary in-page audio • TitanCore original coming later</p><h3>TitanCore Studio Audio</h3><p>Listen without leaving TitanCore. This temporary leadership episode holds the space for future original audio briefings and studio conversations.</p></div>
+          </article>
+          <article class="studio-card">
+            <div class="audio-player-shell studio-audio-player">
+              <iframe src="https://open.spotify.com/embed/episode/6sD5QAK5iK1NqHSBywQCqn?utm_source=generator&amp;theme=0" title="Temporary CEO briefing audio" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+            <div class="studio-card-copy"><p class="placeholder-note">Temporary in-page audio • TitanCore CEO briefing coming later</p><h3>CEO Briefing Audio</h3><p>Play a temporary executive leadership briefing directly on this page. TitanCore CEO updates, strategic direction, and company messages will replace it.</p></div>
+          </article>
+          <article class="studio-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/bNpx7gpSqbY?rel=0&amp;playsinline=1" title="Temporary entrepreneur interview video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="studio-card-copy"><p class="placeholder-note">Temporary in-page interview • TitanCore Q&amp;A coming later</p><h3>Q&amp;A / QNR for Entrepreneurs</h3><p>Watch a temporary entrepreneur-focused interview here now. Future TitanCore conversations with founders, builders, and operators will replace this program.</p></div>
+          </article>
+          <article class="studio-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube-nocookie.com/embed/qp0HIF3SfI4?rel=0&amp;playsinline=1" title="Temporary TitanCore subsidiary update video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="studio-card-copy"><p class="placeholder-note">Temporary in-page video • TitanCore updates coming later</p><h3>Subsidiary Update Video</h3><p>This active player previews the future home of focused video updates from TitanCore companies, brands, initiatives, and operating teams.</p></div>
+          </article>
         </div>
       </div>
     </section>
@@ -602,23 +630,17 @@
       return iframe;
     }
 
-    function sourceUrl(item) {
-      return `https://www.youtube.com/watch?v=${item.videoId}`;
-    }
-
     function setFeaturedEditions() {
       document.getElementById("featuredVideoFrame").appendChild(youtubeEmbed(featuredVideo));
       document.getElementById("featuredVideoTitle").textContent = featuredVideo.title;
       document.getElementById("featuredVideoDescription").textContent = featuredVideo.description;
       document.getElementById("featuredVideoDate").textContent = dateLabel;
       document.getElementById("featuredVideoCategory").textContent = featuredVideo.videoCategory;
-      document.getElementById("featuredVideoSource").href = sourceUrl(featuredVideo);
 
       document.getElementById("featuredAudioTitle").textContent = featuredAudio.title;
       document.getElementById("featuredAudioDescription").textContent = featuredAudio.description;
       document.getElementById("featuredAudioDate").textContent = featuredAudio.date;
       document.getElementById("featuredAudioCategory").textContent = featuredAudio.category;
-      document.getElementById("featuredAudioOpen").href = featuredAudio.officialUrl;
       document.getElementById("featuredAudioArchiveNote").textContent = `Archive note: ${featuredAudio.archiveNote}`;
       renderAudioSource(document.getElementById("featuredAudioPlayer"), featuredAudio, "Today’s featured audio episode");
     }
@@ -646,7 +668,7 @@
             <span class="label">${item.cadence}</span>
           </div>
           <div class="button-row">
-            <a class="button" href="${sourceUrl(item)}" target="_blank" rel="noopener">Open Video Source</a>
+            <a class="button" href="#featuredVideoHeading">Watch Featured Video</a>
             <a class="button secondary" href="media-archive.html">View Archive</a>
           </div>
           <div class="archive-note">Archive note: save this video edition by day, month, year, and category when the gallery rotation advances.</div>`;
@@ -721,7 +743,7 @@
             </div>
             <div class="audio-player-shell" id="audioPlayer${index}" aria-label="${item.title} official episode player"></div>
             <div class="button-row">
-              <a class="button" href="${item.officialUrl}" target="_blank" rel="noopener">Open Audio Episode</a>
+              <a class="button" href="#featuredAudioHeading">Play Featured Audio</a>
               <a class="button secondary" href="media-archive.html">View Media Archive</a>
             </div>
             <div class="archive-note">Archive note: ${item.archiveNote}</div>
