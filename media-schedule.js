@@ -5,6 +5,79 @@
   const STORAGE_KEY = "titancore-media-archive-v2";
   const ANCHOR_DATE = "2026-06-06";
 
+  const dailyHomepageVideos = [
+    {
+      dayNumber: 0,
+      title: "Market Video of the Day",
+      subject: "Understanding Stock Market Movement",
+      description: "A public business video about stocks, companies, and the market signals shaping financial decisions.",
+      category: "Market & Stock",
+      videoId: "98qfFzqDKR8",
+      sourceUrl: "https://www.youtube.com/watch?v=98qfFzqDKR8",
+      archiveId: "homepage-market-video"
+    },
+    {
+      dayNumber: 1,
+      title: "Global Markets Video of the Day",
+      subject: "Reading Global Market Signals",
+      description: "A daily public briefing on global positioning, investor sentiment, and changing business conditions.",
+      category: "Global Markets",
+      videoId: "EulhKrrfMnw",
+      sourceUrl: "https://www.youtube.com/watch?v=EulhKrrfMnw",
+      archiveId: "homepage-global-markets-video"
+    },
+    {
+      dayNumber: 2,
+      title: "Digital Assets Video of the Day",
+      subject: "Bitcoin, Blockchain, and Digital Asset Awareness",
+      description: "A public business video covering digital assets, market cycles, adoption, and responsible risk awareness.",
+      category: "Bitcoin & Crypto",
+      videoId: "pVZzgzYZdCA",
+      sourceUrl: "https://www.youtube.com/watch?v=pVZzgzYZdCA",
+      archiveId: "homepage-digital-assets-video"
+    },
+    {
+      dayNumber: 3,
+      title: "Finance Video of the Day",
+      subject: "Building Stronger Everyday Financial Decisions",
+      description: "A daily public finance video about money, credit, capital, budgeting, and practical decision-making.",
+      category: "Finance Education",
+      videoId: "Qh-M3_L4xYk",
+      sourceUrl: "https://www.youtube.com/watch?v=Qh-M3_L4xYk",
+      archiveId: "homepage-finance-video"
+    },
+    {
+      dayNumber: 4,
+      title: "Energy Video of the Day",
+      subject: "Oil, Energy, and the Business Cost Chain",
+      description: "A public business video connecting energy supply, commodities, production, and operating costs.",
+      category: "Oil & Energy",
+      videoId: "GtaoP0skPWc",
+      sourceUrl: "https://www.youtube.com/watch?v=GtaoP0skPWc",
+      archiveId: "homepage-energy-video"
+    },
+    {
+      dayNumber: 5,
+      title: "Economy Video of the Day",
+      subject: "Housing, Interest Rates, and Economic Pressure",
+      description: "A daily public economy video about housing, property, interest rates, and changing economic conditions.",
+      category: "Real Estate & Economy",
+      videoId: "bNpx7gpSqbY",
+      sourceUrl: "https://www.youtube.com/watch?v=bNpx7gpSqbY",
+      archiveId: "homepage-economy-video"
+    },
+    {
+      dayNumber: 6,
+      title: "Leadership Video of the Day",
+      subject: "Leadership Discipline and Sustainable Growth",
+      description: "A public business video for founders, operators, teams, and leaders focused on sustainable growth.",
+      category: "Leadership / Business Growth",
+      videoId: "lmyZMtPVodo",
+      sourceUrl: "https://www.youtube.com/watch?v=lmyZMtPVodo",
+      archiveId: "homepage-leadership-video"
+    }
+  ];
+
   const dailySchedule = [
     {
       category: "Market & Stock",
@@ -138,6 +211,21 @@
     return value.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
   }
 
+  function getHomepageVideo(dateInput) {
+    const dateKey = typeof dateInput === "string" ? dateInput : toDateKey(dateInput || new Date());
+    const date = dateFromKey(dateKey);
+    const selected = dailyHomepageVideos[Math.abs(dayNumber(dateKey)) % dailyHomepageVideos.length];
+    return {
+      ...selected,
+      date: dateKey,
+      dateKey,
+      dateLabel: date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+      type: "video",
+      sourceLink: selected.sourceUrl,
+      archiveId: `${selected.archiveId}-${dateKey}`
+    };
+  }
+
   function getDailyItems(dateInput) {
     const dateKey = typeof dateInput === "string" ? dateInput : toDateKey(dateInput || new Date());
     const date = dateFromKey(dateKey);
@@ -181,10 +269,10 @@
     for (let offset = 0; offset < days; offset += 1) {
       const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() - offset);
       if (toDateKey(date) < ANCHOR_DATE) break;
-      items.push(...getDailyItems(date));
+      items.push(getHomepageVideo(date), ...getDailyItems(date));
     }
     return saveItems(items);
   }
 
-  window.TitanCoreMedia = { dailySchedule, getDailyItems, readArchive, saveItems, seedArchive, toDateKey };
+  window.TitanCoreMedia = { dailyHomepageVideos, dailySchedule, getHomepageVideo, getDailyItems, readArchive, saveItems, seedArchive, toDateKey };
 }());

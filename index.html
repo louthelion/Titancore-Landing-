@@ -720,7 +720,7 @@
       font-weight:900;
     }
 
-    /* Video */
+    /* Video of the Day */
     .video-block{
       display:grid;
       grid-template-columns:1.15fr .85fr;
@@ -731,60 +731,81 @@
     .video-screen{
       min-height:520px;
       border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.16), rgba(0,0,0,.82)),
-        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85");
-      background-size:cover;
-      background-position:center;
+      background:#000;
       box-shadow: var(--shadow);
       position:relative;
-      display:flex;
-      align-items:flex-end;
-      padding:32px;
       overflow:hidden;
     }
 
-    .play-button{
+    .video-screen iframe{
       position:absolute;
-      top:22px;
-      right:22px;
-      width:64px;
-      height:64px;
-      border-radius:20px;
-      border:1px solid rgba(242,217,140,.35);
-      background: rgba(0,0,0,.72);
-      color: var(--gold2);
-      display:grid;
-      place-items:center;
-      font-size:26px;
-      font-weight:900;
-      box-shadow: var(--shadow2);
-    }
-
-    .video-screen h3{
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      font-weight:900;
-      font-size:18px;
-      letter-spacing:2px;
-      text-transform:uppercase;
-      margin-bottom:10px;
-      color:#fff;
-    }
-
-    .video-screen p{
-      font-size:16px;
-      margin:0;
-      color: rgba(255,255,255,.90);
+      inset:2px;
+      width:calc(100% - 4px);
+      height:calc(100% - 4px);
+      border:0;
+      border-radius:calc(var(--radius) - 2px);
     }
 
     .video-side{
-      background: rgba(0,0,0,.44);
+      background: rgba(0,0,0,.62);
       border-radius: var(--radius);
       box-shadow: var(--shadow2);
       padding:30px;
       display:flex;
       flex-direction:column;
       justify-content:center;
+    }
+
+    .video-side h3{
+      color:var(--gold2);
+      font-family:var(--serif);
+      font-size:clamp(25px, 3vw, 36px);
+      font-weight:500;
+      line-height:1.15;
+      margin:8px 0 12px;
+    }
+
+    .video-title{
+      color:#fff;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:1.8px;
+      text-transform:uppercase;
+    }
+
+    .video-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin:18px 0 4px;
+    }
+
+    .video-meta span{
+      border:1px solid rgba(242,217,140,.28);
+      border-radius:999px;
+      color:var(--gold2);
+      font-size:12px;
+      font-weight:800;
+      padding:7px 11px;
+    }
+
+    .video-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:22px;
+    }
+
+    .video-actions .btn{
+      min-height:52px;
+      flex:1 1 190px;
+    }
+
+    .video-archive-id{
+      color:rgba(255,255,255,.58);
+      font-size:11px;
+      margin-top:14px;
+      overflow-wrap:anywhere;
     }
 
     /* Contact */
@@ -1145,40 +1166,36 @@
       </div>
     </section>
 
-    <!-- VIDEO -->
+    <!-- VIDEO OF THE DAY -->
     <section class="section dark">
       <div class="wrap">
         <div class="section-title">
-          <div class="eyebrow">Homepage Video</div>
-          <h2>TitanCore Media <span>Window.</span></h2>
+          <div class="eyebrow">Daily Public Business Video</div>
+          <h2>Video of the <span>Day.</span></h2>
           <p>
-            This is only a homepage video placeholder. Full Global News, media archives, and video content
-            should be organized inside the News & Media page.
+            Watch today’s selected public business video inside TitanCore. The subject and video rotate together each calendar day.
           </p>
         </div>
 
-        <div class="video-block">
-          <div class="video-screen metal">
-            <div class="play-button" aria-hidden="true">▶</div>
-            <div>
-              <h3>TitanCore Media Briefing Window</h3>
-              <p>Future TitanCore video briefings, founder talks, interviews, and public media updates can appear here.</p>
+        <div class="video-block" aria-live="polite">
+          <div class="video-screen metal" id="dailyHomepageVideoPlayer" aria-label="Video of the Day player"></div>
+
+          <div class="video-side metal">
+            <div class="eyebrow">Video of the Day</div>
+            <p class="video-title" id="dailyHomepageVideoTitle"></p>
+            <h3 id="dailyHomepageVideoSubject">Loading today’s video…</h3>
+            <p id="dailyHomepageVideoDescription"></p>
+            <div class="video-meta">
+              <span id="dailyHomepageVideoDate"></span>
+              <span id="dailyHomepageVideoCategory"></span>
             </div>
+            <div class="video-actions">
+              <a href="media-content.html" class="btn primary">Open Media Content <span class="arrow">›</span></a>
+              <a href="media-archive.html" class="btn primary" id="dailyHomepageArchiveLink">View Media Archive <span class="arrow">›</span></a>
+            </div>
+            <p class="video-archive-id" id="dailyHomepageArchiveId"></p>
           </div>
-
-       <div class="video-side metal">
-  <h3>Media Content Goes Live Daily</h3>
-
-  <p>
-    The homepage shows the media window. The full Media Content page holds
-    daily business video, audio-only editions, market and industry galleries,
-    and a dedicated media archive organized by day, month, year, and category.
-  </p>
-
-  <a href="media-content.html" class="btn">
-    Open Media Content <span class="arrow">›</span>
-  </a>
-</div>  
+        </div>
       </div>
     </section>
 
@@ -1231,6 +1248,7 @@
 
   </div>
 
+  <script src="media-schedule.js"></script>
   <script>
     /* ==========================
       Menu: accessible dialog
@@ -1283,6 +1301,36 @@
         }
       }
     });
+
+    /* ==========================
+      Video of the Day
+    ========================== */
+    const dailyHomepageVideos = TitanCoreMedia.dailyHomepageVideos;
+    const dailyHomepageVideo = TitanCoreMedia.getHomepageVideo(new Date());
+
+    function renderDailyHomepageVideo(item){
+      const player = document.getElementById("dailyHomepageVideoPlayer");
+      if(!player) return;
+
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube-nocookie.com/embed/${item.videoId}?rel=0&playsinline=1`;
+      iframe.title = `${item.title}: ${item.subject}`;
+      iframe.loading = "lazy";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      player.replaceChildren(iframe);
+
+      document.getElementById("dailyHomepageVideoTitle").textContent = item.title;
+      document.getElementById("dailyHomepageVideoSubject").textContent = item.subject;
+      document.getElementById("dailyHomepageVideoDescription").textContent = item.description;
+      document.getElementById("dailyHomepageVideoDate").textContent = item.dateLabel;
+      document.getElementById("dailyHomepageVideoCategory").textContent = item.category;
+      document.getElementById("dailyHomepageArchiveId").textContent = `Archive ID: ${item.archiveId}`;
+      document.getElementById("dailyHomepageArchiveLink").href = `media-archive.html?date=${item.dateKey}&category=${encodeURIComponent(item.category)}#${item.archiveId}`;
+      TitanCoreMedia.saveItems([item]);
+    }
+
+    renderDailyHomepageVideo(dailyHomepageVideo);
 
     /* ==========================
       Daily image rotation
