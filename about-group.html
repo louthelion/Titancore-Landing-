@@ -549,37 +549,57 @@
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.78)),
-        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=85");
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:flex-end;
-      padding:34px;
+        radial-gradient(circle at 18% 12%, rgba(8,116,87,.30), transparent 42%),
+        linear-gradient(145deg, #050806, #000 70%);
+      display:grid;
+      grid-template-rows:minmax(310px, 1fr) auto;
+      padding:2px;
       position:relative;
     }
 
-    .play-button{
+    .video-player{
+      position:relative;
+      min-height:310px;
+      background:#000;
+      overflow:hidden;
+      border-radius:calc(var(--radius) - 2px) calc(var(--radius) - 2px) 0 0;
+    }
+
+    .video-player video,
+    .video-player iframe{
       position:absolute;
-      top:28px;
-      right:28px;
-      width:72px;
-      height:72px;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      object-fit:cover;
+    }
+
+    .video-loading{
+      position:absolute;
+      inset:0;
       display:grid;
       place-items:center;
-      border:1px solid rgba(242,217,140,.45);
-      background:rgba(0,0,0,.76);
+      padding:28px;
       color:var(--gold2);
-      font-size:30px;
+      background:
+        linear-gradient(135deg, rgba(8,116,87,.26), rgba(0,0,0,.92)),
+        #000;
+      font-size:13px;
       font-weight:900;
+      letter-spacing:2.5px;
+      text-align:center;
+      text-transform:uppercase;
     }
 
     .video-caption{
-      max-width:760px;
+      padding:26px 30px 30px;
+      border-top:1px solid rgba(242,217,140,.24);
+      background:linear-gradient(135deg, rgba(8,116,87,.20), rgba(0,0,0,.96) 72%);
     }
 
     .video-caption h3{
-      color:#fff;
+      color:var(--gold2);
       font-family:ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
       font-weight:900;
       font-size:20px;
@@ -588,6 +608,7 @@
     }
 
     .video-caption p{
+      color:rgba(255,255,255,.88);
       font-size:16px;
       margin-bottom:0;
     }
@@ -922,14 +943,24 @@
         </div>
 
         <div class="video-grid">
+          <!-- Replace assets/video/titancore-about-video.mp4 with TitanCore’s original AI presenter video when ready. -->
+          <!--
+            Video Script:
+            “Welcome to TitanCore Holdings. TitanCore is the parent company built to organize and support a growing network of businesses across finance, real estate, healthcare, auto and marine services, and business intelligence. Our mission is to build a disciplined, modern, and trusted business structure where each company has its own role, its own services, and its own path for growth. This is the beginning of TitanCore’s media briefing window, where future updates, founder messages, business interviews, and company announcements will appear.”
+          -->
           <div class="video-window metal">
-            <div class="play-button">▶</div>
+            <div class="video-player" id="titanCoreAboutPlayer">
+              <div class="video-loading" id="titanCoreVideoLoading">Preparing TitanCore media briefing</div>
+              <video id="titanCoreAboutVideo" controls preload="metadata" playsinline aria-label="TitanCore About Video">
+                <source src="assets/video/titancore-about-video.mp4" type="video/mp4" />
+              </video>
+            </div>
 
             <div class="video-caption">
-              <h3>Future TitanCore About Video</h3>
+              <h3>TitanCore About Video</h3>
               <p>
-                Placeholder for a future company video introducing TitanCore Holdings, the parent company role,
-                the business network, and the long-term vision.
+                A short TitanCore media briefing explaining who TitanCore Holdings is, what the parent company does,
+                and how the company network is being built.
               </p>
             </div>
           </div>
@@ -1072,6 +1103,33 @@
   </div>
 
   <script>
+    const titanCoreAboutVideo = document.getElementById("titanCoreAboutVideo");
+    const titanCoreAboutPlayer = document.getElementById("titanCoreAboutPlayer");
+    const titanCoreVideoLoading = document.getElementById("titanCoreVideoLoading");
+
+    function showTitanCoreVideoFallback(){
+      if(!titanCoreAboutPlayer || titanCoreAboutPlayer.querySelector("iframe")) return;
+
+      const fallbackVideo = document.createElement("iframe");
+      fallbackVideo.src = "https://www.youtube-nocookie.com/embed/lmyZMtPVodo?rel=0&playsinline=1";
+      fallbackVideo.title = "Temporary business leadership video";
+      fallbackVideo.loading = "lazy";
+      fallbackVideo.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      fallbackVideo.allowFullscreen = true;
+
+      titanCoreAboutVideo?.remove();
+      titanCoreVideoLoading?.remove();
+      titanCoreAboutPlayer.appendChild(fallbackVideo);
+    }
+
+    if(titanCoreAboutVideo){
+      titanCoreAboutVideo.addEventListener("loadedmetadata", function(){
+        titanCoreVideoLoading?.remove();
+      }, { once:true });
+      titanCoreAboutVideo.addEventListener("error", showTitanCoreVideoFallback, { once:true });
+      titanCoreAboutVideo.load();
+    }
+
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
     const menuPanel = document.getElementById("menuPanel");
