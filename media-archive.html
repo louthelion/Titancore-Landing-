@@ -88,6 +88,9 @@
     .control-group + .control-group { margin-top: 28px; padding-top: 26px; border-top: 1px solid rgba(216, 181, 91, 0.18); }
     .control-label { display: block; margin-bottom: 13px; color: var(--gold-bright); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
     .filter-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .archive-fields { display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 16px; }
+    .archive-field label { display: block; margin-bottom: 8px; color: var(--muted); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .archive-field input, .archive-field select { width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid rgba(216, 181, 91, 0.35); border-radius: 10px; background: #080b09; color: #f2f3f0; color-scheme: dark; }
     .filter-button { min-height: 43px; padding: 10px 15px; border: 1px solid rgba(216, 181, 91, 0.28); border-radius: 999px; background: #080b09; color: #e5e7e3; cursor: pointer; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; transition: border-color 180ms ease, background 180ms ease, color 180ms ease; }
     .filter-button:hover, .filter-button:focus-visible { border-color: var(--gold-bright); outline: none; }
     .filter-button.active { border-color: var(--green-bright); background: var(--green); color: #fff; box-shadow: 0 0 22px rgba(13, 153, 114, 0.22); }
@@ -142,6 +145,7 @@
 
     @media (max-width: 820px) {
       .archive-grid, .studio-intro { grid-template-columns: 1fr; }
+      .archive-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .hero { min-height: 610px; }
       .date-banner { grid-template-columns: 1fr; }
       .date-day { width: 66px; height: 66px; font-size: 1.9rem; }
@@ -157,6 +161,7 @@
       .hero { min-height: 570px; padding: 78px 0; }
       .hero-actions .button { width: 100%; }
       .archive-grid { gap: 20px; }
+      .archive-fields { grid-template-columns: 1fr; }
       .card-body { padding: 21px; }
       .button-row .button { flex-basis: 100%; }
       .audio-player { min-height: 164px; padding: 9px; }
@@ -216,34 +221,23 @@
         </div>
         <div class="control-panel">
           <div class="control-group">
-            <span class="control-label">Media Type &amp; Category</span>
-            <div class="filter-row" id="categoryFilters" aria-label="Filter media by type or category">
-              <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All Media</button>
-              <button class="filter-button" type="button" data-filter="type:video" aria-pressed="false">Video</button>
-              <button class="filter-button" type="button" data-filter="type:audio" aria-pressed="false">Audio</button>
-              <button class="filter-button" type="button" data-filter="category:TitanCore Studio" aria-pressed="false">TitanCore Studio</button>
-              <button class="filter-button" type="button" data-filter="category:CEO Briefing" aria-pressed="false">CEO Briefing</button>
-              <button class="filter-button" type="button" data-filter="category:Entrepreneur Interviews" aria-pressed="false">Entrepreneur Interviews</button>
-              <button class="filter-button" type="button" data-filter="category:Market" aria-pressed="false">Market</button>
-              <button class="filter-button" type="button" data-filter="category:Bitcoin &amp; Crypto" aria-pressed="false">Bitcoin &amp; Crypto</button>
-              <button class="filter-button" type="button" data-filter="category:Oil &amp; Energy" aria-pressed="false">Oil &amp; Energy</button>
-              <button class="filter-button" type="button" data-filter="category:Real Estate &amp; Economy" aria-pressed="false">Real Estate &amp; Economy</button>
-              <button class="filter-button" type="button" data-filter="category:Auto &amp; Marine" aria-pressed="false">Auto &amp; Marine</button>
-              <button class="filter-button" type="button" data-filter="category:Finance Education" aria-pressed="false">Finance Education</button>
-              <button class="filter-button" type="button" data-filter="category:Leadership / Business Growth" aria-pressed="false">Leadership / Business Growth</button>
+            <span class="control-label">Find Saved Daily Media</span>
+            <div class="archive-fields">
+              <div class="archive-field"><label for="dateFilter">Date</label><input id="dateFilter" type="date"></div>
+              <div class="archive-field"><label for="monthFilter">Month</label><select id="monthFilter"><option value="">All months</option></select></div>
+              <div class="archive-field"><label for="yearFilter">Year</label><select id="yearFilter"><option value="">All years</option></select></div>
+              <div class="archive-field"><label for="categoryFilter">Category</label><select id="categoryFilter"><option value="">All categories</option></select></div>
             </div>
-          </div>
-          <div class="control-group">
-            <span class="control-label">Archive Month</span>
-            <div class="filter-row" id="monthFilters" aria-label="Filter media by month">
-              <button class="filter-button active" type="button" data-month="June 2026" aria-pressed="true">June 2026</button>
-              <button class="filter-button" type="button" disabled>July 2026 — Coming Soon</button>
-              <button class="filter-button" type="button" disabled>August 2026 — Coming Soon</button>
+            <div class="filter-row" style="margin-top:16px">
+              <button class="filter-button active" type="button" id="allMediaFilter">All Media</button>
+              <button class="filter-button" type="button" id="videoFilter">Video</button>
+              <button class="filter-button" type="button" id="audioFilter">Audio</button>
+              <button class="filter-button" type="button" id="clearFilters">Clear Date Filters</button>
             </div>
           </div>
           <div class="archive-status" aria-live="polite">
-            <span id="resultCount"><strong>12</strong> saved editions shown</span>
-            <span id="activeFilter">All Media • June 2026</span>
+            <span id="resultCount"><strong>0</strong> saved editions shown</span>
+            <span id="activeFilter">All saved daily media</span>
           </div>
         </div>
       </div>
@@ -252,10 +246,10 @@
     <section class="section section-dark" id="featured-date" aria-labelledby="featuredDateHeading">
       <div class="wrap">
         <div class="date-banner">
-          <div class="date-day" aria-hidden="true">06</div>
+          <div class="date-day" id="featuredDay" aria-hidden="true">--</div>
           <div>
             <p class="eyebrow">Featured Archive Date</p>
-            <h2 id="featuredDateHeading">June 6, 2026</h2>
+            <h2 id="featuredDateHeading">Saved Daily Media</h2>
             <p>Saved video and audio editions carried forward from TitanCore Media Content.</p>
           </div>
         </div>
@@ -309,418 +303,69 @@
     </div>
   </footer>
 
+  <script src="media-schedule.js"></script>
   <script>
-    const archiveItems = [
-      {
-        id: "market-video-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Market",
-        type: "video",
-        title: "Market & Stock Video",
-        description: "Saved market video edition from Media Content, focused on stocks, companies, market movement, and financial decision signals.",
-        embedType: "youtube",
-        videoId: "98qfFzqDKR8",
-        audioUrl: "",
-        iframeUrl: "",
-        officialUrl: "https://www.youtube.com/watch?v=98qfFzqDKR8",
-        sourceName: "Public YouTube business video",
-        archiveNote: "Saved from Media Content for June 6, 2026."
-      },
-      {
-        id: "bitcoin-video-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Bitcoin & Crypto",
-        type: "video",
-        title: "Bitcoin & Crypto Video",
-        description: "Saved digital-asset edition covering Bitcoin, blockchain, crypto markets, adoption, cycles, and risk awareness.",
-        embedType: "youtube",
-        videoId: "pVZzgzYZdCA",
-        audioUrl: "",
-        iframeUrl: "",
-        officialUrl: "https://www.youtube.com/watch?v=pVZzgzYZdCA",
-        sourceName: "Public YouTube educational video",
-        archiveNote: "Saved from Media Content for June 6, 2026."
-      },
-      {
-        id: "oil-energy-video-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Oil & Energy",
-        type: "video",
-        title: "Oil & Energy Video",
-        description: "Saved energy edition examining oil, gas, commodities, production, and the relationship between energy and business costs.",
-        embedType: "youtube",
-        videoId: "GtaoP0skPWc",
-        audioUrl: "",
-        iframeUrl: "",
-        officialUrl: "https://www.youtube.com/watch?v=GtaoP0skPWc",
-        sourceName: "Public YouTube energy video",
-        archiveNote: "Saved from Media Content for June 6, 2026."
-      },
-      {
-        id: "real-estate-video-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Real Estate & Economy",
-        type: "video",
-        title: "Real Estate & Economy Video",
-        description: "Saved property and economy edition focused on housing, rent, interest rates, investment, and changing economic conditions.",
-        embedType: "youtube",
-        videoId: "bNpx7gpSqbY",
-        audioUrl: "",
-        iframeUrl: "",
-        officialUrl: "https://www.youtube.com/watch?v=bNpx7gpSqbY",
-        sourceName: "Public YouTube real estate video",
-        archiveNote: "Saved from Media Content for June 6, 2026."
-      },
-      {
-        id: "market-audio-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Market",
-        type: "audio",
-        title: "Market Audio Edition",
-        description: "Saved audio edition from Media Content about stocks, companies, market volatility, and business movement.",
-        embedType: "iframe",
-        videoId: "",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r",
-        sourceName: "Thoughts on the Market",
-        archiveNote: "Saved from Media Content as audio, not video."
-      },
-      {
-        id: "bitcoin-audio-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Bitcoin & Crypto",
-        type: "audio",
-        title: "Bitcoin & Crypto Audio Edition",
-        description: "Saved audio edition from Media Content about Bitcoin, crypto markets, adoption, risk, and digital assets.",
-        embedType: "iframe",
-        videoId: "",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G",
-        sourceName: "Crypto Curious",
-        archiveNote: "Saved from Media Content as audio, not video."
-      },
-      {
-        id: "finance-education-audio-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Finance Education",
-        type: "audio",
-        title: "Finance Education Audio Edition",
-        description: "Saved audio edition about saving, investing, financial habits, and stronger everyday money decisions.",
-        embedType: "iframe",
-        videoId: "",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX",
-        sourceName: "BiggerPockets Money",
-        archiveNote: "Saved from Media Content as audio, not video."
-      },
-      {
-        id: "leadership-audio-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Leadership / Business Growth",
-        type: "audio",
-        title: "Leadership / Business Growth Audio Edition",
-        description: "Saved audio edition about leadership mindset, entrepreneurship, teams, and sustainable business growth.",
-        embedType: "iframe",
-        videoId: "",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9",
-        sourceName: "Inside Strategic Coach",
-        archiveNote: "Saved from Media Content as audio, not video."
-      },
-      {
-        id: "entrepreneur-qa-video-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "Entrepreneur Interviews",
-        type: "video",
-        title: "Q&A / QNR for Entrepreneurs",
-        description: "A temporary entrepreneur-focused interview preserving the future space for TitanCore conversations with founders, builders, and operators.",
-        embedType: "youtube",
-        videoId: "bNpx7gpSqbY",
-        audioUrl: "",
-        iframeUrl: "",
-        officialUrl: "https://www.youtube.com/watch?v=bNpx7gpSqbY",
-        sourceName: "Public YouTube entrepreneur video",
-        archiveNote: "Temporary placeholder until TitanCore original media launches."
-      },
-      {
-        id: "ceo-briefing-audio-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "CEO Briefing",
-        type: "audio",
-        title: "CEO Briefing",
-        description: "A temporary executive leadership briefing holding the archive space for future TitanCore CEO updates, strategic direction, and company messages.",
-        embedType: "iframe",
-        videoId: "",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/6sD5QAK5iK1NqHSBywQCqn?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/6sD5QAK5iK1NqHSBywQCqn",
-        sourceName: "Public executive leadership podcast",
-        archiveNote: "Temporary placeholder until TitanCore original media launches."
-      },
-      {
-        id: "titancore-studio-video-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "TitanCore Studio",
-        type: "video",
-        title: "TitanCore Studio Video",
-        description: "A playable business and leadership program holding the future home of TitanCore-produced reports, interviews, and company programming.",
-        embedType: "youtube",
-        videoId: "lmyZMtPVodo",
-        audioUrl: "",
-        iframeUrl: "",
-        officialUrl: "https://www.youtube.com/watch?v=lmyZMtPVodo",
-        sourceName: "Public YouTube leadership video",
-        archiveNote: "Temporary placeholder until TitanCore original media launches."
-      },
-      {
-        id: "titancore-studio-audio-2026-06-06",
-        date: "June 6, 2026",
-        month: "June",
-        year: "2026",
-        category: "TitanCore Studio",
-        type: "audio",
-        title: "TitanCore Studio Audio",
-        description: "A temporary leadership episode holding the archive space for future TitanCore original audio briefings and studio conversations.",
-        embedType: "iframe",
-        videoId: "",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9",
-        sourceName: "Public leadership podcast",
-        archiveNote: "Temporary placeholder until TitanCore original media launches."
-      }
-    ];
-
     const archiveGrid = document.getElementById("archiveGrid");
     const resultCount = document.getElementById("resultCount");
     const activeFilterLabel = document.getElementById("activeFilter");
-    let activeFilter = "all";
-    let activeMonth = "June 2026";
+    const dateFilter = document.getElementById("dateFilter");
+    const monthFilter = document.getElementById("monthFilter");
+    const yearFilter = document.getElementById("yearFilter");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const query = new URLSearchParams(location.search);
+    let typeFilter = "";
+    const archiveItems = TitanCoreMedia.seedArchive(3650);
+
+    function populateFilters() {
+      const months = [...new Set(archiveItems.map((item) => item.date.slice(0, 7)))].sort().reverse();
+      const years = [...new Set(archiveItems.map((item) => item.date.slice(0, 4)))].sort().reverse();
+      const categories = [...new Set(archiveItems.map((item) => item.category))].sort();
+      months.forEach((value) => { const option = new Option(new Date(`${value}-02T12:00:00`).toLocaleDateString("en-US", { month: "long", year: "numeric" }), value); monthFilter.add(option); });
+      years.forEach((value) => yearFilter.add(new Option(value, value)));
+      categories.forEach((value) => categoryFilter.add(new Option(value, value)));
+      dateFilter.value = query.get("date") || "";
+      categoryFilter.value = query.get("category") || "";
+    }
 
     function createPlayer(item) {
-      const player = document.createElement("div");
-      player.className = `media-player ${item.type === "video" ? "video-player" : "audio-player"}`;
-
-      if (item.embedType === "youtube" && item.videoId) {
-        const iframe = document.createElement("iframe");
-        iframe.src = `https://www.youtube-nocookie.com/embed/${item.videoId}?rel=0&playsinline=1`;
-        iframe.title = `${item.title} video player`;
-        iframe.loading = "lazy";
-        iframe.allow = "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-        iframe.allowFullscreen = true;
-        player.appendChild(iframe);
-      } else if (item.embedType === "audio" && item.audioUrl) {
-        const audio = document.createElement("audio");
-        audio.controls = true;
-        audio.preload = "metadata";
-        audio.src = item.audioUrl;
-        audio.setAttribute("aria-label", `${item.title} audio player`);
-        player.appendChild(audio);
-      } else if (item.embedType === "iframe" && item.iframeUrl) {
-        const iframe = document.createElement("iframe");
-        iframe.src = item.iframeUrl;
-        iframe.title = `${item.title} audio player`;
-        iframe.loading = "lazy";
-        iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-        player.appendChild(iframe);
-      } else {
-        const fallback = document.createElement("div");
-        fallback.className = "audio-fallback";
-        fallback.textContent = "This archived edition is available from its official source.";
-        player.appendChild(fallback);
-      }
-      return player;
+      const shell = document.createElement("div");
+      shell.className = `media-player ${item.type === "video" ? "video-player" : "audio-player"}`;
+      const iframe = document.createElement("iframe");
+      iframe.src = item.type === "video" ? `https://www.youtube-nocookie.com/embed/${item.videoId}?rel=0&playsinline=1` : item.audioEmbed;
+      iframe.title = item.subject; iframe.loading = "lazy"; iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"; iframe.allowFullscreen = true;
+      shell.appendChild(iframe); return shell;
     }
 
     function createArchiveCard(item) {
-      const card = document.createElement("article");
-      card.className = "media-card";
-      card.id = item.id;
-      card.dataset.type = item.type;
-      card.dataset.category = item.category;
-      card.dataset.month = `${item.month} ${item.year}`;
-
-      const body = document.createElement("div");
-      body.className = "card-body";
-
-      const topline = document.createElement("div");
-      topline.className = "card-topline";
-      const typeLabel = document.createElement("span");
-      typeLabel.className = "type-label";
-      typeLabel.textContent = item.type === "video" ? "Video" : "Audio";
-      const sourceName = document.createElement("span");
-      sourceName.className = "source-name";
-      sourceName.textContent = item.sourceName;
-      topline.append(typeLabel, sourceName);
-
-      if (["TitanCore Studio", "CEO Briefing", "Entrepreneur Interviews"].includes(item.category)) {
-        const placeholder = document.createElement("p");
-        placeholder.className = "placeholder-note";
-        placeholder.textContent = "Temporary placeholder until TitanCore original media launches.";
-        body.appendChild(placeholder);
-      }
-
-      const title = document.createElement("h3");
-      title.textContent = item.title;
-      const description = document.createElement("p");
-      description.textContent = item.description;
-
-      const meta = document.createElement("div");
-      meta.className = "meta";
-      [item.date, item.category, item.type === "video" ? "Video" : "Audio"].forEach((value) => {
-        const label = document.createElement("span");
-        label.className = "label";
-        label.textContent = value;
-        meta.appendChild(label);
-      });
-
-      const buttons = document.createElement("div");
-      buttons.className = "button-row";
-      const insideButton = document.createElement("a");
-      insideButton.className = "button";
-      insideButton.href = `#${item.id}`;
-      insideButton.textContent = item.type === "video" ? "Watch Inside Page" : "Listen Inside Page";
-      const mediaContentButton = document.createElement("a");
-      mediaContentButton.className = "button secondary";
-      mediaContentButton.href = item.type === "video" ? "media-content.html#video-gallery" : "media-content.html#audio-gallery";
-      mediaContentButton.textContent = "Open Media Content";
-      buttons.append(insideButton, mediaContentButton);
-
-      if (item.officialUrl) {
-        const sourceButton = document.createElement("a");
-        sourceButton.className = "button secondary";
-        sourceButton.href = item.officialUrl;
-        sourceButton.target = "_blank";
-        sourceButton.rel = "noopener";
-        sourceButton.textContent = item.type === "video" ? "Open Source" : "Open Audio Episode";
-        buttons.appendChild(sourceButton);
-      }
-
-      const note = document.createElement("div");
-      note.className = "archive-note";
-      note.textContent = `Archive note: ${item.archiveNote}`;
-
-      body.prepend(topline);
-      body.append(title, description, meta, buttons, note);
-      card.append(createPlayer(item), body);
-      return card;
-    }
-
-    function matchesActiveFilter(item) {
-      const monthMatches = `${item.month} ${item.year}` === activeMonth;
-      if (!monthMatches) return false;
-      if (activeFilter === "all") return true;
-      const separator = activeFilter.indexOf(":");
-      const filterKind = activeFilter.slice(0, separator);
-      const filterValue = activeFilter.slice(separator + 1);
-      return item[filterKind] === filterValue;
+      const card = document.createElement("article"); card.className = "media-card"; card.id = item.archiveId;
+      const body = document.createElement("div"); body.className = "card-body";
+      body.innerHTML = `<p class="eyebrow">${item.category} • ${item.type}</p><h3>${item.subject}</h3><p>${item.description}</p><div class="meta"><span class="label">${item.dateLabel}</span><span class="label">${item.category}</span><span class="label">${item.type === "video" ? "Video" : "Audio"}</span></div><div class="button-row"><a class="button" href="${item.sourceLink}" target="_blank" rel="noopener">Open Source</a><a class="button secondary" href="media-content.html">Today’s Media</a></div><div class="archive-note">Archive ID: ${item.archiveId}</div>`;
+      card.append(createPlayer(item), body); return card;
     }
 
     function renderArchive() {
-      archiveGrid.replaceChildren();
-      const filteredItems = archiveItems.filter(matchesActiveFilter);
-      filteredItems.forEach((item) => archiveGrid.appendChild(createArchiveCard(item)));
-
-      if (!filteredItems.length) {
-        const emptyState = document.createElement("div");
-        emptyState.className = "empty-state";
-        emptyState.innerHTML = "<h3>No saved editions in this category yet.</h3><p>Choose All Media or another category to continue browsing the June 2026 archive.</p>";
-        archiveGrid.appendChild(emptyState);
-      }
-
-      resultCount.innerHTML = `<strong>${filteredItems.length}</strong> saved edition${filteredItems.length === 1 ? "" : "s"} shown`;
-      const activeButton = document.querySelector(`[data-filter="${CSS.escape(activeFilter)}"]`);
-      activeFilterLabel.textContent = `${activeButton ? activeButton.textContent : "All Media"} • ${activeMonth}`;
+      const filtered = archiveItems.filter((item) => (!dateFilter.value || item.date === dateFilter.value) && (!monthFilter.value || item.date.startsWith(monthFilter.value)) && (!yearFilter.value || item.date.startsWith(yearFilter.value)) && (!categoryFilter.value || item.category === categoryFilter.value) && (!typeFilter || item.type === typeFilter));
+      archiveGrid.replaceChildren(...filtered.map(createArchiveCard));
+      if (!filtered.length) { const empty = document.createElement("div"); empty.className = "empty-state"; empty.innerHTML = "<h3>No saved daily media matches these filters.</h3><p>Clear one or more filters to browse the archive.</p>"; archiveGrid.appendChild(empty); }
+      resultCount.innerHTML = `<strong>${filtered.length}</strong> saved edition${filtered.length === 1 ? "" : "s"} shown`;
+      activeFilterLabel.textContent = [dateFilter.value, monthFilter.value, yearFilter.value, categoryFilter.value, typeFilter].filter(Boolean).join(" • ") || "All saved daily media";
+      const featuredDate = dateFilter.value ? new Date(`${dateFilter.value}T12:00:00`) : null;
+      document.getElementById("featuredDay").textContent = featuredDate ? String(featuredDate.getDate()).padStart(2, "0") : "ALL";
+      document.getElementById("featuredDateHeading").textContent = featuredDate ? featuredDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) : "Saved Daily Media";
     }
 
-    function selectCategoryFilter(filterValue) {
-      activeFilter = filterValue;
-      document.querySelectorAll("[data-filter]").forEach((button) => {
-        const isActive = button.dataset.filter === filterValue;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-      });
-      renderArchive();
-      document.getElementById("featured-date").scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
-    document.querySelectorAll("[data-filter]").forEach((button) => {
-      button.addEventListener("click", () => selectCategoryFilter(button.dataset.filter));
-    });
-
-    document.querySelectorAll("[data-month]").forEach((button) => {
-      button.addEventListener("click", () => {
-        activeMonth = button.dataset.month;
-        document.querySelectorAll("[data-month]").forEach((monthButton) => {
-          const isActive = monthButton === button;
-          monthButton.classList.toggle("active", isActive);
-          monthButton.setAttribute("aria-pressed", String(isActive));
-        });
-        renderArchive();
-      });
-    });
-
-    document.querySelector("[data-studio-filter]").addEventListener("click", () => selectCategoryFilter("category:TitanCore Studio"));
+    [dateFilter, monthFilter, yearFilter, categoryFilter].forEach((field) => field.addEventListener("change", () => { if (field === dateFilter && field.value) { monthFilter.value = ""; yearFilter.value = ""; } renderArchive(); }));
+    [["allMediaFilter", ""], ["videoFilter", "video"], ["audioFilter", "audio"]].forEach(([id, value]) => document.getElementById(id).addEventListener("click", (event) => { typeFilter = value; ["allMediaFilter", "videoFilter", "audioFilter"].forEach((buttonId) => document.getElementById(buttonId).classList.toggle("active", buttonId === id)); renderArchive(); }));
+    document.getElementById("clearFilters").addEventListener("click", () => { dateFilter.value = ""; monthFilter.value = ""; yearFilter.value = ""; categoryFilter.value = ""; typeFilter = ""; document.getElementById("allMediaFilter").click(); });
+    document.querySelector("[data-studio-filter]").addEventListener("click", () => { categoryFilter.value = ""; renderArchive(); });
 
     function bindMenu() {
-      const openButton = document.getElementById("openMenu");
-      const closeButton = document.getElementById("closeMenu");
-      const overlay = document.getElementById("menuOverlay");
-      let lastFocusedElement = null;
-
-      function openMenu() {
-        lastFocusedElement = document.activeElement;
-        overlay.hidden = false;
-        overlay.classList.add("open");
-        document.body.classList.add("menu-open");
-        openButton.setAttribute("aria-expanded", "true");
-        closeButton.focus();
-      }
-
-      function closeMenu() {
-        overlay.classList.remove("open");
-        overlay.hidden = true;
-        document.body.classList.remove("menu-open");
-        openButton.setAttribute("aria-expanded", "false");
-        if (lastFocusedElement) lastFocusedElement.focus();
-      }
-
-      openButton.addEventListener("click", openMenu);
-      closeButton.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", (event) => { if (event.target === overlay) closeMenu(); });
-      overlay.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-      document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !overlay.hidden) closeMenu(); });
+      const openButton = document.getElementById("openMenu"); const closeButton = document.getElementById("closeMenu"); const overlay = document.getElementById("menuOverlay");
+      function closeMenu() { overlay.classList.remove("open"); overlay.hidden = true; document.body.classList.remove("menu-open"); openButton.setAttribute("aria-expanded", "false"); }
+      openButton.addEventListener("click", () => { overlay.hidden = false; overlay.classList.add("open"); document.body.classList.add("menu-open"); openButton.setAttribute("aria-expanded", "true"); closeButton.focus(); }); closeButton.addEventListener("click", closeMenu);
     }
 
-    renderArchive();
-    bindMenu();
-    document.getElementById("footerYear").textContent = new Date().getFullYear();
+    populateFilters(); renderArchive(); bindMenu(); document.getElementById("footerYear").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
