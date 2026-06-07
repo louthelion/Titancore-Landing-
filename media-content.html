@@ -455,226 +455,61 @@
     </div>
   </footer>
 
+  <script src="media-schedule.js"></script>
   <script>
-    const mediaEditions = [
-      {
-        category: "Market & Stock",
-        videoCategory: "Market & Stock Video",
-        audioCategory: "Market Audio Edition",
-        title: "Understanding the Stock Market and Business Movement",
-        videoId: "98qfFzqDKR8",
-        description: "A public business video edition focused on stocks, companies, market movement, and the signals that shape financial decisions.",
-        cadence: "Daily Rotation"
-      },
-      {
-        category: "Bitcoin & Crypto",
-        videoCategory: "Bitcoin & Crypto Video",
-        audioCategory: "Bitcoin & Crypto Audio Edition",
-        title: "Bitcoin, Blockchain, and Digital Asset Awareness",
-        videoId: "pVZzgzYZdCA",
-        description: "A public educational video covering Bitcoin, blockchain, digital assets, market cycles, and risk awareness.",
-        cadence: "Daily Rotation"
-      },
-      {
-        category: "Oil & Energy",
-        videoCategory: "Oil & Energy Video",
-        audioCategory: "Oil & Energy Audio Edition",
-        title: "Oil, Energy, and the Business Cost Chain",
-        videoId: "GtaoP0skPWc",
-        description: "A public energy edition examining oil, gas, commodities, production, and the relationship between energy and business costs.",
-        cadence: "Weekly Focus"
-      },
-      {
-        category: "Real Estate & Economy",
-        videoCategory: "Real Estate & Economy Video",
-        audioCategory: "Real Estate & Economy Audio Edition",
-        title: "Housing, Interest Rates, and Economic Pressure",
-        videoId: "bNpx7gpSqbY",
-        description: "A public real estate and economy video focused on housing, rent, property, interest rates, and changing economic conditions.",
-        cadence: "Weekly Focus"
-      },
-      {
-        category: "Auto & Marine Business",
-        videoCategory: "Auto & Marine Business Video",
-        audioCategory: "Auto & Marine Business Audio Edition",
-        title: "Auto, Marine, and Transportation Business Trends",
-        videoId: "EulhKrrfMnw",
-        description: "A public business edition exploring automotive, marine, transportation, dealership, and marketplace trends.",
-        cadence: "Monthly Feature"
-      },
-      {
-        category: "Finance Education",
-        videoCategory: "Finance Education Video",
-        audioCategory: "Finance Education Audio Edition",
-        title: "Building Stronger Everyday Financial Decisions",
-        videoId: "Qh-M3_L4xYk",
-        description: "A public educational video focused on money, credit, funding, capital, budgeting, and financial decision-making.",
-        cadence: "Weekly Focus"
-      },
-      {
-        category: "Leadership / Business Growth",
-        videoCategory: "Leadership / Business Growth Video",
-        audioCategory: "Leadership / Business Growth Audio Edition",
-        title: "Leadership Discipline and Sustainable Business Growth",
-        videoId: "lmyZMtPVodo",
-        description: "A public leadership video with lessons for founders, operators, teams, entrepreneurs, and long-term business growth.",
-        cadence: "Weekly Focus"
-      }
-    ];
-
-    const audioEditions = [
-      {
-        category: "Market",
-        title: "Market Audio Edition",
-        description: "A public podcast/audio episode about stocks, companies, markets, and business movement.",
-        date: "June 2026",
-        type: "audio",
-        embedType: "iframe",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r",
-        sourceName: "Thoughts on the Market • A Thematic Look at Market Volatility",
-        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
-      },
-      {
-        category: "Bitcoin & Crypto",
-        title: "Bitcoin & Crypto Audio Edition",
-        description: "A public podcast/audio episode about Bitcoin, crypto markets, adoption, risk, and digital assets.",
-        date: "June 2026",
-        type: "audio",
-        embedType: "iframe",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G",
-        sourceName: "Crypto Curious • The OG’s Reunite to Talk Markets and Crypto",
-        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
-      },
-      {
-        category: "Oil & Energy",
-        title: "Oil & Energy Audio Edition",
-        description: "A public podcast/audio episode about oil, gas, energy policy, production, and business costs.",
-        date: "June 2026",
-        type: "audio",
-        embedType: "iframe",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/2fOMGdpdKQWLFfXvFGa8B8?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/2fOMGdpdKQWLFfXvFGa8B8",
-        sourceName: "POLITICO Energy • The State of U.S. Oil and Gas",
-        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
-      },
-      {
-        category: "Real Estate & Economy",
-        title: "Real Estate & Economy Audio Edition",
-        description: "A public podcast/audio episode about property, housing economics, investment, and market conditions.",
-        date: "June 2026",
-        type: "audio",
-        embedType: "iframe",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz",
-        sourceName: "Generations of Wealth • Creative Real Estate Success",
-        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
-      },
-      {
-        category: "Auto & Marine Business",
-        title: "Auto & Marine Business Audio Edition",
-        description: "A public podcast/audio episode about automotive retail, dealership operations, marine technology, and transportation business.",
-        date: "June 2026",
-        type: "audio",
-        embedType: "iframe",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/6IUvRq66quGfIWGagbS7la?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/6IUvRq66quGfIWGagbS7la",
-        sourceName: "Car Dealership Guy Podcast • The Lead Response Crisis Hurting Dealers",
-        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
-      },
-      {
-        category: "Finance Education",
-        title: "Finance Education Audio Edition",
-        description: "A public podcast/audio episode about saving, investing, financial habits, and stronger everyday money decisions.",
-        date: "June 2026",
-        type: "audio",
-        embedType: "iframe",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX",
-        sourceName: "BiggerPockets Money • Supercharging Your Savings",
-        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
-      },
-      {
-        category: "Leadership / Business Growth",
-        title: "Leadership / Business Growth Audio Edition",
-        description: "A public podcast/audio episode about leadership mindset, entrepreneurship, teams, and sustainable business growth.",
-        date: "June 2026",
-        type: "audio",
-        embedType: "iframe",
-        audioUrl: "",
-        iframeUrl: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
-        officialUrl: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9",
-        sourceName: "Inside Strategic Coach • The Mindset That Makes 10x Growth Feel Easy",
-        archiveNote: "This spoken edition belongs in the Media Archive as audio—not video."
-      }
-    ];
-
-    const today = new Date();
-    const dayIndex = Math.floor(new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime() / 86400000);
-    const featuredVideo = mediaEditions[dayIndex % mediaEditions.length];
-    const featuredAudio = audioEditions[(dayIndex + 3) % audioEditions.length];
-    const dateLabel = today.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+    const todayItems = TitanCoreMedia.getDailyItems(new Date());
+    const videoEditions = todayItems.filter((item) => item.type === "video");
+    const audioEditions = todayItems.filter((item) => item.type === "audio");
+    const featuredVideo = videoEditions[Math.floor(Date.now() / 86400000) % videoEditions.length];
+    const featuredAudio = audioEditions[Math.floor(Date.now() / 86400000) % audioEditions.length];
+    TitanCoreMedia.saveItems(todayItems);
 
     function youtubeEmbed(item) {
       const iframe = document.createElement("iframe");
       iframe.src = `https://www.youtube-nocookie.com/embed/${item.videoId}?rel=0&playsinline=1`;
-      iframe.title = item.title;
+      iframe.title = item.subject;
       iframe.loading = "lazy";
       iframe.allow = "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.allowFullscreen = true;
       return iframe;
     }
 
+    function renderAudioSource(container, item, title) {
+      container.replaceChildren();
+      const iframe = document.createElement("iframe");
+      iframe.src = item.audioEmbed;
+      iframe.title = title;
+      iframe.loading = "lazy";
+      iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+      container.appendChild(iframe);
+    }
+
     function setFeaturedEditions() {
       document.getElementById("featuredVideoFrame").appendChild(youtubeEmbed(featuredVideo));
-      document.getElementById("featuredVideoTitle").textContent = featuredVideo.title;
+      document.getElementById("featuredVideoTitle").textContent = featuredVideo.subject;
       document.getElementById("featuredVideoDescription").textContent = featuredVideo.description;
-      document.getElementById("featuredVideoDate").textContent = dateLabel;
-      document.getElementById("featuredVideoCategory").textContent = featuredVideo.videoCategory;
-
-      document.getElementById("featuredAudioTitle").textContent = featuredAudio.title;
+      document.getElementById("featuredVideoDate").textContent = featuredVideo.dateLabel;
+      document.getElementById("featuredVideoCategory").textContent = featuredVideo.category;
+      document.getElementById("featuredAudioTitle").textContent = featuredAudio.subject;
       document.getElementById("featuredAudioDescription").textContent = featuredAudio.description;
-      document.getElementById("featuredAudioDate").textContent = featuredAudio.date;
+      document.getElementById("featuredAudioDate").textContent = featuredAudio.dateLabel;
       document.getElementById("featuredAudioCategory").textContent = featuredAudio.category;
-      document.getElementById("featuredAudioArchiveNote").textContent = `Archive note: ${featuredAudio.archiveNote}`;
-      renderAudioSource(document.getElementById("featuredAudioPlayer"), featuredAudio, "Today’s featured audio episode");
+      document.getElementById("featuredAudioArchiveNote").textContent = `Archive ID: ${featuredAudio.archiveId}`;
+      renderAudioSource(document.getElementById("featuredAudioPlayer"), featuredAudio, featuredAudio.subject);
     }
 
     function createVideoCards() {
       const grid = document.getElementById("videoGrid");
-      mediaEditions.forEach((item) => {
+      videoEditions.forEach((item) => {
         const article = document.createElement("article");
         article.className = "gallery-card video-card";
         article.dataset.category = item.category;
-
         const frame = document.createElement("div");
         frame.className = "video-frame gallery-video";
         frame.appendChild(youtubeEmbed(item));
-
         const body = document.createElement("div");
         body.className = "card-body";
-        body.innerHTML = `
-          <p class="eyebrow">${item.videoCategory}</p>
-          <p class="placeholder-note">Temporary placeholder until TitanCore original media launches.</p>
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-          <div class="meta">
-            <span class="label">${item.videoCategory}</span>
-            <span class="label">${dateLabel}</span>
-            <span class="label">${item.cadence}</span>
-          </div>
-          <div class="button-row">
-            <a class="button" href="#featuredVideoHeading">Watch Featured Video</a>
-            <a class="button secondary" href="media-archive.html">View Archive</a>
-          </div>
-          <div class="archive-note">Archive note: save this video edition by day, month, year, and category when the gallery rotation advances.</div>`;
+        body.innerHTML = `<p class="eyebrow">${item.category} Video</p><h3>${item.subject}</h3><p>${item.description}</p><div class="meta"><span class="label">${item.dateLabel}</span><span class="label">Daily Selection</span></div><div class="button-row"><a class="button" href="${item.sourceLink}" target="_blank" rel="noopener">Open Source</a><a class="button secondary" href="media-archive.html?date=${item.date}&category=${encodeURIComponent(item.category)}">View Saved Edition</a></div><div class="archive-note">Archive ID: ${item.archiveId}</div>`;
         article.append(frame, body);
         grid.appendChild(article);
       });
@@ -682,51 +517,18 @@
 
     function createVideoFilters() {
       const filters = document.getElementById("videoFilters");
-      ["All Videos", ...mediaEditions.map((item) => item.category)].forEach((category, index) => {
+      ["All Videos", ...videoEditions.map((item) => item.category)].forEach((category, index) => {
         const button = document.createElement("button");
         button.type = "button";
         button.className = `filter-button${index === 0 ? " active" : ""}`;
         button.textContent = category;
         button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
         button.addEventListener("click", () => {
-          document.querySelectorAll(".filter-button").forEach((item) => {
-            item.classList.remove("active");
-            item.setAttribute("aria-pressed", "false");
-          });
-          button.classList.add("active");
-          button.setAttribute("aria-pressed", "true");
-          document.querySelectorAll(".video-card").forEach((card) => {
-            card.classList.toggle("hidden", category !== "All Videos" && card.dataset.category !== category);
-          });
+          filters.querySelectorAll("button").forEach((candidate) => { candidate.classList.toggle("active", candidate === button); candidate.setAttribute("aria-pressed", String(candidate === button)); });
+          document.querySelectorAll(".video-card").forEach((card) => card.classList.toggle("hidden", category !== "All Videos" && card.dataset.category !== category));
         });
         filters.appendChild(button);
       });
-    }
-
-    function renderAudioSource(container, item, title) {
-      container.replaceChildren();
-      if (item.embedType === "audio" && item.audioUrl) {
-        const audio = document.createElement("audio");
-        audio.controls = true;
-        audio.preload = "metadata";
-        audio.src = item.audioUrl;
-        audio.setAttribute("aria-label", title);
-        container.appendChild(audio);
-        return;
-      }
-      if (item.embedType === "iframe" && item.iframeUrl) {
-        const iframe = document.createElement("iframe");
-        iframe.src = item.iframeUrl;
-        iframe.title = title;
-        iframe.loading = "lazy";
-        iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
-        container.appendChild(iframe);
-        return;
-      }
-      const fallback = document.createElement("div");
-      fallback.className = "audio-source-only";
-      fallback.innerHTML = `<p>This publisher provides the completed episode on its official audio page.</p>`;
-      container.appendChild(fallback);
     }
 
     function createAudioCards() {
@@ -734,62 +536,20 @@
       audioEditions.forEach((item, index) => {
         const article = document.createElement("article");
         article.className = "gallery-card audio-card";
-        article.id = `audioCard${index}`;
-        article.innerHTML = `
-          <div class="card-body">
-            <p class="placeholder-note">Temporary placeholder until TitanCore original media launches.</p>
-            <h3>${item.title}</h3>
-            <p>${item.description}</p>
-            <div class="meta">
-              <span class="label">${item.category}</span>
-              <span class="label">${item.date}</span>
-              <span class="label">Audio Only</span>
-            </div>
-            <div class="audio-player-shell" id="audioPlayer${index}" aria-label="${item.title} official episode player"></div>
-            <div class="button-row">
-              <a class="button" href="#featuredAudioHeading">Play Featured Audio</a>
-              <a class="button secondary" href="media-archive.html">View Media Archive</a>
-            </div>
-            <div class="archive-note">Archive note: ${item.archiveNote}</div>
-          </div>`;
+        article.innerHTML = `<div class="card-body"><h3>${item.subject}</h3><p>${item.description}</p><div class="meta"><span class="label">${item.category}</span><span class="label">${item.dateLabel}</span><span class="label">Audio Only</span></div><div class="audio-player-shell" id="audioPlayer${index}"></div><div class="button-row"><a class="button" href="${item.sourceLink}" target="_blank" rel="noopener">Open Audio Source</a><a class="button secondary" href="media-archive.html?date=${item.date}&category=${encodeURIComponent(item.category)}">View Saved Edition</a></div><div class="archive-note">Archive ID: ${item.archiveId}</div></div>`;
         grid.appendChild(article);
-        renderAudioSource(document.getElementById(`audioPlayer${index}`), item, item.title);
+        renderAudioSource(document.getElementById(`audioPlayer${index}`), item, item.subject);
       });
     }
 
     function bindMenu() {
-      const openButton = document.getElementById("openMenu");
-      const closeButton = document.getElementById("closeMenu");
-      const overlay = document.getElementById("menuOverlay");
-      let lastFocusedElement = null;
-
-      function openMenu() {
-        lastFocusedElement = document.activeElement;
-        overlay.hidden = false;
-        overlay.classList.add("open");
-        document.body.classList.add("menu-open");
-        openButton.setAttribute("aria-expanded", "true");
-        closeButton.focus();
-      }
-      function closeMenu() {
-        overlay.classList.remove("open");
-        overlay.hidden = true;
-        document.body.classList.remove("menu-open");
-        openButton.setAttribute("aria-expanded", "false");
-        if (lastFocusedElement) lastFocusedElement.focus();
-      }
-      openButton.addEventListener("click", openMenu);
-      closeButton.addEventListener("click", closeMenu);
-      overlay.addEventListener("click", (event) => { if (event.target === overlay) closeMenu(); });
-      overlay.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-      document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !overlay.hidden) closeMenu(); });
+      const openButton = document.getElementById("openMenu"); const closeButton = document.getElementById("closeMenu"); const overlay = document.getElementById("menuOverlay");
+      function closeMenu() { overlay.classList.remove("open"); overlay.hidden = true; document.body.classList.remove("menu-open"); openButton.setAttribute("aria-expanded", "false"); }
+      openButton.addEventListener("click", () => { overlay.hidden = false; overlay.classList.add("open"); document.body.classList.add("menu-open"); openButton.setAttribute("aria-expanded", "true"); closeButton.focus(); });
+      closeButton.addEventListener("click", closeMenu); overlay.addEventListener("click", (event) => { if (event.target === overlay) closeMenu(); }); overlay.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
     }
 
-    setFeaturedEditions();
-    createVideoFilters();
-    createVideoCards();
-    createAudioCards();
-    bindMenu();
+    setFeaturedEditions(); createVideoCards(); createVideoFilters(); createAudioCards(); bindMenu();
     document.getElementById("footerYear").textContent = new Date().getFullYear();
   </script>
 </body>
