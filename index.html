@@ -721,11 +721,8 @@
     }
 
     /* Video of the Day */
-    .video-block{
-      display:grid;
-      grid-template-columns:1.15fr .85fr;
-      gap:16px;
-      align-items:stretch;
+    .video-label{
+      margin-bottom:18px;
     }
 
     .video-screen{
@@ -744,68 +741,6 @@
       height:calc(100% - 4px);
       border:0;
       border-radius:calc(var(--radius) - 2px);
-    }
-
-    .video-side{
-      background: rgba(0,0,0,.62);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow2);
-      padding:30px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .video-side h3{
-      color:var(--gold2);
-      font-family:var(--serif);
-      font-size:clamp(25px, 3vw, 36px);
-      font-weight:500;
-      line-height:1.15;
-      margin:8px 0 12px;
-    }
-
-    .video-title{
-      color:#fff;
-      font-size:13px;
-      font-weight:900;
-      letter-spacing:1.8px;
-      text-transform:uppercase;
-    }
-
-    .video-meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:9px;
-      margin:18px 0 4px;
-    }
-
-    .video-meta span{
-      border:1px solid rgba(242,217,140,.28);
-      border-radius:999px;
-      color:var(--gold2);
-      font-size:12px;
-      font-weight:800;
-      padding:7px 11px;
-    }
-
-    .video-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:22px;
-    }
-
-    .video-actions .btn{
-      min-height:52px;
-      flex:1 1 190px;
-    }
-
-    .video-archive-id{
-      color:rgba(255,255,255,.58);
-      font-size:11px;
-      margin-top:14px;
-      overflow-wrap:anywhere;
     }
 
     /* Contact */
@@ -937,7 +872,6 @@
     @media(max-width:980px){
       .hero-grid,
       .feature-grid,
-      .video-block,
       .card-grid{
         grid-template-columns:1fr;
       }
@@ -946,8 +880,7 @@
     @media(max-width:760px){
       .panel,
       .feature-text,
-      .card,
-      .video-side{
+      .card{
         padding:26px;
       }
 
@@ -1167,35 +1100,10 @@
     </section>
 
     <!-- VIDEO OF THE DAY -->
-    <section class="section dark">
+    <section class="section dark" aria-labelledby="dailyHomepageVideoLabel">
       <div class="wrap">
-        <div class="section-title">
-          <div class="eyebrow">Daily Public Business Video</div>
-          <h2>Video of the <span>Day.</span></h2>
-          <p>
-            Watch today’s selected public business video inside TitanCore. The subject and video rotate together each calendar day.
-          </p>
-        </div>
-
-        <div class="video-block" aria-live="polite">
-          <div class="video-screen metal" id="dailyHomepageVideoPlayer" aria-label="Video of the Day player"></div>
-
-          <div class="video-side metal">
-            <div class="eyebrow">Video of the Day</div>
-            <p class="video-title" id="dailyHomepageVideoTitle"></p>
-            <h3 id="dailyHomepageVideoSubject">Loading today’s video…</h3>
-            <p id="dailyHomepageVideoDescription"></p>
-            <div class="video-meta">
-              <span id="dailyHomepageVideoDate"></span>
-              <span id="dailyHomepageVideoCategory"></span>
-            </div>
-            <div class="video-actions">
-              <a href="media-content.html" class="btn primary">Open Media Content <span class="arrow">›</span></a>
-              <a href="media-archive.html" class="btn primary" id="dailyHomepageArchiveLink">View Media Archive <span class="arrow">›</span></a>
-            </div>
-            <p class="video-archive-id" id="dailyHomepageArchiveId"></p>
-          </div>
-        </div>
+        <div class="eyebrow video-label" id="dailyHomepageVideoLabel">Video of the Day</div>
+        <div class="video-screen metal" id="dailyHomepageVideoPlayer" aria-label="Video of the Day player" aria-live="polite"></div>
       </div>
     </section>
 
@@ -1314,19 +1222,12 @@
 
       const iframe = document.createElement("iframe");
       iframe.src = `https://www.youtube-nocookie.com/embed/${item.videoId}?rel=0&playsinline=1`;
-      iframe.title = `${item.title}: ${item.subject}`;
+      iframe.title = "Video of the Day";
       iframe.loading = "lazy";
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.allowFullscreen = true;
       player.replaceChildren(iframe);
 
-      document.getElementById("dailyHomepageVideoTitle").textContent = item.title;
-      document.getElementById("dailyHomepageVideoSubject").textContent = item.subject;
-      document.getElementById("dailyHomepageVideoDescription").textContent = item.description;
-      document.getElementById("dailyHomepageVideoDate").textContent = item.dateLabel;
-      document.getElementById("dailyHomepageVideoCategory").textContent = item.category;
-      document.getElementById("dailyHomepageArchiveId").textContent = `Archive ID: ${item.archiveId}`;
-      document.getElementById("dailyHomepageArchiveLink").href = `media-archive.html?date=${item.dateKey}&category=${encodeURIComponent(item.category)}#${item.archiveId}`;
       TitanCoreMedia.saveItems([item]);
     }
 
