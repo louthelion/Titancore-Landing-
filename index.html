@@ -720,27 +720,52 @@
       font-weight:900;
     }
 
-    /* Video of the Day */
+    /* TitanCore About Video */
     .video-label{
       margin-bottom:18px;
     }
 
     .video-screen{
       min-height:520px;
+      border:1px solid rgba(242,217,140,.58);
       border-radius: var(--radius);
-      background:#000;
-      box-shadow: var(--shadow);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(216,180,90,.18), transparent 36%),
+        radial-gradient(circle at 88% 100%, rgba(8,116,87,.24), transparent 42%),
+        #000;
+      box-shadow:
+        0 0 0 1px rgba(8,116,87,.24),
+        0 26px 70px rgba(0,0,0,.72),
+        0 0 34px rgba(216,180,90,.10);
       position:relative;
       overflow:hidden;
+      isolation:isolate;
     }
 
-    .video-screen iframe{
+    .video-screen::before{
+      content:"";
       position:absolute;
-      inset:2px;
-      width:calc(100% - 4px);
-      height:calc(100% - 4px);
+      inset:0;
+      z-index:2;
+      border-radius:inherit;
+      box-shadow:inset 0 0 0 2px rgba(0,0,0,.72);
+      pointer-events:none;
+    }
+
+    .video-screen iframe,
+    .video-screen video{
+      position:absolute;
+      inset:3px;
+      width:calc(100% - 6px);
+      height:calc(100% - 6px);
       border:0;
-      border-radius:calc(var(--radius) - 2px);
+      border-radius:calc(var(--radius) - 4px);
+      background:#000;
+      object-fit:cover;
+    }
+
+    .video-screen video{
+      z-index:1;
     }
 
     /* Contact */
@@ -1099,11 +1124,20 @@
       </div>
     </section>
 
-    <!-- VIDEO OF THE DAY -->
-    <section class="section dark" aria-labelledby="dailyHomepageVideoLabel">
+    <!-- TITANCORE ABOUT VIDEO -->
+    <section class="section dark" aria-labelledby="titancoreAboutVideoLabel">
       <div class="wrap">
-        <div class="eyebrow video-label" id="dailyHomepageVideoLabel">Video of the Day</div>
-        <div class="video-screen metal" id="dailyHomepageVideoPlayer" aria-label="Video of the Day player" aria-live="polite"></div>
+        <div class="eyebrow video-label" id="titancoreAboutVideoLabel">TitanCore About Video</div>
+        <div class="video-screen metal" id="titancoreAboutVideoPlayer" aria-label="TitanCore About Video player" aria-live="polite">
+          <iframe
+            id="titancoreAboutVideoFallback"
+            src="https://www.youtube-nocookie.com/embed/qp0HIF3SfI4?rel=0&amp;playsinline=1"
+            title="Temporary business leadership video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <!-- Replace assets/video/titancore-about-video.mp4 with TitanCore’s original AI presenter video when ready. -->
       </div>
     </section>
 
@@ -1156,7 +1190,6 @@
 
   </div>
 
-  <script src="media-schedule.js"></script>
   <script>
     /* ==========================
       Menu: accessible dialog
@@ -1211,27 +1244,26 @@
     });
 
     /* ==========================
-      Video of the Day
+      TitanCore About Video
     ========================== */
-    const dailyHomepageVideos = TitanCoreMedia.dailyHomepageVideos;
-    const dailyHomepageVideo = TitanCoreMedia.getHomepageVideo(new Date());
+    const aboutVideoPlayer = document.getElementById("titancoreAboutVideoPlayer");
+    const aboutVideoFallback = document.getElementById("titancoreAboutVideoFallback");
 
-    function renderDailyHomepageVideo(item){
-      const player = document.getElementById("dailyHomepageVideoPlayer");
-      if(!player) return;
+    if(aboutVideoPlayer && aboutVideoFallback){
+      const localAboutVideo = document.createElement("video");
+      localAboutVideo.controls = true;
+      localAboutVideo.playsInline = true;
+      localAboutVideo.preload = "auto";
+      localAboutVideo.setAttribute("aria-label", "TitanCore About Video");
+      localAboutVideo.src = "assets/video/titancore-about-video.mp4";
 
-      const iframe = document.createElement("iframe");
-      iframe.src = `https://www.youtube-nocookie.com/embed/${item.videoId}?rel=0&playsinline=1`;
-      iframe.title = "Video of the Day";
-      iframe.loading = "lazy";
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      iframe.allowFullscreen = true;
-      player.replaceChildren(iframe);
+      localAboutVideo.addEventListener("canplay", () => {
+        if(!Number.isFinite(localAboutVideo.duration) || localAboutVideo.duration <= 0) return;
+        aboutVideoPlayer.replaceChildren(localAboutVideo);
+      }, { once:true });
 
-      TitanCoreMedia.saveItems([item]);
+      localAboutVideo.load();
     }
-
-    renderDailyHomepageVideo(dailyHomepageVideo);
 
     /* ==========================
       Daily image rotation
