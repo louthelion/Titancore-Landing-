@@ -1,43 +1,726 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Media Archive | TitanCore Holdings</title>
-<meta name="description" content="TitanCore Holdings Media Archive for live TV replays, live audio source addresses, TitanCore Studio video, studio audio, CEO briefings, guest interviews, and business media categories.">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;line-height:1.65;overflow-x:hidden}a{text-decoration:none;color:inherit}button{font:inherit;color:inherit}:root{--green:#087457;--gold:#d8b45a;--gold2:#f2d98c;--line:rgba(242,217,140,.42);--line2:rgba(242,217,140,.18);--serif:Georgia,"Times New Roman",serif;--shadow:0 22px 60px rgba(0,0,0,.68);--radius:24px;--max:1180px}.site{min-height:100vh;background:radial-gradient(900px 600px at 10% 0%,rgba(216,180,90,.12),transparent 60%),radial-gradient(900px 650px at 90% 15%,rgba(8,116,87,.20),transparent 60%),#000}.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}.metal{position:relative;border-radius:var(--radius);overflow:hidden}.metal:before{content:"";position:absolute;inset:0;padding:2px;border-radius:var(--radius);background:linear-gradient(135deg,var(--gold2),rgba(216,180,90,.35),var(--gold));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:3}.header{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line2)}.header-in{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 0}.brand{display:flex;align-items:center;gap:14px;min-width:0}.logo{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,rgba(8,116,87,.75),#000);box-shadow:var(--shadow);color:var(--gold2);font:900 22px var(--serif);flex:0 0 auto}.brand-name{font:400 clamp(17px,4vw,23px) var(--serif);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.brand-name span{color:#fff;margin-left:8px}.menu-btn{width:56px;height:56px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,var(--green),#000);color:#fff;font-size:24px;box-shadow:var(--shadow);cursor:pointer}.panel{position:fixed;inset:0;background:rgba(0,0,0,.76);backdrop-filter:blur(12px);z-index:2000;padding:18px;display:none}.panel.open{display:block}.menu-box{width:min(640px,100%);margin:60px auto 0;background:rgba(8,8,8,.96);box-shadow:var(--shadow);padding:22px}.menu-top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line2);padding-bottom:14px;margin-bottom:14px}.menu-top h2{font:400 28px var(--serif);color:var(--gold2)}.close{width:46px;height:46px;border:1px solid var(--line);background:#000;font-size:28px;cursor:pointer}.links{display:grid;gap:10px}.links a{padding:14px;border:1px solid rgba(242,217,140,.16);text-transform:uppercase;letter-spacing:2px;font-weight:900;font-size:13px}.hero{min-height:570px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.55),rgba(0,0,0,.92)),url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1900&q=85");background-size:cover;background-position:center;border-bottom:1px solid var(--line2)}.eyebrow{color:var(--gold2);text-transform:uppercase;letter-spacing:6px;font-size:12px;font-weight:900;margin-bottom:16px}h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05}h1{font-size:clamp(46px,8vw,92px);margin-bottom:20px}h2{font-size:clamp(34px,5vw,60px);margin-bottom:18px}h3{font-size:clamp(24px,3.2vw,38px);color:var(--gold2);margin-bottom:12px}p{font-size:clamp(17px,2vw,21px);line-height:1.75;color:rgba(255,255,255,.9);margin-bottom:16px;max-width:980px}.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.btn,.tab{min-height:54px;padding:0 18px;border:1px solid rgba(242,217,140,.35);background:linear-gradient(135deg,var(--green),#000);color:#fff;display:inline-flex;align-items:center;justify-content:center;text-transform:uppercase;letter-spacing:2.5px;font-weight:900;font-size:12px;cursor:pointer;box-shadow:var(--shadow);text-align:center}.btn.secondary{background:rgba(0,0,0,.55);color:var(--gold2)}.btn:hover,.tab:hover,.tab.active{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#000}.nav{position:sticky;top:92px;z-index:900;background:rgba(0,0,0,.92);border-bottom:1px solid var(--line2);display:flex;overflow-x:auto}.nav a{min-width:max-content;padding:18px 22px;border-right:1px solid var(--line2);text-transform:uppercase;letter-spacing:3px;font-weight:900;font-size:12px}.section{padding:86px 0;border-bottom:1px solid var(--line2);background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.62),rgba(0,0,0,.92)),var(--bg);background-size:cover;background-position:center}.dark{background:#030303}.card{background:rgba(0,0,0,.72);padding:28px;box-shadow:var(--shadow)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.player{position:relative;width:100%;aspect-ratio:16/9;background:#000;border:1px solid rgba(242,217,140,.30);box-shadow:var(--shadow);overflow:hidden;margin-top:18px}.player iframe{width:100%;height:100%;border:0;background:#000}.audio-player{min-height:280px;background:#000;border:1px solid rgba(242,217,140,.30);box-shadow:var(--shadow);display:grid;place-items:center;text-align:center;padding:28px;margin-top:18px}.audio-player audio{width:100%;max-width:760px;margin-top:18px}.audio-icon{width:92px;height:92px;border-radius:50%;border:2px solid var(--gold2);background:linear-gradient(135deg,var(--green),#000);display:grid;place-items:center;margin:0 auto 18px;font-size:34px}.source-address{margin-top:16px;padding:14px;border:1px solid rgba(242,217,140,.22);background:rgba(0,0,0,.55);color:var(--gold2);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;word-break:break-word}.source-address a{color:#fff;text-transform:none;letter-spacing:0;font-weight:700}.media-card{background:rgba(0,0,0,.68);padding:22px;box-shadow:var(--shadow)}.media-card p{font-size:16px}.month-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}.month{border:1px solid rgba(242,217,140,.22);padding:18px;background:rgba(0,0,0,.62)}.month b{display:block;font:400 26px var(--serif);color:var(--gold2);margin-bottom:8px}.month span{display:block;color:rgba(255,255,255,.75);font-size:14px;line-height:1.5}.notice{border-left:4px solid var(--gold2);padding:18px 20px;background:rgba(0,0,0,.55);margin-top:22px}footer{padding:70px 0;text-align:center;background:#000}.foot-logo{width:90px;height:90px;border-radius:50%;display:grid;place-items:center;margin:0 auto 20px;background:linear-gradient(135deg,var(--green),#000);font:900 34px var(--serif);color:var(--gold2);box-shadow:var(--shadow)}.foot-brand{font:400 clamp(24px,4vw,40px) var(--serif);letter-spacing:8px;text-transform:uppercase;color:var(--gold2);margin-bottom:18px}.foot-links,.social{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}.foot-links a{padding:10px 12px;border:1px solid rgba(242,217,140,.14);text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:900}.social a{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:rgba(0,0,0,.55);font-weight:900}@media(max-width:980px){.grid,.month-grid{grid-template-columns:1fr 1fr}}@media(max-width:760px){.wrap{width:calc(100% - 34px)}.header-in{min-height:82px}.logo{width:56px;height:56px}.hero{min-height:560px}.nav{top:82px}.section{padding:72px 0}.card{padding:24px}.grid,.month-grid{grid-template-columns:1fr}.btn,.tab{width:100%}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#030403">
+  <title>Media Archive | TitanCore Holdings</title>
+  <meta name="description" content="TitanCore Holdings Media Archive: revisit saved video and audio editions by date, month, year, type, and business category.">
+  <style>
+    :root {
+      --black: #030403;
+      --black-soft: #080b09;
+      --panel: #0c100d;
+      --panel-light: #111712;
+      --gold: #d8b55b;
+      --gold-bright: #f4dc91;
+      --gold-line: rgba(216, 181, 91, 0.38);
+      --green: #087457;
+      --green-bright: #0d9972;
+      --white: #f8f8f2;
+      --muted: #b7bcb7;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.58);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --max-width: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 4% 0%, rgba(216, 181, 91, 0.13), transparent 28rem),
+        radial-gradient(circle at 96% 18%, rgba(8, 116, 87, 0.18), transparent 32rem),
+        var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      line-height: 1.65;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; font: inherit; }
+    iframe { display: block; max-width: 100%; }
+    .wrap { width: min(var(--max-width), calc(100% - 40px)); margin-inline: auto; }
+    .section { padding: 88px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+    .section-dark { background: rgba(0, 0, 0, 0.3); }
+    .eyebrow { margin: 0 0 12px; color: var(--gold-bright); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.26em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+    h1 { margin-bottom: 24px; color: var(--gold-bright); font-size: clamp(3.7rem, 9vw, 7.7rem); line-height: 0.95; letter-spacing: -0.045em; }
+    h2 { margin-bottom: 18px; color: var(--gold-bright); font-size: clamp(2.35rem, 5vw, 4.35rem); line-height: 1.03; letter-spacing: -0.03em; }
+    h3 { margin-bottom: 12px; color: var(--gold-bright); font-size: clamp(1.55rem, 3vw, 2.15rem); line-height: 1.12; }
+    p { color: #d7dad7; font-size: 1.01rem; }
+    .lead { max-width: 930px; color: #e7e9e6; font-size: clamp(1.08rem, 2.1vw, 1.35rem); }
+    .section-heading { max-width: 900px; margin-bottom: 34px; }
+    .section-heading p { max-width: 790px; color: var(--muted); }
+
+    .site-header { position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--gold-line); background: rgba(3, 4, 3, 0.94); backdrop-filter: blur(18px); }
+    .header-inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-mark, .footer-mark { display: grid; place-items: center; flex: 0 0 auto; border: 2px solid var(--gold); border-radius: 50%; background: radial-gradient(circle at 35% 25%, #139b76, #075a45 46%, #020302 72%); color: var(--gold-bright); font-family: var(--serif); font-weight: 700; box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.42), 0 10px 34px rgba(0, 0, 0, 0.5); }
+    .brand-mark { width: 58px; height: 58px; font-size: 1.3rem; }
+    .brand-name { overflow: hidden; color: var(--gold-bright); font-family: var(--serif); font-size: clamp(1.05rem, 2.8vw, 1.48rem); letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; text-overflow: ellipsis; }
+    .brand-name span { color: var(--white); }
+    .menu-button { width: 54px; height: 54px; border: 1px solid var(--gold-line); border-radius: 15px; background: linear-gradient(145deg, var(--green), #06150f); cursor: pointer; font-size: 1.65rem; transition: transform 180ms ease, border-color 180ms ease; }
+    .menu-button:hover, .menu-button:focus-visible { transform: translateY(-2px); border-color: var(--gold-bright); outline: none; }
+    .menu-overlay { position: fixed; inset: 0; z-index: 2000; display: none; padding: 24px; background: rgba(0, 0, 0, 0.84); backdrop-filter: blur(12px); }
+    .menu-overlay.open { display: grid; place-items: center; }
+    .menu-panel { width: min(620px, 100%); max-height: calc(100vh - 48px); overflow-y: auto; padding: 26px; border: 1px solid var(--gold-line); border-radius: 26px; background: #070a08; box-shadow: var(--shadow); }
+    .menu-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid rgba(216, 181, 91, 0.2); }
+    .menu-top h2 { margin: 0; font-size: 2rem; }
+    .close-button { width: 48px; height: 48px; border: 1px solid var(--gold-line); border-radius: 14px; background: #020302; cursor: pointer; font-size: 1.8rem; }
+    .menu-links { display: grid; gap: 10px; margin-top: 18px; }
+    .menu-links a { padding: 14px 16px; border: 1px solid rgba(216, 181, 91, 0.18); border-radius: 13px; color: #f0f2ee; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; transition: background 180ms ease, border-color 180ms ease; }
+    .menu-links a:hover, .menu-links a:focus-visible, .menu-links a[aria-current="page"] { border-color: var(--gold); background: rgba(8, 116, 87, 0.2); outline: none; }
+
+    .hero { min-height: 690px; display: grid; align-items: center; padding: 105px 0; border-bottom: 1px solid var(--gold-line); background: linear-gradient(110deg, rgba(0, 0, 0, 0.88), rgba(3, 25, 18, 0.6)), repeating-linear-gradient(135deg, transparent 0 34px, rgba(216, 181, 91, 0.025) 34px 35px); }
+    .hero-content { position: relative; }
+    .hero-actions, .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 12px 18px; border: 1px solid var(--green-bright); border-radius: 12px; background: linear-gradient(145deg, var(--green), #064532); color: #fff; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.1em; text-align: center; text-transform: uppercase; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease; }
+    .button:hover, .button:focus-visible { transform: translateY(-2px); border-color: var(--gold-bright); outline: none; }
+    .button.secondary { border-color: var(--gold-line); background: #101511; }
+    .connection-note { max-width: 850px; margin-top: 30px; padding: 18px 20px; border-left: 3px solid var(--gold); border-radius: 0 14px 14px 0; background: rgba(8, 116, 87, 0.12); color: #e6e8e5; }
+
+    .control-panel { padding: 30px; border: 1px solid var(--gold-line); border-radius: 24px; background: linear-gradient(145deg, rgba(17, 23, 18, 0.96), rgba(5, 8, 6, 0.97)); box-shadow: var(--shadow); }
+    .control-group + .control-group { margin-top: 28px; padding-top: 26px; border-top: 1px solid rgba(216, 181, 91, 0.18); }
+    .control-label { display: block; margin-bottom: 13px; color: var(--gold-bright); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .filter-button { min-height: 43px; padding: 10px 15px; border: 1px solid rgba(216, 181, 91, 0.28); border-radius: 999px; background: #080b09; color: #e5e7e3; cursor: pointer; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; transition: border-color 180ms ease, background 180ms ease, color 180ms ease; }
+    .filter-button:hover, .filter-button:focus-visible { border-color: var(--gold-bright); outline: none; }
+    .filter-button.active { border-color: var(--green-bright); background: var(--green); color: #fff; box-shadow: 0 0 22px rgba(13, 153, 114, 0.22); }
+    .filter-button:disabled { cursor: not-allowed; opacity: 0.48; }
+    .archive-status { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); color: var(--muted); font-size: 0.9rem; }
+    .archive-status strong { color: var(--gold-bright); }
+
+    .date-banner { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 22px; margin-bottom: 34px; padding: 24px 26px; border: 1px solid var(--gold-line); border-radius: 20px; background: linear-gradient(100deg, rgba(8, 116, 87, 0.2), rgba(216, 181, 91, 0.06)); }
+    .date-day { display: grid; width: 82px; height: 82px; place-items: center; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-bright); font-family: var(--serif); font-size: 2.3rem; line-height: 1; }
+    .date-banner h2 { margin: 0 0 5px; font-size: clamp(2rem, 4vw, 3.2rem); }
+    .date-banner p { margin: 0; color: var(--muted); }
+
+    .archive-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+    .media-card { overflow: hidden; display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--gold-line); border-radius: 22px; background: linear-gradient(155deg, rgba(17, 23, 18, 0.98), rgba(5, 7, 5, 0.99)); box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42); }
+    .media-card.hidden { display: none; }
+    .media-player { position: relative; width: 100%; background: #000; border-bottom: 1px solid var(--gold-line); }
+    .video-player { aspect-ratio: 16 / 9; }
+    .video-player iframe { width: 100%; height: 100%; border: 0; }
+    .audio-player { min-height: 178px; display: grid; align-items: center; padding: 14px; background: radial-gradient(circle at 15% 50%, rgba(8, 116, 87, 0.3), transparent 45%), #050705; }
+    .audio-player iframe { width: 100%; height: 152px; border: 0; border-radius: 12px; background: #000; }
+    .audio-player audio { width: 100%; accent-color: var(--green-bright); }
+    .audio-fallback { padding: 28px; border: 1px dashed var(--gold-line); border-radius: 14px; color: var(--muted); text-align: center; }
+    .card-body { display: flex; flex: 1; flex-direction: column; padding: 26px; }
+    .card-topline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+    .type-label { padding: 6px 10px; border: 1px solid var(--green-bright); border-radius: 999px; background: rgba(8, 116, 87, 0.22); color: #dffff6; font-size: 0.68rem; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; }
+    .source-name { color: var(--muted); font-size: 0.72rem; }
+    .card-body h3 { font-size: clamp(1.55rem, 2.5vw, 2rem); }
+    .card-body > p { color: #cdd1cd; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 7px 0 4px; }
+    .label { padding: 6px 9px; border: 1px solid rgba(216, 181, 91, 0.22); border-radius: 8px; color: #dadcd8; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+    .card-body .button-row { margin-top: auto; padding-top: 22px; }
+    .card-body .button { flex: 1 1 165px; }
+    .archive-note { margin-top: 19px; padding-top: 15px; border-top: 1px solid rgba(216, 181, 91, 0.16); color: var(--muted); font-size: 0.82rem; }
+    .placeholder-note { display: inline-block; margin: 0 0 14px; padding: 8px 11px; border-left: 2px solid var(--gold); background: rgba(216, 181, 91, 0.07); color: var(--gold-bright); font-size: 0.78rem; font-weight: 700; }
+    .empty-state { grid-column: 1 / -1; padding: 60px 24px; border: 1px dashed var(--gold-line); border-radius: 20px; text-align: center; }
+    .empty-state h3 { margin-bottom: 8px; }
+
+    .studio-intro { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; align-items: center; padding: 34px; border: 1px solid var(--gold-line); border-radius: 24px; background: linear-gradient(135deg, rgba(8, 116, 87, 0.2), rgba(10, 13, 10, 0.96)); }
+    .studio-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .studio-list li { padding: 12px 14px; border: 1px solid rgba(216, 181, 91, 0.18); border-radius: 11px; background: rgba(0, 0, 0, 0.25); color: #e0e3df; }
+    .studio-list li::before { content: "◆"; margin-right: 10px; color: var(--gold); font-size: 0.7rem; }
+
+    .site-footer { padding: 68px 0; border-top: 1px solid var(--gold-line); background: #020302; text-align: center; }
+    .footer-mark { width: 76px; height: 76px; margin: 0 auto 17px; font-size: 1.55rem; }
+    .footer-brand { color: var(--gold-bright); font-family: var(--serif); font-size: 2rem; line-height: 1.05; }
+    .footer-copy { margin: 16px 0 22px; color: var(--muted); font-size: 0.84rem; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; }
+    .footer-links a { color: #d9dcd8; font-size: 0.82rem; }
+    .footer-links a:hover, .footer-links a:focus-visible { color: var(--gold-bright); outline: none; }
+    .social-links { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+    .social-links a { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--gold-line); border-radius: 50%; background: var(--green); color: #fff; font-weight: 800; }
+
+    @media (max-width: 820px) {
+      .archive-grid, .studio-intro { grid-template-columns: 1fr; }
+      .hero { min-height: 610px; }
+      .date-banner { grid-template-columns: 1fr; }
+      .date-day { width: 66px; height: 66px; font-size: 1.9rem; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 26px, var(--max-width)); }
+      .section { padding: 68px 0; }
+      .brand-name { font-size: 0.95rem; letter-spacing: 0.045em; }
+      .brand-mark { width: 49px; height: 49px; font-size: 1.08rem; }
+      .menu-button { width: 49px; height: 49px; }
+      .menu-overlay { padding: 12px; }
+      .menu-panel, .control-panel, .studio-intro { padding: 20px; }
+      .hero { min-height: 570px; padding: 78px 0; }
+      .hero-actions .button { width: 100%; }
+      .archive-grid { gap: 20px; }
+      .card-body { padding: 21px; }
+      .button-row .button { flex-basis: 100%; }
+      .audio-player { min-height: 164px; padding: 9px; }
+      .audio-player iframe { height: 152px; }
+    }
+  </style>
 </head>
 <body>
-<div class="site">
-<header class="header"><div class="wrap header-in"><a class="brand" href="index.html"><div class="logo metal">TH</div><div class="brand-name">TitanCore <span>Holdings</span></div></a><button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button></div></header>
-<div class="panel" id="menuPanel"><div class="menu-box metal"><div class="menu-top"><h2>TitanCore Menu</h2><button class="close" id="closeMenu">×</button></div><nav class="links"><a href="index.html">Home</a><a href="news-media.html">News &amp; Media</a><a href="media-content.html">Media Content</a><a href="media-archive.html">Media Archive</a><a href="news-archive.html">News Archive</a><a href="business-intelligence.html">Business Intelligence</a><a href="contact.html">Contact</a></nav></div></div>
-<section class="hero"><div class="wrap"><div class="eyebrow">Media Archive</div><h1>Video. Audio. Studio. Replays.</h1><p>This archive is separate from the News Archive. Media Content uses this Media Archive for live TV replays, live audio source addresses, TitanCore Studio videos, TitanCore Studio audio, CEO briefings, guest interviews, and business video category replays.</p><div class="btn-row"><a class="btn" href="media-content.html">Back To Media Content ›</a><a class="btn secondary" href="news-archive.html">Open News Archive ›</a></div></div></section>
-<nav class="nav"><a href="#today-video">Today Video</a><a href="#today-audio">Today Audio</a><a href="#studio-video">Studio Video</a><a href="#studio-audio">Studio Audio</a><a href="#categories">Video Categories</a><a href="#months">Month Archive</a></nav>
-<main>
-<section class="section" id="today-video" style="--bg:url('https://images.unsplash.com/photo-1642790106117-e829e14a795f?auto=format&fit=crop&w=1900&q=85')"><div class="wrap"><div class="card metal"><div class="eyebrow">Today Video Replay</div><h2 id="videoTitle">Business TV Replay</h2><p id="videoText">Choose a video replay type below. This area saves the video/live TV side of Media Content.</p><div class="player"><iframe id="videoFrame" title="Media video replay" src="https://www.youtube-nocookie.com/embed/videoseries?list=UUIALMKvObZNtJ6AmdCLP7Lg&rel=0" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div><div class="tabs" id="videoTabs"></div></div></div></section>
-<section class="section dark" id="today-audio"><div class="wrap"><div class="card metal"><div class="eyebrow">Today Audio Replay / Live Audio Source Address</div><h2 id="audioTitle">Business Audio Archive</h2><p id="audioText">Choose an audio replay or live audio station. This area shows the audio player and the source address.</p><div class="audio-player" id="audioBox"></div><div class="source-address" id="audioAddress">Audio Source Address: <a id="audioAddressLink" href="https://www.bloomberg.com/audio" target="_blank" rel="noopener">https://www.bloomberg.com/audio</a></div><div class="tabs" id="audioTabs"></div><div class="btn-row"><a class="btn" id="audioOfficial" href="https://www.bloomberg.com/audio" target="_blank" rel="noopener">Open Audio Source ›</a></div></div></div></section>
-<section class="section" id="studio-video" style="--bg:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1900&q=85')"><div class="wrap"><div class="eyebrow">TitanCore Studio Video Archive</div><h2>Future TitanCore studio video replays.</h2><p>When TitanCore starts live studio shows, CEO briefings, guest entrepreneur interviews, and subsidiary updates, the video replays will be archived here by date and show type.</p><div class="grid" id="studioVideoGrid"></div></div></section>
-<section class="section dark" id="studio-audio"><div class="wrap"><div class="eyebrow">TitanCore Studio Audio Archive</div><h2>Future TitanCore studio audio replays.</h2><p>If people do not want to watch the studio video, they can listen to the studio audio replay. Each audio card now shows the source address.</p><div class="grid" id="studioAudioGrid"></div></div></section>
-<section class="section" id="categories" style="--bg:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1900&q=85')"><div class="wrap"><div class="eyebrow">Media Category Archive</div><h2>Replay by business category.</h2><p>Only media replays go here: market, Bitcoin, oil, real estate, auto and marine business, finance education, and leadership/business growth.</p><div class="grid" id="categoryGrid"></div></div></section>
-<section class="section" id="months" style="--bg:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1900&q=85')"><div class="wrap"><div class="card metal"><div class="eyebrow">Month &amp; Date Archive</div><h2>Archive starts from June 2026.</h2><p>As new media gets added, this page can organize replays by month, date, live TV replay, live audio replay, TitanCore Studio video replay, TitanCore Studio audio replay, CEO briefing, guest interview, and media category.</p><div class="notice"><p><strong>Correct structure:</strong> News &amp; Media goes to News Archive. Media Content goes to Media Archive. Media Archive includes both video and audio, and audio now has a visible source address.</p></div><div class="month-grid"><div class="month"><b>June 2026</b><span>Live TV • Live Audio Source Address • Studio Video • Studio Audio • Video Categories</span></div><div class="month"><b>July 2026</b><span>Coming after month closes</span></div><div class="month"><b>August 2026</b><span>Coming after month closes</span></div><div class="month"><b>Future Months</b><span>Auto-organized when added</span></div></div><div class="btn-row"><a class="btn" href="media-content.html">Open Media Content ›</a><a class="btn secondary" href="news-media.html">News &amp; Media ›</a></div></div></div></section>
-</main>
-<footer><div class="wrap"><div class="foot-logo metal">TH</div><div class="foot-brand">TitanCore<br>Holdings</div><p>© <span id="year"></span> TitanCore Holdings • Media Archive</p><div class="foot-links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-use.html">Terms of Use</a><a href="blogs.html">Blogs</a><a href="feedback.html">Feedback</a></div><div class="social"><a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener">f</a><a href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener">◎</a><a href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener">in</a></div></div></footer>
-</div>
-<script>
-const videoReplays=[{label:'Live TV Replay',title:'Business TV Replay',text:'Past business TV and live market video replay.',src:'https://www.youtube-nocookie.com/embed/videoseries?list=UUIALMKvObZNtJ6AmdCLP7Lg&rel=0'},{label:'Studio Video Replay',title:'TitanCore Studio Video Replay',text:'Future TitanCore Studio video replay placeholder.',src:'https://www.youtube-nocookie.com/embed/bNpx7gpSqbY?rel=0&playsinline=1'},{label:'CEO Video Replay',title:'CEO Briefing Video Replay',text:'Future CEO briefing video replay placeholder.',src:'https://www.youtube-nocookie.com/embed/qp0HIF3SfI4?rel=0&playsinline=1'}];
-const audioReplays=[{label:'Bloomberg Radio',title:'Bloomberg Radio Archive',text:'Live business audio station placeholder for markets and finance.',type:'audio',src:'https://playerservices.streamtheworld.com/api/livestream-redirect/WBBRAMAAC.aac',official:'https://www.bloomberg.com/audio',address:'https://playerservices.streamtheworld.com/api/livestream-redirect/WBBRAMAAC.aac'},{label:'BBC World Service',title:'BBC World Service Archive',text:'Live audio station placeholder with global news and economy coverage.',type:'audio',src:'https://stream.live.vc.bbcmedia.co.uk/bbc_world_service',official:'https://www.bbc.co.uk/sounds/play/live:bbc_world_service',address:'https://stream.live.vc.bbcmedia.co.uk/bbc_world_service'},{label:'Marketplace Audio',title:'Marketplace Audio Archive',text:'Business and economy audio source. Official source opens if inside playback is not available.',type:'fallback',src:'',official:'https://www.marketplace.org/',address:'https://www.marketplace.org/'},{label:'CoinDesk Audio',title:'CoinDesk Crypto Audio Archive',text:'Crypto and digital-asset media source. Official source opens if inside playback is not available.',type:'fallback',src:'',official:'https://www.coindesk.com/video/',address:'https://www.coindesk.com/video/'},{label:'Yahoo Finance Audio',title:'Yahoo Finance Audio Archive',text:'Finance video/audio source. Official source opens if inside playback is not available.',type:'fallback',src:'',official:'https://finance.yahoo.com/video/',address:'https://finance.yahoo.com/video/'}];
-const studioVideo=[{t:'TitanCore Studio Live Video',d:'Future live studio show video replay placeholder.',s:'https://www.youtube-nocookie.com/embed/videoseries?list=UUIALMKvObZNtJ6AmdCLP7Lg&rel=0'},{t:'CEO Briefing Video',d:'Future CEO message and TitanCore update video replay.',s:'https://www.youtube-nocookie.com/embed/videoseries?list=UUAuUUnT6oDeKwE6v1NGQxug&rel=0'},{t:'Guest Interview Video',d:'Future entrepreneur and investor interview video replay.',s:'https://www.youtube-nocookie.com/embed/bNpx7gpSqbY?rel=0&playsinline=1'}];
-const studioAudio=[{t:'TitanCore Studio Live Audio',d:'Future live studio audio replay placeholder.',type:'audio',s:'https://playerservices.streamtheworld.com/api/livestream-redirect/WBBRAMAAC.aac',official:'https://www.bloomberg.com/audio'},{t:'CEO Briefing Audio',d:'Future CEO message audio replay placeholder.',type:'audio',s:'https://stream.live.vc.bbcmedia.co.uk/bbc_world_service',official:'https://www.bbc.co.uk/sounds/play/live:bbc_world_service'},{t:'Guest Interview Audio',d:'Future guest interview audio replay placeholder.',type:'fallback',s:'',official:'https://www.marketplace.org/'}];
-const cats=[{t:'Market & Stock Video',d:'Market, stocks, companies, and public market replay.',s:'https://www.youtube-nocookie.com/embed/videoseries?list=UUEAZeUIeJs0IjQiqTCdVSIg&rel=0'},{t:'Bitcoin & Crypto Video',d:'Bitcoin, crypto, blockchain, and digital assets replay.',s:'https://www.youtube-nocookie.com/embed/videoseries?list=UUIALMKvObZNtJ6AmdCLP7Lg&rel=0'},{t:'Oil & Energy Video',d:'Oil, energy, commodities, and economy replay.',s:'https://www.youtube-nocookie.com/embed/videoseries?list=UUknLrEdhRCp1aegoMqRaCZg&rel=0'},{t:'Real Estate & Economy Video',d:'Real estate, housing, economy, and capital replay.',s:'https://www.youtube-nocookie.com/embed/videoseries?list=UUIALMKvObZNtJ6AmdCLP7Lg&rel=0'},{t:'Auto & Marine Business Video',d:'Transportation, marketplace, auto, and marine business replay.',s:'https://www.youtube-nocookie.com/embed/videoseries?list=UUEAZeUIeJs0IjQiqTCdVSIg&rel=0'},{t:'Leadership / Business Growth',d:'Leadership, entrepreneurship, and business growth replay.',s:'https://www.youtube-nocookie.com/embed/qp0HIF3SfI4?rel=0&playsinline=1'}];
-const menu=document.getElementById('menuPanel');document.getElementById('openMenu').onclick=()=>{menu.classList.add('open');document.body.style.overflow='hidden'};document.getElementById('closeMenu').onclick=()=>{menu.classList.remove('open');document.body.style.overflow=''};menu.onclick=e=>{if(e.target===menu){menu.classList.remove('open');document.body.style.overflow=''}};document.getElementById('year').textContent=new Date().getFullYear();
-function videoTabs(){const box=document.getElementById('videoTabs');box.innerHTML=videoReplays.map((r,i)=>`<button class="tab ${i===0?'active':''}" data-i="${i}">${r.label}</button>`).join('');box.querySelectorAll('button').forEach(b=>b.onclick=()=>{box.querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');const r=videoReplays[+b.dataset.i];videoTitle.textContent=r.title;videoText.textContent=r.text;videoFrame.src=r.src})}
-function audioTabs(){const box=document.getElementById('audioTabs');box.innerHTML=audioReplays.map((r,i)=>`<button class="tab ${i===0?'active':''}" data-i="${i}">${r.label}</button>`).join('');box.querySelectorAll('button').forEach(b=>b.onclick=()=>loadAudio(+b.dataset.i));loadAudio(0)}
-function loadAudio(i){const r=audioReplays[i];document.querySelectorAll('#audioTabs button').forEach((b,n)=>b.classList.toggle('active',n===i));audioTitle.textContent=r.title;audioText.textContent=r.text;audioOfficial.href=r.official;audioAddressLink.href=r.address;audioAddressLink.textContent=r.address;if(r.type==='audio'){audioBox.innerHTML=`<div><div class="audio-icon">▶</div><h3>${r.label}</h3><p>${r.text}</p><audio controls preload="none" src="${r.src}">Your browser does not support audio.</audio></div>`}else{audioBox.innerHTML=`<div><div class="audio-icon">▶</div><h3>${r.label}</h3><p>This audio source may not allow inside playback. Use the source address below.</p></div>`}}
-function videoCards(id,arr){document.getElementById(id).innerHTML=arr.map(x=>`<article class="media-card metal"><h3>${x.t}</h3><p>${x.d}</p><div class="player"><iframe src="${x.s}" title="${x.t}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div></article>`).join('')}
-function audioCards(id,arr){document.getElementById(id).innerHTML=arr.map(x=>`<article class="media-card metal"><h3>${x.t}</h3><p>${x.d}</p><div class="audio-player">${x.type==='audio'?`<div><div class="audio-icon">▶</div><audio controls preload="none" src="${x.s}">Your browser does not support audio.</audio><div class="source-address">Audio Source Address: <a href="${x.s}" target="_blank" rel="noopener">${x.s}</a></div></div>`:`<div><div class="audio-icon">▶</div><p>Future audio replay will appear here.</p><div class="source-address">Audio Source Address: <a href="${x.official}" target="_blank" rel="noopener">${x.official}</a></div></div>`}</div></article>`).join('')}
-videoTabs();audioTabs();videoCards('studioVideoGrid',studioVideo);audioCards('studioAudioGrid',studioAudio);videoCards('categoryGrid',cats);
-</script>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="TitanCore Holdings homepage">
+        <span class="brand-mark" aria-hidden="true">TH</span>
+        <span class="brand-name">TitanCore <span>Holdings</span></span>
+      </a>
+      <button class="menu-button" id="openMenu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menuOverlay">☰</button>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="TitanCore navigation" hidden>
+    <div class="menu-panel" role="document">
+      <div class="menu-top">
+        <h2>TitanCore Menu</h2>
+        <button class="close-button" id="closeMenu" type="button" aria-label="Close menu">×</button>
+      </div>
+      <nav class="menu-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="news-media.html">News &amp; Media</a>
+        <a href="media-content.html">Media Content</a>
+        <a href="media-archive.html" aria-current="page">Media Archive</a>
+        <a href="news-archive.html">News Archive</a>
+        <a href="business-intelligence.html">Business Intelligence</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="wrap hero-content">
+        <p class="eyebrow">TitanCore Holdings • Saved Media Library</p>
+        <h1 id="pageTitle">Media Archive</h1>
+        <p class="lead">Review TitanCore’s saved video and audio editions by day, month, year, and category. This archive begins in June 2026 and stores Media Content separately from the News Archive.</p>
+        <div class="hero-actions">
+          <a class="button" href="#archive-controls">Browse The Archive</a>
+          <a class="button secondary" href="media-content.html">Back to Media Content</a>
+        </div>
+        <p class="connection-note"><strong>Media Archive saves past video and audio editions from the Media Content page.</strong> Inside-page playback remains the primary experience; official source links are available only as a backup.</p>
+      </div>
+    </section>
+
+    <section class="section" id="archive-controls" aria-labelledby="controlHeading">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow">Find Saved Editions</p>
+          <h2 id="controlHeading">Archive Control Center</h2>
+          <p>Choose a media type, program, business category, or available month. Filters can be combined so the library stays useful as new editions are added.</p>
+        </div>
+        <div class="control-panel">
+          <div class="control-group">
+            <span class="control-label">Media Type &amp; Category</span>
+            <div class="filter-row" id="categoryFilters" aria-label="Filter media by type or category">
+              <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All Media</button>
+              <button class="filter-button" type="button" data-filter="type:video" aria-pressed="false">Video</button>
+              <button class="filter-button" type="button" data-filter="type:audio" aria-pressed="false">Audio</button>
+              <button class="filter-button" type="button" data-filter="category:TitanCore Studio" aria-pressed="false">TitanCore Studio</button>
+              <button class="filter-button" type="button" data-filter="category:CEO Briefing" aria-pressed="false">CEO Briefing</button>
+              <button class="filter-button" type="button" data-filter="category:Entrepreneur Interviews" aria-pressed="false">Entrepreneur Interviews</button>
+              <button class="filter-button" type="button" data-filter="category:Market" aria-pressed="false">Market</button>
+              <button class="filter-button" type="button" data-filter="category:Bitcoin &amp; Crypto" aria-pressed="false">Bitcoin &amp; Crypto</button>
+              <button class="filter-button" type="button" data-filter="category:Oil &amp; Energy" aria-pressed="false">Oil &amp; Energy</button>
+              <button class="filter-button" type="button" data-filter="category:Real Estate &amp; Economy" aria-pressed="false">Real Estate &amp; Economy</button>
+              <button class="filter-button" type="button" data-filter="category:Auto &amp; Marine" aria-pressed="false">Auto &amp; Marine</button>
+              <button class="filter-button" type="button" data-filter="category:Finance Education" aria-pressed="false">Finance Education</button>
+              <button class="filter-button" type="button" data-filter="category:Leadership / Business Growth" aria-pressed="false">Leadership / Business Growth</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Archive Month</span>
+            <div class="filter-row" id="monthFilters" aria-label="Filter media by month">
+              <button class="filter-button active" type="button" data-month="June 2026" aria-pressed="true">June 2026</button>
+              <button class="filter-button" type="button" disabled>July 2026 — Coming Soon</button>
+              <button class="filter-button" type="button" disabled>August 2026 — Coming Soon</button>
+            </div>
+          </div>
+          <div class="archive-status" aria-live="polite">
+            <span id="resultCount"><strong>12</strong> saved editions shown</span>
+            <span id="activeFilter">All Media • June 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="featured-date" aria-labelledby="featuredDateHeading">
+      <div class="wrap">
+        <div class="date-banner">
+          <div class="date-day" aria-hidden="true">06</div>
+          <div>
+            <p class="eyebrow">Featured Archive Date</p>
+            <h2 id="featuredDateHeading">June 6, 2026</h2>
+            <p>Saved video and audio editions carried forward from TitanCore Media Content.</p>
+          </div>
+        </div>
+        <div class="archive-grid" id="archiveGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="studio-archive" aria-labelledby="studioHeading">
+      <div class="wrap">
+        <div class="studio-intro">
+          <div>
+            <p class="eyebrow">Future Original Programming</p>
+            <h2 id="studioHeading">TitanCore Studio Archive</h2>
+            <p>This dedicated area will preserve TitanCore original programming as it launches. The active Studio, CEO, and entrepreneur cards above currently use playable public business and leadership media.</p>
+            <p class="placeholder-note">Temporary placeholder until TitanCore original media launches.</p>
+            <div class="button-row">
+              <button class="button" type="button" data-studio-filter>View Studio Placeholders</button>
+              <a class="button secondary" href="media-content.html#titancore-studio">Open Media Content Studio</a>
+            </div>
+          </div>
+          <ul class="studio-list" aria-label="Future TitanCore Studio archive programs">
+            <li>TitanCore Studio Video</li>
+            <li>TitanCore Studio Audio</li>
+            <li>CEO Briefing Video or Audio</li>
+            <li>Guest Entrepreneur Interview</li>
+            <li>Subsidiary Update</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-mark" aria-hidden="true">TH</div>
+      <div class="footer-brand">TitanCore<br>Holdings</div>
+      <p class="footer-copy">© <span id="footerYear">2026</span> TitanCore Holdings • All rights reserved</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-use.html">Terms of Use</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="media-content.html">Media Content</a>
+        <a href="news-media.html">News &amp; Media</a>
+      </nav>
+      <div class="social-links" aria-label="TitanCore social media">
+        <a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+        <a href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const archiveItems = [
+      {
+        id: "market-video-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Market",
+        type: "video",
+        title: "Market & Stock Video",
+        description: "Saved market video edition from Media Content, focused on stocks, companies, market movement, and financial decision signals.",
+        embedType: "youtube",
+        videoId: "98qfFzqDKR8",
+        audioUrl: "",
+        iframeUrl: "",
+        officialUrl: "https://www.youtube.com/watch?v=98qfFzqDKR8",
+        sourceName: "Public YouTube business video",
+        archiveNote: "Saved from Media Content for June 6, 2026."
+      },
+      {
+        id: "bitcoin-video-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Bitcoin & Crypto",
+        type: "video",
+        title: "Bitcoin & Crypto Video",
+        description: "Saved digital-asset edition covering Bitcoin, blockchain, crypto markets, adoption, cycles, and risk awareness.",
+        embedType: "youtube",
+        videoId: "pVZzgzYZdCA",
+        audioUrl: "",
+        iframeUrl: "",
+        officialUrl: "https://www.youtube.com/watch?v=pVZzgzYZdCA",
+        sourceName: "Public YouTube educational video",
+        archiveNote: "Saved from Media Content for June 6, 2026."
+      },
+      {
+        id: "oil-energy-video-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Oil & Energy",
+        type: "video",
+        title: "Oil & Energy Video",
+        description: "Saved energy edition examining oil, gas, commodities, production, and the relationship between energy and business costs.",
+        embedType: "youtube",
+        videoId: "GtaoP0skPWc",
+        audioUrl: "",
+        iframeUrl: "",
+        officialUrl: "https://www.youtube.com/watch?v=GtaoP0skPWc",
+        sourceName: "Public YouTube energy video",
+        archiveNote: "Saved from Media Content for June 6, 2026."
+      },
+      {
+        id: "real-estate-video-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Real Estate & Economy",
+        type: "video",
+        title: "Real Estate & Economy Video",
+        description: "Saved property and economy edition focused on housing, rent, interest rates, investment, and changing economic conditions.",
+        embedType: "youtube",
+        videoId: "bNpx7gpSqbY",
+        audioUrl: "",
+        iframeUrl: "",
+        officialUrl: "https://www.youtube.com/watch?v=bNpx7gpSqbY",
+        sourceName: "Public YouTube real estate video",
+        archiveNote: "Saved from Media Content for June 6, 2026."
+      },
+      {
+        id: "market-audio-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Market",
+        type: "audio",
+        title: "Market Audio Edition",
+        description: "Saved audio edition from Media Content about stocks, companies, market volatility, and business movement.",
+        embedType: "iframe",
+        videoId: "",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r",
+        sourceName: "Thoughts on the Market",
+        archiveNote: "Saved from Media Content as audio, not video."
+      },
+      {
+        id: "bitcoin-audio-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Bitcoin & Crypto",
+        type: "audio",
+        title: "Bitcoin & Crypto Audio Edition",
+        description: "Saved audio edition from Media Content about Bitcoin, crypto markets, adoption, risk, and digital assets.",
+        embedType: "iframe",
+        videoId: "",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G",
+        sourceName: "Crypto Curious",
+        archiveNote: "Saved from Media Content as audio, not video."
+      },
+      {
+        id: "finance-education-audio-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Finance Education",
+        type: "audio",
+        title: "Finance Education Audio Edition",
+        description: "Saved audio edition about saving, investing, financial habits, and stronger everyday money decisions.",
+        embedType: "iframe",
+        videoId: "",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX",
+        sourceName: "BiggerPockets Money",
+        archiveNote: "Saved from Media Content as audio, not video."
+      },
+      {
+        id: "leadership-audio-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Leadership / Business Growth",
+        type: "audio",
+        title: "Leadership / Business Growth Audio Edition",
+        description: "Saved audio edition about leadership mindset, entrepreneurship, teams, and sustainable business growth.",
+        embedType: "iframe",
+        videoId: "",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9",
+        sourceName: "Inside Strategic Coach",
+        archiveNote: "Saved from Media Content as audio, not video."
+      },
+      {
+        id: "entrepreneur-qa-video-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "Entrepreneur Interviews",
+        type: "video",
+        title: "Q&A / QNR for Entrepreneurs",
+        description: "A temporary entrepreneur-focused interview preserving the future space for TitanCore conversations with founders, builders, and operators.",
+        embedType: "youtube",
+        videoId: "bNpx7gpSqbY",
+        audioUrl: "",
+        iframeUrl: "",
+        officialUrl: "https://www.youtube.com/watch?v=bNpx7gpSqbY",
+        sourceName: "Public YouTube entrepreneur video",
+        archiveNote: "Temporary placeholder until TitanCore original media launches."
+      },
+      {
+        id: "ceo-briefing-audio-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "CEO Briefing",
+        type: "audio",
+        title: "CEO Briefing",
+        description: "A temporary executive leadership briefing holding the archive space for future TitanCore CEO updates, strategic direction, and company messages.",
+        embedType: "iframe",
+        videoId: "",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/6sD5QAK5iK1NqHSBywQCqn?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/6sD5QAK5iK1NqHSBywQCqn",
+        sourceName: "Public executive leadership podcast",
+        archiveNote: "Temporary placeholder until TitanCore original media launches."
+      },
+      {
+        id: "titancore-studio-video-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "TitanCore Studio",
+        type: "video",
+        title: "TitanCore Studio Video",
+        description: "A playable business and leadership program holding the future home of TitanCore-produced reports, interviews, and company programming.",
+        embedType: "youtube",
+        videoId: "lmyZMtPVodo",
+        audioUrl: "",
+        iframeUrl: "",
+        officialUrl: "https://www.youtube.com/watch?v=lmyZMtPVodo",
+        sourceName: "Public YouTube leadership video",
+        archiveNote: "Temporary placeholder until TitanCore original media launches."
+      },
+      {
+        id: "titancore-studio-audio-2026-06-06",
+        date: "June 6, 2026",
+        month: "June",
+        year: "2026",
+        category: "TitanCore Studio",
+        type: "audio",
+        title: "TitanCore Studio Audio",
+        description: "A temporary leadership episode holding the archive space for future TitanCore original audio briefings and studio conversations.",
+        embedType: "iframe",
+        videoId: "",
+        audioUrl: "",
+        iframeUrl: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
+        officialUrl: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9",
+        sourceName: "Public leadership podcast",
+        archiveNote: "Temporary placeholder until TitanCore original media launches."
+      }
+    ];
+
+    const archiveGrid = document.getElementById("archiveGrid");
+    const resultCount = document.getElementById("resultCount");
+    const activeFilterLabel = document.getElementById("activeFilter");
+    let activeFilter = "all";
+    let activeMonth = "June 2026";
+
+    function createPlayer(item) {
+      const player = document.createElement("div");
+      player.className = `media-player ${item.type === "video" ? "video-player" : "audio-player"}`;
+
+      if (item.embedType === "youtube" && item.videoId) {
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://www.youtube-nocookie.com/embed/${item.videoId}?rel=0&playsinline=1`;
+        iframe.title = `${item.title} video player`;
+        iframe.loading = "lazy";
+        iframe.allow = "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        player.appendChild(iframe);
+      } else if (item.embedType === "audio" && item.audioUrl) {
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.preload = "metadata";
+        audio.src = item.audioUrl;
+        audio.setAttribute("aria-label", `${item.title} audio player`);
+        player.appendChild(audio);
+      } else if (item.embedType === "iframe" && item.iframeUrl) {
+        const iframe = document.createElement("iframe");
+        iframe.src = item.iframeUrl;
+        iframe.title = `${item.title} audio player`;
+        iframe.loading = "lazy";
+        iframe.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+        player.appendChild(iframe);
+      } else {
+        const fallback = document.createElement("div");
+        fallback.className = "audio-fallback";
+        fallback.textContent = "This archived edition is available from its official source.";
+        player.appendChild(fallback);
+      }
+      return player;
+    }
+
+    function createArchiveCard(item) {
+      const card = document.createElement("article");
+      card.className = "media-card";
+      card.id = item.id;
+      card.dataset.type = item.type;
+      card.dataset.category = item.category;
+      card.dataset.month = `${item.month} ${item.year}`;
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+
+      const topline = document.createElement("div");
+      topline.className = "card-topline";
+      const typeLabel = document.createElement("span");
+      typeLabel.className = "type-label";
+      typeLabel.textContent = item.type === "video" ? "Video" : "Audio";
+      const sourceName = document.createElement("span");
+      sourceName.className = "source-name";
+      sourceName.textContent = item.sourceName;
+      topline.append(typeLabel, sourceName);
+
+      if (["TitanCore Studio", "CEO Briefing", "Entrepreneur Interviews"].includes(item.category)) {
+        const placeholder = document.createElement("p");
+        placeholder.className = "placeholder-note";
+        placeholder.textContent = "Temporary placeholder until TitanCore original media launches.";
+        body.appendChild(placeholder);
+      }
+
+      const title = document.createElement("h3");
+      title.textContent = item.title;
+      const description = document.createElement("p");
+      description.textContent = item.description;
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      [item.date, item.category, item.type === "video" ? "Video" : "Audio"].forEach((value) => {
+        const label = document.createElement("span");
+        label.className = "label";
+        label.textContent = value;
+        meta.appendChild(label);
+      });
+
+      const buttons = document.createElement("div");
+      buttons.className = "button-row";
+      const insideButton = document.createElement("a");
+      insideButton.className = "button";
+      insideButton.href = `#${item.id}`;
+      insideButton.textContent = item.type === "video" ? "Watch Inside Page" : "Listen Inside Page";
+      const mediaContentButton = document.createElement("a");
+      mediaContentButton.className = "button secondary";
+      mediaContentButton.href = item.type === "video" ? "media-content.html#video-gallery" : "media-content.html#audio-gallery";
+      mediaContentButton.textContent = "Open Media Content";
+      buttons.append(insideButton, mediaContentButton);
+
+      if (item.officialUrl) {
+        const sourceButton = document.createElement("a");
+        sourceButton.className = "button secondary";
+        sourceButton.href = item.officialUrl;
+        sourceButton.target = "_blank";
+        sourceButton.rel = "noopener";
+        sourceButton.textContent = item.type === "video" ? "Open Source" : "Open Audio Episode";
+        buttons.appendChild(sourceButton);
+      }
+
+      const note = document.createElement("div");
+      note.className = "archive-note";
+      note.textContent = `Archive note: ${item.archiveNote}`;
+
+      body.prepend(topline);
+      body.append(title, description, meta, buttons, note);
+      card.append(createPlayer(item), body);
+      return card;
+    }
+
+    function matchesActiveFilter(item) {
+      const monthMatches = `${item.month} ${item.year}` === activeMonth;
+      if (!monthMatches) return false;
+      if (activeFilter === "all") return true;
+      const separator = activeFilter.indexOf(":");
+      const filterKind = activeFilter.slice(0, separator);
+      const filterValue = activeFilter.slice(separator + 1);
+      return item[filterKind] === filterValue;
+    }
+
+    function renderArchive() {
+      archiveGrid.replaceChildren();
+      const filteredItems = archiveItems.filter(matchesActiveFilter);
+      filteredItems.forEach((item) => archiveGrid.appendChild(createArchiveCard(item)));
+
+      if (!filteredItems.length) {
+        const emptyState = document.createElement("div");
+        emptyState.className = "empty-state";
+        emptyState.innerHTML = "<h3>No saved editions in this category yet.</h3><p>Choose All Media or another category to continue browsing the June 2026 archive.</p>";
+        archiveGrid.appendChild(emptyState);
+      }
+
+      resultCount.innerHTML = `<strong>${filteredItems.length}</strong> saved edition${filteredItems.length === 1 ? "" : "s"} shown`;
+      const activeButton = document.querySelector(`[data-filter="${CSS.escape(activeFilter)}"]`);
+      activeFilterLabel.textContent = `${activeButton ? activeButton.textContent : "All Media"} • ${activeMonth}`;
+    }
+
+    function selectCategoryFilter(filterValue) {
+      activeFilter = filterValue;
+      document.querySelectorAll("[data-filter]").forEach((button) => {
+        const isActive = button.dataset.filter === filterValue;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+      renderArchive();
+      document.getElementById("featured-date").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.querySelectorAll("[data-filter]").forEach((button) => {
+      button.addEventListener("click", () => selectCategoryFilter(button.dataset.filter));
+    });
+
+    document.querySelectorAll("[data-month]").forEach((button) => {
+      button.addEventListener("click", () => {
+        activeMonth = button.dataset.month;
+        document.querySelectorAll("[data-month]").forEach((monthButton) => {
+          const isActive = monthButton === button;
+          monthButton.classList.toggle("active", isActive);
+          monthButton.setAttribute("aria-pressed", String(isActive));
+        });
+        renderArchive();
+      });
+    });
+
+    document.querySelector("[data-studio-filter]").addEventListener("click", () => selectCategoryFilter("category:TitanCore Studio"));
+
+    function bindMenu() {
+      const openButton = document.getElementById("openMenu");
+      const closeButton = document.getElementById("closeMenu");
+      const overlay = document.getElementById("menuOverlay");
+      let lastFocusedElement = null;
+
+      function openMenu() {
+        lastFocusedElement = document.activeElement;
+        overlay.hidden = false;
+        overlay.classList.add("open");
+        document.body.classList.add("menu-open");
+        openButton.setAttribute("aria-expanded", "true");
+        closeButton.focus();
+      }
+
+      function closeMenu() {
+        overlay.classList.remove("open");
+        overlay.hidden = true;
+        document.body.classList.remove("menu-open");
+        openButton.setAttribute("aria-expanded", "false");
+        if (lastFocusedElement) lastFocusedElement.focus();
+      }
+
+      openButton.addEventListener("click", openMenu);
+      closeButton.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", (event) => { if (event.target === overlay) closeMenu(); });
+      overlay.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !overlay.hidden) closeMenu(); });
+    }
+
+    renderArchive();
+    bindMenu();
+    document.getElementById("footerYear").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
