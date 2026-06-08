@@ -726,10 +726,15 @@
     }
 
     .daily-video-feature{
-      padding-top:64px;
+      padding:64px 0 96px;
       background:
-        radial-gradient(900px 420px at 50% 0%, rgba(8,116,87,.18), transparent 68%),
+        radial-gradient(1100px 520px at 50% 0%, rgba(8,116,87,.20), transparent 68%),
         rgba(0,0,0,.82);
+    }
+
+    .daily-video-wrap{
+      width:min(1380px, calc(100% - 40px));
+      margin:0 auto;
     }
 
     .daily-video-heading{
@@ -757,15 +762,54 @@
     }
 
     .video-actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:20px;
+      margin-top:26px;
+    }
+
+    .media-content-card{
+      display:block;
+      width:100%;
+      padding:clamp(26px, 4vw, 42px);
+      border:2px solid rgba(216,180,90,.76);
+      border-radius:32px;
+      background:#000;
+      box-shadow:0 20px 54px rgba(0,0,0,.58);
+      transition:transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+
+    .media-content-card:hover,
+    .media-content-card:focus-visible{
+      transform:translateY(-4px);
+      border-color:var(--gold2);
+      background:rgba(8,116,87,.10);
+      outline:none;
+    }
+
+    .media-content-card h3{
+      margin-bottom:12px;
+      color:var(--gold2);
+      font-family:var(--serif);
+      font-size:clamp(30px, 4vw, 48px);
+      line-height:1.08;
+    }
+
+    .media-content-card p{
+      max-width:800px;
+      color:rgba(233,236,233,.92);
+      font-size:clamp(16px, 1.8vw, 20px);
+      line-height:1.7;
+    }
+
+    .media-content-card .card-action{
+      margin-top:24px;
+      padding-top:20px;
+      font-size:13px;
+      letter-spacing:4px;
     }
 
     .video-screen{
       width:100%;
-      aspect-ratio:16 / 9;
+      aspect-ratio:16 / 8.65;
+      min-height:clamp(280px, 54vw, 780px);
       border:1px solid rgba(242,217,140,.58);
       border-radius: var(--radius);
       background:
@@ -959,6 +1003,24 @@
         padding:26px;
       }
 
+      .daily-video-feature{
+        padding:50px 0 72px;
+      }
+
+      .daily-video-wrap{
+        width:calc(100% - 20px);
+      }
+
+      .video-screen{
+        aspect-ratio:16 / 10;
+        min-height:0;
+        border-radius:18px;
+      }
+
+      .media-content-card{
+        border-radius:28px;
+      }
+
       .feature-image{
         min-height:420px;
       }
@@ -1054,12 +1116,12 @@
     </div>
 
     <!-- DAILY BUSINESS VIDEO -->
-    <section class="section dark daily-video-feature" aria-labelledby="videoOfTheDayLabel">
-      <div class="wrap">
+    <section class="section dark daily-video-feature" aria-labelledby="videoOfTheDayTitle">
+      <div class="daily-video-wrap">
         <div class="daily-video-heading">
           <div>
-            <div class="eyebrow video-label" id="videoOfTheDayLabel">Daily Business Video</div>
-            <h2>Today’s Business <span>Briefing.</span></h2>
+            <div class="eyebrow video-label">Daily Business Video</div>
+            <h2 id="videoOfTheDayTitle">Today’s Business <span>Briefing.</span></h2>
           </div>
           <p id="videoOfTheDayDescription">
             A new featured video appears here each day with practical business, market, leadership, and economic information.
@@ -1075,9 +1137,12 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
         </div>
-        <div class="video-actions" aria-label="Daily video links">
-          <a href="media-content.html" class="btn primary">Open Media Content <span class="arrow">›</span></a>
-          <a href="media-archive.html" class="btn secondary">View Past Videos <span class="arrow">›</span></a>
+        <div class="video-actions">
+          <a href="media-content.html" class="media-content-card" aria-label="Open TitanCore Media Content">
+            <h3>Media Content</h3>
+            <p>Open TitanCore’s complete daily video and audio gallery for business, markets, leadership, and economic information.</p>
+            <div class="card-action">Open Media Content</div>
+          </a>
         </div>
       </div>
     </section>
@@ -1315,9 +1380,14 @@
       videoOfTheDayFrame.src = `https://www.youtube-nocookie.com/embed/${dailyVideo.videoId}?rel=0&playsinline=1`;
       videoOfTheDayFrame.title = `Daily Business Video: ${dailyVideo.subject}`;
 
+      const videoOfTheDayTitle = document.getElementById("videoOfTheDayTitle");
+      if(videoOfTheDayTitle){
+        videoOfTheDayTitle.textContent = dailyVideo.subject;
+      }
+
       const videoOfTheDayDescription = document.getElementById("videoOfTheDayDescription");
       if(videoOfTheDayDescription){
-        videoOfTheDayDescription.textContent = `${dailyVideo.dateLabel} — ${dailyVideo.subject}. ${dailyVideo.description}`;
+        videoOfTheDayDescription.textContent = `${dailyVideo.dateLabel} — ${dailyVideo.description}`;
       }
 
       TitanCoreMedia.saveItems([dailyVideo]);
