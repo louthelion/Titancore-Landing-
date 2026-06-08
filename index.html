@@ -793,6 +793,56 @@
       line-height:1.75;
     }
 
+
+    /* Weekly featured article preview */
+    .featured-article-preview{
+      padding:78px 0;
+      background:
+        radial-gradient(700px 360px at 18% 50%, rgba(8,116,87,.20), transparent 66%),
+        rgba(0,0,0,.78);
+    }
+
+    .featured-article-card{
+      min-height:430px;
+      display:flex;
+      align-items:flex-end;
+      padding:clamp(28px, 5vw, 54px);
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.94) 0%, rgba(0,0,0,.78) 48%, rgba(0,0,0,.38) 100%),
+        linear-gradient(180deg, transparent 36%, rgba(0,0,0,.78) 100%),
+        url("https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1800&q=85") center / cover no-repeat;
+      border:1px solid rgba(242,217,140,.28);
+      box-shadow:var(--shadow);
+      isolation:isolate;
+    }
+
+    .featured-article-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-1;
+      background:radial-gradient(520px 280px at 82% 16%, rgba(8,116,87,.22), transparent 72%);
+      pointer-events:none;
+    }
+
+    .featured-article-copy{
+      max-width:720px;
+      position:relative;
+      z-index:1;
+    }
+
+    .featured-article-copy h2{
+      max-width:680px;
+      margin-bottom:14px;
+    }
+
+    .featured-article-copy p{
+      max-width:650px;
+      color:rgba(233,236,233,.92);
+      font-size:17px;
+      line-height:1.75;
+    }
+
     .video-screen{
       width:100%;
       aspect-ratio:16 / 9;
@@ -1021,6 +1071,19 @@
         width:100%;
       }
 
+      .featured-article-preview{
+        padding:52px 0;
+      }
+
+      .featured-article-card{
+        min-height:480px;
+        background-position:62% center;
+      }
+
+      .featured-article-copy .btn{
+        width:100%;
+      }
+
       .feature-image{
         min-height:420px;
       }
@@ -1155,6 +1218,25 @@
             <a href="media-archive.html" class="btn secondary">View Media Archive <span class="arrow">›</span></a>
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <!-- FEATURED WEEKLY ARTICLE -->
+    <section class="section featured-article-preview" aria-labelledby="featuredArticleTitle">
+      <div class="wrap">
+        <article class="featured-article-card metal">
+          <div class="featured-article-copy">
+            <div class="eyebrow">Featured Article</div>
+            <h2 id="featuredArticleTitle">How Business Structure Creates Long-Term Power</h2>
+            <p>
+              A simple public explanation of why parent companies, company networks, and clear information lanes help businesses grow with order.
+            </p>
+            <div class="cta-row">
+              <a href="articles.html" class="btn primary">Read Articles <span class="arrow">›</span></a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
