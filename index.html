@@ -720,9 +720,16 @@
       font-weight:900;
     }
 
-    /* TitanCore About Video */
+    /* Video of the Day */
     .video-label{
       margin-bottom:18px;
+    }
+
+    .video-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:20px;
     }
 
     .video-screen{
@@ -1124,20 +1131,23 @@
       </div>
     </section>
 
-    <!-- TITANCORE ABOUT VIDEO -->
-    <section class="section dark" aria-labelledby="titancoreAboutVideoLabel">
+    <!-- VIDEO OF THE DAY -->
+    <section class="section dark" aria-labelledby="videoOfTheDayLabel">
       <div class="wrap">
-        <div class="eyebrow video-label" id="titancoreAboutVideoLabel">TitanCore About Video</div>
-        <div class="video-screen metal" id="titancoreAboutVideoPlayer" aria-label="TitanCore About Video player" aria-live="polite">
+        <div class="eyebrow video-label" id="videoOfTheDayLabel">Video of the Day</div>
+        <div class="video-screen metal" id="videoOfTheDayPlayer" aria-label="Video of the Day player" aria-live="polite">
           <iframe
-            id="titancoreAboutVideoFallback"
-            src="https://www.youtube-nocookie.com/embed/qp0HIF3SfI4?rel=0&amp;playsinline=1"
-            title="Temporary business leadership video"
+            id="videoOfTheDayFrame"
+            src="https://www.youtube-nocookie.com/embed/98qfFzqDKR8?rel=0&amp;playsinline=1"
+            title="Video of the Day"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
         </div>
-        <!-- Replace assets/video/titancore-about-video.mp4 with TitanCore’s original AI presenter video when ready. -->
+        <div class="video-actions" aria-label="Media content links">
+          <a href="media-content.html" class="btn primary">Open Media Content <span class="arrow">›</span></a>
+          <a href="media-archive.html" class="btn secondary">View Media Archive <span class="arrow">›</span></a>
+        </div>
       </div>
     </section>
 
@@ -1190,6 +1200,7 @@
 
   </div>
 
+  <script src="media-schedule.js"></script>
   <script>
     /* ==========================
       Menu: accessible dialog
@@ -1244,25 +1255,15 @@
     });
 
     /* ==========================
-      TitanCore About Video
+      Video of the Day
     ========================== */
-    const aboutVideoPlayer = document.getElementById("titancoreAboutVideoPlayer");
-    const aboutVideoFallback = document.getElementById("titancoreAboutVideoFallback");
+    const videoOfTheDayFrame = document.getElementById("videoOfTheDayFrame");
 
-    if(aboutVideoPlayer && aboutVideoFallback){
-      const localAboutVideo = document.createElement("video");
-      localAboutVideo.controls = true;
-      localAboutVideo.playsInline = true;
-      localAboutVideo.preload = "auto";
-      localAboutVideo.setAttribute("aria-label", "TitanCore About Video");
-      localAboutVideo.src = "assets/video/titancore-about-video.mp4";
-
-      localAboutVideo.addEventListener("canplay", () => {
-        if(!Number.isFinite(localAboutVideo.duration) || localAboutVideo.duration <= 0) return;
-        aboutVideoPlayer.replaceChildren(localAboutVideo);
-      }, { once:true });
-
-      localAboutVideo.load();
+    if(videoOfTheDayFrame && window.TitanCoreMedia){
+      const dailyVideo = TitanCoreMedia.getHomepageVideo(new Date());
+      videoOfTheDayFrame.src = `https://www.youtube-nocookie.com/embed/${dailyVideo.videoId}?rel=0&playsinline=1`;
+      videoOfTheDayFrame.title = `Video of the Day: ${dailyVideo.subject}`;
+      TitanCoreMedia.saveItems([dailyVideo]);
     }
 
     /* ==========================
