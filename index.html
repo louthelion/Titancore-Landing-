@@ -722,7 +722,38 @@
 
     /* Video of the Day */
     .video-label{
-      margin-bottom:18px;
+      margin-bottom:10px;
+    }
+
+    .daily-video-feature{
+      padding-top:64px;
+      background:
+        radial-gradient(900px 420px at 50% 0%, rgba(8,116,87,.18), transparent 68%),
+        rgba(0,0,0,.82);
+    }
+
+    .daily-video-heading{
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) minmax(280px, .7fr);
+      gap:34px;
+      align-items:end;
+      margin-bottom:26px;
+    }
+
+    .daily-video-heading h2{
+      margin-bottom:0;
+    }
+
+    .daily-video-heading p{
+      font-size:16px;
+      line-height:1.7;
+      color:rgba(233,236,233,.82);
+      border-left:1px solid rgba(242,217,140,.28);
+      padding-left:24px;
+    }
+
+    .main-content-doors{
+      padding-top:72px;
     }
 
     .video-actions{
@@ -733,7 +764,8 @@
     }
 
     .video-screen{
-      min-height:520px;
+      width:100%;
+      aspect-ratio:16 / 9;
       border:1px solid rgba(242,217,140,.58);
       border-radius: var(--radius);
       background:
@@ -904,8 +936,19 @@
     @media(max-width:980px){
       .hero-grid,
       .feature-grid,
-      .card-grid{
+      .card-grid,
+      .daily-video-heading{
         grid-template-columns:1fr;
+      }
+
+      .daily-video-heading{
+        gap:14px;
+      }
+
+      .daily-video-heading p{
+        border-left:0;
+        border-top:1px solid rgba(242,217,140,.28);
+        padding:16px 0 0;
       }
     }
 
@@ -916,8 +959,7 @@
         padding:26px;
       }
 
-      .feature-image,
-      .video-screen{
+      .feature-image{
         min-height:420px;
       }
     }
@@ -1011,6 +1053,83 @@
       </div>
     </div>
 
+    <!-- DAILY BUSINESS VIDEO -->
+    <section class="section dark daily-video-feature" aria-labelledby="videoOfTheDayLabel">
+      <div class="wrap">
+        <div class="daily-video-heading">
+          <div>
+            <div class="eyebrow video-label" id="videoOfTheDayLabel">Daily Business Video</div>
+            <h2>Today’s Business <span>Briefing.</span></h2>
+          </div>
+          <p id="videoOfTheDayDescription">
+            A new featured video appears here each day with practical business, market, leadership, and economic information.
+          </p>
+        </div>
+
+        <div class="video-screen metal" id="videoOfTheDayPlayer" aria-label="Daily business video player" aria-live="polite">
+          <iframe
+            id="videoOfTheDayFrame"
+            src="https://www.youtube-nocookie.com/embed/98qfFzqDKR8?rel=0&amp;playsinline=1"
+            title="Daily Business Video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
+        <div class="video-actions" aria-label="Daily video links">
+          <a href="media-content.html" class="btn primary">Open Media Content <span class="arrow">›</span></a>
+          <a href="media-archive.html" class="btn secondary">View Past Videos <span class="arrow">›</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN DOORS -->
+    <section class="section dark main-content-doors" aria-labelledby="mainContentTitle">
+      <div class="wrap">
+        <div class="section-title">
+          <div class="eyebrow">Explore TitanCore</div>
+          <h2 id="mainContentTitle">Major Content, <span>Organized Below The Daily Video.</span></h2>
+          <p>
+            Choose a main area to continue. News, media, business information, company details,
+            and public insights stay organized in their own clear sections.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <a href="companies.html" class="card metal">
+            <h3>Company Network</h3>
+            <p>
+              See all TitanCore companies, read each company description, and click direct links to each company website or landing page.
+            </p>
+            <div class="card-action">Open Company Network</div>
+          </a>
+
+          <a href="business-intelligence.html" class="card metal">
+            <h3>Business Intelligence</h3>
+            <p>
+              Stock market, indexes, real estate, technology, oil, finance, crypto, logistics, sectors, and business education.
+            </p>
+            <div class="card-action">Open Business Intelligence</div>
+          </a>
+
+          <a href="news-media.html" class="card metal">
+            <h3>News & Media</h3>
+            <p>
+              TitanCore updates, media, headlines, archives, subscription, video, and Global News organized together.
+            </p>
+            <div class="card-action">Open News & Media</div>
+          </a>
+
+          <a href="blogs.html" class="card metal">
+            <h3>TitanCore Insights</h3>
+            <p>
+              Public business journal for education, articles, founder topics, market explainers, and TitanCore stories.
+            </p>
+            <div class="card-action">Open Insights</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- OVERVIEW -->
     <section class="section">
       <div class="wrap">
@@ -1054,54 +1173,6 @@
       </div>
     </section>
 
-    <!-- MAIN DOORS -->
-    <section class="section dark">
-      <div class="wrap">
-        <div class="section-title">
-          <div class="eyebrow">Main Public Doors</div>
-          <h2>One Door For Each <span>Main Area.</span></h2>
-          <p>
-            Each card below is a parent section. The smaller details stay inside those parent pages,
-            so the homepage stays clean and organized.
-          </p>
-        </div>
-
-        <div class="card-grid">
-          <a href="companies.html" class="card metal">
-            <h3>Company Network</h3>
-            <p>
-              See all TitanCore companies, read each company description, and click direct links to each company website or landing page.
-            </p>
-            <div class="card-action">Open Company Network</div>
-          </a>
-
-          <a href="business-intelligence.html" class="card metal">
-            <h3>Business Intelligence</h3>
-            <p>
-              Stock market, indexes, real estate, technology, oil, finance, crypto, logistics, sectors, and business education.
-            </p>
-            <div class="card-action">Open Business Intelligence</div>
-          </a>
-
-          <a href="news-media.html" class="card metal">
-            <h3>News & Media</h3>
-            <p>
-              TitanCore updates, media, headlines, archives, subscription, video, and Global News organized together.
-            </p>
-            <div class="card-action">Open News & Media</div>
-          </a>
-
-          <a href="blogs.html" class="card metal">
-            <h3>TitanCore Insights</h3>
-            <p>
-              Public business journal for education, articles, founder topics, market explainers, and TitanCore stories.
-            </p>
-            <div class="card-action">Open Insights</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
     <!-- GLOBAL BUSINESS -->
     <section class="section media-bg" id="globalBusinessSection">
       <div class="wrap">
@@ -1127,26 +1198,6 @@
           </div>
 
           <div class="feature-image metal" id="globalBusinessImage"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- VIDEO OF THE DAY -->
-    <section class="section dark" aria-labelledby="videoOfTheDayLabel">
-      <div class="wrap">
-        <div class="eyebrow video-label" id="videoOfTheDayLabel">Video of the Day</div>
-        <div class="video-screen metal" id="videoOfTheDayPlayer" aria-label="Video of the Day player" aria-live="polite">
-          <iframe
-            id="videoOfTheDayFrame"
-            src="https://www.youtube-nocookie.com/embed/98qfFzqDKR8?rel=0&amp;playsinline=1"
-            title="Video of the Day"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
-        <div class="video-actions" aria-label="Media content links">
-          <a href="media-content.html" class="btn primary">Open Media Content <span class="arrow">›</span></a>
-          <a href="media-archive.html" class="btn secondary">View Media Archive <span class="arrow">›</span></a>
         </div>
       </div>
     </section>
@@ -1262,7 +1313,13 @@
     if(videoOfTheDayFrame && window.TitanCoreMedia){
       const dailyVideo = TitanCoreMedia.getHomepageVideo(new Date());
       videoOfTheDayFrame.src = `https://www.youtube-nocookie.com/embed/${dailyVideo.videoId}?rel=0&playsinline=1`;
-      videoOfTheDayFrame.title = `Video of the Day: ${dailyVideo.subject}`;
+      videoOfTheDayFrame.title = `Daily Business Video: ${dailyVideo.subject}`;
+
+      const videoOfTheDayDescription = document.getElementById("videoOfTheDayDescription");
+      if(videoOfTheDayDescription){
+        videoOfTheDayDescription.textContent = `${dailyVideo.dateLabel} — ${dailyVideo.subject}. ${dailyVideo.description}`;
+      }
+
       TitanCoreMedia.saveItems([dailyVideo]);
     }
 
