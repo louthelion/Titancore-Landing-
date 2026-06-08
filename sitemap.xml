@@ -47,6 +47,11 @@
   </url>
 
   <url>
+    <loc>https://titancoreholdings.com/articles.html</loc>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
     <loc>https://titancoreholdings.com/feedback.html</loc>
     <priority>0.70</priority>
   </url>
