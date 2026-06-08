@@ -733,16 +733,17 @@
     }
 
     .daily-video-wrap{
-      width:min(1380px, calc(100% - 40px));
+      width:100%;
       margin:0 auto;
     }
 
     .daily-video-heading{
+      width:min(1180px, calc(100% - 40px));
       display:grid;
       grid-template-columns:minmax(0, 1fr) minmax(280px, .7fr);
       gap:34px;
       align-items:end;
-      margin-bottom:26px;
+      margin:0 auto 26px;
     }
 
     .daily-video-heading h2{
@@ -762,54 +763,26 @@
     }
 
     .video-actions{
-      margin-top:26px;
+      width:min(1180px, calc(100% - 40px));
+      margin:26px auto 0;
     }
 
-    .media-content-card{
-      display:block;
-      width:100%;
-      padding:clamp(26px, 4vw, 42px);
-      border:2px solid rgba(216,180,90,.76);
-      border-radius:32px;
-      background:#000;
-      box-shadow:0 20px 54px rgba(0,0,0,.58);
-      transition:transform .22s ease, border-color .22s ease, background .22s ease;
+    .video-content-card{
+      width:calc(50% - 8px);
+      min-height:220px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
 
-    .media-content-card:hover,
-    .media-content-card:focus-visible{
-      transform:translateY(-4px);
-      border-color:var(--gold2);
-      background:rgba(8,116,87,.10);
-      outline:none;
-    }
-
-    .media-content-card h3{
-      margin-bottom:12px;
-      color:var(--gold2);
+    .video-content-card h3{
       font-family:var(--serif);
-      font-size:clamp(30px, 4vw, 48px);
-      line-height:1.08;
-    }
-
-    .media-content-card p{
-      max-width:800px;
-      color:rgba(233,236,233,.92);
-      font-size:clamp(16px, 1.8vw, 20px);
-      line-height:1.7;
-    }
-
-    .media-content-card .card-action{
-      margin-top:24px;
-      padding-top:20px;
-      font-size:13px;
-      letter-spacing:4px;
     }
 
     .video-screen{
       width:100%;
-      aspect-ratio:16 / 8.65;
-      min-height:clamp(280px, 54vw, 780px);
+      aspect-ratio:16 / 9;
+      min-height:clamp(360px, 56.25vw, 900px);
       border:1px solid rgba(242,217,140,.58);
       border-radius: var(--radius);
       background:
@@ -1007,18 +980,20 @@
         padding:50px 0 72px;
       }
 
-      .daily-video-wrap{
+      .daily-video-heading,
+      .video-actions{
         width:calc(100% - 20px);
       }
 
       .video-screen{
-        aspect-ratio:16 / 10;
+        aspect-ratio:16 / 9;
         min-height:0;
-        border-radius:18px;
+        border-radius:0;
       }
 
-      .media-content-card{
-        border-radius:28px;
+      .video-content-card{
+        width:100%;
+        min-height:190px;
       }
 
       .feature-image{
@@ -1138,10 +1113,9 @@
             allowfullscreen></iframe>
         </div>
         <div class="video-actions">
-          <a href="media-content.html" class="media-content-card" aria-label="Open TitanCore Media Content">
-            <h3>Media Content</h3>
-            <p>Open TitanCore’s complete daily video and audio gallery for business, markets, leadership, and economic information.</p>
-            <div class="card-action">Open Media Content</div>
+          <a href="media-content.html" class="card metal video-content-card" aria-label="Open TitanCore Video Content">
+            <h3>Video Content</h3>
+            <div class="card-action">Open Video Content</div>
           </a>
         </div>
       </div>
