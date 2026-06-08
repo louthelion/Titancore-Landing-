@@ -762,21 +762,35 @@
       padding-top:72px;
     }
 
-    .video-actions{
-      width:min(1180px, calc(100% - 40px));
-      margin:26px auto 0;
+    .media-content-cta{
+      padding:72px 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.94) 0%, rgba(0,0,0,.76) 52%, rgba(0,0,0,.88) 100%),
+        radial-gradient(circle at 78% 28%, rgba(8,116,87,.36), transparent 38%),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1900&q=85") center / cover no-repeat;
+      border-top:1px solid rgba(242,217,140,.16);
+      border-bottom:1px solid rgba(242,217,140,.16);
     }
 
-    .video-content-card{
-      width:calc(50% - 8px);
-      min-height:220px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+    .media-content-card{
+      width:min(820px, 100%);
+      padding:42px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(8,116,87,.22), transparent 38%),
+        linear-gradient(135deg, rgba(8,8,8,.94), rgba(0,0,0,.86));
+      border:1px solid rgba(242,217,140,.22);
+      box-shadow:var(--shadow);
     }
 
-    .video-content-card h3{
-      font-family:var(--serif);
+    .media-content-card h2{
+      margin-bottom:14px;
+    }
+
+    .media-content-card p{
+      max-width:720px;
+      color:rgba(233,236,233,.9);
+      font-size:17px;
+      line-height:1.75;
     }
 
     .video-screen{
@@ -980,8 +994,7 @@
         padding:50px 0 72px;
       }
 
-      .daily-video-heading,
-      .video-actions{
+      .daily-video-heading{
         width:calc(100% - 20px);
       }
 
@@ -991,9 +1004,21 @@
         border-radius:0;
       }
 
-      .video-content-card{
+      .media-content-cta{
+        padding:52px 0;
+      }
+
+      .media-content-card{
+        padding:28px 24px;
+      }
+
+      .media-content-card .cta-row{
+        align-items:stretch;
+        flex-direction:column;
+      }
+
+      .media-content-card .btn{
         width:100%;
-        min-height:190px;
       }
 
       .feature-image{
@@ -1112,11 +1137,23 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
         </div>
-        <div class="video-actions">
-          <a href="media-content.html" class="card metal video-content-card" aria-label="Open TitanCore Video Content">
-            <h3>Video Content</h3>
-            <div class="card-action">Open Video Content</div>
-          </a>
+      </div>
+    </section>
+
+    <!-- MEDIA CONTENT CALL TO ACTION -->
+    <section class="section media-content-cta" aria-labelledby="mediaContentTitle">
+      <div class="wrap">
+        <div class="media-content-card metal">
+          <div class="eyebrow">TitanCore Media</div>
+          <h2 id="mediaContentTitle">Media Content <span>Goes Daily</span></h2>
+          <p>
+            The full Media Content page includes daily business videos, audio-only editions, TitanCore Studio placeholders,
+            entrepreneur interviews, CEO briefings, and saved media that can be reviewed later in the Media Archive.
+          </p>
+          <div class="cta-row">
+            <a href="media-content.html" class="btn primary">Open Media Content <span class="arrow">›</span></a>
+            <a href="media-archive.html" class="btn secondary">View Media Archive <span class="arrow">›</span></a>
+          </div>
         </div>
       </div>
     </section>
