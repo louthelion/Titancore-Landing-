@@ -29,3 +29,14 @@ h1,h2,h3{font-family:var(--serif);line-height:1.12}h1{font-size:clamp(45px,6vw,7
 .image-growth{background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.62)),url("assets/articles/company-growth.svg")}.image-financial{background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.62)),url("assets/articles/financial-awareness.svg")}.image-leadership{background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.62)),url("assets/articles/leadership-direction.svg")}.image-market-awareness{background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.62)),url("assets/articles/market-awareness.svg")}
 .archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.archive-article-card:last-child{grid-column:auto;max-width:none}
 @media(max-width:700px){.archive-grid{grid-template-columns:1fr}.article-feature-image{margin-top:34px;min-height:250px}.article-feature-image figcaption{padding:32px 20px 18px}}
+
+/* Official article contact path */
+.official-contact{margin-top:34px;padding:clamp(28px,4vw,44px);text-align:center;background:linear-gradient(145deg,rgba(7,10,9,.94),rgba(8,116,87,.24));box-shadow:var(--shadow2)}
+.official-contact .eyebrow{margin-bottom:14px}
+.official-contact h2{font-size:clamp(30px,3.4vw,44px);color:var(--gold2);margin-bottom:16px}
+.official-contact p{max-width:680px;margin:0 auto 24px;color:rgba(233,236,233,.9);font-size:17px;line-height:1.75}
+.official-contact .btn{min-width:190px}
+
+@media(max-width:700px){.official-contact{padding:28px 22px}
+.official-contact .btn{width:100%;min-width:0}
+}
