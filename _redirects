@@ -1,9 +1,19 @@
 # Vaultara Capital clean public routes.
 # These are rewrites (200), so visitors keep the canonical route in the browser.
 /vaultara                         /vaultara.html                              200
-/start-here                       /vaultara-operation.html                    200
-/what-we-do                       /vaultara-operation.html                    200
-/services                         /vaultara-operation.html                    200
+/vaultara/services                /vaultara-operation.html                    200
+/vaultara/packages                /vaultara-service-packages.html             200
+/vaultara/contact                 /vaultara-contact.html                      200
+/vaultara/thank-you               /vaultara-thank-you.html                    200
+/vaultara/insights                /vaultara-insights.html                     200
+/vaultara/insights/credit-readiness /vaultara-insight-credit-readiness.html    200
+/vaultara/insights/business-foundation /vaultara-insight-business-foundation.html 200
+/vaultara/insights/funding-story  /vaultara-insight-funding-story.html        200
+/vaultara/privacy                 /vaultara-privacy.html                      200
+/vaultara/terms                   /vaultara-terms.html                        200
+/vaultara/feedback                /vaultara-feedback.html                     200
+
+# Vaultara service routes kept concise and distinct from TitanCore content.
 /personal-credit                  /vaultara-personal-credit-help.html         200
 /credit-tracking                  /vaultara-credit-education-tracking.html    200
 /personal-loan-guidance           /vaultara-personal-loan-guidance.html       200
@@ -12,5 +22,6 @@
 /startup-funding                  /vaultara-startup-funding-guidance.html      200
 /existing-business-funding        /vaultara-existing-business-funding.html    200
 /government-program-guidance      /vaultara-government-program-guidance.html  200
-/packages                         /vaultara-service-packages.html             200
-/contact                          /vaultara-contact.html                      200
+
+# Intentional parent-company destination.
+/titancore                        /titancore.html                              200

@@ -190,7 +190,7 @@
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/start-here</loc>
+    <loc>https://titancoreholdings.com/vaultara/services</loc>
     <priority>0.85</priority>
   </url>
   <url>
@@ -226,12 +226,41 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/packages</loc>
+    <loc>https://titancoreholdings.com/vaultara/packages</loc>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/contact</loc>
+    <loc>https://titancoreholdings.com/vaultara/contact</loc>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/insights</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/insights/credit-readiness</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/insights/business-foundation</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/insights/funding-story</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/privacy</loc>
+    <priority>0.40</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/terms</loc>
+    <priority>0.40</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/feedback</loc>
+    <priority>0.50</priority>
   </url>
 
 </urlset>
