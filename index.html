@@ -836,6 +836,14 @@
       margin-bottom:14px;
     }
 
+    .featured-article-copy h3{
+      max-width:680px;
+      margin:10px 0 14px;
+      color:var(--gold2);
+      font-size:clamp(30px, 4vw, 48px);
+      line-height:1.12;
+    }
+
     .featured-article-copy p{
       max-width:650px;
       color:rgba(233,236,233,.92);
@@ -1258,6 +1266,27 @@
       </div>
     </section>
 
+    <!-- LATEST BLOG PREVIEW -->
+    <section class="section featured-article-preview" aria-labelledby="latestBlogSectionTitle">
+      <div class="wrap">
+        <article class="featured-article-card metal" id="latestBlogPreview">
+          <div class="featured-article-copy">
+            <div class="eyebrow" id="latestBlogCategory">Company Direction</div>
+            <h2 id="latestBlogSectionTitle">Latest From the TitanCore Blog</h2>
+            <h3 id="latestBlogTitle">Building With Order Creates Better Business Direction</h3>
+            <div class="homepage-article-meta"><time id="latestBlogDate" datetime="2026-06-08">June 8, 2026</time><span>TitanCore Blog</span></div>
+            <p id="latestBlogSummary">
+              A clear operating order helps a growing company protect its direction, assign responsibility, and make steady progress without turning every new idea into confusion.
+            </p>
+            <div class="cta-row">
+              <a href="blog-building-with-order.html" class="btn primary" id="latestBlogLink">Read Blog Post <span class="arrow">›</span></a>
+              <a href="blog.html" class="btn secondary">View Blog <span class="arrow">›</span></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- MAIN DOORS -->
     <section class="section dark main-content-doors" aria-labelledby="mainContentTitle">
       <div class="wrap">
@@ -1295,12 +1324,12 @@
             <div class="card-action">Open News & Media</div>
           </a>
 
-          <a href="blogs.html" class="card metal">
-            <h3>TitanCore Insights</h3>
+          <a href="blog.html" class="card metal">
+            <h3>TitanCore Blog</h3>
             <p>
-              Public business journal for education, articles, founder topics, market explainers, and TitanCore stories.
+              Short company updates, business lessons, market awareness notes, leadership reflections, and CEO-style messages published three times each week.
             </p>
-            <div class="card-action">Open Insights</div>
+            <div class="card-action">Open Blog</div>
           </a>
         </div>
       </div>
@@ -1429,6 +1458,7 @@
 
   <script src="media-schedule.js"></script>
   <script src="article-collections.js"></script>
+  <script src="blog-system.js"></script>
   <script>
     /* ==========================
       Menu: accessible dialog
