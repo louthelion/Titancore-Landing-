@@ -186,51 +186,51 @@
 
   <!-- Vaultara Capital -->
   <url>
-    <loc>https://titancoreholdings.com/vaultara.html</loc>
+    <loc>https://titancoreholdings.com/vaultara</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-operation.html</loc>
+    <loc>https://titancoreholdings.com/start-here</loc>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-personal-credit-help.html</loc>
+    <loc>https://titancoreholdings.com/personal-credit</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-credit-education-tracking.html</loc>
+    <loc>https://titancoreholdings.com/credit-tracking</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-personal-loan-guidance.html</loc>
+    <loc>https://titancoreholdings.com/personal-loan-guidance</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-business-formation.html</loc>
+    <loc>https://titancoreholdings.com/business-formation</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-business-credit-setup.html</loc>
+    <loc>https://titancoreholdings.com/business-credit</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-startup-funding-guidance.html</loc>
+    <loc>https://titancoreholdings.com/startup-funding</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-existing-business-funding.html</loc>
+    <loc>https://titancoreholdings.com/existing-business-funding</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-government-program-guidance.html</loc>
+    <loc>https://titancoreholdings.com/government-program-guidance</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-service-packages.html</loc>
+    <loc>https://titancoreholdings.com/packages</loc>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://titancoreholdings.com/vaultara-contact.html</loc>
+    <loc>https://titancoreholdings.com/contact</loc>
     <priority>0.85</priority>
   </url>
 
