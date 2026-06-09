@@ -1,962 +1,672 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Vaultara Capital | TitanCore Holdings</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vaultara Capital provides education, preparation, and guidance for personal credit, business formation, funding readiness, and growth.">
+  <title>Vaultara Capital | Funding Readiness &amp; Business Growth Guidance</title>
   <style>
-    :root{
-      --black:#000000;
-      --green:#00b85f;
-      --gold:#d8b45a;
-      --soft-gold:#f3d98b;
-      --yellow:#ffd000;
-      --white:#ffffff;
-      --border:rgba(216,180,90,.58);
-      --panel:rgba(0,0,0,.82);
+    :root {
+      --navy: #071b3a;
+      --navy-soft: #0d2a52;
+      --blue: #135fba;
+      --blue-bright: #1677d2;
+      --blue-pale: #eaf3fc;
+      --silver: #f4f7fa;
+      --silver-2: #e4eaf0;
+      --ink: #15243a;
+      --muted: #5d6b7e;
+      --white: #ffffff;
+      --success: #16856b;
+      --shadow: 0 18px 50px rgba(7, 27, 58, .10);
+      --radius: 22px;
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--white);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img, svg { display: block; max-width: 100%; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+    h1, h2, h3 { margin: 0; color: var(--navy); line-height: 1.12; letter-spacing: -.025em; }
+    h1 { max-width: 760px; font-size: clamp(44px, 6.2vw, 78px); }
+    h2 { font-size: clamp(34px, 4vw, 52px); }
+    h3 { font-size: 21px; }
+    p { margin: 0; }
+    .section-copy { max-width: 720px; margin-top: 18px; color: var(--muted); font-size: 18px; }
+    .section-heading { margin-bottom: 46px; }
+    .section-heading.center { max-width: 760px; margin-right: auto; margin-left: auto; text-align: center; }
+    .section-heading.center .eyebrow { justify-content: center; }
 
-    body{
-      margin:0;
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(7, 27, 58, .09);
+      background: rgba(255, 255, 255, .95);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .logo { display: inline-flex; align-items: center; gap: 12px; min-width: 0; }
+    .logo-mark { width: 47px; height: 47px; flex: 0 0 auto; }
+    .logo-type { display: flex; flex-direction: column; line-height: 1; }
+    .logo-name { color: var(--navy); font-size: 20px; font-weight: 850; letter-spacing: .04em; text-transform: uppercase; }
+    .logo-sub { margin-top: 6px; color: var(--blue); font-size: 9px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; }
+    .desktop-nav { display: flex; align-items: center; gap: 30px; }
+    .desktop-nav a { color: #35445a; font-size: 14px; font-weight: 650; transition: color .2s ease; }
+    .desktop-nav a:hover { color: var(--blue); }
+    .header-cta, .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid transparent;
+      border-radius: 9px;
+      padding: 12px 20px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.2;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .header-cta:hover, .button:hover { transform: translateY(-2px); background: #0e519e; box-shadow: 0 10px 24px rgba(19, 95, 186, .22); }
+    .button.secondary { border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.08); }
+    .button.secondary:hover { background: rgba(255,255,255,.16); }
+    .menu-button {
+      display: none;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--silver-2);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      color: var(--white);
+    }
+    .hero::before {
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(circle at top left,rgba(0,184,95,.18),transparent 32%),
-        linear-gradient(180deg,#000 0%,#031108 45%,#000 100%);
-      color:var(--soft-gold);
-      font-family:Arial,Helvetica,sans-serif;
-      line-height:1.5;
+        radial-gradient(circle at 77% 22%, rgba(33, 139, 235, .25), transparent 24%),
+        linear-gradient(115deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(25deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: auto, 62px 62px, 62px 62px;
+      content: "";
     }
-
-    a{
-      color:inherit;
-      text-decoration:none;
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      min-height: 700px;
+      grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr);
+      align-items: center;
+      gap: 70px;
+      padding: 92px 0;
     }
-
-    .container{
-      width:min(1120px,calc(100% - 40px));
-      margin:0 auto;
+    .hero .eyebrow { color: #75b9ff; }
+    .hero h1 { color: var(--white); }
+    .hero-lead { max-width: 720px; margin-top: 25px; color: #cbd8e8; font-size: clamp(18px, 2vw, 21px); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-top: 38px; color: #b6c6d9; font-size: 13px; font-weight: 650; }
+    .trust-row span { display: inline-flex; align-items: center; gap: 8px; }
+    .trust-row span::before { content: "✓"; color: #68d6b7; font-weight: 900; }
+    .hero-panel {
+      position: relative;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 26px;
+      padding: 34px;
+      background: rgba(255,255,255,.075);
+      box-shadow: 0 35px 80px rgba(0,0,0,.27);
+      backdrop-filter: blur(12px);
     }
-
-    .topbar{
-      background:#000;
-      border-bottom:1px solid var(--border);
-      padding:28px 0 34px;
+    .hero-panel-label { color: #7fc0ff; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .hero-panel h2 { margin-top: 10px; color: var(--white); font-size: 28px; }
+    .readiness-list { display: grid; gap: 11px; margin: 27px 0 0; padding: 0; list-style: none; }
+    .readiness-list li {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: 13px 14px;
+      background: rgba(255,255,255,.06);
+      color: #e5edf6;
+      font-size: 14px;
+      font-weight: 600;
     }
+    .readiness-list svg { width: 21px; flex: 0 0 auto; color: #68b4ff; }
+    .panel-note { margin-top: 22px; color: #9eb1c8; font-size: 12px; }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:18px;
-      margin-bottom:34px;
+    .stats { position: relative; z-index: 2; margin-top: -37px; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--silver-2);
+      border-radius: 18px;
+      background: var(--white);
+      box-shadow: var(--shadow);
     }
+    .stat { padding: 27px 30px; }
+    .stat + .stat { border-left: 1px solid var(--silver-2); }
+    .stat strong { display: block; color: var(--blue); font-size: 25px; line-height: 1.1; }
+    .stat span { display: block; margin-top: 7px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
 
-    .logo-box{
-      width:88px;
-      height:88px;
-      border:3px solid var(--gold);
-      border-radius:18px;
-      display:grid;
-      place-items:center;
-      color:var(--yellow);
-      font-size:48px;
-      font-weight:900;
-      background:rgba(216,180,90,.08);
-      box-shadow:0 0 25px rgba(0,184,95,.28);
-      flex:0 0 auto;
+    .overview { padding: 130px 0 105px; }
+    .overview-grid { display: grid; grid-template-columns: .82fr 1.18fr; align-items: start; gap: 85px; }
+    .overview-intro { position: sticky; top: 126px; }
+    .service-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .service-item { border: 1px solid var(--silver-2); border-radius: 14px; padding: 21px; background: var(--silver); }
+    .service-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 9px;
+      background: var(--blue-pale);
+      color: var(--blue);
     }
+    .service-icon svg { width: 20px; }
+    .service-item h3 { font-size: 17px; }
+    .service-item p { margin-top: 8px; color: var(--muted); font-size: 14px; }
 
-    .brand-title{
-      color:var(--green);
-      font-size:clamp(32px,6vw,62px);
-      font-weight:900;
-      line-height:1;
-      letter-spacing:.5px;
+    .process { padding: 100px 0; background: var(--silver); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: process; }
+    .step { position: relative; border: 1px solid var(--silver-2); border-radius: var(--radius); padding: 29px 25px; background: var(--white); counter-increment: process; }
+    .step::before {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      margin-bottom: 30px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      content: counter(process, decimal-leading-zero);
+      font-size: 12px;
+      font-weight: 800;
     }
+    .step h3 { font-size: 19px; }
+    .step p { margin-top: 12px; color: var(--muted); font-size: 14px; }
 
-    .brand-subtitle{
-      color:var(--gold);
-      font-size:clamp(14px,3vw,24px);
-      font-weight:900;
-      letter-spacing:5px;
-      text-transform:uppercase;
-      margin-top:12px;
+    .packages { padding: 110px 0; }
+    .package-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .package-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--silver-2);
+      border-radius: var(--radius);
+      padding: 31px;
+      background: var(--white);
+      box-shadow: 0 10px 30px rgba(7,27,58,.055);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
+    .package-card:hover { transform: translateY(-4px); border-color: #b5d1ef; box-shadow: var(--shadow); }
+    .package-card.featured { border-color: #8ab8e9; background: linear-gradient(145deg, #f6faff, #fff); }
+    .package-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+    .package-number { color: #c8d5e3; font-size: 34px; font-weight: 850; line-height: 1; }
+    .package-fit { margin-top: 17px; color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    .package-card > p { margin-top: 10px; color: var(--muted); font-size: 15px; }
+    .package-list { display: grid; gap: 9px; margin: 22px 0 0; padding: 20px 0 0; border-top: 1px solid var(--silver-2); list-style: none; }
+    .package-list li { display: flex; align-items: flex-start; gap: 10px; color: #3b4a5f; font-size: 14px; }
+    .package-list li::before { margin-top: 1px; color: var(--success); content: "✓"; font-weight: 900; }
 
-    .nav{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:30px 56px;
-      padding-top:24px;
-      border-top:1px solid rgba(216,180,90,.35);
+    .selector { padding: 105px 0; background: var(--navy); color: var(--white); }
+    .selector-grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 85px; }
+    .selector h2 { color: var(--white); }
+    .selector .section-copy { color: #b9c8d9; }
+    .selector .eyebrow { color: #77bcff; }
+    .selector-options { display: grid; gap: 12px; }
+    .selector-option {
+      display: grid;
+      grid-template-columns: 47px 1fr auto;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 13px;
+      padding: 17px;
+      background: rgba(255,255,255,.055);
     }
+    .selector-option strong { font-size: 15px; }
+    .selector-option span { display: block; margin-top: 2px; color: #9fb1c6; font-size: 12px; }
+    .selector-icon { display: grid; width: 47px; height: 47px; place-items: center; border-radius: 10px; background: rgba(35,137,232,.18); color: #78bdff; }
+    .selector-icon svg { width: 22px; }
+    .selector-arrow { color: #77bcff; font-size: 22px; }
 
-    .nav a{
-      color:var(--white);
-      font-size:clamp(20px,4vw,34px);
-      font-weight:900;
+    .standards { padding: 105px 0; }
+    .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .standard { padding: 28px; border-left: 3px solid var(--blue); background: var(--silver); }
+    .standard h3 { font-size: 18px; }
+    .standard p { margin-top: 10px; color: var(--muted); font-size: 14px; }
+
+    .cta-section { padding: 0 0 105px; }
+    .cta-card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 50px;
+      border-radius: 26px;
+      padding: 55px 60px;
+      background: linear-gradient(120deg, var(--blue), #0a448c);
+      color: var(--white);
+      box-shadow: 0 24px 60px rgba(19,95,186,.22);
     }
+    .cta-card::after { position: absolute; right: -90px; bottom: -150px; width: 360px; height: 360px; border: 60px solid rgba(255,255,255,.06); border-radius: 50%; content: ""; }
+    .cta-card > * { position: relative; z-index: 1; }
+    .cta-card h2 { color: var(--white); font-size: clamp(30px, 3vw, 43px); }
+    .cta-card p { max-width: 700px; margin-top: 13px; color: #dbeaff; }
+    .cta-card .button { background: var(--white); color: var(--blue); white-space: nowrap; }
 
-    .nav a:hover,
-    .nav a.active{
-      color:var(--yellow);
-    }
+    .disclaimer { padding: 42px 0; border-top: 1px solid var(--silver-2); background: var(--silver); }
+    .disclaimer-inner { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; }
+    .disclaimer-icon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: #dfeaf6; color: var(--blue); font-weight: 850; }
+    .disclaimer h2 { font-size: 15px; letter-spacing: 0; }
+    .disclaimer p { margin-top: 7px; color: var(--muted); font-size: 13px; }
 
-    .hero{
-      padding:56px 0 40px;
-    }
+    .site-footer { padding: 55px 0 30px; background: #05152e; color: #aebed1; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr .6fr .6fr; gap: 70px; }
+    .footer-logo .logo-name { color: var(--white); }
+    .footer-about { max-width: 430px; margin-top: 20px; font-size: 13px; }
+    .footer-heading { margin-bottom: 17px; color: var(--white); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .footer-links { display: grid; gap: 10px; }
+    .footer-links a { font-size: 13px; transition: color .2s ease; }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 25px; margin-top: 45px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: 12px; }
 
-    .hero-card{
-      min-height:720px;
-      border:1.5px solid var(--border);
-      border-radius:34px;
-      padding:clamp(34px,7vw,76px);
-      background:
-        linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.92)),
-        var(--hero-image),
-        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1700&q=80");
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      box-shadow:0 0 38px rgba(0,184,95,.16);
-    }
-
-    .kicker{
-      color:var(--gold);
-      font-size:clamp(18px,4vw,34px);
-      font-weight:900;
-      letter-spacing:10px;
-      text-transform:uppercase;
-      margin-bottom:18px;
-    }
-
-    h1,h2,h3{
-      color:var(--green);
-      font-weight:1000;
-      margin-top:0;
-    }
-
-    h1{
-      font-size:clamp(58px,11vw,122px);
-      line-height:.95;
-      letter-spacing:-2px;
-      margin-bottom:30px;
-    }
-
-    h2{
-      font-size:clamp(44px,8vw,86px);
-      line-height:1;
-      margin-bottom:24px;
-    }
-
-    h3{
-      font-size:clamp(30px,5vw,52px);
-      line-height:1.08;
-      margin-bottom:14px;
-    }
-
-    p{
-      color:var(--soft-gold);
-      font-size:clamp(20px,3.9vw,32px);
-      font-weight:650;
-      margin:0;
-    }
-
-    .lead{
-      font-size:clamp(25px,5vw,46px);
-      font-weight:750;
-      max-width:990px;
-      margin-bottom:36px;
-    }
-
-    .notice{
-      color:rgba(243,217,139,.86);
-      font-size:clamp(18px,3.4vw,27px);
-      font-weight:700;
-      margin-top:24px;
-    }
-
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:18px;
-      margin-top:32px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:72px;
-      padding:18px 30px;
-      border-radius:18px;
-      border:1.5px solid var(--gold);
-      background:var(--yellow);
-      color:#000;
-      font-size:clamp(18px,3.5vw,28px);
-      font-weight:900;
-      text-align:center;
-    }
-
-    .btn.ghost{
-      background:rgba(0,0,0,.72);
-      color:var(--soft-gold);
-    }
-
-    .btn:hover{
-      background:var(--green);
-      color:var(--white);
-    }
-
-    .section{
-      padding:42px 0;
-    }
-
-    .panel{
-      border:1.5px solid var(--border);
-      border-radius:32px;
-      background:
-        linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.90)),
-        radial-gradient(circle at top left,rgba(0,184,95,.13),transparent 42%);
-      padding:clamp(30px,6vw,64px);
-      box-shadow:0 0 24px rgba(0,184,95,.10);
-    }
-
-    .section-head{
-      margin-bottom:34px;
-    }
-
-    .grid{
-      display:grid;
-      gap:24px;
-    }
-
-    .cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-
-    .card{
-      border:1.5px solid var(--border);
-      border-radius:28px;
-      background:rgba(0,0,0,.76);
-      overflow:hidden;
-      min-height:100%;
-    }
-
-    .card-img{
-      height:270px;
-      background-size:cover;
-      background-position:center;
-      border-bottom:1px solid var(--border);
-    }
-
-    .card-body{
-      padding:clamp(26px,5vw,44px);
-    }
-
-    .card-link{
-      display:inline-block;
-      margin-top:24px;
-      color:var(--yellow);
-      font-size:clamp(19px,3.6vw,28px);
-      font-weight:900;
-    }
-
-    .daily-box{
-      border:1.5px solid var(--border);
-      border-radius:32px;
-      background:rgba(0,0,0,.80);
-      overflow:hidden;
-      box-shadow:0 0 24px rgba(0,184,95,.10);
-    }
-
-    .daily-img{
-      min-height:390px;
-      background:
-        linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.62)),
-        var(--daily-image),
-        url("https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1400&q=80");
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .play{
-      width:94px;
-      height:94px;
-      border-radius:50%;
-      border:3px solid var(--gold);
-      background:rgba(0,0,0,.74);
-      color:var(--yellow);
-      display:grid;
-      place-items:center;
-      font-size:42px;
-      font-weight:900;
-      padding-left:6px;
-      box-shadow:0 0 34px rgba(0,184,95,.28);
-    }
-
-    .daily-content{
-      padding:clamp(28px,5vw,54px);
-    }
-
-    .wide-image{
-      min-height:460px;
-      border:1.5px solid var(--border);
-      border-radius:32px;
-      padding:clamp(30px,6vw,64px);
-      background:
-        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.88)),
-        var(--wide-image),
-        url("https://images.unsplash.com/photo-1554224155-3a58922a22c2?auto=format&fit=crop&w=1700&q=80");
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      align-items:flex-end;
-      margin-bottom:28px;
-    }
-
-    .path-card{
-      display:grid;
-      grid-template-columns:78px 1fr auto;
-      gap:24px;
-      align-items:center;
-      border:1.5px solid var(--border);
-      border-radius:26px;
-      background:rgba(0,0,0,.78);
-      padding:28px;
-    }
-
-    .path-card:hover{
-      border-color:var(--yellow);
-      transform:translateY(-2px);
-    }
-
-    .icon{
-      width:66px;
-      height:66px;
-      border-radius:50%;
-      border:1px solid var(--border);
-      display:grid;
-      place-items:center;
-      color:var(--green);
-      font-size:32px;
-      font-weight:900;
-    }
-
-    .arrow{
-      color:var(--gold);
-      font-size:46px;
-      font-weight:900;
-    }
-
-    .number{
-      color:var(--yellow);
-      font-size:clamp(34px,5vw,54px);
-      font-weight:1000;
-      margin-bottom:8px;
-    }
-
-    .footer{
-      border-top:1px solid var(--border);
-      padding:44px 0 58px;
-      background:#000;
-    }
-
-    .footer strong{
-      display:block;
-      color:var(--green);
-      font-size:clamp(34px,6vw,58px);
-      line-height:1.1;
-      margin-bottom:14px;
-    }
-
-    @media(max-width:900px){
-      .cols-2,.cols-3{
-        grid-template-columns:1fr;
+    @media (max-width: 980px) {
+      .desktop-nav, .header-cta { display: none; }
+      .menu-button { display: inline-flex; }
+      .desktop-nav.open {
+        position: fixed;
+        inset: 82px 0 auto;
+        display: grid;
+        gap: 0;
+        padding: 10px 20px 25px;
+        border-bottom: 1px solid var(--silver-2);
+        background: var(--white);
+        box-shadow: 0 20px 30px rgba(7,27,58,.12);
       }
-
-      .path-card{
-        grid-template-columns:1fr auto;
-      }
-
-      .icon{
-        display:none;
-      }
+      .desktop-nav.open a { padding: 15px 0; border-bottom: 1px solid var(--silver-2); }
+      .hero-inner { grid-template-columns: 1fr; gap: 55px; padding: 75px 0 105px; }
+      .hero-panel { max-width: 680px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(3) { border-left: 0; border-top: 1px solid var(--silver-2); }
+      .stat:nth-child(4) { border-top: 1px solid var(--silver-2); }
+      .overview-grid, .selector-grid { grid-template-columns: 1fr; gap: 55px; }
+      .overview-intro { position: static; }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .standards-grid { grid-template-columns: 1fr; }
+      .cta-card { grid-template-columns: 1fr; }
+      .cta-card .button { justify-self: start; }
     }
 
-    @media(max-width:640px){
-      .container{
-        width:min(100% - 32px,1120px);
-      }
-
-      .brand{
-        align-items:flex-start;
-      }
-
-      .logo-box{
-        width:72px;
-        height:72px;
-        font-size:40px;
-      }
-
-      .nav{
-        gap:32px 44px;
-      }
-
-      .hero-card{
-        min-height:620px;
-      }
-
-      .btn{
-        width:100%;
-      }
+    @media (max-width: 700px) {
+      .container { width: min(100% - 30px, 1180px); }
+      .header-inner { min-height: 72px; }
+      .logo-mark { width: 41px; height: 41px; }
+      .logo-name { font-size: 17px; }
+      .desktop-nav.open { inset: 72px 0 auto; }
+      .hero-inner { min-height: auto; padding: 65px 0 95px; }
+      .hero-panel { padding: 25px; }
+      .hero-actions, .hero-actions .button { width: 100%; }
+      .stats { margin-top: -28px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat { padding: 22px 24px; }
+      .stat + .stat { border-top: 1px solid var(--silver-2); border-left: 0; }
+      .overview, .packages, .standards { padding: 85px 0; }
+      .process, .selector { padding: 80px 0; }
+      .service-list, .steps, .package-grid { grid-template-columns: 1fr; }
+      .package-card { padding: 25px; }
+      .selector-option { grid-template-columns: 43px 1fr; }
+      .selector-arrow { display: none; }
+      .cta-section { padding-bottom: 80px; }
+      .cta-card { padding: 38px 26px; }
+      .cta-card .button { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; }
     }
-  
-/* TitanCore unified header/menu/footer */
-.header{position:sticky;top:0;z-index:200;background:#000;border-top:1px solid #d7b35d;border-bottom:1px solid #d7b35d;}
-.header-inner{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#f7f1e6;min-width:0;}
-.brand-mark{width:64px;height:64px;border:2px solid #d7b35d;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:700;color:#f0d07a;background:#030303;flex-shrink:0;}
-.brand-name{font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,3vw,34px);letter-spacing:1.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;}
-.brand-name span{color:#d7b35d;}
-.menu-btn{width:64px;height:64px;border:2px solid #d7b35d;background:#0b684f;color:#fff;font-size:34px;line-height:1;cursor:pointer;flex-shrink:0;}
-.menu-panel{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:flex-start;justify-content:flex-end;z-index:500;padding:0;}
-.menu-panel.open{display:flex;}
-.menu-box{width:min(420px,95vw);min-height:100vh;background:#080808;border-left:1px solid #d7b35d;padding:24px;}
-.menu-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(215,179,93,.4);}
-.menu-top h2{font-size:24px;color:#f0d07a;margin:0;}
-.close-menu{border:1px solid #d7b35d;background:#111;color:#fff;font-size:32px;line-height:1;padding:2px 12px;cursor:pointer;}
-.menu-links{display:flex;flex-direction:column;padding-top:14px;}
-.menu-links a{padding:14px 4px;border-bottom:1px solid rgba(215,179,93,.25);color:#f7f1e6;text-decoration:none;letter-spacing:1px;}
-.titancore-footer{margin-top:auto;background:#050505;border-top:1px solid #d7b35d;padding:28px 20px;text-align:center;color:#f7f1e6;}
-.footer-logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;}
-.footer-mark{width:36px;height:36px;border:1px solid #d7b35d;display:grid;place-items:center;font-family:Georgia,"Times New Roman",serif;color:#f0d07a;font-weight:700;}
-.footer-brand-name{font-family:Georgia,"Times New Roman",serif;letter-spacing:1px;color:#f0d07a;}
-.footer-copy{margin:0 0 12px;font-size:14px;}
-.footer-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;}
-.footer-links a,.footer-current{color:#f7f1e6;font-size:14px;text-decoration:none;}
-.footer-links a:hover{color:#f0d07a;}
-.footer-dot{color:#d7b35d;}
-.footer-current{color:#f0d07a;}
-.footer-social-icons{display:flex;justify-content:center;gap:10px;}
-.footer-social-icons a{width:34px;height:34px;border:1px solid #d7b35d;color:#f7f1e6;display:grid;place-items:center;text-decoration:none;font-weight:700;}
-@media (max-width:640px){.header-inner{padding:10px 14px}.brand-mark,.menu-btn{width:54px;height:54px}.brand-name{font-size:clamp(15px,4.6vw,23px)}.menu-box{padding:18px}}
-
-</style>
+  </style>
 </head>
-
 <body>
-  <header class="header">
-  <div class="header-inner">
-    <a href="index.html" class="brand">
-      <div class="brand-mark">TH</div>
-      <div class="brand-name">TitanCore <span>Holdings</span></div>
-    </a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Vaultara Capital home">
+        <svg class="logo-mark" viewBox="0 0 48 48" role="img" aria-label="Vaultara Capital logo">
+          <path fill="#071b3a" d="M24 2 44 12v24L24 46 4 36V12z"/>
+          <path fill="#1677d2" d="M24 8.7 37.8 15.6v16.8L24 39.3 10.2 32.4V15.6z"/>
+          <path fill="#fff" d="m15 16 9 18 9-18h-5.3L24 24.8 20.3 16z"/>
+        </svg>
+        <span class="logo-type">
+          <span class="logo-name">Vaultara Capital</span>
+          <span class="logo-sub">Prepare • Position • Progress</span>
+        </span>
+      </a>
 
-    <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
-  </div>
-</header>
+      <nav class="desktop-nav" id="mainNav" aria-label="Primary navigation">
+        <a href="#services">What We Do</a>
+        <a href="#process">Our Process</a>
+        <a href="#packages">Service Packages</a>
+        <a href="#guidance">Find Your Path</a>
+      </nav>
 
-<div class="menu-panel" id="menuPanel">
-  <div class="menu-box">
-    <div class="menu-top">
-      <h2>TitanCore Menu</h2>
-      <button class="close-menu" id="closeMenu">×</button>
+      <a class="header-cta" href="contact.html">Request a Consultation <span aria-hidden="true">→</span></a>
+      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <span class="eyebrow">Funding and business readiness</span>
+          <h1>Build a stronger path to funding.</h1>
+          <p class="hero-lead">Vaultara Capital helps individuals, startups, and established businesses understand their options, organize the right information, and improve their readiness for credit and funding opportunities.</p>
+          <div class="hero-actions">
+            <a class="button" href="#packages">Explore Service Packages <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#guidance">Find the Right Starting Point</a>
+          </div>
+          <div class="trust-row" aria-label="Vaultara Capital service principles">
+            <span>Education-first guidance</span>
+            <span>Clear preparation steps</span>
+            <span>Solutions matched to your needs</span>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Funding readiness overview">
+          <span class="hero-panel-label">A prepared client is a stronger applicant</span>
+          <h2>We help you prepare before you apply.</h2>
+          <ul class="readiness-list">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 20h14M7 17V9m5 8V4m5 13v-6"/></svg>Review credit and financial readiness</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 3h8l4 4v14H7zM15 3v5h4M10 12h6m-6 4h6"/></svg>Organize documents and business details</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 18 9 13l4 3 7-9M15 7h5v5"/></svg>Identify practical readiness improvements</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-13v5l3 2"/></svg>Understand personal, business, and program options</li>
+          </ul>
+          <p class="panel-note">Guidance and preparation do not constitute a promise or guarantee of approval.</p>
+        </aside>
+      </div>
+    </section>
+
+    <div class="stats" aria-label="Vaultara Capital service areas">
+      <div class="container stats-grid">
+        <div class="stat"><strong>Personal</strong><span>Credit &amp; loan guidance</span></div>
+        <div class="stat"><strong>Startup</strong><span>Formation &amp; readiness</span></div>
+        <div class="stat"><strong>Business</strong><span>Credit &amp; growth support</span></div>
+        <div class="stat"><strong>Programs</strong><span>Eligibility guidance</span></div>
+      </div>
     </div>
 
-    <nav class="menu-links">
-  <a href="index.html">Home</a>
-  <a href="about-group.html">About Group</a>
-  <a href="companies.html">Companies</a>
-  <a href="business-intelligence.html">Business Intelligence</a>
-  <a href="news-media.html">News &amp; Media</a>
-  <a href="global-news.html">Global News</a>
-  <a href="blogs.html">TitanCore Insights</a>
-  <a href="contact.html">Contact</a>
-</nav>
-<div class="menu-support-links">
-  <a href="privacy-policy.html">Privacy Policy</a>
-  <a href="terms-of-use.html">Terms of Use</a>
-  <a href="feedback.html">Feedback</a>
-</div>
-  </div>
-</div>
+    <section class="overview" id="services">
+      <div class="container overview-grid">
+        <div class="overview-intro">
+          <span class="eyebrow">What Vaultara Capital does</span>
+          <h2>Preparation designed around your next move.</h2>
+          <p class="section-copy">Funding can feel complicated. We bring structure to the process by helping clients understand where they stand, what information they need, and which steps may strengthen their position.</p>
+        </div>
 
-  <main>
-    <section class="hero">
+        <div class="service-list">
+          <article class="service-item">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 19V8l8-4 8 4v11M8 19v-6h8v6M2 20h20"/></svg></div>
+            <h3>Personal loan guidance</h3>
+            <p>Understand lender considerations, document needs, and personal funding preparation.</p>
+          </article>
+          <article class="service-item">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 20h16V7H4zM8 7V4h8v3M8 12h8m-8 4h5"/></svg></div>
+            <h3>Business loan preparation</h3>
+            <p>Organize business records, financial details, and the purpose behind a funding request.</p>
+          </article>
+          <article class="service-item">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 3v18M7 7.5C7 5.6 8.8 4 11 4h2c2.2 0 4 1.5 4 3.4S15.2 11 13 11h-2c-2.2 0-4 1.6-4 3.5S8.8 18 11 18h2c2.2 0 4-1.6 4-3.5"/></svg></div>
+            <h3>Startup funding guidance</h3>
+            <p>Build a realistic funding-readiness plan for a newly formed or early-stage company.</p>
+          </article>
+          <article class="service-item">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="m4 18 5-5 4 3 7-9M15 7h5v5"/></svg></div>
+            <h3>Business growth support</h3>
+            <p>Prepare established businesses to explore capital for operations, equipment, or expansion.</p>
+          </article>
+          <article class="service-item">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 7h18v12H3zM7 11h4m-4 4h7M17 10h1"/></svg></div>
+            <h3>Credit setup and education</h3>
+            <p>Learn personal and business credit fundamentals, tracking, and responsible preparation.</p>
+          </article>
+          <article class="service-item">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 21V5l7-3 7 3v16M9 8h2m2 0h2m-6 4h2m2 0h2m-6 4h6"/></svg></div>
+            <h3>Business formation guidance</h3>
+            <p>Understand formation steps, core records, banking readiness, and foundational organization.</p>
+          </article>
+          <article class="service-item">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 10h18M5 10V8l7-5 7 5v2M6 10v8m4-8v8m4-8v8m4-8v8M3 21h18"/></svg></div>
+            <h3>Government-backed programs</h3>
+            <p>Understand relevant government-backed funding paths and common eligibility factors.</p>
+          </article>
+          <article class="service-item">
+            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="m12 3 2.3 4.7 5.2.8-3.8 3.7.9 5.3-4.6-2.5-4.6 2.5.9-5.3-3.8-3.7 5.2-.8z"/></svg></div>
+            <h3>Grant and assistance guidance</h3>
+            <p>Help identify assistance programs a client may qualify for and clarify next steps.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
       <div class="container">
-        <div class="hero-card" id="heroCard">
-          <div class="kicker">Vaultara Capital</div>
-
-          <h1>Funding, Credit, and Business Formation Information</h1>
-
-          <p class="lead">
-            Vaultara Capital is the TitanCore company focused on funding readiness,
-            credit education, personal credit, business credit, and business formation information.
-          </p>
-
-          <div class="actions">
-            <a class="btn" href="#vaultara-info">View Vaultara Information →</a>
-            <a class="btn ghost" href="https://vaultaracapital.com">Go to Vaultara Website →</a>
-            <a class="btn ghost" href="companies.html">Back to Companies →</a>
-          </div>
-
-          <p class="notice">
-            This TitanCore page is information only. Funding requests, credit requests,
-            business formation requests, and applications belong on the Vaultara Capital website.
-          </p>
+        <div class="section-heading center">
+          <span class="eyebrow">Our preparation process</span>
+          <h2>A clear path from questions to readiness.</h2>
+          <p class="section-copy">Our guidance is structured to help you make informed decisions—not rush into applications before you are prepared.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Understand your goal</h3><p>We begin with the type of support you need, your timeline, and the purpose of the requested funds.</p></article>
+          <article class="step"><h3>Review your position</h3><p>We look at relevant credit, income, business history, documentation, and readiness factors.</p></article>
+          <article class="step"><h3>Build your action plan</h3><p>We help organize documents, identify gaps, and outline practical preparation priorities.</p></article>
+          <article class="step"><h3>Explore your options</h3><p>We guide you through personal, business, and government-backed paths that may fit your profile.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="daily-vaultara" class="section">
+    <section class="packages" id="packages">
       <div class="container">
-        <div class="daily-box">
-          <div class="daily-img" id="dailyImage">
-            <div class="play">▶</div>
+        <div class="section-heading center">
+          <span class="eyebrow">Service packages</span>
+          <h2>Choose support that fits your current stage.</h2>
+          <p class="section-copy">Whether you are working on credit, forming a company, or preparing an established business for growth, there is a focused place to start.</p>
+        </div>
+
+        <div class="package-grid">
+          <article class="package-card">
+            <div class="package-top"><h3>Credit Preparation Package</h3><span class="package-number">01</span></div>
+            <div class="package-fit">Best for: Personal credit readiness</div>
+            <p>Build an informed plan around the credit factors that can influence future funding options.</p>
+            <ul class="package-list"><li>Personal credit education</li><li>Credit report and profile preparation guidance</li><li>Credit tracking and readiness action plan</li></ul>
+          </article>
+
+          <article class="package-card">
+            <div class="package-top"><h3>Personal Loan Guidance Package</h3><span class="package-number">02</span></div>
+            <div class="package-fit">Best for: Individual funding needs</div>
+            <p>Understand personal loan options and prepare the information lenders commonly review.</p>
+            <ul class="package-list"><li>Funding goal and option review</li><li>Income and document organization</li><li>Application-readiness guidance</li></ul>
+          </article>
+
+          <article class="package-card">
+            <div class="package-top"><h3>Business Formation Package</h3><span class="package-number">03</span></div>
+            <div class="package-fit">Best for: New business owners</div>
+            <p>Build an organized foundation before moving toward banking, credit, and funding preparation.</p>
+            <ul class="package-list"><li>Business structure guidance</li><li>Formation and records checklist</li><li>Business banking readiness steps</li></ul>
+          </article>
+
+          <article class="package-card">
+            <div class="package-top"><h3>Business Credit Builder Package</h3><span class="package-number">04</span></div>
+            <div class="package-fit">Best for: Establishing business credit</div>
+            <p>Learn how organized business details and responsible account activity support a credit profile.</p>
+            <ul class="package-list"><li>Business profile and credibility review</li><li>Business credit education</li><li>Tracking and development roadmap</li></ul>
+          </article>
+
+          <article class="package-card featured">
+            <div class="package-top"><h3>Startup Funding Readiness Package</h3><span class="package-number">05</span></div>
+            <div class="package-fit">Best for: Pre-revenue and early-stage businesses</div>
+            <p>Prepare your startup story, funding purpose, records, and next steps for potential capital options.</p>
+            <ul class="package-list"><li>Startup readiness assessment</li><li>Use-of-funds and document planning</li><li>Funding path education</li></ul>
+          </article>
+
+          <article class="package-card">
+            <div class="package-top"><h3>Existing Business Funding Package</h3><span class="package-number">06</span></div>
+            <div class="package-fit">Best for: Operating and growing businesses</div>
+            <p>Organize the records and business case needed to explore funding for the next stage of growth.</p>
+            <ul class="package-list"><li>Revenue and business history review</li><li>Financial document preparation</li><li>Growth funding option guidance</li></ul>
+          </article>
+
+          <article class="package-card">
+            <div class="package-top"><h3>Government Program Guidance Package</h3><span class="package-number">07</span></div>
+            <div class="package-fit">Best for: Program and assistance research</div>
+            <p>Understand government-backed funding, grant, and assistance programs that may align with your situation.</p>
+            <ul class="package-list"><li>Program research guidance</li><li>General eligibility factor review</li><li>Application document checklist</li></ul>
+          </article>
+
+          <article class="package-card featured">
+            <div class="package-top"><h3>Full Funding Preparation Package</h3><span class="package-number">08</span></div>
+            <div class="package-fit">Best for: Comprehensive support</div>
+            <p>Bring credit, business organization, documentation, and funding-path preparation into one coordinated plan.</p>
+            <ul class="package-list"><li>Complete readiness review</li><li>Credit and documentation action plan</li><li>Personal, business, and program option guidance</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="selector" id="guidance">
+      <div class="container selector-grid">
+        <div>
+          <span class="eyebrow">Find your starting point</span>
+          <h2>Not sure which package fits?</h2>
+          <p class="section-copy">Start with the outcome you want. Vaultara Capital can help clarify the preparation path that best matches your current position and goals.</p>
+          <div class="hero-actions"><a class="button" href="contact.html">Discuss Your Needs <span aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="selector-options">
+          <div class="selector-option">
+            <div class="selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 19V8l8-4 8 4v11M8 19v-6h8v6M2 20h20"/></svg></div>
+            <div><strong>I need personal funding or credit help.</strong><span>Start with packages 01 or 02.</span></div><div class="selector-arrow">→</div>
           </div>
-
-          <div class="daily-content">
-            <div class="kicker" id="dailyTag">Daily Vaultara Learning Brief</div>
-            <h2 id="dailyTitle">Today’s Funding and Credit Topic</h2>
-            <p id="dailyText">
-              Before requesting funding or credit help, visitors should understand their income,
-              revenue, credit range, debt, business age, and what kind of support they are looking for.
-            </p>
-
-            <div class="actions">
-              <a class="btn" href="#vaultara-info">Learn More About Vaultara →</a>
-              <a class="btn ghost" href="https://vaultaracapital.com">Continue to Vaultara Website →</a>
-            </div>
-
-            <p class="notice">
-              This section rotates daily using JavaScript now. Later, Supabase, market APIs, and a content system
-              can update the information automatically with live education and business notes.
-            </p>
+          <div class="selector-option">
+            <div class="selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 21V5l7-3 7 3v16M9 8h6m-6 4h6m-6 4h6"/></svg></div>
+            <div><strong>I am setting up a new business.</strong><span>Start with packages 03, 04, or 05.</span></div><div class="selector-arrow">→</div>
+          </div>
+          <div class="selector-option">
+            <div class="selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="m4 18 5-5 4 3 7-9M15 7h5v5"/></svg></div>
+            <div><strong>I want capital to grow my business.</strong><span>Start with package 06 or 08.</span></div><div class="selector-arrow">→</div>
+          </div>
+          <div class="selector-option">
+            <div class="selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 10h18M5 10V8l7-5 7 5v2M6 10v8m4-8v8m4-8v8m4-8v8M3 21h18"/></svg></div>
+            <div><strong>I want to explore public programs.</strong><span>Start with package 07.</span></div><div class="selector-arrow">→</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="vaultara-info" class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div class="kicker">Company Overview</div>
-          <h2>What Vaultara Represents</h2>
-          <p>
-            Vaultara gives visitors a public place to understand financial readiness before they continue
-            to the Vaultara website to request help. This TitanCore page explains the company, the service areas,
-            and what a visitor should learn first.
-          </p>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Funding Readiness</h3>
-              <p>
-                Information about business funding, personal funding, requested amount,
-                revenue, income, credit range, repayment readiness, and basic funding preparation.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Credit Education</h3>
-              <p>
-                Information about personal credit, business credit, payment history,
-                utilization, late payments, collections, inquiries, and responsible credit planning.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-img daily-card-img" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Business Formation</h3>
-              <p>
-                Information about business structure, state setup, business organization,
-                records, business banking readiness, and future credit or funding preparation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
+    <section class="standards">
       <div class="container">
-        <div class="wide-image" id="wideImage">
-          <div>
-            <div class="kicker">Important Direction</div>
-            <h2>TitanCore Explains. Vaultara Handles the Request.</h2>
-            <p>
-              Visitors can learn about Vaultara here on TitanCore. When they are ready to request funding,
-              credit help, or business formation support, they should continue to the Vaultara Capital website.
-            </p>
-
-            <div class="actions">
-              <a class="btn" href="https://vaultaracapital.com">Go to Vaultara Website →</a>
-            </div>
-          </div>
+        <div class="section-heading center">
+          <span class="eyebrow">How we support clients</span>
+          <h2>Clear guidance. Practical preparation.</h2>
         </div>
-
-        <div class="grid">
-          <a class="path-card" href="https://vaultaracapital.com">
-            <div class="icon">→</div>
-            <div>
-              <h3>Go to Vaultara Capital Website</h3>
-              <p>
-                Funding requests, credit requests, business credit requests, personal credit requests,
-                and business formation requests belong on the Vaultara website.
-              </p>
-            </div>
-            <div class="arrow">→</div>
-          </a>
-
-          <a class="path-card" href="business-book.html">
-            <div class="icon">B</div>
-            <div>
-              <h3>Learn Business and Credit Basics</h3>
-              <p>
-                Visitors can use TitanCore’s Business Intelligence Book to learn about funding,
-                credit, business formation, and financial preparation before taking action.
-              </p>
-            </div>
-            <div class="arrow">→</div>
-          </a>
-
-          <a class="path-card" href="stock-watch.html">
-            <div class="icon">$</div>
-            <div>
-              <h3>Review Market and Financial Information</h3>
-              <p>
-                Visitors can learn about banks, markets, credit conditions, public companies,
-                interest rates, business confidence, and sector movement through TitanCore.
-              </p>
-            </div>
-            <div class="arrow">→</div>
-          </a>
+        <div class="standards-grid">
+          <article class="standard"><h3>Education before action</h3><p>We help clients understand terminology, requirements, and potential paths before they make important financial decisions.</p></article>
+          <article class="standard"><h3>Organization that builds confidence</h3><p>We help organize documents, business details, and readiness information so clients can approach next steps more clearly.</p></article>
+          <article class="standard"><h3>Options aligned to the client</h3><p>We help identify programs and funding categories the client may qualify for based on their profile and circumstances.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div class="kicker">Vaultara Information Areas</div>
-          <h2>What Visitors Can Learn Here</h2>
-          <p>
-            This TitanCore page should give enough information for visitors to understand Vaultara before leaving
-            TitanCore to continue on the Vaultara website.
-          </p>
-        </div>
-
-        <div class="grid cols-3">
-          <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Business Funding</h3>
-              <p>
-                Learn why business owners may need to understand revenue, time in business,
-                funding amount, use of funds, credit range, and repayment readiness.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Personal Funding</h3>
-              <p>
-                Learn why individuals may need to understand income range, funding amount,
-                debt situation, credit score range, and personal repayment ability.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Personal Credit</h3>
-              <p>
-                Learn about credit utilization, payment history, late payments,
-                collections, inquiries, account age, and credit education basics.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1554224155-3a58922a22c2?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Business Credit</h3>
-              <p>
-                Learn about EIN readiness, business records, business banking,
-                vendor accounts, company profile, and responsible business credit preparation.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Business Formation</h3>
-              <p>
-                Learn about choosing a business structure, preparing company information,
-                organizing documents, and getting ready for banking or credit steps.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=80');"></div>
-            <div class="card-body">
-              <h3>Financial Readiness</h3>
-              <p>
-                Learn why records, income, credit, expenses, payment ability,
-                business goals, and preparation matter before requesting financial support.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="actions">
-          <a class="btn" href="https://vaultaracapital.com">Continue to Vaultara Website →</a>
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <div><h2>Move forward with a more prepared plan.</h2><p>Tell us what you are working toward, and we will help you understand which Vaultara Capital service package may be the right place to begin.</p></div>
+          <a class="button" href="contact.html">Request a Consultation <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div class="kicker">How the Flow Works</div>
-          <h2>From TitanCore to Vaultara</h2>
-          <p>
-            TitanCore is the information layer. Vaultara is where visitors continue when they need funding support,
-            credit help, business credit support, personal credit help, or business formation assistance.
-          </p>
-        </div>
-
-        <div class="grid cols-2">
-          <div class="card">
-            <div class="card-body">
-              <div class="number">1</div>
-              <h3>Visitor Reads on TitanCore</h3>
-              <p>
-                The visitor clicks Vaultara from TitanCore and learns what Vaultara does and how it connects to the TitanCore network.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <div class="number">2</div>
-              <h3>Visitor Learns First</h3>
-              <p>
-                The visitor can learn about funding, credit, business credit, personal credit, and business formation basics.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <div class="number">3</div>
-              <h3>Visitor Leaves TitanCore</h3>
-              <p>
-                When ready, the visitor clicks the Vaultara website button and leaves TitanCore to continue on Vaultara’s own website.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <div class="number">4</div>
-              <h3>Vaultara Handles the Request</h3>
-              <p>
-                Funding forms, credit forms, business credit forms, personal credit forms, and formation forms belong on the Vaultara website.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="actions">
-          <a class="btn" href="https://vaultaracapital.com">Go to Vaultara Website →</a>
-          <a class="btn ghost" href="companies.html">Return to Company Network →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container panel">
-        <div class="section-head">
-          <div class="kicker">Public Notice</div>
-          <h2>Vaultara Notice</h2>
-        </div>
-
-        <p>
-          This TitanCore Vaultara page is for public information and education only. It does not create a funding approval,
-          loan approval, credit approval, credit repair guarantee, business formation guarantee, financial advice,
-          legal advice, tax advice, investment advice, lender relationship, banking relationship, or service approval.
-        </p>
-
-        <p class="notice">
-          Visitors who want to request funding, credit help, business credit support, personal credit help,
-          or business formation support should continue to the Vaultara Capital website.
-        </p>
-
-        <div class="actions">
-          <a class="btn" href="https://vaultaracapital.com">Learn More on Vaultara Website →</a>
+    <section class="disclaimer" aria-labelledby="disclaimer-title">
+      <div class="container disclaimer-inner">
+        <div class="disclaimer-icon" aria-hidden="true">i</div>
+        <div>
+          <h2 id="disclaimer-title">Important Disclaimer</h2>
+          <p>Vaultara Capital provides education, preparation, and funding guidance. Loan approval, credit approval, grant approval, government program approval, and funding amounts are not guaranteed. Approval depends on lender requirements, credit profile, income, business history, documentation, and program eligibility.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="titancore-footer">
-  <div class="footer-logo-row">
-    <div class="footer-mark">TH</div>
-    <div class="footer-brand-name">TitanCore Holdings</div>
-  </div>
-
-  <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
-
-  <div class="footer-links">
-    <a href="privacy-policy.html">Privacy Policy</a> <span class="footer-dot">•</span> <a href="terms-of-use.html">Terms of Use</a> <span class="footer-dot">•</span> <a href="blogs.html">Blogs</a> <span class="footer-dot">•</span> <a href="feedback.html">Feedback</a>
-  </div>
-
-  <div class="footer-social-icons">
-    <a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-    <a href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener" aria-label="Instagram" class="instagram">◎</a>
-    <a href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener" aria-label="LinkedIn" class="linkedin">in</a>
-  </div>
-</footer>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo footer-logo" href="#top">
+            <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="#fff" d="M24 2 44 12v24L24 46 4 36V12z"/><path fill="#1677d2" d="M24 8.7 37.8 15.6v16.8L24 39.3 10.2 32.4V15.6z"/><path fill="#fff" d="m15 16 9 18 9-18h-5.3L24 24.8 20.3 16z"/></svg>
+            <span class="logo-type"><span class="logo-name">Vaultara Capital</span><span class="logo-sub">Prepare • Position • Progress</span></span>
+          </a>
+          <p class="footer-about">Education, organization, and funding-readiness guidance for individuals, startups, and established businesses.</p>
+        </div>
+        <div><div class="footer-heading">Explore</div><div class="footer-links"><a href="#services">What We Do</a><a href="#process">Our Process</a><a href="#packages">Packages</a><a href="#guidance">Find Your Path</a></div></div>
+        <div><div class="footer-heading">TitanCore</div><div class="footer-links"><a href="index.html">TitanCore Home</a><a href="companies.html">Companies</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-use.html">Terms of Use</a></div></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Vaultara Capital. All rights reserved.</span><span>A TitanCore Holdings company.</span></div>
+    </div>
+  </footer>
 
   <script>
-    const heroImages = [
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1700&q=80",
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1700&q=80",
-      "https://images.unsplash.com/photo-1554224155-3a58922a22c2?auto=format&fit=crop&w=1700&q=80",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1700&q=80"
-    ];
+    const menuButton = document.getElementById("menuButton");
+    const mainNav = document.getElementById("mainNav");
 
-    const wideImages = [
-      "https://images.unsplash.com/photo-1554224155-3a58922a22c2?auto=format&fit=crop&w=1700&q=80",
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1700&q=80",
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1700&q=80",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1700&q=80"
-    ];
+    menuButton.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      menuButton.textContent = isOpen ? "×" : "☰";
+      document.body.classList.toggle("menu-open", isOpen);
+    });
 
-    const dailyLessons = [
-      {
-        tag:"Daily Vaultara Learning Brief",
-        title:"Funding readiness starts before the request.",
-        text:"Before requesting funding, visitors should understand revenue, income, credit range, requested amount, use of funds, and repayment readiness.",
-        image:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80"
-      },
-      {
-        tag:"Credit Education Brief",
-        title:"Credit preparation can affect future options.",
-        text:"Payment history, utilization, inquiries, collections, late payments, and account age can all affect credit readiness.",
-        image:"https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80"
-      },
-      {
-        tag:"Business Credit Brief",
-        title:"Business credit starts with organized business records.",
-        text:"Business credit preparation can include EIN readiness, business banking, company profile, vendor accounts, and payment behavior.",
-        image:"https://images.unsplash.com/photo-1554224155-3a58922a22c2?auto=format&fit=crop&w=1400&q=80"
-      },
-      {
-        tag:"Formation Education Brief",
-        title:"Business formation should be prepared before growth.",
-        text:"Business owners should understand structure, state, business name, records, banking readiness, and future credit or funding goals.",
-        image:"https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80"
-      }
-    ];
-
-    const dailyCardImages = [
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1554224155-3a58922a22c2?auto=format&fit=crop&w=1200&q=80"
-    ];
-
-    function dayIndex(list){
-      const dayNumber = Math.floor(Date.now() / 86400000);
-      return dayNumber % list.length;
-    }
-
-    document.addEventListener("DOMContentLoaded", function(){
-      const currentPage = window.location.pathname.split("/").pop() || "index.html";
-
-      document.querySelectorAll(".nav a").forEach(function(link){
-        if(link.getAttribute("href") === currentPage){
-          link.classList.add("active");
-        }
-      });
-
-      const hero = document.getElementById("heroCard");
-      const wide = document.getElementById("wideImage");
-
-      if(hero){
-        hero.style.setProperty("--hero-image", `url("${heroImages[dayIndex(heroImages)]}")`);
-      }
-
-      if(wide){
-        wide.style.setProperty("--wide-image", `url("${wideImages[dayIndex(wideImages)]}")`);
-      }
-
-      const lesson = dailyLessons[dayIndex(dailyLessons)];
-      const dailyImage = document.getElementById("dailyImage");
-      const dailyTag = document.getElementById("dailyTag");
-      const dailyTitle = document.getElementById("dailyTitle");
-      const dailyText = document.getElementById("dailyText");
-
-      if(dailyImage){
-        dailyImage.style.setProperty("--daily-image", `url("${lesson.image}")`);
-      }
-
-      if(dailyTag){ dailyTag.textContent = lesson.tag; }
-      if(dailyTitle){ dailyTitle.textContent = lesson.title; }
-      if(dailyText){ dailyText.textContent = lesson.text; }
-
-      document.querySelectorAll(".daily-card-img").forEach(function(item,index){
-        const img = dailyCardImages[(dayIndex(dailyCardImages) + index) % dailyCardImages.length];
-
-        item.style.backgroundImage =
-          `linear-gradient(rgba(0,0,0,.12),rgba(0,0,0,.30)), url("${img}")`;
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+        menuButton.textContent = "☰";
+        document.body.classList.remove("menu-open");
       });
     });
   </script>
-<script>
-  const openMenu = document.getElementById("openMenu");
-  const closeMenu = document.getElementById("closeMenu");
-  const menuPanel = document.getElementById("menuPanel");
-
-  if(openMenu && menuPanel){
-    openMenu.addEventListener("click", () => menuPanel.classList.add("open"));
-  }
-
-  if(closeMenu && menuPanel){
-    closeMenu.addEventListener("click", () => menuPanel.classList.remove("open"));
-  }
-
-  if(menuPanel){
-    menuPanel.addEventListener("click", event => {
-      if(event.target === menuPanel){
-        menuPanel.classList.remove("open");
-      }
-    });
-  }
-</script>
 </body>
 </html>
