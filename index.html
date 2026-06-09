@@ -928,43 +928,6 @@
       font-size: clamp(34px, 5vw, 58px);
     }
 
-    /* Footer */
-    /* Compact company-journal preview near the footer */
-    .home-blog-preview{
-      padding:58px 0 62px;
-      background:linear-gradient(180deg,#0b100d,#070908);
-      border-top:1px solid rgba(216,180,90,.14);
-    }
-    .home-blog-heading{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:26px;
-      margin-bottom:24px;
-    }
-    .home-blog-heading h2{
-      margin:8px 0 7px;
-      font-family:var(--serif);
-      font-size:clamp(28px,3.4vw,40px);
-      color:var(--gold2);
-    }
-    .home-blog-heading p{color:rgba(255,255,255,.68);font-size:15px;}
-    .home-blog-all{color:var(--gold2);font-size:13px;font-weight:900;letter-spacing:.4px;white-space:nowrap;}
-    .home-blog-all:hover{color:#fff;}
-    .home-blog-feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
-    .home-blog-note{
-      min-height:220px;
-      padding:20px;
-      border-left:3px solid var(--green2);
-      border-top:1px solid rgba(255,255,255,.09);
-      background:rgba(255,255,255,.025);
-    }
-    .home-blog-note-top{display:flex;justify-content:space-between;gap:14px;color:rgba(255,255,255,.52);font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;}
-    .home-blog-note-top span{color:var(--gold2);}
-    .home-blog-note h3{margin:13px 0 9px;font-family:var(--serif);font-size:21px;line-height:1.2;}
-    .home-blog-note p{color:rgba(255,255,255,.64);font-size:13px;line-height:1.6;}
-    .home-blog-note>a{display:inline-flex;gap:7px;margin-top:14px;color:var(--gold2);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.7px;}
-
     .titancore-footer{
       background: rgba(0,0,0,.78);
       border-top:1px solid rgba(242,217,140,.16);
@@ -1149,16 +1112,6 @@
       }
     }
 
-    @media (max-width: 900px){
-      .home-blog-feed{grid-template-columns:1fr;}
-      .home-blog-note{min-height:auto;}
-    }
-    @media (max-width: 650px){
-      .home-blog-heading{display:block;}
-      .home-blog-all{display:inline-block;margin-top:16px;}
-      .home-blog-note-top{display:block;}
-      .home-blog-note-top time{display:block;margin-top:4px;}
-    }
   </style>
 </head>
 
@@ -1193,7 +1146,6 @@
           <a href="companies.html">Companies</a>
           <a href="business-intelligence.html">Business Intelligence</a>
           <a href="news-media.html">News & Media</a>
-          <a href="blog.html">Blogs</a>
           <a href="contact.html">Contact</a>
         </nav>
 
@@ -1439,23 +1391,6 @@
       </div>
     </section>
 
-    <!-- COMPACT BLOG JOURNAL -->
-    <section class="home-blog-preview" aria-labelledby="homeBlogTitle">
-      <div class="wrap">
-        <div class="home-blog-heading">
-          <div>
-            <div class="eyebrow">TitanCore Journal</div>
-            <h2 id="homeBlogTitle">Latest Blog Notes</h2>
-            <p>Short updates, company reflections, and quick business thoughts from TitanCore.</p>
-          </div>
-          <a href="blog.html" class="home-blog-all">View All Blog Posts <span>›</span></a>
-        </div>
-        <div class="home-blog-feed" id="homepageBlogFeed" aria-live="polite">
-          <p>Loading the latest blog notes…</p>
-        </div>
-      </div>
-    </section>
-
     <!-- FOOTER -->
     <footer class="titancore-footer">
       <div class="wrap">
@@ -1494,7 +1429,6 @@
 
   <script src="media-schedule.js"></script>
   <script src="article-collections.js"></script>
-  <script src="blog-system.js"></script>
   <script>
     /* ==========================
       Menu: accessible dialog
