@@ -1,0 +1,16 @@
+# Vaultara Capital clean public routes.
+# These are rewrites (200), so visitors keep the canonical route in the browser.
+/vaultara                         /vaultara.html                              200
+/start-here                       /vaultara-operation.html                    200
+/what-we-do                       /vaultara-operation.html                    200
+/services                         /vaultara-operation.html                    200
+/personal-credit                  /vaultara-personal-credit-help.html         200
+/credit-tracking                  /vaultara-credit-education-tracking.html    200
+/personal-loan-guidance           /vaultara-personal-loan-guidance.html       200
+/business-formation               /vaultara-business-formation.html           200
+/business-credit                  /vaultara-business-credit-setup.html        200
+/startup-funding                  /vaultara-startup-funding-guidance.html      200
+/existing-business-funding        /vaultara-existing-business-funding.html    200
+/government-program-guidance      /vaultara-government-program-guidance.html  200
+/packages                         /vaultara-service-packages.html             200
+/contact                          /vaultara-contact.html                      200
