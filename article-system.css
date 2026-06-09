@@ -40,3 +40,14 @@ h1,h2,h3{font-family:var(--serif);line-height:1.12}h1{font-size:clamp(45px,6vw,7
 @media(max-width:700px){.official-contact{padding:28px 22px}
 .official-contact .btn{width:100%;min-width:0}
 }
+
+/* Complete weekly archive packages */
+.archive-week{padding-top:clamp(48px,7vw,84px);border-top:1px solid rgba(242,217,140,.14);margin-top:clamp(48px,7vw,84px)}
+.archive-week:first-child{margin-top:24px}
+.archive-week .collection-heading h3{font-family:var(--serif);font-size:clamp(28px,3.2vw,42px);color:var(--gold2);line-height:1.12}
+.article-grid.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.article-card:last-child{grid-column:auto;max-width:none}
+.article-structure{--article-image:url("assets/articles/company-growth.svg")}
+@media(max-width:700px){.article-grid.archive-grid{grid-template-columns:1fr}}
+.articles-library .article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:700px){.articles-library .article-grid{grid-template-columns:1fr}}

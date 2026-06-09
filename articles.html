@@ -36,99 +36,15 @@
       </div>
     </header>
     <section class="weekly-collection articles-library" aria-labelledby="currentCollectionTitle">
-      <div class="wrap">
-        <div class="collection-heading">
-          <div>
-            <div class="eyebrow">Week of June 8, 2026</div>
-            <h2 id="currentCollectionTitle">This Week’s Article Collection</h2>
-          </div>
-          <p>Business Structure Creates Long-Term Power</p>
-        </div>
-        <div class="article-grid">
-          <article class="article-card metal">
-            <div class="article-card-image image-structure" role="img" aria-label="Business Structure article image"></div>
-            <div class="article-card-content">
-              <div class="category">Business Structure</div>
-              <h3>How Business Structure Creates Long-Term Power</h3>
-              <div class="article-meta"><time datetime="2026-06-08">June 8, 2026</time><span>Weekly Article</span></div>
-              <p>Learn how clear ownership, responsibilities, information, and decision paths help a company grow with order and earn long-term trust.</p>
-              <div class="btn-row"><a class="btn" href="article-business-structure.html">Read Article <span class="arrow">›</span></a></div>
-            </div>
-          </article>
-          <article class="article-card metal">
-            <div class="article-card-image image-lanes" role="img" aria-label="Company Growth article image"></div>
-            <div class="article-card-content">
-              <div class="category">Company Growth</div>
-              <h3>Why Clear Business Lanes Help Companies Grow</h3>
-              <div class="article-meta"><time datetime="2026-06-08">June 8, 2026</time><span>Weekly Article</span></div>
-              <p>See how defined companies, departments, services, and customer paths reduce confusion and make expansion easier to manage.</p>
-              <div class="btn-row"><a class="btn" href="article-clear-business-lanes.html">Read Article <span class="arrow">›</span></a></div>
-            </div>
-          </article>
-          <article class="article-card metal">
-            <div class="article-card-image image-information" role="img" aria-label="Business Systems article image"></div>
-            <div class="article-card-content">
-              <div class="category">Business Systems</div>
-              <h3>How Organized Information Builds Trust and Better Decisions</h3>
-              <div class="article-meta"><time datetime="2026-06-08">June 8, 2026</time><span>Weekly Article</span></div>
-              <p>Discover why clear records, purposeful web pages, accountable workflows, and organized reporting support confident decisions and future growth.</p>
-              <div class="btn-row"><a class="btn" href="article-organized-information.html">Read Article <span class="arrow">›</span></a></div>
-            </div>
-          </article>
-        </div>
-      </div>
+      <div class="wrap" id="currentArticleCollection"></div>
     </section>
     <section class="past-collections" aria-labelledby="pastCollectionsTitle">
       <div class="wrap">
         <div class="collection-heading compact">
-          <div>
-            <div class="eyebrow">Article Archive</div>
-            <h2 id="pastCollectionsTitle">Past Weekly Article Collections</h2>
-          </div>
-          <p>Continue exploring earlier TitanCore business education.</p>
+          <div><div class="eyebrow">Article Archive</div><h2 id="pastCollectionsTitle">Past Weekly Article Collections</h2></div>
+          <p>Every archived week remains a complete four-article learning package.</p>
         </div>
-        <div class="article-grid archive-grid">
-          <article class="article-card archive-article-card metal">
-            <div class="article-card-image image-growth" role="img" aria-label="A business team organizing a growth plan together around a table"></div>
-            <div class="article-card-content">
-              <div class="category">Company Growth</div>
-              <h3>Growth Works Better With Clear Business Lanes</h3>
-              <div class="article-meta"><time datetime="2026-06-01">June 1, 2026</time><span>Weekly Article</span></div>
-              <p>A practical research guide to organizing services, audiences, ownership, and operating capacity into clear business lanes that support responsible growth.</p>
-              <div class="btn-row"><a class="btn" href="article-company-growth.html">Read Article <span class="arrow">›</span></a></div>
-            </div>
-          </article>
-          <article class="article-card archive-article-card metal">
-            <div class="article-card-image image-financial" role="img" aria-label="Financial reports, a calculator, and organized business records on a desk"></div>
-            <div class="article-card-content">
-              <div class="category">Financial Awareness</div>
-              <h3>Financial Awareness Starts With Organized Information</h3>
-              <div class="article-meta"><time datetime="2026-05-25">May 25, 2026</time><span>Weekly Article</span></div>
-              <p>A detailed guide to building financial awareness through organized records, useful reports, cash-flow review, and disciplined business decisions.</p>
-              <div class="btn-row"><a class="btn" href="article-financial-awareness.html">Read Article <span class="arrow">›</span></a></div>
-            </div>
-          </article>
-          <article class="article-card archive-article-card metal">
-            <div class="article-card-image image-leadership" role="img" aria-label="Business leaders reviewing strategy and responsibilities in a conference room"></div>
-            <div class="article-card-content">
-              <div class="category">Leadership</div>
-              <h3>Leadership Creates Direction Before Expansion</h3>
-              <div class="article-meta"><time datetime="2026-05-18">May 18, 2026</time><span>Weekly Article</span></div>
-              <p>A research-focused guide to establishing purpose, decision rights, standards, accountability, and leadership capacity before a company expands.</p>
-              <div class="btn-row"><a class="btn" href="article-leadership.html">Read Article <span class="arrow">›</span></a></div>
-            </div>
-          </article>
-          <article class="article-card archive-article-card metal">
-            <div class="article-card-image image-market-awareness" role="img" aria-label="A researcher studying market charts and global business information on multiple screens"></div>
-            <div class="article-card-content">
-              <div class="category">Market Awareness</div>
-              <h3>Market Awareness Is More Than Watching Headlines</h3>
-              <div class="article-meta"><time datetime="2026-05-11">May 11, 2026</time><span>Weekly Article</span></div>
-              <p>A detailed framework for researching customers, competitors, costs, sectors, and economic conditions without overreacting to daily headlines.</p>
-              <div class="btn-row"><a class="btn" href="article-market-awareness.html">Read Article <span class="arrow">›</span></a></div>
-            </div>
-          </article>
-        </div>
+        <div id="pastArticleCollections"></div>
       </div>
     </section>
   </main>
@@ -145,6 +61,7 @@
     </div>
   </footer>
 </div>
+<script src="article-collections.js"></script>
 <script src="article-system.js"></script>
 </body>
 </html>
