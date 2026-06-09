@@ -3,673 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vaultara Capital provides education, preparation, and guidance for personal credit, business formation, funding readiness, and growth.">
-  <title>Vaultara Capital | Funding Readiness &amp; Business Growth Guidance</title>
-  <style>
-    :root {
-      --navy: #071b3a;
-      --navy-soft: #0d2a52;
-      --blue: #135fba;
-      --blue-bright: #1677d2;
-      --blue-pale: #eaf3fc;
-      --silver: #f4f7fa;
-      --silver-2: #e4eaf0;
-      --ink: #15243a;
-      --muted: #5d6b7e;
-      --white: #ffffff;
-      --success: #16856b;
-      --shadow: 0 18px 50px rgba(7, 27, 58, .10);
-      --radius: 22px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--white);
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
-    body.menu-open { overflow: hidden; }
-    a { color: inherit; text-decoration: none; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    img, svg { display: block; max-width: 100%; }
-    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 18px;
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
-    h1, h2, h3 { margin: 0; color: var(--navy); line-height: 1.12; letter-spacing: -.025em; }
-    h1 { max-width: 760px; font-size: clamp(44px, 6.2vw, 78px); }
-    h2 { font-size: clamp(34px, 4vw, 52px); }
-    h3 { font-size: 21px; }
-    p { margin: 0; }
-    .section-copy { max-width: 720px; margin-top: 18px; color: var(--muted); font-size: 18px; }
-    .section-heading { margin-bottom: 46px; }
-    .section-heading.center { max-width: 760px; margin-right: auto; margin-left: auto; text-align: center; }
-    .section-heading.center .eyebrow { justify-content: center; }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(7, 27, 58, .09);
-      background: rgba(255, 255, 255, .95);
-      backdrop-filter: blur(16px);
-    }
-    .header-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
-    .logo { display: inline-flex; align-items: center; gap: 12px; min-width: 0; }
-    .logo-mark { width: 47px; height: 47px; flex: 0 0 auto; }
-    .logo-type { display: flex; flex-direction: column; line-height: 1; }
-    .logo-name { color: var(--navy); font-size: 20px; font-weight: 850; letter-spacing: .04em; text-transform: uppercase; }
-    .logo-sub { margin-top: 6px; color: var(--blue); font-size: 9px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; }
-    .desktop-nav { display: flex; align-items: center; gap: 30px; }
-    .desktop-nav a { color: #35445a; font-size: 14px; font-weight: 650; transition: color .2s ease; }
-    .desktop-nav a:hover { color: var(--blue); }
-    .header-cta, .button {
-      display: inline-flex;
-      min-height: 48px;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      border: 1px solid transparent;
-      border-radius: 9px;
-      padding: 12px 20px;
-      background: var(--blue);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 750;
-      line-height: 1.2;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-    }
-    .header-cta:hover, .button:hover { transform: translateY(-2px); background: #0e519e; box-shadow: 0 10px 24px rgba(19, 95, 186, .22); }
-    .button.secondary { border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.08); }
-    .button.secondary:hover { background: rgba(255,255,255,.16); }
-    .menu-button {
-      display: none;
-      width: 46px;
-      height: 46px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--silver-2);
-      border-radius: 8px;
-      background: var(--white);
-      color: var(--navy);
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background: var(--navy);
-      color: var(--white);
-    }
-    .hero::before {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 77% 22%, rgba(33, 139, 235, .25), transparent 24%),
-        linear-gradient(115deg, rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(25deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: auto, 62px 62px, 62px 62px;
-      content: "";
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      min-height: 700px;
-      grid-template-columns: minmax(0, 1.18fr) minmax(360px, .82fr);
-      align-items: center;
-      gap: 70px;
-      padding: 92px 0;
-    }
-    .hero .eyebrow { color: #75b9ff; }
-    .hero h1 { color: var(--white); }
-    .hero-lead { max-width: 720px; margin-top: 25px; color: #cbd8e8; font-size: clamp(18px, 2vw, 21px); }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 34px; }
-    .trust-row { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-top: 38px; color: #b6c6d9; font-size: 13px; font-weight: 650; }
-    .trust-row span { display: inline-flex; align-items: center; gap: 8px; }
-    .trust-row span::before { content: "✓"; color: #68d6b7; font-weight: 900; }
-    .hero-panel {
-      position: relative;
-      border: 1px solid rgba(255,255,255,.15);
-      border-radius: 26px;
-      padding: 34px;
-      background: rgba(255,255,255,.075);
-      box-shadow: 0 35px 80px rgba(0,0,0,.27);
-      backdrop-filter: blur(12px);
-    }
-    .hero-panel-label { color: #7fc0ff; font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
-    .hero-panel h2 { margin-top: 10px; color: var(--white); font-size: 28px; }
-    .readiness-list { display: grid; gap: 11px; margin: 27px 0 0; padding: 0; list-style: none; }
-    .readiness-list li {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 10px;
-      padding: 13px 14px;
-      background: rgba(255,255,255,.06);
-      color: #e5edf6;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .readiness-list svg { width: 21px; flex: 0 0 auto; color: #68b4ff; }
-    .panel-note { margin-top: 22px; color: #9eb1c8; font-size: 12px; }
-
-    .stats { position: relative; z-index: 2; margin-top: -37px; }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--silver-2);
-      border-radius: 18px;
-      background: var(--white);
-      box-shadow: var(--shadow);
-    }
-    .stat { padding: 27px 30px; }
-    .stat + .stat { border-left: 1px solid var(--silver-2); }
-    .stat strong { display: block; color: var(--blue); font-size: 25px; line-height: 1.1; }
-    .stat span { display: block; margin-top: 7px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-
-    .overview { padding: 130px 0 105px; }
-    .overview-grid { display: grid; grid-template-columns: .82fr 1.18fr; align-items: start; gap: 85px; }
-    .overview-intro { position: sticky; top: 126px; }
-    .service-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    .service-item { border: 1px solid var(--silver-2); border-radius: 14px; padding: 21px; background: var(--silver); }
-    .service-icon {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      margin-bottom: 16px;
-      border-radius: 9px;
-      background: var(--blue-pale);
-      color: var(--blue);
-    }
-    .service-icon svg { width: 20px; }
-    .service-item h3 { font-size: 17px; }
-    .service-item p { margin-top: 8px; color: var(--muted); font-size: 14px; }
-    .service-item { display: block; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-    .service-item:hover { transform: translateY(-3px); border-color: #94bce5; box-shadow: var(--shadow); }
-    .service-link, .package-link { display: inline-block; margin-top: 18px; color: var(--blue); font-size: 13px; font-weight: 800; }
-
-    .process { padding: 100px 0; background: var(--silver); }
-    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: process; }
-    .step { position: relative; border: 1px solid var(--silver-2); border-radius: var(--radius); padding: 29px 25px; background: var(--white); counter-increment: process; }
-    .step::before {
-      display: grid;
-      width: 42px;
-      height: 42px;
-      place-items: center;
-      margin-bottom: 30px;
-      border-radius: 50%;
-      background: var(--navy);
-      color: var(--white);
-      content: counter(process, decimal-leading-zero);
-      font-size: 12px;
-      font-weight: 800;
-    }
-    .step h3 { font-size: 19px; }
-    .step p { margin-top: 12px; color: var(--muted); font-size: 14px; }
-
-    .packages { padding: 110px 0; }
-    .package-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-    .package-card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--silver-2);
-      border-radius: var(--radius);
-      padding: 31px;
-      background: var(--white);
-      box-shadow: 0 10px 30px rgba(7,27,58,.055);
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-    .package-card:hover { transform: translateY(-4px); border-color: #b5d1ef; box-shadow: var(--shadow); }
-    .package-card.featured { border-color: #8ab8e9; background: linear-gradient(145deg, #f6faff, #fff); }
-    .package-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
-    .package-number { color: #c8d5e3; font-size: 34px; font-weight: 850; line-height: 1; }
-    .package-fit { margin-top: 17px; color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
-    .package-card > p { margin-top: 10px; color: var(--muted); font-size: 15px; }
-    .package-list { display: grid; gap: 9px; margin: 22px 0 0; padding: 20px 0 0; border-top: 1px solid var(--silver-2); list-style: none; }
-    .package-list li { display: flex; align-items: flex-start; gap: 10px; color: #3b4a5f; font-size: 14px; }
-    .package-list li::before { margin-top: 1px; color: var(--success); content: "✓"; font-weight: 900; }
-
-    .selector { padding: 105px 0; background: var(--navy); color: var(--white); }
-    .selector-grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 85px; }
-    .selector h2 { color: var(--white); }
-    .selector .section-copy { color: #b9c8d9; }
-    .selector .eyebrow { color: #77bcff; }
-    .selector-options { display: grid; gap: 12px; }
-    .selector-option {
-      display: grid;
-      grid-template-columns: 47px 1fr auto;
-      align-items: center;
-      gap: 16px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 13px;
-      padding: 17px;
-      background: rgba(255,255,255,.055);
-    }
-    .selector-option strong { font-size: 15px; }
-    .selector-option span { display: block; margin-top: 2px; color: #9fb1c6; font-size: 12px; }
-    .selector-icon { display: grid; width: 47px; height: 47px; place-items: center; border-radius: 10px; background: rgba(35,137,232,.18); color: #78bdff; }
-    .selector-icon svg { width: 22px; }
-    .selector-arrow { color: #77bcff; font-size: 22px; }
-
-    .standards { padding: 105px 0; }
-    .standards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .standard { padding: 28px; border-left: 3px solid var(--blue); background: var(--silver); }
-    .standard h3 { font-size: 18px; }
-    .standard p { margin-top: 10px; color: var(--muted); font-size: 14px; }
-
-    .cta-section { padding: 0 0 105px; }
-    .cta-card {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 50px;
-      border-radius: 26px;
-      padding: 55px 60px;
-      background: linear-gradient(120deg, var(--blue), #0a448c);
-      color: var(--white);
-      box-shadow: 0 24px 60px rgba(19,95,186,.22);
-    }
-    .cta-card::after { position: absolute; right: -90px; bottom: -150px; width: 360px; height: 360px; border: 60px solid rgba(255,255,255,.06); border-radius: 50%; content: ""; }
-    .cta-card > * { position: relative; z-index: 1; }
-    .cta-card h2 { color: var(--white); font-size: clamp(30px, 3vw, 43px); }
-    .cta-card p { max-width: 700px; margin-top: 13px; color: #dbeaff; }
-    .cta-card .button { background: var(--white); color: var(--blue); white-space: nowrap; }
-
-    .disclaimer { padding: 42px 0; border-top: 1px solid var(--silver-2); background: var(--silver); }
-    .disclaimer-inner { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; }
-    .disclaimer-icon { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: #dfeaf6; color: var(--blue); font-weight: 850; }
-    .disclaimer h2 { font-size: 15px; letter-spacing: 0; }
-    .disclaimer p { margin-top: 7px; color: var(--muted); font-size: 13px; }
-
-    .site-footer { padding: 55px 0 30px; background: #05152e; color: #aebed1; }
-    .footer-grid { display: grid; grid-template-columns: 1.4fr .6fr .6fr; gap: 70px; }
-    .footer-logo .logo-name { color: var(--white); }
-    .footer-about { max-width: 430px; margin-top: 20px; font-size: 13px; }
-    .footer-heading { margin-bottom: 17px; color: var(--white); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    .footer-links { display: grid; gap: 10px; }
-    .footer-links a { font-size: 13px; transition: color .2s ease; }
-    .footer-links a:hover { color: var(--white); }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 25px; margin-top: 45px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1); font-size: 12px; }
-
-    @media (max-width: 980px) {
-      .desktop-nav, .header-cta { display: none; }
-      .menu-button { display: inline-flex; }
-      .desktop-nav.open {
-        position: fixed;
-        inset: 82px 0 auto;
-        display: grid;
-        gap: 0;
-        padding: 10px 20px 25px;
-        border-bottom: 1px solid var(--silver-2);
-        background: var(--white);
-        box-shadow: 0 20px 30px rgba(7,27,58,.12);
-      }
-      .desktop-nav.open a { padding: 15px 0; border-bottom: 1px solid var(--silver-2); }
-      .hero-inner { grid-template-columns: 1fr; gap: 55px; padding: 75px 0 105px; }
-      .hero-panel { max-width: 680px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .stat:nth-child(3) { border-left: 0; border-top: 1px solid var(--silver-2); }
-      .stat:nth-child(4) { border-top: 1px solid var(--silver-2); }
-      .overview-grid, .selector-grid { grid-template-columns: 1fr; gap: 55px; }
-      .overview-intro { position: static; }
-      .steps { grid-template-columns: repeat(2, 1fr); }
-      .standards-grid { grid-template-columns: 1fr; }
-      .cta-card { grid-template-columns: 1fr; }
-      .cta-card .button { justify-self: start; }
-    }
-
-    @media (max-width: 700px) {
-      .container { width: min(100% - 30px, 1180px); }
-      .header-inner { min-height: 72px; }
-      .logo-mark { width: 41px; height: 41px; }
-      .logo-name { font-size: 17px; }
-      .desktop-nav.open { inset: 72px 0 auto; }
-      .hero-inner { min-height: auto; padding: 65px 0 95px; }
-      .hero-panel { padding: 25px; }
-      .hero-actions, .hero-actions .button { width: 100%; }
-      .stats { margin-top: -28px; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .stat { padding: 22px 24px; }
-      .stat + .stat { border-top: 1px solid var(--silver-2); border-left: 0; }
-      .overview, .packages, .standards { padding: 85px 0; }
-      .process, .selector { padding: 80px 0; }
-      .service-list, .steps, .package-grid { grid-template-columns: 1fr; }
-      .package-card { padding: 25px; }
-      .selector-option { grid-template-columns: 43px 1fr; }
-      .selector-arrow { display: none; }
-      .cta-section { padding-bottom: 80px; }
-      .cta-card { padding: 38px 26px; }
-      .cta-card .button { width: 100%; }
-      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-      .footer-bottom { flex-direction: column; }
-    }
-  </style>
+  <meta name="description" content="Learn about credit, loans, business formation, and funding readiness before choosing a Vaultara Capital service or package.">
+  <title>Vaultara Capital | Learn, Prepare &amp; Move Forward</title>
+  <link rel="stylesheet" href="vaultara.css">
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="#top" aria-label="Vaultara Capital home">
-        <svg class="logo-mark" viewBox="0 0 48 48" role="img" aria-label="Vaultara Capital logo">
-          <path fill="#071b3a" d="M24 2 44 12v24L24 46 4 36V12z"/>
-          <path fill="#1677d2" d="M24 8.7 37.8 15.6v16.8L24 39.3 10.2 32.4V15.6z"/>
-          <path fill="#fff" d="m15 16 9 18 9-18h-5.3L24 24.8 20.3 16z"/>
-        </svg>
-        <span class="logo-type">
-          <span class="logo-name">Vaultara Capital</span>
-          <span class="logo-sub">Prepare • Position • Progress</span>
-        </span>
+<body class="vaultara-home">
+  <header class="vaultara-header">
+    <div class="vc-container header-row">
+      <a class="vaultara-brand" href="/vaultara" aria-label="Vaultara Capital home">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#071b3a" d="M24 2 44 12v24L24 46 4 36V12z"/><path fill="#1677d2" d="M24 8.7 37.8 15.6v16.8L24 39.3 10.2 32.4V15.6z"/><path fill="#fff" d="m15 16 9 18 9-18h-5.3L24 24.8 20.3 16z"/></svg>
+        <span><strong>Vaultara Capital</strong><small>Prepare • Position • Progress</small></span>
       </a>
-
-      <nav class="desktop-nav" id="mainNav" aria-label="Primary navigation">
-        <a href="/start-here">Start Here</a>
-        <a href="/services">What We Do</a>
-        <a href="/packages">Service Packages</a>
-        <a href="/contact">Contact</a>
+      <nav class="vaultara-nav" id="vaultaraNav" aria-label="Vaultara Capital navigation">
+        <a href="#start-here">Start Here</a>
+        <a href="#learn">Learn</a>
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
       </nav>
-
-      <a class="header-cta" href="/contact">Request Information <span aria-hidden="true">→</span></a>
-      <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav">☰</button>
+      <a class="vc-button header-action" href="/contact">Get Guidance <span aria-hidden="true">→</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="vaultaraNav" aria-label="Open navigation">☰</button>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-content">
-          <span class="eyebrow">Funding and business readiness</span>
-          <h1>Build a stronger path to funding.</h1>
-          <p class="hero-lead">Vaultara Capital helps individuals, startups, and established businesses understand their options, organize the right information, and improve their readiness for credit and funding opportunities.</p>
-          <div class="hero-actions">
-            <a class="button" href="/packages">Explore Service Packages <span aria-hidden="true">→</span></a>
-            <a class="button secondary" href="/start-here">Find the Right Starting Point</a>
+  <main>
+    <section class="home-hero">
+      <div class="vc-container home-hero-grid">
+        <div class="home-hero-copy">
+          <span class="vc-eyebrow">Education before action</span>
+          <h1>Learn what you need before applying.</h1>
+          <p class="home-hero-lead">Understand your credit and funding readiness, explore the paths available to you, and choose the service that fits your situation—when you are ready.</p>
+          <div class="button-row">
+            <a class="vc-button" href="#start-here">Start with the basics <span aria-hidden="true">↓</span></a>
+            <a class="home-text-link" href="#services">Explore all services <span aria-hidden="true">→</span></a>
           </div>
-          <div class="trust-row" aria-label="Vaultara Capital service principles">
-            <span>Education-first guidance</span>
-            <span>Clear preparation steps</span>
-            <span>Solutions matched to your needs</span>
-          </div>
+          <p class="hero-reassurance">No pressure to apply. Start by learning, then decide what your next step should be.</p>
         </div>
-
-        <aside class="hero-panel" aria-label="Funding readiness overview">
-          <span class="hero-panel-label">A prepared client is a stronger applicant</span>
-          <h2>We help you prepare before you apply.</h2>
-          <ul class="readiness-list">
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 20h14M7 17V9m5 8V4m5 13v-6"/></svg>Review credit and financial readiness</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 3h8l4 4v14H7zM15 3v5h4M10 12h6m-6 4h6"/></svg>Organize documents and business details</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 18 9 13l4 3 7-9M15 7h5v5"/></svg>Identify practical readiness improvements</li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-13v5l3 2"/></svg>Understand personal, business, and program options</li>
-          </ul>
-          <p class="panel-note">Guidance and preparation do not constitute a promise or guarantee of approval.</p>
+        <aside class="learning-map" aria-label="Your Vaultara learning path">
+          <div class="map-heading"><span>Your path</span><strong>Learn first. Move forward prepared.</strong></div>
+          <ol>
+            <li><span>01</span><div><strong>Understand</strong><p>Learn the terms, factors, and common requirements.</p></div></li>
+            <li><span>02</span><div><strong>Prepare</strong><p>Review your readiness and organize the right information.</p></div></li>
+            <li><span>03</span><div><strong>Choose</strong><p>Select guidance or a service that fits your situation.</p></div></li>
+          </ol>
+          <a href="/contact">Not sure where to begin? Get guidance <span aria-hidden="true">→</span></a>
         </aside>
       </div>
     </section>
 
-    <div class="stats" aria-label="Vaultara Capital service areas">
-      <div class="container stats-grid">
-        <div class="stat"><strong>Personal</strong><span>Credit &amp; loan guidance</span></div>
-        <div class="stat"><strong>Startup</strong><span>Formation &amp; readiness</span></div>
-        <div class="stat"><strong>Business</strong><span>Credit &amp; growth support</span></div>
-        <div class="stat"><strong>Programs</strong><span>Eligibility guidance</span></div>
-      </div>
-    </div>
-
-    <section class="overview" id="services">
-      <div class="container overview-grid">
-        <div class="overview-intro">
-          <span class="eyebrow">What Vaultara Capital does</span>
-          <h2>Preparation designed around your next move.</h2>
-          <p class="section-copy">Funding can feel complicated. We bring structure to the process by helping clients understand where they stand, what information they need, and which steps may strengthen their position.</p>
+    <section class="home-start" id="start-here">
+      <div class="vc-container">
+        <div class="section-title home-section-title">
+          <span class="vc-eyebrow">Start here / What we do</span>
+          <h2>A clear place to begin.</h2>
+          <p>Vaultara Capital helps you prepare, organize, and move forward with confidence. Begin with the area that best describes where you are today.</p>
         </div>
-
-        <div class="service-list">
-          <a class="service-item" href="/personal-loan-guidance">
-            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 19V8l8-4 8 4v11M8 19v-6h8v6M2 20h20"/></svg></div>
-            <h3>Personal loan guidance</h3>
-            <p>Understand lender considerations, document needs, and personal funding preparation.</p>
-          <span class="service-link">View service →</span></a>
-          <a class="service-item" href="/existing-business-funding">
-            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 20h16V7H4zM8 7V4h8v3M8 12h8m-8 4h5"/></svg></div>
-            <h3>Business loan preparation</h3>
-            <p>Organize business records, financial details, and the purpose behind a funding request.</p>
-          <span class="service-link">View service →</span></a>
-          <a class="service-item" href="/startup-funding">
-            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 3v18M7 7.5C7 5.6 8.8 4 11 4h2c2.2 0 4 1.5 4 3.4S15.2 11 13 11h-2c-2.2 0-4 1.6-4 3.5S8.8 18 11 18h2c2.2 0 4-1.6 4-3.5"/></svg></div>
-            <h3>Startup funding guidance</h3>
-            <p>Build a realistic funding-readiness plan for a newly formed or early-stage company.</p>
-          <span class="service-link">View service →</span></a>
-          <a class="service-item" href="/existing-business-funding">
-            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="m4 18 5-5 4 3 7-9M15 7h5v5"/></svg></div>
-            <h3>Business growth support</h3>
-            <p>Prepare established businesses to explore capital for operations, equipment, or expansion.</p>
-          <span class="service-link">View service →</span></a>
-          <a class="service-item" href="/credit-tracking">
-            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 7h18v12H3zM7 11h4m-4 4h7M17 10h1"/></svg></div>
-            <h3>Credit setup and education</h3>
-            <p>Learn personal and business credit fundamentals, tracking, and responsible preparation.</p>
-          <span class="service-link">View service →</span></a>
-          <a class="service-item" href="/business-formation">
-            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 21V5l7-3 7 3v16M9 8h2m2 0h2m-6 4h2m2 0h2m-6 4h6"/></svg></div>
-            <h3>Business formation guidance</h3>
-            <p>Understand formation steps, core records, banking readiness, and foundational organization.</p>
-          <span class="service-link">View service →</span></a>
-          <a class="service-item" href="/government-program-guidance">
-            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 10h18M5 10V8l7-5 7 5v2M6 10v8m4-8v8m4-8v8m4-8v8M3 21h18"/></svg></div>
-            <h3>Government-backed programs</h3>
-            <p>Understand relevant government-backed funding paths and common eligibility factors.</p>
-          <span class="service-link">View service →</span></a>
-          <a class="service-item" href="/government-program-guidance">
-            <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="m12 3 2.3 4.7 5.2.8-3.8 3.7.9 5.3-4.6-2.5-4.6 2.5.9-5.3-3.8-3.7 5.2-.8z"/></svg></div>
-            <h3>Grant and assistance guidance</h3>
-            <p>Help identify assistance programs a client may qualify for and clarify next steps.</p>
-          <span class="service-link">View service →</span></a>
+        <div class="path-grid">
+          <a class="path-card" href="#personal-services">
+            <span class="path-number">01</span>
+            <div class="path-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0"/></svg></div>
+            <h3>Personal readiness</h3>
+            <p>Learn about personal credit, credit tracking, and what lenders may review for a personal loan.</p>
+            <strong>Explore personal topics <span aria-hidden="true">→</span></strong>
+          </a>
+          <a class="path-card" href="#business-services">
+            <span class="path-number">02</span>
+            <div class="path-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V7l8-4 8 4v14M8 10h8M8 14h8M8 18h8"/></svg></div>
+            <h3>Starting a business</h3>
+            <p>Understand formation, business credit foundations, and how to prepare a startup funding story.</p>
+            <strong>Explore startup topics <span aria-hidden="true">→</span></strong>
+          </a>
+          <a class="path-card" href="#growth-services">
+            <span class="path-number">03</span>
+            <div class="path-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 18 5-5 4 3 7-9M15 7h5v5"/></svg></div>
+            <h3>Growing a business</h3>
+            <p>Review the records, history, and use-of-funds details that may support a growth conversation.</p>
+            <strong>Explore business funding <span aria-hidden="true">→</span></strong>
+          </a>
+          <a class="path-card" href="/government-program-guidance">
+            <span class="path-number">04</span>
+            <div class="path-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10h18M5 10V8l7-5 7 5v2M6 10v8m4-8v8m4-8v8m4-8v8M3 21h18"/></svg></div>
+            <h3>Exploring public programs</h3>
+            <p>Learn how to research government-backed programs, general eligibility, and documentation needs.</p>
+            <strong>Learn about programs <span aria-hidden="true">→</span></strong>
+          </a>
         </div>
       </div>
     </section>
 
-    <section class="process" id="process">
-      <div class="container">
-        <div class="section-heading center">
-          <span class="eyebrow">Our preparation process</span>
-          <h2>A clear path from questions to readiness.</h2>
-          <p class="section-copy">Our guidance is structured to help you make informed decisions—not rush into applications before you are prepared.</p>
+    <section class="learn-section" id="learn">
+      <div class="vc-container learn-grid">
+        <div class="learn-intro">
+          <span class="vc-eyebrow">Learn before you apply</span>
+          <h2>Readiness starts with understanding.</h2>
+          <p>Before choosing a product or submitting an application, take time to understand the information that can shape your options. Vaultara helps turn a complicated process into practical, manageable steps.</p>
+          <a class="home-text-link" href="#learning-center">Visit the Learning Center <span aria-hidden="true">→</span></a>
         </div>
-        <div class="steps">
-          <article class="step"><h3>Understand your goal</h3><p>We begin with the type of support you need, your timeline, and the purpose of the requested funds.</p></article>
-          <article class="step"><h3>Review your position</h3><p>We look at relevant credit, income, business history, documentation, and readiness factors.</p></article>
-          <article class="step"><h3>Build your action plan</h3><p>We help organize documents, identify gaps, and outline practical preparation priorities.</p></article>
-          <article class="step"><h3>Explore your options</h3><p>We guide you through personal, business, and government-backed paths that may fit your profile.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="packages" id="packages">
-      <div class="container">
-        <div class="section-heading center">
-          <span class="eyebrow">Service packages</span>
-          <h2>Choose support that fits your current stage.</h2>
-          <p class="section-copy">Whether you are working on credit, forming a company, or preparing an established business for growth, there is a focused place to start.</p>
-        </div>
-
-        <div class="package-grid">
-          <a class="package-card" href="/personal-credit">
-            <div class="package-top"><h3>Credit Preparation Package</h3><span class="package-number">01</span></div>
-            <div class="package-fit">Best for: Personal credit readiness</div>
-            <p>Build an informed plan around the credit factors that can influence future funding options.</p>
-            <ul class="package-list"><li>Personal credit education</li><li>Credit report and profile preparation guidance</li><li>Credit tracking and readiness action plan</li></ul>
-          <span class="package-link">View details →</span></a>
-
-          <a class="package-card" href="/personal-loan-guidance">
-            <div class="package-top"><h3>Personal Loan Guidance Package</h3><span class="package-number">02</span></div>
-            <div class="package-fit">Best for: Individual funding needs</div>
-            <p>Understand personal loan options and prepare the information lenders commonly review.</p>
-            <ul class="package-list"><li>Funding goal and option review</li><li>Income and document organization</li><li>Application-readiness guidance</li></ul>
-          <span class="package-link">View details →</span></a>
-
-          <a class="package-card" href="/business-formation">
-            <div class="package-top"><h3>Business Formation Package</h3><span class="package-number">03</span></div>
-            <div class="package-fit">Best for: New business owners</div>
-            <p>Build an organized foundation before moving toward banking, credit, and funding preparation.</p>
-            <ul class="package-list"><li>Business structure guidance</li><li>Formation and records checklist</li><li>Business banking readiness steps</li></ul>
-          <span class="package-link">View details →</span></a>
-
-          <a class="package-card" href="/business-credit">
-            <div class="package-top"><h3>Business Credit Builder Package</h3><span class="package-number">04</span></div>
-            <div class="package-fit">Best for: Establishing business credit</div>
-            <p>Learn how organized business details and responsible account activity support a credit profile.</p>
-            <ul class="package-list"><li>Business profile and credibility review</li><li>Business credit education</li><li>Tracking and development roadmap</li></ul>
-          <span class="package-link">View details →</span></a>
-
-          <a class="package-card featured" href="/startup-funding">
-            <div class="package-top"><h3>Startup Funding Readiness Package</h3><span class="package-number">05</span></div>
-            <div class="package-fit">Best for: Pre-revenue and early-stage businesses</div>
-            <p>Prepare your startup story, funding purpose, records, and next steps for potential capital options.</p>
-            <ul class="package-list"><li>Startup readiness assessment</li><li>Use-of-funds and document planning</li><li>Funding path education</li></ul>
-          <span class="package-link">View details →</span></a>
-
-          <a class="package-card" href="/existing-business-funding">
-            <div class="package-top"><h3>Existing Business Funding Package</h3><span class="package-number">06</span></div>
-            <div class="package-fit">Best for: Operating and growing businesses</div>
-            <p>Organize the records and business case needed to explore funding for the next stage of growth.</p>
-            <ul class="package-list"><li>Revenue and business history review</li><li>Financial document preparation</li><li>Growth funding option guidance</li></ul>
-          <span class="package-link">View details →</span></a>
-
-          <a class="package-card" href="/government-program-guidance">
-            <div class="package-top"><h3>Government Program Guidance Package</h3><span class="package-number">07</span></div>
-            <div class="package-fit">Best for: Program and assistance research</div>
-            <p>Understand government-backed funding, grant, and assistance programs that may align with your situation.</p>
-            <ul class="package-list"><li>Program research guidance</li><li>General eligibility factor review</li><li>Application document checklist</li></ul>
-          <span class="package-link">View details →</span></a>
-
-          <a class="package-card featured" href="/packages">
-            <div class="package-top"><h3>Full Funding Preparation Package</h3><span class="package-number">08</span></div>
-            <div class="package-fit">Best for: Comprehensive support</div>
-            <p>Bring credit, business organization, documentation, and funding-path preparation into one coordinated plan.</p>
-            <ul class="package-list"><li>Complete readiness review</li><li>Credit and documentation action plan</li><li>Personal, business, and program option guidance</li></ul>
-          <span class="package-link">View details →</span></a>
+        <div class="lesson-list">
+          <article><span>01</span><div><h3>Know what may be reviewed</h3><p>Credit history, income, cash flow, business age, records, and the intended use of funds can all matter.</p></div></article>
+          <article><span>02</span><div><h3>Organize before you search</h3><p>Clear records and a defined goal make it easier to compare paths and ask better questions.</p></div></article>
+          <article><span>03</span><div><h3>Separate readiness from approval</h3><p>Preparation can strengthen your position, but every lender or program makes its own decision.</p></div></article>
+          <article><span>04</span><div><h3>Choose based on your situation</h3><p>The right starting point depends on whether your need is personal, startup, business growth, or program research.</p></div></article>
         </div>
       </div>
     </section>
 
-    <section class="selector" id="guidance">
-      <div class="container selector-grid">
+    <section class="home-services" id="services">
+      <div class="vc-container">
+        <div class="section-title home-section-title">
+          <span class="vc-eyebrow">Service guide</span>
+          <h2>Choose the service that fits your situation.</h2>
+          <p>Each service page explains the topic, who it may help, and the preparation involved. Explore freely—choosing a page does not commit you to applying.</p>
+        </div>
+
+        <div class="service-group" id="personal-services">
+          <div class="service-group-heading"><span>Personal foundation</span><p>Build understanding before exploring personal credit or borrowing options.</p></div>
+          <div class="home-service-grid three">
+            <a class="home-service-card" href="/personal-credit"><span class="service-tag">Credit readiness</span><h3>Personal Credit Help</h3><p>Understand the factors that shape your credit profile and identify practical next steps.</p><strong>Learn about personal credit →</strong></a>
+            <a class="home-service-card" href="/credit-tracking"><span class="service-tag">Credit knowledge</span><h3>Credit Education &amp; Tracking</h3><p>Learn what to monitor and how consistent tracking supports informed financial decisions.</p><strong>Explore credit tracking →</strong></a>
+            <a class="home-service-card" href="/personal-loan-guidance"><span class="service-tag">Borrowing preparation</span><h3>Personal Loan Guidance</h3><p>Clarify your goal, common lender considerations, and the information you may need.</p><strong>Understand loan readiness →</strong></a>
+          </div>
+        </div>
+
+        <div class="service-group" id="business-services">
+          <div class="service-group-heading"><span>Business foundation</span><p>Establish an organized base before pursuing business credit or startup capital.</p></div>
+          <div class="home-service-grid three">
+            <a class="home-service-card" href="/business-formation"><span class="service-tag">Business setup</span><h3>Business Formation</h3><p>Understand foundational setup, records, and readiness tasks for a new business.</p><strong>Learn about formation →</strong></a>
+            <a class="home-service-card" href="/business-credit"><span class="service-tag">Credit foundation</span><h3>Business Credit Setup</h3><p>Learn how consistent business details, accounts, and records support a developing profile.</p><strong>Explore business credit →</strong></a>
+            <a class="home-service-card" href="/startup-funding"><span class="service-tag">Startup preparation</span><h3>Startup Funding Guidance</h3><p>Organize your startup story, use of funds, records, and milestones before exploring capital.</p><strong>Prepare your startup path →</strong></a>
+          </div>
+        </div>
+
+        <div class="service-group" id="growth-services">
+          <div class="service-group-heading"><span>Growth &amp; programs</span><p>Prepare an operating business or research a government-backed opportunity responsibly.</p></div>
+          <div class="home-service-grid two">
+            <a class="home-service-card featured-service" href="/existing-business-funding"><span class="service-tag">Operating business</span><h3>Existing Business Funding</h3><p>Bring together business history, financial records, and a clear use-of-funds story for operations or growth.</p><strong>Explore business funding →</strong></a>
+            <a class="home-service-card featured-service" href="/government-program-guidance"><span class="service-tag">Program research</span><h3>Government-Backed Program Guidance</h3><p>Learn how to research programs, review general eligibility factors, and prepare requested information.</p><strong>Understand program guidance →</strong></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="learning-center" id="learning-center">
+      <div class="vc-container">
+        <div class="learning-header">
+          <div><span class="vc-eyebrow">Learning Center</span><h2>Build knowledge at your own pace.</h2></div>
+          <p>Plain-language resources to help you think through business structure, financial records, and growth readiness before making a financial decision.</p>
+        </div>
+        <div class="article-grid">
+          <a class="article-card" href="article-business-structure.html"><div class="article-visual structure-visual" aria-hidden="true"><span></span><span></span><span></span></div><div class="article-content"><span>Business foundation · 6 min read</span><h3>Why business structure matters before growth</h3><p>Learn how a clear structure supports organized records, responsibilities, and future decisions.</p><strong>Read article →</strong></div></a>
+          <a class="article-card" href="article-clean-financial-records.html"><div class="article-visual records-visual" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="article-content"><span>Financial readiness · 5 min read</span><h3>Clean financial records create a clearer picture</h3><p>See why consistent records help owners understand performance and prepare for conversations.</p><strong>Read article →</strong></div></a>
+          <a class="article-card" href="article-expansion-readiness.html"><div class="article-visual growth-visual" aria-hidden="true"><b></b><b></b><b></b><svg viewBox="0 0 100 50"><path d="m5 44 25-18 18 8L88 8"/><path d="M72 8h16v16"/></svg></div><div class="article-content"><span>Business growth · 7 min read</span><h3>How to think about expansion readiness</h3><p>Review capacity, systems, and financial signals before deciding that it is time to expand.</p><strong>Read article →</strong></div></a>
+        </div>
+        <div class="learning-note"><span aria-hidden="true">i</span><p><strong>Education is a starting point.</strong> General information cannot account for every lender, program, credit profile, or business situation.</p></div>
+      </div>
+    </section>
+
+    <section class="home-packages" id="packages">
+      <div class="vc-container packages-grid">
         <div>
-          <span class="eyebrow">Find your starting point</span>
-          <h2>Not sure which package fits?</h2>
-          <p class="section-copy">Start with the outcome you want. Vaultara Capital can help clarify the preparation path that best matches your current position and goals.</p>
-          <div class="hero-actions"><a class="button" href="/contact">Discuss Your Needs <span aria-hidden="true">→</span></a></div>
+          <span class="vc-eyebrow">Packages</span>
+          <h2>Ready for more structured support?</h2>
+          <p class="lead">After you understand your needs, compare focused packages for personal readiness, business setup, credit development, funding preparation, and program research.</p>
+          <div class="package-points"><span>Clear scope</span><span>Organized next steps</span><span>Guidance matched to your goal</span></div>
         </div>
-        <div class="selector-options">
-          <a class="selector-option" href="/personal-credit">
-            <div class="selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M4 19V8l8-4 8 4v11M8 19v-6h8v6M2 20h20"/></svg></div>
-            <div><strong>I need personal funding or credit help.</strong><span>Start with packages 01 or 02.</span></div><div class="selector-arrow">→</div>
-          </a>
-          <a class="selector-option" href="/business-formation">
-            <div class="selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M5 21V5l7-3 7 3v16M9 8h6m-6 4h6m-6 4h6"/></svg></div>
-            <div><strong>I am setting up a new business.</strong><span>Start with packages 03, 04, or 05.</span></div><div class="selector-arrow">→</div>
-          </a>
-          <a class="selector-option" href="/existing-business-funding">
-            <div class="selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="m4 18 5-5 4 3 7-9M15 7h5v5"/></svg></div>
-            <div><strong>I want capital to grow my business.</strong><span>Start with package 06 or 08.</span></div><div class="selector-arrow">→</div>
-          </a>
-          <a class="selector-option" href="/government-program-guidance">
-            <div class="selector-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 10h18M5 10V8l7-5 7 5v2M6 10v8m4-8v8m4-8v8m4-8v8M3 21h18"/></svg></div>
-            <div><strong>I want to explore public programs.</strong><span>Start with package 07.</span></div><div class="selector-arrow">→</div>
-          </a>
+        <div class="package-panel">
+          <span>When you are ready</span>
+          <h3>Compare every Vaultara package in one place.</h3>
+          <p>Review what each package covers before deciding whether structured support is right for you.</p>
+          <a class="vc-button" href="/packages">View service packages <span aria-hidden="true">→</span></a>
+          <small>Viewing packages does not require an application.</small>
         </div>
       </div>
     </section>
 
-    <section class="standards">
-      <div class="container">
-        <div class="section-heading center">
-          <span class="eyebrow">How we support clients</span>
-          <h2>Clear guidance. Practical preparation.</h2>
-        </div>
-        <div class="standards-grid">
-          <article class="standard"><h3>Education before action</h3><p>We help clients understand terminology, requirements, and potential paths before they make important financial decisions.</p></article>
-          <article class="standard"><h3>Organization that builds confidence</h3><p>We help organize documents, business details, and readiness information so clients can approach next steps more clearly.</p></article>
-          <article class="standard"><h3>Options aligned to the client</h3><p>We help identify programs and funding categories the client may qualify for based on their profile and circumstances.</p></article>
-        </div>
+    <section class="guidance-cta">
+      <div class="vc-container guidance-card">
+        <div><span class="vc-eyebrow">A patient next step</span><h2>Still deciding what you need?</h2><p>Tell us what you are working toward. Vaultara Capital can help you identify a sensible place to begin without asking you to apply immediately.</p></div>
+        <a class="vc-button" href="/contact">Request Information / Get Guidance <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <section class="cta-section">
-      <div class="container">
-        <div class="cta-card">
-          <div><h2>Move forward with a more prepared plan.</h2><p>Tell us what you are working toward, and we will help you understand which Vaultara Capital service package may be the right place to begin.</p></div>
-          <a class="button" href="/contact">Request Information <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="disclaimer" aria-labelledby="disclaimer-title">
-      <div class="container disclaimer-inner">
-        <div class="disclaimer-icon" aria-hidden="true">i</div>
-        <div>
-          <h2 id="disclaimer-title">Important Disclaimer</h2>
-          <p>Vaultara Capital provides education, preparation, and funding guidance. Loan approval, credit approval, grant approval, government program approval, and funding amounts are not guaranteed. Approval depends on lender requirements, credit profile, income, business history, documentation, and program eligibility.</p>
-        </div>
-      </div>
+    <section class="home-disclaimer" aria-labelledby="disclaimer-title">
+      <div class="vc-container disclaimer-row"><span aria-hidden="true">i</span><div><h2 id="disclaimer-title">Important information</h2><p>Vaultara Capital provides education, preparation, and guidance. Loan approval, credit approval, grant approval, government program approval, and funding amounts are not guaranteed. Decisions depend on third-party requirements, credit profile, income, business history, documentation, and program eligibility.</p></div></div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a class="logo footer-logo" href="#top">
-            <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true"><path fill="#fff" d="M24 2 44 12v24L24 46 4 36V12z"/><path fill="#1677d2" d="M24 8.7 37.8 15.6v16.8L24 39.3 10.2 32.4V15.6z"/><path fill="#fff" d="m15 16 9 18 9-18h-5.3L24 24.8 20.3 16z"/></svg>
-            <span class="logo-type"><span class="logo-name">Vaultara Capital</span><span class="logo-sub">Prepare • Position • Progress</span></span>
-          </a>
-          <p class="footer-about">Education, organization, and funding-readiness guidance for individuals, startups, and established businesses.</p>
-        </div>
-        <div><div class="footer-heading">Explore</div><div class="footer-links"><a href="/what-we-do">Start Here / What We Do</a><a href="/services">All Services</a><a href="/packages">Packages</a><a href="/contact">Request Information</a></div></div>
-        <div><div class="footer-heading">TitanCore</div><div class="footer-links"><a href="index.html">TitanCore Home</a><a href="companies.html">Companies</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms-of-use.html">Terms of Use</a></div></div>
-      </div>
-      <div class="footer-bottom"><span>© 2026 Vaultara Capital. All rights reserved.</span><span>A TitanCore Holdings company.</span></div>
+  <footer class="vaultara-footer">
+    <div class="vc-container footer-grid">
+      <div><a class="vaultara-brand" href="/vaultara" aria-label="Vaultara Capital home"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#071b3a" d="M24 2 44 12v24L24 46 4 36V12z"/><path fill="#1677d2" d="M24 8.7 37.8 15.6v16.8L24 39.3 10.2 32.4V15.6z"/><path fill="#fff" d="m15 16 9 18 9-18h-5.3L24 24.8 20.3 16z"/></svg><span><strong>Vaultara Capital</strong><small>Prepare • Position • Progress</small></span></a><p>Education, organization, and funding-readiness guidance for individuals, startups, and established businesses.</p></div>
+      <div><strong>Explore Vaultara</strong><a href="#start-here">Start Here / What We Do</a><a href="#learning-center">Learning Center</a><a href="/packages">Service Packages</a><a href="/contact">Request Information</a></div>
+      <div><strong>Service Areas</strong><a href="/personal-credit">Personal Credit Help</a><a href="/business-formation">Business Formation</a><a href="/startup-funding">Startup Funding</a><a href="/existing-business-funding">Business Funding</a></div>
     </div>
+    <div class="vc-container footer-bottom"><span>© 2026 Vaultara Capital. All rights reserved.</span><span>A TitanCore Holdings company.</span></div>
   </footer>
-
-  <script>
-    const menuButton = document.getElementById("menuButton");
-    const mainNav = document.getElementById("mainNav");
-
-    menuButton.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("open");
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
-      menuButton.textContent = isOpen ? "×" : "☰";
-      document.body.classList.toggle("menu-open", isOpen);
-    });
-
-    mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open navigation");
-        menuButton.textContent = "☰";
-        document.body.classList.remove("menu-open");
-      });
-    });
-  </script>
+  <script src="vaultara.js"></script>
 </body>
 </html>
