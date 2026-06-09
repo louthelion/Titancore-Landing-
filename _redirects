@@ -25,3 +25,10 @@
 
 # Intentional parent-company destination.
 /titancore                        /titancore.html                              200
+/vaultara/credit-review             /vaultara-personal-credit-help.html         200
+/vaultara/credit-education          /vaultara-credit-education-tracking.html    200
+/vaultara/funding-guidance          /vaultara-startup-funding-guidance.html      200
+/vaultara/business-formation        /vaultara-business-formation.html           200
+/vaultara/business-credit           /vaultara-business-credit-setup.html        200
+/vaultara/articles                  /vaultara-insights.html                      200
+/vaultara/apply                     /vaultara-apply.html                         200
