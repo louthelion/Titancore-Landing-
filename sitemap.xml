@@ -42,7 +42,7 @@
   </url>
 
   <url>
-    <loc>https://titancoreholdings.com/blogs.html</loc>
+    <loc>https://titancoreholdings.com/blog.html</loc>
     <priority>0.80</priority>
   </url>
 
@@ -171,4 +171,13 @@
     <priority>0.60</priority>
   </url>
 
+  <url>
+    <loc>https://titancoreholdings.com/blog-building-with-order.html</loc>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/blog-why-small-updates-matter.html</loc>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/blog-weekly-reflection-structure.html</loc>
+  </url>
 </urlset>
