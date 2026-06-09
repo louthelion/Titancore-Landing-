@@ -929,6 +929,42 @@
     }
 
     /* Footer */
+    /* Compact company-journal preview near the footer */
+    .home-blog-preview{
+      padding:58px 0 62px;
+      background:linear-gradient(180deg,#0b100d,#070908);
+      border-top:1px solid rgba(216,180,90,.14);
+    }
+    .home-blog-heading{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:26px;
+      margin-bottom:24px;
+    }
+    .home-blog-heading h2{
+      margin:8px 0 7px;
+      font-family:var(--serif);
+      font-size:clamp(28px,3.4vw,40px);
+      color:var(--gold2);
+    }
+    .home-blog-heading p{color:rgba(255,255,255,.68);font-size:15px;}
+    .home-blog-all{color:var(--gold2);font-size:13px;font-weight:900;letter-spacing:.4px;white-space:nowrap;}
+    .home-blog-all:hover{color:#fff;}
+    .home-blog-feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+    .home-blog-note{
+      min-height:220px;
+      padding:20px;
+      border-left:3px solid var(--green2);
+      border-top:1px solid rgba(255,255,255,.09);
+      background:rgba(255,255,255,.025);
+    }
+    .home-blog-note-top{display:flex;justify-content:space-between;gap:14px;color:rgba(255,255,255,.52);font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;}
+    .home-blog-note-top span{color:var(--gold2);}
+    .home-blog-note h3{margin:13px 0 9px;font-family:var(--serif);font-size:21px;line-height:1.2;}
+    .home-blog-note p{color:rgba(255,255,255,.64);font-size:13px;line-height:1.6;}
+    .home-blog-note>a{display:inline-flex;gap:7px;margin-top:14px;color:var(--gold2);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.7px;}
+
     .titancore-footer{
       background: rgba(0,0,0,.78);
       border-top:1px solid rgba(242,217,140,.16);
@@ -1112,6 +1148,17 @@
         min-height:420px;
       }
     }
+
+    @media (max-width: 900px){
+      .home-blog-feed{grid-template-columns:1fr;}
+      .home-blog-note{min-height:auto;}
+    }
+    @media (max-width: 650px){
+      .home-blog-heading{display:block;}
+      .home-blog-all{display:inline-block;margin-top:16px;}
+      .home-blog-note-top{display:block;}
+      .home-blog-note-top time{display:block;margin-top:4px;}
+    }
   </style>
 </head>
 
@@ -1146,7 +1193,7 @@
           <a href="companies.html">Companies</a>
           <a href="business-intelligence.html">Business Intelligence</a>
           <a href="news-media.html">News & Media</a>
-          <a href="blogs.html">TitanCore Insights</a>
+          <a href="blog.html">Blogs</a>
           <a href="contact.html">Contact</a>
         </nav>
 
@@ -1266,27 +1313,6 @@
       </div>
     </section>
 
-    <!-- LATEST BLOG PREVIEW -->
-    <section class="section featured-article-preview" aria-labelledby="latestBlogSectionTitle">
-      <div class="wrap">
-        <article class="featured-article-card metal" id="latestBlogPreview">
-          <div class="featured-article-copy">
-            <div class="eyebrow" id="latestBlogCategory">Company Direction</div>
-            <h2 id="latestBlogSectionTitle">Latest From the TitanCore Blog</h2>
-            <h3 id="latestBlogTitle">Building With Order Creates Better Business Direction</h3>
-            <div class="homepage-article-meta"><time id="latestBlogDate" datetime="2026-06-08">June 8, 2026</time><span>TitanCore Blog</span></div>
-            <p id="latestBlogSummary">
-              A clear operating order helps a growing company protect its direction, assign responsibility, and make steady progress without turning every new idea into confusion.
-            </p>
-            <div class="cta-row">
-              <a href="blog-building-with-order.html" class="btn primary" id="latestBlogLink">Read Blog Post <span class="arrow">›</span></a>
-              <a href="blog.html" class="btn secondary">View Blog <span class="arrow">›</span></a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <!-- MAIN DOORS -->
     <section class="section dark main-content-doors" aria-labelledby="mainContentTitle">
       <div class="wrap">
@@ -1324,13 +1350,6 @@
             <div class="card-action">Open News & Media</div>
           </a>
 
-          <a href="blog.html" class="card metal">
-            <h3>TitanCore Blog</h3>
-            <p>
-              Short company updates, business lessons, market awareness notes, leadership reflections, and CEO-style messages published three times each week.
-            </p>
-            <div class="card-action">Open Blog</div>
-          </a>
         </div>
       </div>
     </section>
@@ -1420,6 +1439,23 @@
       </div>
     </section>
 
+    <!-- COMPACT BLOG JOURNAL -->
+    <section class="home-blog-preview" aria-labelledby="homeBlogTitle">
+      <div class="wrap">
+        <div class="home-blog-heading">
+          <div>
+            <div class="eyebrow">TitanCore Journal</div>
+            <h2 id="homeBlogTitle">Latest Blog Notes</h2>
+            <p>Short updates, company reflections, and quick business thoughts from TitanCore.</p>
+          </div>
+          <a href="blog.html" class="home-blog-all">View All Blog Posts <span>›</span></a>
+        </div>
+        <div class="home-blog-feed" id="homepageBlogFeed" aria-live="polite">
+          <p>Loading the latest blog notes…</p>
+        </div>
+      </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="titancore-footer">
       <div class="wrap">
@@ -1434,7 +1470,7 @@
         <div class="footer-links">
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms-of-use.html">Terms of Use</a>
-          <a href="blogs.html">Blogs</a>
+          <a href="blog.html">Blogs</a>
           <a href="feedback.html">Feedback</a>
         </div>
 
