@@ -263,4 +263,34 @@
     <priority>0.50</priority>
   </url>
 
+  <!-- Vaultara canonical service and intake pages -->
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/credit-review</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/credit-education</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/funding-guidance</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/business-formation</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/business-credit</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/articles</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://titancoreholdings.com/vaultara/apply</loc>
+    <priority>0.85</priority>
+  </url>
+
 </urlset>
