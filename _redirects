@@ -2,6 +2,8 @@
 /titancore                        /titancore.html                              200
 
 # Vaultara Capital route.
+/vaultara/article-archive         /vaultara-article-archive.html              200
+/vaultara/blog-archive            /vaultara-blog-archive.html                 200
 /vaultara                         https://vaultaracapital.com                  301
 /vaultara/                        https://vaultaracapital.com                  301
 /vaultara/*                       https://vaultaracapital.com                  301
