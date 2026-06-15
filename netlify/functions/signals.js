@@ -10,6 +10,16 @@ const SERIES = {
   wti: { id: "DCOILWTICO", label: "WTI Crude Oil" }
 };
 
+function recentStartDate(now = new Date()) {
+  const start = new Date(Date.UTC(
+    now.getUTCFullYear() - 2,
+    now.getUTCMonth(),
+    now.getUTCDate()
+  ));
+
+  return start.toISOString().slice(0, 10);
+}
+
 function parseFredCsv(csv) {
   return csv
     .trim()
@@ -24,7 +34,11 @@ function parseFredCsv(csv) {
 }
 
 async function loadSeries(id) {
-  const url = `https://fred.stlouisfed.org/graph/fredgraph.csv?id=${encodeURIComponent(id)}`;
+  const params = new URLSearchParams({
+    id,
+    cosd: recentStartDate()
+  });
+  const url = `https://fred.stlouisfed.org/graph/fredgraph.csv?${params}`;
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
   let response;
