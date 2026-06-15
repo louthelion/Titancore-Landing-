@@ -1090,9 +1090,12 @@
         document.getElementById("srcWti").textContent =
           wti && wti.asOf ? "As of " + wti.asOf + " • " + wti.source : "";
       }catch(e){
-        document.getElementById("sig10y").textContent = "Connect /api/signals";
-        document.getElementById("sigCpi").textContent = "Connect /api/signals";
-        document.getElementById("sigWti").textContent = "Connect /api/signals";
+        document.getElementById("sig10y").textContent = "Updating";
+        document.getElementById("sigCpi").textContent = "Updating";
+        document.getElementById("sigWti").textContent = "Updating";
+        document.getElementById("src10y").textContent = "Current public data will appear shortly.";
+        document.getElementById("srcCpi").textContent = "Current public data will appear shortly.";
+        document.getElementById("srcWti").textContent = "Current public data will appear shortly.";
       }
     }
 
