@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#050705">
-  <meta name="description" content="TitanCore Holdings Media Content — public business videos, approved public audio sources, a media archive, and TitanCore Studio coming-soon previews.">
+  <meta name="description" content="TitanCore Holdings Media Content — public business videos, embedded Spotify podcast selections, a media archive, and TitanCore Studio previews.">
   <title>Media Content | TitanCore Holdings</title>
   <style>
     :root {
@@ -103,20 +103,19 @@
     .card-body { padding: 26px; }
     .card-body > p { color: var(--muted); }
     .archive-note { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(203,168,79,.16); color: #9ea79f; font-size: .76rem; letter-spacing: .04em; }
-    .audio-card { min-height: 420px; display: flex; }
+    .audio-card { min-height: 500px; display: flex; }
     .audio-card .card-body { width: 100%; display: flex; flex-direction: column; }
     .audio-card .button-row { margin-top: auto; }
-    .audio-card-top { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
-    .audio-card-icon { width: 70px; height: 70px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid var(--gold); border-radius: 18px; color: var(--gold-light); background: rgba(8,116,85,.18); font-size: 1.9rem; }
-    .source-status { margin: 18px 0 0; color: var(--gold-light); font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-    .button[aria-disabled="true"] { cursor: not-allowed; opacity: .72; }
-    .button[aria-disabled="true"]:hover { background: var(--green); transform: none; }
+    .spotify-embed { height: 152px; border-bottom: 1px solid var(--gold-line); background: #121212; }
+    .audio-card .card-body > p { color: var(--muted); }
+    .audio-card .button.secondary { background: var(--green); color: #fff; }
+    .audio-card .button.secondary:hover, .audio-card .button.secondary:focus-visible { background: var(--green-light); }
 
     .studio-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px; }
     .studio-card { position: relative; min-height: 360px; padding: 28px; display: flex; flex-direction: column; border: 1px solid var(--gold-line); border-radius: 20px; overflow: hidden; background: linear-gradient(155deg, rgba(8,116,85,.18), rgba(7,10,8,.98) 55%); }
     .studio-card::after { content: "TH"; position: absolute; right: -12px; bottom: -30px; color: rgba(203,168,79,.055); font-family: var(--serif); font-size: 8rem; }
     .studio-number { color: var(--gold); font-family: var(--serif); font-size: 3rem; line-height: 1; }
-    .coming-soon { width: fit-content; margin-top: auto; padding: 8px 11px; border: 1px solid var(--gold-line); border-radius: 999px; color: var(--gold-light); font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .development-label { width: fit-content; margin-top: auto; padding: 8px 11px; border: 1px solid var(--gold-line); border-radius: 999px; color: var(--gold-light); font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 
     .archive-panel { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--gold-line); border-radius: 26px; overflow: hidden; background: var(--panel); box-shadow: var(--shadow); }
     .archive-copy, .archive-structure { padding: clamp(28px,5vw,55px); }
@@ -202,7 +201,7 @@
       <div class="wrap hero-content">
         <p class="eyebrow">TitanCore Holdings • Daily Media Desk</p>
         <h1 id="pageTitle">Media Content</h1>
-        <p class="lead">Explore public business videos and approved public audio sources organized by TitanCore Holdings for education and business awareness. Revisit media by day, month, year, and category.</p>
+        <p class="lead">Explore public business videos and embedded Spotify podcast selections organized by TitanCore Holdings for education and business awareness. Revisit media by day, month, year, and category.</p>
         <div class="hero-actions" aria-label="Media content shortcuts">
           <a class="hero-action" href="#todays-video">Today’s Video</a>
           <a class="hero-action" href="#public-audio">Public Audio</a>
@@ -256,7 +255,7 @@
         <div class="section-heading">
           <p class="eyebrow">Daily &amp; Weekly Public Source Rotation</p>
           <h2 id="audioGalleryHeading">Public Business Audio Sources</h2>
-          <p>TitanCore organizes approved public business audio, podcast, and media sources for education and business awareness. Audio is opened from the original public source. TitanCore does not download, copy, or host third-party audio.</p>
+          <p>Listen to public Spotify podcast episodes selected for market awareness, financial education, and business leadership. Each player is embedded directly from Spotify and links to its original source.</p>
         </div>
         <div class="gallery-grid" id="audioGrid"></div>
       </div>
@@ -267,13 +266,13 @@
         <div class="section-heading">
           <p class="eyebrow">Original Media • In Development</p>
           <h2 id="studioHeading">TitanCore Studio</h2>
-          <p>A reserved production space for future TitanCore-owned video and audio. These are clean coming-soon previews—not inactive or broken media players.</p>
+          <p>A reserved production space for future TitanCore-owned media. These development previews are separate from the playable Spotify selections above.</p>
         </div>
         <div class="studio-grid">
-          <article class="studio-card"><span class="studio-number">01</span><h3>CEO Briefing</h3><p>Future leadership messages, company direction, and executive perspective from TitanCore Holdings.</p><span class="coming-soon">Coming Soon • Video</span></article>
-          <article class="studio-card"><span class="studio-number">02</span><h3>Guest Entrepreneur Interview</h3><p>Future conversations with founders, operators, and business builders from across the TitanCore network.</p><span class="coming-soon">Coming Soon • Video</span></article>
-          <article class="studio-card"><span class="studio-number">03</span><h3>Subsidiary Update</h3><p>Future operating updates and milestone briefings from companies supported by TitanCore Holdings.</p><span class="coming-soon">Coming Soon • Video</span></article>
-          <article class="studio-card"><span class="studio-number">04</span><h3>TitanCore Studio Audio</h3><p>Future original audio briefings, executive notes, and focused business conversations.</p><span class="coming-soon">Coming Soon • Audio</span></article>
+          <article class="studio-card"><span class="studio-number">01</span><h3>CEO Briefing</h3><p>Future leadership messages, company direction, and executive perspective from TitanCore Holdings.</p><span class="development-label">In Development • Video</span></article>
+          <article class="studio-card"><span class="studio-number">02</span><h3>Guest Entrepreneur Interview</h3><p>Future conversations with founders, operators, and business builders from across the TitanCore network.</p><span class="development-label">In Development • Video</span></article>
+          <article class="studio-card"><span class="studio-number">03</span><h3>Subsidiary Update</h3><p>Future operating updates and milestone briefings from companies supported by TitanCore Holdings.</p><span class="development-label">In Development • Video</span></article>
+          <article class="studio-card"><span class="studio-number">04</span><h3>Studio Production Notes</h3><p>Future production updates, editorial direction, and focused business-media planning.</p><span class="development-label">In Development • Media</span></article>
         </div>
       </div>
     </section>
@@ -344,55 +343,41 @@
       { category: "Leadership / Business Growth Video", title: "Leadership Discipline and Sustainable Growth", description: "A leadership selection for founders, operators, teams, and companies focused on durable growth.", videoId: "lmyZMtPVodo" }
     ];
 
-    const publicAudioSources = [
+    const audioEditions = [
       {
-        category: "Business & Market Audio",
-        title: "Marketplace Business Audio",
-        description: "Public business and economy audio from Marketplace.",
-        sourceUrl: "https://www.marketplace.org/podcasts/",
-        status: "Open public Marketplace audio source"
+        category: "Market & Stock • Audio",
+        title: "Market Volatility and Business Signals",
+        description: "A public Spotify podcast selection about market movement, volatility, and business awareness.",
+        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+        sourceUrl: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r"
       },
       {
-        category: "Finance & Economy Audio",
-        title: "NPR Planet Money",
-        description: "Public economics and finance audio from NPR Planet Money.",
-        sourceUrl: "https://www.npr.org/podcasts/510289/planet-money",
-        status: "Open public NPR Planet Money audio source"
+        category: "Finance Education • Audio",
+        title: "Financial Habits for Long-Term Growth",
+        description: "A public Spotify podcast selection about financial habits, investment thinking, and long-term wealth building.",
+        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
+        sourceUrl: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz"
       },
       {
-        category: "Leadership & Business Growth Audio",
-        title: "Masters of Scale",
-        description: "Public business growth and founder audio from Masters of Scale.",
-        sourceUrl: "https://mastersofscale.com/",
-        status: "Open public Masters of Scale audio source"
+        category: "Bitcoin & Crypto • Audio",
+        title: "Digital Assets and Portfolio Risk",
+        description: "A public Spotify podcast selection about digital assets, volatility, and portfolio risk.",
+        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
+        sourceUrl: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G"
       },
       {
-        category: "Management & Business Ideas Audio",
-        title: "HBR IdeaCast",
-        description: "Public business, management, and leadership audio from Harvard Business Review.",
-        sourceUrl: "https://hbr.org/2018/01/podcast-ideacast",
-        status: "Open public HBR IdeaCast audio source"
+        category: "Real Estate & Economy • Audio",
+        title: "Real Estate Leads and Market Opportunity",
+        description: "A public Spotify podcast selection about real estate, property opportunity, and market strategy.",
+        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
+        sourceUrl: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz"
       },
       {
-        category: "Business Video / Audio Source",
-        title: "Bloomberg Markets YouTube",
-        description: "Public market and business media from Bloomberg’s public YouTube channel.",
-        sourceUrl: "https://www.youtube.com/@markets",
-        status: "Open public Bloomberg business media source"
-      },
-      {
-        category: "Business News Video / Audio Source",
-        title: "CNBC YouTube",
-        description: "Public business, market, and finance media from CNBC’s public YouTube channel.",
-        sourceUrl: "https://www.youtube.com/@CNBC",
-        status: "Open public CNBC business media source"
-      },
-      {
-        category: "Finance Video / Audio Source",
-        title: "Yahoo Finance YouTube",
-        description: "Public finance, market, and business media from Yahoo Finance’s public YouTube channel.",
-        sourceUrl: "https://www.youtube.com/@YahooFinance",
-        status: "Open public Yahoo Finance business media source"
+        category: "Leadership / Business Growth • Audio",
+        title: "Leadership Through Market Uncertainty",
+        description: "A public Spotify podcast selection about decision-making, uncertainty, and business leadership.",
+        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
+        sourceUrl: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9"
       }
     ];
 
@@ -446,14 +431,25 @@
 
     function renderAudioGallery() {
       const grid = document.getElementById("audioGrid");
-      const rotatedSources = publicAudioSources.map((_, index) => publicAudioSources[(index + weeklyIndex) % publicAudioSources.length]);
-      rotatedSources.forEach((item, index) => {
+      const playableEditions = audioEditions.filter(item => item.spotifyEmbedUrl && item.sourceUrl);
+      const audioRotationIndex = Math.floor(Math.abs(dayNumber) / 7) % playableEditions.length;
+      const rotatedEditions = playableEditions.map((_, index) => playableEditions[(index + audioRotationIndex) % playableEditions.length]);
+      rotatedEditions.forEach((item, index) => {
         const card = document.createElement("article");
         card.className = "gallery-card audio-card";
+        const player = document.createElement("iframe");
+        player.className = "spotify-embed";
+        player.src = item.spotifyEmbedUrl;
+        player.width = "100%";
+        player.height = "152";
+        player.frameBorder = "0";
+        player.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+        player.loading = "lazy";
+        player.title = `Spotify player: ${item.title}`;
         const body = document.createElement("div");
         body.className = "card-body";
-        body.innerHTML = `<div class="audio-card-top"><span class="audio-card-icon" aria-hidden="true">♫</span><div><p class="eyebrow">${item.category}</p><h3>${item.title}</h3></div></div><p>${item.description}</p><div class="meta"><span class="label">${dateLabel}</span><span class="label">Weekly Rotation ${String(index + 1).padStart(2, "0")}</span></div><p class="source-status">${item.status}</p><div class="archive-note">TitanCore links to approved public media for education and business awareness. Audio is not downloaded, copied, or hosted by TitanCore.</div><div class="button-row"><a class="button public-audio-link" href="${item.sourceUrl}" target="_blank" rel="noopener">Open Public Audio Source</a><a class="button secondary" href="${archiveUrl(item)}">View Media Archive</a></div>`;
-        card.appendChild(body);
+        body.innerHTML = `<p class="eyebrow">${item.category}</p><h3>${item.title}</h3><p>${item.description}</p><div class="meta"><span class="label">${dateLabel}</span><span class="label">${item.category.replace(" • Audio", "")}</span><span class="label">Audio</span></div><div class="archive-note">Embedded from Spotify for education and business awareness. TitanCore does not download, copy, or host this third-party audio.</div><div class="button-row"><a class="button" href="${item.sourceUrl}" target="_blank" rel="noopener">Open Source</a><a class="button secondary" href="${archiveUrl(item)}">${index === 0 ? "Today’s Media" : "View Media Archive"}</a></div>`;
+        card.append(player, body);
         grid.appendChild(card);
       });
     }
