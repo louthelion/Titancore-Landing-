@@ -255,8 +255,8 @@
       <div class="wrap">
         <div class="section-heading">
           <p class="eyebrow">Daily &amp; Weekly Public Source Rotation</p>
-          <h2 id="audioGalleryHeading">Public Business Audio</h2>
-          <p>Listen to public business, market, finance, leadership, real estate, and economic audio from approved public sources. TitanCore organizes these links for education and business awareness.</p>
+          <h2 id="audioGalleryHeading">Public Business Audio Sources</h2>
+          <p>TitanCore organizes approved public business audio, podcast, and media sources for education and business awareness. Audio is opened from the original public source. TitanCore does not download, copy, or host third-party audio.</p>
         </div>
         <div class="gallery-grid" id="audioGrid"></div>
       </div>
@@ -345,13 +345,55 @@
     ];
 
     const publicAudioSources = [
-      { category: "Business & Market Audio", title: "Public Business Audio Source", description: "Market, company, and business education audio from approved public sources.", sourceUrl: "#", status: "Public audio source coming soon" },
-      { category: "Finance Education Audio", title: "Public Finance Education Source", description: "Public audio about money, capital, budgeting, saving, credit, and financial awareness.", sourceUrl: "#", status: "Public audio source coming soon" },
-      { category: "Real Estate & Economy Audio", title: "Public Real Estate & Economy Source", description: "Public audio covering housing, interest rates, property markets, and economic conditions.", sourceUrl: "#", status: "Public audio source coming soon" },
-      { category: "Leadership & Business Growth Audio", title: "Public Leadership & Growth Source", description: "Approved public conversations for founders, operators, teams, and business leaders.", sourceUrl: "#", status: "Public audio source coming soon" },
-      { category: "Crypto & Technology Audio", title: "Public Crypto & Technology Source", description: "Public education audio about digital assets, technology, adoption, innovation, and risk.", sourceUrl: "#", status: "Public audio source coming soon" },
-      { category: "Oil, Energy & Logistics Audio", title: "Public Energy & Logistics Source", description: "Public audio connecting energy, commodities, supply chains, logistics, and operating costs.", sourceUrl: "#", status: "Public audio source coming soon" },
-      { category: "Auto, Marine & Transportation Audio", title: "Public Transportation Business Source", description: "Approved public audio about automotive, marine, mobility, dealerships, and transportation.", sourceUrl: "#", status: "Public audio source coming soon" }
+      {
+        category: "Business & Market Audio",
+        title: "Marketplace Business Audio",
+        description: "Public business and economy audio from Marketplace.",
+        sourceUrl: "https://www.marketplace.org/podcasts/",
+        status: "Open public Marketplace audio source"
+      },
+      {
+        category: "Finance & Economy Audio",
+        title: "NPR Planet Money",
+        description: "Public economics and finance audio from NPR Planet Money.",
+        sourceUrl: "https://www.npr.org/podcasts/510289/planet-money",
+        status: "Open public NPR Planet Money audio source"
+      },
+      {
+        category: "Leadership & Business Growth Audio",
+        title: "Masters of Scale",
+        description: "Public business growth and founder audio from Masters of Scale.",
+        sourceUrl: "https://mastersofscale.com/",
+        status: "Open public Masters of Scale audio source"
+      },
+      {
+        category: "Management & Business Ideas Audio",
+        title: "HBR IdeaCast",
+        description: "Public business, management, and leadership audio from Harvard Business Review.",
+        sourceUrl: "https://hbr.org/2018/01/podcast-ideacast",
+        status: "Open public HBR IdeaCast audio source"
+      },
+      {
+        category: "Business Video / Audio Source",
+        title: "Bloomberg Markets YouTube",
+        description: "Public market and business media from Bloomberg’s public YouTube channel.",
+        sourceUrl: "https://www.youtube.com/@markets",
+        status: "Open public Bloomberg business media source"
+      },
+      {
+        category: "Business News Video / Audio Source",
+        title: "CNBC YouTube",
+        description: "Public business, market, and finance media from CNBC’s public YouTube channel.",
+        sourceUrl: "https://www.youtube.com/@CNBC",
+        status: "Open public CNBC business media source"
+      },
+      {
+        category: "Finance Video / Audio Source",
+        title: "Yahoo Finance YouTube",
+        description: "Public finance, market, and business media from Yahoo Finance’s public YouTube channel.",
+        sourceUrl: "https://www.youtube.com/@YahooFinance",
+        status: "Open public Yahoo Finance business media source"
+      }
     ];
 
     const now = new Date();
@@ -410,12 +452,8 @@
         card.className = "gallery-card audio-card";
         const body = document.createElement("div");
         body.className = "card-body";
-        const hasSource = item.sourceUrl && item.sourceUrl !== "#";
-        const sourceAttributes = hasSource ? `href="${item.sourceUrl}" target="_blank" rel="noopener"` : `href="#" aria-disabled="true"`;
-        const sourceLabel = hasSource ? "Open Public Audio Source" : "Public audio source coming soon";
-        body.innerHTML = `<div class="audio-card-top"><span class="audio-card-icon" aria-hidden="true">♫</span><div><p class="eyebrow">Approved Public Source</p><h3>${item.category}</h3></div></div><p>${item.description}</p><div class="meta"><span class="label">${dateLabel}</span><span class="label">Weekly Rotation ${String(index + 1).padStart(2, "0")}</span></div><p class="source-status">${item.status}</p><div class="archive-note">TitanCore links to approved public media for education and business awareness. Audio is not downloaded, copied, or hosted by TitanCore.</div><div class="button-row"><a class="button public-audio-link" ${sourceAttributes}>${sourceLabel}</a><a class="button secondary" href="${archiveUrl(item)}">View Media Archive</a></div>`;
+        body.innerHTML = `<div class="audio-card-top"><span class="audio-card-icon" aria-hidden="true">♫</span><div><p class="eyebrow">${item.category}</p><h3>${item.title}</h3></div></div><p>${item.description}</p><div class="meta"><span class="label">${dateLabel}</span><span class="label">Weekly Rotation ${String(index + 1).padStart(2, "0")}</span></div><p class="source-status">${item.status}</p><div class="archive-note">TitanCore links to approved public media for education and business awareness. Audio is not downloaded, copied, or hosted by TitanCore.</div><div class="button-row"><a class="button public-audio-link" href="${item.sourceUrl}" target="_blank" rel="noopener">Open Public Audio Source</a><a class="button secondary" href="${archiveUrl(item)}">View Media Archive</a></div>`;
         card.appendChild(body);
-        if (!hasSource) body.querySelector(".public-audio-link").addEventListener("click", event => event.preventDefault());
         grid.appendChild(card);
       });
     }
