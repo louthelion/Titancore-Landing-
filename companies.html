@@ -1,196 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Companies | TitanCore Holdings</title>
-  <meta name="description" content="Official TitanCore Holdings company network directory." />
-  <link rel="canonical" href="https://titancoreholdings.com/companies.html" />
-  <meta name="theme-color" content="#000000" />
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    :root{--black:#000;--deep:#050706;--green:#087457;--gold:#d8b45a;--gold2:#f2d98c;--line:rgba(242,217,140,.32);--red:#7f1119;--serif:Georgia,'Times New Roman',serif;--sans:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}
-    html{scroll-behavior:smooth}
-    body{background:#000;color:#fff;font-family:var(--sans);line-height:1.65;overflow-x:hidden}
-    a{color:inherit;text-decoration:none}
-    .site{min-height:100vh;background:radial-gradient(900px 520px at 12% 4%,rgba(216,180,90,.13),transparent 60%),radial-gradient(850px 520px at 88% 0%,rgba(8,116,87,.18),transparent 60%),#000}
-    .wrap{width:min(1180px,calc(100% - 38px));margin:auto;position:relative;z-index:2}
-    .header{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-    .header-inner{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0}
-    .brand{display:flex;align-items:center;gap:14px;min-width:0}
-    .mark{width:62px;height:62px;display:grid;place-items:center;border:1px solid var(--line);background:linear-gradient(135deg,rgba(8,116,87,.5),rgba(0,0,0,.95));box-shadow:0 12px 36px rgba(0,0,0,.48)}
-    .mark span{font-family:var(--serif);font-weight:900;color:var(--gold2);font-size:22px}
-    .brand-name{font-family:var(--serif);font-size:clamp(20px,3.4vw,34px);font-weight:700;color:#fff;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .menu{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-    .menu a{border:1px solid var(--line);padding:10px 12px;text-transform:uppercase;letter-spacing:1.8px;font-size:11px;font-weight:900;color:var(--gold2);background:rgba(255,255,255,.03)}
-    .hero{min-height:620px;display:flex;align-items:center;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.62),rgba(0,0,0,.85)),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1900&q=85');background-size:cover;background-position:center;border-bottom:1px solid var(--line)}
-    .eyebrow{color:var(--gold2);text-transform:uppercase;letter-spacing:5px;font-weight:900;font-size:12px;margin-bottom:14px}
-    h1,h2,h3{font-family:var(--serif);line-height:1.05}
-    h1{font-size:clamp(48px,8vw,94px);max-width:900px;margin-bottom:22px}
-    h2{font-size:clamp(34px,5vw,64px);margin-bottom:18px}
-    h3{font-size:clamp(28px,3.4vw,42px);margin-bottom:14px;color:#fff}
-    h1 span,h2 span,h3 span{color:var(--gold2)}
-    p{font-size:clamp(17px,2vw,21px);color:rgba(255,255,255,.9);margin-bottom:16px;max-width:930px}
-    .notice{margin-top:28px;max-width:860px;border:1px solid var(--line);background:rgba(0,0,0,.66);padding:26px;box-shadow:0 24px 70px rgba(0,0,0,.45)}
-    .section{padding:86px 0;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(8,116,87,.18),rgba(0,0,0,.92)),url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1900&q=85');background-size:cover;background-position:center;border-bottom:1px solid var(--line)}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:34px}
-    .card{border:1px solid var(--line);background:rgba(0,0,0,.74);box-shadow:0 20px 60px rgba(0,0,0,.48);overflow:hidden;display:flex;flex-direction:column;min-height:520px}
-    .card.parent{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.1fr;min-height:460px}
-    .image{min-height:245px;background-size:cover;background-position:center;position:relative}
-    .image:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.7)),radial-gradient(500px 320px at 20% 20%,rgba(216,180,90,.14),transparent 60%),radial-gradient(500px 320px at 80% 80%,rgba(8,116,87,.2),transparent 60%)}
-    .parent .image{min-height:100%}
-    .titancore{background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=85')}
-    .vaultara{background-image:url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1500&q=85')}
-    .family{background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1500&q=85')}
-    .vital{background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1500&q=85')}
-    .rev{background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1500&q=85')}
-    .body{padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;flex:1}
-    .tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-    .tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--gold2);border:1px solid rgba(242,217,140,.26);background:rgba(242,217,140,.08);padding:7px 10px}
-    .card p{font-size:16px;color:rgba(244,244,240,.93)}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:auto}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 18px;border:1px solid rgba(242,217,140,.36);background:linear-gradient(135deg,rgba(8,116,87,.92),rgba(0,0,0,.96));color:#fff;text-transform:uppercase;letter-spacing:2.4px;font-weight:900;font-size:12px;text-align:center;box-shadow:0 12px 35px rgba(0,0,0,.4)}
-    .btn.gold{background:linear-gradient(135deg,var(--gold),#8a651e);color:#000}
-    .btn.red{background:linear-gradient(135deg,var(--red),#050505)}
-    .mission{padding:78px 0;background:linear-gradient(90deg,rgba(0,0,0,.92),rgba(8,116,87,.26),rgba(0,0,0,.92));border-bottom:1px solid var(--line)}
-    footer{padding:70px 0 86px;text-align:center;background:#000}
-    .footer-brand{font-family:var(--serif);font-size:clamp(26px,4vw,44px);color:var(--gold2);margin-bottom:16px}
-    .footer-links,.social{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-    .footer-links a,.social a{border:1px solid var(--line);padding:10px 12px;color:var(--gold2);font-weight:900;letter-spacing:1.5px;text-transform:uppercase;background:rgba(255,255,255,.03)}
-    .social a{width:52px;height:52px;display:grid;place-items:center;padding:0}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}.card.parent{grid-template-columns:1fr}.parent .image{min-height:260px}.menu{display:none}.hero{min-height:560px}.body{padding:26px}.wrap{width:min(1180px,calc(100% - 30px))}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Companies | TitanCore Holdings</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#087457;--green2:#0a8d69;--gold:#d8b45a;--gold2:#f2d98c;--line:rgba(242,217,140,.35);--serif:Georgia,'Times New Roman',serif}
+body{background:#000;color:#fff;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 34px));margin:auto}
+header{background:#000;border-bottom:1px solid var(--line)}.top{min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:14px}.mark{width:58px;height:58px;display:grid;place-items:center;border:1px solid var(--line);background:linear-gradient(135deg,var(--green),#000);color:var(--gold2);font-family:var(--serif);font-weight:900}.brand strong{font-family:var(--serif);font-size:clamp(20px,4vw,34px)}
+.hero{padding:90px 0;background:linear-gradient(135deg,#000,rgba(8,116,87,.28),#000);border-bottom:1px solid var(--line)}.eyebrow{color:var(--gold2);text-transform:uppercase;letter-spacing:5px;font-size:12px;font-weight:900;margin-bottom:14px}h1,h2,h3{font-family:var(--serif);line-height:1.05}h1{font-size:clamp(46px,8vw,88px);margin-bottom:20px}h2{font-size:clamp(32px,5vw,56px);margin-bottom:14px}h3{font-size:clamp(24px,3vw,36px);margin-bottom:12px}.gold{color:var(--gold2)}p{color:rgba(255,255,255,.9);font-size:clamp(16px,2vw,20px);max-width:900px;margin-bottom:14px}
+main{padding:70px 0;background:#030403}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:32px}.card{border:1px solid var(--line);background:rgba(0,0,0,.72);padding:28px;min-height:280px;display:flex;flex-direction:column;justify-content:space-between}.card.parent{grid-column:1/-1}.tag{display:inline-block;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;font-weight:900;color:var(--gold2);border:1px solid rgba(242,217,140,.22);padding:6px 9px;margin:0 8px 12px 0;background:rgba(242,217,140,.07)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 18px;border:1px solid rgba(242,217,140,.4);background:linear-gradient(135deg,var(--green),#000);color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:2px;font-size:12px;box-shadow:0 12px 34px rgba(0,0,0,.42)}.btn:hover{background:linear-gradient(135deg,var(--green2),#000)}.btn.gold{background:linear-gradient(135deg,var(--gold),#8a651e);color:#000}
+footer{padding:50px 0;text-align:center;border-top:1px solid var(--line);background:#000}@media(max-width:800px){.grid{grid-template-columns:1fr}.card.parent{grid-column:auto}.hero{padding:70px 0}}
+</style>
 </head>
 <body>
-  <div class="site">
-    <header class="header">
-      <div class="wrap header-inner">
-        <a class="brand" href="index.html" aria-label="TitanCore Holdings home">
-          <div class="mark"><span>TH</span></div>
-          <div class="brand-name">TitanCore Holdings</div>
-        </a>
-        <nav class="menu" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="about-group.html">About</a>
-          <a href="companies.html">Companies</a>
-          <a href="business-intelligence.html">Business Intelligence</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Company Network</div>
-        <h1>TitanCore <span>Companies.</span></h1>
-        <p>This page is the official company network directory for TitanCore Holdings. Select a company below to open its dedicated page or public website.</p>
-        <div class="notice">
-          <h3>Parent first. Companies connected.</h3>
-          <p>TitanCore keeps the network organized from the top. Each company keeps its own identity while staying connected to the parent company structure.</p>
-          <div class="actions"><a class="btn gold" href="index.html">Back Home ›</a></div>
-        </div>
-      </div>
-    </section>
-
-    <main id="directory" class="section">
-      <div class="wrap">
-        <div class="eyebrow">Official Directory</div>
-        <h2>TitanCore First. <span>Companies Under The Parent.</span></h2>
-        <p>Use this directory to move from TitanCore Holdings to the right company website or company page.</p>
-
-        <div class="grid">
-          <article class="card parent">
-            <div class="image titancore"></div>
-            <div class="body">
-              <div>
-                <div class="tags"><span class="tag">Parent Company</span><span class="tag">Holding Structure</span><span class="tag">Institution Route</span></div>
-                <h3>TitanCore <span>Holdings</span></h3>
-                <p>TitanCore Holdings is the parent company of the network. TitanCore routes parent-company information, institution access, investors, banks, company structure, and official business direction.</p>
-              </div>
-              <div class="actions"><a href="titancore.html" class="btn">Open TitanCore Page ›</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="image vaultara"></div>
-            <div class="body">
-              <div>
-                <div class="tags"><span class="tag">Finance</span><span class="tag">Capital</span></div>
-                <h3>Vaultara <span>Capital</span></h3>
-                <p>Capital-focused company under TitanCore Holdings, built around funding readiness, credit education, business formation, and structured financial preparation.</p>
-              </div>
-              <div class="actions"><a href="/vaultara" class="btn">Open Vaultara Page ›</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="image family"></div>
-            <div class="body">
-              <div>
-                <div class="tags"><span class="tag">Real Estate</span><span class="tag">Property Review</span></div>
-                <h3>Family First <span>Equity Group</span></h3>
-                <p>Real estate opportunity and property review company under TitanCore Holdings, focused on seller intake, buyer access, commercial listings, property management pathways, and structure coordination.</p>
-              </div>
-              <div class="actions">
-                <!-- Temporary link. Replace with https://familyfirstequitygroup.com/ after SSL certificate and DNS are fixed. -->
-                <a href="https://familyfirstequitygroup.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn red">Open Family First Site ›</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="image vital"></div>
-            <div class="body">
-              <div>
-                <div class="tags"><span class="tag">Health</span><span class="tag">Care</span></div>
-                <h3>VitalPath <span>Care Group</span></h3>
-                <p>Health and care company within the TitanCore ecosystem, organized for future healthcare, care support, and public information routing.</p>
-              </div>
-              <div class="actions"><a href="vitalpath-care-group.html" class="btn">Open VitalPath Page ›</a></div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="image rev"></div>
-            <div class="body">
-              <div>
-                <div class="tags"><span class="tag">Auto & Marine</span><span class="tag">Services</span></div>
-                <h3>RevMotion <span>Auto &amp; Marine LLC</span></h3>
-                <p>Automotive and marine-related company under TitanCore Holdings, built for future service routing, owner listings, vehicle/marine needs, and public inquiries.</p>
-              </div>
-              <div class="actions"><a href="revmotion-auto-marine.html" class="btn">Open RevMotion Page ›</a></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </main>
-
-    <section class="mission">
-      <div class="wrap">
-        <div class="eyebrow">Network Direction</div>
-        <h2>One Parent Company. <span>Multiple Business Lanes.</span></h2>
-        <p>The purpose of this directory is simple: keep TitanCore organized, keep every company in its own lane, and help visitors choose the right business destination without confusion.</p>
-      </div>
-    </section>
-
-    <footer>
-      <div class="wrap">
-        <div class="mark" style="margin:0 auto 18px"><span>TH</span></div>
-        <div class="footer-brand">TitanCore Holdings</div>
-        <p>© 2026 TitanCore Holdings • All rights reserved</p>
-        <div class="footer-links">
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms-of-use.html">Terms of Use</a>
-          <a href="blogs.html">Blogs</a>
-          <a href="feedback.html">Feedback</a>
-        </div>
-        <div class="social">
-          <a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
-          <a href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-          <a href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
-        </div>
-      </div>
-    </footer>
-  </div>
+<header><div class="wrap top"><a class="brand" href="index.html"><div class="mark">TH</div><strong>TitanCore Holdings</strong></a></div></header>
+<section class="hero"><div class="wrap"><div class="eyebrow">Company Network</div><h1>TitanCore <span class="gold">Companies.</span></h1><p>Select a company below to open its dedicated page or public website.</p><div class="actions"><a class="btn gold" href="index.html">Back Home</a></div></div></section>
+<main><div class="wrap"><div class="eyebrow">Official Directory</div><h2>TitanCore First. <span class="gold">Companies Under The Parent.</span></h2><div class="grid">
+<article class="card parent"><div><span class="tag">Parent Company</span><h3>TitanCore <span class="gold">Holdings</span></h3><p>Parent company for the TitanCore company network.</p></div><div class="actions"><a class="btn" href="titancore.html">Open TitanCore Page</a></div></article>
+<article class="card"><div><span class="tag">Finance</span><h3>Vaultara <span class="gold">Capital</span></h3><p>Funding readiness, credit education, business formation, and structured financial preparation.</p></div><div class="actions"><a class="btn" href="/vaultara">Open Vaultara Page</a></div></article>
+<article class="card"><div><span class="tag">Real Estate</span><h3>Family First <span class="gold">Equity Group</span></h3><p>Seller intake, buyer access, commercial listings, property management pathways, and structure coordination.</p></div><div class="actions"><a class="btn" href="familyfirst-equity-group.html">Open Family First Site</a></div></article>
+<article class="card"><div><span class="tag">Health</span><h3>VitalPath <span class="gold">Care Group</span></h3><p>Future healthcare, care support, and public information routing.</p></div><div class="actions"><a class="btn" href="vitalpath-care-group.html">Open VitalPath Page</a></div></article>
+<article class="card"><div><span class="tag">Auto and Marine</span><h3>RevMotion <span class="gold">Auto and Marine LLC</span></h3><p>Future service routing, owner listings, vehicle and marine needs, and public inquiries.</p></div><div class="actions"><a class="btn" href="revmotion-auto-marine.html">Open RevMotion Page</a></div></article>
+</div></div></main>
+<footer><div class="wrap"><div class="mark" style="margin:0 auto 16px">TH</div><h2>TitanCore <span class="gold">Holdings</span></h2><p>2026 TitanCore Holdings. All rights reserved.</p></div></footer>
 </body>
 </html>
