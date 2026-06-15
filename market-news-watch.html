@@ -359,6 +359,40 @@
       font-size:1.08rem;
     }
 
+    .info-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:24px;
+      overflow:hidden;
+      border:2px solid var(--border);
+      background:rgba(0,0,0,.58);
+    }
+
+    .info-table th,
+    .info-table td{
+      border-bottom:1px solid rgba(216,180,90,.38);
+      padding:20px;
+      text-align:left;
+      vertical-align:top;
+      font-size:1.03rem;
+    }
+
+    .info-table th{
+      background:rgba(22,122,99,.52);
+      color:var(--gold-soft);
+      letter-spacing:4px;
+      text-transform:uppercase;
+      font-weight:900;
+    }
+
+    .note-panel{
+      border-left:12px solid var(--gold);
+      background:rgba(0,0,0,.78);
+      padding:26px 30px;
+      margin-top:26px;
+      box-shadow:var(--shadow);
+    }
+
     .media-section{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -578,6 +612,34 @@
       .cta-btn{width:100%}
 
       .widget-frame{min-height:520px}
+
+      .info-table,
+      .info-table thead,
+      .info-table tbody,
+      .info-table tr,
+      .info-table th,
+      .info-table td{
+        display:block;
+        width:100%;
+      }
+
+      .info-table thead{display:none}
+
+      .info-table tr{
+        border-bottom:1px solid rgba(216,180,90,.42);
+        padding:14px 0;
+      }
+
+      .info-table td{
+        border-bottom:0;
+        padding:10px 18px;
+      }
+
+      .info-table td:first-child{
+        color:var(--gold-soft);
+        font-family:Georgia, "Times New Roman", serif;
+        font-size:1.55rem;
+      }
     }
   
 /* TitanCore unified header/menu/footer */
@@ -617,63 +679,38 @@
   <div class="site-shell">
 
     <header class="header">
-  <div class="header-inner">
-    <a href="index.html" class="brand">
-      <div class="brand-mark">TH</div>
-      <div class="brand-name">TitanCore <span>Holdings</span></div>
-    </a>
+      <div class="header-inner">
+        <a href="index.html" class="brand" aria-label="TitanCore Holdings home">
+          <div class="brand-mark">TH</div>
+          <div class="brand-name">TitanCore <span>Holdings</span></div>
+        </a>
 
-    <button class="menu-btn" id="openMenu" aria-label="Open menu">☰</button>
-  </div>
-</header>
+        <button class="menu-btn" id="openMenu" aria-label="Open menu" aria-expanded="false" aria-controls="menuPanel">☰</button>
+      </div>
+    </header>
 
-<div class="menu-panel" id="menuPanel">
-  <div class="menu-box">
-    <div class="menu-top">
-      <h2>TitanCore Menu</h2>
-      <button class="close-menu" id="closeMenu">×</button>
-    </div>
-
-    <nav class="menu-links">
-  <a href="index.html">Home</a>
-  <a href="about-group.html">About Group</a>
-  <a href="companies.html">Companies</a>
-  <a href="business-intelligence.html">Business Intelligence</a>
-  <a href="news-media.html">News &amp; Media</a>
-  <a href="global-news.html">Global News</a>
-  <a href="blogs.html">TitanCore Insights</a>
-  <a href="contact.html">Contact</a>
-</nav>
-<div class="menu-support-links">
-  <a href="privacy-policy.html">Privacy Policy</a>
-  <a href="terms-of-use.html">Terms of Use</a>
-  <a href="feedback.html">Feedback</a>
-</div>
-  </div>
-</div>
-
-    <div class="menu-panel" id="menuPanel">
-      <div class="menu-card">
+    <div class="menu-panel" id="menuPanel" role="dialog" aria-modal="true" aria-label="TitanCore Menu">
+      <div class="menu-box">
         <div class="menu-top">
-          <h2 class="menu-title">TitanCore Menu</h2>
-          <button class="close-btn" id="closeMenu" aria-label="Close Menu">✕</button>
+          <h2>TitanCore Menu</h2>
+          <button class="close-menu" id="closeMenu" aria-label="Close menu">×</button>
         </div>
 
-        <nav class="menu-links">
-  <a href="index.html">Home</a>
-  <a href="about-group.html">About Group</a>
-  <a href="companies.html">Companies</a>
-  <a href="business-intelligence.html">Business Intelligence</a>
-  <a href="news-media.html">News &amp; Media</a>
-  <a href="global-news.html">Global News</a>
-  <a href="blogs.html">TitanCore Insights</a>
-  <a href="contact.html">Contact</a>
-</nav>
-<div class="menu-support-links">
-  <a href="privacy-policy.html">Privacy Policy</a>
-  <a href="terms-of-use.html">Terms of Use</a>
-  <a href="feedback.html">Feedback</a>
-</div>
+        <nav class="menu-links" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about-group.html">About Group</a>
+          <a href="companies.html">Companies</a>
+          <a href="business-intelligence.html">Business Intelligence</a>
+          <a href="news-media.html">News &amp; Media</a>
+          <a href="blogs.html">TitanCore Insights</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="menu-support-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-use.html">Terms of Use</a>
+          <a href="feedback.html">Feedback</a>
+        </div>
       </div>
     </div>
 
@@ -1002,6 +1039,45 @@
 
     <section class="section">
       <div class="wrap">
+        <div class="content-box alt">
+          <div class="content-inner">
+            <div class="eyebrow">Market Watch Board</div>
+            <h2>What is watched and why it matters.</h2>
+            <table class="info-table" aria-label="Market categories and business impact">
+              <thead><tr><th>Category</th><th>Why It Matters</th></tr></thead>
+              <tbody>
+                <tr><td>Indexes</td><td>Shows broad public-market direction and whether confidence is concentrated or widespread.</td></tr>
+                <tr><td>Rates and credit</td><td>Impacts loans, valuations, refinancing, mortgages, equipment financing, and expansion access.</td></tr>
+                <tr><td>Inflation and prices</td><td>Signals pressure on wages, materials, customer budgets, margins, and operating plans.</td></tr>
+                <tr><td>Energy and transport</td><td>Affects fuel, utilities, delivery, logistics, shipping lanes, and production cost.</td></tr>
+                <tr><td>Real estate</td><td>Connects rent, property values, construction tone, lender appetite, and local business activity.</td></tr>
+                <tr><td>Technology</td><td>Tracks productivity, software, chips, automation, cybersecurity, and platform demand.</td></tr>
+              </tbody>
+            </table>
+            <div class="note-panel">
+              <p>Source/date label: public market sources; reviewed June 15, 2026. Values and headlines can change during market hours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="content-box dark">
+          <div class="content-inner">
+            <div class="eyebrow">Business Meaning</div>
+            <h2>Plain-language market context.</h2>
+            <p>Market changes can affect business borrowing by changing lender confidence, collateral values, investor appetite, and the cost of capital. Higher rates can make loans, credit lines, mortgages, equipment financing, and expansion plans more expensive.</p>
+            <p>Oil and energy movement can raise or lower transportation, utilities, delivery, and production costs. Real estate movement can affect property companies, construction firms, landlords, tenants, and lenders. Stock market movement can influence business confidence, access to capital, hiring plans, and customer sentiment.</p>
+            <p>This page is for public information and business awareness only. TitanCore Holdings does not provide investment, financial, legal, tax, or trading advice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
         <div class="daily-panel">
           <div class="daily-inside">
             <div class="daily-date" id="dailyDate">Today’s Market News Focus</div>
@@ -1046,7 +1122,7 @@
   <p class="footer-copy">© 2026 TitanCore Holdings • All rights reserved</p>
 
   <div class="footer-links">
-    <a href="privacy-policy.html">Privacy Policy</a> <span class="footer-dot">•</span> <a href="terms-of-use.html">Terms of Use</a> <span class="footer-dot">•</span> <a href="blogs.html">Blogs</a> <span class="footer-dot">•</span> <a href="feedback.html">Feedback</a>
+    <a href="contact.html">Contact</a> <span class="footer-dot">•</span> <a href="privacy-policy.html">Privacy Policy</a> <span class="footer-dot">•</span> <a href="terms-of-use.html">Terms of Use</a> <span class="footer-dot">•</span> <a href="blogs.html">Blogs</a> <span class="footer-dot">•</span> <a href="feedback.html">Feedback</a>
   </div>
 
   <div class="footer-social-icons">
@@ -1123,26 +1199,6 @@
       day:'numeric'
     });
   </script>
-<script>
-  const openMenu = document.getElementById("openMenu");
-  const closeMenu = document.getElementById("closeMenu");
-  const menuPanel = document.getElementById("menuPanel");
 
-  if(openMenu && menuPanel){
-    openMenu.addEventListener("click", () => menuPanel.classList.add("open"));
-  }
-
-  if(closeMenu && menuPanel){
-    closeMenu.addEventListener("click", () => menuPanel.classList.remove("open"));
-  }
-
-  if(menuPanel){
-    menuPanel.addEventListener("click", event => {
-      if(event.target === menuPanel){
-        menuPanel.classList.remove("open");
-      }
-    });
-  }
-</script>
 </body>
 </html>
