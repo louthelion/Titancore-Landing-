@@ -103,10 +103,10 @@
     .card-body { padding: 26px; }
     .card-body > p { color: var(--muted); }
     .archive-note { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(203,168,79,.16); color: #9ea79f; font-size: .76rem; letter-spacing: .04em; }
-    .audio-card { min-height: 500px; display: flex; }
-    .audio-card .card-body { width: 100%; display: flex; flex-direction: column; }
+    .audio-card { min-width: 0; min-height: 500px; display: flex; flex-direction: column; }
+    .audio-card .card-body { width: 100%; min-width: 0; display: flex; flex: 1; flex-direction: column; }
     .audio-card .button-row { margin-top: auto; }
-    .spotify-embed { height: 152px; border-bottom: 1px solid var(--gold-line); background: #121212; }
+    .spotify-embed { width: 100%; height: 152px; flex: 0 0 152px; border-bottom: 1px solid var(--gold-line); background: #121212; }
     .audio-card .card-body > p { color: var(--muted); }
     .audio-card .button.secondary { background: var(--green); color: #fff; }
     .audio-card .button.secondary:hover, .audio-card .button.secondary:focus-visible { background: var(--green-light); }
