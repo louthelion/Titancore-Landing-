@@ -937,27 +937,28 @@
           <div class="eyebrow">Future Company Video</div>
           <h2>AI Video Window For <span>TitanCore’s Story.</span></h2>
           <p>
-            This section is ready for a future video where an AI presenter, company founder message,
-            or TitanCore media briefing can explain what TitanCore Holdings is and where the company is going.
+            This section highlights a public business leadership video while TitanCore Holdings builds its own original media briefing library.
           </p>
         </div>
 
         <div class="video-grid">
-          <!-- Replace assets/video/titancore-about-video.mp4 with TitanCore’s original AI presenter video when ready. -->
           <!--
             Video Script:
             “Welcome to TitanCore Holdings. TitanCore is the parent company built to organize and support a growing network of businesses across finance, real estate, healthcare, auto and marine services, and business intelligence. Our mission is to build a disciplined, modern, and trusted business structure where each company has its own role, its own services, and its own path for growth. This is the beginning of TitanCore’s media briefing window, where future updates, founder messages, business interviews, and company announcements will appear.”
           -->
           <div class="video-window metal">
             <div class="video-player" id="titanCoreAboutPlayer">
-              <div class="video-loading" id="titanCoreVideoLoading">Preparing TitanCore media briefing</div>
-              <video id="titanCoreAboutVideo" controls preload="metadata" playsinline aria-label="TitanCore About Video">
-                <source src="assets/video/titancore-about-video.mp4" type="video/mp4" />
-              </video>
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/lmyZMtPVodo?rel=0&playsinline=1"
+                title="TitanCore public business leadership video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
             </div>
 
             <div class="video-caption">
-              <h3>TitanCore About Video</h3>
+              <h3>TitanCore Business Media Briefing</h3>
               <p>
                 A short TitanCore media briefing explaining who TitanCore Holdings is, what the parent company does,
                 and how the company network is being built.
@@ -1103,7 +1104,7 @@
   </div>
 
   <script>
-    const titanCoreAboutVideo = document.getElementById("titanCoreAboutVideo");
+    const titanCoreAboutVideo = null;
     const titanCoreAboutPlayer = document.getElementById("titanCoreAboutPlayer");
     const titanCoreVideoLoading = document.getElementById("titanCoreVideoLoading");
 
