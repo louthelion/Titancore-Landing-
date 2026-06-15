@@ -1063,10 +1063,20 @@
     }
 
     async function loadSignals(){
+      const signalIds = ["sig10y", "sigCpi", "sigWti"];
+      const sourceIds = ["src10y", "srcCpi", "srcWti"];
+      const controller = new AbortController();
+      const timeout = window.setTimeout(function(){ controller.abort(); }, 10000);
+
       try{
-        const res = await fetch("/api/signals", { cache:"no-store" });
+        const res = await fetch("/api/signals", {
+          cache:"no-store",
+          headers:{ "Accept":"application/json" },
+          signal:controller.signal
+        });
         if(!res.ok) throw new Error("Signals unavailable");
         const data = await res.json();
+        if(!data || !data.ok || !data.signals) throw new Error("Invalid signals response");
 
         const s10 = data.signals && data.signals.dgs10;
         const cpi = data.signals && data.signals.cpiyoy;
@@ -1090,12 +1100,14 @@
         document.getElementById("srcWti").textContent =
           wti && wti.asOf ? "As of " + wti.asOf + " • " + wti.source : "";
       }catch(e){
-        document.getElementById("sig10y").textContent = "Updating";
-        document.getElementById("sigCpi").textContent = "Updating";
-        document.getElementById("sigWti").textContent = "Updating";
-        document.getElementById("src10y").textContent = "Current public data will appear shortly.";
-        document.getElementById("srcCpi").textContent = "Current public data will appear shortly.";
-        document.getElementById("srcWti").textContent = "Current public data will appear shortly.";
+        signalIds.forEach(function(id){
+          document.getElementById(id).textContent = "Temporarily unavailable";
+        });
+        sourceIds.forEach(function(id){
+          document.getElementById(id).textContent = "Daily public-data update could not be reached. Please check again shortly.";
+        });
+      }finally{
+        window.clearTimeout(timeout);
       }
     }
 

@@ -25,9 +25,21 @@ function parseFredCsv(csv) {
 
 async function loadSeries(id) {
   const url = `https://fred.stlouisfed.org/graph/fredgraph.csv?id=${encodeURIComponent(id)}`;
-  const response = await fetch(url, {
-    headers: { "User-Agent": "TitanCoreBusinessSignals/1.0" }
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  let response;
+
+  try {
+    response = await fetch(url, {
+      headers: {
+        "Accept": "text/csv",
+        "User-Agent": "TitanCoreBusinessSignals/1.0"
+      },
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 
   if (!response.ok) {
     throw new Error(`FRED series ${id} returned ${response.status}`);
@@ -88,11 +100,23 @@ function cpiYearOverYear(points) {
 
 exports.handler = async function() {
   try {
-    const [treasury, cpi, wti] = await Promise.all([
+    const results = await Promise.allSettled([
       loadSeries(SERIES.dgs10.id),
       loadSeries(SERIES.cpi.id),
       loadSeries(SERIES.wti.id)
     ]);
+    const [treasury, cpi, wti] = results.map(result =>
+      result.status === "fulfilled" ? result.value : []
+    );
+    const signals = {
+      dgs10: latestSignal(treasury, "U.S. Treasury via FRED"),
+      cpiyoy: cpiYearOverYear(cpi),
+      wti: latestSignal(wti, "U.S. Energy Information Administration via FRED")
+    };
+
+    if (!Object.values(signals).some(Boolean)) {
+      throw new Error("All signal providers failed");
+    }
 
     return {
       statusCode: 200,
@@ -100,11 +124,7 @@ exports.handler = async function() {
       body: JSON.stringify({
         ok: true,
         updatedAt: new Date().toISOString(),
-        signals: {
-          dgs10: latestSignal(treasury, "U.S. Treasury via FRED"),
-          cpiyoy: cpiYearOverYear(cpi),
-          wti: latestSignal(wti, "U.S. Energy Information Administration via FRED")
-        }
+        signals
       })
     };
   } catch (error) {
