@@ -4,215 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Market Watch | TitanCore Holdings</title>
-<meta name="description" content="TitanCore Holdings public market awareness page.">
-<style>*{box-sizing:border-box}body{margin:0;background:#000;color:#f7f1e6;font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}.page{max-width:1180px;margin:auto;background:#000;border-left:1px solid #d7b35d;border-right:1px solid #d7b35d}.top{position:sticky;top:0;background:#000;border-top:1px solid #d7b35d;border-bottom:1px solid #d7b35d;z-index:20}.topin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px}.brand{display:flex;align-items:center;gap:14px;min-width:0}.mark{width:64px;height:64px;border:3px solid #d7b35d;display:grid;place-items:center;color:#f0d07a;font:700 30px Georgia,serif;flex:0 0 auto}.name{font:400 clamp(18px,5vw,34px) Georgia,serif;letter-spacing:4px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.name span{color:#d7b35d}.toggle{position:absolute;left:-9999px}.hamb{width:64px;height:64px;border:3px solid #d7b35d;background:#0b684f;color:#fff;display:grid;place-items:center;font-size:34px;cursor:pointer}.panel{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:40}.toggle:checked~.panel{display:block}.box{margin-left:auto;width:min(470px,100vw);min-height:100vh;background:#050505;border-left:1px solid #d7b35d;padding:24px;overflow-y:auto}.menutop{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(215,179,93,.5);padding-bottom:18px}.menutop h2{color:#f0d07a;font:400 34px Georgia,serif}.close{border:2px solid #d7b35d;width:58px;height:58px;display:grid;place-items:center;font-size:40px;cursor:pointer}.links a{display:block;padding:17px 4px;border-bottom:1px solid rgba(215,179,93,.28);font-size:24px;letter-spacing:3px}.support{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px;padding-top:18px;border-top:1px solid rgba(215,179,93,.35)}.support span,.dot{color:#d7b35d}.hero,.section,.contact{border-bottom:1px solid #d7b35d;background:linear-gradient(rgba(0,0,0,.24),rgba(0,0,0,.88)),var(--bg);background-size:cover;background-position:center}.hero{min-height:650px;display:flex;align-items:center;padding:92px 24px}.wrap{max-width:1040px;margin:auto;width:100%}.eyebrow,.label{color:#f0d07a;letter-spacing:5px;text-transform:uppercase;font-weight:900}.eyebrow{margin-bottom:18px}h1{font:400 clamp(48px,10vw,90px) Georgia,serif;line-height:1.03;margin:0 0 22px}h2{font:400 clamp(34px,7vw,62px) Georgia,serif;line-height:1.08;margin:0 0 22px}h3{font:400 clamp(25px,5vw,38px) Georgia,serif;color:#f0d07a;margin:0 0 12px}h1 span,h2 span{color:#f0d07a}p,li{font-size:clamp(17px,3.6vw,22px);line-height:1.7;color:#f7f1e6}.lead{max-width:900px}.section{padding:72px 24px;background-color:#111713}.ticker{background:#020202;color:#f0d07a;border-top:1px solid #d7b35d;border-bottom:1px solid #d7b35d;padding:15px;letter-spacing:3px;text-transform:uppercase;font-weight:900;overflow:hidden;white-space:nowrap}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}.grid.three{grid-template-columns:repeat(3,1fr)}.card,.board{border:3px solid #d7b35d;background:rgba(0,0,0,.68);padding:24px;box-shadow:0 18px 40px rgba(0,0,0,.35)}.card{min-height:210px}.snapshot{display:grid;grid-template-columns:1fr 1fr;gap:18px}.metric{border:1px solid rgba(215,179,93,.55);background:rgba(6,75,56,.28);padding:18px}.metric strong{display:block;color:#f0d07a;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}.table-wrap{overflow-x:auto;border:3px solid #d7b35d;background:#050505;margin-top:26px}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:18px;border-bottom:1px solid rgba(215,179,93,.35);text-align:left;vertical-align:top;font-size:17px;line-height:1.55}th{color:#f0d07a;text-transform:uppercase;letter-spacing:2px;background:rgba(11,104,79,.28)}.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:19px 24px;border:3px solid #d7b35d;background:#0b684f;color:#fff;text-transform:uppercase;letter-spacing:3px;font-weight:900}.btn:hover{background:#d7b35d;color:#000}.btn.ghost{background:#050505}.disclaimer{border-left:6px solid #d7b35d;background:#050505;padding:22px;margin-top:28px}.foot{padding:48px 18px;text-align:center;background:#020202}.footbrand{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:20px}.foot .mark{width:58px;height:58px}.footname{font:400 clamp(24px,6vw,34px) Georgia,serif;letter-spacing:6px;color:#f0d07a;text-transform:uppercase}.footlinks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;margin:22px 0}.footlinks a:hover{color:#f0d07a}.social{display:flex;justify-content:center;gap:18px}.social a{width:58px;height:58px;border:2px solid #d7b35d;background:#050505;color:#fff;display:grid;place-items:center;font-weight:900;font-size:26px}.social .ig{font-size:34px}.social .li{font-size:24px}@media(max-width:850px){.grid,.grid.three,.snapshot,.split{grid-template-columns:1fr}.hero{min-height:560px;padding:74px 18px}.section{padding:58px 18px}.mark,.hamb{width:54px;height:54px}.name{letter-spacing:1px}.box{width:100vw}.links a{font-size:21px}.btn-row{display:grid}.btn{width:100%;letter-spacing:2px;padding:17px}h1{font-size:clamp(42px,13vw,64px)}.ticker{white-space:normal}.card{min-height:0}}</style>
+<meta name="description" content="TitanCore Holdings Market Watch public market awareness page for business owners, investors, institutions, and company operators.">
+<style>:root{--gold:#d7b35d;--gold-bright:#f0d07a;--green:#0b684f;--black:#000;--cream:#f7f1e6}*{box-sizing:border-box}body{margin:0;background:var(--black);color:var(--cream);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}.page{max-width:1180px;margin:auto;background:#000;border-left:1px solid var(--gold);border-right:1px solid var(--gold)}.top{position:sticky;top:0;background:#000;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);z-index:20}.topin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px}.brand{display:flex;align-items:center;gap:14px;min-width:0}.mark{width:64px;height:64px;border:3px solid var(--gold);display:grid;place-items:center;color:var(--gold-bright);font:700 30px Georgia,serif;flex:0 0 auto;background:#050505}.name{font:400 clamp(18px,5vw,34px) Georgia,serif;letter-spacing:4px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.name span{color:var(--gold)}.toggle{position:absolute;left:-9999px}.hamb{width:64px;height:64px;border:3px solid var(--gold);background:var(--green);color:#fff;display:grid;place-items:center;font-size:34px;cursor:pointer}.panel{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:40}.toggle:checked~.panel{display:block}.box{margin-left:auto;width:min(470px,100vw);min-height:100vh;background:#050505;border-left:1px solid var(--gold);padding:24px;overflow-y:auto}.menutop{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(215,179,93,.5);padding-bottom:18px}.menutop h2{color:var(--gold-bright);font:400 34px Georgia,serif;margin:0}.close{border:2px solid var(--gold);width:58px;height:58px;display:grid;place-items:center;font-size:40px;cursor:pointer}.links a{display:block;padding:17px 4px;border-bottom:1px solid rgba(215,179,93,.28);font-size:24px;letter-spacing:3px}.support{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px;padding-top:18px;border-top:1px solid rgba(215,179,93,.35)}.support span,.dot{color:var(--gold)}.hero,.section,.contact{border-bottom:1px solid var(--gold);background:linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.9)),var(--bg);background-size:cover;background-position:center}.hero{min-height:700px;display:flex;align-items:center;padding:92px 24px}.wrap{max-width:1040px;margin:auto;width:100%}.hero-panel{max-width:850px;border:1px solid rgba(215,179,93,.5);background:rgba(0,0,0,.7);padding:34px;box-shadow:0 24px 60px rgba(0,0,0,.45)}.eyebrow,.label{color:var(--gold-bright);letter-spacing:5px;text-transform:uppercase;font-weight:900}.eyebrow{margin-bottom:18px}h1{font:400 clamp(50px,10vw,92px) Georgia,serif;line-height:1.02;margin:0 0 22px}h2{font:400 clamp(34px,7vw,62px) Georgia,serif;line-height:1.08;margin:0 0 22px}h3{font:400 clamp(25px,5vw,38px) Georgia,serif;color:var(--gold-bright);margin:0 0 12px}h1 span,h2 span{color:var(--gold-bright)}p,li{font-size:clamp(17px,3.6vw,22px);line-height:1.7;color:var(--cream)}.lead{max-width:900px}.section{padding:76px 24px;background-color:#111713}.ticker{background:#020202;color:var(--gold-bright);border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:15px;letter-spacing:3px;text-transform:uppercase;font-weight:900;overflow:hidden;white-space:nowrap}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}.grid.three{grid-template-columns:repeat(3,1fr)}.card,.board{border:3px solid var(--gold);background:rgba(0,0,0,.68);padding:24px;box-shadow:0 18px 40px rgba(0,0,0,.35)}.card{min-height:220px}.card p{font-size:18px}.snapshot{display:grid;grid-template-columns:1fr 1fr;gap:18px}.metric{border:1px solid rgba(215,179,93,.55);background:rgba(6,75,56,.28);padding:18px}.metric strong{display:block;color:var(--gold-bright);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}.table-wrap{overflow-x:auto;border:3px solid var(--gold);background:#050505;margin-top:26px}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:18px;border-bottom:1px solid rgba(215,179,93,.35);text-align:left;vertical-align:top;font-size:17px;line-height:1.55}th{color:var(--gold-bright);text-transform:uppercase;letter-spacing:2px;background:rgba(11,104,79,.28)}.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}.btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:19px 24px;border:3px solid var(--gold);background:var(--green);color:#fff;text-transform:uppercase;letter-spacing:3px;font-weight:900}.btn:hover{background:var(--gold);color:#000}.btn.ghost{background:#050505}.disclaimer{border-left:6px solid var(--gold);background:#050505;padding:22px;margin-top:28px}.contact{padding:82px 24px}.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}.foot{padding:48px 18px;text-align:center;background:#020202}.footbrand{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:20px}.foot .mark{width:58px;height:58px}.footname{font:400 clamp(24px,6vw,34px) Georgia,serif;letter-spacing:6px;color:var(--gold-bright);text-transform:uppercase}.footlinks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;margin:22px 0}.footlinks a:hover{color:var(--gold-bright)}.social{display:flex;justify-content:center;gap:18px}.social a{width:58px;height:58px;border:2px solid var(--gold);background:#050505;color:#fff;display:grid;place-items:center;font-weight:900;font-size:26px}.social .ig{font-size:34px}.social .li{font-size:24px}@media(max-width:850px){.grid,.grid.three,.snapshot,.split,.contact-grid{grid-template-columns:1fr}.hero{min-height:600px;padding:70px 18px}.hero-panel{padding:24px}.section,.contact{padding:58px 18px}.mark,.hamb{width:54px;height:54px}.name{letter-spacing:1px}.box{width:100vw}.links a{font-size:21px}.btn-row{display:grid}.btn{width:100%;letter-spacing:2px;padding:17px}h1{font-size:clamp(42px,13vw,64px)}.ticker{white-space:normal}.card{min-height:0}}</style>
 </head>
 <body>
 <main class="page">
 <input class="toggle" id="menu" type="checkbox">
-<header class="top">
-<div class="topin">
-<a class="brand" href="index.html">
-<div class="mark">TH</div>
-<div class="name">TitanCore <span>Holdings</span>
-</div>
-</a>
-<label class="hamb" for="menu">☰</label>
-</div>
-</header>
-<div class="panel">
-<div class="box">
-<div class="menutop">
-<h2>TitanCore Menu</h2>
-<label class="close" for="menu">×</label>
-</div>
-<nav class="links">
-<a href="index.html">Home</a>
-<a href="about-group.html">About Group</a>
-<a href="companies.html">Companies</a>
-<a href="institution.html">Institution</a>
-<a href="business-intelligence.html">Business Intelligence</a>
-<a href="news-media.html">News &amp; Media</a>
-<a href="global-business.html">Global Business</a>
-<a href="blogs.html">TitanCore Insights</a>
-<a href="contact.html">Contact</a>
-</nav>
-<div class="support">
-<a href="privacy-policy.html">Privacy Policy</a>
-<span>•</span>
-<a href="terms-of-use.html">Terms of Use</a>
-<span>•</span>
-<a href="feedback.html">Feedback</a>
-</div>
-</div>
-</div>
-<section class="hero" style="--bg:url(https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1800&q=85)">
-<div class="wrap">
-<div class="eyebrow">Market Watch</div>
-<h1>Market <span>Watch.</span>
-</h1>
-<p class="lead">Public market awareness for business owners, investors, institutions, and company operators.</p>
-<p class="lead">TitanCore Holdings uses market awareness to understand business movement, capital conditions, company performance, sector trends, energy costs, and economic pressure. This page organizes public market information for education and business awareness only.</p>
-<div class="btn-row">
-<a class="btn" href="https://www.marketwatch.com/" target="_blank" rel="noopener">Open Market Data Source</a>
-<a class="btn ghost" href="economy-signals.html">View Economy Signals</a>
-<a class="btn ghost" href="global-business.html">View Global Business</a>
-</div>
-</div>
-</section>
-<div class="ticker">U.S. Markets • Major Index Direction • Sector Movement • Credit • Energy • Real Estate • Volatility Watch</div>
-<section class="section">
-<div class="wrap">
-<div class="eyebrow">Today’s Market Snapshot</div>
-<h2>Public Market <span>Awareness Board.</span>
-</h2>
-<div class="snapshot">
-<div class="metric">
-<strong>U.S. market overview</strong>
-<p>Broad conditions can show confidence, caution, liquidity, and pressure across public companies.</p>
-</div>
-<div class="metric">
-<strong>Major index direction</strong>
-<p>Index movement helps visitors compare large-cap, technology-heavy, and industrial market tone.</p>
-</div>
-<div class="metric">
-<strong>Sector movement</strong>
-<p>Sector leadership can point to strength or weakness in banking, technology, energy, property, and transport.</p>
-</div>
-<div class="metric">
-<strong>Risk / volatility watch</strong>
-<p>Volatility can signal uncertainty around rates, earnings, credit, geopolitical events, or economic reports.</p>
-</div>
-</div>
-<p class="disclaimer">Source/date label: public market sources; reviewed June 15, 2026. Values change during market hours.</p>
-</div>
-</section>
-<section class="section">
-<div class="wrap">
-<div class="eyebrow">Major Market Areas TitanCore Watches</div>
-<h2>Markets Connected To <span>Business Decisions.</span>
-</h2>
-<div class="grid">
-<div class="card">
-<h3>Stock Market</h3>
-<p>Public company movement and confidence.</p>
-</div>
-<div class="card">
-<h3>Banking & Credit Conditions</h3>
-<p>Loan availability, bank stress, and borrowing costs.</p>
-</div>
-<div class="card">
-<h3>Technology & AI</h3>
-<p>Productivity, software, chips, automation, and platform demand.</p>
-</div>
-<div class="card">
-<h3>Real Estate & REITs</h3>
-<p>Property values, rents, financing, and construction tone.</p>
-</div>
-<div class="card">
-<h3>Energy & Oil</h3>
-<p>Fuel, utilities, shipping, and operating costs.</p>
-</div>
-<div class="card">
-<h3>Transportation & Logistics</h3>
-<p>Freight, ports, delivery, and supply chain pressure.</p>
-</div>
-<div class="card">
-<h3>Crypto & Digital Assets</h3>
-<p>Risk appetite, liquidity, and digital-asset market behavior.</p>
-</div>
-<div class="card">
-<h3>Small Business Conditions</h3>
-<p>Local demand, hiring, cash flow, and financing access.</p>
-</div>
-</div>
-</div>
-</section>
-<section class="section">
-<div class="wrap">
-<div class="eyebrow">Market Watch Board</div>
-<h2>What Is Watched And <span>Why It Matters.</span>
-</h2>
-<div class="table-wrap">
-<table>
-<tr>
-<th>Category</th>
-<th>Why it matters</th>
-<th>Public source</th>
-<th>Last reviewed date</th>
-</tr>
-<tr>
-<td>Indexes</td>
-<td>Shows broad confidence and public-market direction.</td>
-<td>MarketWatch / Nasdaq / NYSE</td>
-<td>June 15, 2026</td>
-</tr>
-<tr>
-<td>Rates and credit</td>
-<td>Impacts loans, valuations, refinancing, and expansion timing.</td>
-<td>Federal Reserve / Treasury</td>
-<td>June 15, 2026</td>
-</tr>
-<tr>
-<td>Energy</td>
-<td>Moves fuel, logistics, materials, and operating budgets.</td>
-<td>EIA / public commodity data</td>
-<td>June 15, 2026</td>
-</tr>
-<tr>
-<td>Real estate</td>
-<td>Affects property firms, construction, rent, and collateral.</td>
-<td>Public housing and REIT data</td>
-<td>June 15, 2026</td>
-</tr>
-</table>
-</div>
-</div>
-</section>
-<section class="section">
-<div class="wrap split">
-<div>
-<div class="eyebrow">Business Meaning</div>
-<h2>Plain-Language Market <span>Context.</span>
-</h2>
-<p>Market changes can affect business borrowing by changing lender confidence, collateral values, investor appetite, and the cost of capital. Higher rates can make loans, credit lines, mortgages, equipment financing, and expansion plans more expensive.</p>
-<p>Oil and energy movement can raise or lower transportation, utilities, delivery, and production costs. Real estate movement can affect property companies, construction firms, landlords, tenants, and lenders. Stock market movement can influence business confidence, hiring plans, acquisition activity, and customer sentiment.</p>
-</div>
-<div class="board">
-<h3>Public Source Buttons</h3>
-<p>Use these routes to continue through TitanCore public business intelligence pages.</p>
-<div class="btn-row">
-<a class="btn" href="https://www.marketwatch.com/" target="_blank" rel="noopener">Open Market Data Source</a>
-<a class="btn ghost" href="economy-signals.html">View Economy Signals</a>
-<a class="btn ghost" href="global-business.html">View Global Business</a>
-</div>
-</div>
-</div>
-<p class="disclaimer">TitanCore Holdings does not provide investment, financial, legal, tax, or trading advice. Market information is provided for education and business awareness only.</p>
-</div>
-</section>
-<footer class="foot">
-<div class="footbrand">
-<div class="mark">TH</div>
-<div class="footname">TitanCore Holdings</div>
-</div>
-<p>© 2026 TitanCore Holdings • All rights reserved</p>
-<p class="disclaimer">Public information only. TitanCore Holdings does not publish private company data, client data, or dashboard functions on this page.</p>
-<div class="footlinks">
-<a href="contact.html">Contact</a>
-<span class="dot">•</span>
-<a href="privacy-policy.html">Privacy Policy</a>
-<span class="dot">•</span>
-<a href="terms-of-use.html">Terms of Use</a>
-<span class="dot">•</span>
-<a href="feedback.html">Feedback</a>
-</div>
-<div class="social">
-<a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener">f</a>
-<a class="ig" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener">◎</a>
-<a class="li" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener">in</a>
-</div>
-</footer>
+<header class="top"><div class="topin"><a class="brand" href="index.html"><div class="mark">TH</div><div class="name">TitanCore <span>Holdings</span></div></a><label class="hamb" for="menu">☰</label></div></header>
+<div class="panel"><div class="box"><div class="menutop"><h2>TitanCore Menu</h2><label class="close" for="menu">×</label></div><nav class="links"><a href="index.html">Home</a><a href="about-group.html">About Group</a><a href="companies.html">Companies</a><a href="institution.html">Institution</a><a href="business-intelligence.html">Business Intelligence</a><a href="news-media.html">News &amp; Media</a><a href="global-business.html">Global Business</a><a href="blogs.html">TitanCore Insights</a><a href="contact.html">Contact</a></nav><div class="support"><a href="privacy-policy.html">Privacy Policy</a><span>•</span><a href="terms-of-use.html">Terms of Use</a><span>•</span><a href="feedback.html">Feedback</a></div></div></div>
+<section class="hero" id="marketHero" style="--bg:url(assets/titancore/market-watch/market-floor.svg)"><div class="wrap"><div class="hero-panel"><div class="eyebrow">Market Watch</div><h1>Market <span>Watch.</span></h1><p class="lead">Public market awareness for business owners, investors, institutions, and company operators.</p><p class="lead">TitanCore watches public business movement, capital conditions, sector trends, energy costs, market sentiment, and risk conditions so visitors can understand how broad market signals may affect company planning and operating pressure.</p><div class="btn-row"><a class="btn" href="business-intelligence.html">Business Intelligence</a><a class="btn ghost" href="economy-signals.html">Economy Signals</a><a class="btn ghost" href="global-business.html">Global Business</a></div></div></div></section>
+<div class="ticker">U.S. Markets • Banking & Credit • Technology & AI • Real Estate • Energy • Transportation • Digital Assets • Small Business Conditions</div>
+<section class="section"><div class="wrap"><div class="eyebrow">Today’s Market Focus</div><h2>Public signals for <span>business awareness.</span></h2><p>TitanCore monitors broad public market movement, capital conditions, sector trends, energy costs, market sentiment, and risk conditions. The goal is not to tell visitors what to buy or sell. The goal is to organize public information in a professional business-intelligence format.</p><div class="snapshot"><div class="metric"><strong>Capital conditions</strong><p>Credit availability, rates, and lending standards can change how companies finance operations and expansion.</p></div><div class="metric"><strong>Sector trends</strong><p>Leadership and weakness across industries may show where demand, confidence, or cost pressure is moving.</p></div><div class="metric"><strong>Energy costs</strong><p>Fuel, power, and commodity movement can affect transportation, production, utilities, and margins.</p></div><div class="metric"><strong>Risk conditions</strong><p>Volatility and headlines can influence investor confidence, customer sentiment, and executive timing.</p></div></div></div></section>
+<section class="section"><div class="wrap"><div class="eyebrow">What TitanCore Watches</div><h2>Markets connected to <span>company decisions.</span></h2><div class="grid"><div class="card"><h3>Stock Market</h3><p>Public company movement, index tone, earnings pressure, and broad confidence.</p></div><div class="card"><h3>Banking & Credit</h3><p>Loan availability, bank stress, interest-rate pressure, and borrowing cost signals.</p></div><div class="card"><h3>Technology & AI</h3><p>Software, chips, platforms, automation, productivity, and demand for digital systems.</p></div><div class="card"><h3>Real Estate</h3><p>Property values, rents, financing, construction tone, REIT movement, and collateral pressure.</p></div><div class="card"><h3>Energy & Oil</h3><p>Fuel, utilities, logistics, commodity movement, and operating-cost pressure.</p></div><div class="card"><h3>Transportation & Logistics</h3><p>Freight, ports, delivery networks, shipping costs, and supply-chain pressure.</p></div><div class="card"><h3>Crypto & Digital Assets</h3><p>Risk appetite, liquidity, speculation, technology sentiment, and digital-asset behavior.</p></div><div class="card"><h3>Small Business Conditions</h3><p>Local demand, hiring, cash flow, financing access, supplier costs, and customer confidence.</p></div></div></div></section>
+<section class="section" style="--bg:url(assets/titancore/market-watch/business-district.svg)"><div class="wrap split"><div><div class="eyebrow">Why Market Watch Matters</div><h2>Market movement can affect <span>business timing.</span></h2><p>Market signals can influence business costs, financing, borrowing, operations, confidence, and expansion decisions. Higher financing costs may slow hiring or equipment purchases. Energy movement may change delivery budgets and production costs. Real estate pressure may affect rent, collateral, or construction planning.</p><p>For operators, public market awareness is a way to understand the environment around the business before making major commitments.</p></div><div class="board"><h3>Business impact examples</h3><ul><li>Borrowing costs and credit-line availability.</li><li>Supplier, fuel, rent, insurance, and utility pressure.</li><li>Customer confidence and discretionary demand.</li><li>Expansion timing, hiring, and capital allocation.</li></ul></div></div></section>
+<section class="section"><div class="wrap"><div class="eyebrow">Market Awareness Board</div><h2>What is watched and <span>why it matters.</span></h2><div class="table-wrap"><table><tr><th>Category</th><th>Why it matters</th><th>Public source</th><th>Last reviewed date</th></tr><tr><td>Major indexes</td><td>Shows broad public-market direction and confidence.</td><td>MarketWatch / Nasdaq / NYSE</td><td>June 16, 2026</td></tr><tr><td>Rates and credit</td><td>Impacts loans, refinancing, valuations, and expansion timing.</td><td>Federal Reserve / U.S. Treasury</td><td>June 16, 2026</td></tr><tr><td>Energy</td><td>Moves fuel, logistics, materials, utilities, and operating budgets.</td><td>EIA / public commodity data</td><td>June 16, 2026</td></tr><tr><td>Real estate</td><td>Affects property firms, construction, rent, lending, and collateral.</td><td>Public housing and REIT data</td><td>June 16, 2026</td></tr><tr><td>Small business</td><td>Shows pressure around hiring, costs, financing, and local demand.</td><td>Public business surveys and economic releases</td><td>June 16, 2026</td></tr></table></div></div></section>
+<section class="section"><div class="wrap"><div class="eyebrow">Related Navigation</div><h2>Continue through TitanCore <span>business intelligence.</span></h2><p>Use these TitanCore routes to connect market awareness with economy signals and global business movement.</p><div class="btn-row"><a class="btn" href="economy-signals.html">Economy Signals</a><a class="btn ghost" href="global-business.html">Global Business</a><a class="btn ghost" href="business-intelligence.html">Business Intelligence</a></div><p class="disclaimer">TitanCore Holdings does not provide investment, legal, tax, or financial advice. Information is provided for education and business awareness only.</p></div></section>
+<section class="contact" style="--bg:url(assets/titancore/market-watch/capital-board.svg)"><div class="wrap contact-grid"><div><div class="eyebrow">Official Contact</div><h2>Contact TitanCore <span>Holdings.</span></h2><p>For general questions, professional inquiries, public information, or business-intelligence related contact, use the official TitanCore contact page.</p><a class="btn" href="contact.html">Get In Touch ›</a></div><div class="board"><h3>Contact Us</h3><p>Market Watch is a public education page. TitanCore does not publish private client data, private dashboards, or individualized investment recommendations here.</p><a class="btn ghost" href="contact.html">Contact Us</a></div></div></section>
+<footer class="foot"><div class="footbrand"><div class="mark">TH</div><div class="footname">TitanCore Holdings</div></div><p>© 2026 TitanCore Holdings • All rights reserved</p><p class="disclaimer">Business disclaimer: TitanCore Holdings does not provide investment, legal, tax, or financial advice. Information is provided for education and business awareness only.</p><div class="footlinks"><a href="contact.html">Contact</a><span class="dot">•</span><a href="privacy-policy.html">Privacy Policy</a><span class="dot">•</span><a href="terms-of-use.html">Terms of Use</a><span class="dot">•</span><a href="feedback.html">Feedback</a></div><div class="social"><a href="https://www.facebook.com/share/1C8V7sMAbv/?mibextid=wwXIfr" target="_blank" rel="noopener">f</a><a class="ig" href="https://www.instagram.com/titancoreholdings/" target="_blank" rel="noopener">◎</a><a class="li" href="https://www.linkedin.com/company/titancore-holdings/" target="_blank" rel="noopener">in</a></div></footer>
 </main>
+<script>
+(function(){
+  var images = [
+    'assets/titancore/market-watch/market-floor.svg',
+    'assets/titancore/market-watch/business-district.svg',
+    'assets/titancore/market-watch/capital-board.svg'
+  ];
+  var now = new Date();
+  var start = new Date(now.getFullYear(), 0, 0);
+  var dayOfYear = Math.floor((now - start) / 86400000);
+  var hero = document.getElementById('marketHero');
+  if (hero) {
+    hero.style.setProperty('--bg', 'url(' + images[dayOfYear % images.length] + ')');
+  }
+})();
+</script>
 </body>
 </html>
