@@ -301,4 +301,9 @@
     <priority>0.85</priority>
   </url>
 
+  <url>
+    <loc>https://titancoreholdings.com/tier-1-control-bridge.html</loc>
+    <priority>0.70</priority>
+  </url>
+
 </urlset>
