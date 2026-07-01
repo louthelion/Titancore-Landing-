@@ -1147,8 +1147,24 @@
 
   </style>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.supabase) {
+      const db = window.supabase.createClient('https://jgpvrblzyznyprtffirw.supabase.co', 'sb_publishable_4MZbcaMuJ-_GfaZh1jb4yA_tyyj7EfP');
+      
+      db.from('reports').insert({
+        company: 'Family First Equity Group',
+        report_type: 'System Pulse',
+        report_summary: 'Family First automated command center successfully linked to TitanCore parent node.',
+        sent_to_titancore: true,
+        status: 'active_live'
+      }).then(() => console.log('TitanCore Sync Complete'));
+    }
+  });
+</script>
+<body class="antialiased text-neutral-200">
 
-<body>
   <div class="site">
 
     <!-- HEADER -->
