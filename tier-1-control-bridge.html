@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TitanCore Holdings | Tier 1 Control Bridge</title>
+  <meta name="description" content="TitanCore Holdings Tier 1 Control Bridge interface for cross-company telemetry, subsidiary routing, deployment signals, and secure system diagnostics.">
+  <meta name="theme-color" content="#000000">
+  <link rel="canonical" href="https://titancoreholdings.com/tier-1-control-bridge.html">
+
+  <!-- High-Performance Utility Tailwind Layer -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Vector Glyphs for Metric Diagnostics -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* =========================================================
+      TITANCORE SYSTEM DESIGN SYSTEM — TIER 1 HUB EXTENSION
+      Direct heritage from the original luxury asset stylesheet
+    ========================================================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+      overflow: hidden;
+      line-height: 1.6;
+    }
+
+    :root {
+      --black: #000;
+      --ink: #050505;
+      --panel: rgba(10,10,10,.62);
+      --panel-solid: #0c0e12;
+      --green: #087457;
+      --green2: #0a8d69;
+      --gold: #d8b45a;
+      --gold2: #f2d98c;
+      --gold3: #a47b1f;
+      --line: rgba(242,217,140,.42);
+      --line-soft: rgba(242,217,140,.12);
+      --shadow: 0 24px 70px rgba(0,0,0,.62);
+      --radius: 22px;
+      --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+    }
+
+    .dashboard-site {
+      min-height: 100vh;
+      background:
+        radial-gradient(1000px 600px at 10% 10%, rgba(216,180,90,.09), transparent 50%),
+        radial-gradient(800px 600px at 90% 20%, rgba(8,116,87,.12), transparent 50%),
+        #000;
+      position: relative;
+    }
+
+    .dashboard-site::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .04;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+
+    .metal-container {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(10, 10, 10, 0.62);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .metal-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(242,217,140,.5), rgba(216,180,90,.15) 22%, rgba(164,123,31,.35) 52%, rgba(242,217,140,.15) 74%, rgba(216,180,90,.45));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .custom-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: rgba(242,217,140,.15); border-radius: 4px; }
+    .custom-scroll::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-500/20">
+  <div class="dashboard-site flex h-screen overflow-hidden">
+    <aside class="w-80 bg-black/90 backdrop-blur-md border-r border-[rgba(242,217,140,.15)] flex flex-col justify-between shrink-0 z-20">
+      <div class="p-6 overflow-y-auto custom-scroll flex-1 space-y-8">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-[#087457] to-black border border-[rgba(242,217,140,.35)] shadow-xl">
+            <span class="font-serif font-black text-sm text-[#f2d98c]">TH</span>
+          </div>
+          <div>
+            <h2 class="text-base font-black tracking-wider uppercase text-white font-serif">
+              TitanCore <span class="text-[#d8b45a] font-normal">Bridge</span>
+            </h2>
+            <p class="text-[9px] font-mono tracking-widest text-gray-500 uppercase">Cross-Company AI Infrastructure</p>
+          </div>
+        </div>
+
+        <div class="text-[10px] bg-black border border-[rgba(242,217,140,.2)] px-4 py-3 rounded-xl font-mono text-gray-400 flex items-center space-x-2.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 shadow-md shadow-emerald-500 animate-pulse"></span>
+          <span><span class="text-emerald-400 font-bold">● TIER 1 CONTROL</span> BRIDGED</span>
+        </div>
+
+        <hr class="border-[rgba(242,217,140,.1)]">
+
+        <div class="space-y-1.5">
+          <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1 font-mono mb-2">Subsidiary Architecture</p>
+          <button id="btn-global" onclick="loadSubsidiaryData('global')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(242,217,140,.08)] text-white border-l-2 border-[#d8b45a] font-medium text-xs tracking-wider uppercase transition-all text-left">
+            <span>Global Network Hub</span>
+            <i class="fa-solid fa-circle-nodes text-[#d8b45a]"></i>
+          </button>
+          <button id="btn-vaultara" onclick="loadSubsidiaryData('vaultara')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:bg-[rgba(255,255,255,.02)] hover:text-white font-medium text-xs tracking-wider uppercase transition-all text-left">
+            <span>Vaultara Capital</span>
+            <i class="fa-solid fa-vault opacity-30"></i>
+          </button>
+          <button id="btn-familyfirst" onclick="loadSubsidiaryData('familyfirst')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:bg-[rgba(255,255,255,.02)] hover:text-white font-medium text-xs tracking-wider uppercase transition-all text-left">
+            <span>Family First Equity</span>
+            <i class="fa-solid fa-users opacity-30"></i>
+          </button>
+          <button id="btn-vitalpath" onclick="loadSubsidiaryData('vitalpath')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:bg-[rgba(255,255,255,.02)] hover:text-white font-medium text-xs tracking-wider uppercase transition-all text-left">
+            <span>VitalPath Care Group</span>
+            <i class="fa-solid fa-heart-pulse opacity-30"></i>
+          </button>
+          <button id="btn-revmotion" onclick="loadSubsidiaryData('revmotion')" class="w-full flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:bg-[rgba(255,255,255,.02)] hover:text-white font-medium text-xs tracking-wider uppercase transition-all text-left">
+            <span>RevMotion Auto &amp; Marine</span>
+            <i class="fa-solid fa-anchor opacity-30"></i>
+          </button>
+        </div>
+
+        <hr class="border-[rgba(242,217,140,.1)]">
+
+        <div class="space-y-2">
+          <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest px-1 font-mono">Deployments</p>
+          <div class="grid grid-cols-2 gap-2 text-center text-[11px] font-mono">
+            <div class="p-3 bg-black border border-[rgba(242,217,140,.15)] rounded-xl text-gray-300 flex flex-col items-center justify-center">
+              <i class="fa-brands fa-github text-white mb-1.5 text-base"></i> GitHub
+            </div>
+            <div class="p-3 bg-black border border-[rgba(242,217,140,.15)] rounded-xl text-gray-300 flex flex-col items-center justify-center">
+              <i class="fa-solid fa-bolt text-teal-400 mb-1.5 text-base"></i> Netlify
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 bg-black border-t border-[rgba(242,217,140,.12)] text-center">
+        <span class="text-[10px] font-mono text-gray-600 tracking-widest uppercase">Secure Shield System v2.26</span>
+      </div>
+    </aside>
+
+    <main class="flex-1 flex flex-col overflow-hidden">
+      <header class="p-6 border-b border-[rgba(242,217,140,.12)] bg-black/40 backdrop-blur-md flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 z-10">
+        <div>
+          <h1 class="text-xl font-bold text-white font-serif tracking-tight" id="bridge-title">Executive Control Bridge</h1>
+          <p class="text-xs text-gray-400 mt-1 font-mono" id="bridge-desc">Cross-Company routing arrays and live system diagnostics across all operational layers.</p>
+        </div>
+
+        <div class="flex items-center space-x-3 font-mono text-xs">
+          <button onclick="showTerminalPanel()" class="bg-black border border-[rgba(242,217,140,.3)] hover:bg-[#0a0a0a] text-gray-300 px-4 py-2.5 rounded-xl transition-all tracking-wider uppercase">
+            Telemetry Logs
+          </button>
+          <button onclick="executeSync(this)" class="bg-gradient-to-r from-[#d8b45a] to-[#a47b1f] hover:from-[#f2d98c] hover:to-[#d8b45a] text-black font-black px-5 py-2.5 rounded-xl transition-all tracking-wider uppercase shadow-lg">
+            Sync Repos
+          </button>
+        </div>
+      </header>
+
+      <div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scroll">
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="metal-container p-5 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest block">System Pulse:</span>
+              <div class="bg-black/80 border border-[rgba(242,217,140,.15)] px-4 py-2 rounded-xl mt-2 flex items-center space-x-3 min-w-[210px]">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-md shadow-emerald-500 animate-pulse"></span>
+                <span class="text-xs font-mono font-black text-emerald-400 tracking-widest">STATE: NOMINAL</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-wave-square text-emerald-950/20 text-xl"></i>
+          </div>
+
+          <div class="metal-container p-5 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest block">System Matrix Time</span>
+              <div class="bg-black/80 border border-[rgba(242,217,140,.15)] px-4 py-2 rounded-xl mt-2 text-xs font-mono text-gray-300 font-bold min-w-[210px]" id="live-matrix-clock">
+                --/--/----, --:--:-- PM
+              </div>
+            </div>
+            <i class="fa-solid fa-clock text-amber-950/20 text-xl"></i>
+          </div>
+
+          <div class="metal-container p-5 flex items-center justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest block">Secure Shield</span>
+                <span class="text-[9px] font-mono font-bold bg-[#087457]/20 border border-[#0a8d69]/40 text-emerald-400 px-1.5 rounded uppercase">Live</span>
+              </div>
+              <div class="mt-2 flex items-baseline space-x-2">
+                <span class="text-base font-black font-serif text-white">Active</span>
+                <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest">Oversight</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-shield-halved text-emerald-950/20 text-xl"></i>
+          </div>
+        </section>
+
+        <section class="metal-container p-6">
+          <div class="flex justify-between items-center pb-3 border-b border-[rgba(242,217,140,.12)]">
+            <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">System Alerts</span>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/20 px-2 py-0.5 rounded border border-emerald-900/40 font-bold">OK</span>
+          </div>
+          <div class="mt-4 flex items-baseline space-x-3">
+            <span class="text-3xl font-black font-serif text-white">0</span>
+            <span class="text-xs font-mono text-emerald-400 tracking-wider font-bold uppercase">Flags In Stream</span>
+          </div>
+          <div class="w-full bg-gray-900 h-1.5 rounded-full mt-4 overflow-hidden">
+            <div class="bg-gradient-to-r from-[#d8b45a] to-[#087457] h-full rounded-full w-full"></div>
+          </div>
+          <div class="flex justify-between items-center text-[11px] font-mono text-gray-500 mt-2">
+            <span>Stream active array</span>
+            <span>100% Secure</span>
+          </div>
+        </section>
+
+        <div id="dynamic-matrix-viewport" class="space-y-4">
+          <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest font-mono mb-2">
+            <i class="fa-solid fa-microchip mr-2 text-[#d8b45a]"></i> Active Core Endpoint Status
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="telemetry-grid">
+            <!-- Appended programmatically via script matrix -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="terminal-drawer" class="w-96 bg-black border-l border-[rgba(242,217,140,.15)] hidden flex flex-col h-full z-30">
+      <div class="p-4 border-b border-[rgba(242,217,140,.15)] flex justify-between items-center bg-[#050505]">
+        <span class="font-mono text-xs text-[#f2d98c] font-bold tracking-widest"><i class="fa-solid fa-terminal mr-2"></i> SYSTEM TELEMETRY BUFFER</span>
+        <button onclick="showTerminalPanel()" class="text-gray-500 hover:text-white text-sm"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="terminal-console" class="p-4 flex-1 overflow-y-auto font-mono text-[10px] text-emerald-400 space-y-1.5 bg-black custom-scroll">
+        <div>[SYSTEM] Ingestion parameters initialized.</div>
+        <div>[TIER-1] Secure shield handshakes broadcast across Netlify layers.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const clusterNodes = [
+      { id: "titan", name: "TitanCore Central Broker", repo: "titancore-infrastructure", route: "Main Controller Hub", status: "ONLINE", sync: "2 days ago" },
+      { id: "vaultara", name: "Vaultara Capital Matrix", repo: "vaultara-dashboard", route: "Financial API Pipeline", status: "ONLINE", sync: "2 days ago" },
+      { id: "familyfirst", name: "Family First Automated Center", repo: "familyfirst-dashboard", route: "Intake Agent Routing Loop", status: "ONLINE", sync: "2 days ago" },
+      { id: "vitalpath", name: "VitalPath Care Management", repo: "vitalpath-dashboard", route: "Logistics Data Array", status: "ONLINE", sync: "2 days ago" },
+      { id: "revmotion", name: "RevMotion Auto & Marine LLC", repo: "revmotion-dashboard", route: "Inventory Webhook Cluster", status: "ONLINE", sync: "2 days ago" }
+    ];
+
+    function updateMatrixClock() {
+      const current = new Date();
+      document.getElementById('live-matrix-clock').innerText = current.toLocaleString();
+    }
+    setInterval(updateMatrixClock, 1000);
+    updateMatrixClock();
+
+    function renderClusterTelemetry(filterId = 'all') {
+      const grid = document.getElementById('telemetry-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const itemsToRender = filterId === 'all' ? clusterNodes : clusterNodes.filter(n => n.id === filterId);
+
+      itemsToRender.forEach(node => {
+        grid.innerHTML += `
+          <div class="metal-container p-5 space-y-4 transition-all hover:translate-x-0.5">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="text-sm font-bold text-white font-mono tracking-wide uppercase">${node.name}</h4>
+                <p class="text-[11px] text-[#d8b45a]/80 font-mono mt-0.5">repo: github.com/louthelion/${node.repo}</p>
+              </div>
+              <span class="text-[9px] font-mono bg-[#087457]/20 text-emerald-400 border border-[#0a8d69]/40 px-2 py-0.5 rounded font-black tracking-widest">${node.status}</span>
+            </div>
+            <div class="pt-3 border-t border-[rgba(242,217,140,.12)] flex justify-between text-[11px] font-mono text-gray-400">
+              <span><i class="fa-solid fa-code-branch mr-1.5 text-[#d8b45a]"></i> ${node.route}</span>
+              <span class="text-gray-500">${node.sync}</span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function executeSync(button) {
+      const initialText = button.innerText;
+      button.innerText = "DEPLOYING CACHE...";
+      button.disabled = true;
+      appendLog("[WEBHOOK] Executing live push array across Netlify application clusters...");
+
+      setTimeout(() => {
+        button.innerText = initialText;
+        button.disabled = false;
+        appendLog("[SUCCESS] Synchronization complete. Production endpoints updated successfully.");
+        alert("Repository mirror array completed successfully across all 5 active nodes!");
+      }, 1500);
+    }
+
+    function showTerminalPanel() {
+      document.getElementById('terminal-drawer').classList.toggle('hidden');
+    }
+
+    function appendLog(logText) {
+      const consoleBox = document.getElementById('terminal-console');
+      if (!consoleBox) return;
+      const nowTime = new Date().toLocaleTimeString();
+      consoleBox.innerHTML += `<div><span class="text-gray-600">[${nowTime}]</span> ${logText}</div>`;
+      consoleBox.scrollTop = consoleBox.scrollHeight;
+    }
+
+    function loadSubsidiaryData(target) {
+      appendLog(`[ROUTER] Shifting telemetry matrix view target profile criteria to: [${target.toUpperCase()}]`);
+
+      document.getElementById('bridge-title').innerText = `${target === 'global' ? 'Executive Control' : target.charAt(0).toUpperCase() + target.slice(1)} Channel Active`;
+
+      if (target === 'global') {
+        renderClusterTelemetry('all');
+      } else {
+        renderClusterTelemetry(target);
+      }
+
+      const buttons = ['global', 'vaultara', 'familyfirst', 'vitalpath', 'revmotion'];
+      buttons.forEach(bId => {
+        const btn = document.getElementById(`btn-${bId}`);
+        if (!btn) return;
+        if (bId === target) {
+          btn.className = "w-full flex items-center justify-between px-4 py-3 rounded-xl bg-[rgba(242,217,140,.08)] text-white border-l-2 border-[#d8b45a] font-medium text-xs tracking-wider uppercase transition-all text-left";
+          const icon = btn.querySelector('i');
+          if (icon) icon.className = icon.className.replace('opacity-30', 'text-[#d8b45a]');
+        } else {
+          btn.className = "w-full flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:bg-[rgba(255,255,255,.02)] hover:text-white font-medium text-xs tracking-wider uppercase transition-all text-left";
+          const icon = btn.querySelector('i');
+          if (icon) {
+            icon.classList.remove('text-[#d8b45a]');
+            icon.classList.add('opacity-30');
+          }
+        }
+      });
+    }
+
+    renderClusterTelemetry();
+  </script>
+</body>
+</html>
