@@ -1148,7 +1148,23 @@
   </style>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.supabase) {
+      const db = window.supabase.createClient('https://jgpvrblzyznyprtffirw.supabase.co', 'sb_publishable_4MZbcaMuJ-_GfaZh1jb4yA_tyyj7EfP');
+      
+      db.from('reports').insert({
+        company: 'TitanCore Main Website',
+        report_type: 'Traffic Pulse',
+        report_summary: 'New user visitor logged on the main public web page.',
+        sent_to_titancore: true,
+        status: 'active_live'
+      }).then(() => console.log('Traffic signal sent to TitanCore Hub.'));
+    }
+  });
+</script>
+
   window.addEventListener('DOMContentLoaded', () => {
     if (window.supabase) {
       const db = window.supabase.createClient('https://jgpvrblzyznyprtffirw.supabase.co', 'sb_publishable_4MZbcaMuJ-_GfaZh1jb4yA_tyyj7EfP');
@@ -1163,6 +1179,25 @@
     }
   });
 </script>
+ <!-- TITANCORE TRAFFIC TRACKER -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (window.supabase) {
+      const db = window.supabase.createClient('https://jgpvrblzyznyprtffirw.supabase.co', 'sb_publishable_4MZbcaMuJ-_GfaZh1jb4yA_tyyj7EfP');
+      
+      // Automatically logs a visit whenever a user lands on the page
+      db.from('reports').insert({
+        company: 'TitanCore Main Website',
+        report_type: 'Traffic Pulse',
+        report_summary: 'New user visitor logged on the main public web page.',
+        sent_to_titancore: true,
+        status: 'active_live'
+      }).then(() => console.log('Traffic signal sent to TitanCore Hub.'));
+    }
+  });
+</script>
+ 
 <body class="antialiased text-neutral-200">
 
   <div class="site">
