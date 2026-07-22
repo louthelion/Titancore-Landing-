@@ -104,7 +104,7 @@
             <h2 class="text-base font-black tracking-wider uppercase text-white font-serif">
               TitanCore <span class="text-[#d8b45a] font-normal">Bridge</span>
             </h2>
-            <p class="text-[9px] font-mono tracking-widest text-gray-500 uppercase">Cross-Company AI Infrastructure</p>
+            <p class="text-[9px] font-mono tracking-widest text-gray-500 uppercase">Cross-Company Validation Infrastructure</p>
           </div>
         </div>
 
@@ -260,7 +260,7 @@
     const clusterNodes = [
       { id: "titan", name: "TitanCore Central Broker", repo: "titancore-infrastructure", route: "Main Controller Hub", status: "ONLINE", sync: "2 days ago" },
       { id: "vaultara", name: "Vaultara Capital Matrix", repo: "vaultara-dashboard", route: "Financial API Pipeline", status: "ONLINE", sync: "2 days ago" },
-      { id: "familyfirst", name: "Family First Automated Center", repo: "familyfirst-dashboard", route: "Intake Agent Routing Loop", status: "ONLINE", sync: "2 days ago" },
+      { id: "familyfirst", name: "Family First Acquisition Platform V3", repo: "familyfirst-dashboard", route: "Validation Supabase Auth", status: "OWNER AUTH", sync: "validation" },
       { id: "vitalpath", name: "VitalPath Care Management", repo: "vitalpath-dashboard", route: "Logistics Data Array", status: "ONLINE", sync: "2 days ago" },
       { id: "revmotion", name: "RevMotion Auto & Marine LLC", repo: "revmotion-dashboard", route: "Inventory Webhook Cluster", status: "ONLINE", sync: "2 days ago" }
     ];
@@ -307,8 +307,8 @@
       setTimeout(() => {
         button.innerText = initialText;
         button.disabled = false;
-        appendLog("[SUCCESS] Synchronization complete. Production endpoints updated successfully.");
-        alert("Repository mirror array completed successfully across all 5 active nodes!");
+        appendLog("[SUCCESS] Synchronization complete. Validation endpoint check completed successfully.");
+        alert("Repository mirror array completed successfully across all active validation nodes!");
       }, 1500);
     }
 
