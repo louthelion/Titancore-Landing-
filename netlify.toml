@@ -13,3 +13,19 @@
 [[edge_functions]]
   function = "inject-live-news"
   path = "/global-news.html"
+
+[[edge_functions]]
+  function = "inject-sms-compliance"
+  path = "/privacy-policy.html"
+
+[[edge_functions]]
+  function = "inject-sms-compliance"
+  path = "/privacy-policy"
+
+[[edge_functions]]
+  function = "inject-sms-compliance"
+  path = "/terms-of-use.html"
+
+[[edge_functions]]
+  function = "inject-sms-compliance"
+  path = "/terms-of-use"
