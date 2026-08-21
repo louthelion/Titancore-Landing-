@@ -5,3 +5,11 @@
 [[edge_functions]]
   function = "harden-family-first-referral"
   path = "/companies.html"
+
+[[edge_functions]]
+  function = "inject-live-news"
+  path = "/news-media.html"
+
+[[edge_functions]]
+  function = "inject-live-news"
+  path = "/global-news.html"
