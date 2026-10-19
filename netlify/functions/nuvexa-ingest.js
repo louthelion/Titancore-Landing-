@@ -20,7 +20,7 @@ exports.handler=async(event)=>{
  !/^[a-z][a-z0-9_]{0,99}$/.test(input.eventType)||
  !["integration_queue_smoke_test","auto_queue_trigger_smoke_test"].includes(input.eventType)||
  !/^[0-9a-f]{64}$/.test(input.payloadSha256)||
- typeof input.sourceCreatedAt!=="string"||!/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,3})?Z$/.test(input.sourceCreatedAt)||!Number.isFinite(Date.parse(input.sourceCreatedAt))||Date.parse(input.sourceCreatedAt)>Date.now()+300000)
+ typeof input.sourceCreatedAt!=="string"||!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z$/.test(input.sourceCreatedAt)||!Number.isFinite(Date.parse(input.sourceCreatedAt))||Date.parse(input.sourceCreatedAt)>Date.now()+300000)
  return json(400,{error:"Invalid event"});
  const base="https://jgpvrblzyznyprtffirw.supabase.co/rest/v1/nuvexa_audit_receipts";
  const row={source_project:"szhrslrofqpvjubhvfea",source_event_id:input.eventId,
