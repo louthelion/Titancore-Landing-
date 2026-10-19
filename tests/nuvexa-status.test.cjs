@@ -10,3 +10,13 @@ test("missing config disables gateway",async()=>{setup();delete process.env.NUVE
 test("unauthorized access rejected before upstream call",async()=>{setup();let calls=0;const original=global.fetch;global.fetch=async()=>{calls++;throw Error("called");};try{assert.equal((await gateway(request("Bearer "+"c".repeat(48)))).statusCode,401);assert.equal(calls,0);}finally{global.fetch=original;}});
 test("fresh paper-status response is sanitized",async()=>{setup();const original=global.fetch;global.fetch=async()=>({ok:true,headers:{get:()=>null},text:async()=>JSON.stringify({version:"paper-status-v1",mode:"paper",liveTradingEnabled:false,checkedAt:new Date().toISOString(),broker:{account:"SECRET"},monitoring:{available:true,stale:false}})});try{const r=await gateway(request());assert.equal(r.statusCode,200);assert.equal(JSON.parse(r.body).brokerVerified,false);assert.equal(r.body.includes("SECRET"),false);}finally{global.fetch=original;}});
 test("stale or live-trading reports fail closed",async()=>{setup();const original=global.fetch;global.fetch=async()=>({ok:true,headers:{get:()=>null},text:async()=>JSON.stringify({version:"paper-status-v1",mode:"paper",liveTradingEnabled:true,checkedAt:"2020-01-01T00:00:00Z"})});try{assert.equal((await gateway(request())).statusCode,502);}finally{global.fetch=original;}});
+
+test("draft receipt ledger is private and idempotent by source event",()=>{
+ const fs=require("node:fs");
+ const sql=fs.readFileSync("supabase/drafts/nuvexa-audit-receipts-review.sql","utf8");
+ assert.match(sql,/unique\s*\(source_project,\s*source_event_id\)/i);
+ assert.match(sql,/enable row level security/i);
+ assert.match(sql,/revoke all on public\.nuvexa_audit_receipts from anon, authenticated/i);
+ assert.doesNotMatch(sql,/grant\s+(insert|update|delete|all)\s+on\s+public\.nuvexa_audit_receipts\s+to\s+(anon|authenticated)/i);
+ assert.match(sql,/NOT APPLIED TO TITANCORE PRODUCTION/);
+});
