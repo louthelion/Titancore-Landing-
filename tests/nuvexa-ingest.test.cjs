@@ -12,3 +12,21 @@ test("receipt returned only after committed response",async()=>{setup();const ol
 test("conflicting duplicate is not acknowledged",async()=>{setup();const old=global.fetch;global.fetch=async(_url,opts)=>opts.method==="POST"?{status:409}:{ok:true,json:async()=>[{id:"old",source_payload_sha256:"c".repeat(64),source_event_type:"integration_queue_smoke_test",source_created_at:"2026-10-18T23:49:33Z"}]};try{assert.equal((await handler(req())).statusCode,409);}finally{global.fetch=old;}});
 
 test("matching duplicate requires identical source timestamp",async()=>{setup();const old=global.fetch;global.fetch=async(_url,opts)=>opts.method==="POST"?{status:409}:{ok:true,json:async()=>[{id:"old",source_payload_sha256:"b".repeat(64),source_event_type:"integration_queue_smoke_test",source_created_at:"2026-10-17T23:49:33Z"}]};try{assert.equal((await handler(req())).statusCode,409);}finally{global.fetch=old;}});
+
+test("matching duplicate returns prior receipt without creating a new one",async()=>{
+ setup();const old=global.fetch;let calls=0;
+ global.fetch=async(_url,opts)=>{calls++;return opts.method==="POST"?{status:409}:{ok:true,json:async()=>[{
+ id:"receipt-original",source_payload_sha256:"b".repeat(64),
+ source_event_type:"integration_queue_smoke_test",source_created_at:"2026-10-18T23:49:33Z"
+ }]};};
+ try{const r=await handler(req());assert.equal(r.statusCode,200);
+ assert.equal(JSON.parse(r.body).receiptId,"receipt-original");
+ assert.equal(JSON.parse(r.body).status,"already_received");assert.equal(calls,2);
+ }finally{global.fetch=old;}
+});
+test("database write failure never issues receipt",async()=>{
+ setup();const old=global.fetch;
+ global.fetch=async()=>({status:403});
+ try{const r=await handler(req());assert.equal(r.statusCode,502);
+ assert.equal("receiptId" in JSON.parse(r.body),false);}finally{global.fetch=old;}
+});
