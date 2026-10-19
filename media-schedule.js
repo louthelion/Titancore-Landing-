@@ -49,11 +49,11 @@
     {
       dayNumber: 4,
       title: "Energy Video of the Day",
-      subject: "Oil, Energy, and the Business Cost Chain",
-      description: "A public business video connecting energy supply, commodities, production, and operating costs.",
+      subject: "A 40-year plan for energy - Amory Lovins",
+      description: "An archival TED-Ed talk by Amory Lovins on energy efficiency, innovation, and the business case for reducing oil and coal use.",
       category: "Oil & Energy",
-      videoId: "GtaoP0skPWc",
-      sourceUrl: "https://www.youtube.com/watch?v=GtaoP0skPWc",
+      videoId: "PQqv8cWWV2U",
+      sourceUrl: "https://www.youtube.com/watch?v=PQqv8cWWV2U",
       archiveId: "homepage-energy-video"
     },
     {
@@ -99,8 +99,7 @@
       category: "Oil & Energy",
       type: "video",
       items: [
-        { subject: "Oil, Energy, and the Business Cost Chain", videoId: "GtaoP0skPWc", description: "Oil, gas, commodities, production, and the relationship between energy and business costs.", sourceLink: "https://www.youtube.com/watch?v=GtaoP0skPWc" },
-        { subject: "Energy Supply and Price Pressure", videoId: "bNpx7gpSqbY", description: "A separate energy edition examining supply, infrastructure, pricing pressure, and operating costs.", sourceLink: "https://www.youtube.com/watch?v=bNpx7gpSqbY" }
+        { subject: "A 40-year plan for energy - Amory Lovins", videoId: "PQqv8cWWV2U", description: "An archival TED-Ed talk on energy efficiency, innovation, and the business case for reducing oil and coal use.", sourceLink: "https://www.youtube.com/watch?v=PQqv8cWWV2U" }
       ]
     },
     {
