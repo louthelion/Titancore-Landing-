@@ -15,7 +15,7 @@ exports.handler=async(event)=>{
  if((event.body||"").length>8192)return json(413,{error:"Payload too large"});
  let input;try{input=JSON.parse(event.body||"");}catch{return json(400,{error:"Invalid JSON"});}
  const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
- if(!input||Object.keys(input).sort().join(",")!=="eventId,eventType,payloadSha256,sourceCreatedAt"||
+ if(!input||Array.isArray(input)||Object.keys(input).sort().join(",")!=="eventId,eventType,payloadSha256,sourceCreatedAt"||
  !uuid.test(input.eventId)||typeof input.eventType!=="string"||
  !/^[a-z][a-z0-9_]{0,99}$/.test(input.eventType)||
  !["integration_queue_smoke_test","auto_queue_trigger_smoke_test"].includes(input.eventType)||
@@ -29,7 +29,7 @@ exports.handler=async(event)=>{
  const headers={apikey:dbKey,Authorization:"Bearer "+dbKey,"Content-Type":"application/json",Prefer:"return=representation"};
  try{
  const reply=await fetch(base,{method:"POST",headers,body:JSON.stringify(row),signal:AbortSignal.timeout(8000)});
- if(reply.status===201){const data=await reply.json();if(Array.isArray(data)&&data.length===1&&data[0].source_event_id===input.eventId)return json(201,{receiptId:data[0].id,eventId:input.eventId,status:"received"});return json(502,{error:"Receipt not confirmed"});}
+ if(reply.status===201){const data=await reply.json();if(Array.isArray(data)&&data.length===1&&data[0].source_event_id===input.eventId&&data[0].source_payload_sha256===input.payloadSha256&&data[0].source_event_type===input.eventType&&Date.parse(data[0].source_created_at)===Date.parse(input.sourceCreatedAt))return json(201,{receiptId:data[0].id,eventId:input.eventId,status:"received"});return json(502,{error:"Receipt not confirmed"});}
  if(reply.status===409){
    const read=await fetch(base+"?source_project=eq.szhrslrofqpvjubhvfea&source_event_id=eq."+encodeURIComponent(input.eventId)+"&select=id,source_payload_sha256,source_event_type,source_created_at",{headers:{apikey:dbKey,Authorization:"Bearer "+dbKey},signal:AbortSignal.timeout(8000)});
    if(!read.ok)return json(502,{error:"Receipt lookup unavailable"});
