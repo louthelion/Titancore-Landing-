@@ -31,9 +31,9 @@ exports.handler=async(event)=>{
  const reply=await fetch(base,{method:"POST",headers,body:JSON.stringify(row),signal:AbortSignal.timeout(8000)});
  if(reply.status===201){const data=await reply.json();if(Array.isArray(data)&&data.length===1&&data[0].source_event_id===input.eventId)return json(201,{receiptId:data[0].id,eventId:input.eventId,status:"received"});return json(502,{error:"Receipt not confirmed"});}
  if(reply.status===409){
-   const read=await fetch(base+"?source_project=eq.szhrslrofqpvjubhvfea&source_event_id=eq."+encodeURIComponent(input.eventId)+"&select=id,source_payload_sha256,source_event_type",{headers:{apikey:dbKey,Authorization:"Bearer "+dbKey},signal:AbortSignal.timeout(8000)});
+   const read=await fetch(base+"?source_project=eq.szhrslrofqpvjubhvfea&source_event_id=eq."+encodeURIComponent(input.eventId)+"&select=id,source_payload_sha256,source_event_type,source_created_at",{headers:{apikey:dbKey,Authorization:"Bearer "+dbKey},signal:AbortSignal.timeout(8000)});
    if(!read.ok)return json(502,{error:"Receipt lookup unavailable"});
-   const found=await read.json();if(found.length===1&&found[0].source_payload_sha256===input.payloadSha256&&found[0].source_event_type===input.eventType)
+   const found=await read.json();if(found.length===1&&found[0].source_payload_sha256===input.payloadSha256&&found[0].source_event_type===input.eventType&&Date.parse(found[0].source_created_at)===Date.parse(input.sourceCreatedAt))
    return json(200,{receiptId:found[0].id,eventId:input.eventId,status:"already_received"});
    return json(409,{error:"Conflicting event"});
  }
