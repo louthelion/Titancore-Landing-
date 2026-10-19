@@ -32,3 +32,14 @@ test("database write failure never issues receipt",async()=>{
 });
 
 test("committed response mismatch is never acknowledged",async()=>{setup();const old=global.fetch;global.fetch=async()=>({status:201,json:async()=>[{id:"receipt-test",source_event_id:id,source_payload_sha256:"c".repeat(64),source_event_type:"integration_queue_smoke_test",source_created_at:"2026-10-18T23:49:33Z"}]});try{assert.equal((await handler(req())).statusCode,502);}finally{global.fetch=old;}});
+
+test("future-dated and timezone-offset events are rejected",async()=>{
+ setup();const old=global.fetch;let calls=0;global.fetch=async()=>{calls++;throw Error("Unexpected DB call")};
+ try{
+ for(const sourceCreatedAt of ["2099-01-01T00:00:00Z","2026-10-18T19:49:33-04:00"]){
+  const payload=JSON.stringify({...JSON.parse(body),sourceCreatedAt});
+  assert.equal((await handler(req(undefined,payload))).statusCode,400);
+ }
+ assert.equal(calls,0);
+ }finally{global.fetch=old;}
+});
