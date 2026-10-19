@@ -3,7 +3,9 @@ on:
   pull_request:
     paths:
       - "netlify/functions/nuvexa-status.js"
+      - "netlify/functions/nuvexa-ingest.js"
       - "tests/nuvexa-status.test.cjs"
+      - "tests/nuvexa-ingest.test.cjs"
       - ".github/workflows/nuvexa-gateway.yml"
 jobs:
   gateway:
@@ -13,4 +15,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: node --test tests/nuvexa-status.test.cjs
+      - run: node --test tests/nuvexa-status.test.cjs tests/nuvexa-ingest.test.cjs
