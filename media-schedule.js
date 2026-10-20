@@ -18,10 +18,10 @@
     },
     {
       dayNumber: 1,
-      title: "Global Markets Video of the Day",
-      subject: "Reading Global Market Signals",
-      description: "A daily public briefing on global positioning, investor sentiment, and changing business conditions.",
-      category: "Global Markets",
+      title: "Entrepreneurship Video of the Day",
+      subject: "Don’t Pitch, Test: The Lean Startup Method For Smarter Startups",
+      description: "A Think Fast Talk Smart discussion about testing startup ideas and the lean startup method.",
+      category: "Entrepreneurship / Business Growth",
       videoId: "EulhKrrfMnw",
       sourceUrl: "https://www.youtube.com/watch?v=EulhKrrfMnw",
       archiveId: "homepage-global-markets-video"
@@ -49,19 +49,19 @@
     {
       dayNumber: 4,
       title: "Energy Video of the Day",
-      subject: "Oil, Energy, and the Business Cost Chain",
-      description: "A public business video connecting energy supply, commodities, production, and operating costs.",
+      subject: "A 40-year plan for energy - Amory Lovins",
+      description: "An archival TED-Ed talk by Amory Lovins on energy efficiency, innovation, and the business case for reducing oil and coal use.",
       category: "Oil & Energy",
-      videoId: "GtaoP0skPWc",
-      sourceUrl: "https://www.youtube.com/watch?v=GtaoP0skPWc",
+      videoId: "PQqv8cWWV2U",
+      sourceUrl: "https://www.youtube.com/watch?v=PQqv8cWWV2U",
       archiveId: "homepage-energy-video"
     },
     {
       dayNumber: 5,
-      title: "Economy Video of the Day",
-      subject: "Housing, Interest Rates, and Economic Pressure",
-      description: "A daily public economy video about housing, property, interest rates, and changing economic conditions.",
-      category: "Real Estate & Economy",
+      title: "Entrepreneurship Video of the Day",
+      subject: "The single biggest reason why start-ups succeed - Bill Gross",
+      description: "An archival TED talk by Bill Gross about factors associated with startup success.",
+      category: "Entrepreneurship / Business Growth",
       videoId: "bNpx7gpSqbY",
       sourceUrl: "https://www.youtube.com/watch?v=bNpx7gpSqbY",
       archiveId: "homepage-economy-video"
@@ -99,8 +99,7 @@
       category: "Oil & Energy",
       type: "video",
       items: [
-        { subject: "Oil, Energy, and the Business Cost Chain", videoId: "GtaoP0skPWc", description: "Oil, gas, commodities, production, and the relationship between energy and business costs.", sourceLink: "https://www.youtube.com/watch?v=GtaoP0skPWc" },
-        { subject: "Energy Supply and Price Pressure", videoId: "bNpx7gpSqbY", description: "A separate energy edition examining supply, infrastructure, pricing pressure, and operating costs.", sourceLink: "https://www.youtube.com/watch?v=bNpx7gpSqbY" }
+        { subject: "A 40-year plan for energy - Amory Lovins", videoId: "PQqv8cWWV2U", description: "An archival TED-Ed talk on energy efficiency, innovation, and the business case for reducing oil and coal use.", sourceLink: "https://www.youtube.com/watch?v=PQqv8cWWV2U" }
       ]
     },
     {
