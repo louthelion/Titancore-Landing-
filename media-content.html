@@ -341,18 +341,12 @@
     </div>
   </footer>
 
+  <script src="media-schedule.js"></script>
   <script>
     "use strict";
 
-    const videoEditions = [
-      { category: "Market & Stock Video", title: "Understanding Stock Market Movement", description: "A public business video exploring companies, market movement, and the signals that shape financial decisions.", videoId: "98qfFzqDKR8" },
-      { category: "Bitcoin & Crypto Video", title: "Bitcoin, Blockchain, and Digital Asset Awareness", description: "A public overview of digital assets, market cycles, adoption, and responsible risk awareness.", videoId: "pVZzgzYZdCA" },
-      { category: "Oil & Energy Video", title: "Oil, Energy, and the Business Cost Chain", description: "A business-focused look at energy supply, commodities, production, and operating costs.", videoId: "GtaoP0skPWc" },
-      { category: "Real Estate & Economy Video", title: "Housing, Interest Rates, and Economic Pressure", description: "A public business briefing connecting property, affordability, rates, and changing economic conditions.", videoId: "bNpx7gpSqbY" },
-      { category: "Auto & Marine Business Video", title: "Transportation Markets and Business Operations", description: "A selection focused on automotive, marine, transportation, customer demand, and operating strategy.", videoId: "EulhKrrfMnw" },
-      { category: "Finance Education Video", title: "Building Stronger Everyday Financial Decisions", description: "Practical public education on money, capital, budgeting, saving, and disciplined financial choices.", videoId: "Qh-M3_L4xYk" },
-      { category: "Leadership / Business Growth Video", title: "Leadership Discipline and Sustainable Growth", description: "A leadership selection for founders, operators, teams, and companies focused on durable growth.", videoId: "lmyZMtPVodo" }
-    ];
+    const videoEditions = window.TitanCoreMedia.getDailyItems(new Date())
+      .filter(item => item.type === "video");
 
     const audioEditions = [
       {
