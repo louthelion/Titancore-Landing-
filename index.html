@@ -1256,6 +1256,9 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
         </div>
+        <div class="cta-row">
+          <a id="videoOfTheDaySource" href="https://www.youtube.com/watch?v=98qfFzqDKR8" class="btn secondary" target="_blank" rel="noopener noreferrer">Watch on YouTube (opens in a new tab) <span class="arrow" aria-hidden="true">›</span></a>
+        </div>
       </div>
     </section>
 
@@ -1524,6 +1527,11 @@
       const dailyVideo = TitanCoreMedia.getHomepageVideo(new Date());
       videoOfTheDayFrame.src = `https://www.youtube-nocookie.com/embed/${dailyVideo.videoId}?rel=0&playsinline=1`;
       videoOfTheDayFrame.title = `Daily Business Video: ${dailyVideo.subject}`;
+
+      const videoOfTheDaySource = document.getElementById("videoOfTheDaySource");
+      if(videoOfTheDaySource){
+        videoOfTheDaySource.href = `https://www.youtube.com/watch?v=${dailyVideo.videoId}`;
+      }
 
       const videoOfTheDayTitle = document.getElementById("videoOfTheDayTitle");
       if(videoOfTheDayTitle){
