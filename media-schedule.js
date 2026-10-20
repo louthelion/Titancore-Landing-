@@ -170,59 +170,87 @@
       ]
     },
     {
-      category: "Market",
-      type: "audio",
-      items: [
-        { subject: "Market Volatility and Business Movement", audioEmbed: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0", description: "A spoken market edition about stocks, companies, volatility, and business movement.", sourceLink: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r" },
-        { subject: "Markets, Rates, and Investor Positioning", audioEmbed: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0", description: "A different audio briefing connecting rates, savings behavior, and investor positioning.", sourceLink: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX" }
+      "category": "Market",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "A Thematic Look at Market Volatility",
+          "audioEmbed": "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+          "description": "A podcast discussion about market volatility.",
+          "sourceLink": "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r"
+        }
       ]
     },
     {
-      category: "Bitcoin & Crypto",
-      type: "audio",
-      items: [
-        { subject: "Crypto Markets and Adoption", audioEmbed: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0", description: "Bitcoin, crypto markets, adoption, risk, and digital assets in a spoken edition.", sourceLink: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G" },
-        { subject: "Digital Assets and Portfolio Risk", audioEmbed: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0", description: "An alternate crypto audio selection about digital assets, volatility, and portfolio risk.", sourceLink: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r" }
+      "category": "Bitcoin & Crypto",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "200 - The OG's Reunite To Talk Vanguard, Aster & 4 Years Of Crypto",
+          "audioEmbed": "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
+          "description": "A podcast conversation about Vanguard, Aster, and four years of crypto.",
+          "sourceLink": "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G"
+        }
       ]
     },
     {
-      category: "Oil & Energy",
-      type: "audio",
-      items: [
-        { subject: "The State of U.S. Oil and Gas", audioEmbed: "https://open.spotify.com/embed/episode/2fOMGdpdKQWLFfXvFGa8B8?utm_source=generator&theme=0", description: "Oil, gas, energy policy, production, and business costs.", sourceLink: "https://open.spotify.com/episode/2fOMGdpdKQWLFfXvFGa8B8" },
-        { subject: "Energy Policy and Operating Costs", audioEmbed: "https://open.spotify.com/embed/episode/6IUvRq66quGfIWGagbS7la?utm_source=generator&theme=0", description: "A different spoken energy edition linking policy, transportation, and operating costs.", sourceLink: "https://open.spotify.com/episode/6IUvRq66quGfIWGagbS7la" }
+      "category": "Oil & Energy",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "API’s Mike Sommers on Trump 2.0 and the state of U.S. oil and gas",
+          "audioEmbed": "https://open.spotify.com/embed/episode/2fOMGdpdKQWLFfXvFGa8B8?utm_source=generator&theme=0",
+          "description": "An archival podcast conversation with API’s Mike Sommers about U.S. oil and gas.",
+          "sourceLink": "https://open.spotify.com/episode/2fOMGdpdKQWLFfXvFGa8B8"
+        }
       ]
     },
     {
-      category: "Real Estate & Economy",
-      type: "audio",
-      items: [
-        { subject: "Creative Real Estate Success", audioEmbed: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0", description: "Property, housing economics, investment, and market conditions.", sourceLink: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz" },
-        { subject: "Housing Wealth and Economic Choices", audioEmbed: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0", description: "An alternate property episode about housing wealth, savings, affordability, and economic choices.", sourceLink: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX" }
+      "category": "Real Estate & Economy",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "Turning Dead Leads into Gold: Trever Ahing's Blueprint for Creative Real Estate Success",
+          "audioEmbed": "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
+          "description": "A podcast conversation with Trever Ahing about leads and creative real estate.",
+          "sourceLink": "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz"
+        }
       ]
     },
     {
-      category: "Auto & Marine Business",
-      type: "audio",
-      items: [
-        { subject: "The Lead Response Crisis Hurting Dealers", audioEmbed: "https://open.spotify.com/embed/episode/6IUvRq66quGfIWGagbS7la?utm_source=generator&theme=0", description: "Automotive retail, dealership operations, marine technology, and transportation business.", sourceLink: "https://open.spotify.com/episode/6IUvRq66quGfIWGagbS7la" },
-        { subject: "Transportation Teams and Customer Response", audioEmbed: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0", description: "A different mobility audio edition on teams, customer response, and scalable operations.", sourceLink: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9" }
+      "category": "Auto & Marine Business",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "Inside the Lead Response Crisis Hurting Dealers (And What to Do About it) | Industry Spotlight",
+          "audioEmbed": "https://open.spotify.com/embed/episode/6IUvRq66quGfIWGagbS7la?utm_source=generator&theme=0",
+          "description": "A podcast episode about dealership lead response.",
+          "sourceLink": "https://open.spotify.com/episode/6IUvRq66quGfIWGagbS7la"
+        }
       ]
     },
     {
-      category: "Finance Education",
-      type: "audio",
-      items: [
-        { subject: "Supercharging Your Savings", audioEmbed: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0", description: "Saving, investing, financial habits, and stronger everyday money decisions.", sourceLink: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX" },
-        { subject: "Financial Habits for Long-Term Growth", audioEmbed: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0", description: "A new daily finance episode on habits, investment thinking, and long-term wealth building.", sourceLink: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz" }
+      "category": "Finance Education",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "A Thematic Look at Market Volatility",
+          "audioEmbed": "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+          "description": "A podcast discussion about market volatility.",
+          "sourceLink": "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r"
+        }
       ]
     },
     {
-      category: "Leadership / Business Growth",
-      type: "audio",
-      items: [
-        { subject: "The Mindset That Makes Growth Feel Easier", audioEmbed: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0", description: "Leadership mindset, entrepreneurship, teams, and sustainable business growth.", sourceLink: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9" },
-        { subject: "Leadership Through Market Uncertainty", audioEmbed: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0", description: "An alternate leadership conversation about decision-making, uncertainty, and team direction.", sourceLink: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G" }
+      "category": "Leadership / Business Growth",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "The Powerful Mindset That Makes 10x Growth Feel Easy",
+          "audioEmbed": "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
+          "description": "A podcast episode about mindset and business growth.",
+          "sourceLink": "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9"
+        }
       ]
     }
   ];
