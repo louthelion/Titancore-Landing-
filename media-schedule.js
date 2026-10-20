@@ -9,8 +9,8 @@
     {
       dayNumber: 0,
       title: "Market Video of the Day",
-      subject: "Understanding Stock Market Movement",
-      description: "A public business video about stocks, companies, and the market signals shaping financial decisions.",
+      subject: "What it means to buy a company's stock",
+      description: "A Khan Academy lesson explaining stock ownership and what it means to buy shares in a company.",
       category: "Market & Stock",
       videoId: "98qfFzqDKR8",
       sourceUrl: "https://www.youtube.com/watch?v=98qfFzqDKR8",
@@ -29,8 +29,8 @@
     {
       dayNumber: 2,
       title: "Digital Assets Video of the Day",
-      subject: "Bitcoin, Blockchain, and Digital Asset Awareness",
-      description: "A public business video covering digital assets, market cycles, adoption, and responsible risk awareness.",
+      subject: "Demystifying the Wild World of Crypto - Laura Shin",
+      description: "An archival TED talk by Laura Shin introducing the world of cryptocurrency.",
       category: "Bitcoin & Crypto",
       videoId: "pVZzgzYZdCA",
       sourceUrl: "https://www.youtube.com/watch?v=pVZzgzYZdCA",
@@ -39,8 +39,8 @@
     {
       dayNumber: 3,
       title: "Finance Video of the Day",
-      subject: "Building Stronger Everyday Financial Decisions",
-      description: "A daily public finance video about money, credit, capital, budgeting, and practical decision-making.",
+      subject: "Introduction to bonds",
+      description: "A Khan Academy lesson introducing bonds and how borrowing through bonds works.",
       category: "Finance Education",
       videoId: "Qh-M3_L4xYk",
       sourceUrl: "https://www.youtube.com/watch?v=Qh-M3_L4xYk",
@@ -69,8 +69,8 @@
     {
       dayNumber: 6,
       title: "Leadership Video of the Day",
-      subject: "Leadership Discipline and Sustainable Growth",
-      description: "A public business video for founders, operators, teams, and leaders focused on sustainable growth.",
+      subject: "Why good leaders make you feel safe - Simon Sinek",
+      description: "An archival TED talk by Simon Sinek about leadership, trust, and feeling safe at work.",
       category: "Leadership / Business Growth",
       videoId: "lmyZMtPVodo",
       sourceUrl: "https://www.youtube.com/watch?v=lmyZMtPVodo",
@@ -83,55 +83,90 @@
       category: "Market & Stock",
       type: "video",
       items: [
-        { subject: "Understanding Stock Market Movement", videoId: "98qfFzqDKR8", description: "Stocks, companies, market movement, and the signals that shape financial decisions.", sourceLink: "https://www.youtube.com/watch?v=98qfFzqDKR8" },
-        { subject: "Reading Global Market Signals", videoId: "EulhKrrfMnw", description: "A different market briefing on global positioning, investor sentiment, and changing business conditions.", sourceLink: "https://www.youtube.com/watch?v=EulhKrrfMnw" }
+        {
+          subject: "What it means to buy a company's stock",
+          videoId: "98qfFzqDKR8",
+          description: "A Khan Academy lesson explaining stock ownership and what it means to buy shares in a company.",
+          sourceLink: "https://www.youtube.com/watch?v=98qfFzqDKR8"
+        }
       ]
     },
     {
       category: "Bitcoin & Crypto",
       type: "video",
       items: [
-        { subject: "Bitcoin, Blockchain, and Digital Asset Awareness", videoId: "pVZzgzYZdCA", description: "Bitcoin, blockchain, digital assets, market cycles, and risk awareness.", sourceLink: "https://www.youtube.com/watch?v=pVZzgzYZdCA" },
-        { subject: "Crypto Adoption and Market Risk", videoId: "Qh-M3_L4xYk", description: "A new daily crypto selection focused on adoption, volatility, custody, and responsible decisions.", sourceLink: "https://www.youtube.com/watch?v=Qh-M3_L4xYk" }
+        {
+          subject: "Demystifying the Wild World of Crypto - Laura Shin",
+          videoId: "pVZzgzYZdCA",
+          description: "An archival TED talk by Laura Shin introducing the world of cryptocurrency.",
+          sourceLink: "https://www.youtube.com/watch?v=pVZzgzYZdCA"
+        }
       ]
     },
     {
       category: "Oil & Energy",
       type: "video",
       items: [
-        { subject: "A 40-year plan for energy - Amory Lovins", videoId: "PQqv8cWWV2U", description: "An archival TED-Ed talk on energy efficiency, innovation, and the business case for reducing oil and coal use.", sourceLink: "https://www.youtube.com/watch?v=PQqv8cWWV2U" }
+        {
+          subject: "A 40-year plan for energy - Amory Lovins",
+          videoId: "PQqv8cWWV2U",
+          description: "An archival TED-Ed talk on energy efficiency, innovation, and the business case for reducing oil and coal use.",
+          sourceLink: "https://www.youtube.com/watch?v=PQqv8cWWV2U"
+        }
       ]
     },
     {
       category: "Real Estate & Economy",
       type: "video",
       items: [
-        { subject: "Housing, Interest Rates, and Economic Pressure", videoId: "bNpx7gpSqbY", description: "Housing, rent, property, interest rates, and changing economic conditions.", sourceLink: "https://www.youtube.com/watch?v=bNpx7gpSqbY" },
-        { subject: "Property Demand and Economic Cycles", videoId: "lmyZMtPVodo", description: "Today’s alternate property briefing covers demand, affordability, investment, and economic cycles.", sourceLink: "https://www.youtube.com/watch?v=lmyZMtPVodo" }
+        {
+          subject: "The housing price conundrum",
+          videoId: "8IR5LefXVPY",
+          description: "An archival Khan Academy lesson examining the U.S. housing price increases of 2000–2006.",
+          sourceLink: "https://www.youtube.com/watch?v=8IR5LefXVPY"
+        }
       ]
     },
     {
       category: "Auto & Marine Business",
       type: "video",
       items: [
-        { subject: "Auto, Marine, and Transportation Business Trends", videoId: "EulhKrrfMnw", description: "Automotive, marine, transportation, dealership, and marketplace trends.", sourceLink: "https://www.youtube.com/watch?v=EulhKrrfMnw" },
-        { subject: "Dealership Operations and Mobility Demand", videoId: "98qfFzqDKR8", description: "A different daily mobility selection covering dealerships, service operations, demand, and transport markets.", sourceLink: "https://www.youtube.com/watch?v=98qfFzqDKR8" }
+        {
+          subject: "Inside the secret shipping industry - Rose George",
+          videoId: "j7RsRnYlz7I",
+          description: "An archival TED talk by Rose George about container shipping, global trade, and life at sea.",
+          sourceLink: "https://www.youtube.com/watch?v=j7RsRnYlz7I"
+        }
       ]
     },
     {
       category: "Finance Education",
       type: "video",
       items: [
-        { subject: "Building Stronger Everyday Financial Decisions", videoId: "Qh-M3_L4xYk", description: "Money, credit, funding, capital, budgeting, and financial decision-making.", sourceLink: "https://www.youtube.com/watch?v=Qh-M3_L4xYk" },
-        { subject: "Cash Flow, Credit, and Capital Planning", videoId: "pVZzgzYZdCA", description: "A new finance lesson on cash flow, credit discipline, capital planning, and resilient money habits.", sourceLink: "https://www.youtube.com/watch?v=pVZzgzYZdCA" }
+        {
+          subject: "Introduction to bonds",
+          videoId: "Qh-M3_L4xYk",
+          description: "A Khan Academy lesson introducing bonds and how borrowing through bonds works.",
+          sourceLink: "https://www.youtube.com/watch?v=Qh-M3_L4xYk"
+        },
+        {
+          subject: "Introduction to interest",
+          videoId: "GtaoP0skPWc",
+          description: "A Khan Academy lesson introducing interest on borrowed money.",
+          sourceLink: "https://www.youtube.com/watch?v=GtaoP0skPWc"
+        }
       ]
     },
     {
       category: "Leadership / Business Growth",
       type: "video",
       items: [
-        { subject: "Leadership Discipline and Sustainable Growth", videoId: "lmyZMtPVodo", description: "Lessons for founders, operators, teams, entrepreneurs, and long-term business growth.", sourceLink: "https://www.youtube.com/watch?v=lmyZMtPVodo" },
-        { subject: "Building Accountable High-Growth Teams", videoId: "GtaoP0skPWc", description: "A different leadership edition about accountability, execution, team alignment, and sustainable scale.", sourceLink: "https://www.youtube.com/watch?v=GtaoP0skPWc" }
+        {
+          subject: "Why good leaders make you feel safe - Simon Sinek",
+          videoId: "lmyZMtPVodo",
+          description: "An archival TED talk by Simon Sinek about leadership, trust, and feeling safe at work.",
+          sourceLink: "https://www.youtube.com/watch?v=lmyZMtPVodo"
+        }
       ]
     },
     {
@@ -275,3 +310,4 @@
 
   window.TitanCoreMedia = { dailyHomepageVideos, dailySchedule, getHomepageVideo, getDailyItems, readArchive, saveItems, seedArchive, toDateKey };
 }());
+
