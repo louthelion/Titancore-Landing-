@@ -18,10 +18,10 @@
     },
     {
       dayNumber: 1,
-      title: "Global Markets Video of the Day",
-      subject: "Reading Global Market Signals",
-      description: "A daily public briefing on global positioning, investor sentiment, and changing business conditions.",
-      category: "Global Markets",
+      title: "Entrepreneurship Video of the Day",
+      subject: "Don’t Pitch, Test: The Lean Startup Method For Smarter Startups",
+      description: "A Think Fast Talk Smart discussion about testing startup ideas and the lean startup method.",
+      category: "Entrepreneurship / Business Growth",
       videoId: "EulhKrrfMnw",
       sourceUrl: "https://www.youtube.com/watch?v=EulhKrrfMnw",
       archiveId: "homepage-global-markets-video"
@@ -58,10 +58,10 @@
     },
     {
       dayNumber: 5,
-      title: "Economy Video of the Day",
-      subject: "Housing, Interest Rates, and Economic Pressure",
-      description: "A daily public economy video about housing, property, interest rates, and changing economic conditions.",
-      category: "Real Estate & Economy",
+      title: "Entrepreneurship Video of the Day",
+      subject: "The single biggest reason why start-ups succeed - Bill Gross",
+      description: "An archival TED talk by Bill Gross about factors associated with startup success.",
+      category: "Entrepreneurship / Business Growth",
       videoId: "bNpx7gpSqbY",
       sourceUrl: "https://www.youtube.com/watch?v=bNpx7gpSqbY",
       archiveId: "homepage-economy-video"
