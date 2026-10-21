@@ -3,7 +3,7 @@ name: TitanCore draft CRM validation tests
 on:
   push:
     branches:
-      - 'draft/remove-obsolete-titancore-phone-20261019'
+      - 'draft/titancore-contact-crm-reconciled-20261021'
     paths:
       - 'drafts/contact-crm/**'
       - '.github/workflows/contact-crm-draft-tests.yml'
