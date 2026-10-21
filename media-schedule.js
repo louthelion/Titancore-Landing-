@@ -9,8 +9,8 @@
     {
       dayNumber: 0,
       title: "Market Video of the Day",
-      subject: "Understanding Stock Market Movement",
-      description: "A public business video about stocks, companies, and the market signals shaping financial decisions.",
+      subject: "What it means to buy a company's stock",
+      description: "A Khan Academy lesson explaining stock ownership and what it means to buy shares in a company.",
       category: "Market & Stock",
       videoId: "98qfFzqDKR8",
       sourceUrl: "https://www.youtube.com/watch?v=98qfFzqDKR8",
@@ -29,8 +29,8 @@
     {
       dayNumber: 2,
       title: "Digital Assets Video of the Day",
-      subject: "Bitcoin, Blockchain, and Digital Asset Awareness",
-      description: "A public business video covering digital assets, market cycles, adoption, and responsible risk awareness.",
+      subject: "Demystifying the Wild World of Crypto - Laura Shin",
+      description: "An archival TED talk by Laura Shin introducing the world of cryptocurrency.",
       category: "Bitcoin & Crypto",
       videoId: "pVZzgzYZdCA",
       sourceUrl: "https://www.youtube.com/watch?v=pVZzgzYZdCA",
@@ -39,8 +39,8 @@
     {
       dayNumber: 3,
       title: "Finance Video of the Day",
-      subject: "Building Stronger Everyday Financial Decisions",
-      description: "A daily public finance video about money, credit, capital, budgeting, and practical decision-making.",
+      subject: "Introduction to bonds",
+      description: "A Khan Academy lesson introducing bonds and how borrowing through bonds works.",
       category: "Finance Education",
       videoId: "Qh-M3_L4xYk",
       sourceUrl: "https://www.youtube.com/watch?v=Qh-M3_L4xYk",
@@ -69,8 +69,8 @@
     {
       dayNumber: 6,
       title: "Leadership Video of the Day",
-      subject: "Leadership Discipline and Sustainable Growth",
-      description: "A public business video for founders, operators, teams, and leaders focused on sustainable growth.",
+      subject: "Why good leaders make you feel safe - Simon Sinek",
+      description: "An archival TED talk by Simon Sinek about leadership, trust, and feeling safe at work.",
       category: "Leadership / Business Growth",
       videoId: "lmyZMtPVodo",
       sourceUrl: "https://www.youtube.com/watch?v=lmyZMtPVodo",
@@ -83,111 +83,174 @@
       category: "Market & Stock",
       type: "video",
       items: [
-        { subject: "Understanding Stock Market Movement", videoId: "98qfFzqDKR8", description: "Stocks, companies, market movement, and the signals that shape financial decisions.", sourceLink: "https://www.youtube.com/watch?v=98qfFzqDKR8" },
-        { subject: "Reading Global Market Signals", videoId: "EulhKrrfMnw", description: "A different market briefing on global positioning, investor sentiment, and changing business conditions.", sourceLink: "https://www.youtube.com/watch?v=EulhKrrfMnw" }
+        {
+          subject: "What it means to buy a company's stock",
+          videoId: "98qfFzqDKR8",
+          description: "A Khan Academy lesson explaining stock ownership and what it means to buy shares in a company.",
+          sourceLink: "https://www.youtube.com/watch?v=98qfFzqDKR8"
+        }
       ]
     },
     {
       category: "Bitcoin & Crypto",
       type: "video",
       items: [
-        { subject: "Bitcoin, Blockchain, and Digital Asset Awareness", videoId: "pVZzgzYZdCA", description: "Bitcoin, blockchain, digital assets, market cycles, and risk awareness.", sourceLink: "https://www.youtube.com/watch?v=pVZzgzYZdCA" },
-        { subject: "Crypto Adoption and Market Risk", videoId: "Qh-M3_L4xYk", description: "A new daily crypto selection focused on adoption, volatility, custody, and responsible decisions.", sourceLink: "https://www.youtube.com/watch?v=Qh-M3_L4xYk" }
+        {
+          subject: "Demystifying the Wild World of Crypto - Laura Shin",
+          videoId: "pVZzgzYZdCA",
+          description: "An archival TED talk by Laura Shin introducing the world of cryptocurrency.",
+          sourceLink: "https://www.youtube.com/watch?v=pVZzgzYZdCA"
+        }
       ]
     },
     {
       category: "Oil & Energy",
       type: "video",
       items: [
-        { subject: "A 40-year plan for energy - Amory Lovins", videoId: "PQqv8cWWV2U", description: "An archival TED-Ed talk on energy efficiency, innovation, and the business case for reducing oil and coal use.", sourceLink: "https://www.youtube.com/watch?v=PQqv8cWWV2U" }
+        {
+          subject: "A 40-year plan for energy - Amory Lovins",
+          videoId: "PQqv8cWWV2U",
+          description: "An archival TED-Ed talk on energy efficiency, innovation, and the business case for reducing oil and coal use.",
+          sourceLink: "https://www.youtube.com/watch?v=PQqv8cWWV2U"
+        }
       ]
     },
     {
       category: "Real Estate & Economy",
       type: "video",
       items: [
-        { subject: "Housing, Interest Rates, and Economic Pressure", videoId: "bNpx7gpSqbY", description: "Housing, rent, property, interest rates, and changing economic conditions.", sourceLink: "https://www.youtube.com/watch?v=bNpx7gpSqbY" },
-        { subject: "Property Demand and Economic Cycles", videoId: "lmyZMtPVodo", description: "Today’s alternate property briefing covers demand, affordability, investment, and economic cycles.", sourceLink: "https://www.youtube.com/watch?v=lmyZMtPVodo" }
+        {
+          subject: "The housing price conundrum",
+          videoId: "8IR5LefXVPY",
+          description: "An archival Khan Academy lesson examining the U.S. housing price increases of 2000–2006.",
+          sourceLink: "https://www.youtube.com/watch?v=8IR5LefXVPY"
+        }
       ]
     },
     {
       category: "Auto & Marine Business",
       type: "video",
       items: [
-        { subject: "Auto, Marine, and Transportation Business Trends", videoId: "EulhKrrfMnw", description: "Automotive, marine, transportation, dealership, and marketplace trends.", sourceLink: "https://www.youtube.com/watch?v=EulhKrrfMnw" },
-        { subject: "Dealership Operations and Mobility Demand", videoId: "98qfFzqDKR8", description: "A different daily mobility selection covering dealerships, service operations, demand, and transport markets.", sourceLink: "https://www.youtube.com/watch?v=98qfFzqDKR8" }
+        {
+          subject: "Inside the secret shipping industry - Rose George",
+          videoId: "j7RsRnYlz7I",
+          description: "An archival TED talk by Rose George about container shipping, global trade, and life at sea.",
+          sourceLink: "https://www.youtube.com/watch?v=j7RsRnYlz7I"
+        }
       ]
     },
     {
       category: "Finance Education",
       type: "video",
       items: [
-        { subject: "Building Stronger Everyday Financial Decisions", videoId: "Qh-M3_L4xYk", description: "Money, credit, funding, capital, budgeting, and financial decision-making.", sourceLink: "https://www.youtube.com/watch?v=Qh-M3_L4xYk" },
-        { subject: "Cash Flow, Credit, and Capital Planning", videoId: "pVZzgzYZdCA", description: "A new finance lesson on cash flow, credit discipline, capital planning, and resilient money habits.", sourceLink: "https://www.youtube.com/watch?v=pVZzgzYZdCA" }
+        {
+          subject: "Introduction to bonds",
+          videoId: "Qh-M3_L4xYk",
+          description: "A Khan Academy lesson introducing bonds and how borrowing through bonds works.",
+          sourceLink: "https://www.youtube.com/watch?v=Qh-M3_L4xYk"
+        },
+        {
+          subject: "Introduction to interest",
+          videoId: "GtaoP0skPWc",
+          description: "A Khan Academy lesson introducing interest on borrowed money.",
+          sourceLink: "https://www.youtube.com/watch?v=GtaoP0skPWc"
+        }
       ]
     },
     {
       category: "Leadership / Business Growth",
       type: "video",
       items: [
-        { subject: "Leadership Discipline and Sustainable Growth", videoId: "lmyZMtPVodo", description: "Lessons for founders, operators, teams, entrepreneurs, and long-term business growth.", sourceLink: "https://www.youtube.com/watch?v=lmyZMtPVodo" },
-        { subject: "Building Accountable High-Growth Teams", videoId: "GtaoP0skPWc", description: "A different leadership edition about accountability, execution, team alignment, and sustainable scale.", sourceLink: "https://www.youtube.com/watch?v=GtaoP0skPWc" }
+        {
+          subject: "Why good leaders make you feel safe - Simon Sinek",
+          videoId: "lmyZMtPVodo",
+          description: "An archival TED talk by Simon Sinek about leadership, trust, and feeling safe at work.",
+          sourceLink: "https://www.youtube.com/watch?v=lmyZMtPVodo"
+        }
       ]
     },
     {
-      category: "Market",
-      type: "audio",
-      items: [
-        { subject: "Market Volatility and Business Movement", audioEmbed: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0", description: "A spoken market edition about stocks, companies, volatility, and business movement.", sourceLink: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r" },
-        { subject: "Markets, Rates, and Investor Positioning", audioEmbed: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0", description: "A different audio briefing connecting rates, savings behavior, and investor positioning.", sourceLink: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX" }
+      "category": "Market",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "A Thematic Look at Market Volatility",
+          "audioEmbed": "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+          "description": "A podcast discussion about market volatility.",
+          "sourceLink": "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r"
+        }
       ]
     },
     {
-      category: "Bitcoin & Crypto",
-      type: "audio",
-      items: [
-        { subject: "Crypto Markets and Adoption", audioEmbed: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0", description: "Bitcoin, crypto markets, adoption, risk, and digital assets in a spoken edition.", sourceLink: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G" },
-        { subject: "Digital Assets and Portfolio Risk", audioEmbed: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0", description: "An alternate crypto audio selection about digital assets, volatility, and portfolio risk.", sourceLink: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r" }
+      "category": "Bitcoin & Crypto",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "200 - The OG's Reunite To Talk Vanguard, Aster & 4 Years Of Crypto",
+          "audioEmbed": "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
+          "description": "A podcast conversation about Vanguard, Aster, and four years of crypto.",
+          "sourceLink": "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G"
+        }
       ]
     },
     {
-      category: "Oil & Energy",
-      type: "audio",
-      items: [
-        { subject: "The State of U.S. Oil and Gas", audioEmbed: "https://open.spotify.com/embed/episode/2fOMGdpdKQWLFfXvFGa8B8?utm_source=generator&theme=0", description: "Oil, gas, energy policy, production, and business costs.", sourceLink: "https://open.spotify.com/episode/2fOMGdpdKQWLFfXvFGa8B8" },
-        { subject: "Energy Policy and Operating Costs", audioEmbed: "https://open.spotify.com/embed/episode/6IUvRq66quGfIWGagbS7la?utm_source=generator&theme=0", description: "A different spoken energy edition linking policy, transportation, and operating costs.", sourceLink: "https://open.spotify.com/episode/6IUvRq66quGfIWGagbS7la" }
+      "category": "Oil & Energy",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "API’s Mike Sommers on Trump 2.0 and the state of U.S. oil and gas",
+          "audioEmbed": "https://open.spotify.com/embed/episode/2fOMGdpdKQWLFfXvFGa8B8?utm_source=generator&theme=0",
+          "description": "An archival podcast conversation with API’s Mike Sommers about U.S. oil and gas.",
+          "sourceLink": "https://open.spotify.com/episode/2fOMGdpdKQWLFfXvFGa8B8"
+        }
       ]
     },
     {
-      category: "Real Estate & Economy",
-      type: "audio",
-      items: [
-        { subject: "Creative Real Estate Success", audioEmbed: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0", description: "Property, housing economics, investment, and market conditions.", sourceLink: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz" },
-        { subject: "Housing Wealth and Economic Choices", audioEmbed: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0", description: "An alternate property episode about housing wealth, savings, affordability, and economic choices.", sourceLink: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX" }
+      "category": "Real Estate & Economy",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "Turning Dead Leads into Gold: Trever Ahing's Blueprint for Creative Real Estate Success",
+          "audioEmbed": "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
+          "description": "A podcast conversation with Trever Ahing about leads and creative real estate.",
+          "sourceLink": "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz"
+        }
       ]
     },
     {
-      category: "Auto & Marine Business",
-      type: "audio",
-      items: [
-        { subject: "The Lead Response Crisis Hurting Dealers", audioEmbed: "https://open.spotify.com/embed/episode/6IUvRq66quGfIWGagbS7la?utm_source=generator&theme=0", description: "Automotive retail, dealership operations, marine technology, and transportation business.", sourceLink: "https://open.spotify.com/episode/6IUvRq66quGfIWGagbS7la" },
-        { subject: "Transportation Teams and Customer Response", audioEmbed: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0", description: "A different mobility audio edition on teams, customer response, and scalable operations.", sourceLink: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9" }
+      "category": "Auto & Marine Business",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "Inside the Lead Response Crisis Hurting Dealers (And What to Do About it) | Industry Spotlight",
+          "audioEmbed": "https://open.spotify.com/embed/episode/6IUvRq66quGfIWGagbS7la?utm_source=generator&theme=0",
+          "description": "A podcast episode about dealership lead response.",
+          "sourceLink": "https://open.spotify.com/episode/6IUvRq66quGfIWGagbS7la"
+        }
       ]
     },
     {
-      category: "Finance Education",
-      type: "audio",
-      items: [
-        { subject: "Supercharging Your Savings", audioEmbed: "https://open.spotify.com/embed/episode/6fXh090ycLVYtgO6qcN8HX?utm_source=generator&theme=0", description: "Saving, investing, financial habits, and stronger everyday money decisions.", sourceLink: "https://open.spotify.com/episode/6fXh090ycLVYtgO6qcN8HX" },
-        { subject: "Financial Habits for Long-Term Growth", audioEmbed: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0", description: "A new daily finance episode on habits, investment thinking, and long-term wealth building.", sourceLink: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz" }
+      "category": "Finance Education",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "A Thematic Look at Market Volatility",
+          "audioEmbed": "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+          "description": "A podcast discussion about market volatility.",
+          "sourceLink": "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r"
+        }
       ]
     },
     {
-      category: "Leadership / Business Growth",
-      type: "audio",
-      items: [
-        { subject: "The Mindset That Makes Growth Feel Easier", audioEmbed: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0", description: "Leadership mindset, entrepreneurship, teams, and sustainable business growth.", sourceLink: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9" },
-        { subject: "Leadership Through Market Uncertainty", audioEmbed: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0", description: "An alternate leadership conversation about decision-making, uncertainty, and team direction.", sourceLink: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G" }
+      "category": "Leadership / Business Growth",
+      "type": "audio",
+      "items": [
+        {
+          "subject": "The Powerful Mindset That Makes 10x Growth Feel Easy",
+          "audioEmbed": "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
+          "description": "A podcast episode about mindset and business growth.",
+          "sourceLink": "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9"
+        }
       ]
     }
   ];
@@ -275,3 +338,4 @@
 
   window.TitanCoreMedia = { dailyHomepageVideos, dailySchedule, getHomepageVideo, getDailyItems, readArchive, saveItems, seedArchive, toDateKey };
 }());
+

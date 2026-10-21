@@ -341,54 +341,48 @@
     </div>
   </footer>
 
+  <script src="media-schedule.js"></script>
   <script>
     "use strict";
 
-    const videoEditions = [
-      { category: "Market & Stock Video", title: "Understanding Stock Market Movement", description: "A public business video exploring companies, market movement, and the signals that shape financial decisions.", videoId: "98qfFzqDKR8" },
-      { category: "Bitcoin & Crypto Video", title: "Bitcoin, Blockchain, and Digital Asset Awareness", description: "A public overview of digital assets, market cycles, adoption, and responsible risk awareness.", videoId: "pVZzgzYZdCA" },
-      { category: "Oil & Energy Video", title: "Oil, Energy, and the Business Cost Chain", description: "A business-focused look at energy supply, commodities, production, and operating costs.", videoId: "GtaoP0skPWc" },
-      { category: "Real Estate & Economy Video", title: "Housing, Interest Rates, and Economic Pressure", description: "A public business briefing connecting property, affordability, rates, and changing economic conditions.", videoId: "bNpx7gpSqbY" },
-      { category: "Auto & Marine Business Video", title: "Transportation Markets and Business Operations", description: "A selection focused on automotive, marine, transportation, customer demand, and operating strategy.", videoId: "EulhKrrfMnw" },
-      { category: "Finance Education Video", title: "Building Stronger Everyday Financial Decisions", description: "Practical public education on money, capital, budgeting, saving, and disciplined financial choices.", videoId: "Qh-M3_L4xYk" },
-      { category: "Leadership / Business Growth Video", title: "Leadership Discipline and Sustainable Growth", description: "A leadership selection for founders, operators, teams, and companies focused on durable growth.", videoId: "lmyZMtPVodo" }
-    ];
+    const videoEditions = window.TitanCoreMedia.getDailyItems(new Date())
+      .filter(item => item.type === "video");
 
     const audioEditions = [
       {
-        category: "Market & Stock • Audio",
-        title: "Market Volatility and Business Signals",
-        description: "A public Spotify podcast selection about market movement, volatility, and business awareness.",
-        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
-        sourceUrl: "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r"
+        "category": "Market & Stock • Audio",
+        "title": "A Thematic Look at Market Volatility",
+        "description": "A podcast discussion about market volatility.",
+        "spotifyEmbedUrl": "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+        "sourceUrl": "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r"
       },
       {
-        category: "Finance Education • Audio",
-        title: "Financial Habits for Long-Term Growth",
-        description: "A public Spotify podcast selection about financial habits, investment thinking, and long-term wealth building.",
-        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
-        sourceUrl: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz"
+        "category": "Finance Education • Audio",
+        "title": "A Thematic Look at Market Volatility",
+        "description": "A podcast discussion about market volatility.",
+        "spotifyEmbedUrl": "https://open.spotify.com/embed/episode/4fBvOHmYWKoY1tCVQOQw6r?utm_source=generator&theme=0",
+        "sourceUrl": "https://open.spotify.com/episode/4fBvOHmYWKoY1tCVQOQw6r"
       },
       {
-        category: "Bitcoin & Crypto • Audio",
-        title: "Digital Assets and Portfolio Risk",
-        description: "A public Spotify podcast selection about digital assets, volatility, and portfolio risk.",
-        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
-        sourceUrl: "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G"
+        "category": "Bitcoin & Crypto • Audio",
+        "title": "200 - The OG's Reunite To Talk Vanguard, Aster & 4 Years Of Crypto",
+        "description": "A podcast conversation about Vanguard, Aster, and four years of crypto.",
+        "spotifyEmbedUrl": "https://open.spotify.com/embed/episode/1JwQlQOZCY9izj1BJKdI2G?utm_source=generator&theme=0",
+        "sourceUrl": "https://open.spotify.com/episode/1JwQlQOZCY9izj1BJKdI2G"
       },
       {
-        category: "Real Estate & Economy • Audio",
-        title: "Real Estate Leads and Market Opportunity",
-        description: "A public Spotify podcast selection about real estate, property opportunity, and market strategy.",
-        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
-        sourceUrl: "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz"
+        "category": "Real Estate & Economy • Audio",
+        "title": "Turning Dead Leads into Gold: Trever Ahing's Blueprint for Creative Real Estate Success",
+        "description": "A podcast conversation with Trever Ahing about leads and creative real estate.",
+        "spotifyEmbedUrl": "https://open.spotify.com/embed/episode/4N6rwdgI6JeEVt1x75lKFz?utm_source=generator&theme=0",
+        "sourceUrl": "https://open.spotify.com/episode/4N6rwdgI6JeEVt1x75lKFz"
       },
       {
-        category: "Leadership / Business Growth • Audio",
-        title: "Leadership Through Market Uncertainty",
-        description: "A public Spotify podcast selection about decision-making, uncertainty, and business leadership.",
-        spotifyEmbedUrl: "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
-        sourceUrl: "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9"
+        "category": "Leadership / Business Growth • Audio",
+        "title": "The Powerful Mindset That Makes 10x Growth Feel Easy",
+        "description": "A podcast episode about mindset and business growth.",
+        "spotifyEmbedUrl": "https://open.spotify.com/embed/episode/3fSTyvbTiNz4DhDC28QqD9?utm_source=generator&theme=0",
+        "sourceUrl": "https://open.spotify.com/episode/3fSTyvbTiNz4DhDC28QqD9"
       }
     ];
 
