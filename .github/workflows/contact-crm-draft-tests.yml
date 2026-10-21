@@ -1,0 +1,25 @@
+name: TitanCore draft CRM validation tests
+
+on:
+  pull_request:
+    paths:
+      - 'drafts/contact-crm/**'
+      - '.github/workflows/contact-crm-draft-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-draft-crm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Execute isolated CRM tests
+        run: node --test drafts/contact-crm/*.test.mjs
