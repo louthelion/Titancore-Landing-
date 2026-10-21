@@ -387,6 +387,7 @@
     ];
 
     const now = new Date();
+    const dateKey = window.TitanCoreMedia.toDateKey(now);
     const dayNumber = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
     const dailyIndex = Math.abs(dayNumber) % videoEditions.length;
     const weeklyIndex = Math.floor(Math.abs(dayNumber) / 7) % videoEditions.length;
@@ -406,7 +407,7 @@
     }
 
     function sourceUrl(item) { return `https://www.youtube.com/watch?v=${item.videoId}`; }
-    function archiveUrl(item) { return `media-archive.html?category=${encodeURIComponent(item.category)}&date=${now.toISOString().slice(0,10)}`; }
+    function archiveUrl(item) { return `media-archive.html?category=${encodeURIComponent(item.category)}&date=${dateKey}`; }
 
     function renderFeaturedVideo() {
       const item = videoEditions[dailyIndex];
