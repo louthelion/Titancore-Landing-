@@ -48,3 +48,13 @@ Status: **NOT DEPLOYED / NOT APPROVED**. This document is a design and test plan
 **Blocked pending verified provider configuration.** The current connector confirms the form and its fields but does not expose the form's submission-notification webhook settings or a provider-authenticated delivery mechanism. Do not assume an incoming POST was sent by Netlify solely because it includes a form name, submission ID, or secret-looking header. The source-authentication choice must be verified before connecting a database writer.
 
 **Safe implementation order:** inspect the existing Netlify submission notifications using authorized site administration; determine whether a strongly authenticated event is available; if not, use a server-only, credentialed Netlify API reader with pagination, durable checkpoint and retry handling; then connect the reviewed transaction adapter to a nonproduction database; finally validate dashboard RBAC and end-to-end delivery. The existing 16 unit tests do not cover this boundary.
+
+## Read-only production request audit (2026-10-22)
+
+Netlify request logs were checked for POST requests between 2026-10-20 00:00 UTC and 2026-10-22 22:04 UTC. Among them:
+
+- `2026-10-20T09:51:06Z`: `POST https://titancoreholdings.com/thank-you` returned HTTP 200.
+- `2026-10-21T08:26:32Z`: `POST https://titancoreholdings.com/thank-you` returned HTTP 429 (rate limited).
+- Other POST traffic includes redirects from `www` and automated-looking requests to unrelated paths. Do not classify these as legitimate form leads.
+
+These HTTP results alone do not verify a persisted Netlify submission, an authenticated event, or Supabase/dashboard delivery. The 429 requires investigation of rate-limit context and impact without collecting or exposing submitted PII. Do not disable protective limits as a quick fix.
