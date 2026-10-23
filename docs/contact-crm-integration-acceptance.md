@@ -64,3 +64,10 @@ These HTTP results alone do not verify a persisted Netlify submission, an authen
 - Netlify request ID `01M5ES3D7DJE130D9SJJCVRVG9` at 2026-10-21 08:26:32 UTC: `POST /thank-you`, HTTP 429, `text/plain` response, reported `/contact` referrer, no listed function/edge operations. Detailed record does **not** disclose the limiting rule.
 - Netlify request ID `01M5CBHGWBN0HMFE6MN5T05T0T` at 2026-10-20 09:51:06 UTC: `POST /thank-you`, HTTP 200, `text/html` response, reported `/contact` referrer, no listed function/edge operations.
 - These observations are **not** proof of genuine customers or successful CRM ingestion. Avoid recording client IPs or unnecessary personal data in the repository. Do not relax abuse controls based solely on one 429; investigate provider-side rule attribution and false-positive rates first.
+
+## Review checkpoint (2026-10-23)
+
+- GitHub Actions run [39925141336](https://github.com/louthelion/Titancore-Landing-/actions/runs/39925141336), job 120319553123: **20 tests passed, 0 failed, 0 skipped**. Four additional fake-adapter tests cover duplicate batch entries, stop-on-invalid-entry, batch size rejection, and empty pages.
+- The draft includes `reconcile-verified-page.mjs` and its tests. It is not a credentialed Netlify API reader and does not itself connect to Postgres.
+- Branch comparison with current `main` shows **3 commits behind, 13 ahead**; incoming main changes affect `media-archive.html` and `media-content.html`. Reconcile with current main and rerun CI before any proposed merge. Do not overwrite the newer media pages.
+- Remaining release blockers: verify trusted Netlify submission source, implement reviewed single-transaction database adapter, provision server-only secrets through approved configuration, and demonstrate role-scoped dashboard receipt with nonproduction data. No live rollout is authorized by this checkpoint.
