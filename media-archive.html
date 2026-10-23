@@ -263,10 +263,9 @@
           <div>
             <p class="eyebrow">Future Original Programming</p>
             <h2 id="studioHeading">TitanCore Studio Archive</h2>
-            <p>This dedicated area will preserve TitanCore original programming as it launches. The active Studio, CEO, and entrepreneur cards above currently use playable public business and leadership media.</p>
-            <p class="placeholder-note">Temporary placeholder until TitanCore original media launches.</p>
+            <p>This area is reserved for future TitanCore original programming. Studio productions, CEO briefings, guest interviews, and subsidiary updates are in development. Browse the saved public video and podcast selections above.</p>
+            <p class="placeholder-note">TitanCore original episodes are not yet available.</p>
             <div class="button-row">
-              <button class="button" type="button" data-studio-filter>View Studio Placeholders</button>
               <a class="button secondary" href="media-content.html#titancore-studio">Open Media Content Studio</a>
             </div>
           </div>
@@ -361,7 +360,6 @@
     [dateFilter, monthFilter, yearFilter, categoryFilter].forEach((field) => field.addEventListener("change", () => { if (field === dateFilter && field.value) { monthFilter.value = ""; yearFilter.value = ""; } renderArchive(); }));
     [["allMediaFilter", ""], ["videoFilter", "video"], ["audioFilter", "audio"]].forEach(([id, value]) => document.getElementById(id).addEventListener("click", (event) => { typeFilter = value; ["allMediaFilter", "videoFilter", "audioFilter"].forEach((buttonId) => document.getElementById(buttonId).classList.toggle("active", buttonId === id)); renderArchive(); }));
     document.getElementById("clearFilters").addEventListener("click", () => { dateFilter.value = ""; monthFilter.value = ""; yearFilter.value = ""; categoryFilter.value = ""; typeFilter = ""; document.getElementById("allMediaFilter").click(); });
-    document.querySelector("[data-studio-filter]").addEventListener("click", () => { categoryFilter.value = ""; renderArchive(); });
 
     function bindMenu() {
       const openButton = document.getElementById("openMenu"); const closeButton = document.getElementById("closeMenu"); const overlay = document.getElementById("menuOverlay");
