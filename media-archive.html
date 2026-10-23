@@ -314,7 +314,18 @@
     const query = new URLSearchParams(location.search);
     const requestedType = query.get("type");
     let typeFilter = ["video", "audio"].includes(requestedType) ? requestedType : "";
-    const archiveItems = TitanCoreMedia.seedArchive(3650);
+    function uniqueArchiveItems(items) {
+      const seen = new Set();
+      return items.filter((item) => {
+        const source = item.type === "video" ? item.videoId || item.sourceLink : item.sourceLink || item.audioEmbed;
+        const key = JSON.stringify([item.date, item.category, item.type, source || item.archiveId]);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    const archiveItems = uniqueArchiveItems(TitanCoreMedia.seedArchive(3650));
 
     function populateFilters() {
       const months = [...new Set(archiveItems.map((item) => item.date.slice(0, 7)))].sort().reverse();
