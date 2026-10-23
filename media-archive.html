@@ -82,6 +82,7 @@
     .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 12px 18px; border: 1px solid var(--green-bright); border-radius: 12px; background: linear-gradient(145deg, var(--green), #064532); color: #fff; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.1em; text-align: center; text-transform: uppercase; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease; }
     .button:hover, .button:focus-visible { transform: translateY(-2px); border-color: var(--gold-bright); outline: none; }
     .button.secondary { border-color: var(--gold-line); background: #101511; }
+    #loadMoreArchive[hidden] { display: none; }
     .connection-note { max-width: 850px; margin-top: 30px; padding: 18px 20px; border-left: 3px solid var(--gold); border-radius: 0 14px 14px 0; background: rgba(8, 116, 87, 0.12); color: #e6e8e5; }
 
     .control-panel { padding: 30px; border: 1px solid var(--gold-line); border-radius: 24px; background: linear-gradient(145deg, rgba(17, 23, 18, 0.96), rgba(5, 8, 6, 0.97)); box-shadow: var(--shadow); }
@@ -254,6 +255,9 @@
           </div>
         </div>
         <div class="archive-grid" id="archiveGrid"></div>
+        <div class="button-row">
+          <button class="button" id="loadMoreArchive" type="button" aria-controls="archiveGrid" hidden>Show More Editions</button>
+        </div>
       </div>
     </section>
 
@@ -306,6 +310,10 @@
   <script>
     const archiveGrid = document.getElementById("archiveGrid");
     const resultCount = document.getElementById("resultCount");
+    const loadMoreArchive = document.getElementById("loadMoreArchive");
+    const ARCHIVE_PAGE_SIZE = 24;
+    let filteredArchiveItems = [];
+    let displayedArchiveCount = 0;
     const activeFilterLabel = document.getElementById("activeFilter");
     const dateFilter = document.getElementById("dateFilter");
     const monthFilter = document.getElementById("monthFilter");
@@ -357,11 +365,34 @@
       card.append(createPlayer(item), body); return card;
     }
 
+    function appendArchivePage() {
+      const nextItems = filteredArchiveItems.slice(displayedArchiveCount, displayedArchiveCount + ARCHIVE_PAGE_SIZE);
+      const cards = nextItems.map(createArchiveCard);
+      archiveGrid.append(...cards);
+      displayedArchiveCount += nextItems.length;
+      const total = filteredArchiveItems.length;
+      resultCount.innerHTML = `<strong>${displayedArchiveCount}</strong> of <strong>${total}</strong> saved edition${total === 1 ? "" : "s"} shown`;
+      loadMoreArchive.hidden = displayedArchiveCount >= total;
+      loadMoreArchive.textContent = `Show ${Math.min(ARCHIVE_PAGE_SIZE, total - displayedArchiveCount)} More Editions`;
+      return cards;
+    }
+
+    loadMoreArchive.addEventListener("click", () => {
+      const cards = appendArchivePage();
+      const heading = cards[0]?.querySelector("h3");
+      if (heading) {
+        heading.setAttribute("tabindex", "-1");
+        heading.focus();
+      }
+    });
+
     function renderArchive() {
       const filtered = archiveItems.filter((item) => (!dateFilter.value || item.date === dateFilter.value) && (!monthFilter.value || item.date.startsWith(monthFilter.value)) && (!yearFilter.value || item.date.startsWith(yearFilter.value)) && (!categoryFilter.value || item.category === categoryFilter.value) && (!typeFilter || item.type === typeFilter));
-      archiveGrid.replaceChildren(...filtered.map(createArchiveCard));
+      filteredArchiveItems = filtered;
+      displayedArchiveCount = 0;
+      archiveGrid.replaceChildren();
+      appendArchivePage();
       if (!filtered.length) { const empty = document.createElement("div"); empty.className = "empty-state"; empty.innerHTML = "<h3>No saved daily media matches these filters.</h3><p>Clear one or more filters to browse the archive.</p>"; archiveGrid.appendChild(empty); }
-      resultCount.innerHTML = `<strong>${filtered.length}</strong> saved edition${filtered.length === 1 ? "" : "s"} shown`;
       activeFilterLabel.textContent = [dateFilter.value, monthFilter.value, yearFilter.value, categoryFilter.value, typeFilter].filter(Boolean).join(" • ") || "All saved daily media";
       const featuredDate = dateFilter.value ? new Date(`${dateFilter.value}T12:00:00`) : null;
       document.getElementById("featuredDay").textContent = featuredDate ? String(featuredDate.getDate()).padStart(2, "0") : "ALL";
