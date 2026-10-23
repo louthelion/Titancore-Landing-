@@ -407,7 +407,13 @@
     }
 
     function sourceUrl(item) { return `https://www.youtube.com/watch?v=${item.videoId}`; }
-    function archiveUrl(item) { return `media-archive.html?category=${encodeURIComponent(item.category)}&date=${dateKey}`; }
+    function archiveUrl(item) {
+      const isAudio = Boolean(item.spotifyEmbedUrl);
+      let category = item.category.replace(/ • Audio$/, "");
+      if (isAudio && category === "Market & Stock") category = "Market";
+      const type = isAudio ? "audio" : "video";
+      return `media-archive.html?category=${encodeURIComponent(category)}&date=${dateKey}&type=${type}`;
+    }
 
     function renderFeaturedVideo() {
       const item = videoEditions[dailyIndex];
