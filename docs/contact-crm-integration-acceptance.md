@@ -58,3 +58,9 @@ Netlify request logs were checked for POST requests between 2026-10-20 00:00 UTC
 - Other POST traffic includes redirects from `www` and automated-looking requests to unrelated paths. Do not classify these as legitimate form leads.
 
 These HTTP results alone do not verify a persisted Netlify submission, an authenticated event, or Supabase/dashboard delivery. The 429 requires investigation of rate-limit context and impact without collecting or exposing submitted PII. Do not disable protective limits as a quick fix.
+
+### Request-detail follow-up (2026-10-22)
+
+- Netlify request ID `01M5ES3D7DJE130D9SJJCVRVG9` at 2026-10-21 08:26:32 UTC: `POST /thank-you`, HTTP 429, `text/plain` response, reported `/contact` referrer, no listed function/edge operations. Detailed record does **not** disclose the limiting rule.
+- Netlify request ID `01M5CBHGWBN0HMFE6MN5T05T0T` at 2026-10-20 09:51:06 UTC: `POST /thank-you`, HTTP 200, `text/html` response, reported `/contact` referrer, no listed function/edge operations.
+- These observations are **not** proof of genuine customers or successful CRM ingestion. Avoid recording client IPs or unnecessary personal data in the repository. Do not relax abuse controls based solely on one 429; investigate provider-side rule attribution and false-positive rates first.
