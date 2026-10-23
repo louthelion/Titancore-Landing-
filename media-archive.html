@@ -313,7 +313,8 @@
     const yearFilter = document.getElementById("yearFilter");
     const categoryFilter = document.getElementById("categoryFilter");
     const query = new URLSearchParams(location.search);
-    let typeFilter = "";
+    const requestedType = query.get("type");
+    let typeFilter = ["video", "audio"].includes(requestedType) ? requestedType : "";
     const archiveItems = TitanCoreMedia.seedArchive(3650);
 
     function populateFilters() {
@@ -325,6 +326,9 @@
       categories.forEach((value) => categoryFilter.add(new Option(value, value)));
       dateFilter.value = query.get("date") || "";
       categoryFilter.value = query.get("category") || "";
+      [["allMediaFilter", ""], ["videoFilter", "video"], ["audioFilter", "audio"]].forEach(([id, value]) => {
+        document.getElementById(id).classList.toggle("active", value === typeFilter);
+      });
     }
 
     function createPlayer(item) {
