@@ -912,21 +912,17 @@
 
         <div class="grid two">
           <div class="card metal">
-            <div class="label">Global Wire</div>
-            <h3>Today’s Global Watch</h3>
-            <div class="news-line" id="globalNewsList">
-              <div class="news-item">
-                <b>World Business</b>
-                <p>Country-level business movement, global trade, and market pressure belong here.</p>
-              </div>
-              <div class="news-item">
-                <b>Finance & Banking</b>
-                <p>Central banks, credit pressure, lending movement, and institutional finance awareness.</p>
-              </div>
-              <div class="news-item">
-                <b>Energy & Logistics</b>
-                <p>Oil, shipping, supply chain, transportation, and infrastructure movement.</p>
-              </div>
+            <div class="label">Master Briefing</div>
+            <h3>The Master Briefing — All The News, On This Page</h3>
+            <p>
+              TitanCore Holdings is the parent company, so its newsroom carries all the news: the markets,
+              every kind of stock, the global economy, and the worlds of its companies — real estate, credit
+              and business, insurance and family money. Every briefing below is written out in full on this
+              page, under TitanCore's name. Sources are named in plain words at the end of each briefing —
+              a referral for anyone who wants more, never a door off this page.
+            </p>
+            <div data-master-briefing aria-live="polite">
+              <p>Loading the briefing…</p>
             </div>
           </div>
 
@@ -1225,5 +1221,7 @@
 
     document.querySelector(".contact")?.style.setProperty("--contact-bg", selected.contact);
   </script>
+  <script src="master-briefing-data.js"></script>
+  <script src="master-briefing.js"></script>
 </body>
 </html>
