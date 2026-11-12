@@ -801,27 +801,27 @@
       <section class="section" style="--section-bg:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1900&q=85')">
         <div class="wrap">
           <div class="section-title">
-            <div class="eyebrow">Live Board</div>
-            <h2>Headlines And Context <span>In Plain Language.</span></h2>
+            <div class="eyebrow">TitanCore Master Briefing</div>
+            <h2>The Full Story <span>On This Page.</span></h2>
             <p>
-              This section can pull live headlines when your Netlify function is connected. If it is not connected yet, the page still works with fallback content.
+              TitanCore Holdings is the parent, so this briefing carries all the news its companies live in — the markets, every kind of stock, the global economy, real estate, credit and business, and insurance and family money. Every briefing is written out in full here, under TitanCore's name. Sources are named in plain words at the end of each briefing; nothing here sends you away to finish a story.
             </p>
           </div>
 
-          <div class="pillrow" role="group" aria-label="Headline filters">
-            <button class="pill" data-topic="markets" aria-pressed="true" type="button">Markets</button>
-            <button class="pill" data-topic="economy" aria-pressed="false" type="button">Economy</button>
-            <button class="pill" data-topic="energy" aria-pressed="false" type="button">Energy</button>
-            <button class="pill" data-topic="technology" aria-pressed="false" type="button">Technology</button>
-            <button class="pill" data-topic="global" aria-pressed="false" type="button">Global</button>
+          <div class="pillrow" role="group" aria-label="Briefing desk filters">
+            <button class="pill" data-desk-filter="all" aria-pressed="true" type="button">All Desks</button>
+            <button class="pill" data-desk-filter="Markets" aria-pressed="false" type="button">Markets</button>
+            <button class="pill" data-desk-filter="Real Estate" aria-pressed="false" type="button">Real Estate</button>
+            <button class="pill" data-desk-filter="Credit &amp; Business" aria-pressed="false" type="button">Credit &amp; Business</button>
+            <button class="pill" data-desk-filter="Insurance &amp; Family Money" aria-pressed="false" type="button">Insurance &amp; Family Money</button>
           </div>
 
           <div class="grid two">
             <div class="card metal">
-              <div class="label">Live Headlines</div>
-              <p class="small" id="feedMeta">Loading…</p>
-              <div class="feed" id="headlineFeed" aria-live="polite">
-                <p>Loading live headlines…</p>
+              <div class="label">Master Briefing</div>
+              <p class="small">Full briefings, written by TitanCore, read on this page. Updated by a morning editor pass.</p>
+              <div data-master-briefing aria-live="polite">
+                <p>Loading the briefing…</p>
               </div>
             </div>
 
@@ -1104,84 +1104,17 @@
       }
     }
 
-    const fallbackHeadlines = {
-      markets:[
-        "Markets move as investors watch rates, earnings, and economic signals.",
-        "Business leaders monitor equity movement for confidence and capital access.",
-        "Liquidity and credit conditions remain important for business expansion."
-      ],
-      economy:[
-        "Inflation, jobs, and rates continue to shape business decisions.",
-        "Consumer demand and borrowing costs influence company planning.",
-        "Economic indicators help explain hiring, pricing, and growth pressure."
-      ],
-      energy:[
-        "Energy prices affect transportation, supply chains, and margins.",
-        "Oil movement can create cost pressure across multiple industries.",
-        "Fuel and logistics costs remain important signals for operators."
-      ],
-      technology:[
-        "Technology adoption continues to affect business productivity.",
-        "AI, software, and cybersecurity remain major business education topics.",
-        "Technology investment can influence competitive advantage."
-      ],
-      global:[
-        "Global business movement affects trade, currencies, supply chains, and markets.",
-        "Country-level business conditions can shape investment and trade opportunity.",
-        "Global headlines are important for business awareness and long-term planning."
-      ]
-    };
+    /* Fallback headline data removed with the board (2026-11-12). */
 
-    async function loadHeadlines(topic){
-      const feed = document.getElementById("headlineFeed");
-      const meta = document.getElementById("feedMeta");
-
-      try{
-        feed.innerHTML = "<p>Loading live headlines…</p>";
-        meta.textContent = "Loading…";
-
-        const res = await fetch("/api/headlines?topic=" + encodeURIComponent(topic), { cache:"no-store" });
-        if(!res.ok) throw new Error("Headlines unavailable");
-
-        const data = await res.json();
-        const items = data.items || [];
-
-        meta.textContent = "Updated " + (data.generatedAt || "recently") + " • Source: " + (data.source || "Live feed");
-
-        feed.innerHTML = items.map(function(it){
-          return '<a href="' + it.url + '" target="_blank" rel="noopener">' +
-            '<div style="font-weight:900;letter-spacing:1px">' + (it.title || "Untitled") + '</div>' +
-            '<div class="meta">' + (it.domain || "source") + ' • ' + (it.seenDate || "") + '</div>' +
-          '</a>';
-        }).join("") || "<p>No headlines returned right now.</p>";
-      }catch(e){
-        meta.textContent = "Demo board • connect /api/headlines for live headlines";
-        feed.innerHTML = fallbackHeadlines[topic].map(function(title){
-          return '<a href="global-news.html">' +
-            '<div style="font-weight:900;letter-spacing:1px">' + title + '</div>' +
-            '<div class="meta">TitanCore demo signal • educational preview</div>' +
-          '</a>';
-        }).join("");
-      }
-    }
-
-    const pills = Array.from(document.querySelectorAll(".pill"));
-    let currentTopic = "markets";
-
-    pills.forEach(function(pill){
-      pill.addEventListener("click", function(){
-        currentTopic = pill.dataset.topic;
-
-        pills.forEach(function(item){
-          item.setAttribute("aria-pressed", String(item.dataset.topic === currentTopic));
-        });
-
-        loadHeadlines(currentTopic);
-      });
-    });
+    /* Master Briefing conversion (2026-11-12): the old live-headline board
+       fetched an external headlines endpoint and rendered each headline as
+       a link off this page. It has been removed. The briefing now renders
+       in full on this page from master-briefing-data.js via
+       master-briefing.js — no headline here is a door to another site. */
 
     loadSignals();
-    loadHeadlines(currentTopic);
   </script>
+  <script src="master-briefing-data.js"></script>
+  <script src="master-briefing.js"></script>
 </body>
 </html>
