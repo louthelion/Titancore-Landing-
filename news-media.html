@@ -537,6 +537,22 @@
       color:rgba(255,255,255,.88);
     }
 
+    .wire-desk{
+      margin-bottom:34px;
+    }
+
+    .wire-desk:last-child{
+      margin-bottom:0;
+    }
+
+    .news-item p.wire-meta{
+      margin-top:10px;
+      font-size:13px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      color:var(--gold2);
+    }
+
     .video-window{
       min-height:540px;
       background:
@@ -869,6 +885,13 @@
           </article>
 
           <article class="card metal">
+            <div class="label">Local Desk</div>
+            <h3>Orlando &amp; Central Florida</h3>
+            <p>Local business, real estate, and economy headlines for Orlando and Central Florida, carried on the live wire below.</p>
+            <a href="#localNews" class="btn">View Local Wire <span class="arrow">›</span></a>
+          </article>
+
+          <article class="card metal">
             <div class="label">Market Desk</div>
             <h3>Market Headlines</h3>
             <p>Stock market, real estate, finance, oil, technology, crypto, and economic signal headlines.</p>
@@ -934,6 +957,43 @@
               where visitors can read headlines and move into deeper business intelligence when needed.
             </p>
             <a href="business-intelligence.html" class="btn">Open Business Intelligence <span class="arrow">›</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="liveNews" data-live-wire>
+      <div class="wrap">
+        <div class="section-title">
+          <div class="eyebrow">Live News Wire</div>
+          <h2>Happening Now, <span>On This Page.</span></h2>
+          <p>
+            The TitanCore live wire carries the day's headlines from public news sources and writes
+            them out here, on this page: the headline, the full summary the wire carries, the source
+            named in plain text, and the time it was published. Nothing here is a door off this page —
+            a source name is a referral for anyone who wants more, never a link. The wire refreshes
+            itself about every 15 minutes.
+          </p>
+          <p data-wire-status aria-live="polite">Loading the live wire…</p>
+        </div>
+
+        <div data-wire-sections>
+          <p>Loading current headlines…</p>
+        </div>
+
+        <div id="localNews" style="margin-top:56px;">
+          <div class="section-title">
+            <div class="eyebrow">Local Desk — Orlando &amp; Central Florida</div>
+            <h2>Local News, <span>Same Wire.</span></h2>
+            <p>
+              Beside the global coverage above, the same wire runs a local lane for Orlando and
+              Central Florida — business, real estate, and economy news from home ground, under
+              the same rule: full text on this page, sources named in plain text, no doors.
+            </p>
+          </div>
+
+          <div data-wire-local>
+            <p>Loading local headlines…</p>
           </div>
         </div>
       </div>
@@ -1223,5 +1283,6 @@
   </script>
   <script src="master-briefing-data.js"></script>
   <script src="master-briefing.js"></script>
+  <script src="live-news.js" defer></script>
 </body>
 </html>

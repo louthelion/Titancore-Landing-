@@ -14,8 +14,84 @@
  * must be verified against its named source before it is written here.
  * Nothing is scraped live and no article text is copied — briefings are
  * written in TitanCore's own words.
+ *
+ * Latest morning pass: November 20, 2026 — the four briefings dated
+ * 2026-11-20 at the top of the array. New entries go at the TOP of the
+ * array (newest first); older briefings stay below as the archive.
  */
 window.TITANCORE_MASTER_BRIEFING = [
+  {
+    id: "markets-selloff-2026-11-20",
+    dateISO: "2026-11-20",
+    dateLabel: "November 20, 2026",
+    desk: "Markets",
+    headline: "Wall Street's slide deepens: Dow falls 1,101 points as the AI trade loses its shine",
+    paragraphs: [
+      "Wall Street ended sharply lower on Thursday, November 19, and the selling carried into Friday's session. The Dow Jones Industrial Average fell 1,101.11 points, or 2.19 percent, to close at 49,097.06 — its first close below 50,000 since June. The S&P 500 lost 147.80 points, or 2.02 percent, to 7,175.83, its sixth straight losing session and, by Reuters' reading, on course for its steepest weekly loss since April 2025. The Nasdaq Composite dropped 550.68 points, or 2.25 percent, to 23,879.20.",
+      "The day's irony was the debut that was supposed to help. Anthropic, the artificial-intelligence company, began trading publicly and finished its first day about 17 percent above its $83 offering price — yet the debut failed to revive the wider AI trade. Technology shares stayed under pressure, more than 90 percent of S&P 500 stocks declined in the Thursday session by one market tally, and Bitcoin fell below $60,000 for the first time since July as investors pulled back from risk across the board.",
+      "What it means in plain words: a falling market is not just a scoreboard for traders. When indexes slide for six straight sessions and fear of further Federal Reserve tightening is part of the story, borrowing gets more cautious, business owners feel the ground shift under expansion plans, and credit decisions slow down. TitanCore reads weeks like this one as a weather report for every company in the group: hold discipline, watch rates, and do not mistake a loud week for a permanent climate."
+    ],
+    image: {
+      src: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+      alt: "Market charts and figures on a screen",
+      credit: "Photo: Unsplash"
+    },
+    source: "Reuters market coverage of the November 19, 2026 close, reported November 20, 2026; Investor's Business Daily and Yahoo Finance market coverage, November 20, 2026"
+  },
+  {
+    id: "real-estate-mortgage-rates-2026-11-20",
+    dateISO: "2026-11-20",
+    dateLabel: "November 20, 2026",
+    desk: "Real Estate",
+    headline: "Mortgage rates turn back up: 30-year fixed averages 7.28 percent",
+    paragraphs: [
+      "The brief relief in borrowing costs is over for now. Freddie Mac's Primary Mortgage Market Survey, released Thursday, November 19, puts the average 30-year fixed mortgage rate at 7.28 percent, up from 7.11 percent the week before — the first weekly increase in five weeks, ending a four-week slide. The 15-year fixed average rose to 6.66 percent, from 6.45 percent. A year ago, the 30-year average stood at 6.26 percent.",
+      "The arithmetic is the story for households. On a $300,000 loan, principal and interest at 7.28 percent runs about $2,053 a month — and every tenth of a point either way moves that payment by roughly the cost of a family grocery run. With the 10-year Treasury yield — the benchmark mortgage rates follow — sitting near 5 percent in FRED's latest readings, lenders had little room to keep easing, and the week's hotter inflation talk pushed the other way.",
+      "What it means in plain words: buyers who were waiting for rates to keep falling just got a reminder that the path down is not a straight line. For Orlando, where the market has been sitting close to balanced, a rate bump like this one tends to pause the most payment-sensitive buyers while prepared buyers and cash-strong investors keep moving. The working rule stays the same one this briefing gave on November 11: in a balanced market, preparation beats prediction."
+    ],
+    image: {
+      src: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80",
+      alt: "A model house beside a set of keys",
+      credit: "Photo: Unsplash"
+    },
+    source: "Freddie Mac Primary Mortgage Market Survey, November 19, 2026; CNN coverage of the rate release, November 19, 2026"
+  },
+  {
+    id: "credit-sba-tighter-box-2026-11-20",
+    dateISO: "2026-11-20",
+    dateLabel: "November 20, 2026",
+    desk: "Credit & Business",
+    headline: "SBA lending enters its new fiscal year with a tighter credit box",
+    paragraphs: [
+      "The U.S. Small Business Administration opened fiscal year 2027 on October 1, 2026 with a second round of tighter underwriting rules for its 7(a) and 504 loan programs, American Banker reported. Four changes matter most to borrowers: acquisition loans above $3 million now need a CPA-prepared report on the target company's earnings; lenders must apply stricter debt-service requirements; seller notes and other non-cash sources can cover no more than half of the required 10 percent equity injection; and underwriting must rest on trailing earnings, not forward-looking projections.",
+      "The full-year numbers show why the rules tightened. In fiscal 2026, which ended September 30, the SBA approved 56,130 loans under the 7(a) program totaling $32.4 billion, and 504 volume fell about 9 percent to $7.1 billion — both down by double digits or near it from the prior year, in a year that also included a federal shutdown that halted approvals for roughly six weeks. Confidence data points the same way: the NFIB Optimism Index read 97.8 for October, just under its long-run average, while a net 13 percent of owners reported paying higher interest rates on their latest loans — the highest reading since August 2024 — with the average rate on short-term loans at 8.5 percent.",
+      "What it means in plain words: the SBA door is not closed, but it is narrower, and it now opens for history instead of promises. A business that can show real trailing earnings, clean books, and cash genuinely committed to the deal is speaking the new rules' language. A business working from projections alone will be asked to come back with proof. That is exactly the preparation work Vaultara Capital exists to help with — and, as always, funding help is paid at or after closing, never before."
+    ],
+    image: {
+      src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+      alt: "Business owners reviewing paperwork together",
+      credit: "Photo: Unsplash"
+    },
+    source: "American Banker reporting on SBA fiscal 2027 underwriting rules, October 2026, and SBA fiscal 2026 lending totals; NFIB Small Business Optimism Index for October 2026"
+  },
+  {
+    id: "insurance-florida-citizens-2026-11-20",
+    dateISO: "2026-11-20",
+    dateLabel: "November 20, 2026",
+    desk: "Insurance & Family Money",
+    headline: "Florida's insurance market keeps healing: Citizens shrinks, rate cuts reach families",
+    paragraphs: [
+      "Florida's property insurance market — for years the most painful in the country for homeowners — is continuing to mend. Citizens Property Insurance, the state-backed insurer of last resort, reported 216,447 policies in force on October 31, 2026, down about 85 percent from its peak of roughly 1.4 million in the fall of 2023, as private carriers take customers back. Twenty new insurers have entered Florida since the 2022–2023 legal reforms, and regulators are now approving rate decreases instead of the increases families had come to expect.",
+      "The relief is reaching kitchen tables in counted numbers. Florida's Chief Financial Officer and the Office of Insurance Regulation reported that more than 824,300 homeowners saw rate decreases on new policies or renewals in October, with cuts of up to 12.1 percent, and that roughly 450,000 more Floridians are in line for decreases from filings taking effect from November through January. Citizens' own personal-lines rates carry a statewide average reduction of 8.7 percent for this cycle.",
+      "What it means in plain words: for Florida families, the insurance line in the household budget finally has a chance to move in the right direction — but only for those who read the renewal when it arrives. A statewide average is not a promise about any one home; roof age and condition still drive underwriting, and a wind mitigation inspection remains one of the largest discount levers a homeowner controls. The habit this desk keeps recommending is simple: open the renewal, compare it line by line, and ask what changed."
+    ],
+    image: {
+      src: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+      alt: "Paperwork and a calculator on a desk",
+      credit: "Photo: Unsplash"
+    },
+    source: "Citizens Property Insurance policies-in-force reporting, October 31, 2026; Florida Office of Insurance Regulation and Florida Chief Financial Officer rate-decrease announcements, October–November 2026; Business News Florida market review, November 16, 2026"
+  },
   {
     id: "markets-close-2026-11-11",
     dateISO: "2026-11-11",
