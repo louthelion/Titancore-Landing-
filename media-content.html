@@ -242,7 +242,6 @@
             <p id="featuredVideoDescription"></p>
             <div class="meta"><span class="label" id="featuredVideoDate"></span><span class="label" id="featuredVideoCategory"></span></div>
             <div class="button-row">
-              <a class="button" id="featuredVideoSource" href="https://www.youtube.com/" target="_blank" rel="noopener">Open Video Source</a>
               <a class="button secondary" href="media-archive.html">View Media Archive</a>
             </div>
           </div>
@@ -406,7 +405,6 @@
       return iframe;
     }
 
-    function sourceUrl(item) { return `https://www.youtube.com/watch?v=${item.videoId}`; }
     function archiveUrl(item) {
       const isAudio = Boolean(item.spotifyEmbedUrl);
       let category = item.category.replace(/ • Audio$/, "");
@@ -422,7 +420,6 @@
       document.getElementById("featuredVideoDescription").textContent = item.description;
       document.getElementById("featuredVideoDate").textContent = dateLabel;
       document.getElementById("featuredVideoCategory").textContent = item.category;
-      document.getElementById("featuredVideoSource").href = sourceUrl(item);
     }
 
     function renderVideoGallery() {
@@ -435,7 +432,7 @@
         frame.appendChild(makeVideoFrame(item, "Gallery video"));
         const copy = document.createElement("div");
         copy.className = "card-body";
-        copy.innerHTML = `<p class="eyebrow">${item.category}</p><h3>${item.title}</h3><p>${item.description}</p><div class="meta"><span class="label">${dateLabel}</span><span class="label">Rotation ${String(index + 1).padStart(2, "0")}</span></div><div class="archive-note">Archive note: This category is prepared for daily editions and organized in the Media Archive by day, month, year, and category.</div><div class="button-row"><a class="button" href="${sourceUrl(item)}" target="_blank" rel="noopener">Open Video Source</a><a class="button secondary" href="${archiveUrl(item)}">View Archive</a></div>`;
+        copy.innerHTML = `<p class="eyebrow">${item.category}</p><h3>${item.title}</h3><p>${item.description}</p><div class="meta"><span class="label">${dateLabel}</span><span class="label">Rotation ${String(index + 1).padStart(2, "0")}</span></div><div class="archive-note">Archive note: This category is prepared for daily editions and organized in the Media Archive by day, month, year, and category.</div><div class="button-row"><a class="button secondary" href="${archiveUrl(item)}">View Archive</a></div>`;
         card.append(frame, copy);
         grid.appendChild(card);
       });
@@ -460,7 +457,7 @@
         player.title = `Spotify player: ${item.title}`;
         const body = document.createElement("div");
         body.className = "card-body";
-        body.innerHTML = `<p class="eyebrow">${item.category}</p><h3>${item.title}</h3><p>${item.description}</p><div class="meta"><span class="label">${dateLabel}</span><span class="label">${item.category.replace(" • Audio", "")}</span><span class="label">Audio</span></div><div class="archive-note">Embedded from Spotify for education and business awareness. TitanCore does not download, copy, or host this third-party audio.</div><div class="button-row"><a class="button" href="${item.sourceUrl}" target="_blank" rel="noopener">Open Source</a><a class="button secondary" href="${archiveUrl(item)}">${index === 0 ? "Today’s Media" : "View Media Archive"}</a></div>`;
+        body.innerHTML = `<p class="eyebrow">${item.category}</p><h3>${item.title}</h3><p>${item.description}</p><div class="meta"><span class="label">${dateLabel}</span><span class="label">${item.category.replace(" • Audio", "")}</span><span class="label">Audio</span></div><div class="archive-note">Embedded from Spotify for education and business awareness. TitanCore does not download, copy, or host this third-party audio.</div><div class="button-row"><a class="button secondary" href="${archiveUrl(item)}">${index === 0 ? "Today’s Media" : "View Media Archive"}</a></div>`;
         card.append(player, body);
         grid.appendChild(card);
       });
