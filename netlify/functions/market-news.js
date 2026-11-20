@@ -24,6 +24,10 @@ const NEWS_TOPICS = {
   realestate: {
     label: "Real Estate / Economy",
     query: "real estate economy mortgage housing market news"
+  },
+  local: {
+    label: "Local — Orlando / Central Florida",
+    query: "Orlando Central Florida business economy real estate news"
   }
 };
 
